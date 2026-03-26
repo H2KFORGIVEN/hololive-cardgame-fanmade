@@ -224,6 +224,50 @@ def translate_cards(data_dir: Path):
     print(f"[translate] cards.json done ({len(unique_list)} unique strings)")
 
 
+def translate_guides(data_dir: Path):
+    guides_path = data_dir / "all_guides.json"
+    if not guides_path.exists():
+        print("[translate] all_guides.json not found, skipping")
+        return
+
+    guides = json.loads(guides_path.read_text(encoding="utf-8"))
+
+    unique_texts = set()
+    for deck in guides:
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            unique_texts.add(deck["description"])
+        for card in deck.get("cards", []):
+            if isinstance(card.get("role"), str) and card["role"].strip():
+                unique_texts.add(card["role"])
+        for step in deck.get("strategy", []):
+            if isinstance(step.get("title"), str) and step["title"].strip():
+                unique_texts.add(step["title"])
+            if isinstance(step.get("text"), str) and step["text"].strip():
+                unique_texts.add(step["text"])
+
+    unique_list = sorted(unique_texts)
+    print(f"  Guides: {len(unique_list)} unique strings")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_JA:
+        lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
+
+    for deck in guides:
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
+        for card in deck.get("cards", []):
+            if isinstance(card.get("role"), str) and card["role"].strip():
+                card["role"] = _make_multilang_from_maps(card["role"], "ja", lang_maps)
+        for step in deck.get("strategy", []):
+            if isinstance(step.get("title"), str) and step["title"].strip():
+                step["title"] = _make_multilang_from_maps(step["title"], "ja", lang_maps)
+            if isinstance(step.get("text"), str) and step["text"].strip():
+                step["text"] = _make_multilang_from_maps(step["text"], "ja", lang_maps)
+
+    guides_path.write_text(json.dumps(guides, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("[translate] all_guides.json done")
+
+
 def translate_all(data_dir: Path):
     base_dir = data_dir.parent
     _load_cache(base_dir)
@@ -232,6 +276,8 @@ def translate_all(data_dir: Path):
     translate_tier_list(data_dir)
     print("[translate] Translating decks.json...")
     translate_decks(data_dir)
+    print("[translate] Translating all_guides.json...")
+    translate_guides(data_dir)
     print("[translate] Translating cards.json...")
     translate_cards(data_dir)
 
