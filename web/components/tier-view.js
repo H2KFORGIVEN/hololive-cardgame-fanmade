@@ -1,4 +1,4 @@
-import { t } from '../i18n.js';
+import { t, localized } from '../i18n.js';
 
 const RATING_KEYS = ['firepower', 'ease', 'stability', 'endurance', 'pressure'];
 
@@ -49,7 +49,9 @@ function renderDeckCard(deck, tierNum, decksMap) {
     </span>
   `).join('');
 
-  const featuresHtml = (deck.features || []).map(f => `<li>${f}</li>`).join('');
+  const features = localized(deck.features, []);
+  const featuresList = Array.isArray(features) ? features : [];
+  const featuresHtml = featuresList.map(f => `<li>${f}</li>`).join('');
 
   return `
     <div class="deck-card" data-deck-id="${deck.id}" data-tier="${tierNum}">

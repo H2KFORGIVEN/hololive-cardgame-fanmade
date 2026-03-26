@@ -284,6 +284,15 @@ export function getSupportedLangs() {
   return SUPPORTED_LANGS.map(code => ({ code, label: TRANSLATIONS[code].lang_label }));
 }
 
+export function localized(value, fallback) {
+  if (value == null) return fallback ?? '';
+  if (typeof value === 'string') return value;
+  if (typeof value === 'object' && !Array.isArray(value)) {
+    return value[currentLang] ?? value['ja'] ?? value[Object.keys(value)[0]] ?? fallback ?? '';
+  }
+  return value;
+}
+
 export function applyStaticTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     el.textContent = t(el.dataset.i18n);
