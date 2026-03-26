@@ -18,16 +18,18 @@ export function renderTierView(container, tierData, decksData) {
   let html = `<div class="tier-updated">${t('updated')}: ${tierData.updated || 'N/A'}</div>`;
 
   for (const tier of tierData.tiers) {
+    const visibleDecks = tier.decks.filter(d => !!decksMap[d.id]);
+    if (!visibleDecks.length) continue;
     const criteriaKey = `tier_criteria_${tier.tier}`;
     html += `
       <section class="tier-section">
         <div class="tier-header">
           <span class="tier-badge" data-tier="${tier.tier}">TIER ${tier.tier}</span>
-          <span class="tier-label">${tier.decks.length} ${t('decks_count')}</span>
+          <span class="tier-label">${visibleDecks.length} ${t('decks_count')}</span>
           <span class="tier-criteria">${t(criteriaKey)}</span>
         </div>
         <div class="deck-grid">
-          ${tier.decks.map(deck => renderDeckCard(deck, tier.tier, decksMap)).join('')}
+          ${visibleDecks.map(deck => renderDeckCard(deck, tier.tier, decksMap)).join('')}
         </div>
       </section>
     `;
