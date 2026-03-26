@@ -20,6 +20,7 @@
 
   <nav class="main-nav">
     <button class="nav-btn active" data-view="tiers" data-i18n="nav_tiers">Tier 一覽</button>
+    <button class="nav-btn" data-view="tournament" data-i18n="nav_tournament">大賽牌組</button>
     <button class="nav-btn" data-view="cards" data-i18n="nav_cards">卡片搜尋</button>
   </nav>
 
@@ -56,6 +57,9 @@
     <div id="tiersView" class="view active">
       <div class="loading" data-i18n="loading">載入中...</div>
     </div>
+    <div id="tournamentView" class="view">
+      <div class="loading" data-i18n="loading">載入中...</div>
+    </div>
     <div id="cardsView" class="view">
       <div class="loading" data-i18n="loading">載入中...</div>
     </div>
@@ -79,7 +83,7 @@
 
   <footer class="site-footer">
     <p data-i18n="footer_disclaimer">Fan-made 環境資料庫。卡片資料 © 2016 COVER Corp. / hololive OFFICIAL CARD GAME</p>
-    <p><span data-i18n="footer_sources">資料來源</span>: <a href="https://hololive-cardgame.github.io/cards/" target="_blank" data-i18n="footer_card_db">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank" data-i18n="footer_strategy">ホロカ攻略ギルド</a></p>
+    <p><span data-i18n="footer_sources">資料來源</span>: <a href="https://hololive-cardgame.github.io/cards/" target="_blank" data-i18n="footer_card_db">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank" data-i18n="footer_strategy">ホロカ攻略ギルド</a> | <a href="https://decklog-en.bushiroad.com/" target="_blank">Deck Log</a></p>
   </footer>
 
   <script type="module" src="app.js"></script>

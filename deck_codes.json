@@ -1,0 +1,146 @@
+[
+  {
+    "code": "44ZSC",
+    "title": "キアラ単",
+    "oshi": "小鳥遊キアラ",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Trio Winner",
+    "placement": "Trio 1st (きりご)"
+  },
+  {
+    "code": "4V2CC",
+    "title": "すいせい単",
+    "oshi": "星街すいせい",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Trio Winner",
+    "placement": "Trio 1st (おりがみ)"
+  },
+  {
+    "code": "6882Y",
+    "title": "オリー単",
+    "oshi": "クレイジー・オリー",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Individual A Block",
+    "placement": "1st (マトフ)"
+  },
+  {
+    "code": "34EEY",
+    "title": "キアラ単",
+    "oshi": "小鳥遊キアラ",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Individual A Block",
+    "placement": "2nd (ける/OGTpros)"
+  },
+  {
+    "code": "3GXGQ",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Individual B Block",
+    "placement": "1st (ギリャー)"
+  },
+  {
+    "code": "4F9GY",
+    "title": "マリン単",
+    "oshi": "宝鐘マリン",
+    "source": "WGP2025 Tokyo",
+    "event": "WGP2025 Individual B Block",
+    "placement": "2nd (RasK)"
+  },
+  {
+    "code": "5Y4A8",
+    "title": "ぺこマリ",
+    "oshi": "宝鐘マリン",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba A Block",
+    "placement": "1st (ユキ)"
+  },
+  {
+    "code": "3A5JS",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba B Block",
+    "placement": "1st (タナカ)"
+  },
+  {
+    "code": "6T5BE",
+    "title": "ポルカ単",
+    "oshi": "小鳥遊キアラ",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba C Block",
+    "placement": "1st (ころね)"
+  },
+  {
+    "code": "2L2MN",
+    "title": "すいせいクロヱ",
+    "oshi": "星街すいせい",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba D Block",
+    "placement": "1st (めるか)"
+  },
+  {
+    "code": "22WWC",
+    "title": "かなクロ",
+    "oshi": "天音かなた",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba E Block",
+    "placement": "1st (ロール)"
+  },
+  {
+    "code": "1YQ5Y",
+    "title": "レイネイオフィ",
+    "oshi": "クレイジー・オリー",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba A Block",
+    "placement": "2nd (ける/OGTpros)"
+  },
+  {
+    "code": "67V96",
+    "title": "ぺこマリ",
+    "oshi": "宝鐘マリン",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba B Block",
+    "placement": "2nd (くるはむ)"
+  },
+  {
+    "code": "5779W",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba C Block",
+    "placement": "2nd (スズカ)"
+  },
+  {
+    "code": "1P3BS",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba D Block",
+    "placement": "2nd (アカシキフ)"
+  },
+  {
+    "code": "112ZE",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "WGP2025 Chiba",
+    "event": "WGP2025 Chiba E Block",
+    "placement": "2nd (クーデレスキー)"
+  },
+  {
+    "code": "54V0D",
+    "title": "はあちゃま単",
+    "oshi": "赤井はあと",
+    "source": "holocardstrategy",
+    "event": null,
+    "placement": null
+  },
+  {
+    "code": "35W6M",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "holocardstrategy",
+    "event": null,
+    "placement": null
+  }
+]
