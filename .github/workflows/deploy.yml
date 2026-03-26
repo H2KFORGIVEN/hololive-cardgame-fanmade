@@ -4,12 +4,11 @@ on:
   push:
     branches: [master]
   schedule:
-    # Run on the 1st of every month at 06:00 UTC
     - cron: '0 6 1 * *'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -37,6 +36,14 @@ jobs:
 
       - name: Run scraper
         run: uv run python -m scraper.run
+
+      - name: Commit translation cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add translation_cache.json
+          git diff --cached --quiet || git commit -m "chore: update translation cache [skip ci]"
+          git push || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

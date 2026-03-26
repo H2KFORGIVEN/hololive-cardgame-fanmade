@@ -11,6 +11,31 @@ TARGET_LANGS_JA = ["zh-TW", "en", "fr"]
 TARGET_LANGS_ZH = ["ja", "en", "fr"]
 REQUEST_DELAY = 0.3
 
+_cache: dict[str, str] = {}
+_cache_path: Path | None = None
+_cache_dirty = False
+
+
+def _load_cache(base_dir: Path):
+    global _cache, _cache_path
+    _cache_path = base_dir / "translation_cache.json"
+    if _cache_path.exists():
+        _cache = json.loads(_cache_path.read_text(encoding="utf-8"))
+        print(f"[cache] Loaded {len(_cache)} cached translations")
+    else:
+        _cache = {}
+        print("[cache] No cache file found, starting fresh")
+
+
+def _save_cache():
+    if _cache_path and _cache_dirty:
+        _cache_path.write_text(json.dumps(_cache, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"[cache] Saved {len(_cache)} translations to cache")
+
+
+def _cache_key(source: str, target: str, text: str) -> str:
+    return f"{source}|{target}|{text}"
+
 
 def _build_translator(source: str, target: str) -> GoogleTranslator:
     return GoogleTranslator(source=source, target=target)
@@ -29,17 +54,35 @@ def _translate_one(text: str, translator: GoogleTranslator) -> str:
 
 
 def _translate_unique_map(unique_texts: list[str], source: str, target: str) -> dict[str, str]:
-    """Translate a list of unique strings, return {original: translated} map."""
-    translator = _build_translator(source, target)
+    global _cache_dirty
     mapping = {}
-    total = len(unique_texts)
-    for i, text in enumerate(unique_texts):
+    to_translate = []
+
+    for text in unique_texts:
         if not text or not text.strip():
             mapping[text] = text
             continue
+        key = _cache_key(source, target, text)
+        if key in _cache:
+            mapping[text] = _cache[key]
+        else:
+            to_translate.append(text)
+
+    cached = len(unique_texts) - len(to_translate)
+    print(f"    {source}->{target}: {cached} cached, {len(to_translate)} new")
+
+    if not to_translate:
+        return mapping
+
+    translator = _build_translator(source, target)
+    for i, text in enumerate(to_translate):
         if (i + 1) % 50 == 0:
-            print(f"    {source}->{target}: {i + 1}/{total}")
-        mapping[text] = _translate_one(text, translator)
+            print(f"    {source}->{target}: translating {i + 1}/{len(to_translate)}")
+        result = _translate_one(text, translator)
+        mapping[text] = result
+        _cache[_cache_key(source, target, text)] = result
+        _cache_dirty = True
+
     return mapping
 
 
@@ -55,20 +98,6 @@ def _make_multilang_list_from_maps(original: list[str], source_key: str, lang_ma
     for lang, mapping in lang_maps.items():
         out[lang] = [mapping.get(t, t) for t in original]
     return out
-
-
-def _collect_strings(obj, keys_path: list[str] | None = None) -> set[str]:
-    """Recursively collect translatable strings."""
-    results = set()
-    if isinstance(obj, str) and obj.strip():
-        results.add(obj)
-    elif isinstance(obj, list):
-        for item in obj:
-            results.update(_collect_strings(item))
-    elif isinstance(obj, dict):
-        for v in obj.values():
-            results.update(_collect_strings(v))
-    return results
 
 
 def translate_tier_list(data_dir: Path):
@@ -88,11 +117,10 @@ def translate_tier_list(data_dir: Path):
                 unique_texts.add(deck["description"])
 
     unique_list = sorted(unique_texts)
-    print(f"  Tier list: {len(unique_list)} unique strings to translate")
+    print(f"  Tier list: {len(unique_list)} unique strings")
 
     lang_maps = {}
     for lang in TARGET_LANGS_JA:
-        print(f"  Translating tier list -> {lang}...")
         lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
 
     for tier in tier_data.get("tiers", []):
@@ -103,7 +131,7 @@ def translate_tier_list(data_dir: Path):
                 deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
 
     tier_path.write_text(json.dumps(tier_data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("[translate] tier_list.json translated")
+    print("[translate] tier_list.json done")
 
 
 def translate_decks(data_dir: Path):
@@ -128,11 +156,10 @@ def translate_decks(data_dir: Path):
                 unique_texts.add(step["text"])
 
     unique_list = sorted(unique_texts)
-    print(f"  Decks: {len(unique_list)} unique strings to translate")
+    print(f"  Decks: {len(unique_list)} unique strings")
 
     lang_maps = {}
     for lang in TARGET_LANGS_JA:
-        print(f"  Translating decks -> {lang}...")
         lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
 
     for deck in decks:
@@ -148,7 +175,7 @@ def translate_decks(data_dir: Path):
                 step["text"] = _make_multilang_from_maps(step["text"], "ja", lang_maps)
 
     decks_path.write_text(json.dumps(decks, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("[translate] decks.json translated")
+    print("[translate] decks.json done")
 
 
 def translate_cards(data_dir: Path):
@@ -175,11 +202,10 @@ def translate_cards(data_dir: Path):
             unique_texts.add(c["extra"])
 
     unique_list = sorted(unique_texts)
-    print(f"  Cards: {len(unique_list)} unique effect strings to translate")
+    print(f"  Cards: {len(unique_list)} unique effect strings")
 
     lang_maps = {}
     for lang in TARGET_LANGS_ZH:
-        print(f"  Translating card effects -> {lang} ({len(unique_list)} strings)...")
         lang_maps[lang] = _translate_unique_map(unique_list, "zh-TW", lang)
 
     for c in cards:
@@ -195,16 +221,21 @@ def translate_cards(data_dir: Path):
             c["extra"] = _make_multilang_from_maps(c["extra"], "zh-TW", lang_maps)
 
     cards_path.write_text(json.dumps(cards, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[translate] cards.json translated ({len(unique_list)} unique strings)")
+    print(f"[translate] cards.json done ({len(unique_list)} unique strings)")
 
 
 def translate_all(data_dir: Path):
+    base_dir = data_dir.parent
+    _load_cache(base_dir)
+
     print("[translate] Translating tier_list.json...")
     translate_tier_list(data_dir)
     print("[translate] Translating decks.json...")
     translate_decks(data_dir)
     print("[translate] Translating cards.json...")
     translate_cards(data_dir)
+
+    _save_cache()
     print("[translate] All translations complete")
 
 
