@@ -1,4 +1,3 @@
-import { renderTierView } from './components/tier-view.js';
 import { renderDeckModal } from './components/deck-view.js';
 import { renderCardGallery, renderCardDetail } from './components/card-view.js';
 import { renderTournamentView, renderTournamentDeckModal } from './components/tournament-view.js';
@@ -10,7 +9,7 @@ let tierData = null;
 let decksData = [];
 let decklogDecks = [];
 let allGuides = [];
-let currentView = 'tiers';
+let currentView = 'guides';
 let filters = { color: 'all', type: 'all', search: '' };
 
 async function loadData() {
@@ -29,23 +28,19 @@ async function loadData() {
 }
 
 function render() {
-  const tiersView = document.getElementById('tiersView');
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
   const cardsView = document.getElementById('cardsView');
   const cardSearchGroup = document.getElementById('cardSearchGroup');
   const cardTypeGroup = document.getElementById('cardTypeGroup');
 
-  tiersView.classList.toggle('active', currentView === 'tiers');
   guidesView.classList.toggle('active', currentView === 'guides');
   tournamentView.classList.toggle('active', currentView === 'tournament');
   cardsView.classList.toggle('active', currentView === 'cards');
   cardSearchGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
 
-  if (currentView === 'tiers') {
-    renderTierView(tiersView, tierData, decksData);
-  } else if (currentView === 'guides') {
+  if (currentView === 'guides') {
     renderGuidesView(guidesView, allGuides, decksData);
   } else if (currentView === 'tournament') {
     renderTournamentView(tournamentView, decklogDecks, cardsData);
