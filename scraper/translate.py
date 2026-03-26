@@ -7,47 +7,68 @@ from deep_translator import GoogleTranslator
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-SOURCE_LANG = "ja"
-TARGET_LANGS = ["zh-TW", "en", "fr"]
-LANG_CODE_MAP = {"zh-TW": "zh-TW", "en": "en", "fr": "fr"}
+TARGET_LANGS_JA = ["zh-TW", "en", "fr"]
+TARGET_LANGS_ZH = ["ja", "en", "fr"]
 REQUEST_DELAY = 0.3
 
 
-def _translate_batch(texts: list[str], target: str) -> list[str]:
-    """Translate a batch of strings. Returns original on failure."""
-    if not texts:
-        return []
-    translator = GoogleTranslator(source=SOURCE_LANG, target=LANG_CODE_MAP[target])
-    results = []
-    for text in texts:
+def _build_translator(source: str, target: str) -> GoogleTranslator:
+    return GoogleTranslator(source=source, target=target)
+
+
+def _translate_one(text: str, translator: GoogleTranslator) -> str:
+    if not text or not text.strip():
+        return text
+    try:
+        result = translator.translate(text)
+        time.sleep(REQUEST_DELAY)
+        return result
+    except Exception as e:
+        print(f"  [warn] translate failed: '{text[:40]}...' : {e}")
+        return text
+
+
+def _translate_unique_map(unique_texts: list[str], source: str, target: str) -> dict[str, str]:
+    """Translate a list of unique strings, return {original: translated} map."""
+    translator = _build_translator(source, target)
+    mapping = {}
+    total = len(unique_texts)
+    for i, text in enumerate(unique_texts):
         if not text or not text.strip():
-            results.append(text)
+            mapping[text] = text
             continue
-        try:
-            results.append(translator.translate(text))
-            time.sleep(REQUEST_DELAY)
-        except Exception as e:
-            print(f"  [warn] translate failed for '{text[:40]}...' -> {target}: {e}")
-            results.append(text)
-    return results
+        if (i + 1) % 50 == 0:
+            print(f"    {source}->{target}: {i + 1}/{total}")
+        mapping[text] = _translate_one(text, translator)
+    return mapping
 
 
-def _translate_field(value, target: str):
-    """Translate a string or list of strings."""
-    if isinstance(value, list):
-        return _translate_batch(value, target)
-    if isinstance(value, str) and value.strip():
-        result = _translate_batch([value], target)
-        return result[0] if result else value
-    return value
-
-
-def _make_multilang(original, targets_dict: dict):
-    """Build {ja: original, en: ..., zh-TW: ..., fr: ...} dict."""
-    out = {"ja": original}
-    for lang, translated in targets_dict.items():
-        out[lang] = translated
+def _make_multilang_from_maps(original: str, source_key: str, lang_maps: dict[str, dict[str, str]]) -> dict:
+    out = {source_key: original}
+    for lang, mapping in lang_maps.items():
+        out[lang] = mapping.get(original, original)
     return out
+
+
+def _make_multilang_list_from_maps(original: list[str], source_key: str, lang_maps: dict[str, dict[str, str]]) -> dict:
+    out = {source_key: original}
+    for lang, mapping in lang_maps.items():
+        out[lang] = [mapping.get(t, t) for t in original]
+    return out
+
+
+def _collect_strings(obj, keys_path: list[str] | None = None) -> set[str]:
+    """Recursively collect translatable strings."""
+    results = set()
+    if isinstance(obj, str) and obj.strip():
+        results.add(obj)
+    elif isinstance(obj, list):
+        for item in obj:
+            results.update(_collect_strings(item))
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            results.update(_collect_strings(v))
+    return results
 
 
 def translate_tier_list(data_dir: Path):
@@ -58,20 +79,28 @@ def translate_tier_list(data_dir: Path):
 
     tier_data = json.loads(tier_path.read_text(encoding="utf-8"))
 
+    unique_texts = set()
+    for tier in tier_data.get("tiers", []):
+        for deck in tier.get("decks", []):
+            if isinstance(deck.get("features"), list):
+                unique_texts.update(t for t in deck["features"] if t and t.strip())
+            if isinstance(deck.get("description"), str) and deck["description"].strip():
+                unique_texts.add(deck["description"])
+
+    unique_list = sorted(unique_texts)
+    print(f"  Tier list: {len(unique_list)} unique strings to translate")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_JA:
+        print(f"  Translating tier list -> {lang}...")
+        lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
+
     for tier in tier_data.get("tiers", []):
         for deck in tier.get("decks", []):
             if isinstance(deck.get("features"), list) and deck["features"]:
-                translations = {}
-                for lang in TARGET_LANGS:
-                    print(f"  Translating features '{deck.get('name', '?')}' -> {lang}")
-                    translations[lang] = _translate_field(deck["features"], lang)
-                deck["features"] = _make_multilang(deck["features"], translations)
-
-            if isinstance(deck.get("description"), str) and deck["description"]:
-                translations = {}
-                for lang in TARGET_LANGS:
-                    translations[lang] = _translate_field(deck["description"], lang)
-                deck["description"] = _make_multilang(deck["description"], translations)
+                deck["features"] = _make_multilang_list_from_maps(deck["features"], "ja", lang_maps)
+            if isinstance(deck.get("description"), str) and deck["description"].strip():
+                deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
 
     tier_path.write_text(json.dumps(tier_data, ensure_ascii=False, indent=2), encoding="utf-8")
     print("[translate] tier_list.json translated")
@@ -85,38 +114,88 @@ def translate_decks(data_dir: Path):
 
     decks = json.loads(decks_path.read_text(encoding="utf-8"))
 
+    unique_texts = set()
     for deck in decks:
-        deck_name = deck.get("deck_id", "?")
-
-        if isinstance(deck.get("description"), str) and deck["description"]:
-            translations = {}
-            for lang in TARGET_LANGS:
-                translations[lang] = _translate_field(deck["description"], lang)
-            deck["description"] = _make_multilang(deck["description"], translations)
-
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            unique_texts.add(deck["description"])
         for card in deck.get("cards", []):
-            if isinstance(card.get("role"), str) and card["role"]:
-                translations = {}
-                for lang in TARGET_LANGS:
-                    translations[lang] = _translate_field(card["role"], lang)
-                card["role"] = _make_multilang(card["role"], translations)
-
+            if isinstance(card.get("role"), str) and card["role"].strip():
+                unique_texts.add(card["role"])
         for step in deck.get("strategy", []):
-            if isinstance(step.get("title"), str) and step["title"]:
-                translations = {}
-                for lang in TARGET_LANGS:
-                    translations[lang] = _translate_field(step["title"], lang)
-                step["title"] = _make_multilang(step["title"], translations)
+            if isinstance(step.get("title"), str) and step["title"].strip():
+                unique_texts.add(step["title"])
+            if isinstance(step.get("text"), str) and step["text"].strip():
+                unique_texts.add(step["text"])
 
-            if isinstance(step.get("text"), str) and step["text"]:
-                translations = {}
-                for lang in TARGET_LANGS:
-                    print(f"  Translating strategy '{deck_name}' -> {lang}")
-                    translations[lang] = _translate_field(step["text"], lang)
-                step["text"] = _make_multilang(step["text"], translations)
+    unique_list = sorted(unique_texts)
+    print(f"  Decks: {len(unique_list)} unique strings to translate")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_JA:
+        print(f"  Translating decks -> {lang}...")
+        lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
+
+    for deck in decks:
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
+        for card in deck.get("cards", []):
+            if isinstance(card.get("role"), str) and card["role"].strip():
+                card["role"] = _make_multilang_from_maps(card["role"], "ja", lang_maps)
+        for step in deck.get("strategy", []):
+            if isinstance(step.get("title"), str) and step["title"].strip():
+                step["title"] = _make_multilang_from_maps(step["title"], "ja", lang_maps)
+            if isinstance(step.get("text"), str) and step["text"].strip():
+                step["text"] = _make_multilang_from_maps(step["text"], "ja", lang_maps)
 
     decks_path.write_text(json.dumps(decks, ensure_ascii=False, indent=2), encoding="utf-8")
     print("[translate] decks.json translated")
+
+
+def translate_cards(data_dir: Path):
+    cards_path = data_dir / "cards.json"
+    if not cards_path.exists():
+        print("[translate] cards.json not found, skipping")
+        return
+
+    cards = json.loads(cards_path.read_text(encoding="utf-8"))
+
+    SKILL_KEYS = ["oshiSkill", "spSkill", "effectC", "effectB", "effectG", "art1", "art2"]
+    unique_texts = set()
+    for c in cards:
+        for sk in SKILL_KEYS:
+            obj = c.get(sk)
+            if obj and isinstance(obj, dict):
+                if obj.get("effect") and isinstance(obj["effect"], str):
+                    unique_texts.add(obj["effect"])
+        if isinstance(c.get("supportEffect"), str) and c["supportEffect"].strip():
+            unique_texts.add(c["supportEffect"])
+        if isinstance(c.get("yellEffect"), str) and c["yellEffect"].strip():
+            unique_texts.add(c["yellEffect"])
+        if isinstance(c.get("extra"), str) and c["extra"].strip():
+            unique_texts.add(c["extra"])
+
+    unique_list = sorted(unique_texts)
+    print(f"  Cards: {len(unique_list)} unique effect strings to translate")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_ZH:
+        print(f"  Translating card effects -> {lang} ({len(unique_list)} strings)...")
+        lang_maps[lang] = _translate_unique_map(unique_list, "zh-TW", lang)
+
+    for c in cards:
+        for sk in SKILL_KEYS:
+            obj = c.get(sk)
+            if obj and isinstance(obj, dict) and isinstance(obj.get("effect"), str) and obj["effect"].strip():
+                obj["effect"] = _make_multilang_from_maps(obj["effect"], "zh-TW", lang_maps)
+        if isinstance(c.get("supportEffect"), str) and c["supportEffect"].strip():
+            c["supportEffect"] = _make_multilang_from_maps(c["supportEffect"], "zh-TW", lang_maps)
+        if isinstance(c.get("yellEffect"), str) and c["yellEffect"].strip():
+            c["yellEffect"] = _make_multilang_from_maps(c["yellEffect"], "zh-TW", lang_maps)
+        if isinstance(c.get("extra"), str) and c["extra"].strip():
+            c["extra"] = _make_multilang_from_maps(c["extra"], "zh-TW", lang_maps)
+
+    cards_path.write_text(json.dumps(cards, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[translate] cards.json translated ({len(unique_list)} unique strings)")
 
 
 def translate_all(data_dir: Path):
@@ -124,6 +203,8 @@ def translate_all(data_dir: Path):
     translate_tier_list(data_dir)
     print("[translate] Translating decks.json...")
     translate_decks(data_dir)
+    print("[translate] Translating cards.json...")
+    translate_cards(data_dir)
     print("[translate] All translations complete")
 
 

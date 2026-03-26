@@ -528,16 +528,17 @@ body {
 }
 
 /* Card Modal */
-.card-modal-content { max-width: 650px; }
+.card-modal-content { max-width: 720px; }
 .card-detail {
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
 }
 .card-detail-img {
-  width: 200px;
+  width: 240px;
   flex-shrink: 0;
   border-radius: var(--radius);
+  object-fit: contain;
 }
 .card-detail-info { flex: 1; }
 .card-detail-name {
@@ -611,7 +612,7 @@ body {
   .deck-grid { grid-template-columns: 1fr; }
   .card-gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
   .card-detail { flex-direction: column; align-items: center; text-align: center; }
-  .card-detail-img { width: 160px; }
+  .card-detail-img { width: 180px; }
   .filter-bar { padding: 0.6rem 0.8rem; }
   .search-input { width: 100%; }
 }

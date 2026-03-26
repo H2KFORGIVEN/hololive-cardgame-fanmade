@@ -1,4 +1,4 @@
-import { t } from '../i18n.js';
+import { t, localized } from '../i18n.js';
 
 const COLOR_MAP = {
   '白': '#e0e0e0',
@@ -19,6 +19,12 @@ export function renderCardGallery(container, cards, filters) {
   renderPage(container);
 }
 
+function _effectText(obj) {
+  if (!obj) return '';
+  const eff = obj.effect;
+  return typeof eff === 'object' ? localized(eff) : (eff || '');
+}
+
 function applyFilters(cards, filters) {
   return cards.filter(card => {
     if (filters.color && filters.color !== 'all') {
@@ -35,11 +41,11 @@ function applyFilters(cards, filters) {
       const q = filters.search.toLowerCase();
       const searchable = [
         card.name, card.id, card.tag, card.type,
-        card.oshiSkill?.name, card.oshiSkill?.effect,
-        card.spSkill?.name, card.spSkill?.effect,
-        card.effectC?.name, card.effectC?.effect,
-        card.art1?.name, card.art1?.effect,
-        card.supportEffect,
+        card.oshiSkill?.name, _effectText(card.oshiSkill),
+        card.spSkill?.name, _effectText(card.spSkill),
+        card.effectC?.name, _effectText(card.effectC),
+        card.art1?.name, _effectText(card.art1),
+        localized(card.supportEffect),
       ].filter(Boolean).join(' ').toLowerCase();
       if (!searchable.includes(q)) return false;
     }
@@ -125,39 +131,41 @@ export function renderCardDetail(container, card) {
 
   if (isOshi) {
     if (card.oshiSkill) {
-      effectsHtml += renderEffect(t('effect_oshi_skill') + ': ' + card.oshiSkill.name, card.oshiSkill.effect, `HP: ${card.oshiSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_oshi_skill') + ': ' + card.oshiSkill.name, _effectText(card.oshiSkill), `HP: ${card.oshiSkill.holoPower}`);
     }
     if (card.spSkill) {
-      effectsHtml += renderEffect(t('effect_sp') + ': ' + card.spSkill.name, card.spSkill.effect, `HP: ${card.spSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_sp') + ': ' + card.spSkill.name, _effectText(card.spSkill), `HP: ${card.spSkill.holoPower}`);
     }
   } else if (isMember) {
     const effectKeys = [['effectC', 'effect_collab'], ['effectB', 'effect_bloom'], ['effectG', 'effect_gift']];
     for (const [key, i18nKey] of effectKeys) {
       const eff = card[key];
-      if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${eff.name}`, eff.effect);
+      if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${eff.name}`, _effectText(eff));
     }
     if (card.art1) {
+      const artEffect = _effectText(card.art1);
       effectsHtml += renderEffect(
         `${t('effect_arts')}: ${card.art1.name}`,
-        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage}` : '', card.art1.effect || ''].filter(Boolean).join('\n')
+        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.art2) {
+      const artEffect = _effectText(card.art2);
       effectsHtml += renderEffect(
         `${t('effect_arts2')}: ${card.art2.name}`,
-        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage}` : '', card.art2.effect || ''].filter(Boolean).join('\n')
+        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.extra) {
-      effectsHtml += renderEffect(t('effect_extra'), card.extra);
+      effectsHtml += renderEffect(t('effect_extra'), localized(card.extra));
     }
   } else if (isSupport) {
     if (card.supportEffect) {
-      effectsHtml += renderEffect(t('effect_support'), card.supportEffect);
+      effectsHtml += renderEffect(t('effect_support'), localized(card.supportEffect));
     }
   } else if (isCheer) {
     if (card.yellEffect) {
-      effectsHtml += renderEffect(t('effect_cheer'), card.yellEffect);
+      effectsHtml += renderEffect(t('effect_cheer'), localized(card.yellEffect));
     }
   }
 
