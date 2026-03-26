@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Scraped data (regenerable via GitHub Actions)
+/data/
+/web/data/
+
+# IDE
+.cursor/
+
+# OS
+Thumbs.db
+.DS_Store
