@@ -1,20 +1,10 @@
-const RATING_LABELS = {
-  firepower: '火力',
-  ease: '易用',
-  stability: '安定',
-  endurance: '持久',
-  pressure: '壓制',
-};
+import { t } from '../i18n.js';
 
-const TIER_CRITERIA = {
-  1: '環境トップ・最高入賞率',
-  2: '高い押し付け性能',
-  3: '環境で十分に戦える',
-};
+const RATING_KEYS = ['firepower', 'ease', 'stability', 'endurance', 'pressure'];
 
 export function renderTierView(container, tierData, decksData) {
   if (!tierData || !tierData.tiers) {
-    container.innerHTML = '<div class="loading">Tier data not available</div>';
+    container.innerHTML = `<div class="loading">${t('tier_not_available')}</div>`;
     return;
   }
 
@@ -25,15 +15,16 @@ export function renderTierView(container, tierData, decksData) {
     }
   }
 
-  let html = `<div class="tier-updated">Updated: ${tierData.updated || 'N/A'}</div>`;
+  let html = `<div class="tier-updated">${t('updated')}: ${tierData.updated || 'N/A'}</div>`;
 
   for (const tier of tierData.tiers) {
+    const criteriaKey = `tier_criteria_${tier.tier}`;
     html += `
       <section class="tier-section">
         <div class="tier-header">
           <span class="tier-badge" data-tier="${tier.tier}">TIER ${tier.tier}</span>
-          <span class="tier-label">${tier.decks.length} decks</span>
-          <span class="tier-criteria">${TIER_CRITERIA[tier.tier] || ''}</span>
+          <span class="tier-label">${tier.decks.length} ${t('decks_count')}</span>
+          <span class="tier-criteria">${t(criteriaKey)}</span>
         </div>
         <div class="deck-grid">
           ${tier.decks.map(deck => renderDeckCard(deck, tier.tier, decksMap)).join('')}
@@ -53,7 +44,7 @@ function renderDeckCard(deck, tierNum, decksMap) {
 
   const ratingsHtml = Object.entries(deck.ratings || {}).map(([key, val]) => `
     <span class="rating-chip">
-      <span class="rating-label">${RATING_LABELS[key] || key}</span>
+      <span class="rating-label">${t('rating_' + key)}</span>
       <span class="rating-value" data-val="${val}">${val}</span>
     </span>
   `).join('');

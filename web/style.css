@@ -77,6 +77,30 @@ body {
   font-size: 0.9rem;
 }
 
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+.lang-btn {
+  background: rgba(255,255,255,.08);
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.lang-btn:hover { color: var(--text-primary); border-color: var(--accent-cyan); }
+.lang-btn.active {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  font-weight: 700;
+}
+
 .main-nav {
   display: flex;
   justify-content: center;

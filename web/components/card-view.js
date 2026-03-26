@@ -1,3 +1,5 @@
+import { t } from '../i18n.js';
+
 const COLOR_MAP = {
   '白': '#e0e0e0',
   '綠': '#4caf50',
@@ -51,7 +53,7 @@ function renderPage(container) {
   const visible = filteredCards.slice(start, end);
   const hasMore = end < filteredCards.length;
 
-  let html = `<div class="card-count-info">顯示 ${visible.length} / ${filteredCards.length} 張卡片</div>`;
+  let html = `<div class="card-count-info">${t('showing_cards', { shown: visible.length, total: filteredCards.length })}</div>`;
   html += '<div class="card-gallery">';
   for (const card of visible) {
     const color = COLOR_MAP[card.color] || '#666';
@@ -73,8 +75,9 @@ function renderPage(container) {
   html += '</div>';
 
   if (hasMore) {
+    const remaining = filteredCards.length - end;
     html += `<div style="text-align:center;padding:1.5rem">
-      <button class="nav-btn" id="loadMoreCards">載入更多 (${filteredCards.length - end} remaining)</button>
+      <button class="nav-btn" id="loadMoreCards">${t('load_more', { remaining })}</button>
     </div>`;
   }
 
@@ -90,7 +93,7 @@ function renderPage(container) {
 
 export function renderCardDetail(container, card) {
   if (!card) {
-    container.innerHTML = '<p>Card not found</p>';
+    container.innerHTML = `<p>${t('card_not_found')}</p>`;
     return;
   }
 
@@ -102,19 +105,19 @@ export function renderCardDetail(container, card) {
   let statsHtml = '';
   if (isOshi) {
     statsHtml = `
-      <div class="stat-label">Life</div><div class="stat-value">${card.life || '?'}</div>
-      <div class="stat-label">Color</div><div class="stat-value">${card.color || '?'}</div>
+      <div class="stat-label">${t('stat_life')}</div><div class="stat-value">${card.life || '?'}</div>
+      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
     `;
   } else if (isMember) {
     statsHtml = `
-      <div class="stat-label">HP</div><div class="stat-value">${card.hp || '?'}</div>
-      <div class="stat-label">Bloom</div><div class="stat-value">${card.bloom || '?'}</div>
-      <div class="stat-label">Color</div><div class="stat-value">${card.color || '?'}</div>
+      <div class="stat-label">${t('stat_hp')}</div><div class="stat-value">${card.hp || '?'}</div>
+      <div class="stat-label">${t('stat_bloom')}</div><div class="stat-value">${card.bloom || '?'}</div>
+      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
     `;
   } else if (isSupport || isCheer) {
     statsHtml = `
-      <div class="stat-label">Type</div><div class="stat-value">${card.type}</div>
-      ${card.color ? `<div class="stat-label">Color</div><div class="stat-value">${card.color}</div>` : ''}
+      <div class="stat-label">${t('stat_type')}</div><div class="stat-value">${card.type}</div>
+      ${card.color ? `<div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color}</div>` : ''}
     `;
   }
 
@@ -122,43 +125,44 @@ export function renderCardDetail(container, card) {
 
   if (isOshi) {
     if (card.oshiSkill) {
-      effectsHtml += renderEffect('推しスキル: ' + card.oshiSkill.name, card.oshiSkill.effect, `HP: ${card.oshiSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_oshi_skill') + ': ' + card.oshiSkill.name, card.oshiSkill.effect, `HP: ${card.oshiSkill.holoPower}`);
     }
     if (card.spSkill) {
-      effectsHtml += renderEffect('SP: ' + card.spSkill.name, card.spSkill.effect, `HP: ${card.spSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_sp') + ': ' + card.spSkill.name, card.spSkill.effect, `HP: ${card.spSkill.holoPower}`);
     }
   } else if (isMember) {
-    for (const [key, label] of [['effectC', 'コラボ'], ['effectB', 'ブルーム'], ['effectG', 'ギフト']]) {
+    const effectKeys = [['effectC', 'effect_collab'], ['effectB', 'effect_bloom'], ['effectG', 'effect_gift']];
+    for (const [key, i18nKey] of effectKeys) {
       const eff = card[key];
-      if (eff) effectsHtml += renderEffect(`${label}: ${eff.name}`, eff.effect);
+      if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${eff.name}`, eff.effect);
     }
     if (card.art1) {
       effectsHtml += renderEffect(
-        `アーツ: ${card.art1.name}`,
-        [card.art1.damage ? `Damage: ${card.art1.damage}` : '', card.art1.effect || ''].filter(Boolean).join('\n')
+        `${t('effect_arts')}: ${card.art1.name}`,
+        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage}` : '', card.art1.effect || ''].filter(Boolean).join('\n')
       );
     }
     if (card.art2) {
       effectsHtml += renderEffect(
-        `アーツ2: ${card.art2.name}`,
-        [card.art2.damage ? `Damage: ${card.art2.damage}` : '', card.art2.effect || ''].filter(Boolean).join('\n')
+        `${t('effect_arts2')}: ${card.art2.name}`,
+        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage}` : '', card.art2.effect || ''].filter(Boolean).join('\n')
       );
     }
     if (card.extra) {
-      effectsHtml += renderEffect('特殊', card.extra);
+      effectsHtml += renderEffect(t('effect_extra'), card.extra);
     }
   } else if (isSupport) {
     if (card.supportEffect) {
-      effectsHtml += renderEffect('支援效果', card.supportEffect);
+      effectsHtml += renderEffect(t('effect_support'), card.supportEffect);
     }
   } else if (isCheer) {
     if (card.yellEffect) {
-      effectsHtml += renderEffect('吶喊效果', card.yellEffect);
+      effectsHtml += renderEffect(t('effect_cheer'), card.yellEffect);
     }
   }
 
   const tagsHtml = card.tag
-    ? card.tag.split('/').map(t => `<span class="tag-chip">${t.trim()}</span>`).join('')
+    ? card.tag.split('/').map(tg => `<span class="tag-chip">${tg.trim()}</span>`).join('')
     : '';
 
   const productText = Array.isArray(card.product) ? card.product.join(', ') : (card.product || '');
@@ -171,7 +175,7 @@ export function renderCardDetail(container, card) {
         <div class="card-detail-id">${card.id}</div>
         ${tagsHtml ? `<div class="card-detail-tags">${tagsHtml}</div>` : ''}
         <div class="card-detail-stats">${statsHtml}</div>
-        ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">收錄: ${productText}</div>` : ''}
+        ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">${t('product_label')}: ${productText}</div>` : ''}
         <div class="card-detail-effects">${effectsHtml}</div>
       </div>
     </div>

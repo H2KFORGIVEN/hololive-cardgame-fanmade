@@ -13,50 +13,51 @@
         <span class="title-holo">HOLO</span><span class="title-card">CARD</span>
         <span class="title-meta">META</span>
       </h1>
-      <p class="site-subtitle">hololive OFFICIAL CARD GAME - 環境デッキデータベース</p>
+      <p class="site-subtitle" data-i18n="subtitle">hololive OFFICIAL CARD GAME - 環境牌組資料庫</p>
+      <div class="lang-switcher" id="langSwitcher"></div>
     </div>
   </header>
 
   <nav class="main-nav">
-    <button class="nav-btn active" data-view="tiers">Tier 一覽</button>
-    <button class="nav-btn" data-view="cards">卡片搜尋</button>
+    <button class="nav-btn active" data-view="tiers" data-i18n="nav_tiers">Tier 一覽</button>
+    <button class="nav-btn" data-view="cards" data-i18n="nav_cards">卡片搜尋</button>
   </nav>
 
   <div class="filter-bar" id="filterBar">
     <div class="filter-group">
-      <label>篩選顏色</label>
+      <label data-i18n="filter_color">篩選顏色</label>
       <div class="color-filters">
         <button class="color-btn active" data-color="all">ALL</button>
-        <button class="color-btn" data-color="白" style="--c:#e8e8e8;--ct:#333">白</button>
-        <button class="color-btn" data-color="綠" style="--c:#4caf50;--ct:#fff">綠</button>
-        <button class="color-btn" data-color="紅" style="--c:#f44336;--ct:#fff">紅</button>
-        <button class="color-btn" data-color="藍" style="--c:#2196f3;--ct:#fff">藍</button>
-        <button class="color-btn" data-color="紫" style="--c:#9c27b0;--ct:#fff">紫</button>
-        <button class="color-btn" data-color="黃" style="--c:#ffeb3b;--ct:#333">黃</button>
+        <button class="color-btn" data-color="白" data-i18n="color_white" style="--c:#e8e8e8;--ct:#333">白</button>
+        <button class="color-btn" data-color="綠" data-i18n="color_green" style="--c:#4caf50;--ct:#fff">綠</button>
+        <button class="color-btn" data-color="紅" data-i18n="color_red" style="--c:#f44336;--ct:#fff">紅</button>
+        <button class="color-btn" data-color="藍" data-i18n="color_blue" style="--c:#2196f3;--ct:#fff">藍</button>
+        <button class="color-btn" data-color="紫" data-i18n="color_purple" style="--c:#9c27b0;--ct:#fff">紫</button>
+        <button class="color-btn" data-color="黃" data-i18n="color_yellow" style="--c:#ffeb3b;--ct:#333">黃</button>
       </div>
     </div>
     <div class="filter-group" id="cardSearchGroup" style="display:none">
-      <label>搜尋卡片</label>
-      <input type="text" id="cardSearch" placeholder="輸入卡片名稱、標籤、效果..." class="search-input">
+      <label data-i18n="filter_search">搜尋卡片</label>
+      <input type="text" id="cardSearch" data-i18n-placeholder="filter_search_placeholder" placeholder="輸入卡片名稱、標籤、效果..." class="search-input">
     </div>
     <div class="filter-group" id="cardTypeGroup" style="display:none">
-      <label>卡片類型</label>
+      <label data-i18n="filter_type">卡片類型</label>
       <div class="type-filters">
         <button class="type-btn active" data-type="all">ALL</button>
-        <button class="type-btn" data-type="主推">主推</button>
-        <button class="type-btn" data-type="成員">成員</button>
-        <button class="type-btn" data-type="support">支援</button>
-        <button class="type-btn" data-type="吶喊">吶喊</button>
+        <button class="type-btn" data-type="主推" data-i18n="type_oshi">主推</button>
+        <button class="type-btn" data-type="成員" data-i18n="type_member">成員</button>
+        <button class="type-btn" data-type="support" data-i18n="type_support">支援</button>
+        <button class="type-btn" data-type="吶喊" data-i18n="type_cheer">吶喊</button>
       </div>
     </div>
   </div>
 
   <main id="mainContent">
     <div id="tiersView" class="view active">
-      <div class="loading">載入中...</div>
+      <div class="loading" data-i18n="loading">載入中...</div>
     </div>
     <div id="cardsView" class="view">
-      <div class="loading">載入中...</div>
+      <div class="loading" data-i18n="loading">載入中...</div>
     </div>
   </main>
 
@@ -77,8 +78,8 @@
   </div>
 
   <footer class="site-footer">
-    <p>Fan-made meta database. All card data &copy; 2016 COVER Corp. / hololive OFFICIAL CARD GAME</p>
-    <p>Data sources: <a href="https://hololive-cardgame.github.io/cards/" target="_blank">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank">ホロカ攻略ギルド</a></p>
+    <p data-i18n="footer_disclaimer">Fan-made 環境資料庫。卡片資料 © 2016 COVER Corp. / hololive OFFICIAL CARD GAME</p>
+    <p><span data-i18n="footer_sources">資料來源</span>: <a href="https://hololive-cardgame.github.io/cards/" target="_blank" data-i18n="footer_card_db">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank" data-i18n="footer_strategy">ホロカ攻略ギルド</a></p>
   </footer>
 
   <script type="module" src="app.js"></script>

@@ -1,6 +1,7 @@
 import { renderTierView } from './components/tier-view.js';
 import { renderDeckModal } from './components/deck-view.js';
 import { renderCardGallery, renderCardDetail } from './components/card-view.js';
+import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations } from './i18n.js';
 
 let cardsData = [];
 let tierData = null;
@@ -35,6 +36,23 @@ function render() {
   } else {
     renderCardGallery(cardsView, cardsData, filters);
   }
+}
+
+function renderLangSwitcher() {
+  const container = document.getElementById('langSwitcher');
+  const current = getLang();
+  container.innerHTML = getSupportedLangs().map(({ code, label }) =>
+    `<button class="lang-btn${code === current ? ' active' : ''}" data-lang="${code}">${label}</button>`
+  ).join('');
+
+  container.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLang(btn.dataset.lang);
+      applyStaticTranslations();
+      renderLangSwitcher();
+      render();
+    });
+  });
 }
 
 function setupNav() {
@@ -125,7 +143,10 @@ function setupModals() {
 }
 
 async function init() {
+  initI18n();
   await loadData();
+  renderLangSwitcher();
+  applyStaticTranslations();
   setupNav();
   setupFilters();
   setupModals();

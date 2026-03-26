@@ -1,3 +1,5 @@
+import { t } from '../i18n.js';
+
 export function renderDeckModal(container, deckId, tierData, decksData) {
   let deckInfo = null;
   let tierNum = null;
@@ -13,7 +15,7 @@ export function renderDeckModal(container, deckId, tierData, decksData) {
   }
 
   if (!deckInfo) {
-    container.innerHTML = '<p>Deck not found</p>';
+    container.innerHTML = `<p>${t('deck_not_found')}</p>`;
     return;
   }
 
@@ -34,7 +36,7 @@ export function renderDeckModal(container, deckId, tierData, decksData) {
           </div>
         </div>
       `).join('')
-    : '<p style="color:var(--text-secondary);font-size:0.85rem">No detailed card list available for this deck.</p>';
+    : `<p style="color:var(--text-secondary);font-size:0.85rem">${t('no_card_list')}</p>`;
 
   const strategyHtml = recipe?.strategy?.length
     ? recipe.strategy.map(s => `
@@ -64,14 +66,14 @@ export function renderDeckModal(container, deckId, tierData, decksData) {
 
     ${cardsHtml ? `
       <div class="modal-section">
-        <div class="modal-section-title">採用カード解説</div>
+        <div class="modal-section-title">${t('section_cards')}</div>
         ${cardsHtml}
       </div>
     ` : ''}
 
     ${strategyHtml ? `
       <div class="modal-section">
-        <div class="modal-section-title">回し方 (Strategy)</div>
+        <div class="modal-section-title">${t('section_strategy')}</div>
         ${strategyHtml}
       </div>
     ` : ''}
@@ -79,7 +81,7 @@ export function renderDeckModal(container, deckId, tierData, decksData) {
     ${recipe?.url ? `
       <div class="modal-section" style="padding-bottom:2rem">
         <a class="modal-source-link" href="${recipe.url}" target="_blank" rel="noopener">
-          原文攻略を見る →
+          ${t('source_link')}
         </a>
       </div>
     ` : ''}
