@@ -10,7 +10,7 @@ let decksData = [];
 let decklogDecks = [];
 let allGuides = [];
 let currentView = 'guides';
-let filters = { color: 'all', type: 'all', search: '' };
+let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
 async function loadData() {
   const [cardsResp, tierResp, decksResp, decklogResp, guidesResp] = await Promise.all([

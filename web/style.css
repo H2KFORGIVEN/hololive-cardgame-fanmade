@@ -806,9 +806,40 @@ body {
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
+.guides-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+.guides-tier-filters {
+  display: flex;
+  gap: 0.4rem;
+}
+.tier-filter-btn {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tier-filter-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+}
+.tier-filter-btn.active {
+  background: var(--accent-cyan);
+  color: #000;
+  border-color: var(--accent-cyan);
+}
 .guides-search-box {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 260px;
 }
 .guides-count {
   text-align: center;

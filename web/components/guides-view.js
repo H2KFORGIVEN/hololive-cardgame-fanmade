@@ -37,13 +37,21 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
   }
 
   const colorFilter = filters?.color || 'all';
+  const tierFilter = filters?.tier || 'all';
   let filtered = combined;
   if (colorFilter !== 'all') {
     const targetJa = COLOR_ZH_MAP[colorFilter] || colorFilter;
-    filtered = combined.filter(d => {
+    filtered = filtered.filter(d => {
       const deckColors = _getDeckColors(d, cardsMap);
       return deckColors.includes(targetJa) || deckColors.includes(colorFilter);
     });
+  }
+  if (tierFilter !== 'all') {
+    if (tierFilter === 'guide') {
+      filtered = filtered.filter(d => !d.tier);
+    } else {
+      filtered = filtered.filter(d => String(d.tier) === tierFilter);
+    }
   }
 
   if (!combined.length) {
@@ -51,12 +59,25 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     return;
   }
 
+  const tierBtns = [
+    { val: 'all', label: 'ALL' },
+    { val: '1', label: 'Tier 1' },
+    { val: '2', label: 'Tier 2' },
+    { val: '3', label: 'Tier 3' },
+    { val: 'guide', label: t('guides_filter_guide') },
+  ];
+
   let html = `
     <div class="guides-header">
       <h2>${t('guides_title')}</h2>
       <p class="guides-desc">${t('guides_desc')}</p>
-      <div class="guides-search-box">
-        <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
+      <div class="guides-filter-row">
+        <div class="guides-tier-filters">
+          ${tierBtns.map(b => `<button class="tier-filter-btn${tierFilter === b.val ? ' active' : ''}" data-tier-filter="${b.val}">${b.label}</button>`).join('')}
+        </div>
+        <div class="guides-search-box">
+          <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
+        </div>
       </div>
     </div>
     <div class="guides-count">${filtered.length} ${t('guides_count_label')}</div>
@@ -66,6 +87,13 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
   `;
 
   container.innerHTML = html;
+
+  container.querySelectorAll('.tier-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.tier = btn.dataset.tierFilter;
+      renderGuidesView(container, allGuides, decksData, cardsData, filters);
+    });
+  });
 
   const searchInput = container.querySelector('#guideSearch');
   let debounce;
