@@ -25,12 +25,14 @@ def main():
     print("\n[2/6] Scraping tier list...")
     scrape_tiers(data_dir)
 
+    cards_path = data_dir / "cards.json"
+
     print("\n[3/6] Scraping tier-linked deck recipes...")
-    tier_decks = scrape_all_decks(data_dir / "tier_list.json", data_dir)
+    tier_decks = scrape_all_decks(data_dir / "tier_list.json", data_dir, cards_path)
 
     print("\n[4/6] Scraping ALL deck guides from holocardstrategy...")
     existing_urls = {d["url"] for d in tier_decks if d.get("url")}
-    scrape_all_guides(data_dir, existing_urls)
+    scrape_all_guides(data_dir, existing_urls, cards_path)
 
     print("\n[5/6] Fetching Deck Log decks...")
     scrape_decklog(base / "deck_codes.json", data_dir / "cards.json", data_dir)

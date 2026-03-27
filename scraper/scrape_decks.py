@@ -13,6 +13,7 @@ REQUEST_DELAY = 1.5
 
 
 CARD_TABLE_KEYWORDS = ["採用カード", "収録カード", "入れ替え候補", "おすすめカード"]
+BLOOM_PREFIXES = ["推し", "Debut", "1st", "2nd", "Spot", "spot", "推しホロメン", "エールデッキ"]
 
 
 def _is_card_table(table) -> bool:
@@ -29,10 +30,22 @@ def _is_card_table(table) -> bool:
     return False
 
 
+def _clean_card_name(raw: str) -> str:
+    """Deduplicate and clean up card names extracted from HTML cells."""
+    parts = []
+    seen = set()
+    for part in raw.split():
+        part = part.strip("　 ")
+        if part and part not in seen:
+            seen.add(part)
+            parts.append(part)
+    return " ".join(parts)
+
+
 def _extract_card_entries(soup: BeautifulSoup) -> list[dict]:
     """Extract card entries from deck guide tables with card images + role text."""
     entries: list[dict] = []
-    seen_ids: set[str] = set()
+    seen_keys: set[str] = set()
 
     for table in soup.find_all("table"):
         if not _is_card_table(table):
@@ -57,17 +70,18 @@ def _extract_card_entries(soup: BeautifulSoup) -> list[dict]:
                 if m:
                     card_id_match = m.group(1)
 
-            if card_id_match and card_id_match in seen_ids:
-                continue
-            if card_id_match:
-                seen_ids.add(card_id_match)
-
             name_parts = []
             for el in card_cell.find_all(["strong", "span"]):
-                t = el.get_text(strip=True)
-                if t and len(t) < 50:
-                    name_parts.append(t)
-            card_name = " ".join(name_parts) if name_parts else card_cell.get_text(strip=True)[:60]
+                txt = el.get_text(strip=True)
+                if txt and len(txt) < 50:
+                    name_parts.append(txt)
+            raw_name = " ".join(name_parts) if name_parts else card_cell.get_text(strip=True)[:60]
+            card_name = _clean_card_name(raw_name)
+
+            dedup_key = card_id_match or card_name
+            if dedup_key in seen_keys:
+                continue
+            seen_keys.add(dedup_key)
 
             role_text = role_cell.get_text("\n", strip=True)
 
@@ -78,6 +92,85 @@ def _extract_card_entries(soup: BeautifulSoup) -> list[dict]:
                 "role": role_text,
             })
     return entries
+
+
+def _build_cards_db(cards_path: Path) -> dict:
+    """Build lookup dicts from cards.json for resolving missing card IDs."""
+    if not cards_path.exists():
+        return {}
+    cards = json.loads(cards_path.read_text(encoding="utf-8"))
+    db = {}
+    for c in cards:
+        name = c.get("name", "")
+        bloom = c.get("bloomLevel", "")
+        card_type = c.get("type", "")
+        img = c.get("imageUrl", "")
+        entry = {"id": c["id"], "name": name, "bloom": bloom, "type": card_type, "imageUrl": img}
+        db.setdefault(name, []).append(entry)
+    return db
+
+
+def _extract_vtuber_from_title(title: str) -> str | None:
+    """Try to guess the main VTuber name from a deck title like '【ホロカ】赤井はあと単の...'."""
+    m = re.search(r"【[^】]*】(.+?)(?:単|タン|たん|デッキ|の|と)", title)
+    if m:
+        name = m.group(1).strip()
+        name = re.sub(r"[（(].+?[）)]", "", name).strip()
+        return name
+    return None
+
+
+def _resolve_missing_ids(deck_list: list[dict], cards_db: dict):
+    """Post-process: fill in missing card_id and imageUrl via name matching."""
+    if not cards_db:
+        return
+    bloom_map = {
+        "推し": "推し", "推しホロメン": "推し",
+        "Debut": "Debut", "1st": "1st", "2nd": "2nd",
+        "Spot": "Spot", "spot": "Spot",
+    }
+    for deck in deck_list:
+        deck_vtuber = _extract_vtuber_from_title(deck.get("title", ""))
+        for card in deck.get("cards", []):
+            if card.get("card_id"):
+                continue
+            raw_name = card.get("name", "")
+            name = _clean_card_name(raw_name)
+
+            bloom_hint = None
+            vtuber_name = name
+            for prefix in sorted(BLOOM_PREFIXES, key=len, reverse=True):
+                if name.startswith(prefix):
+                    bloom_hint = bloom_map.get(prefix)
+                    vtuber_name = name[len(prefix):].strip("　 ")
+                    break
+
+            if not vtuber_name and deck_vtuber:
+                vtuber_name = deck_vtuber
+
+            if not vtuber_name:
+                continue
+
+            candidates = cards_db.get(vtuber_name, [])
+            if not candidates:
+                for db_name, db_entries in cards_db.items():
+                    if vtuber_name in db_name or db_name in vtuber_name:
+                        candidates = db_entries
+                        break
+
+            if not candidates:
+                continue
+
+            if bloom_hint and len(candidates) > 1:
+                filtered = [c for c in candidates if c["bloom"] == bloom_hint]
+                if filtered:
+                    candidates = filtered
+
+            best = candidates[0]
+            card["card_id"] = best["id"]
+            if best.get("imageUrl"):
+                card["image"] = best["imageUrl"]
+            card["name"] = f"{best.get('bloom', '')} {best['name']}".strip()
 
 
 def _extract_strategy(soup: BeautifulSoup) -> list[dict]:
@@ -193,10 +286,11 @@ def _discover_all_deck_urls() -> list[str]:
     return list(dict.fromkeys(all_urls))
 
 
-def scrape_all_decks(tier_list_path: Path, output_dir: Path) -> list[dict]:
+def scrape_all_decks(tier_list_path: Path, output_dir: Path, cards_path: Path | None = None) -> list[dict]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     tier_data = json.loads(tier_list_path.read_text(encoding="utf-8"))
+    cards_db = _build_cards_db(cards_path) if cards_path else {}
 
     urls_seen: set[str] = set()
     deck_results: list[dict] = []
@@ -221,17 +315,20 @@ def scrape_all_decks(tier_list_path: Path, output_dir: Path) -> list[dict]:
 
             time.sleep(REQUEST_DELAY)
 
+    _resolve_missing_ids(deck_results, cards_db)
+
     out_path = output_dir / "decks.json"
     out_path.write_text(json.dumps(deck_results, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[scrape_decks] Saved {len(deck_results)} tier-linked deck recipes to {out_path}")
     return deck_results
 
 
-def scrape_all_guides(output_dir: Path, existing_urls: set[str] | None = None) -> list[dict]:
+def scrape_all_guides(output_dir: Path, existing_urls: set[str] | None = None, cards_path: Path | None = None) -> list[dict]:
     """Discover and scrape ALL deck guide articles from the category pages."""
     output_dir.mkdir(parents=True, exist_ok=True)
     if existing_urls is None:
         existing_urls = set()
+    cards_db = _build_cards_db(cards_path) if cards_path else {}
 
     print("  Discovering deck guide URLs from category pages...")
     all_urls = _discover_all_deck_urls()
@@ -255,6 +352,8 @@ def scrape_all_guides(output_dir: Path, existing_urls: set[str] | None = None) -
         except Exception as e:
             print(f"    ERROR: {e}")
         time.sleep(REQUEST_DELAY)
+
+    _resolve_missing_ids(guide_results, cards_db)
 
     out_path = output_dir / "all_guides.json"
     out_path.write_text(json.dumps(guide_results, ensure_ascii=False, indent=2), encoding="utf-8")
