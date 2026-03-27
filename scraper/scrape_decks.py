@@ -192,20 +192,43 @@ def _extract_strategy(soup: BeautifulSoup) -> list[dict]:
     return strategies
 
 
+AD_DOMAINS = ["mercardholo", "amazon", "a8.net", "valuecommerce", "moshimo.com"]
+DECK_H2_KEYWORDS = ["デッキ構成", "デッキレシピ", "デッキリスト", "レシピ"]
+
+
+def _is_ad_figure(fig) -> bool:
+    a = fig.find("a")
+    if not a:
+        return False
+    href = a.get("href", "")
+    if any(ad in href for ad in AD_DOMAINS):
+        return True
+    if href and "holocardstrategy.jp" not in href:
+        return True
+    return False
+
+
 def _extract_deck_image(soup: BeautifulSoup) -> str | None:
-    """Extract the main deck overview image (the large screenshot at the top)."""
+    """Extract the main deck overview image, skipping ads and promo banners."""
     for h2 in soup.find_all("h2", class_="wp-block-heading"):
-        if "デッキ構成" in h2.get_text(strip=True):
-            fig = h2.find_next("figure", class_="wp-block-image")
-            if fig:
+        h2_text = h2.get_text(strip=True)
+        if any(kw in h2_text for kw in DECK_H2_KEYWORDS):
+            fig = h2.find_next("figure")
+            if fig and not _is_ad_figure(fig):
                 img = fig.find("img")
                 if img:
                     return img.get("src")
-    first_figure = soup.find("figure", class_="wp-block-image")
-    if first_figure:
-        img = first_figure.find("img")
-        if img:
+
+    for fig in soup.find_all("figure", limit=10):
+        if _is_ad_figure(fig):
+            continue
+        a = fig.find("a")
+        if a and a.get("href", ""):
+            continue
+        img = fig.find("img")
+        if img and img.get("src"):
             return img.get("src")
+
     return None
 
 
