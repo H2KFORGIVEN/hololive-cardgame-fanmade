@@ -1,8 +1,27 @@
 import { t, localized } from '../i18n.js';
 
-export function renderGuidesView(container, allGuides, decksData) {
-  const combined = [];
+const COLOR_ZH_MAP = { '白': '白', '綠': '緑', '紅': '赤', '藍': '青', '紫': '紫', '黃': '黄' };
 
+function _getDeckColors(deck, cardsMap) {
+  const colors = {};
+  for (const c of deck.cards || []) {
+    const id = c.card_id;
+    if (!id) continue;
+    const dbCard = cardsMap[id];
+    if (dbCard?.color) {
+      colors[dbCard.color] = (colors[dbCard.color] || 0) + 1;
+    }
+  }
+  return Object.keys(colors).sort((a, b) => colors[b] - colors[a]);
+}
+
+export function renderGuidesView(container, allGuides, decksData, cardsData, filters) {
+  const cardsMap = {};
+  if (cardsData) {
+    for (const c of cardsData) cardsMap[c.id] = c;
+  }
+
+  const combined = [];
   if (decksData) {
     for (const d of decksData) {
       combined.push({ ...d, _source: 'tier' });
@@ -15,6 +34,16 @@ export function renderGuidesView(container, allGuides, decksData) {
         combined.push({ ...g, _source: 'guide' });
       }
     }
+  }
+
+  const colorFilter = filters?.color || 'all';
+  let filtered = combined;
+  if (colorFilter !== 'all') {
+    const targetJa = COLOR_ZH_MAP[colorFilter] || colorFilter;
+    filtered = combined.filter(d => {
+      const deckColors = _getDeckColors(d, cardsMap);
+      return deckColors.includes(targetJa) || deckColors.includes(colorFilter);
+    });
   }
 
   if (!combined.length) {
@@ -30,9 +59,9 @@ export function renderGuidesView(container, allGuides, decksData) {
         <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
       </div>
     </div>
-    <div class="guides-count">${combined.length} ${t('guides_count_label')}</div>
+    <div class="guides-count">${filtered.length} ${t('guides_count_label')}</div>
     <div class="guides-grid" id="guidesGrid">
-      ${combined.map(d => renderGuideCard(d)).join('')}
+      ${filtered.map(d => renderGuideCard(d, cardsMap)).join('')}
     </div>
   `;
 
@@ -57,7 +86,9 @@ export function renderGuidesView(container, allGuides, decksData) {
   });
 }
 
-function renderGuideCard(deck) {
+const COLOR_CSS = { '白': '#e8e8e8', '緑': '#4caf50', '赤': '#f44336', '青': '#2196f3', '紫': '#9c27b0', '黄': '#ffeb3b' };
+
+function renderGuideCard(deck, cardsMap) {
   const imgHtml = deck.deck_image
     ? `<img class="guide-card-img" src="${deck.deck_image}" alt="${deck.title}" loading="lazy">`
     : `<div class="guide-card-noimg">🃏</div>`;
@@ -69,6 +100,11 @@ function renderGuideCard(deck) {
   const sourceBadge = deck._source === 'tier'
     ? `<span class="guide-source-badge tier-src">Tier</span>`
     : `<span class="guide-source-badge guide-src">Guide</span>`;
+
+  const deckColors = _getDeckColors(deck, cardsMap);
+  const colorDots = deckColors.slice(0, 3).map(c =>
+    `<span class="guide-color-dot" style="background:${COLOR_CSS[c] || '#888'}"></span>`
+  ).join('');
 
   const desc = localized(deck.description, '');
   const descText = typeof desc === 'string' ? desc : '';
@@ -83,6 +119,7 @@ function renderGuideCard(deck) {
       <div class="guide-card-body">
         <div class="guide-card-top">
           ${sourceBadge}${tierBadge}
+          ${colorDots ? `<span class="guide-color-dots">${colorDots}</span>` : ''}
         </div>
         <div class="guide-card-title">${deck.title}</div>
         ${descText ? `<p class="guide-card-desc">${descText.slice(0, 100)}${descText.length > 100 ? '...' : ''}</p>` : ''}

@@ -895,6 +895,18 @@ body {
   line-height: 1.4;
   margin-bottom: 0.4rem;
 }
+.guide-color-dots {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: auto;
+}
+.guide-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.2);
+}
 .guide-card-meta {
   display: flex;
   gap: 0.8rem;

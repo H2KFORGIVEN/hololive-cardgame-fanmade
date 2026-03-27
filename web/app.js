@@ -41,7 +41,7 @@ function render() {
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
 
   if (currentView === 'guides') {
-    renderGuidesView(guidesView, allGuides, decksData);
+    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters);
   } else if (currentView === 'tournament') {
     renderTournamentView(tournamentView, decklogDecks, cardsData);
   } else {
