@@ -1,5 +1,6 @@
 """Main entry point: run all scrapers and output JSON to data/."""
 
+import json
 import shutil
 from pathlib import Path
 
@@ -8,6 +9,47 @@ from scraper.scrape_tiers import scrape_tiers
 from scraper.scrape_decks import scrape_all_decks, scrape_all_guides
 from scraper.scrape_decklog import scrape_decklog
 from scraper.translate import translate_all
+
+
+def _assign_tier_to_guides(data_dir: Path):
+    """Cross-reference guide titles against tier list to assign tier levels."""
+    tier_path = data_dir / "tier_list.json"
+    guides_path = data_dir / "all_guides.json"
+    if not tier_path.exists() or not guides_path.exists():
+        return
+
+    tiers = json.loads(tier_path.read_text(encoding="utf-8"))
+    guides = json.loads(guides_path.read_text(encoding="utf-8"))
+
+    lookup: list[tuple[str, int]] = []
+    for tier in tiers.get("tiers", []):
+        tier_num = tier["tier"]
+        for d in tier.get("decks", []):
+            if d.get("vtuber"):
+                lookup.append((d["vtuber"], tier_num))
+            name = d.get("name", "")
+            if name:
+                core = name.replace("単", "").replace("推し", "").strip()
+                if core:
+                    lookup.append((core, tier_num))
+
+    lookup.sort(key=lambda x: len(x[0]), reverse=True)
+
+    assigned = 0
+    for g in guides:
+        if g.get("tier"):
+            continue
+        title = g.get("title", "")
+        if isinstance(title, dict):
+            title = title.get("ja", "")
+        for keyword, tier_num in lookup:
+            if keyword in title:
+                g["tier"] = tier_num
+                assigned += 1
+                break
+
+    guides_path.write_text(json.dumps(guides, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Assigned tier to {assigned}/{len(guides)} guides")
 
 
 def main():
@@ -19,25 +61,28 @@ def main():
     print("Holo Card Meta Scraper")
     print("=" * 50)
 
-    print("\n[1/6] Fetching cards database...")
+    print("\n[1/7] Fetching cards database...")
     fetch_cards(data_dir)
 
-    print("\n[2/6] Scraping tier list...")
+    print("\n[2/7] Scraping tier list...")
     scrape_tiers(data_dir)
 
     cards_path = data_dir / "cards.json"
 
-    print("\n[3/6] Scraping tier-linked deck recipes...")
+    print("\n[3/7] Scraping tier-linked deck recipes...")
     tier_decks = scrape_all_decks(data_dir / "tier_list.json", data_dir, cards_path)
 
-    print("\n[4/6] Scraping ALL deck guides from holocardstrategy...")
+    print("\n[4/7] Scraping ALL deck guides from holocardstrategy...")
     existing_urls = {d["url"] for d in tier_decks if d.get("url")}
     scrape_all_guides(data_dir, existing_urls, cards_path)
 
-    print("\n[5/6] Fetching Deck Log decks...")
+    print("\n[5/7] Assigning tier levels to guides...")
+    _assign_tier_to_guides(data_dir)
+
+    print("\n[6/7] Fetching Deck Log decks...")
     scrape_decklog(base / "deck_codes.json", data_dir / "cards.json", data_dir)
 
-    print("\n[6/6] Translating scraped data (ja -> zh-TW, en, fr)...")
+    print("\n[7/7] Translating scraped data (ja -> zh-TW, en, fr)...")
     translate_all(data_dir)
 
     print("\n[Copy] Copying data to web/data/ for frontend...")
