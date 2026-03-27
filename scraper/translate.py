@@ -144,6 +144,8 @@ def translate_decks(data_dir: Path):
 
     unique_texts = set()
     for deck in decks:
+        if isinstance(deck.get("title"), str) and deck["title"].strip():
+            unique_texts.add(deck["title"])
         if isinstance(deck.get("description"), str) and deck["description"].strip():
             unique_texts.add(deck["description"])
         for card in deck.get("cards", []):
@@ -163,6 +165,8 @@ def translate_decks(data_dir: Path):
         lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
 
     for deck in decks:
+        if isinstance(deck.get("title"), str) and deck["title"].strip():
+            deck["title"] = _make_multilang_from_maps(deck["title"], "ja", lang_maps)
         if isinstance(deck.get("description"), str) and deck["description"].strip():
             deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
         for card in deck.get("cards", []):
@@ -234,6 +238,8 @@ def translate_guides(data_dir: Path):
 
     unique_texts = set()
     for deck in guides:
+        if isinstance(deck.get("title"), str) and deck["title"].strip():
+            unique_texts.add(deck["title"])
         if isinstance(deck.get("description"), str) and deck["description"].strip():
             unique_texts.add(deck["description"])
         for card in deck.get("cards", []):
@@ -253,6 +259,8 @@ def translate_guides(data_dir: Path):
         lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
 
     for deck in guides:
+        if isinstance(deck.get("title"), str) and deck["title"].strip():
+            deck["title"] = _make_multilang_from_maps(deck["title"], "ja", lang_maps)
         if isinstance(deck.get("description"), str) and deck["description"].strip():
             deck["description"] = _make_multilang_from_maps(deck["description"], "ja", lang_maps)
         for card in deck.get("cards", []):

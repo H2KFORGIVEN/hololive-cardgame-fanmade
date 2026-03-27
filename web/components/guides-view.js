@@ -117,8 +117,9 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
 const COLOR_CSS = { '白': '#e8e8e8', '緑': '#4caf50', '赤': '#f44336', '青': '#2196f3', '紫': '#9c27b0', '黄': '#ffeb3b' };
 
 function renderGuideCard(deck, cardsMap) {
+  const title = localized(deck.title, deck.deck_id || '');
   const imgHtml = deck.deck_image
-    ? `<img class="guide-card-img" src="${deck.deck_image}" alt="${deck.title}" loading="lazy">`
+    ? `<img class="guide-card-img" src="${deck.deck_image}" alt="${title}" loading="lazy">`
     : `<div class="guide-card-noimg">🃏</div>`;
 
   const tierBadge = deck.tier
@@ -139,7 +140,8 @@ function renderGuideCard(deck, cardsMap) {
   const cardCount = (deck.cards || []).length;
   const stratCount = (deck.strategy || []).length;
 
-  const searchText = [deck.title, descText, deck.deck_id].join(' ').toLowerCase();
+  const jaTitle = typeof deck.title === 'object' ? (deck.title.ja || '') : (deck.title || '');
+  const searchText = [jaTitle, title, descText, deck.deck_id].join(' ').toLowerCase();
 
   return `
     <div class="guide-card deck-card" data-deck-id="${deck.deck_id}" data-search-text="${searchText.replace(/"/g, '')}">
@@ -149,7 +151,7 @@ function renderGuideCard(deck, cardsMap) {
           ${sourceBadge}${tierBadge}
           ${colorDots ? `<span class="guide-color-dots">${colorDots}</span>` : ''}
         </div>
-        <div class="guide-card-title">${deck.title}</div>
+        <div class="guide-card-title">${title}</div>
         ${descText ? `<p class="guide-card-desc">${descText.slice(0, 100)}${descText.length > 100 ? '...' : ''}</p>` : ''}
         <div class="guide-card-meta">
           ${cardCount ? `<span>${cardCount} ${t('guides_cards')}</span>` : ''}

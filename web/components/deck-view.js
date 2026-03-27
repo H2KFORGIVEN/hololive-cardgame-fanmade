@@ -27,7 +27,7 @@ export function renderDeckModal(container, deckId, tierData, decksData, allGuide
     return;
   }
 
-  const title = deckInfo?.name || recipe?.title || deckId;
+  const title = deckInfo?.name || localized(recipe?.title) || deckId;
   const image = recipe?.deck_image || deckInfo?.image;
   const imageHtml = image
     ? `<img src="${image}" alt="${title}" loading="lazy">`
