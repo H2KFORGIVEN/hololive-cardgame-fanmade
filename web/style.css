@@ -627,6 +627,11 @@ body {
   font-weight: 700;
   color: var(--accent-cyan);
 }
+.tournament-event-date {
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  opacity: 0.8;
+}
 .tournament-event-count {
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -912,6 +917,10 @@ body {
   gap: 0.8rem;
   font-size: 0.72rem;
   color: var(--text-secondary);
+}
+.guide-card-date {
+  color: var(--accent-cyan);
+  opacity: 0.8;
 }
 
 @media (max-width: 600px) {

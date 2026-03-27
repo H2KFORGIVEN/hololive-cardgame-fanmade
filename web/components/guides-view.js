@@ -54,6 +54,14 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     }
   }
 
+  filtered.sort((a, b) => {
+    const da = a.date || '';
+    const db = b.date || '';
+    if (db > da) return 1;
+    if (da > db) return -1;
+    return (a.tier || 99) - (b.tier || 99);
+  });
+
   if (!combined.length) {
     container.innerHTML = `<div class="loading">${t('guides_no_data')}</div>`;
     return;
@@ -134,6 +142,7 @@ function renderGuideCard(deck, cardsMap) {
         <div class="guide-card-title">${title}</div>
         ${descText ? `<p class="guide-card-desc">${descText.slice(0, 100)}${descText.length > 100 ? '...' : ''}</p>` : ''}
         <div class="guide-card-meta">
+          ${deck.date ? `<span class="guide-card-date">${deck.date}</span>` : ''}
           ${cardCount ? `<span>${cardCount} ${t('guides_cards')}</span>` : ''}
           ${stratCount ? `<span>${stratCount} ${t('guides_strats')}</span>` : ''}
         </div>

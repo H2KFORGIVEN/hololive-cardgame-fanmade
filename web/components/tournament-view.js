@@ -14,8 +14,25 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
   const grouped = {};
   for (const deck of decklogDecks) {
     const key = deck.event || deck.source || 'Other';
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(deck);
+    if (!grouped[key]) grouped[key] = { decks: [], date: deck.event_date || '' };
+    grouped[key].decks.push(deck);
+  }
+
+  const _placementOrder = (p) => {
+    if (!p) return 999;
+    if (p.startsWith('1st') || p.startsWith('Trio 1st')) return 1;
+    if (p.startsWith('2nd') || p.startsWith('Trio 2nd')) return 2;
+    if (p.startsWith('3rd') || p.startsWith('Trio 3rd')) return 3;
+    if (p.includes('Undefeated')) return 0;
+    const m = p.match(/(\d+)/);
+    return m ? parseInt(m[1]) : 500;
+  };
+
+  const sortedEvents = Object.entries(grouped)
+    .sort((a, b) => (b[1].date || '').localeCompare(a[1].date || ''));
+
+  for (const [, g] of sortedEvents) {
+    g.decks.sort((a, b) => _placementOrder(a.placement) - _placementOrder(b.placement));
   }
 
   let html = `
@@ -25,11 +42,12 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
     </div>
   `;
 
-  for (const [event, decks] of Object.entries(grouped)) {
+  for (const [event, { decks, date }] of sortedEvents) {
     html += `
       <section class="tournament-event-section">
         <div class="tournament-event-header">
           <span class="tournament-event-name">${event}</span>
+          ${date ? `<span class="tournament-event-date">${date}</span>` : ''}
           <span class="tournament-event-count">${decks.length} ${t('decks_count')}</span>
         </div>
         <div class="tournament-deck-grid">

@@ -247,6 +247,13 @@ def _extract_description(soup: BeautifulSoup) -> str:
     return ""
 
 
+def _extract_date(soup: BeautifulSoup) -> str | None:
+    time_tag = soup.find("time", attrs={"datetime": True})
+    if time_tag:
+        return time_tag["datetime"]
+    return None
+
+
 def scrape_deck(url: str) -> dict:
     resp = httpx.get(url, timeout=30, follow_redirects=True, headers=HEADERS)
     resp.raise_for_status()
@@ -255,7 +262,7 @@ def scrape_deck(url: str) -> dict:
     title_el = soup.find("h1")
     title = title_el.get_text(strip=True) if title_el else url.split("/")[-2]
 
-    return {
+    result = {
         "url": url,
         "title": title,
         "deck_image": _extract_deck_image(soup),
@@ -263,6 +270,10 @@ def scrape_deck(url: str) -> dict:
         "cards": _extract_card_entries(soup),
         "strategy": _extract_strategy(soup),
     }
+    date = _extract_date(soup)
+    if date:
+        result["date"] = date
+    return result
 
 
 DECK_CATEGORY_URL = "https://www.holocardstrategy.jp/category/deck/"

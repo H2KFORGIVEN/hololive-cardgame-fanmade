@@ -87,6 +87,7 @@ def scrape_decklog(deck_codes_path: Path, cards_path: Path, output_dir: Path) ->
             "oshi": entry.get("oshi", ""),
             "source": "decklog",
             "event": entry.get("event"),
+            "event_date": entry.get("event_date"),
             "placement": entry.get("placement"),
             "url": f"https://decklog-en.bushiroad.com/ja/view/{raw.get('deck_id', code)}",
             "oshi_cards": oshi_list,

@@ -4,7 +4,8 @@
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Trio Winner",
+    "event": "WGP2025 Tokyo - Trio",
+    "event_date": "2025-05-05",
     "placement": "Trio 1st (きりご)"
   },
   {
@@ -12,7 +13,8 @@
     "title": "すいせい単",
     "oshi": "星街すいせい",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Trio Winner",
+    "event": "WGP2025 Tokyo - Trio",
+    "event_date": "2025-05-05",
     "placement": "Trio 1st (おりがみ)"
   },
   {
@@ -20,7 +22,8 @@
     "title": "オリー単",
     "oshi": "クレイジー・オリー",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Individual A Block",
+    "event": "WGP2025 Tokyo - Individual A",
+    "event_date": "2025-05-05",
     "placement": "1st (マトフ)"
   },
   {
@@ -28,7 +31,8 @@
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Individual A Block",
+    "event": "WGP2025 Tokyo - Individual A",
+    "event_date": "2025-05-05",
     "placement": "2nd (ける/OGTpros)"
   },
   {
@@ -36,7 +40,8 @@
     "title": "AZKi単",
     "oshi": "AZKi",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Individual B Block",
+    "event": "WGP2025 Tokyo - Individual B",
+    "event_date": "2025-05-05",
     "placement": "1st (ギリャー)"
   },
   {
@@ -44,7 +49,8 @@
     "title": "マリン単",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Individual B Block",
+    "event": "WGP2025 Tokyo - Individual B",
+    "event_date": "2025-05-05",
     "placement": "2nd (RasK)"
   },
   {
@@ -52,7 +58,8 @@
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba A Block",
+    "event": "WGP2025 Chiba - A Block",
+    "event_date": "2025-09-15",
     "placement": "1st (ユキ)"
   },
   {
@@ -60,7 +67,8 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba B Block",
+    "event": "WGP2025 Chiba - B Block",
+    "event_date": "2025-09-15",
     "placement": "1st (タナカ)"
   },
   {
@@ -68,7 +76,8 @@
     "title": "ポルカ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba C Block",
+    "event": "WGP2025 Chiba - C Block",
+    "event_date": "2025-09-15",
     "placement": "1st (ころね)"
   },
   {
@@ -76,7 +85,8 @@
     "title": "すいせいクロヱ",
     "oshi": "星街すいせい",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba D Block",
+    "event": "WGP2025 Chiba - D Block",
+    "event_date": "2025-09-15",
     "placement": "1st (めるか)"
   },
   {
@@ -84,7 +94,8 @@
     "title": "かなクロ",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba E Block",
+    "event": "WGP2025 Chiba - E Block",
+    "event_date": "2025-09-15",
     "placement": "1st (ロール)"
   },
   {
@@ -92,7 +103,8 @@
     "title": "レイネイオフィ",
     "oshi": "クレイジー・オリー",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba A Block",
+    "event": "WGP2025 Chiba - A Block",
+    "event_date": "2025-09-15",
     "placement": "2nd (ける/OGTpros)"
   },
   {
@@ -100,7 +112,8 @@
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba B Block",
+    "event": "WGP2025 Chiba - B Block",
+    "event_date": "2025-09-15",
     "placement": "2nd (くるはむ)"
   },
   {
@@ -108,7 +121,8 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba C Block",
+    "event": "WGP2025 Chiba - C Block",
+    "event_date": "2025-09-15",
     "placement": "2nd (スズカ)"
   },
   {
@@ -116,7 +130,8 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba D Block",
+    "event": "WGP2025 Chiba - D Block",
+    "event_date": "2025-09-15",
     "placement": "2nd (アカシキフ)"
   },
   {
@@ -124,8 +139,144 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba E Block",
+    "event": "WGP2025 Chiba - E Block",
+    "event_date": "2025-09-15",
     "placement": "2nd (クーデレスキー)"
+  },
+  {
+    "code": "3TDYU",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "6BXQ6",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "4XP0G",
+    "title": "あやめ単",
+    "oshi": "百鬼あやめ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "Z010",
+    "title": "あやめ単",
+    "oshi": "百鬼あやめ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "11QBS",
+    "title": "いろは単",
+    "oshi": "風真いろは",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "2BCZW",
+    "title": "いろはルイ",
+    "oshi": "風真いろは",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "1XNQ2",
+    "title": "ころねカリオペ",
+    "oshi": "兎田ぺこら",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "6VAHW",
+    "title": "カリオペクロヱ",
+    "oshi": "森カリオペ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "24CJN",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "5RM6L",
+    "title": "こより単",
+    "oshi": "博衣こより",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "3JZ0W",
+    "title": "マリンノエル",
+    "oshi": "白銀ノエル",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "5K4CL",
+    "title": "ラオーラ単",
+    "oshi": "ラオーラ・パンテーラ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "5QYWG",
+    "title": "マリンゼータエリザベス",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "6VU6Y",
+    "title": "ころねかなた",
+    "oshi": "ロボ子さん",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
+  },
+  {
+    "code": "3M4P6",
+    "title": "スバル単",
+    "oshi": "大空スバル",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Undefeated"
   },
   {
     "code": "54V0D",
