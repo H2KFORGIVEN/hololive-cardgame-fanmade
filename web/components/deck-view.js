@@ -1,28 +1,36 @@
 import { t, localized } from '../i18n.js';
 
-export function renderDeckModal(container, deckId, tierData, decksData) {
+export function renderDeckModal(container, deckId, tierData, decksData, allGuides) {
   let deckInfo = null;
   let tierNum = null;
-  for (const tier of tierData.tiers) {
-    for (const d of tier.decks) {
-      if (d.id === deckId) {
-        deckInfo = d;
-        tierNum = tier.tier;
-        break;
+  if (tierData?.tiers) {
+    for (const tier of tierData.tiers) {
+      for (const d of tier.decks) {
+        if (d.id === deckId) {
+          deckInfo = d;
+          tierNum = tier.tier;
+          break;
+        }
       }
+      if (deckInfo) break;
     }
-    if (deckInfo) break;
   }
 
-  if (!deckInfo) {
+  let recipe = decksData?.find(d => d.deck_id === deckId);
+
+  if (!recipe && allGuides) {
+    recipe = allGuides.find(d => d.deck_id === deckId);
+  }
+
+  if (!deckInfo && !recipe) {
     container.innerHTML = `<p>${t('deck_not_found')}</p>`;
     return;
   }
 
-  const recipe = decksData?.find(d => d.deck_id === deckId);
-
-  const imageHtml = (recipe?.deck_image || deckInfo.image)
-    ? `<img src="${recipe?.deck_image || deckInfo.image}" alt="${deckInfo.name}" loading="lazy">`
+  const title = deckInfo?.name || recipe?.title || deckId;
+  const image = recipe?.deck_image || deckInfo?.image;
+  const imageHtml = image
+    ? `<img src="${image}" alt="${title}" loading="lazy">`
     : '';
 
   const cardsHtml = recipe?.cards?.length
@@ -47,17 +55,21 @@ export function renderDeckModal(container, deckId, tierData, decksData) {
       `).join('')
     : '';
 
-  const features = localized(deckInfo.features, []);
+  const features = deckInfo ? localized(deckInfo.features, []) : [];
   const featuresList = Array.isArray(features) ? features : [];
   const featuresHtml = featuresList.map(f => `<li>${f}</li>`).join('');
+
+  const tierBadge = tierNum
+    ? `<span class="tier-badge" data-tier="${tierNum}" style="font-size:0.8rem;padding:2px 8px">TIER ${tierNum}</span>&nbsp;`
+    : '';
+  const vtuber = deckInfo?.vtuber || '';
 
   container.innerHTML = `
     <div class="modal-deck-header">
       ${imageHtml}
-      <div class="modal-deck-title">${deckInfo.name}</div>
+      <div class="modal-deck-title">${title}</div>
       <div class="modal-deck-meta">
-        <span class="tier-badge" data-tier="${tierNum}" style="font-size:0.8rem;padding:2px 8px">TIER ${tierNum}</span>
-        &nbsp; ${deckInfo.vtuber}
+        ${tierBadge}${vtuber}
       </div>
       ${recipe?.description ? `<div class="modal-deck-desc">${localized(recipe.description)}</div>` : ''}
       ${featuresHtml ? `
