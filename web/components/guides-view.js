@@ -59,25 +59,12 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     return;
   }
 
-  const tierBtns = [
-    { val: 'all', label: 'ALL' },
-    { val: '1', label: 'Tier 1' },
-    { val: '2', label: 'Tier 2' },
-    { val: '3', label: 'Tier 3' },
-    { val: 'guide', label: t('guides_filter_guide') },
-  ];
-
   let html = `
     <div class="guides-header">
       <h2>${t('guides_title')}</h2>
       <p class="guides-desc">${t('guides_desc')}</p>
-      <div class="guides-filter-row">
-        <div class="guides-tier-filters">
-          ${tierBtns.map(b => `<button class="tier-filter-btn${tierFilter === b.val ? ' active' : ''}" data-tier-filter="${b.val}">${b.label}</button>`).join('')}
-        </div>
-        <div class="guides-search-box">
-          <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
-        </div>
+      <div class="guides-search-box">
+        <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
       </div>
     </div>
     <div class="guides-count">${filtered.length} ${t('guides_count_label')}</div>
@@ -87,13 +74,6 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
   `;
 
   container.innerHTML = html;
-
-  container.querySelectorAll('.tier-filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      filters.tier = btn.dataset.tierFilter;
-      renderGuidesView(container, allGuides, decksData, cardsData, filters);
-    });
-  });
 
   const searchInput = container.querySelector('#guideSearch');
   let debounce;

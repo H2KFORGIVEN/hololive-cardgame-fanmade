@@ -31,12 +31,14 @@ function render() {
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
   const cardsView = document.getElementById('cardsView');
+  const tierFilterGroup = document.getElementById('tierFilterGroup');
   const cardSearchGroup = document.getElementById('cardSearchGroup');
   const cardTypeGroup = document.getElementById('cardTypeGroup');
 
   guidesView.classList.toggle('active', currentView === 'guides');
   tournamentView.classList.toggle('active', currentView === 'tournament');
   cardsView.classList.toggle('active', currentView === 'cards');
+  tierFilterGroup.style.display = currentView === 'guides' ? 'flex' : 'none';
   cardSearchGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
 
@@ -83,6 +85,15 @@ function setupFilters() {
       document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       filters.color = btn.dataset.color;
+      render();
+    });
+  });
+
+  document.querySelectorAll('.tier-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filters.tier = btn.dataset.tier;
       render();
     });
   });
