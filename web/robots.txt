@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://holocardgame-meta.github.io/sitemap.xml

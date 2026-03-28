@@ -9,9 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-# Scraped data (regenerable via GitHub Actions)
+# Scraper working directory (raw data before copy)
 /data/
-/web/data/
 
 # IDE
 .cursor/

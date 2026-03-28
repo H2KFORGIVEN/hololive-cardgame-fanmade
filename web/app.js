@@ -2,7 +2,7 @@ import { renderDeckModal } from './components/deck-view.js';
 import { renderCardGallery, renderCardDetail } from './components/card-view.js';
 import { renderTournamentView, renderTournamentDeckModal } from './components/tournament-view.js';
 import { renderGuidesView } from './components/guides-view.js';
-import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations } from './i18n.js';
+import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations, t } from './i18n.js';
 
 let cardsData = [];
 let tierData = null;
@@ -12,22 +12,36 @@ let allGuides = [];
 let currentView = 'guides';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
-async function loadData() {
-  const [cardsResp, tierResp, decksResp, decklogResp, guidesResp] = await Promise.all([
-    fetch('data/cards.json').then(r => r.ok ? r.json() : []),
-    fetch('data/tier_list.json').then(r => r.ok ? r.json() : null),
-    fetch('data/decks.json').then(r => r.ok ? r.json() : []),
-    fetch('data/decklog_decks.json').then(r => r.ok ? r.json() : []),
-    fetch('data/all_guides.json').then(r => r.ok ? r.json() : []),
-  ]);
-  cardsData = cardsResp;
-  tierData = tierResp;
-  decksData = decksResp;
-  decklogDecks = decklogResp;
-  allGuides = guidesResp;
+const _loaded = { cards: false, decklog: false };
+
+function _fetchJSON(url) {
+  return fetch(url).then(r => r.ok ? r.json() : null);
 }
 
-function render() {
+async function loadCoreData() {
+  const [tierResp, decksResp, guidesResp] = await Promise.all([
+    _fetchJSON('data/tier_list.json'),
+    _fetchJSON('data/decks.json'),
+    _fetchJSON('data/all_guides.json'),
+  ]);
+  tierData = tierResp;
+  decksData = decksResp || [];
+  allGuides = guidesResp || [];
+}
+
+async function ensureCards() {
+  if (_loaded.cards) return;
+  _loaded.cards = true;
+  cardsData = (await _fetchJSON('data/cards.json')) || [];
+}
+
+async function ensureDecklog() {
+  if (_loaded.decklog) return;
+  _loaded.decklog = true;
+  decklogDecks = (await _fetchJSON('data/decklog_decks.json')) || [];
+}
+
+async function render() {
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
   const cardsView = document.getElementById('cardsView');
@@ -43,10 +57,13 @@ function render() {
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
 
   if (currentView === 'guides') {
+    await ensureCards();
     renderGuidesView(guidesView, allGuides, decksData, cardsData, filters);
   } else if (currentView === 'tournament') {
+    await Promise.all([ensureDecklog(), ensureCards()]);
     renderTournamentView(tournamentView, decklogDecks, cardsData);
   } else {
+    await ensureCards();
     renderCardGallery(cardsView, cardsData, filters);
   }
 }
@@ -123,10 +140,11 @@ function setupModals() {
   const cardModal = document.getElementById('cardModal');
   const cardModalBody = document.getElementById('cardModalBody');
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async (e) => {
     const tournamentDeckCard = e.target.closest('.tournament-deck-card');
     if (tournamentDeckCard) {
       const decklogId = tournamentDeckCard.dataset.decklogId;
+      await ensureCards();
       renderTournamentDeckModal(deckModalBody, decklogId, decklogDecks, cardsData);
       deckModal.hidden = false;
       document.body.style.overflow = 'hidden';
@@ -175,12 +193,12 @@ function setupModals() {
 
 async function init() {
   initI18n();
-  await loadData();
   renderLangSwitcher();
   applyStaticTranslations();
   setupNav();
   setupFilters();
   setupModals();
+  await loadCoreData();
   render();
 }
 
