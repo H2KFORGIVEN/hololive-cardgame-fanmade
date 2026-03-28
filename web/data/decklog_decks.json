@@ -1,5 +1,144 @@
 [
   {
+    "deck_id": "decklog-44ZSC",
+    "deck_code": "44ZSC",
+    "title": "キアラ単",
+    "oshi": "小鳥遊キアラ",
+    "source": "decklog",
+    "event": "WGP2025 Tokyo - Trio",
+    "event_date": "2025-05-05",
+    "placement": "Trio 1st (きりご)",
+    "url": "https://decklog-en.bushiroad.com/ja/view/44ZSC",
+    "oshi_cards": [
+      {
+        "card_id": "hBP01-006",
+        "count": 1,
+        "name": "小鳥遊キアラ",
+        "type": "主推",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-006_SEC.png"
+      }
+    ],
+    "main_deck": [
+      {
+        "card_id": "hBP01-062",
+        "count": 12,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-062_C.png"
+      },
+      {
+        "card_id": "hBP01-063",
+        "count": 1,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-063_U.png"
+      },
+      {
+        "card_id": "hBP01-065",
+        "count": 4,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-065_U.png"
+      },
+      {
+        "card_id": "hBP01-066",
+        "count": 2,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-066_P.png"
+      },
+      {
+        "card_id": "hBP01-067",
+        "count": 3,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-067_UR.png"
+      },
+      {
+        "card_id": "hBP03-036",
+        "count": 4,
+        "name": "小鳥遊キアラ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-036_P.png"
+      },
+      {
+        "card_id": "hBP02-035",
+        "count": 2,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-035_C.png"
+      },
+      {
+        "card_id": "hBP02-038",
+        "count": 4,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-038_U.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 4,
+        "name": "みっころね24",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-084_02_SR.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "name": "春先のどか",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-016_02_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 1,
+        "name": "マネちゃん",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-017_02_C.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "name": "ふつうのパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+      },
+      {
+        "card_id": "hBP01-121",
+        "count": 3,
+        "name": "Kotori",
+        "type": "支援・吉祥物",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-121_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY03-001",
+        "count": 20,
+        "name": "赤エール",
+        "type": "吶喊",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY03-001_C.png"
+      }
+    ],
+    "main_deck_count": 48,
+    "cheer_deck_count": 20
+  },
+  {
     "deck_id": "decklog-4V2CC",
     "deck_code": "4V2CC",
     "title": "すいせい単",
