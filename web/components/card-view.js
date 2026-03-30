@@ -97,11 +97,13 @@ function renderPage(container) {
   }
 }
 
-export function renderCardDetail(container, card) {
+export function renderCardDetail(container, card, allCards) {
   if (!card) {
     container.innerHTML = `<p>${t('card_not_found')}</p>`;
     return;
   }
+
+  const variants = allCards ? allCards.filter(c => c.id === card.id) : [card];
 
   const isOshi = card.type === '主推';
   const isMember = card.type === '成員';
@@ -175,19 +177,66 @@ export function renderCardDetail(container, card) {
 
   const productText = Array.isArray(card.product) ? card.product.join(', ') : (card.product || '');
 
+  const variantsHtml = variants.length > 1
+    ? `<div class="card-variants">
+        <div class="card-variants-label">${t('card_variants', { count: variants.length })}</div>
+        <div class="card-variants-grid">
+          ${variants.map((v, i) => {
+            const suffix = _rarityLabel(v.imageUrl);
+            return `<div class="card-variant-thumb${i === 0 ? ' active' : ''}" data-variant-idx="${i}">
+              <img src="${v.imageUrl}" alt="${suffix}" loading="lazy">
+              <span class="card-variant-rarity">${suffix}</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`
+    : '';
+
   container.innerHTML = `
     <div class="card-detail">
-      <img class="card-detail-img" src="${card.imageUrl || ''}" alt="${card.name}">
+      <img class="card-detail-img" id="cardDetailMainImg" src="${card.imageUrl || ''}" alt="${card.name}">
       <div class="card-detail-info">
         <div class="card-detail-name">${card.name}</div>
         <div class="card-detail-id">${card.id}</div>
         ${tagsHtml ? `<div class="card-detail-tags">${tagsHtml}</div>` : ''}
         <div class="card-detail-stats">${statsHtml}</div>
         ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">${t('product_label')}: ${productText}</div>` : ''}
+        ${variantsHtml}
         <div class="card-detail-effects">${effectsHtml}</div>
       </div>
     </div>
   `;
+
+  if (variants.length > 1) {
+    const mainImg = container.querySelector('#cardDetailMainImg');
+    container.querySelectorAll('.card-variant-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const idx = parseInt(thumb.dataset.variantIdx);
+        mainImg.src = variants[idx].imageUrl;
+        container.querySelectorAll('.card-variant-thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+  }
+}
+
+const RARITY_SUFFIXES = {
+  'C': 'C', 'U': 'U', 'R': 'R', 'RR': 'RR', 'SR': 'SR',
+  'OSR': 'OSR', 'OUR': 'OUR', 'SEC': 'SEC', 'SSP': 'SSP',
+  'SP': 'SP', 'UR': 'UR', 'SER': 'SER',
+};
+
+function _rarityLabel(url) {
+  if (!url) return '?';
+  const filename = url.split('/').pop().replace('.png', '').replace('.jpg', '');
+  const parts = filename.split('_');
+  parts.shift();
+  const suffix = parts.join('_');
+  for (const [key, label] of Object.entries(RARITY_SUFFIXES)) {
+    if (suffix === key) return label;
+  }
+  if (suffix.startsWith('P')) return 'P';
+  return suffix || '?';
 }
 
 function renderEffect(title, text, subtitle) {

@@ -151,7 +151,7 @@ function setupModals() {
         await ensureCards();
         const card = cardsData.find(c => c.id === cardId);
         if (card) {
-          renderCardDetail(cardModalBody, card);
+          renderCardDetail(cardModalBody, card, cardsData);
           cardModal.hidden = false;
           document.body.style.overflow = 'hidden';
           return;
@@ -183,7 +183,7 @@ function setupModals() {
       const cardId = galleryCard.dataset.cardId;
       await ensureCards();
       const card = cardsData.find(c => c.id === cardId);
-      renderCardDetail(cardModalBody, card);
+      renderCardDetail(cardModalBody, card, cardsData);
       cardModal.hidden = false;
       document.body.style.overflow = 'hidden';
       return;

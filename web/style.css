@@ -652,6 +652,46 @@ body {
   font-size: 0.85rem;
   line-height: 1.7;
 }
+.card-variants {
+  margin-bottom: 1rem;
+}
+.card-variants-label {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.card-variants-grid {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.card-variant-thumb {
+  width: 60px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.12s;
+  text-align: center;
+}
+.card-variant-thumb img {
+  width: 100%;
+  display: block;
+}
+.card-variant-thumb.active {
+  border-color: var(--accent-cyan);
+}
+.card-variant-thumb:hover {
+  transform: scale(1.05);
+}
+.card-variant-rarity {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  padding: 1px 0;
+  background: var(--bg-secondary);
+}
 .effect-block {
   background: var(--bg-card);
   border: 1px solid var(--border);
