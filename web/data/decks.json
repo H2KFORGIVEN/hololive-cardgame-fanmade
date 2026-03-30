@@ -131,6 +131,461 @@
     "tier": 1
   },
   {
+    "url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
+    "title": {
+      "ja": "【ホロカ】クロニー単のデッキレシピと回し方",
+      "zh-TW": "[Horoka] 單一裙帶套牌配方以及如何旋轉它",
+      "en": "[Horoka] Single Crony deck recipe and how to spin it",
+      "fr": "[Horoka] Recette du deck Single Crony et comment le faire tourner"
+    },
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/ec9264be7af1d9eaedcef945f12289fb-1080x608.png",
+    "description": {
+      "ja": "ホロカの「クロニー単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、まがまがデッキを組もうと思っている方は、ぜひ参考にしてください。 クロニー単のデッキレシピ 出典：hololive OFFICIAL C",
+      "zh-TW": "解釋堀花的「單身裙帶」的牌組結構以及所採用卡牌的作用！我們還將介紹如何旋轉牌組以及如何做出強力動作，因此如果您正在考慮建立瑪格瑪牌組，請將此作為參考。單一裙帶套牌配方來源：hololive OFFICIAL C",
+      "en": "Explaining the deck construction of Horoka's \"Single Crony\" and the role of the adopted cards! We will also introduce how to spin the deck and how to make powerful moves, so if you are thinking of building a Magama deck, please use this as a reference. Single Crony Deck Recipe Source: hololive OFFICIAL C",
+      "fr": "Explication de la construction du deck du \"Single Crony\" d'Horoka et du rôle des cartes adoptées ! Nous présenterons également comment faire tourner le deck et comment effectuer des mouvements puissants, donc si vous envisagez de construire un deck Magama, veuillez l'utiliser comme référence. Recette de Deck Single Crony Source : hololive OFFICIEL C"
+    },
+    "cards": [
+      {
+        "name": "オーロ・クロニー",
+        "card_id": "hBD24-031",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-031_P.png",
+        "role": {
+          "ja": "・ライフ5の推しホロメン\n・SP推しスキルはホロパワー４消費とかなり重いが、追加ターンという相手への圧は抜群！\n・推しスキルは山札の下から2枚を引けるのでセレブレーションやサブパソコンとの相性抜群！",
+          "zh-TW": "・Life 5 奧西‧霍洛門\n・SP推进技能消耗4点全息能量，相当沉重，但额外的回合给对手带来的压力却很突出！\n・推技能可以讓你從牌組底部抽兩張牌，因此非常適合慶祝活動和子電腦！",
+          "en": "・Life 5 Oshi Holomen\n・The SP push skill consumes 4 Holo Power, which is quite heavy, but the extra turn puts pressure on the opponent is outstanding!\n・The push skill allows you to draw two cards from the bottom of the deck, so it goes great with celebrations and sub-pcs!",
+          "fr": "・Vie 5 Oshi Holomen\n・La compétence de poussée SP consomme 4 Holo Power, ce qui est assez lourd, mais le tour supplémentaire exerce une pression sur l'adversaire est exceptionnelle !\n・La compétence Push vous permet de piocher deux cartes du bas du jeu, elle se marie donc très bien avec les célébrations et les sous-pièces !"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-051",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-051_U.png",
+        "role": {
+          "ja": "・序盤から終盤までしっかりと役割を持っているDebut\n・エール加速がとにかく優秀",
+          "zh-TW": "・從頭到尾都有紮實角色的出道者\n・无论如何，麦酒的加速效果都非常出色",
+          "en": "・Debut who has a solid role from the beginning to the end\n・Ale acceleration is excellent anyway",
+          "fr": "・Debut qui a un rôle solide du début à la fin\n・L'accélération de la bière est excellente de toute façon"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-050",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-050_C.png",
+        "role": {
+          "ja": "・後攻になったら必須の1st\n・このカードがあることで2ターン目から2ndを展開！",
+          "zh-TW": "・進攻時必備的第一把\n・有了這張卡，你可以從第2回合開始發展第2個！",
+          "en": "・A must-have 1st if you go on the offensive\n・With this card, you can develop the 2nd from the 2nd turn!",
+          "fr": "・Un incontournable si vous passez à l'offensive\n・Avec cette carte, vous pouvez développer le 2ème dès le 2ème tour !"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP01-094",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP01-094_U.png",
+        "role": {
+          "ja": "・耐久力は低いがブルーム時のエール加速が優秀",
+          "zh-TW": "・耐久性低，但開花期間的麥芽加速效果優異",
+          "en": "・Low durability, but excellent ale acceleration during bloom",
+          "fr": "・Faible durabilité, mais excellente accélération de la bière pendant la floraison"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-053",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-053_C.png",
+        "role": {
+          "ja": "・ブルーム時に20バフできる\n・アーツでエール加速ができる\n・2ターン目以降の主力カード",
+          "zh-TW": "・開花時可增加 20 點\n・你可以用藝術加速大喊。\n・第2回合以後的主卡",
+          "en": "・Can be buffed by 20 when blooming\n・You can accelerate Yell with Arts.\n・Main card from 2nd turn onwards",
+          "fr": "・Peut être amélioré de 20 lors de la floraison\n・Vous pouvez accélérer Yell avec Arts.\n・Carte principale à partir du 2ème tour"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-054",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-054_R.png",
+        "role": {
+          "ja": "・後攻1ターン目にセンターに出してアーツを打ちエール加速をしておきたい。\n・先攻2ターン目は対面にブルームステージが多いデッキは次の相手のターンに取られてしまう可能性があるで注意しましょう。",
+          "zh-TW": "・後攻1ターン目にセンターに出してアーツを打ちエール加速をしておきたい。\n・先攻2ターン目は対面にブルームステージが多いデッキは次の相手のターンに取られてしまう可能性があるで注意しましょう。",
+          "en": "・I want to send it to the center on the first turn of the second attack and use arts to accelerate Yell.\n- Be careful on the second turn when you go first, as decks that have many bloom stages on your opponent may be taken in your opponent's next turn.",
+          "fr": "・Je veux l'envoyer au centre au premier tour de la deuxième attaque et utiliser les arts pour accélérer Yell.\n- Soyez prudent au deuxième tour lorsque vous jouez en premier, car les decks qui ont plusieurs étapes de floraison sur votre adversaire peuvent être pris au tour suivant de votre adversaire."
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-056",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-056_RR.png",
+        "role": {
+          "ja": "・ギフト効果で自信に重なっているホロメンを使って他のホロメンをブルームさせられる\n・下に重なっているホロメンが重要（エール加速やバフなど）",
+          "zh-TW": "・由於禮物效果，您可以使用與您的信心重疊的 Holomen 來使其他 Holomen 綻放。\n・下面重疊的 Holomen 很重要（啤酒加速、增益等）",
+          "en": "・You can make other Holomen bloom using the Holomen that overlaps with your confidence due to the gift effect.\n・Holomen that overlaps below are important (Ale acceleration, buffs, etc.)",
+          "fr": "・Vous pouvez faire fleurir d'autres Holomen en utilisant l'Holomen qui chevauche votre confiance en raison de l'effet cadeau.\n・Les holomen qui se chevauchent ci-dessous sont importants (accélération de la bière, buffs, etc.)"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP07-055",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-055_U.png",
+        "role": {
+          "ja": "・50点バフが優秀\n・Buzzの上に重ねた後にRRに重ねても○",
+          "zh-TW": "・50點buff非常優秀\n・即使在Buzz上叠加后又在RR上叠加○",
+          "en": "・50 point buff is excellent\n・ Even if you stack it on RR after stacking it on Buzz ○",
+          "fr": "・Le buff de 50 points est excellent\n・ Même si vous l'empilez sur RR après l'avoir empilé sur Buzz ○"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP01-095",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP01-095_R.png",
+        "role": {
+          "ja": "・巻き戻しで相手の盤面を阻害",
+          "zh-TW": "- 透過倒帶來阻擋對手的棋盤",
+          "en": "- Obstruct your opponent's board by rewinding",
+          "fr": "- Obstruez le plateau de votre adversaire en rembobinant"
+        }
+      }
+    ],
+    "strategy": [
+      {
+        "title": {
+          "ja": "【1ターン目】コラボエフェクトラミィで雪民をサーチ",
+          "zh-TW": "[第1回合]以協作效果拉米尋找雪珉",
+          "en": "[1st turn] Search for Yukimin with collaboration effect Lamy",
+          "fr": "[1er tour] Recherche de Yukimin avec effet de collaboration Lamy"
+        },
+        "text": {
+          "ja": "1ターン目からしっかりとコラボしてホロパワーを稼いでいこう\n※後攻ならセンターにエールを貼り、コラボエフェクトでBuzzにすることが理想。（ミオハコスなどの先2から火力の出る対面はエール加速バトンタッチを行う）",
+          "zh-TW": "讓我們從第一回合就好好合作，賺取全像能量吧。\n*如果你選擇第二，最好將Yell放在中心並利用協作效果來製造Buzz。 （面對米奧哈科斯等前2人的火力時，進行大喊加速接力棒觸碰）",
+          "en": "Let's collaborate well from the first turn and earn Holo Power.\n*If you are going second, it is ideal to put Yell in the center and use the collaboration effect to create a Buzz. (When faced with firepower from the first 2, such as Miohakos, perform a yell acceleration baton touch)",
+          "fr": "Collaborons bien dès le premier tour et gagnons Holo Power.\n*Si vous partez en second, l'idéal est de mettre Yell au centre et d'utiliser l'effet de collaboration pour créer un Buzz. (Face à la puissance de feu des 2 premiers, comme Miohakos, effectuez un cri de bâton d'accélération)"
+        }
+      },
+      {
+        "title": {
+          "ja": "【2ターン目】エール加速＋ライフを進める",
+          "zh-TW": "[第二回合]大喊加速+生命提升",
+          "en": "[2nd turn] Yell acceleration + advance life",
+          "fr": "[2ème tour] Crier accélération + avance de vie"
+        },
+        "text": {
+          "ja": "1.ターン開始エールを1ターン目につけたホロメンへ付与\n2.エール加速を用いてセンターにエールを付与\n3.アーツの効果でセンターにエールを付与\n4.もう一枚のアーツの効果でバックの1stにエールを付与",
+          "zh-TW": "1. 向第一回合附帶的 Holomen 發出回合開始大喊\n2.使用yell加速將yell加入中心\n3.以藝術效果為中心增添歡樂\n4.用另一種藝術的效果為後面的第一個添加歡樂",
+          "en": "1. Give turn start yell to the Holomen attached on the first turn\n2. Add yell to the center using yell acceleration\n3. Add cheer to the center with the effect of arts\n4. Add cheer to the back's 1st with the effect of another art",
+          "fr": "1. Donnez le cri de début de tour à l'holomen attaché au premier tour.\n2. Ajoutez un cri au centre en utilisant l'accélération du cri\n3. Ajoutez de la joie au centre avec l'effet des arts\n4. Ajoutez de la joie au 1er du dos avec l'effet d'un autre art"
+        }
+      },
+      {
+        "title": {
+          "ja": "【3ターン目】盤面エールの維持と加速",
+          "zh-TW": "[第3回合]維持並加速董事會喊叫",
+          "en": "[Turn 3] Maintain and accelerate board yell",
+          "fr": "[Tour 3] Maintenir et accélérer le cri du tableau"
+        },
+        "text": {
+          "ja": "相手の後攻2ターン目にライフを取られた場合を想定して、ダウンエールとターン開始エールはバックにいる1stに付けてRR2ndをセンターでアーツが打てるようにする。\nセンターにエール加速が重なっていない場合はコラボエフェクトでエールを移動させます。それ以外の場合は下記の手順でエールの維持と確保を目指します。\n1.2ndのギフト効果でバックのDebutか1stを下にあるエール加速を使いbloomさせ、効果で2ndのエールを4枚に\n2.アーツの効果でバックの1stにエールを移動させる。",
+          "zh-TW": "假設你的對手在第二次攻擊的第二回合失去了生命，請將向下喊叫和回合開始喊叫附加到後面的第一個，並使用RR2nd擊中中心的藝術。\n如果麥芽酒加速不在中心重疊，請使用協作效果來移動麥芽酒。在其他情況下，我們的目標是透過遵循以下步驟來維持和確保啤酒的安全。\n1.使用第二個禮物效果使用下面的麥酒加速使後面的首次亮相或第一綻放，並使用該效果使第二個麥酒變成4件。\n2. 將艾爾移至第 1 後，並具有藝術效果。",
+          "en": "Assuming that your opponent loses life on the second turn of their second attack, attach Down Yell and Turn Start Yell to the 1st in the back, and use RR2nd to hit the arts in the center.\nIf the ale acceleration does not overlap in the center, use the collaboration effect to move the ale. In other cases, we aim to maintain and secure ale by following the steps below.\n1. Use the 2nd gift effect to make the back Debut or 1st bloom using the ale acceleration below, and use the effect to make the 2nd ale to 4 pieces.\n2. Move Ale to the 1st back with the effect of Arts.",
+          "fr": "En supposant que votre adversaire perd des points de vie au deuxième tour de sa deuxième attaque, attachez Down Yell et Turn Start Yell au 1er à l'arrière, et utilisez RR2nd pour frapper les arts au centre.\nSi l'accélération de la bière ne se chevauche pas au centre, utilisez l'effet de collaboration pour déplacer la bière. Dans d'autres cas, nous visons à maintenir et sécuriser la bière en suivant les étapes ci-dessous.\n1. Utilisez le 2ème effet cadeau pour faire le back Debut ou la 1ère floraison en utilisant l'accélération de la bière ci-dessous, et utilisez l'effet pour faire la 2ème bière en 4 morceaux.\n2. Déplacez Ale au 1er rang en arrière avec l'effet Arts."
+        }
+      },
+      {
+        "title": {
+          "ja": "【4ターン目以降】SP推しスキルの圧とバフを有効活用",
+          "zh-TW": "【第四回合以後】有效運用SP推送技能的壓力與增益",
+          "en": "[4th turn onwards] Effectively utilize the pressure and buff of SP push skills",
+          "fr": "[À partir du 4ème tour] Utiliser efficacement la pression et le buff des compétences de poussée SP"
+        },
+        "text": {
+          "ja": "SP推しスキルの圧＋エールの維持能力とバフで相手に圧をかけ続けられます！しっかりとリミテッドを抱えて勝利を目指しましょう！",
+          "zh-TW": "通过SP推送技能的压力+大喊维持能力和buff，可以持续给对手施加压力！牢牢掌握Limited，以勝利為目標吧！",
+          "en": "You can keep putting pressure on your opponent with the SP push skill's pressure + Yell maintenance ability and buff! Let's aim for victory with a firm grip on Limited!",
+          "fr": "Vous pouvez continuer à faire pression sur votre adversaire avec la pression de la compétence SP push + la capacité de maintenance et le buff Yell ! Visons la victoire en maîtrisant fermement le Limited !"
+        }
+      }
+    ],
+    "date": "2026-03-30",
+    "deck_id": "オーロ-クロニー-クロニー単",
+    "tier": 1
+  },
+  {
+    "url": "https://www.holocardstrategy.jp/ha-totandeck/",
+    "title": {
+      "ja": "【ホロカ】赤井はあと単のデッキレシピと回し方",
+      "zh-TW": "[Horoka] Akai 是一個簡單的套牌配方以及如何旋轉它",
+      "en": "[Horoka] Akai is a simple deck recipe and how to spin it",
+      "fr": "[Horoka] Akai est une recette de deck simple et comment le faire tourner"
+    },
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/eb5785e493aba4cb150e5def8be738ce-1080x608.png",
+    "description": {
+      "ja": "ホロカの「赤井はあと単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、赤井はあとのデッキを組もうと思っている方は、ぜひ参考にしてください！ はあちゃま単のデッキレシピ 出典：hololive OFFICI",
+      "zh-TW": "堀花的「Akai wa Ato」的牌組成以及所採用的卡牌的作用的說明！赤井也將介紹如何旋轉牌組及其強力招式，所以如果您正在考慮建立像赤井這樣的牌組，請將此作為參考！ Hachama 甲板配方來源：hololive OFFICI",
+      "en": "Explanation of the deck construction of Horoka's \"Akai wa Ato\" and the role of the adopted cards! Akai will also introduce how to spin the deck and its powerful moves, so if you are thinking of building a deck like Akai's, please use this as a reference! Hachama deck recipe Source: hololive OFFICI",
+      "fr": "Explication de la construction du deck \"Akai wa Ato\" de Horoka et du rôle des cartes adoptées ! Akai présentera également comment faire tourner le deck et ses mouvements puissants, donc si vous envisagez de construire un deck comme celui d'Akai, veuillez l'utiliser comme référence ! Recette du deck Hachama Source : hololive OFFICI"
+    },
+    "cards": [
+      {
+        "name": "赤井はあと",
+        "card_id": "hBD24-063",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-063_P.png",
+        "role": {
+          "ja": "役割：ドロー＆バフ\nステージスキル：ターンに1回赤井はあとがデッキの下に戻ったら２枚ドロー\n推しスキル -2：バックのDebutの赤井はあとを１枚デッキ下に戻して、はあちゃま１人のアーツ＋50",
+          "zh-TW": "角色：繪製和增益\n階段技能：每回合一次，赤井在其餘卡牌返回牌組底部時抽取 2 張卡牌。\n推擊技能-2：後面出道的赤井將一張卡片返回牌組底部，一張哈查馬藝術+50",
+          "en": "Role: Draw & Buff\nStage Skill: Once per turn, Akai draws 2 cards when the rest returns to the bottom of the deck.\nPush skill -2: Debut Akai in the back returns one card to the bottom of the deck, and one Hachama's arts +50",
+          "fr": "Rôle : Dessiner et améliorer\nCompétence de scène : Une fois par tour, Akai pioche 2 cartes lorsque le reste revient au bas du paquet.\nCompétence de poussée -2 : le premier Akai à l'arrière renvoie une carte au bas du jeu et les arts d'un Hachama +50"
+        }
+      },
+      {
+        "name": "赤井はあと",
+        "card_id": "hBD24-063",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-063_P.png",
+        "role": {
+          "ja": "役割：メインアタッカー\n・2エールで80点に加え、センターとコラボ両方に40の特殊ダメージを与える\n└打点を刻んで調整できる優秀なアーツ\n・素点140ダメージから、ステージ\nからデッキに戻っていたらアーツ＋50！\n└3エール190の高火力アーツ！",
+          "zh-TW": "角色：主攻手\n・除了 2 次吶喊獲得 80 點之外，還對中心和協作造成 40 點特殊傷害。\n└可透過雕刻撞擊點來調整的優秀藝術\n・從原始點140點傷害開始，階段\n如果你回到甲板上，藝術+50！\n└3麥酒190高火力手術！",
+          "en": "Role: Main attacker\n・In addition to 80 points with 2 yells, deals 40 special damage to both center and collaboration.\n└Excellent arts that can be adjusted by carving the point of impact\n・From raw point 140 damage, stage\nArts +50 if you return to the deck!\n└3 Ale 190 high firepower arts!",
+          "fr": "Rôle : attaquant principal\n・En plus de 80 points avec 2 cris, inflige 40 dégâts spéciaux au centre et à la collaboration.\n└Excellents arts qui peuvent être ajustés en sculptant le point d'impact\n・À partir du point brut 140 dégâts, étape\nArts +50 si vous revenez sur le pont !\n└3 Ale 190 arts à haute puissance de feu !"
+        }
+      },
+      {
+        "name": "赤井はあと",
+        "card_id": "hBD24-063",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-063_P.png",
+        "role": {
+          "ja": "役割：エール加速＆アタッカー\n・自分のステージからデッキに戻った時にアーカイブのエール1枚を付けられる\n└2nd2面を作りやすく！\n・2エールで50点に加え、センターに20の追加ダメージ！",
+          "zh-TW": "角色：吶喊加速&攻擊者\n・從舞台返回卡組時，可以附加一張存檔大喊。\n└輕鬆製作2nd2面！\n・除了2次大喊50點之外，還對中心造成20點額外傷害！",
+          "en": "Role: Yell acceleration & attacker\n・When you return to your deck from your stage, you can attach one archive yell.\n└Easy to make 2nd2 sides!\n・In addition to 50 points with 2 yells, 20 additional damage to the center!",
+          "fr": "Rôle : accélération du cri et attaquant\n・Lorsque vous revenez à votre deck depuis votre scène, vous pouvez joindre un cri d'archive.\n└Facile à réaliser les 2èmes 2 faces !\n・En plus de 50 points avec 2 cris, 20 dégâts supplémentaires au centre !"
+        }
+      },
+      {
+        "name": "1st",
+        "card_id": "hBP03-033",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/01/hBP03-033_U-1.png",
+        "role": {
+          "ja": "役割：特殊ダメージ\n・ブルーム時に相手センターに特殊ダメージ10点、相手センターにツールが\n付いていれば代わりに30点を与える。\n・1エール40点のアーツも優秀！",
+          "zh-TW": "作用：特殊傷害\n・綻放時，對對手中心造成特殊傷害10點，並給予對手中心一件工具。\n如果是的話，我會給你30分。\n・每麥酒40分的藝術也很棒！",
+          "en": "Role: Special damage\n・When blooming, special damage to the opponent's center is 10 points, and a tool is given to the opponent's center.\nIf it is, I will give you 30 points instead.\n・Arts with 40 points per ale are also excellent!",
+          "fr": "Rôle : Dégâts spéciaux\n・ Lors de la floraison, les dégâts spéciaux au centre de l'adversaire sont de 10 points et un outil est donné au centre de l'adversaire.\nSi c'est le cas, je vous donnerai 30 points à la place.\n・Les arts avec 40 points par bière sont également excellents !"
+        }
+      },
+      {
+        "name": "1stBuzz",
+        "card_id": "hBP03-034",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/01/hBP03-034_RR.png",
+        "role": {
+          "ja": "役割：アーカイブ回収＆サブアタッカー\n・ブルーム時にアーカイブの1stか2ndの1期生を1枚回収！\n・2エールで40点に加えて、ダイスが奇数ならセンターとコラボに20の特殊ダメージ、偶数ならアーツ＋40！",
+          "zh-TW": "角色：檔案收集和次級攻擊者\n・在綻放期間從檔案館收集一份第一代或第二代第一代的副本！\n・除了2次大喊40點外，如果骰子為奇數，將對中心和協作造成20點特殊傷害，如果骰子為偶數，藝術+40！",
+          "en": "Role: Archive collection & sub-attacker\n・Collect one copy of the 1st or 2nd 1st generation from the archive during Bloom!\n・In addition to 40 points for 2 yells, if the dice are odd numbers, 20 special damage will be dealt to the center and collaboration, and if the dice are even numbers, Arts +40!",
+          "fr": "Rôle : Collecte d'archives et sous-attaquant\n・Récupérez un exemplaire de la 1ère ou de la 2ème génération dans les archives pendant Bloom !\n・En plus de 40 points pour 2 cris, si les dés sont des nombres impairs, 20 dégâts spéciaux seront infligés au centre et à la collaboration, et si les dés sont des nombres pairs, Arts +40 !"
+        }
+      },
+      {
+        "name": "赤井はあと",
+        "card_id": "hBD24-063",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-063_P.png",
+        "role": {
+          "ja": "役割：後攻ドローDebut\n・HP110で30点の使いやすいカード\n・後攻1ターン目にコラボすると",
+          "zh-TW": "角色：第二次抽籤登場\n・HP 110、點數 30 點、易於使用的卡片\n・如果你在第二次攻擊的第一回合中合作的話",
+          "en": "Role: Second draw Debut\n・Easy to use card with HP 110 and 30 points\n・If you collaborate on the first turn of the second attack",
+          "fr": "Rôle : Deuxième tirage Début\n・Carte facile à utiliser avec HP 110 et 30 points\n・Si vous collaborez au premier tour de la deuxième attaque"
+        }
+      },
+      {
+        "name": "Debut",
+        "card_id": "hBP03-031",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/01/hBP03-031_C.png",
+        "role": {
+          "ja": "役割：初動\n・HP100で30点の一般的なDebut\n・フレンドリーパソコンで2枚出せるのが強力",
+          "zh-TW": "作用：初步響應\n・HP 100 和 30 點的普通出道\n・功能強大，可以用友善的計算機取出兩張卡。",
+          "en": "Role: Initial response\n・General Debut with HP 100 and 30 points\n・It is powerful that you can take out two cards with a friendly computer.",
+          "fr": "Rôle : réponse initiale\n・Début général avec HP 100 et 30 points\n・Il est puissant que vous puissiez retirer deux cartes avec un ordinateur convivial."
+        }
+      },
+      {
+        "name": "ちゃま旅",
+        "card_id": "hBP07-096",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-096_U.png",
+        "role": {
+          "ja": "役割：エール軽減\nバックのはあちゃま1人をデッキ下に戻し、このターンはあちゃま全員のアーツに必要な無色エールを1軽減！",
+          "zh-TW": "作用：減少叫喊\n將一張阿卡瑪從後面放回牌組的最下面，並且本回合所有阿卡瑪的藝術所需的無色麥芽酒減少 1 點！",
+          "en": "Role: Yell reduction\nReturn one Acchama from the back to the bottom of the deck, and reduce the colorless ale required for all Acchamas' arts by 1 this turn!",
+          "fr": "Rôle : Réduction des cris\nRenvoyez un Acchama de l'arrière vers le bas du paquet et réduisez de 1 la bière incolore requise pour tous les arts des Acchamas ce tour-ci !"
+        }
+      }
+    ],
+    "strategy": [
+      {
+        "title": {
+          "ja": "【1ターン目】コラボエフェクトでドロー！",
+          "zh-TW": "[第一回合]以協作效果進行抽獎！",
+          "en": "[1st turn] Draw with collaboration effect!",
+          "fr": "[1er tour] Dessinez avec effet de collaboration !"
+        },
+        "text": {
+          "ja": "1ターン目は盤面と手札を整えていきましょう。新規Debutのコラボで先行なら1枚、後攻なら2枚ドローできる可能性も高い！\nバックステージには枢を置いておいて、いつでも1stや2ndのコラボエフェクトを使えるように準備しましょう。",
+          "zh-TW": "在第一回合，準備好棋盤和手牌。有了新Debut的配合，很有可能先走就抽1张卡，后走就抽2张卡！\n在後台保留一個角落，隨時準備使用第一和第二協作效果。",
+          "en": "On the first turn, prepare your board and hand. With the collaboration of the new Debut, there is a high possibility that you can draw 1 card if you go first, or 2 cards if you go second!\nKeep a corner backstage and be ready to use the 1st and 2nd collaboration effects at any time.",
+          "fr": "Au premier tour, préparez votre plateau et votre main. Avec la collaboration du nouveau Debut, il y a de fortes chances que vous puissiez piocher 1 carte si vous y allez en premier, ou 2 cartes si vous y allez en second !\nGardez un coin en coulisses et soyez prêt à utiliser les 1er et 2ème effets de collaboration à tout moment."
+        }
+      },
+      {
+        "title": {
+          "ja": "【2ターン目】推しスキルを使用してライフを取ろう！",
+          "zh-TW": "【2ターン目】推しスキルを使用してライフを取ろう！",
+          "en": "[2nd turn] Use the push skill to gain life!",
+          "fr": "[2e tour] Utilisez la compétence de poussée pour gagner de la vie !"
+        },
+        "text": {
+          "ja": "2ターン目はセンターにエールを付けてライフ先行を狙います。\n通常は2エール70点の火力ですが、推しスキルを使うと50点のバフが入ってHP120ラインまで余裕で落とすことができます！",
+          "zh-TW": "在第二回合，目標是透過將大喊附著在中心來獲得生命。\n正常情況下，2聲怒吼70點火力，但如果使用推技能，就能獲得50點buff，輕鬆掉到120血線！",
+          "en": "On the second turn, aim for a life lead by attaching Yell to the center.\nNormally, the firepower is 70 points for 2 yells, but if you use the push skill, you can get a 50 point buff and easily drop it to the 120 HP line!",
+          "fr": "Au deuxième tour, visez une piste de vie en attachant Yell au centre.\nNormalement, la puissance de feu est de 70 points pour 2 cris, mais si vous utilisez la compétence pousser, vous pouvez obtenir un buff de 50 points et le faire tomber facilement jusqu'à la ligne des 120 HP !"
+        }
+      },
+      {
+        "title": {
+          "ja": "【3ターン目】エールを温存して相手のホロメンを倒していく",
+          "zh-TW": "【3ターン目】エールを温存して相手のホロメンを倒していく",
+          "en": "[Turn 3] Defeat the opponent's Holomen while conserving Ale",
+          "fr": "[Tour 3] Vaincre l'Holomen de l'adversaire tout en conservant la bière"
+        },
+        "text": {
+          "ja": "センターを2ndにブルームして高火力でのダウンを狙いましょう！\nここでちゃま旅を引けていれば、次のターン用のエールを温存しながら2ndの3エールアーツを使用することができます！",
+          "zh-TW": "將中心打到第二位，目標是用高火力將其打倒！\n如果你在這裡抽到茶馬足袋，你就可以使用第二個 3 麥芽術，同時將麥芽保存到下一個回合！",
+          "en": "Bloom the center to 2nd and aim to bring it down with high firepower!\nIf you draw Chama Tabi here, you can use the 2nd 3 Ale Arts while saving Ale for the next turn!",
+          "fr": "Faites fleurir le centre au 2ème rang et visez à l'abattre avec une puissance de feu élevée !\nSi vous piochez Chama Tabi ici, vous pouvez utiliser les 2e 3 Ale Arts tout en gardant la Ale pour le prochain tour !"
+        }
+      },
+      {
+        "title": {
+          "ja": "【4ターン目以降】2面取りができる盤面を作ろう",
+          "zh-TW": "[從第 4 回合開始] 建立一個可以有兩個面的板",
+          "en": "[From turn 4 onwards] Create a board that can have two sides",
+          "fr": "[À partir du tour 4] Créez un plateau pouvant avoir deux côtés"
+        },
+        "text": {
+          "ja": "2ndが倒されたとしてもBuzzのブルームエフェクトで回収したり、ちゃまお1stでエールを拾ったり、継続して2ndで火力を出していくことができます！\n盤面4エールの状態でちゃま旅を使えば、相手の両面に190ずつ与えて2面取りも狙うことができます！",
+          "zh-TW": "即使第2個被擊敗，你也可以用巴斯的綻放效果收集它，用第1個茶茂拾取麥芽酒，並用第2個繼續產生火力！\n如果您在棋盤上使用帶有 4 次喊叫的 Chama Tabi，您可以為對手雙方提供 190 點並瞄準 2 面！",
+          "en": "Even if the 2nd one is defeated, you can collect it with Buzz's bloom effect, pick up ale with the 1st Chamao, and continue to generate firepower with the 2nd one!\nIf you use Chama Tabi with 4 yells on the board, you can give 190 to both sides of your opponent and aim for 2 faces!",
+          "fr": "Même si le 2ème est vaincu, vous pouvez le récupérer avec l'effet bloom de Buzz, ramasser de la bière avec le 1er Chamao et continuer à générer de la puissance de feu avec le 2ème !\nSi vous utilisez Chama Tabi avec 4 cris au tableau, vous pouvez donner 190 aux deux côtés de votre adversaire et viser 2 faces !"
+        }
+      }
+    ],
+    "date": "2026-03-01",
+    "deck_id": "赤井はあと-はあちゃま単",
+    "tier": 2
+  },
+  {
+    "url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
+    "title": {
+      "ja": "【ホロカ】風真いろは単のデッキレシピと回し方（7弾更新版）",
+      "zh-TW": "[Horoka] 牌組配方與風馬伊呂波玩法（第 7 次更新版本）",
+      "en": "[Horoka] Deck recipe and how to play Kazeuma Iroha (7th updated version)",
+      "fr": "[Horoka] Recette de deck et comment jouer à Kazeuma Iroha (7ème version mise à jour)"
+    },
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cda595fe216e63e3ececabf6b353004c-1080x608.png",
+    "description": {
+      "ja": "ホロカの「いろは単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、風真いろはのデッキを組もうと思っている方は、ぜひ参考にしてください。 いろは単のデッキレシピ 出典：hololive OFFICIAL C",
+      "zh-TW": "解釋堀花的「單色羽」的牌組結構以及所採用卡牌的作用！我們也將介紹如何旋轉牌組及其強大的招式，所以如果您正在考慮建立風間伊呂波牌組，請將此作為參考。伊呂波單層食譜來源：hololive OFFICIAL C",
+      "en": "Explanation of the deck construction of Horoka's \"Single Iroha\" and the role of the adopted cards! We will also introduce how to spin the deck and its powerful moves, so if you are thinking of building a Kazama Iroha deck, please use this as a reference. Iroha single deck recipe Source: hololive OFFICIAL C",
+      "fr": "Explication de la construction du deck du \"Single Iroha\" de Horoka et du rôle des cartes adoptées ! Nous présenterons également comment faire tourner le deck et ses mouvements puissants, donc si vous envisagez de construire un deck Kazama Iroha, veuillez l'utiliser comme référence. Recette Iroha à un seul pont Source : hololive OFFICIEL C"
+    },
+    "cards": [
+      {
+        "name": "風真いろは",
+        "card_id": "hBD24-054",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
+        "role": {
+          "ja": "役割：エール加速＆バフ\n・推しスキルはホロパワー-2で、BuzzかBuzzからブルームしているいろは1人にエール加速\n・SP推しスキルはホロパワー-2で、ステージ上のエールの数×10点いろはをバフし、Buzzがいれば3ドロー",
+          "zh-TW": "作用：大喊加速&增益\n・推薦的技能是全息能量-2，可加速對巴斯或從巴斯中綻放的一隻彩羽的喊叫。\n・SP推進技能為全像力量-2，對伊呂波增益10點×舞台上的喊叫次數，如果巴茲在場，抽3",
+          "en": "Role: Yell acceleration & buff\n・The recommended skill is Holo Power -2, which accelerates shouting at Buzz or one Iroha who blooms from Buzz.\n・SP pushing skill is Holo Power -2, buffs Iroha by 10 points x number of yells on stage, and if Buzz is present, draw 3",
+          "fr": "Rôle : accélération du cri et buff\n・La compétence recommandée est Holo Power -2, qui accélère les cris sur Buzz ou sur un Iroha qui fleurit de Buzz.\n・La compétence de poussée SP est Holo Power -2, améliore Iroha de 10 points x nombre de cris sur scène, et si Buzz est présent, piochez-en 3"
+        }
+      },
+      {
+        "name": "風真いろは",
+        "card_id": "hBD24-054",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
+        "role": {
+          "ja": "役割：\n回復\n・ブルーム時にホロメン1人のHPを100回復\n┗山田るい54世でサーチできるため1枚の採用でも仕事あり\n・アーツはエールを2枚アーカイブすることで2ドローできる！",
+          "zh-TW": "角色：\n恢復\n・綻放期間，恢復 1 個 Holomen 的 HP 100。\n┗可以搜尋山田瑠衣54號，即使只僱用一個人也能找到工作\n・存檔 2 個麥芽酒即可繪製 2 個藝術！",
+          "en": "Role:\nrecovery\n・Recovers 100 HP of one Holomen during Bloom.\n┗You can search for Rui Yamada 54th, so you can get a job even if you hire just one\n・You can draw 2 Arts by archiving 2 Ale!",
+          "fr": "Rôle :\nrécupération\n・Récupère 100 HP d'un Holomen pendant la floraison.\n┗Vous pouvez rechercher Rui Yamada 54e, afin d'obtenir un emploi même si vous n'en engagez qu'un seul.\n・Vous pouvez dessiner 2 Arts en archivant 2 Ale !"
+        }
+      },
+      {
+        "name": "風真いろは",
+        "card_id": "hBD24-054",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
+        "role": {
+          "ja": "役割：センターを守る\n・ギフト【用心棒】でセンターのホロメンを守れる",
+          "zh-TW": "作用：保護中鋒\n・可以用禮物[保鑣]保護中心霍洛門",
+          "en": "Role: Protect the center\n・You can protect the center Holomen with the gift [Bouncer]",
+          "fr": "Rôle : Protéger le centre\n・Vous pouvez protéger le centre Holomen avec le cadeau [Bouncer]"
+        }
+      },
+      {
+        "name": "1st いろは",
+        "card_id": "hSD06-005",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/hSD06-005_C.png",
+        "role": {
+          "ja": "役割：エール加速\n・ブルーム時にholoX一人にエール加速\n・1エール30点も優秀",
+          "zh-TW": "作用：大喊加速\n・在綻放期間加速向一台 HoloX 喊叫\n- 每麥芽酒 30 分，非常好",
+          "en": "Role: Yell acceleration\n・Accelerate shouting to one holoX during bloom\n- 30 points per ale is excellent",
+          "fr": "Rôle : Crier accélération\n・Accélérez les cris jusqu'à un holoX pendant la floraison\n- 30 points par bière, c'est excellent"
+        }
+      },
+      {
+        "name": "1stBuzz いろは",
+        "card_id": null,
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/S__90325004_0.jpg",
+        "role": {
+          "ja": "役割：エール加速\n・センターにいる時、手札が5枚以上ならコラボしたホロメンにエールを付ける",
+          "zh-TW": "作用：大喊加速\n・在中央時，如果你的手牌有5張或更多，請向合作的霍洛門大喊。",
+          "en": "Role: Yell acceleration\n・When in the center, if you have 5 or more cards in your hand, give yell to the collaborating Holomen.",
+          "fr": "Rôle : Crier accélération\n・Au centre, si vous avez 5 cartes ou plus en main, criez à l'Holomen collaborateur."
+        }
+      },
+      {
+        "name": "1stBuzz いろは",
+        "card_id": "hBP01-051",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/hBP01-051_RR.png",
+        "role": {
+          "ja": "役割：第2のメインアタッカー\n・コラボポジション限定だが90～150点のアタッカー\n・3エールで70点のアーツも2ndへの繋ぎとして優秀",
+          "zh-TW": "角色：第二主攻\n・攻擊者90-150分，僅限協作位置\n・3聲喊叫70分的藝術作為通往第2階段的連結也很出色。",
+          "en": "Role: Second main attacker\n・Attacker with 90-150 points, limited to collaboration positions\n・Arts with 70 points in 3 yells are also excellent as a link to the 2nd stage.",
+          "fr": "Rôle : Deuxième attaquant principal\n・Attaquant avec 90-150 points, limité aux postes de collaboration\n・Les arts avec 70 points en 3 cris sont également excellents comme lien vers la 2ème étape."
+        }
+      },
+      {
+        "name": "Debut いろは",
+        "card_id": "hBP01-048",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/hBP01-048_C.png",
+        "role": {
+          "ja": "役割：初動\n・HP120と高い耐久力\n・フレンドリーパソコンで出せる",
+          "zh-TW": "作用：初步響應\n・HP120、高耐久性\n・可以使用友善的計算機發送",
+          "en": "Role: Initial response\n・HP120 and high durability\n・Can be sent using a friendly computer",
+          "fr": "Rôle : réponse initiale\n・HP120 et haute durabilité\n・Peut être envoyé à l'aide d'un ordinateur convivial"
+        }
+      },
+      {
+        "name": "風真いろは",
+        "card_id": "hBD24-054",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
+        "role": {
+          "ja": "役割：Buzzサーチ\n・後攻1ターン目のコラボでデッキからBuzzのいろはをサーチ\n・1エール30点と使いやすいアーツも優秀",
+          "zh-TW": "角色：Buzz搜尋\n・在第二次攻擊的第一回合中合作從牌組中搜尋巴茲的彩葉\n・每瓶啤酒可獲得 30 點的易於使用的藝術也非常出色。",
+          "en": "Role: Buzz search\n・Search Buzz's Iroha from the deck in collaboration on the first turn of second attack\n・Easy-to-use arts with 30 points per ale are also excellent.",
+          "fr": "Rôle : Recherche Buzz\n・Recherchez Iroha de Buzz depuis le deck en collaboration lors du premier tour de la deuxième attaque\n・Les arts faciles à utiliser avec 30 points par bière sont également excellents."
+        }
+      }
+    ],
+    "strategy": [],
+    "date": "2026-03-26",
+    "deck_id": "風真いろは-いろは単",
+    "tier": 3
+  },
+  {
     "url": "https://www.holocardstrategy.jp/korone-deck/",
     "title": {
       "ja": "【ホロカ】6弾更新版！ころね単のデッキレシピと回し方",
@@ -283,117 +738,7 @@
       }
     ],
     "date": "2026-02-07",
-    "deck_id": "赤井はあと-はあちゃま単",
-    "tier": 1
-  },
-  {
-    "url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
-    "title": {
-      "ja": "【ホロカ】風真いろは単のデッキレシピと回し方（7弾更新版）",
-      "zh-TW": "[Horoka] 牌組配方與風馬伊呂波玩法（第 7 次更新版本）",
-      "en": "[Horoka] Deck recipe and how to play Kazeuma Iroha (7th updated version)",
-      "fr": "[Horoka] Recette de deck et comment jouer à Kazeuma Iroha (7ème version mise à jour)"
-    },
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cda595fe216e63e3ececabf6b353004c-1080x608.png",
-    "description": {
-      "ja": "ホロカの「いろは単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、風真いろはのデッキを組もうと思っている方は、ぜひ参考にしてください。 いろは単のデッキレシピ 出典：hololive OFFICIAL C",
-      "zh-TW": "解釋堀花的「單色羽」的牌組結構以及所採用卡牌的作用！我們也將介紹如何旋轉牌組及其強大的招式，所以如果您正在考慮建立風間伊呂波牌組，請將此作為參考。伊呂波單層食譜來源：hololive OFFICIAL C",
-      "en": "Explanation of the deck construction of Horoka's \"Single Iroha\" and the role of the adopted cards! We will also introduce how to spin the deck and its powerful moves, so if you are thinking of building a Kazama Iroha deck, please use this as a reference. Iroha single deck recipe Source: hololive OFFICIAL C",
-      "fr": "Explication de la construction du deck du \"Single Iroha\" de Horoka et du rôle des cartes adoptées ! Nous présenterons également comment faire tourner le deck et ses mouvements puissants, donc si vous envisagez de construire un deck Kazama Iroha, veuillez l'utiliser comme référence. Recette Iroha à un seul pont Source : hololive OFFICIEL C"
-    },
-    "cards": [
-      {
-        "name": "風真いろは",
-        "card_id": "hBD24-054",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
-        "role": {
-          "ja": "役割：エール加速＆バフ\n・推しスキルはホロパワー-2で、BuzzかBuzzからブルームしているいろは1人にエール加速\n・SP推しスキルはホロパワー-2で、ステージ上のエールの数×10点いろはをバフし、Buzzがいれば3ドロー",
-          "zh-TW": "作用：大喊加速&增益\n・推薦的技能是全息能量-2，可加速對巴斯或從巴斯中綻放的一隻彩羽的喊叫。\n・SP推進技能為全像力量-2，對伊呂波增益10點×舞台上的喊叫次數，如果巴茲在場，抽3",
-          "en": "Role: Yell acceleration & buff\n・The recommended skill is Holo Power -2, which accelerates shouting at Buzz or one Iroha who blooms from Buzz.\n・SP pushing skill is Holo Power -2, buffs Iroha by 10 points x number of yells on stage, and if Buzz is present, draw 3",
-          "fr": "Rôle : accélération du cri et buff\n・La compétence recommandée est Holo Power -2, qui accélère les cris sur Buzz ou sur un Iroha qui fleurit de Buzz.\n・La compétence de poussée SP est Holo Power -2, améliore Iroha de 10 points x nombre de cris sur scène, et si Buzz est présent, piochez-en 3"
-        }
-      },
-      {
-        "name": "風真いろは",
-        "card_id": "hBD24-054",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
-        "role": {
-          "ja": "役割：\n回復\n・ブルーム時にホロメン1人のHPを100回復\n┗山田るい54世でサーチできるため1枚の採用でも仕事あり\n・アーツはエールを2枚アーカイブすることで2ドローできる！",
-          "zh-TW": "角色：\n恢復\n・綻放期間，恢復 1 個 Holomen 的 HP 100。\n┗可以搜尋山田瑠衣54號，即使只僱用一個人也能找到工作\n・存檔 2 個麥芽酒即可繪製 2 個藝術！",
-          "en": "Role:\nrecovery\n・Recovers 100 HP of one Holomen during Bloom.\n┗You can search for Rui Yamada 54th, so you can get a job even if you hire just one\n・You can draw 2 Arts by archiving 2 Ale!",
-          "fr": "Rôle :\nrécupération\n・Récupère 100 HP d'un Holomen pendant la floraison.\n┗Vous pouvez rechercher Rui Yamada 54e, afin d'obtenir un emploi même si vous n'en engagez qu'un seul.\n・Vous pouvez dessiner 2 Arts en archivant 2 Ale !"
-        }
-      },
-      {
-        "name": "風真いろは",
-        "card_id": "hBD24-054",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
-        "role": {
-          "ja": "役割：センターを守る\n・ギフト【用心棒】でセンターのホロメンを守れる",
-          "zh-TW": "作用：保護中鋒\n・可以用禮物[保鑣]保護中心霍洛門",
-          "en": "Role: Protect the center\n・You can protect the center Holomen with the gift [Bouncer]",
-          "fr": "Rôle : Protéger le centre\n・Vous pouvez protéger le centre Holomen avec le cadeau [Bouncer]"
-        }
-      },
-      {
-        "name": "1st いろは",
-        "card_id": "hSD06-005",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/hSD06-005_C.png",
-        "role": {
-          "ja": "役割：エール加速\n・ブルーム時にholoX一人にエール加速\n・1エール30点も優秀",
-          "zh-TW": "作用：大喊加速\n・在綻放期間加速向一台 HoloX 喊叫\n- 每麥芽酒 30 分，非常好",
-          "en": "Role: Yell acceleration\n・Accelerate shouting to one holoX during bloom\n- 30 points per ale is excellent",
-          "fr": "Rôle : Crier accélération\n・Accélérez les cris jusqu'à un holoX pendant la floraison\n- 30 points par bière, c'est excellent"
-        }
-      },
-      {
-        "name": "1stBuzz いろは",
-        "card_id": null,
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/S__90325004_0.jpg",
-        "role": {
-          "ja": "役割：エール加速\n・センターにいる時、手札が5枚以上ならコラボしたホロメンにエールを付ける",
-          "zh-TW": "作用：大喊加速\n・在中央時，如果你的手牌有5張或更多，請向合作的霍洛門大喊。",
-          "en": "Role: Yell acceleration\n・When in the center, if you have 5 or more cards in your hand, give yell to the collaborating Holomen.",
-          "fr": "Rôle : Crier accélération\n・Au centre, si vous avez 5 cartes ou plus en main, criez à l'Holomen collaborateur."
-        }
-      },
-      {
-        "name": "1stBuzz いろは",
-        "card_id": "hBP01-051",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/hBP01-051_RR.png",
-        "role": {
-          "ja": "役割：第2のメインアタッカー\n・コラボポジション限定だが90～150点のアタッカー\n・3エールで70点のアーツも2ndへの繋ぎとして優秀",
-          "zh-TW": "角色：第二主攻\n・攻擊者90-150分，僅限協作位置\n・3聲喊叫70分的藝術作為通往第2階段的連結也很出色。",
-          "en": "Role: Second main attacker\n・Attacker with 90-150 points, limited to collaboration positions\n・Arts with 70 points in 3 yells are also excellent as a link to the 2nd stage.",
-          "fr": "Rôle : Deuxième attaquant principal\n・Attaquant avec 90-150 points, limité aux postes de collaboration\n・Les arts avec 70 points en 3 cris sont également excellents comme lien vers la 2ème étape."
-        }
-      },
-      {
-        "name": "Debut いろは",
-        "card_id": "hBP01-048",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/03/hBP01-048_C.png",
-        "role": {
-          "ja": "役割：初動\n・HP120と高い耐久力\n・フレンドリーパソコンで出せる",
-          "zh-TW": "作用：初步響應\n・HP120、高耐久性\n・可以使用友善的計算機發送",
-          "en": "Role: Initial response\n・HP120 and high durability\n・Can be sent using a friendly computer",
-          "fr": "Rôle : réponse initiale\n・HP120 et haute durabilité\n・Peut être envoyé à l'aide d'un ordinateur convivial"
-        }
-      },
-      {
-        "name": "風真いろは",
-        "card_id": "hBD24-054",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-054_P.png",
-        "role": {
-          "ja": "役割：Buzzサーチ\n・後攻1ターン目のコラボでデッキからBuzzのいろはをサーチ\n・1エール30点と使いやすいアーツも優秀",
-          "zh-TW": "角色：Buzz搜尋\n・在第二次攻擊的第一回合中合作從牌組中搜尋巴茲的彩葉\n・每瓶啤酒可獲得 30 點的易於使用的藝術也非常出色。",
-          "en": "Role: Buzz search\n・Search Buzz's Iroha from the deck in collaboration on the first turn of second attack\n・Easy-to-use arts with 30 points per ale are also excellent.",
-          "fr": "Rôle : Recherche Buzz\n・Recherchez Iroha de Buzz depuis le deck en collaboration lors du premier tour de la deuxième attaque\n・Les arts faciles à utiliser avec 30 points par bière sont également excellents."
-        }
-      }
-    ],
-    "strategy": [],
-    "date": "2026-03-26",
-    "deck_id": "風真いろは-いろは単",
+    "deck_id": "戌神ころね-ころね単",
     "tier": 3
   },
   {
@@ -539,184 +884,6 @@
     ],
     "date": "2026-03-25",
     "deck_id": "大神ミオ-ミオ単",
-    "tier": 3
-  },
-  {
-    "url": "https://www.holocardstrategy.jp/porukatan-deck/",
-    "title": {
-      "ja": "【ホロカ】7弾更新版！ポルカ単（tキアラ）のデッキレシピと回し方！",
-      "zh-TW": "[螢火蟲]第七次更新版本！波爾卡單（T Chiara）甲板配方以及如何旋轉它！",
-      "en": "[Horoka] 7th updated version! Polka single (T Chiara) deck recipe and how to spin it!",
-      "fr": "[Horoka] 7ème version mise à jour ! Recette du deck Polka single (T Chiara) et comment le faire tourner !"
-    },
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/5b5b18ae804de473adf0b48a233cbafd-1080x608.png",
-    "description": {
-      "ja": "この記事では、「ポルカ単」のおすすめデッキレシピと回し方を解説しています。ポルカ単は数々の大会で結果を残しているデッキなので、ぜひ参考にしてください。",
-      "zh-TW": "本文介紹了推薦的牌組配方以及如何玩「Polka Single」。 Single Polka是一套在眾多比賽中取得成績的套牌，請大家參考。",
-      "en": "This article explains the recommended deck recipe and how to play \"Polka Single\". Single Polka is a deck that has achieved results in numerous tournaments, so please use it as a reference.",
-      "fr": "Cet article explique la recette de deck recommandée et comment jouer à \"Polka Single\". Single Polka est un deck qui a obtenu des résultats dans de nombreux tournois, veuillez donc l'utiliser comme référence."
-    },
-    "cards": [
-      {
-        "name": "尾丸ポルカ",
-        "card_id": "hBD24-019",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-019_P.png",
-        "role": {
-          "ja": "・SP推しスキルで山札上7枚からポルカとスタッフカード回収\n┗スタッフカードの現時点だとのどかとマネちゃんが対象\n・推しスキルは、ステージ上の座員の枚数になるまでドロー",
-          "zh-TW": "・使用 SP 推播技能從牌組頂部 7 張卡牌中收集波爾卡和工作人員卡\n┗工作人員卡目前的目標是Nodoka和Mane-chan。\n・對於推技能，抽牌直到卡牌數量等於舞台上的人數。",
-          "en": "・Collect polka and staff cards from the top 7 cards of the deck using SP pushing skill\n┗Staff cards currently target Nodoka and Mane-chan.\n・For push skills, draw until the number of cards is equal to the number of people on the stage.",
-          "fr": "・Récupérez les cartes de polka et de bâton parmi les 7 premières cartes du jeu en utilisant la compétence de poussée SP\n┗Les cartes de personnel ciblent actuellement Nodoka et Mane-chan.\n・Pour les compétences de poussée, tirez jusqu'à ce que le nombre de cartes soit égal au nombre de personnes sur scène."
-        }
-      },
-      {
-        "name": "尾丸ポルカ",
-        "card_id": "hBD24-019",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-019_P.png",
-        "role": {
-          "ja": "役割：初動\n・バトンタッチに必要なエールがないのが非常に優秀\n┗先手なら後手1のアーツを受けた後に次ターン無料で逃げれる\n・HPが低くく倒されやすいのでコラボする際は注意したい\nカードの購入はこちら",
-          "zh-TW": "作用：初步響應\n・傳遞接力棒時無需大喊大叫，這一點非常好。\n┗如果你是先行者，在收到第二步第一個藝術後，你可以在下一回合免費逃脫。\n・與他合作時請小心，因為他的HP很低，很容易被擊敗。\n點擊此處購買卡",
-          "en": "Role: Initial response\n・It is very good that there is no yell necessary for passing the baton.\n┗If you are the first mover, you can escape for free the next turn after receiving the second move's 1st art.\n・Please be careful when collaborating with him as his HP is low and he is easily defeated.\nClick here to purchase the card",
-          "fr": "Rôle : réponse initiale\n・C'est très bien qu'il n'y ait pas besoin de crier pour passer le relais.\n┗Si vous êtes le premier joueur, vous pouvez vous échapper gratuitement au tour suivant après avoir reçu le 1er art du deuxième coup.\n・ Soyez prudent lorsque vous collaborez avec lui car ses PV sont faibles et il est facilement vaincu.\nCliquez ici pour acheter la carte"
-        }
-      },
-      {
-        "name": "Debut ポルカ",
-        "card_id": "hBP05-030",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/09/hBP05-030_U.png",
-        "role": {
-          "ja": "役割：初動\n・コラボ時にセンターにファンが付いていたらそのアーツダメージを＋10する\nカードの購入はこちら",
-          "zh-TW": "作用：初步響應\n・合作時中心內有粉絲時，藝術傷害+10。\n點擊此處購買卡",
-          "en": "Role: Initial response\n・If there is a fan in the center during collaboration, the arts damage will be +10.\nClick here to purchase the card",
-          "fr": "Rôle : réponse initiale\n・S'il y a un fan au centre pendant la collaboration, les dégâts artistiques seront de +10.\nCliquez ici pour acheter la carte"
-        }
-      },
-      {
-        "name": "尾丸ポルカ",
-        "card_id": "hBD24-019",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-019_P.png",
-        "role": {
-          "ja": "役割：アタッカー＋ファン回収\n・ブルームで確実にファンをサーチできる\n┗座員回収でそのまま自身がアタッカーに\n┗KFP回収でドローも可能\n・2エール70点は1stでもトップ火力\nカードの購入はこちら",
-          "zh-TW": "角色：攻擊者+粉絲收集\n・您可以透過 Bloom 可靠地搜尋粉絲\n┗透過收集座位成員即可成為攻擊者。\n┗收集KFP也可以抽獎\n・2麥酒70分，即使在第一名也是頂級火力\n點擊此處購買卡",
-          "en": "Role: Attacker + fan collection\n・You can reliably search for fans with Bloom\n┗You can become the attacker by collecting the seat member.\n┗You can also draw by collecting KFP\n・2 ale 70 points is top firepower even in 1st\nClick here to purchase the card",
-          "fr": "Rôle : attaquant + collection de fans\n・Vous pouvez rechercher des fans de manière fiable avec Bloom\n┗Vous pouvez devenir l'attaquant en récupérant le membre du siège.\n┗Vous pouvez également dessiner en collectant des KFP\n・2 bière 70 points est la meilleure puissance de feu, même en 1er\nCliquez ici pour acheter la carte"
-        }
-      },
-      {
-        "name": "Buzz ポルカ",
-        "card_id": null,
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/10/4cbc61872917c0d14d061471c1c5cad4.png",
-        "role": {
-          "ja": "役割：メインアタッカー\n・場のファンの枚数で打点up\n┗最高12×20＋50で290ダメージ\n・ブルーム時にアーカイブの座員を回収できる\n┗キアラで本体回収→ポルカで座員回収\nカードの購入はこちら",
-          "zh-TW": "角色：主攻手\n- 打點數的增加取決於場上球迷的數量\n┗最大12×20+50 290點傷害\n・花期期間可以收集檔案成員。\n┗與Chiara一起恢復身體→與Polka一起恢復座椅成員\n點擊此處購買卡",
-          "en": "Role: Main attacker\n- RBI points increase depending on the number of fans in the field\n┗Maximum 12×20+50 for 290 damage\n・You can collect archive members during bloom.\n┗Recover the body with Chiara → Recover the seat member with Polka\nClick here to purchase the card",
-          "fr": "Rôle : attaquant principal\n- Les points RBI augmentent en fonction du nombre de fans sur le terrain\n┗Maximum 12×20+50 pour 290 dégâts\n・Vous pouvez collecter des membres d'archives pendant la floraison.\n┗Récupérer le corps avec Chiara → Récupérer le membre du siège avec Polka\nCliquez ici pour acheter la carte"
-        }
-      },
-      {
-        "name": "尾丸ポルカ",
-        "card_id": "hBD24-019",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-019_P.png",
-        "role": {
-          "ja": "役割：サブアタッカー\n・ブルームエフェクトで手札から好きな枚数墓地肥やし可能\n└捨てた分座員回収は強制\n・アーカイブ20枚で170点、30枚で200点",
-          "zh-TW": "角色：副攻擊手\n・你可以使用綻放效果將任意數量的手牌填滿你的墓地。\n└回收廢棄成員是強制性的\n・20個檔案170點、30個檔案200點",
-          "en": "Role: Sub-attacker\n・You can fill your graveyard with any number of cards from your hand using Bloom Effect.\n└Recovery of discarded members is compulsory\n・170 points for 20 archives, 200 points for 30 archives",
-          "fr": "Rôle : Sous-attaquant\n・Vous pouvez remplir votre cimetière avec n'importe quel nombre de cartes de votre main en utilisant l'effet Bloom.\n└La récupération des membres écartés est obligatoire\n・170 points pour 20 archives, 200 points pour 30 archives"
-        }
-      },
-      {
-        "name": "座員",
-        "card_id": "hBP01-126",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-126_C.png",
-        "role": {
-          "ja": "役割：ポルカ用のエール\n・ポルカにつけるとアーツを使う時に赤エールとして扱う\n┗座員2枚でもアーツを使える\n・実質エール加速\n・ただし、つけただけ被ダメが増える\nカードの購入はこちら",
-          "zh-TW": "角色：波爾卡大喊\n・加入波爾卡酒後，在使用Arts時會被視為紅色艾爾啤酒。\n┗2人也可使用藝術\n・實際尖叫加速度\n・但是，受到的傷害越大，受到的傷害也越大。\n點擊此處購買卡",
-          "en": "Role: Polka yell\n・When added to polka, it is treated as red ale when using arts.\n┗Arts can be used even with 2 members\n・Actual yell acceleration\n・However, the more damage you take, the more damage you receive.\nClick here to purchase the card",
-          "fr": "Rôle : Polka crie\n・Lorsqu'elle est ajoutée à la polka, elle est traitée comme une bière rouge lors de l'utilisation des arts.\n┗Les arts peuvent être utilisés même avec 2 membres\n・Accélération réelle des cris\n・Cependant, plus vous subissez de dégâts, plus vous en recevez.\nCliquez ici pour acheter la carte"
-        }
-      },
-      {
-        "name": "KFP",
-        "card_id": "hBP01-125",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-125_C.png",
-        "role": {
-          "ja": "役割：手札を入れ替え＆アーカイブ肥し\n・キアラのみに付けれる\n・手札1枚をアーカイブして1ドロー\n└座員を捨てるとBuzzポルカで回収できる",
-          "zh-TW": "作用：交換卡和存檔肥料\n・只能安裝在Chiara身上\n・將手牌1張存檔並抽1張\n└如果你丟掉了成員，你可以用Buzz Polka來收集它們。",
-          "en": "Role: Swap cards & archive fertilizer\n・Can only be attached to Chiara\n・Archive 1 card in your hand and draw 1\n└If you throw away the members, you can collect them with Buzz Polka.",
-          "fr": "Rôle : Échanger des cartes et archiver l'engrais\n・Ne peut être attaché qu'à Chiara\n・Archiver 1 carte dans votre main et en piocher 1\n└Si vous jetez les membres, vous pouvez les récupérer avec Buzz Polka."
-        }
-      },
-      {
-        "name": "ライブスタッフ",
-        "card_id": "hBP07-091",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-091_C.png",
-        "role": {
-          "ja": "役割：アーカイブ回収\n・エール1枚をアーカイブして、アーカイブのファンとホロメン1枚ずつを手札に戻せる",
-          "zh-TW": "作用：檔案收集\n・您可以存檔 1 個吶喊並將 1 個存檔扇子和 1 個 Holomen 返回到您的手牌。",
-          "en": "Role: Archive collection\n・You can archive 1 Yell and return 1 Archived Fan and 1 Holomen to your hand.",
-          "fr": "Rôle : Collection d'archives\n・Vous pouvez archiver 1 cri et renvoyer 1 fan archivé et 1 holomen dans votre main."
-        }
-      }
-    ],
-    "strategy": [
-      {
-        "title": {
-          "ja": "【1ターン目】バックのポルカにエール加速",
-          "zh-TW": "[第一回合]加速向後方喊叫波爾卡",
-          "en": "[1st turn] Accelerate shouting to the back polka",
-          "fr": "[1er tour] Accélérez en criant à la polka arrière"
-        },
-        "text": {
-          "ja": "新弾で収録されたHPの高いDebutポルカを優先して前に出そう。\n後手であれば、デッキから座員を回収してデッキ圧縮するのが最良。",
-          "zh-TW": "優先使用新子彈中記錄的高生命值的初登場波爾卡並將其帶到前面。\n如果您在移動中，最好將甲板上的人員聚集起來並壓縮甲板。",
-          "en": "Prioritize the Debut Polka with high HP recorded in the new bullet and bring it to the front.\nIf you are on the move, it is best to collect the occupants from the deck and compress the deck.",
-          "fr": "Donnez la priorité au Debut Polka avec des HP élevés enregistrés dans la nouvelle balle et amenez-le au premier plan.\nSi vous êtes en déplacement, il est préférable de récupérer les occupants du pont et de comprimer le pont."
-        }
-      },
-      {
-        "title": {
-          "ja": "【2ターン目】SPを使い、1stポルカで攻撃する",
-          "zh-TW": "[第2回合]使用SP進行第1波攻擊",
-          "en": "[2nd turn] Use SP to attack with 1st polka",
-          "fr": "[2ème tour] Utilisez SP pour attaquer avec la 1ère polka"
-        },
-        "text": {
-          "ja": "座員があると1stポルカやBuzzポルカは、付いている枚数につき1エール少なくアーツを使うことができます。\nそのため、場にエールが2枚しかない2ターン目でも、座員が2枚あればポルカ2人で攻撃していくことができます。\n1stポルカで座員をサーチし、うまくポルカを動かして攻撃していきましょう。\nDebutキアラにKFPを付けていき手札を入れ替え、それでも手札が整っていなければSPを使う事も視野に入れよう。",
-          "zh-TW": "如果您有座位成員，則每附上 1st Polka 和 Buzz Polka 編號，您就可以少使用 1 個藝術作品。\n因此，即使在第二回合，場上只有 2 張艾爾牌時，如果你有 2 個下水道，你也可以用 2 個波爾卡進行攻擊。\n使用第一個波爾卡搜尋成員，並很好地移動波爾卡來攻擊他們。\n將KFP附加到Debut Chiara上並換手牌，如果仍然沒有好手牌，請考慮使用SP。",
-          "en": "If you have a seat member, you can use 1 less art for each number of 1st Polka and Buzz Polka attached.\nTherefore, even on the second turn when there are only 2 Ale cards in play, if you have 2 Sewers, you can attack with 2 Polkas.\nUse the 1st polka to search for the members, and move the polka well to attack them.\nAttach KFP to Debut Chiara and change your hand, and if you still don't have a good hand, consider using SP.",
-          "fr": "Si vous avez un membre siège, vous pouvez utiliser 1 illustration de moins pour chaque numéro de 1ère Polka et Buzz Polka attaché.\nAinsi, même au deuxième tour où il n’y a que 2 cartes Ale en jeu, si vous avez 2 Égouts, vous pouvez attaquer avec 2 Polkas.\nUtilisez la 1ère polka pour rechercher les membres, et déplacez bien la polka pour les attaquer.\nAttachez KFP à Debut Chiara et changez de main, et si vous n'avez toujours pas une bonne main, pensez à utiliser SP."
-        }
-      },
-      {
-        "title": {
-          "ja": "【3ターン目】2ndコラボして、取られるライフを減らそう",
-          "zh-TW": "[第3回合]與第二回合合作減少被奪走的生命",
-          "en": "[Turn 3] Collaborate 2nd to reduce the life taken",
-          "fr": "[Tour 3] Collaborez en 2e pour réduire les points de vie pris"
-        },
-        "text": {
-          "ja": "センターはBuzzのままに、コラボに7段の新2ndを出しましょう。\n終盤に向けてアーカイブを肥やしつつ、後続を用意するためのライブスタッフやドローソースを確保することができます。",
-          "zh-TW": "讓我們以 Buzz 的身份離開中心，並為合作發布新的 7 段 2nd。\n您可以確保在職員工的安全，並取得資源來為繼任者做好準備，同時在最後豐富檔案。",
-          "en": "Let's leave the center as Buzz and release a new 7-dan 2nd for the collaboration.\nYou can secure live staff and draw sources to prepare the successor while enriching the archive towards the end.",
-          "fr": "Quittons le centre en tant que Buzz et publions un nouveau 2e dan 7 pour la collaboration.\nVous pouvez sécuriser le personnel en direct et puiser des sources pour préparer le successeur tout en enrichissant les archives vers la fin."
-        }
-      },
-      {
-        "title": {
-          "ja": "【4ターン目以降】アーカイブを大量に肥して2ndの火力を出そう",
-          "zh-TW": "【第四回合開始】利用大量檔案產生第二火力",
-          "en": "[4th turn onwards] Use a large amount of archives to generate 2nd firepower",
-          "fr": "[À partir du 4e tour] Utilisez une grande quantité d'archives pour générer une 2e puissance de feu"
-        },
-        "text": {
-          "ja": "最終的に、アーカイブの枚数30枚まで貯め常に2ndポルカで200点出せるように狙います。\n盤面とアーカイブに座員が4枚あれば2ndのブルームエフェクトと合わせて手札を0枚、盤面座員4枚にして推しスキルで4ドローする動きが強力です。",
-          "zh-TW": "最終，我的目標是在我的檔案中保存最多 30 件作品，並且始終能夠在第二次波爾卡中獲得 200 分。\nIf you have 4 members on the board and in the archive, you can combine it with the 2nd bloom effect to have 0 cards in your hand, 4 members on the board, and draw 4 with the push skill.",
-          "en": "Ultimately, I aim to save up to 30 pieces in my archive and always be able to get 200 points in 2nd polka.\nIf you have 4 members on the board and in the archive, you can combine it with the 2nd bloom effect to have 0 cards in your hand, 4 members on the board, and draw 4 with the push skill.",
-          "fr": "À terme, mon objectif est de sauvegarder jusqu'à 30 pièces dans mes archives et de toujours pouvoir obtenir 200 points lors de la 2e polka.\nSi vous avez 4 membres sur le plateau et dans l'archive, vous pouvez le combiner avec le 2ème effet bloom pour avoir 0 carte en main, 4 membres sur le plateau, et en piocher 4 avec la compétence pousser."
-        }
-      }
-    ],
-    "date": "2026-03-25",
-    "deck_id": "尾丸ポルカ-ポルカ単-tキアラ",
     "tier": 3
   }
 ]
