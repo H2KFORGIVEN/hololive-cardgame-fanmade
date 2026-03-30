@@ -139,7 +139,7 @@ function renderCardSection(title, cards, cardsMap) {
     const imageUrl = info.imageUrl || c.imageUrl || '';
     const name = info.name || c.name || c.card_id;
     return `
-      <div class="dl-card-entry">
+      <div class="dl-card-entry clickable-card" data-card-id="${c.card_id || ''}">
         ${imageUrl ? `<img class="dl-card-img" src="${imageUrl}" alt="${name}" loading="lazy">` : '<div class="dl-card-placeholder"></div>'}
         <div class="dl-card-info">
           <div class="dl-card-name">${name}</div>

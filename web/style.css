@@ -327,6 +327,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+#cardModal { z-index: 110; }
 .modal[hidden] { display: none; }
 .modal-backdrop {
   position: absolute;
@@ -468,6 +469,16 @@ body {
   transition: opacity 0.15s;
 }
 .modal-source-link:hover { opacity: 0.85; }
+
+/* Clickable cards in deck modals */
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.clickable-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
 
 /* Official Deck Modal */
 .official-oshi {

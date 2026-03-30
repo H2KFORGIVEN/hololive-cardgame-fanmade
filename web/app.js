@@ -144,6 +144,21 @@ function setupModals() {
   const cardModalBody = document.getElementById('cardModalBody');
 
   document.addEventListener('click', async (e) => {
+    const clickableCard = e.target.closest('.clickable-card');
+    if (clickableCard && !e.target.closest('.gallery-card')) {
+      const cardId = clickableCard.dataset.cardId;
+      if (cardId) {
+        await ensureCards();
+        const card = cardsData.find(c => c.id === cardId);
+        if (card) {
+          renderCardDetail(cardModalBody, card);
+          cardModal.hidden = false;
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+      }
+    }
+
     const tournamentDeckCard = e.target.closest('.tournament-deck-card');
     if (tournamentDeckCard) {
       const decklogId = tournamentDeckCard.dataset.decklogId;
@@ -166,6 +181,7 @@ function setupModals() {
     const galleryCard = e.target.closest('.gallery-card');
     if (galleryCard) {
       const cardId = galleryCard.dataset.cardId;
+      await ensureCards();
       const card = cardsData.find(c => c.id === cardId);
       renderCardDetail(cardModalBody, card);
       cardModal.hidden = false;
@@ -174,22 +190,24 @@ function setupModals() {
     }
   });
 
+  function closeModal(modal) {
+    modal.hidden = true;
+    if (modal === cardModal && !deckModal.hidden) return;
+    document.body.style.overflow = '';
+  }
+
   for (const modal of [deckModal, cardModal]) {
-    modal.querySelector('.modal-backdrop')?.addEventListener('click', () => {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-    });
-    modal.querySelector('.modal-close')?.addEventListener('click', () => {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-    });
+    modal.querySelector('.modal-backdrop')?.addEventListener('click', () => closeModal(modal));
+    modal.querySelector('.modal-close')?.addEventListener('click', () => closeModal(modal));
   }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      deckModal.hidden = true;
-      cardModal.hidden = true;
-      document.body.style.overflow = '';
+      if (!cardModal.hidden) {
+        closeModal(cardModal);
+      } else if (!deckModal.hidden) {
+        closeModal(deckModal);
+      }
     }
   });
 }
