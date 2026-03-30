@@ -67,6 +67,11 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     return;
   }
 
+  const PAGE_SIZE = 50;
+  let shown = PAGE_SIZE;
+  const initial = filtered.slice(0, shown);
+  const remaining = filtered.length - shown;
+
   let html = `
     <div class="guides-header">
       <h2>${t('guides_title')}</h2>
@@ -75,13 +80,33 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
         <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
       </div>
     </div>
-    <div class="guides-count">${filtered.length} ${t('guides_count_label')}</div>
+    <div class="guides-count" id="guidesCount">${t('guides_showing', { shown: Math.min(shown, filtered.length), total: filtered.length })}</div>
     <div class="guides-grid" id="guidesGrid">
-      ${filtered.map(d => renderGuideCard(d, cardsMap)).join('')}
+      ${initial.map(d => renderGuideCard(d, cardsMap)).join('')}
     </div>
+    ${remaining > 0 ? `<div class="guides-load-more-wrap"><button class="guides-load-more-btn" id="guidesLoadMore">${t('guides_load_more', { remaining })}</button></div>` : ''}
   `;
 
   container.innerHTML = html;
+
+  const grid = container.querySelector('#guidesGrid');
+  const countEl = container.querySelector('#guidesCount');
+  const loadMoreBtn = container.querySelector('#guidesLoadMore');
+
+  function _loadMore() {
+    const next = filtered.slice(shown, shown + PAGE_SIZE);
+    grid.insertAdjacentHTML('beforeend', next.map(d => renderGuideCard(d, cardsMap)).join(''));
+    shown += next.length;
+    const left = filtered.length - shown;
+    countEl.textContent = t('guides_showing', { shown: Math.min(shown, filtered.length), total: filtered.length });
+    if (left <= 0) {
+      loadMoreBtn?.remove();
+    } else {
+      loadMoreBtn.textContent = t('guides_load_more', { remaining: left });
+    }
+  }
+
+  loadMoreBtn?.addEventListener('click', _loadMore);
 
   const searchInput = container.querySelector('#guideSearch');
   let debounce;
@@ -89,15 +114,27 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     clearTimeout(debounce);
     debounce = setTimeout(() => {
       const q = searchInput.value.trim().toLowerCase();
-      const cards = container.querySelectorAll('.guide-card');
-      let visible = 0;
-      cards.forEach(card => {
-        const text = card.dataset.searchText || '';
-        const show = !q || text.includes(q);
-        card.style.display = show ? '' : 'none';
-        if (show) visible++;
+      if (!q) {
+        grid.innerHTML = filtered.slice(0, shown).map(d => renderGuideCard(d, cardsMap)).join('');
+        countEl.textContent = t('guides_showing', { shown: Math.min(shown, filtered.length), total: filtered.length });
+        const wrap = container.querySelector('.guides-load-more-wrap');
+        if (!wrap && shown < filtered.length) {
+          grid.insertAdjacentHTML('afterend', `<div class="guides-load-more-wrap"><button class="guides-load-more-btn" id="guidesLoadMore">${t('guides_load_more', { remaining: filtered.length - shown })}</button></div>`);
+          container.querySelector('#guidesLoadMore')?.addEventListener('click', _loadMore);
+        }
+        return;
+      }
+      const matched = filtered.filter(d => {
+        const title = localized(d.title, '');
+        const jaTitle = typeof d.title === 'object' ? (d.title.ja || '') : (d.title || '');
+        const desc = localized(d.description, '');
+        const text = [jaTitle, title, typeof desc === 'string' ? desc : '', d.deck_id].join(' ').toLowerCase();
+        return text.includes(q);
       });
-      container.querySelector('.guides-count').textContent = `${visible} ${t('guides_count_label')}`;
+      grid.innerHTML = matched.map(d => renderGuideCard(d, cardsMap)).join('');
+      countEl.textContent = `${matched.length} ${t('guides_count_label')}`;
+      const wrap = container.querySelector('.guides-load-more-wrap');
+      if (wrap) wrap.style.display = 'none';
     }, 200);
   });
 }

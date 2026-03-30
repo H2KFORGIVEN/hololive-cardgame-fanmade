@@ -826,6 +826,25 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
+.guides-load-more-wrap {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.guides-load-more-btn {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.guides-load-more-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
 .guide-card {
   display: flex;
   flex-direction: column;
