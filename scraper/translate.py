@@ -276,6 +276,49 @@ def translate_guides(data_dir: Path):
     print("[translate] all_guides.json done")
 
 
+TARGET_LANGS_EN = ["ja", "zh-TW", "fr"]
+
+
+def translate_official(data_dir: Path):
+    official_path = data_dir / "official_decks.json"
+    if not official_path.exists():
+        print("[translate] official_decks.json not found, skipping")
+        return
+
+    decks = json.loads(official_path.read_text(encoding="utf-8"))
+
+    unique_texts = set()
+    for deck in decks:
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            unique_texts.add(deck["description"])
+        for s in deck.get("strategy", []):
+            if isinstance(s.get("text"), str) and s["text"].strip():
+                unique_texts.add(s["text"])
+        for k in deck.get("key_cards", []):
+            if isinstance(k.get("text"), str) and k["text"].strip():
+                unique_texts.add(k["text"])
+
+    unique_list = sorted(unique_texts)
+    print(f"  Official decks: {len(unique_list)} unique strings")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_EN:
+        lang_maps[lang] = _translate_unique_map(unique_list, "en", lang)
+
+    for deck in decks:
+        if isinstance(deck.get("description"), str) and deck["description"].strip():
+            deck["description"] = _make_multilang_from_maps(deck["description"], "en", lang_maps)
+        for s in deck.get("strategy", []):
+            if isinstance(s.get("text"), str) and s["text"].strip():
+                s["text"] = _make_multilang_from_maps(s["text"], "en", lang_maps)
+        for k in deck.get("key_cards", []):
+            if isinstance(k.get("text"), str) and k["text"].strip():
+                k["text"] = _make_multilang_from_maps(k["text"], "en", lang_maps)
+
+    official_path.write_text(json.dumps(decks, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("[translate] official_decks.json done")
+
+
 def translate_all(data_dir: Path):
     base_dir = data_dir.parent
     _load_cache(base_dir)
@@ -286,6 +329,8 @@ def translate_all(data_dir: Path):
     translate_decks(data_dir)
     print("[translate] Translating all_guides.json...")
     translate_guides(data_dir)
+    print("[translate] Translating official_decks.json...")
+    translate_official(data_dir)
     print("[translate] Translating cards.json...")
     translate_cards(data_dir)
 

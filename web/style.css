@@ -469,6 +469,68 @@ body {
 }
 .modal-source-link:hover { opacity: 0.85; }
 
+/* Official Deck Modal */
+.official-oshi {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+.official-oshi img {
+  width: 80px;
+  border-radius: 6px;
+}
+.official-oshi span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.official-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem;
+}
+.official-card-entry {
+  text-align: center;
+  position: relative;
+}
+.official-card-entry img {
+  width: 100%;
+  border-radius: 4px;
+}
+.official-card-count {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+}
+.official-card-id {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+.official-key-card {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+.official-key-card img {
+  width: 80px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.official-key-card-name {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.official-key-card-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 /* Card Gallery */
 .card-gallery {
   display: grid;
@@ -894,6 +956,10 @@ body {
 .guide-source-badge.guide-src {
   background: var(--accent-cyan);
   color: #000;
+}
+.guide-source-badge.official-src {
+  background: linear-gradient(135deg, #f5af19, #f12711);
+  color: #fff;
 }
 .guide-tier-badge {
   font-size: 0.65rem;

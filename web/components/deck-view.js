@@ -1,6 +1,6 @@
 import { t, localized } from '../i18n.js';
 
-export function renderDeckModal(container, deckId, tierData, decksData, allGuides) {
+export function renderDeckModal(container, deckId, tierData, decksData, allGuides, officialDecks) {
   let deckInfo = null;
   let tierNum = null;
   if (tierData?.tiers) {
@@ -22,8 +22,15 @@ export function renderDeckModal(container, deckId, tierData, decksData, allGuide
     recipe = allGuides.find(d => d.deck_id === deckId);
   }
 
-  if (!deckInfo && !recipe) {
+  const officialDeck = officialDecks?.find(d => d.deck_id === deckId);
+
+  if (!deckInfo && !recipe && !officialDeck) {
     container.innerHTML = `<p>${t('deck_not_found')}</p>`;
+    return;
+  }
+
+  if (officialDeck) {
+    _renderOfficialDeckModal(container, officialDeck);
     return;
   }
 
@@ -94,6 +101,77 @@ export function renderDeckModal(container, deckId, tierData, decksData, allGuide
     ${recipe?.url ? `
       <div class="modal-section" style="padding-bottom:2rem">
         <a class="modal-source-link" href="${recipe.url}" target="_blank" rel="noopener">
+          ${t('source_link')}
+        </a>
+      </div>
+    ` : ''}
+  `;
+}
+
+function _renderOfficialDeckModal(container, deck) {
+  const title = deck.title || '';
+  const oshiHtml = deck.oshi_image
+    ? `<div class="official-oshi"><img src="${deck.oshi_image}" alt="${deck.oshi}" loading="lazy"><span>${deck.oshi}</span></div>`
+    : '';
+
+  const _renderCardGrid = (cards, label) => {
+    if (!cards?.length) return '';
+    const count = cards.reduce((s, c) => s + c.count, 0);
+    return `
+      <div class="modal-section">
+        <div class="modal-section-title">${label}【${count}】</div>
+        <div class="official-card-grid">
+          ${cards.map(c => `
+            <div class="official-card-entry">
+              <img src="${c.imageUrl}" alt="${c.card_id}" loading="lazy">
+              <span class="official-card-count">×${c.count}</span>
+              ${c.card_id ? `<span class="official-card-id">${c.card_id}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  };
+
+  const strategyHtml = deck.strategy?.length
+    ? `<div class="modal-section">
+        <div class="modal-section-title">${t('section_strategy')}</div>
+        ${deck.strategy.map(s => `<div class="strategy-block"><div class="strategy-text">${s.text}</div></div>`).join('')}
+      </div>`
+    : '';
+
+  const keyCardsHtml = deck.key_cards?.length
+    ? `<div class="modal-section">
+        <div class="modal-section-title">${t('official_key_cards')}</div>
+        ${deck.key_cards.map(k => `
+          <div class="official-key-card">
+            ${k.imageUrl ? `<img src="${k.imageUrl}" alt="${k.name}" loading="lazy">` : ''}
+            <div class="official-key-card-info">
+              <div class="official-key-card-name">${k.name}${k.card_id ? ` (${k.card_id})` : ''}</div>
+              <div class="official-key-card-text">${k.text}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>`
+    : '';
+
+  container.innerHTML = `
+    <div class="modal-deck-header">
+      <div class="modal-deck-title">${title}</div>
+      <div class="modal-deck-meta">
+        <span class="guide-source-badge official-src">Official</span>
+        ${deck.date ? `<span style="color:var(--accent-cyan);margin-left:0.5rem">${deck.date}</span>` : ''}
+      </div>
+      ${deck.description ? `<div class="modal-deck-desc">${deck.description}</div>` : ''}
+      ${oshiHtml}
+    </div>
+    ${_renderCardGrid(deck.main_deck, 'Main Deck')}
+    ${_renderCardGrid(deck.cheer_deck, 'Cheer Deck')}
+    ${strategyHtml}
+    ${keyCardsHtml}
+    ${deck.url ? `
+      <div class="modal-section" style="padding-bottom:2rem">
+        <a class="modal-source-link" href="${deck.url}" target="_blank" rel="noopener">
           ${t('source_link')}
         </a>
       </div>

@@ -15,13 +15,18 @@ function _getDeckColors(deck, cardsMap) {
   return Object.keys(colors).sort((a, b) => colors[b] - colors[a]);
 }
 
-export function renderGuidesView(container, allGuides, decksData, cardsData, filters) {
+export function renderGuidesView(container, allGuides, decksData, cardsData, filters, officialDecks) {
   const cardsMap = {};
   if (cardsData) {
     for (const c of cardsData) cardsMap[c.id] = c;
   }
 
   const combined = [];
+  if (officialDecks) {
+    for (const d of officialDecks) {
+      combined.push({ ...d, _source: 'official', cards: d.main_deck || [] });
+    }
+  }
   if (decksData) {
     for (const d of decksData) {
       combined.push({ ...d, _source: 'tier' });
@@ -143,15 +148,18 @@ const COLOR_CSS = { '白': '#e8e8e8', '緑': '#4caf50', '赤': '#f44336', '青':
 
 function renderGuideCard(deck, cardsMap) {
   const title = localized(deck.title, deck.deck_id || '');
-  const imgHtml = deck.deck_image
-    ? `<img class="guide-card-img" src="${deck.deck_image}" alt="${title}" loading="lazy">`
+  const thumbSrc = deck.deck_image || deck.oshi_image;
+  const imgHtml = thumbSrc
+    ? `<img class="guide-card-img" src="${thumbSrc}" alt="${title}" loading="lazy">`
     : `<div class="guide-card-noimg">🃏</div>`;
 
   const tierBadge = deck.tier
     ? `<span class="guide-tier-badge" data-tier="${deck.tier}">T${deck.tier}</span>`
     : '';
 
-  const sourceBadge = deck._source === 'tier'
+  const sourceBadge = deck._source === 'official'
+    ? `<span class="guide-source-badge official-src">Official</span>`
+    : deck._source === 'tier'
     ? `<span class="guide-source-badge tier-src">Tier</span>`
     : `<span class="guide-source-badge guide-src">Guide</span>`;
 

@@ -9,6 +9,7 @@ let tierData = null;
 let decksData = [];
 let decklogDecks = [];
 let allGuides = [];
+let officialDecks = [];
 let currentView = 'guides';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
@@ -19,14 +20,16 @@ function _fetchJSON(url) {
 }
 
 async function loadCoreData() {
-  const [tierResp, decksResp, guidesResp] = await Promise.all([
+  const [tierResp, decksResp, guidesResp, officialResp] = await Promise.all([
     _fetchJSON('data/tier_list.json'),
     _fetchJSON('data/decks.json'),
     _fetchJSON('data/all_guides.json'),
+    _fetchJSON('data/official_decks.json'),
   ]);
   tierData = tierResp;
   decksData = decksResp || [];
   allGuides = guidesResp || [];
+  officialDecks = officialResp || [];
 }
 
 async function ensureCards() {
@@ -58,7 +61,7 @@ async function render() {
 
   if (currentView === 'guides') {
     await ensureCards();
-    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters);
+    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks);
   } else if (currentView === 'tournament') {
     await Promise.all([ensureDecklog(), ensureCards()]);
     renderTournamentView(tournamentView, decklogDecks, cardsData);
@@ -154,7 +157,7 @@ function setupModals() {
     const deckCard = e.target.closest('.deck-card');
     if (deckCard) {
       const deckId = deckCard.dataset.deckId;
-      renderDeckModal(deckModalBody, deckId, tierData, decksData, allGuides);
+      renderDeckModal(deckModalBody, deckId, tierData, decksData, allGuides, officialDecks);
       deckModal.hidden = false;
       document.body.style.overflow = 'hidden';
       return;
