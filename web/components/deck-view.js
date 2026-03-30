@@ -136,7 +136,7 @@ function _renderOfficialDeckModal(container, deck) {
   const strategyHtml = deck.strategy?.length
     ? `<div class="modal-section">
         <div class="modal-section-title">${t('section_strategy')}</div>
-        ${deck.strategy.map(s => `<div class="strategy-block"><div class="strategy-text">${s.text}</div></div>`).join('')}
+        ${deck.strategy.map(s => `<div class="strategy-block"><div class="strategy-text">${localized(s.text)}</div></div>`).join('')}
       </div>`
     : '';
 
@@ -148,7 +148,7 @@ function _renderOfficialDeckModal(container, deck) {
             ${k.imageUrl ? `<img src="${k.imageUrl}" alt="${k.name}" loading="lazy">` : ''}
             <div class="official-key-card-info">
               <div class="official-key-card-name">${k.name}${k.card_id ? ` (${k.card_id})` : ''}</div>
-              <div class="official-key-card-text">${k.text}</div>
+              <div class="official-key-card-text">${localized(k.text)}</div>
             </div>
           </div>
         `).join('')}
@@ -162,7 +162,7 @@ function _renderOfficialDeckModal(container, deck) {
         <span class="guide-source-badge official-src">Official</span>
         ${deck.date ? `<span style="color:var(--accent-cyan);margin-left:0.5rem">${deck.date}</span>` : ''}
       </div>
-      ${deck.description ? `<div class="modal-deck-desc">${deck.description}</div>` : ''}
+      ${deck.description ? `<div class="modal-deck-desc">${localized(deck.description)}</div>` : ''}
       ${oshiHtml}
     </div>
     ${_renderCardGrid(deck.main_deck, 'Main Deck')}
