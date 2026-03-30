@@ -156,7 +156,7 @@
         },
         {
           "name": "ミオ推しハコリズ",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/1970bba9a9fc66c6d7f7c621c0eef8ff-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/19b790bdece26fcc69631e73efeccb19-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
@@ -229,8 +229,35 @@
         {
           "name": "ラプ推しラプラス単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/28dfb1f82803c2b8165d75a3b9120f27-1080x608.png",
-          "ratings": {},
-          "features": [],
+          "ratings": {
+            "firepower": "◎",
+            "ease": "◎",
+            "stability": "○",
+            "endurance": "○",
+            "pressure": "○"
+          },
+          "features": {
+            "ja": [
+              "7弾の新カードで足回りが強化され、火力とエールの問題が解決！",
+              "SPを使えないターンでも、新1stのバフとエール軽減で楽に2面取りをすることも可能",
+              "AZKiに対しては不利だが、もう一方のクロニーには有利に戦える"
+            ],
+            "zh-TW": [
+              "第七張新卡加強懸掛，解決火力大喊的問題！",
+              "即使在無法使用 SP 的回合中，您也可以透過新的第一增益和喊叫減少輕鬆進行雙邊戰鬥。",
+              "對 AZKi 不利，但對其他裙帶關係有利"
+            ],
+            "en": [
+              "The suspension is strengthened with the 7th new card, solving the problem of firepower and yell!",
+              "Even on turns where you can't use SP, you can easily do two-sided battles with the new 1st buff and yell reduction.",
+              "Disadvantageous against AZKi, but advantageous against the other Crony"
+            ],
+            "fr": [
+              "La suspension est renforcée avec la 7ème nouvelle carte, résolvant le problème de la puissance de feu et du cri !",
+              "Même dans les tours où vous ne pouvez pas utiliser SP, vous pouvez facilement mener des batailles à deux faces grâce au nouveau 1er buff et à la réduction des cris.",
+              "Inconvénient face à AZKi, mais avantageux face aux autres Crony"
+            ]
+          },
           "recipe_url": null,
           "vtuber": "ラプラス・ダークネス",
           "id": "ラプラス-ダークネス-ラプ推しラプラス単"
