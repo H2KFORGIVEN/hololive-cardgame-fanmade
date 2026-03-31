@@ -1058,535 +1058,6 @@
     "deck_id": "official-hbp04_001"
   },
   {
-    "title": "Recommended Deck: “Himemori Luna”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_001/",
-    "oshi": "Himemori Luna",
-    "oshi_card_id": "hBP03-001",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-001_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-009",
-        "count": 10,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-009_C.png"
-      },
-      {
-        "card_id": "hBP03-010",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-010_U.png"
-      },
-      {
-        "card_id": "hBP03-011",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-011_C.png"
-      },
-      {
-        "card_id": "hBP03-012",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-012_U.png"
-      },
-      {
-        "card_id": "hBP03-013",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-013_R.png"
-      },
-      {
-        "card_id": "hBP03-014",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP03-093",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-093_U.png"
-      },
-      {
-        "card_id": "hBP03-105",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY01-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. The collab with hBP03-010 Himemori Luna, along with increasing your hand size with the collab effect \"Princess of Candy Kingdom\", makes it easier to gather Debut holomem Himemori Luna in the back position. Furthermore, be aggressive and use the SP Oshi skill \"Lu-knights, Assemble\" to attach hBP03-105 Lu-knights to Himemori Luna.In the mid-game, prepare your hand and stage using support cards like hSD01-016 Harusaki Nodoka and hBP03-093 hololive Gen 4. If you don't have any support cards, bring hBP01-104 Normal PC or hBP02-077 Retro PC to your hand using the Oshi skill \"I Know How to Use a Computew!\". When your opponent's holomem uses Arts, strategically archive hBP03-105 Lu-knights to skillfully weather the attack and prevent damage to Himemori Luna.In the late game, aim to bloom your holomem into the 2nd holomem, hBP03-014 Himemori Luna. Use the bloom effect \"Follow Luna~\" to reattach hBP03-105 Lu-knights, which was archived in the mid-game, to Himemori Luna, further reinforcing your defense. Since hBP03-014 Himemori Luna can deal huge damage when hBP03-105 Lu-knights is attached, utilize her aggressively to secure the win.",
-          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 hBP03-010 姫森ルナとのコラボで、コラボ効果「キャンディ王国のプリンセス」で手札が増えるとともに、後陣にデビューホロメム姫森ルナを集めやすくなります。さらにSP推しスキル「Lu-knights、集結」でhBP03-105 Lu-knightsを姫森ルナに付けて積極的に戦いましょう。中盤ではhSD01-016 春咲のどかやhBP03-093 ホロライブ第4世代などのサポートカードを使って手札とステージを整えていきましょう。サポートカードを持っていない場合はhBP01-104 Normal PCか、 hBP02-077 推しスキル「Computewの使い方がわかる！」を使ってレトロPCをあなたの手に。相手のホロメムがアーツを使用した場合は、hBP03-105 Lu-knights を戦略的にアーカイブして攻撃をうまく切り抜け、姫森ルナへのダメージを防ぎます。ゲーム後半では、ホロメムを 2 番目のホロメム、hBP03-014 姫森ルナに開花させることを目指します。ブルーム効果「ルナを追えよ～」で、ゲーム中盤にアーカイブされたhBP03-105 Lu-knightsを姫森ルナに付け直し、さらに防御を強化します。 hBP03-014 姫森ルナ hBP03-105 ルナイツを付けると大ダメージを与えられるので、積極的に活用して勝利を掴み取りましょう。",
-          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與hBP03-010姬森露娜的聯動，以及透過連動效果「糖果王國的公主」增加你的手的大小，使得更容易將出道全息姬守露娜聚集在後面的位置。此外，要積極主動，使用 SP Oshi 技能「Lu-knights，集合」將 hBP03-105 Lu-knights 附加到 Himemori Luna。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hBP03-093 Hololive Gen 4 等支援卡來準備手牌和舞台。如果您沒有任何支援卡，請帶上 hBP01-104 普通 PC 或hBP02-077 使用 Oshi 技能「我知道如何使用電腦！」將復古電腦帶到您的手中。當對手的全像圖使用藝術時，策略性地歸檔hBP03-105魯騎士，巧妙地抵禦攻擊並防止對姬森露娜造成傷害。在遊戲後期，目標是讓你的全息圖綻放為第二個全息圖，hBP03-014姬森露娜。使用綻放效果「跟隨露娜~」將遊戲中期存檔的hBP03-105露騎士重新附加到姬森露娜身上，進一步加強你的防禦。由於hBP03-014姬森露娜在hBP03-105露騎士附著時可以造成巨大傷害，因此積極利用她來確保勝利。",
-          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. La collaboration avec le hBP03-010 Himemori Luna, en plus d'augmenter la taille de votre main avec l'effet de collaboration \"Princess of Candy Kingdom\", facilite la collecte du Debut holomem Himemori Luna en position arrière. De plus, soyez agressif et utilisez la compétence SP Oshi \"Lu-knights, Assemble\" pour attacher les hBP03-105 Lu-knights à Himemori Luna. En milieu de partie, préparez votre main et votre scène en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka et hBP03-093 hololive Gen 4. Si vous n'avez pas de cartes de support, apportez hBP01-104 Normal PC ou hBP02-077. PC rétro à votre main en utilisant la compétence Oshi \"Je sais comment utiliser un ordinateur !\". Lorsque l'holomem de votre adversaire utilise les arts, archivez stratégiquement hBP03-105 Lu-knights pour résister habilement à l'attaque et éviter d'endommager Himemori Luna. En fin de partie, essayez de faire fleurir votre holomem dans le 2ème holomem, hBP03-014 Himemori Luna. Utilisez l'effet de floraison \"Follow Luna~\" pour rattacher hBP03-105 Lu-knights, qui a été archivé en milieu de partie, à Himemori Luna, renforçant ainsi davantage votre défense. Puisque le hBP03-014 Himemori Luna peut infliger d'énormes dégâts lorsque le hBP03-105 Lu-knights est attaché, utilisez-le de manière agressive pour assurer la victoire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Himemori Luna【2nd】",
-        "card_id": "hBP03-014",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png",
-        "text": {
-          "en": "The bloom effect \"Follow Luna~\" allows you to attach hBP03-105 Lu-knights, previously sent to the archive, to Himemori Luna. This means you can use the ability of hBP03-105 Lu-knights freely from the early game. Furthermore, having hBP03-105 Lu-knights attached can potentially result in massive damage.",
-          "ja": "ブルームエフェクト「ルナをフォロー～」により、以前アーカイブに送ったhBP03-105ルーナイツを姫森ルナに付けることができます。これにより、hBP03-105 Lu-knights の能力がゲーム序盤から自由に使用できるようになります。さらに、hBP03-105 Lu-knights を取り付けると、大規模なダメージが発生する可能性があります。",
-          "zh-TW": "綻放效果「跟隨露娜〜」可讓您將先前發送到檔案的hBP03-105魯騎士附加到姬森露娜身上。這意味著你可以在遊戲初期自由使用hBP03-105魯騎士的能力。此外，附帶hBP03-105魯騎士可能會造成巨大的傷害。",
-          "fr": "L'effet bloom \"Follow Luna~\" vous permet d'attacher les hBP03-105 Lu-knights, précédemment envoyés aux archives, à Himemori Luna. Cela signifie que vous pouvez utiliser librement la capacité des hBP03-105 Lu-knights dès le début de la partie. De plus, avoir des chevaliers Lu hBP03-105 attachés peut potentiellement entraîner des dégâts massifs."
-        }
-      },
-      {
-        "name": "Lu-knights",
-        "card_id": "hBP03-105",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png",
-        "text": {
-          "en": "These fans continuously protect Himemori Luna. They are the core of the deck, enabling switches between offense and defense and seeing action from the early to late game. Even when sent to the archive, the bloom effect of hBP03-014 Himemori Luna allows them to be reattached to her, so be aggressive in using them for defense.",
-          "ja": "姫森ルナを守り続けるファンたち。これらはデッキの中核であり、攻撃と防御の切り替えを可能にし、ゲームの序盤から終盤までのアクションを確認します。 hBP03-014 姫森ルナのブルーム効果により、アーカイブに送った場合でも再度装着することができるので、積極的に防御に利用しましょう。",
-          "zh-TW": "這些粉絲一直在保護姬森露娜。它們是這套牌的核心，可以在進攻和防守之間切換，並從遊戲早期到後期觀察行動。即使發送到檔案館，hBP03-014 姬森露娜的綻放效果也能讓它們重新附著在她身上，所以在使用它們進行防禦時要積極主動。",
-          "fr": "Ces fans protègent continuellement Himemori Luna. Ils constituent le cœur du deck, permettant de basculer entre l'attaque et la défense et de voir l'action du début à la fin de la partie. Même lorsqu'ils sont envoyés aux archives, l'effet de floraison de hBP03-014 Himemori Luna permet de les rattacher à elle, alors soyez agressif lorsque vous les utilisez pour vous défendre."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_001"
-  },
-  {
-    "title": "Recommended Deck: “Shishiro Botan”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_002/",
-    "oshi": "Shishiro Botan",
-    "oshi_card_id": "hBP03-002",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-002_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-016",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-016_C.png"
-      },
-      {
-        "card_id": "hBP03-017",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-017_U.png"
-      },
-      {
-        "card_id": "hBP03-018",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-018_C.png"
-      },
-      {
-        "card_id": "hBP03-019",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-019_U.png"
-      },
-      {
-        "card_id": "hBP03-020",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-020_R.png"
-      },
-      {
-        "card_id": "hBP03-021",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-021_RR.png"
-      },
-      {
-        "card_id": "hSD06-010",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD06/EN_hSD06-010_U.png"
-      },
-      {
-        "card_id": "hBP03-096",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png"
-      },
-      {
-        "card_id": "hBP03-106",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-106_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP03-094",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-094_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY02-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. The collab with hBP03-017 Shishiro Botan allows you to archive the top card of the cheer deck with the collab effect. Since archiving cheer enables you to effectively use the bloom effect of the 2nd holomem, hBP03-021 Shishiro Botan, in the late game, utilize this feature as aggressively as possible.In the mid-game, prepare your hand using support cards like hSD01-016 Harusaki Nodoka and hBP03-094 FPS Stream, then proceed to bloom your Debut holomem into 1st holomem. In addition, increase your cheer with hBP03-020 Shishiro Botan, or archive cheer while dealing damage to opponent's holomem with hBP03-019 Shishiro Botan. If hBP03-096 Rifle is attached to a holomem before they bloom, the damage from the bloom effect will be +10. If your opponent has a 1st holomem or higher in the center position, you can also try to down them with the SP Oshi skill \"Sniping\".In the late game, aim to bloom into the 2nd holomem, hBP03-021 Shishiro Botan. If the SP Oshi skill \"Sniping\" has been kept in reserve, aim for a simultaneous down of the center holomem and a collabo holomem by pairing it with hBP01-108 So, That Makes You My Enemy. When using the SP Oshi skill, combining it with hSD06-010 La+ Darknesss allows you to deal 80 damage for only 1 cheer. Time your card usage correctly to more effectively down your opponent's holomem.",
-          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 hBP03-017 獅子城牡丹とのコラボでは、コラボ効果付きのチアデッキの一番上のカードをアーカイブすることができます。アーカイブチアを利用することで、2枚目のホロメム「hBP03-021 獅子城牡丹」の開花効果を有効に活用できるため、ゲーム終盤では積極的に活用していきましょう。中盤以降は「hSD01-016 春咲のどか」や「hBP03-094 FPSストリーム」などのサポートカードで手札を整え、デビューホロメムを1枚目のホロメムに開花させていきましょう。さらに、hBP03-020 獅子城牡丹でチアを増やしたり、hBP03-019 獅子城牡丹で相手のホロメムにダメージを与えながらアーカイブチアをしたりできます。 hBP03-096 ライフルを開花前のホロメムに取り付けると、開花効果によるダメージが+10されます。相手が中央に第1ホロメム以上を持っている場合は、SP推しスキル「スナイピング」でダウンを狙うこともでき、終盤は第2ホロメムhBP03-021 四城牡丹への開花を目指しましょう。 SP推しスキル「スナイピング」を温存している場合は、hBP01-108 So, That Makes You My Enemyと組み合わせてセンターホロメムとコラボホロメムの同時ダウンを狙いましょう。 SP推しスキルを使用する場合、hSD06-010 La+ Darknesssと組み合わせると、1チアだけで80ダメージを与えることができます。カード使用のタイミングを正確に計って、対戦相手のホロメムをより効果的にダウンさせます。",
-          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與 hBP03-017 Shishiro Botan 的連動可以讓您透過連動效果存檔應援牌組的頂牌。由於歸檔歡呼使您能夠有效地使用第二個全像圖 hBP03-021 Shishiro Botan 的綻放效果，因此在遊戲後期，請盡可能積極地利用此功能。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hBP03-094 FPS Stream 等支援卡準備好手牌，然後繼續將您的首次全息圖綻放為第一個全息圖。此外，還可以使用hBP03-020四四郎牡丹來增加你的歡呼聲，或是使用hBP03-019四四郎牡丹對對手的holomem造成傷害時存檔歡呼聲。如果hBP03-096步槍在全息體綻放之前附著在其上，則綻放效果造成的傷害將為+10。如果你的對手在中位置有第一全息或更高的位置，你也可以嘗試使用SP Oshi技能「狙擊」來擊倒他們。在遊戲後期，目標是綻放第二全全息，hBP03-021 Shishiro Botan。如果SP Oshi技能「狙擊」已被保留，則與hBP01-108配對，以同時降低中心全息圖和協作全息圖為目標，所以，你就是我的敵人了。當使用 SP Oshi 技能時，將其與 hSD06-010 La+ 黑暗結合可以讓你僅 1 點歡呼就能造成 80 點傷害。正確使用卡牌時間可以更有效地打倒對手的全像圖。",
-          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. La collaboration avec le hBP03-017 Shishiro Botan vous permet d'archiver la carte du dessus du cheer deck avec l'effet collab. Étant donné que l'archivage des acclamations vous permet d'utiliser efficacement l'effet de floraison du 2ème holomem, hBP03-021 Shishiro Botan, en fin de partie, utilisez cette fonctionnalité de manière aussi agressive que possible. En milieu de partie, préparez votre main en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka et hBP03-094 FPS Stream, puis procédez à la floraison de votre holomem Debut en 1er holomem. De plus, augmentez votre joie avec le hBP03-020 Shishiro Botan, ou archivez votre joie tout en infligeant des dégâts à l'holomem de l'adversaire avec le hBP03-019 Shishiro Botan. Si le fusil hBP03-096 est attaché à un holomem avant qu'il ne fleurisse, les dégâts de l'effet de floraison seront de +10. Si votre adversaire a un 1er holomem ou plus en position centrale, vous pouvez également essayer de l'abattre avec la compétence SP Oshi \"Sniping\". En fin de partie, visez à fleurir dans le 2ème holomem, hBP03-021 Shishiro Botan. Si la compétence SP Oshi \"Sniping\" a été gardée en réserve, visez une descente simultanée de l'holomem central et d'un holomem collabo en l'associant avec hBP01-108 So, That Makes You My Enemy. Lorsque vous utilisez la compétence SP Oshi, la combiner avec hSD06-010 La+ Darknesss vous permet d'infliger 80 dégâts pour seulement 1 acclamation. Planifiez correctement l'utilisation de votre carte pour réduire plus efficacement l'holomem de votre adversaire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Shishiro Botan【1st】",
-        "card_id": "hBP03-019",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-019_U.png",
-        "text": {
-          "en": "The bloom effect allows her to deal special damage by archiving 1 cheer. The ideal play is to use this ability to chip away at the opponent's holomem's HP, then aim for the down with the Arts of the 2nd holomem, hBP03-021 Shishiro Botan.",
-          "ja": "ブルーム効果により、1 チアをアーカイブすることで特別なダメージを与えることができます。この能力で相手のホロメムのHPを削り、ホロメム2弾「hBP03-021 獅子城牡丹」のアーツでダウンを狙うのが理想的なプレイ。",
-          "zh-TW": "綻放效果使她能夠透過存檔 1 點歡呼來造成特殊傷害。理想的玩法是利用這種能力削弱對手全像的生命值，然後用第二個全像的藝術 hBP03-021 Shishiro Botan 瞄準目標。",
-          "fr": "L'effet Bloom lui permet d'infliger des dégâts spéciaux en archivant 1 acclamation. Le jeu idéal est d'utiliser cette capacité pour réduire les PV de l'holomem de l'adversaire, puis de viser la mise à terre avec les Arts du 2ème holomem, hBP03-021 Shishiro Botan."
-        }
-      },
-      {
-        "name": "Rifle",
-        "card_id": "hBP03-096",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png",
-        "text": {
-          "en": "Attach this to Shishiro Botan -- your goal should be for her to bloom to the 2nd holomem. Since the Arts of the 2nd holomem, hBP03-021 Shishiro Botan, deals special damage in addition to Arts damage, the total damage dealt will be +20, making this card extremely powerful.",
-          "ja": "これを四城牡丹に付けて、2本目まで開花させるのが目標です。第2弾のホロメム「hBP03-021 獅子城牡丹」のArtsはArtsダメージに加えて特殊ダメージを与えるため、合計与ダメージが+20と非常に強力です。",
-          "zh-TW": "將其附加到 Shishiro Botan - 你的目標應該是讓她綻放到第二個全息圖。由於第二個holomem的Arts，hBP03-021 Shishiro Botan，除了Arts傷害之外還造成特殊傷害，造成的總傷害將+20，使得這張卡非常強大。",
-          "fr": "Attachez ceci à Shishiro Botan - votre objectif devrait être qu'elle fleurisse jusqu'au 2ème holomem. Puisque les Arts du 2ème holomem, hBP03-021 Shishiro Botan, infligent des dégâts spéciaux en plus des dégâts des Arts, le total des dégâts infligés sera de +20, ce qui rend cette carte extrêmement puissante."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_002"
-  },
-  {
-    "title": "Recommended Deck: “Sakura Miko”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_003/",
-    "oshi": "Sakura Miko",
-    "oshi_card_id": "hBP03-003",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-003_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-025",
-        "count": 8,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-025_C.png"
-      },
-      {
-        "card_id": "hBP03-026",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-026_U.png"
-      },
-      {
-        "card_id": "hBP03-027",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-027_C.png"
-      },
-      {
-        "card_id": "hBP03-028",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-028_U.png"
-      },
-      {
-        "card_id": "hBP03-029",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-029_R.png"
-      },
-      {
-        "card_id": "hBP03-030",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-030_RR_02.png"
-      },
-      {
-        "card_id": "hBP03-098",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-098_U.png"
-      },
-      {
-        "card_id": "hBP03-099",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-099_C.png"
-      },
-      {
-        "card_id": "hBP03-107",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-107_U.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY03-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. Performing a collab with a holomem that has hBP03-098 Kintoki attached allows you to draw 1 card while simultaneously making your holomem more resilient due to the HP boost effect. If your opponent went first, attaching hBP03-107 35P allows you to use Arts with both your center holomem and a collabo holomem starting from your first turn.In the mid-game, prepare your hand and stage by blooming into the 1st holomem, hBP03-029 Sakura Miko, who can add support cards such as hSD01-016 Harusaki Nodoka and hBP03-107 35P directly to your hand. Use powerful Arts with both your 1st holomem in the center position and your collab holomem. If the cards in your hand are not ideal, use the SP Oshi skill \"The Strength to not Give Up\" to help improve the situation and ensure the necessary holomem are available to use Arts as you prepare for the late game.In the late game, bloom your holomem into the 2nd holomem, hBP03-030 Sakura Miko, and attempt to deal massive damage against your opponent's holomem. In addition, using the Oshi skill \"Are 35P Making a Comeback?!\" allows you to return archived hBP03-107 35P to your hand, resulting in an even more powerful use of Arts. If the opponent's holomem has high HP and seems difficult to down, utilize hBP01-108 So, That Makes You My Enemy or hBP03-088 Totsumachi to call out the opposing holomem and down them for the win.",
-          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 「hBP03-098 金時」を装着したホロメムとコラボすると、カードを1枚ドローできると同時にHPブースト効果でホロメムの耐久力がアップします。相手が先攻の場合、hBP03-107 35Pをつけることで、1ターン目からセンターホロメムとコラボホロメムの両方でアーツを発動することができます。中盤では、hSD01-016 春咲のどかやhBP03-107 35Pなどのサポートカードを直接追加できる1枚目のホロメム、hBP03-029 桜巫女を開花させて手札とステージを整えましょう。あなたの手に。センターの1枚目ホロメムとコラボホロメムの両方で強力なアーツを発動しましょう。手札が理想的でない場合は、SP推しスキル「諦めない強さ」を使って状況を改善し、アーツの使用に必要なホロメムを確保して終盤に備えましょう。ゲーム後半では、自分のホロメムを2枚目のホロメム「hBP03-030 桜巫女」に開花させ、相手のホロメムに大ダメージを与えましょう。さらに、推しスキル「35P復活か!?」を使用すると、アーカイブされている「hBP03-107 35P」を手札に戻し、アーツをさらに強力に使用できるようになります。相手のホロメムのHPが高くダウンさせるのが難しそうな場合は、「hBP01-108 So, That Makes You My Enemy」や「hBP03-088 トツマチ」を使って相手のホロメムを呼び出してダウンさせて勝利しましょう。",
-          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與附加了 hBP03-098 Kintoki 的全像圖進行協作可以讓您抽取 1 張卡，同時由於 HP 提升效果而使您的全像圖更具彈性。如果你的對手先走，附加hBP03-107 35P可以讓你從第一回合開始就對中心全像圖和協作全像圖使用Arts。在遊戲中期，透過綻放第一個全息圖hBP03-029櫻花巫女來準備你的手牌和舞台，她可以添加支持卡，例如hSD01-016 Harusaki Nodoka和hBP03-107 35P直接到你手上。使用強大的藝術，將您的第一個全息圖置於中心位置，並使用您的協作全息圖。如果你手上的牌不理想，可以使用SP押技能「不放棄的力量」來幫助改善情況，並確保在你為遊戲後期做準備時，可以使用必要的全息圖來使用Arts。在遊戲後期，將你的全息圖綻放為第二個全息圖hBP03-030櫻花巫女，並嘗試對對手的全息圖造成大量傷害。另外，使用押技能「35P捲土重來？！」讓您可以將存檔的 hBP03-107 35P 返回到您的手中，從而使藝術的使用更加強大。如果對手的全像血量很高，看起來很難打倒，可以使用hBP01-108所以，你就是我的敵人或hBP03-088戶津町來召喚對方的全息體並擊倒他們以獲得勝利。",
-          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. Effectuer une collaboration avec un holomem auquel est attaché hBP03-098 Kintoki vous permet de piocher 1 carte tout en rendant simultanément votre holomem plus résistant grâce à l'effet boost HP. Si votre adversaire est parti en premier, attacher hBP03-107 35P vous permet d'utiliser les Arts avec à la fois votre holomem central et un holomem collabo dès votre premier tour. En milieu de partie, préparez votre main et votre niveau en vous épanouissant dans le 1er holomem, hBP03-029 Sakura Miko, qui peut ajouter des cartes de support telles que hSD01-016 Harusaki Nodoka et hBP03-107. 35P directement dans votre main. Utilisez des arts puissants avec à la fois votre premier holomem en position centrale et votre holomem de collaboration. Si les cartes dans votre main ne sont pas idéales, utilisez la compétence SP Oshi \"La force de ne pas abandonner\" pour aider à améliorer la situation et vous assurer que les holomem nécessaires sont disponibles pour utiliser les arts pendant que vous vous préparez pour la fin de partie. En fin de partie, faites fleurir votre holomem dans le 2ème holomem, hBP03-030 Sakura Miko, et tentez d'infliger des dégâts massifs contre l'holomem de votre adversaire. De plus, en utilisant la compétence Oshi \"Le 35P fait-il son retour ?!\" vous permet de remettre dans votre main le hBP03-107 35P archivé, ce qui permet une utilisation encore plus puissante des Arts. Si l'holomem de l'adversaire a des PV élevés et semble difficile à éliminer, utilisez hBP01-108 So, That Makes You My Enemy ou hBP03-088 Totsumachi pour appeler l'holomem adverse et l'abattre pour la victoire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Sakura Miko【2nd】",
-        "card_id": "hBP03-030",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-030_RR_02.png",
-        "text": {
-          "en": "Although the gift Elite Gamble is highly random, a successful activation can potentially lead to massive damage, enough to down an opponent's holomem in one hit. In addition, attaching multiple hBP03-107 35P can still result in sufficient damage, even if Elite Gamble fails.",
-          "ja": "ギフト エリート ギャンブルは非常にランダムですが、有効化に成功すると、相手のホロメムを一撃でダウンさせるのに十分な大ダメージを与える可能性があります。また、hBP03-107 35Pを複数装着すると、エリートギャンブルが失敗した場合でも十分なダメージを与えることが可能です。",
-          "zh-TW": "儘管禮物精英賭博具有高度隨機性，但成功激活可能會造成巨大傷害，足以一擊擊倒對手的全息圖。此外，即使Elite Gamble失敗，附加多個hBP03-107 35P仍然可以造成足夠的傷害。",
-          "fr": "Bien que le cadeau Elite Gamble soit hautement aléatoire, une activation réussie peut potentiellement entraîner des dégâts massifs, suffisamment pour détruire l'holomem d'un adversaire en un seul coup. De plus, la connexion de plusieurs hBP03-107 35P peut toujours entraîner des dégâts suffisants, même si Elite Gamble échoue."
-        }
-      },
-      {
-        "name": "35P",
-        "card_id": "hBP03-107",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-107_U.png",
-        "text": {
-          "en": "A fan with the ability to be treated as red cheer. Despite the drawback of allowing your opponent to draw a card when the attached holomem is downed, it can be searched for with hBP03-029 Sakura Miko. It is a key card of the deck, as many holomem in this deck have bonus effects when hBP03-107 35P is attached.",
-          "ja": "レッドチアとして扱われる実力を持つファン。付属のホロメムがダウンすると相手にカードを引けるという欠点はあるものの、hBP03-029 桜巫女でサーチ可能。このデッキのホロメムにはhBP03-107 35Pを付けるとボーナス効果を持つカードが多く、このデッキのキーカードです。",
-          "zh-TW": "一個有能力被視為紅色歡呼的粉絲。儘管有一個缺點，即當附加的全息圖被擊倒時，會讓對手抽一張牌，但可以使用 hBP03-029 櫻花巫女來搜索它。它是套牌中的一張關鍵卡，因為套牌中的許多 Holomem 在附加 hBP03-107 35P 時都會有額外效果。",
-          "fr": "Un fan avec la capacité d’être traité comme un supporter rouge. Malgré l'inconvénient de permettre à votre adversaire de piocher une carte lorsque l'holomem attaché est abattu, il peut être recherché avec hBP03-029 Sakura Miko. C'est une carte clé du deck, car de nombreux holomem de ce deck ont ​​des effets bonus lorsque le hBP03-107 35P est attaché."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_003"
-  },
-  {
-    "title": "Recommended Deck: “FUWAMOCO”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_004/",
-    "oshi": "FUWAMOCO",
-    "oshi_card_id": "hBP03-004",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-004_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-037",
-        "count": 5,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-037_C.png"
-      },
-      {
-        "card_id": "hBP03-038",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-038_C.png"
-      },
-      {
-        "card_id": "hBP03-039",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-039_02_R.png"
-      },
-      {
-        "card_id": "hBP03-040",
-        "count": 7,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-040_C.png"
-      },
-      {
-        "card_id": "hBP03-041",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-041_02_C.png"
-      },
-      {
-        "card_id": "hBP03-042",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-042_U.png"
-      },
-      {
-        "card_id": "hBP03-043",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-043_RR.png"
-      },
-      {
-        "card_id": "hBP03-050",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-050_02_R.png"
-      },
-      {
-        "card_id": "hBP03-100",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-100_C.png"
-      },
-      {
-        "card_id": "hBP03-109",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-109_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hBP03-086",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-086_C.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY03-001",
-        "count": 8,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
-      },
-      {
-        "card_id": "hY04-001",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, use support cards such as hSD01-016 Harusaki Nodoka to draw cards and hBP01-104 Normal PC to put cards onto the stage so that you can set up both Debut holomem hBP03-040 Fuwawa Abyssgard and hBP03-037 Mococo Abyssgard on your stage.In the mid game, bloom your Debut holomem into a 1st holomem. hBP03-050 FUWAMOCO can bloom from either hBP03-040 Fuwawa Abyssgard or hBP03-037 Mococo Abyssgard. Sending cheer with the Arts “Twin sisters of the Demonic Guard Dogs” makes it easier for your other holomem to use their Arts.In the late game, place your 2nd holomem hBP03-043 Fuwawa Abyssgard in the center position and the Buzz holomem hBP03-039 Mococo Abyssgard in the collab position, then use their Arts. If it’s difficult to take down your opponent’s holomem, use the SP Oshi skill “BAU BAU!” to target your opponent’s back holomem and finish off their life.",
-          "ja": "序盤は「hSD01-016 春咲のどか」などのサポートカードでドロー、「hBP01-104 ノーマルPC」でカードをステージに出し、「デビューホロメム」「hBP03-040 ふわふわアビスガルド」「hBP03-037 モココアビスガルド」をステージに設置し、中盤では「デビューホロメム」を1stホロメムに開花させましょう。 hBP03-050 ​​ふわモコは、hBP03-040 ふわわアビスガルド、hBP03-037 モココアビスガルドのどちらからも咲きます。アーツ「番犬の双子姉妹」で応援すると、相手のホロメムがアーツを使いやすくなります。ゲーム後半では2枚目のホロメム hBP03-043 ふわわアビスガルドをセンター位置に、バズホロメム hBP03-039 モココアビスガルドをコラボ位置に配置してアーツを使用しましょう。相手のホロメムを倒すのが難しい場合は、SP推しスキル「BAU BAU!」を使用しましょう。相手のバックホロメムをターゲットにして、相手のライフを終わらせます。",
-          "zh-TW": "遊戲前期，使用hSD01-016 Harusaki Nodoka等輔助卡抽卡，使用hBP01-104普通PC將卡牌放到舞台上，這樣你就可以在舞台上同時設定出道全像圖hBP03-040 Fuwawa Abyssgard和hBP03-037 Mococo Abyssgard。在遊戲中期，將你的出道全像圖綻放為第一個全像圖。 hBP03-050 ​​FUWAMOCO 可從 hBP03-040 Fuwawa Abyssgard 或 hBP03-037 Mococo Abyssgard 中綻放。用藝術送來歡呼「惡魔看門狗的雙胞胎姊妹」可以讓你的其他霍洛梅姆更容易使用他們的藝術。在遊戲後期，將你的第二個霍洛梅姆hBP03-043 Fuwawa Abyssgard放在中心位置，將巴斯霍洛梅hBP03-039 Mococo Abyssgard放在聯動位置，然後使用他們的藝術。如果很難打倒對手的holomem，請使用SP Oshi技能“BAU BAU！”瞄準對手的背部全息圖並結束他們的生命。",
-          "fr": "En début de partie, utilisez des cartes de support telles que hSD01-016 Harusaki Nodoka pour piocher des cartes et hBP01-104 Normal PC pour mettre des cartes sur la scène afin que vous puissiez configurer les deux holomem Debut hBP03-040 Fuwawa Abyssgard et hBP03-037 Mococo Abyssgard sur votre scène. hBP03-050 FUWAMOCO peut fleurir soit à partir de hBP03-040 Fuwawa Abyssgard, soit à partir de hBP03-037 Mococo Abyssgard. Envoyer des encouragements avec les Arts « Sœurs jumelles des chiens de garde démoniaques » permet à vos autres holomems d'utiliser plus facilement leurs Arts. En fin de partie, placez votre 2ème holomem hBP03-043 Fuwawa Abyssgard en position centrale et le holomem Buzz hBP03-039 Mococo Abyssgard en position de collaboration, puis utilisez leurs Arts. S'il est difficile d'éliminer le holomem de votre adversaire, utilisez la compétence SP Oshi « BAU BAU ! pour cibler l’holomem arrière de votre adversaire et mettre fin à sa vie."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "FUWAMOCO【1st】",
-        "card_id": "hBP03-050",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-050_02_R.png",
-        "text": {
-          "en": "Even if your stage has only one of “Fuwawa Abyssgard” or “Mococo Abyssgard” among your debut holomem, via the 1st holomem hBP03-050 FUWAMOCO, you can bloom into either hBP03-039 Mococo Abyssgard or hBP03-043 Fuwawa Abyssgard, making it a versatile card.",
-          "ja": "デビューホロメムが「ふわふわアビスガルド」「モココアビスガルド」のどちらか一方しかステージに存在しない場合でも、1枚目のホロメムhBP03-050 ​​ふわモコを経由することで、hBP03-039 モココアビスガルドまたはhBP03-043 ふわふわアビスガルドに開花させることができる汎用性の高いカードです。",
-          "zh-TW": "即使你的舞台上首次登場的全息體中只有“不哇哇深淵花園”或“莫可可深淵花園”其中之一，通過第一個全息體hBP03-050 ​​FUWAMOCO，你可以綻放為hBP03-039莫可可深淵花園或hBP03-043哇卡哇卡哇。",
-          "fr": "Même si votre niveau n'a qu'un seul « Fuwawa Abyssgard » ou « Mococo Abyssgard » parmi votre premier holomem, via le 1er holomem hBP03-050 FUWAMOCO, vous pouvez vous épanouir en hBP03-039 Mococo Abyssgard ou hBP03-043 Fuwawa Abyssgard, ce qui en fait une carte polyvalente."
-        }
-      },
-      {
-        "name": "Fuwawa Abyssgard【1st】",
-        "card_id": "hBP03-042",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-042_U.png",
-        "text": {
-          "en": "The bloom effect “Fuwa Floating with the Current” can deal special damage to back holomem, as well. When combined with the SP Oshi skill “BAU BAU!”, you can down your opponent’s back holomem while they are unprepared, disrupting your opponent’s game plan.",
-          "ja": "ブルーム効果「流れに浮かぶふわ」はバックホロメムにも特殊ダメージを与えることができる。 SP推しスキル「BAU BAU!」と組み合わせることで、相手の油断した隙にバックホロメムをダウンさせ、相手のゲームプランを混乱させることができます。",
-          "zh-TW": "綻放效果「福娃隨波逐流」也可以對背部霍洛姆造成特殊傷害。與SP Oshi技能「BAU BAU!」結合使用，可以趁對手不備的時候打倒對手的後背holomem，擾亂對手的比賽計畫。",
-          "fr": "L'effet de floraison « Fuwa flottant avec le courant » peut également infliger des dégâts spéciaux au dos holomem. Lorsqu'il est combiné avec la compétence SP Oshi « BAU BAU ! », vous pouvez abattre le holomem arrière de votre adversaire alors qu'il n'est pas préparé, perturbant ainsi le plan de jeu de votre adversaire."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_004"
-  },
-  {
     "title": "Recommended Deck: “Tokoyami Towa”",
     "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_005/",
@@ -1958,6 +1429,500 @@
     "date": "2025-12-29",
     "source": "official",
     "deck_id": "official-hbp03_007"
+  },
+  {
+    "title": "Recommended Deck: “Himemori Luna”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_001/",
+    "oshi": "Himemori Luna",
+    "oshi_card_id": "hBP03-001",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-001_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP03-009",
+        "count": 10,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-009_C.png"
+      },
+      {
+        "card_id": "hBP03-010",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-010_U.png"
+      },
+      {
+        "card_id": "hBP03-011",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-011_C.png"
+      },
+      {
+        "card_id": "hBP03-012",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-012_U.png"
+      },
+      {
+        "card_id": "hBP03-013",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-013_R.png"
+      },
+      {
+        "card_id": "hBP03-014",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+      },
+      {
+        "card_id": "hBP02-077",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hBP03-093",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-093_U.png"
+      },
+      {
+        "card_id": "hBP03-105",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY01-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. The collab with hBP03-010 Himemori Luna, along with increasing your hand size with the collab effect \"Princess of Candy Kingdom\", makes it easier to gather Debut holomem Himemori Luna in the back position. Furthermore, be aggressive and use the SP Oshi skill \"Lu-knights, Assemble\" to attach hBP03-105 Lu-knights to Himemori Luna.In the mid-game, prepare your hand and stage using support cards like hSD01-016 Harusaki Nodoka and hBP03-093 hololive Gen 4. If you don't have any support cards, bring hBP01-104 Normal PC or hBP02-077 Retro PC to your hand using the Oshi skill \"I Know How to Use a Computew!\". When your opponent's holomem uses Arts, strategically archive hBP03-105 Lu-knights to skillfully weather the attack and prevent damage to Himemori Luna.In the late game, aim to bloom your holomem into the 2nd holomem, hBP03-014 Himemori Luna. Use the bloom effect \"Follow Luna~\" to reattach hBP03-105 Lu-knights, which was archived in the mid-game, to Himemori Luna, further reinforcing your defense. Since hBP03-014 Himemori Luna can deal huge damage when hBP03-105 Lu-knights is attached, utilize her aggressively to secure the win.",
+          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 hBP03-010 姫森ルナとのコラボで、コラボ効果「キャンディ王国のプリンセス」で手札が増えるとともに、後陣にデビューホロメム姫森ルナを集めやすくなります。さらにSP推しスキル「Lu-knights、集結」でhBP03-105 Lu-knightsを姫森ルナに付けて積極的に戦いましょう。中盤ではhSD01-016 春咲のどかやhBP03-093 ホロライブ第4世代などのサポートカードを使って手札とステージを整えていきましょう。サポートカードを持っていない場合はhBP01-104 Normal PCか、 hBP02-077 推しスキル「Computewの使い方がわかる！」を使ってレトロPCをあなたの手に。相手のホロメムがアーツを使用した場合は、hBP03-105 Lu-knights を戦略的にアーカイブして攻撃をうまく切り抜け、姫森ルナへのダメージを防ぎます。ゲーム後半では、ホロメムを 2 番目のホロメム、hBP03-014 姫森ルナに開花させることを目指します。ブルーム効果「ルナを追えよ～」で、ゲーム中盤にアーカイブされたhBP03-105 Lu-knightsを姫森ルナに付け直し、さらに防御を強化します。 hBP03-014 姫森ルナ hBP03-105 ルナイツを付けると大ダメージを与えられるので、積極的に活用して勝利を掴み取りましょう。",
+          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與hBP03-010姬森露娜的聯動，以及透過連動效果「糖果王國的公主」增加你的手的大小，使得更容易將出道全息姬守露娜聚集在後面的位置。此外，要積極主動，使用 SP Oshi 技能「Lu-knights，集合」將 hBP03-105 Lu-knights 附加到 Himemori Luna。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hBP03-093 Hololive Gen 4 等支援卡來準備手牌和舞台。如果您沒有任何支援卡，請帶上 hBP01-104 普通 PC 或hBP02-077 使用 Oshi 技能「我知道如何使用電腦！」將復古電腦帶到您的手中。當對手的全像圖使用藝術時，策略性地歸檔hBP03-105魯騎士，巧妙地抵禦攻擊並防止對姬森露娜造成傷害。在遊戲後期，目標是讓你的全息圖綻放為第二個全息圖，hBP03-014姬森露娜。使用綻放效果「跟隨露娜~」將遊戲中期存檔的hBP03-105露騎士重新附加到姬森露娜身上，進一步加強你的防禦。由於hBP03-014姬森露娜在hBP03-105露騎士附著時可以造成巨大傷害，因此積極利用她來確保勝利。",
+          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. La collaboration avec le hBP03-010 Himemori Luna, en plus d'augmenter la taille de votre main avec l'effet de collaboration \"Princess of Candy Kingdom\", facilite la collecte du Debut holomem Himemori Luna en position arrière. De plus, soyez agressif et utilisez la compétence SP Oshi \"Lu-knights, Assemble\" pour attacher les hBP03-105 Lu-knights à Himemori Luna. En milieu de partie, préparez votre main et votre scène en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka et hBP03-093 hololive Gen 4. Si vous n'avez pas de cartes de support, apportez hBP01-104 Normal PC ou hBP02-077. PC rétro à votre main en utilisant la compétence Oshi \"Je sais comment utiliser un ordinateur !\". Lorsque l'holomem de votre adversaire utilise les arts, archivez stratégiquement hBP03-105 Lu-knights pour résister habilement à l'attaque et éviter d'endommager Himemori Luna. En fin de partie, essayez de faire fleurir votre holomem dans le 2ème holomem, hBP03-014 Himemori Luna. Utilisez l'effet de floraison \"Follow Luna~\" pour rattacher hBP03-105 Lu-knights, qui a été archivé en milieu de partie, à Himemori Luna, renforçant ainsi davantage votre défense. Puisque le hBP03-014 Himemori Luna peut infliger d'énormes dégâts lorsque le hBP03-105 Lu-knights est attaché, utilisez-le de manière agressive pour assurer la victoire."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Himemori Luna【2nd】",
+        "card_id": "hBP03-014",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png",
+        "text": {
+          "en": "The bloom effect \"Follow Luna~\" allows you to attach hBP03-105 Lu-knights, previously sent to the archive, to Himemori Luna. This means you can use the ability of hBP03-105 Lu-knights freely from the early game. Furthermore, having hBP03-105 Lu-knights attached can potentially result in massive damage.",
+          "ja": "ブルームエフェクト「ルナをフォロー～」により、以前アーカイブに送ったhBP03-105ルーナイツを姫森ルナに付けることができます。これにより、hBP03-105 Lu-knights の能力がゲーム序盤から自由に使用できるようになります。さらに、hBP03-105 Lu-knights を取り付けると、大規模なダメージが発生する可能性があります。",
+          "zh-TW": "綻放效果「跟隨露娜〜」可讓您將先前發送到檔案的hBP03-105魯騎士附加到姬森露娜身上。這意味著你可以在遊戲初期自由使用hBP03-105魯騎士的能力。此外，附帶hBP03-105魯騎士可能會造成巨大的傷害。",
+          "fr": "L'effet bloom \"Follow Luna~\" vous permet d'attacher les hBP03-105 Lu-knights, précédemment envoyés aux archives, à Himemori Luna. Cela signifie que vous pouvez utiliser librement la capacité des hBP03-105 Lu-knights dès le début de la partie. De plus, avoir des chevaliers Lu hBP03-105 attachés peut potentiellement entraîner des dégâts massifs."
+        }
+      },
+      {
+        "name": "Lu-knights",
+        "card_id": "hBP03-105",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png",
+        "text": {
+          "en": "These fans continuously protect Himemori Luna. They are the core of the deck, enabling switches between offense and defense and seeing action from the early to late game. Even when sent to the archive, the bloom effect of hBP03-014 Himemori Luna allows them to be reattached to her, so be aggressive in using them for defense.",
+          "ja": "姫森ルナを守り続けるファンたち。これらはデッキの中核であり、攻撃と防御の切り替えを可能にし、ゲームの序盤から終盤までのアクションを確認します。 hBP03-014 姫森ルナのブルーム効果により、アーカイブに送った場合でも再度装着することができるので、積極的に防御に利用しましょう。",
+          "zh-TW": "這些粉絲一直在保護姬森露娜。它們是這套牌的核心，可以在進攻和防守之間切換，並從遊戲早期到後期觀察行動。即使發送到檔案館，hBP03-014 姬森露娜的綻放效果也能讓它們重新附著在她身上，所以在使用它們進行防禦時要積極主動。",
+          "fr": "Ces fans protègent continuellement Himemori Luna. Ils constituent le cœur du deck, permettant de basculer entre l'attaque et la défense et de voir l'action du début à la fin de la partie. Même lorsqu'ils sont envoyés aux archives, l'effet de floraison de hBP03-014 Himemori Luna permet de les rattacher à elle, alors soyez agressif lorsque vous les utilisez pour vous défendre."
+        }
+      }
+    ],
+    "date": "2025-12-29",
+    "source": "official",
+    "deck_id": "official-hbp03_001"
+  },
+  {
+    "title": "Recommended Deck “Mori Calliope”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_001/",
+    "oshi": "Mori Calliope",
+    "oshi_card_id": "hBP02-007",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-007_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP02-054",
+        "count": 11,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-054_C.png"
+      },
+      {
+        "card_id": "hBP02-055",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-055_U.png"
+      },
+      {
+        "card_id": "hBP02-056",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-056_C.png"
+      },
+      {
+        "card_id": "hBP02-057",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png"
+      },
+      {
+        "card_id": "hBP02-058",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-058_R.png"
+      },
+      {
+        "card_id": "hBP02-059",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP02-077",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
+      },
+      {
+        "card_id": "hBP02-088",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-088_U.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY05-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "At the early stages of the game, deploy Debut holomem onto the stage and use cards like hSD01-016 Harusaki Nodoka and hSD01-017 Manager-chan to prepare your hand.Proceed to bloom your Debut holomem into 1st holomem.Prepare your hand with hBP02-057 Mori Calliope and increase the archive with hBP02-088 Mori Calliope's Scythe.Return necessary holomem to your hand using the Oshi skill of hBP02-007 Mori Calliope.Bloom into hBP02-059 Mori Calliope, then attack.If you have eight or more holomem with #Myth in your archive, you can deal enormous damage.Once you are ready, use the SP Oshi skill of hBP02-007 Mori Calliope to use the Arts twice and down multiple holomem.",
+          "ja": "ゲーム序盤は「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」や「hSD01-017 マネージャーちゃん」などで手札を整えます。デビューホロメムを1枚目のホロメムに開花させましょう。「hBP02-057 森カリオペ」で手札を整え、「hBP02-088 森カリオペの鎌」でアーカイブを増やしてください。要リターンです。 hBP02-007 森カリオペの推しスキルでホロメムを手札に。hBP02-059 森カリオペに開花させて攻撃する。アーカイブに#神話を持つホロメムが8枚以上あれば、大ダメージを与えることができる。準備ができたら、hBP02-007 森カリオペのSP推しスキルでアーツを2回使用し、ホロメムを複数ダウンさせる。",
+          "zh-TW": "在遊戲的早期階段，將 Debut Holomem 部署到舞台上，並使用 hSD01-016 Harusaki Nodoka 和 hSD01-017 Manager-chan 等牌來準備你的牌。繼續將你的 Debut Holomem 綻放為第一個 Holomem。用 hBP02-057 Mori Calliope 準備你的牌，並用 hBP02-088 Mori Calliope's 增加存檔鐮刀。使用hBP02-007 Mori Calliope的Oshi技能將必要的holomem返回到你的手上。綻放為hBP02-059 Mori Calliope，然後攻擊。如果你的檔案中有八個或更多帶有#Myth的holomem，你可以造成巨大的傷害。一旦你準備好，使用hBP02-007 Mori Calliope的SP Oshi技能使用Arts兩次並打下多個holomem。",
+          "fr": "Aux premiers stades du jeu, déployez l'holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka et hSD01-017 Manager-chan pour préparer votre main. Procédez à la floraison de votre holomem Debut en 1er holomem. Préparez votre main avec hBP02-057 Mori Calliope et augmentez l'archive avec hBP02-088 Mori Calliope's. Faux. Renvoyez l'holomem nécessaire dans votre main en utilisant la compétence Oshi de hBP02-007 Mori Calliope. Fleurissez en hBP02-059 Mori Calliope, puis attaquez. Si vous avez huit holomem ou plus avec #Mythe dans vos archives, vous pouvez infliger d'énormes dégâts. Une fois que vous êtes prêt, utilisez la compétence SP Oshi de hBP02-007 Mori Calliope pour utiliser les Arts deux fois et plusieurs fois. holomème."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Mori Calliope【2nd】",
+        "card_id": "hBP02-059",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png",
+        "text": {
+          "en": "This is the key card of this deck.She allows you to archive any card you like from your deck.You can archive hBP02-088 Mori Calliope's Scythe and return it to your hand with hBP02-058 Mori Calliope, or archive hBP02-059 Mori Calliope and return her to your hand with the Oshi skill of hBP02-007 Mori Calliope.",
+          "ja": "このデッキのキーカードです。デッキから好きなカードをアーカイブできます。hBP02-088 森カリオペの鎌をアーカイブしてhBP02-058 森カリオペで手札に戻すか、hBP02-059 森カリオペをアーカイブしてhBP02-007 森カリオペのオシスキルで手札に戻すことができます。",
+          "zh-TW": "這是這套牌的關鍵卡牌。她可以讓你從牌組中存檔任何你喜歡的卡牌。你可以存檔 hBP02-088 森卡利奧佩的鐮刀，然後使用 hBP02-058 森卡利奧佩將其返回你的手牌，或者存檔 hBP02-059 森卡利奧佩，然後使用 hBP02-007 森卡利奧佩的押技能將她返回你的手牌。",
+          "fr": "C'est la carte clé de ce deck. Elle vous permet d'archiver n'importe quelle carte de votre deck. Vous pouvez archiver hBP02-088 Faux de Mori Calliope et la remettre dans votre main avec hBP02-058 Mori Calliope, ou archiver hBP02-059 Mori Calliope et la remettre dans votre main avec la compétence Oshi de hBP02-007 Mori Calliope."
+        }
+      },
+      {
+        "name": "Mori Calliope【1st】",
+        "card_id": "hBP02-057",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png",
+        "text": {
+          "en": "She is a necessary card to power up the Arts of hBP02-059 Mori Calliope.Bloom assertively to increase your archive.",
+          "ja": "hBP02-059 モリ・カリオペ・ブルームのアーツを積極的にパワーアップしてアーカイブを増やすために必要なカードです。",
+          "zh-TW": "她是增強 hBP02-059 Mori Calliope 藝術的必要卡片。積極綻放以增加您的檔案。",
+          "fr": "C'est une carte nécessaire pour dynamiser les Arts de hBP02-059 Mori Calliope. Bloom avec assurance pour augmenter vos archives."
+        }
+      }
+    ],
+    "date": "2025-11-30",
+    "source": "official",
+    "deck_id": "official-hbp02_001"
+  },
+  {
+    "title": "Recommended Deck “Kureiji Ollie”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_002/",
+    "oshi": "Kureiji Ollie",
+    "oshi_card_id": "hBP02-006",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-006_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP02-048",
+        "count": 10,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-048_C.png"
+      },
+      {
+        "card_id": "hBP02-049",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-049_U.png"
+      },
+      {
+        "card_id": "hBP02-019",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-019_U.png"
+      },
+      {
+        "card_id": "hBP02-050",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-050_C.png"
+      },
+      {
+        "card_id": "hBP02-051",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png"
+      },
+      {
+        "card_id": "hBP02-052",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-052_R.png"
+      },
+      {
+        "card_id": "hBP02-053",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png"
+      },
+      {
+        "card_id": "hBP02-081",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-081_U.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP02-097",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-097_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY05-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, deploy Debut holomem onto the stage and use cards like hSD01-016 Harusaki Nodoka and hBP02-081 hololive Indonesia Gen 2 to prepare your hand.Proceed to bloom your Debut holomem into 1st holomem.Prepare your hand with hBP02-052 Kureiji Ollie and hBP02-097 UDIN.hBP02-051 Kureiji Ollie allows you to bloom using holomem from the archive.Bloom into hBP02-053 Kureiji Ollie, then attack.If you have one more hBP02-053 Kureiji Ollie, the Arts damage will increase, allowing you to deal even more substantial Arts damage.If she is downed, revive her like a zombie using the SP Oshi skill of hBP02-006 Kureiji Ollie.",
+          "ja": "ゲーム序盤は、「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」「hBP02-081 ホロライブインドネシア第2世代」などのカードを使って手札を準備します。デビューホロメムを1stホロメムに開花させてください。「hBP02-052 クレイジ・オーリー」「hBP02-097 UDIN」で手札を準備します。「hBP02-051 クレイジ」オーリーは、アーカイブのホロメムを使用して開花させることができます。 hBP02-053 クレイジ オーリーに開花させて攻撃します。 hBP02-053 クレイジー オーリーがもう 1 体いる場合、アーツダメージが増加し、さらに大きなアーツダメージを与えることができます。 ダウンした場合は、hBP02-006 クレイジ オーリーの SP オシスキルを使用してゾンビのように復活させます。",
+          "zh-TW": "在遊戲早期，將 Debut holomem 部署到舞台上，並使用 hSD01-016 Harusaki Nodoka 和 hBP02-081 hololive Indonesia Gen 2 等牌來準備你的牌。繼續將你的 Debut holomem 綻放為第一個 holomem。用 hBP02-052 Kureiji Ollie 和 hBP02-097 UDIN.hBP02-051 Kureiji 準備你的牌。奧利允許你使用存檔中的holomem綻放。綻放為hBP02-053 Kureiji Ollie，然後攻擊。如果你再有一個hBP02-053 Kureiji Ollie，藝術傷害將會增加，使你能夠造成更大的藝術傷害。如果她被擊倒，使用hBP02-006 Kureiji Ollie的SP Oshi技能將她像殭屍一樣復活。",
+          "fr": "En début de partie, déployez l'holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka et hBP02-081 hololive Indonesia Gen 2 pour préparer votre main. Procédez à la floraison de votre holomem Debut en 1er holomem. Préparez votre main avec hBP02-052 Kureiji Ollie et hBP02-097 UDIN.hBP02-051. Kureiji Ollie vous permet de fleurir en utilisant l'holomem de l'archive. Fleurissez dans hBP02-053 Kureiji Ollie, puis attaquez. Si vous avez un hBP02-053 Kureiji Ollie supplémentaire, les dégâts artistiques augmenteront, vous permettant d'infliger des dégâts artistiques encore plus importants. Si elle est abattue, faites-la revivre comme un zombie en utilisant la compétence SP Oshi de hBP02-006 Kureiji Ollie."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Kureiji Ollie【2nd】",
+        "card_id": "hBP02-053",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png",
+        "text": {
+          "en": "She is a holomem who can deal huge damage by archiving two cards from your hand.Use the Oshi skill of hBP02-006 Kureiji Ollie to bloom the holomem on the stage with the holomem you archived.",
+          "ja": "手札を2枚アーカイブすることで大ダメージを与えられるホロメムです。hBP02-006 クレイジ・オーリーの推しスキルを使い、アーカイブしたホロメムをステージに咲かせましょう。",
+          "zh-TW": "她是全息美人，可以透過存檔兩張手牌來造成巨大傷害。使用 hBP02-006 庫雷吉奧利的押技能，讓你存檔的全息美在舞台上綻放。",
+          "fr": "C'est un holomem qui peut infliger d'énormes dégâts en archivant deux cartes de votre main. Utilisez la compétence Oshi du hBP02-006 Kureiji Ollie pour faire fleurir l'holomem sur scène avec l'holomem que vous avez archivé."
+        }
+      },
+      {
+        "name": "Kureiji Ollie【1st】",
+        "card_id": "hBP02-051",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png",
+        "text": {
+          "en": "She enables a bloom using a holomem from the archive.Bloom using the holomem archived by hBP02-049 Kureiji Ollie or hBP02-097 UDIN.",
+          "ja": "彼女は、アーカイブからのホロメムを使用してブルームを有効にします。hBP02-049 Kureiji Ollie または hBP02-097 UDIN によってアーカイブされたホロメムを使用してブルームを実行します。",
+          "zh-TW": "她使用存檔中的 holomem 啟用綻放。使用 hBP02-049 Kureiji Ollie 或 hBP02-097 UDIN 存檔的 holomem 綻放。",
+          "fr": "Elle permet une floraison en utilisant un holomem de l'archive. Bloom en utilisant l'holomem archivé par hBP02-049 Kureiji Ollie ou hBP02-097 UDIN."
+        }
+      }
+    ],
+    "date": "2025-11-30",
+    "source": "official",
+    "deck_id": "official-hbp02_002"
+  },
+  {
+    "title": "Recommended Deck “Murasaki Shion”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_003/",
+    "oshi": "Murasaki Shion",
+    "oshi_card_id": "hBP02-005",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP02-042",
+        "count": 10,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-042_C.png"
+      },
+      {
+        "card_id": "hBP02-043",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-043_U.png"
+      },
+      {
+        "card_id": "hBP02-044",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-044_C.png"
+      },
+      {
+        "card_id": "hBP02-045",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-045_U.png"
+      },
+      {
+        "card_id": "hBP02-046",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-046_R.png"
+      },
+      {
+        "card_id": "hBP02-047",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png"
+      },
+      {
+        "card_id": "hBP02-035",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
+      },
+      {
+        "card_id": "hBP02-038",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP02-077",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
+      },
+      {
+        "card_id": "hBP02-079",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-079_U.png"
+      },
+      {
+        "card_id": "hBP02-083",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-083_U.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY05-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "Start by deploying Debut holomem to the stage, while using hSD01-016 Harusaki Nodoka and hBP02-084 Mikkorone 24 to set up your hand to get yourself ready before your opponent.Bloom your Debut holomem into your 1st holomem. Use the bloom effect of hBP02-045 Murasaki Shion to add hBP02-047 Murasaki Shion and hBP02-038 Sakamata Chloe to your hand, and actively bloom whenever possible.Once you can bloom into hBP02-047 Murasaki Shion, begin your attack. Use its bloom effect to move your opponent’s cheers and increase Arts damage to take them down all at once. By also using the SP Oshi skill of hBP02-005 Murasaki Shion, you may be able to down two of your opponent’s holomem.",
+          "ja": "まずは「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」と「hBP02-084 ミッコローネ24」を使って手札を整えて相手より先に準備を整えます。「デビューホロメム」を1枚目のホロメムに開花させましょう。 「hBP02-045 紫シオン」のブルーム効果を利用して、「hBP02-047 紫シオン」と「hBP02-038 逆俣クロエ」を手札に加え、可能な限り積極的に開花させましょう。「hBP02-047 紫シオン」に開花できたら攻撃を開始します。ブルーム効果で相手の歓声を上げ、アーツダメージを増加させて一気に倒す。 hBP02-005 紫シオンのSP推しスキルも併用することで、相手のホロメムを2体ダウンさせることも可能です。",
+          "zh-TW": "首先將 Debut Holomem 部署到舞台上，同時使用 hSD01-016 Harusaki Nodoka 和 hBP02-084 Mikkorone 24 擺好手牌，在對手之前做好準備。將 Debut Holomem 綻放為第一個 Holomem。利用hBP02-045紫紫苑的綻放效果，將hBP02-047紫紫苑和hBP02-038坂田克洛伊加入手牌，並盡可能主動綻放。一旦可以綻放為hBP02-047紫苑紫苑，就開始攻擊。利用其綻放效果來移動對手的歡呼聲並增加藝術傷害，將他們一次擊倒。透過同時使用 hBP02-005 紫苑紫苑的 SP Oshi 技能，你也許能夠打倒對手的兩個全息體。",
+          "fr": "Commencez par déployer l'holomem Debut sur scène, tout en utilisant hSD01-016 Harusaki Nodoka et hBP02-084 Mikkorone 24 pour préparer votre main afin de vous préparer avant votre adversaire. Faites fleurir votre holomem Debut dans votre 1er holomem. Utilisez l'effet de floraison de hBP02-045 Murasaki Shion pour ajouter hBP02-047 Murasaki Shion et hBP02-038 Sakamata Chloe à votre main, et fleurissez activement autant que possible. Une fois que vous pouvez fleurir dans hBP02-047 Murasaki Shion, commencez votre attaque. Utilisez son effet de floraison pour déplacer les acclamations de votre adversaire et augmenter les dégâts des Arts pour les éliminer d'un seul coup. En utilisant également la compétence SP Oshi du hBP02-005 Murasaki Shion, vous pourrez peut-être abattre deux holomems de votre adversaire."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Murasaki Shion",
+        "card_id": "hBP02-005",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
+        "text": {
+          "en": "A card that maximizes the strengths of your holomem Murasaki Shion.Its Oshi skill can increase the success rate of hBP02-043 Murasaki Shion and hBP05-047 Murasaki Shion, while its SP Oshi skill can down both your opponent’s center holomem and collab holomem at the same time, making it effective throughout the start to the end of the game.",
+          "ja": "ホロメム ムラサキ シオンの長所を最大限に引き出すカード。推しスキルでhBP02-043 ムラサキ シオンとhBP05-047 ムラサキ シオンの成功率を高め、SP推しスキルで相手のセンターホロメムとコラボホロメムを同時にダウンさせることができ、序盤から終盤まで効果を発揮する。",
+          "zh-TW": "一張可以最大限度地發揮你的全羅梅紫苑實力的卡牌。它的押技能可以提高 hBP02-043 紫苑紫苑和 hBP05-047 紫苑紫苑的成功率，而它的 SP 押技能可以同時擊倒對手的中心全羅梅和聯動全羅梅，使其從遊戲開始到結束都有效。",
+          "fr": "Une carte qui maximise les forces de votre holomem Murasaki Shion. Sa compétence Oshi peut augmenter le taux de réussite de hBP02-043 Murasaki Shion et hBP05-047 Murasaki Shion, tandis que sa compétence SP Oshi peut détruire à la fois l'holomem central et l'holomem de collaboration de votre adversaire en même temps, ce qui la rend efficace du début à la fin de la partie."
+        }
+      },
+      {
+        "name": "Murasaki Shion【2nd】",
+        "card_id": "hBP02-047",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png",
+        "text": {
+          "en": "The key card of this deck. It can manipulate your opponent’s cheers and increase the damage of its own Arts, making it useful in many situations. It also pairs well with the SP Oshi skill of hBP02-005 Murasaki Shion, so use it actively whenever possible.",
+          "ja": "このデッキのキーカード。相手の歓声を操作したり、自身のアーツのダメージを増加させるなど、様々な場面で活躍する。 hBP02-005 紫シオンのSP推しスキルとも相性が良いので、積極的に使っていきましょう。",
+          "zh-TW": "這副牌的關鍵卡。它可以操縱對手的歡呼聲並增加其自身藝術的傷害，使其在許多情況下都很有用。它也與 hBP02-005 紫苑的 SP Oshi 技能搭配得很好，因此請盡可能積極地使用它。",
+          "fr": "La carte clé de ce deck. Il peut manipuler les acclamations de votre adversaire et augmenter les dégâts de ses propres arts, ce qui le rend utile dans de nombreuses situations. Il se marie également bien avec la compétence SP Oshi de hBP02-005 Murasaki Shion, alors utilisez-le activement autant que possible."
+        }
+      }
+    ],
+    "date": "2025-11-30",
+    "source": "official",
+    "deck_id": "official-hbp02_003"
   },
   {
     "title": "Recommended Deck “Sakamata Chloe”",
@@ -2492,374 +2457,6 @@
     "date": "2025-11-30",
     "source": "official",
     "deck_id": "official-hbp02_007"
-  },
-  {
-    "title": "Recommended Deck “Mori Calliope”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_001/",
-    "oshi": "Mori Calliope",
-    "oshi_card_id": "hBP02-007",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-007_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP02-054",
-        "count": 11,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-054_C.png"
-      },
-      {
-        "card_id": "hBP02-055",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-055_U.png"
-      },
-      {
-        "card_id": "hBP02-056",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-056_C.png"
-      },
-      {
-        "card_id": "hBP02-057",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png"
-      },
-      {
-        "card_id": "hBP02-058",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-058_R.png"
-      },
-      {
-        "card_id": "hBP02-059",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      },
-      {
-        "card_id": "hBP02-088",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-088_U.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY05-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "At the early stages of the game, deploy Debut holomem onto the stage and use cards like hSD01-016 Harusaki Nodoka and hSD01-017 Manager-chan to prepare your hand.Proceed to bloom your Debut holomem into 1st holomem.Prepare your hand with hBP02-057 Mori Calliope and increase the archive with hBP02-088 Mori Calliope's Scythe.Return necessary holomem to your hand using the Oshi skill of hBP02-007 Mori Calliope.Bloom into hBP02-059 Mori Calliope, then attack.If you have eight or more holomem with #Myth in your archive, you can deal enormous damage.Once you are ready, use the SP Oshi skill of hBP02-007 Mori Calliope to use the Arts twice and down multiple holomem.",
-          "ja": "ゲーム序盤は「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」や「hSD01-017 マネージャーちゃん」などで手札を整えます。デビューホロメムを1枚目のホロメムに開花させましょう。「hBP02-057 森カリオペ」で手札を整え、「hBP02-088 森カリオペの鎌」でアーカイブを増やしてください。要リターンです。 hBP02-007 森カリオペの推しスキルでホロメムを手札に。hBP02-059 森カリオペに開花させて攻撃する。アーカイブに#神話を持つホロメムが8枚以上あれば、大ダメージを与えることができる。準備ができたら、hBP02-007 森カリオペのSP推しスキルでアーツを2回使用し、ホロメムを複数ダウンさせる。",
-          "zh-TW": "在遊戲的早期階段，將 Debut Holomem 部署到舞台上，並使用 hSD01-016 Harusaki Nodoka 和 hSD01-017 Manager-chan 等牌來準備你的牌。繼續將你的 Debut Holomem 綻放為第一個 Holomem。用 hBP02-057 Mori Calliope 準備你的牌，並用 hBP02-088 Mori Calliope's 增加存檔鐮刀。使用hBP02-007 Mori Calliope的Oshi技能將必要的holomem返回到你的手上。綻放為hBP02-059 Mori Calliope，然後攻擊。如果你的檔案中有八個或更多帶有#Myth的holomem，你可以造成巨大的傷害。一旦你準備好，使用hBP02-007 Mori Calliope的SP Oshi技能使用Arts兩次並打下多個holomem。",
-          "fr": "Aux premiers stades du jeu, déployez l'holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka et hSD01-017 Manager-chan pour préparer votre main. Procédez à la floraison de votre holomem Debut en 1er holomem. Préparez votre main avec hBP02-057 Mori Calliope et augmentez l'archive avec hBP02-088 Mori Calliope's. Faux. Renvoyez l'holomem nécessaire dans votre main en utilisant la compétence Oshi de hBP02-007 Mori Calliope. Fleurissez en hBP02-059 Mori Calliope, puis attaquez. Si vous avez huit holomem ou plus avec #Mythe dans vos archives, vous pouvez infliger d'énormes dégâts. Une fois que vous êtes prêt, utilisez la compétence SP Oshi de hBP02-007 Mori Calliope pour utiliser les Arts deux fois et plusieurs fois. holomème."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Mori Calliope【2nd】",
-        "card_id": "hBP02-059",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png",
-        "text": {
-          "en": "This is the key card of this deck.She allows you to archive any card you like from your deck.You can archive hBP02-088 Mori Calliope's Scythe and return it to your hand with hBP02-058 Mori Calliope, or archive hBP02-059 Mori Calliope and return her to your hand with the Oshi skill of hBP02-007 Mori Calliope.",
-          "ja": "このデッキのキーカードです。デッキから好きなカードをアーカイブできます。hBP02-088 森カリオペの鎌をアーカイブしてhBP02-058 森カリオペで手札に戻すか、hBP02-059 森カリオペをアーカイブしてhBP02-007 森カリオペのオシスキルで手札に戻すことができます。",
-          "zh-TW": "這是這套牌的關鍵卡牌。她可以讓你從牌組中存檔任何你喜歡的卡牌。你可以存檔 hBP02-088 森卡利奧佩的鐮刀，然後使用 hBP02-058 森卡利奧佩將其返回你的手牌，或者存檔 hBP02-059 森卡利奧佩，然後使用 hBP02-007 森卡利奧佩的押技能將她返回你的手牌。",
-          "fr": "C'est la carte clé de ce deck. Elle vous permet d'archiver n'importe quelle carte de votre deck. Vous pouvez archiver hBP02-088 Faux de Mori Calliope et la remettre dans votre main avec hBP02-058 Mori Calliope, ou archiver hBP02-059 Mori Calliope et la remettre dans votre main avec la compétence Oshi de hBP02-007 Mori Calliope."
-        }
-      },
-      {
-        "name": "Mori Calliope【1st】",
-        "card_id": "hBP02-057",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png",
-        "text": {
-          "en": "She is a necessary card to power up the Arts of hBP02-059 Mori Calliope.Bloom assertively to increase your archive.",
-          "ja": "hBP02-059 モリ・カリオペ・ブルームのアーツを積極的にパワーアップしてアーカイブを増やすために必要なカードです。",
-          "zh-TW": "她是增強 hBP02-059 Mori Calliope 藝術的必要卡片。積極綻放以增加您的檔案。",
-          "fr": "C'est une carte nécessaire pour dynamiser les Arts de hBP02-059 Mori Calliope. Bloom avec assurance pour augmenter vos archives."
-        }
-      }
-    ],
-    "date": "2025-11-30",
-    "source": "official",
-    "deck_id": "official-hbp02_001"
-  },
-  {
-    "title": "Recommended Deck “Kureiji Ollie”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_002/",
-    "oshi": "Kureiji Ollie",
-    "oshi_card_id": "hBP02-006",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-006_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP02-048",
-        "count": 10,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-048_C.png"
-      },
-      {
-        "card_id": "hBP02-049",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-049_U.png"
-      },
-      {
-        "card_id": "hBP02-019",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-019_U.png"
-      },
-      {
-        "card_id": "hBP02-050",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-050_C.png"
-      },
-      {
-        "card_id": "hBP02-051",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png"
-      },
-      {
-        "card_id": "hBP02-052",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-052_R.png"
-      },
-      {
-        "card_id": "hBP02-053",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png"
-      },
-      {
-        "card_id": "hBP02-081",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-081_U.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-097",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-097_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY05-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, deploy Debut holomem onto the stage and use cards like hSD01-016 Harusaki Nodoka and hBP02-081 hololive Indonesia Gen 2 to prepare your hand.Proceed to bloom your Debut holomem into 1st holomem.Prepare your hand with hBP02-052 Kureiji Ollie and hBP02-097 UDIN.hBP02-051 Kureiji Ollie allows you to bloom using holomem from the archive.Bloom into hBP02-053 Kureiji Ollie, then attack.If you have one more hBP02-053 Kureiji Ollie, the Arts damage will increase, allowing you to deal even more substantial Arts damage.If she is downed, revive her like a zombie using the SP Oshi skill of hBP02-006 Kureiji Ollie.",
-          "ja": "ゲーム序盤は、「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」「hBP02-081 ホロライブインドネシア第2世代」などのカードを使って手札を準備します。デビューホロメムを1stホロメムに開花させてください。「hBP02-052 クレイジ・オーリー」「hBP02-097 UDIN」で手札を準備します。「hBP02-051 クレイジ」オーリーは、アーカイブのホロメムを使用して開花させることができます。 hBP02-053 クレイジ オーリーに開花させて攻撃します。 hBP02-053 クレイジー オーリーがもう 1 体いる場合、アーツダメージが増加し、さらに大きなアーツダメージを与えることができます。 ダウンした場合は、hBP02-006 クレイジ オーリーの SP オシスキルを使用してゾンビのように復活させます。",
-          "zh-TW": "在遊戲早期，將 Debut holomem 部署到舞台上，並使用 hSD01-016 Harusaki Nodoka 和 hBP02-081 hololive Indonesia Gen 2 等牌來準備你的牌。繼續將你的 Debut holomem 綻放為第一個 holomem。用 hBP02-052 Kureiji Ollie 和 hBP02-097 UDIN.hBP02-051 Kureiji 準備你的牌。奧利允許你使用存檔中的holomem綻放。綻放為hBP02-053 Kureiji Ollie，然後攻擊。如果你再有一個hBP02-053 Kureiji Ollie，藝術傷害將會增加，使你能夠造成更大的藝術傷害。如果她被擊倒，使用hBP02-006 Kureiji Ollie的SP Oshi技能將她像殭屍一樣復活。",
-          "fr": "En début de partie, déployez l'holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka et hBP02-081 hololive Indonesia Gen 2 pour préparer votre main. Procédez à la floraison de votre holomem Debut en 1er holomem. Préparez votre main avec hBP02-052 Kureiji Ollie et hBP02-097 UDIN.hBP02-051. Kureiji Ollie vous permet de fleurir en utilisant l'holomem de l'archive. Fleurissez dans hBP02-053 Kureiji Ollie, puis attaquez. Si vous avez un hBP02-053 Kureiji Ollie supplémentaire, les dégâts artistiques augmenteront, vous permettant d'infliger des dégâts artistiques encore plus importants. Si elle est abattue, faites-la revivre comme un zombie en utilisant la compétence SP Oshi de hBP02-006 Kureiji Ollie."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Kureiji Ollie【2nd】",
-        "card_id": "hBP02-053",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png",
-        "text": {
-          "en": "She is a holomem who can deal huge damage by archiving two cards from your hand.Use the Oshi skill of hBP02-006 Kureiji Ollie to bloom the holomem on the stage with the holomem you archived.",
-          "ja": "手札を2枚アーカイブすることで大ダメージを与えられるホロメムです。hBP02-006 クレイジ・オーリーの推しスキルを使い、アーカイブしたホロメムをステージに咲かせましょう。",
-          "zh-TW": "她是全息美人，可以透過存檔兩張手牌來造成巨大傷害。使用 hBP02-006 庫雷吉奧利的押技能，讓你存檔的全息美在舞台上綻放。",
-          "fr": "C'est un holomem qui peut infliger d'énormes dégâts en archivant deux cartes de votre main. Utilisez la compétence Oshi du hBP02-006 Kureiji Ollie pour faire fleurir l'holomem sur scène avec l'holomem que vous avez archivé."
-        }
-      },
-      {
-        "name": "Kureiji Ollie【1st】",
-        "card_id": "hBP02-051",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png",
-        "text": {
-          "en": "She enables a bloom using a holomem from the archive.Bloom using the holomem archived by hBP02-049 Kureiji Ollie or hBP02-097 UDIN.",
-          "ja": "彼女は、アーカイブからのホロメムを使用してブルームを有効にします。hBP02-049 Kureiji Ollie または hBP02-097 UDIN によってアーカイブされたホロメムを使用してブルームを実行します。",
-          "zh-TW": "她使用存檔中的 holomem 啟用綻放。使用 hBP02-049 Kureiji Ollie 或 hBP02-097 UDIN 存檔的 holomem 綻放。",
-          "fr": "Elle permet une floraison en utilisant un holomem de l'archive. Bloom en utilisant l'holomem archivé par hBP02-049 Kureiji Ollie ou hBP02-097 UDIN."
-        }
-      }
-    ],
-    "date": "2025-11-30",
-    "source": "official",
-    "deck_id": "official-hbp02_002"
-  },
-  {
-    "title": "Recommended Deck “Murasaki Shion”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_003/",
-    "oshi": "Murasaki Shion",
-    "oshi_card_id": "hBP02-005",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP02-042",
-        "count": 10,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-042_C.png"
-      },
-      {
-        "card_id": "hBP02-043",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-043_U.png"
-      },
-      {
-        "card_id": "hBP02-044",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-044_C.png"
-      },
-      {
-        "card_id": "hBP02-045",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-045_U.png"
-      },
-      {
-        "card_id": "hBP02-046",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-046_R.png"
-      },
-      {
-        "card_id": "hBP02-047",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png"
-      },
-      {
-        "card_id": "hBP02-035",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
-      },
-      {
-        "card_id": "hBP02-038",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      },
-      {
-        "card_id": "hBP02-079",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-079_U.png"
-      },
-      {
-        "card_id": "hBP02-083",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-083_U.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY05-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "Start by deploying Debut holomem to the stage, while using hSD01-016 Harusaki Nodoka and hBP02-084 Mikkorone 24 to set up your hand to get yourself ready before your opponent.Bloom your Debut holomem into your 1st holomem. Use the bloom effect of hBP02-045 Murasaki Shion to add hBP02-047 Murasaki Shion and hBP02-038 Sakamata Chloe to your hand, and actively bloom whenever possible.Once you can bloom into hBP02-047 Murasaki Shion, begin your attack. Use its bloom effect to move your opponent’s cheers and increase Arts damage to take them down all at once. By also using the SP Oshi skill of hBP02-005 Murasaki Shion, you may be able to down two of your opponent’s holomem.",
-          "ja": "まずは「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」と「hBP02-084 ミッコローネ24」を使って手札を整えて相手より先に準備を整えます。「デビューホロメム」を1枚目のホロメムに開花させましょう。 「hBP02-045 紫シオン」のブルーム効果を利用して、「hBP02-047 紫シオン」と「hBP02-038 逆俣クロエ」を手札に加え、可能な限り積極的に開花させましょう。「hBP02-047 紫シオン」に開花できたら攻撃を開始します。ブルーム効果で相手の歓声を上げ、アーツダメージを増加させて一気に倒す。 hBP02-005 紫シオンのSP推しスキルも併用することで、相手のホロメムを2体ダウンさせることも可能です。",
-          "zh-TW": "首先將 Debut Holomem 部署到舞台上，同時使用 hSD01-016 Harusaki Nodoka 和 hBP02-084 Mikkorone 24 擺好手牌，在對手之前做好準備。將 Debut Holomem 綻放為第一個 Holomem。利用hBP02-045紫紫苑的綻放效果，將hBP02-047紫紫苑和hBP02-038坂田克洛伊加入手牌，並盡可能主動綻放。一旦可以綻放為hBP02-047紫苑紫苑，就開始攻擊。利用其綻放效果來移動對手的歡呼聲並增加藝術傷害，將他們一次擊倒。透過同時使用 hBP02-005 紫苑紫苑的 SP Oshi 技能，你也許能夠打倒對手的兩個全息體。",
-          "fr": "Commencez par déployer l'holomem Debut sur scène, tout en utilisant hSD01-016 Harusaki Nodoka et hBP02-084 Mikkorone 24 pour préparer votre main afin de vous préparer avant votre adversaire. Faites fleurir votre holomem Debut dans votre 1er holomem. Utilisez l'effet de floraison de hBP02-045 Murasaki Shion pour ajouter hBP02-047 Murasaki Shion et hBP02-038 Sakamata Chloe à votre main, et fleurissez activement autant que possible. Une fois que vous pouvez fleurir dans hBP02-047 Murasaki Shion, commencez votre attaque. Utilisez son effet de floraison pour déplacer les acclamations de votre adversaire et augmenter les dégâts des Arts pour les éliminer d'un seul coup. En utilisant également la compétence SP Oshi du hBP02-005 Murasaki Shion, vous pourrez peut-être abattre deux holomems de votre adversaire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Murasaki Shion",
-        "card_id": "hBP02-005",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
-        "text": {
-          "en": "A card that maximizes the strengths of your holomem Murasaki Shion.Its Oshi skill can increase the success rate of hBP02-043 Murasaki Shion and hBP05-047 Murasaki Shion, while its SP Oshi skill can down both your opponent’s center holomem and collab holomem at the same time, making it effective throughout the start to the end of the game.",
-          "ja": "ホロメム ムラサキ シオンの長所を最大限に引き出すカード。推しスキルでhBP02-043 ムラサキ シオンとhBP05-047 ムラサキ シオンの成功率を高め、SP推しスキルで相手のセンターホロメムとコラボホロメムを同時にダウンさせることができ、序盤から終盤まで効果を発揮する。",
-          "zh-TW": "一張可以最大限度地發揮你的全羅梅紫苑實力的卡牌。它的押技能可以提高 hBP02-043 紫苑紫苑和 hBP05-047 紫苑紫苑的成功率，而它的 SP 押技能可以同時擊倒對手的中心全羅梅和聯動全羅梅，使其從遊戲開始到結束都有效。",
-          "fr": "Une carte qui maximise les forces de votre holomem Murasaki Shion. Sa compétence Oshi peut augmenter le taux de réussite de hBP02-043 Murasaki Shion et hBP05-047 Murasaki Shion, tandis que sa compétence SP Oshi peut détruire à la fois l'holomem central et l'holomem de collaboration de votre adversaire en même temps, ce qui la rend efficace du début à la fin de la partie."
-        }
-      },
-      {
-        "name": "Murasaki Shion【2nd】",
-        "card_id": "hBP02-047",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png",
-        "text": {
-          "en": "The key card of this deck. It can manipulate your opponent’s cheers and increase the damage of its own Arts, making it useful in many situations. It also pairs well with the SP Oshi skill of hBP02-005 Murasaki Shion, so use it actively whenever possible.",
-          "ja": "このデッキのキーカード。相手の歓声を操作したり、自身のアーツのダメージを増加させるなど、様々な場面で活躍する。 hBP02-005 紫シオンのSP推しスキルとも相性が良いので、積極的に使っていきましょう。",
-          "zh-TW": "這副牌的關鍵卡。它可以操縱對手的歡呼聲並增加其自身藝術的傷害，使其在許多情況下都很有用。它也與 hBP02-005 紫苑的 SP Oshi 技能搭配得很好，因此請盡可能積極地使用它。",
-          "fr": "La carte clé de ce deck. Il peut manipuler les acclamations de votre adversaire et augmenter les dégâts de ses propres arts, ce qui le rend utile dans de nombreuses situations. Il se marie également bien avec la compétence SP Oshi de hBP02-005 Murasaki Shion, alors utilisez-le activement autant que possible."
-        }
-      }
-    ],
-    "date": "2025-11-30",
-    "source": "official",
-    "deck_id": "official-hbp02_003"
   },
   {
     "title": "Recommended Deck “Usada Pekora Deck”",
