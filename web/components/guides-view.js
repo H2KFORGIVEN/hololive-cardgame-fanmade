@@ -149,8 +149,10 @@ const COLOR_CSS = { '白': '#e8e8e8', '緑': '#4caf50', '赤': '#f44336', '青':
 function renderGuideCard(deck, cardsMap) {
   const title = localized(deck.title, deck.deck_id || '');
   const thumbSrc = deck.deck_image || deck.oshi_image;
+  const isCardArt = !deck.deck_image && !!deck.oshi_image;
+  const imgCls = isCardArt ? 'guide-card-img card-art' : 'guide-card-img';
   const imgHtml = thumbSrc
-    ? `<img class="guide-card-img" src="${thumbSrc}" alt="${title}" loading="lazy">`
+    ? `<img class="${imgCls}" src="${thumbSrc}" alt="${title}" loading="lazy">`
     : `<div class="guide-card-noimg">🃏</div>`;
 
   const tierBadge = deck.tier

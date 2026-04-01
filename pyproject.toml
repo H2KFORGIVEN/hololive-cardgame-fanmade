@@ -9,4 +9,5 @@ dependencies = [
     "deep-translator>=1.11.4",
     "httpx>=0.28.1",
     "lxml>=6.0.2",
+    "pillow>=12.1.1",
 ]
