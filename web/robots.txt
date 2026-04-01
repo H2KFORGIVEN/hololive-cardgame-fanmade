@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /data/cards.json
+Disallow: /data/decklog_decks.json
 
 Sitemap: https://holocardgame-meta.github.io/sitemap.xml

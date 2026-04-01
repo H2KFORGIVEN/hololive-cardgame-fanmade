@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#1a2235"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#26c7ff"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Donut icon -->
+  <g transform="translate(540, 140)">
+    <clipPath id="donut">
+      <path d="M60,0 A60,60 0 1,1 59.99,0 Z M60,20 A40,40 0 1,0 60.01,20 Z"/>
+    </clipPath>
+    <g clip-path="url(#donut)">
+      <path d="M60,60 L60,0 A60,60 0 0,1 111.96,30 Z" fill="#e8e8e8"/>
+      <path d="M60,60 L111.96,30 A60,60 0 0,1 111.96,90 Z" fill="#4caf50"/>
+      <path d="M60,60 L111.96,90 A60,60 0 0,1 60,120 Z" fill="#f44336"/>
+      <path d="M60,60 L60,120 A60,60 0 0,1 8.04,90 Z" fill="#2196f3"/>
+      <path d="M60,60 L8.04,90 A60,60 0 0,1 8.04,30 Z" fill="#9c27b0"/>
+      <path d="M60,60 L8.04,30 A60,60 0 0,1 60,0 Z" fill="#ffeb3b"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="320" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="72" fill="#e8eaf0" letter-spacing="6">
+    <tspan fill="#26c7ff">HOLO</tspan><tspan fill="#e8eaf0">CARD</tspan>
+    <tspan fill="#a855f7" dx="8">META</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="380" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="28" fill="#8892a8">
+    Fan-made Ûí« Tier List &amp; Deck Guide Database
+  </text>
+
+  <!-- Feature tags -->
+  <g transform="translate(600, 440)" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#26c7ff">
+    <text x="-320" y="0">=Ê Tier List</text>
+    <text x="-100" y="0">=Ö 100+ Deck Guides</text>
+    <text x="150" y="0"><Æ Tournament Results</text>
+    <text x="380" y="0">= 1600+ Cards</text>
+  </g>
+
+  <!-- Languages -->
+  <text x="600" y="510" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#8892a8">
+    AÔ-‡ · English · å,ž · Français
+  </text>
+
+  <!-- URL -->
+  <text x="600" y="570" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#4a5568">
+    holocardgame-meta.github.io
+  </text>
+</svg>

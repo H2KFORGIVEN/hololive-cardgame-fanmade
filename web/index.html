@@ -13,35 +13,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOLOCARD META - Fan-made ホロカ Tier List & Deck Guide Database</title>
   <meta name="description" content="Fan-made ホロカ (hOCG) meta database. Browse tier lists, deck guides, tournament results, and card data for hololive card game. Not affiliated with COVER Corp.">
-  <meta name="keywords" content="hololive, card game, ホロカ, tier list, deck guide, tournament, meta, ホロライブ, カードゲーム, 環境, デッキ">
+  <meta name="keywords" content="hololive, card game, hOCG, ホロカ, tier list, deck guide, tournament, meta, ホロライブ, カードゲーム, 環境, デッキ, 最強デッキ, 構築, hololive TCG, ホロカード, 大会結果, WGP, deck recipe, おすすめデッキ">
   <link rel="canonical" href="https://holocardgame-meta.github.io/">
+
+  <link rel="alternate" hreflang="zh-TW" href="https://holocardgame-meta.github.io/?lang=zh-TW">
+  <link rel="alternate" hreflang="ja" href="https://holocardgame-meta.github.io/?lang=ja">
+  <link rel="alternate" hreflang="en" href="https://holocardgame-meta.github.io/?lang=en">
+  <link rel="alternate" hreflang="fr" href="https://holocardgame-meta.github.io/?lang=fr">
+  <link rel="alternate" hreflang="x-default" href="https://holocardgame-meta.github.io/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://hololive-cardgame.github.io">
+  <link rel="dns-prefetch" href="https://www.holocardstrategy.jp">
+  <link rel="dns-prefetch" href="https://en.hololive-official-cardgame.com">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="HOLOCARD META - Fan-made ホロカ Tier List & Deck Guides">
   <meta property="og:description" content="Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card search. Not affiliated with COVER Corp.">
   <meta property="og:url" content="https://holocardgame-meta.github.io/">
+  <meta property="og:image" content="https://holocardgame-meta.github.io/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="HOLOCARD META">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:locale:alternate" content="ja_JP">
   <meta property="og:locale:alternate" content="en_US">
 
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HOLOCARD META - Fan-made ホロカ Tier List & Deck Guides">
   <meta name="twitter:description" content="Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card search. Not affiliated with COVER Corp.">
+  <meta name="twitter:image" content="https://holocardgame-meta.github.io/og-image.svg">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "HOLOCARD META",
-    "alternateName": "ホロカメタ",
-    "url": "https://holocardgame-meta.github.io/",
-    "description": "Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card data. Not affiliated with COVER Corp.",
-    "inLanguage": ["zh-TW", "ja", "en", "fr"]
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "HOLOCARD META",
+      "alternateName": ["ホロカメタ", "ホロカ環境", "hOCG Meta"],
+      "url": "https://holocardgame-meta.github.io/",
+      "description": "Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card data.",
+      "inLanguage": ["zh-TW", "ja", "en", "fr"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://holocardgame-meta.github.io/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the current hololive card game tier list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD META provides an up-to-date tier list ranking decks into Tier 1, Tier 2, and Tier 3 based on tournament performance and win rates. Data is sourced from holocardstrategy.jp and updated monthly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ホロカの環境デッキランキングはどこで見れますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD METAでは、大会結果に基づいたTier 1/2/3のデッキランキング、100以上のデッキ攻略ガイド、カード検索が利用できます。毎月更新されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I find hololive card game deck guides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD META features 100+ deck guides from holocardstrategy.jp with card breakdowns and strategies, 30 official Bushiroad recommended decks with key card analysis, and tournament-winning deck lists from WGP events."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "hOCG Meta Deck Tier List",
+      "description": "Current meta deck tier rankings for hololive OFFICIAL CARD GAME",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Tier 1 Decks", "description": "Top-tier competitive decks with highest win rates"},
+        {"@type": "ListItem", "position": 2, "name": "Tier 2 Decks", "description": "Strong competitive decks, viable in tournaments"},
+        {"@type": "ListItem", "position": 3, "name": "Tier 3 Decks", "description": "Playable decks with niche strategies"}
+      ]
+    }
+  ]
   </script>
 </head>
 <body>
@@ -103,15 +168,23 @@
 
   <noscript>
     <div style="max-width:700px;margin:2rem auto;padding:1rem;color:#ccc">
-      <h2>HOLOCARD META - hololive Card Game Deck Database</h2>
-      <p>This fan-made site provides a comprehensive meta deck database for ホロカ / hOCG (hololive card game), including:</p>
+      <h2>HOLOCARD META - Fan-made ホロカ Tier List & Deck Guide Database</h2>
+      <p>This fan-made site provides a comprehensive meta deck database for ホロカ / hOCG (hololive card game). Not affiliated with COVER Corp.</p>
+      <h3>Features</h3>
       <ul>
-        <li>Tier list rankings (Tier 1, 2, 3) with deck ratings and features</li>
-        <li>100+ deck guides with card breakdowns and turn-by-turn strategy</li>
-        <li>Tournament results from WGP Tokyo, Chiba, Aichi and more</li>
-        <li>Full card database with search by color, type, and effects</li>
+        <li><strong>Tier List</strong> - Current meta deck rankings (Tier 1, Tier 2, Tier 3) based on tournament win rates and competitive performance</li>
+        <li><strong>Deck Guides (100+)</strong> - Detailed deck breakdowns from holocardstrategy.jp with card analysis, mulligan tips, and turn-by-turn strategy</li>
+        <li><strong>Official Recommended Decks (30)</strong> - Bushiroad's official deck recipes from en.hololive-official-cardgame.com with key card spotlights</li>
+        <li><strong>Tournament Results</strong> - Winning deck lists from WGP2025-26 (Tokyo, Chiba, Aichi) with placement and deck codes</li>
+        <li><strong>Card Database (1600+)</strong> - Full card search by color (white, green, red, blue, purple, yellow), type, name, and effects with all art variants</li>
       </ul>
-      <p>Available in Chinese, English, Japanese, and French. Data sourced from holocardstrategy.jp and Bushiroad Deck Log.</p>
+      <h3>ホロカ環境デッキデータベース</h3>
+      <p>ホロライブカードゲーム(hOCG)のファンメイド環境データベースです。最強デッキランキング、デッキ構築ガイド、大会結果、カード検索を提供しています。holocardstrategy.jpとDeck Logのデータを毎月更新。</p>
+      <h3>ホロカ 牌組攻略資料庫</h3>
+      <p>hololive卡牌遊戲(hOCG)粉絲製環境資料庫。提供Tier排行榜、牌組攻略、大賽結果、卡片搜尋。支援中文、英文、日文、法文。每月自動更新資料。</p>
+      <h3>Popular Deck Archetypes</h3>
+      <p>Hoshimachi Suisei, Tokoyami Towa, Usada Pekora, Sakura Miko, Shirakami Fubuki, Amane Kanata, Houshou Marine, Oozora Subaru, La+ Darknesss, Hakui Koyori, FUWAMOCO, Shishiro Botan, and more.</p>
+      <p>Available in Chinese (繁體中文), English, Japanese (日本語), and French (Français). Data sourced from holocardstrategy.jp, Bushiroad Deck Log, and en.hololive-official-cardgame.com. Updated monthly.</p>
       <p>Please enable JavaScript to use this application.</p>
     </div>
   </noscript>
