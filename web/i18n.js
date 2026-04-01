@@ -350,14 +350,29 @@ const TRANSLATIONS = {
 };
 
 const SUPPORTED_LANGS = ['zh-TW', 'en', 'ja', 'fr'];
-const DEFAULT_LANG = 'zh-TW';
+const FALLBACK_LANG = 'en';
 
-let currentLang = DEFAULT_LANG;
+let currentLang = FALLBACK_LANG;
+
+function _detectBrowserLang() {
+  const langs = navigator.languages || [navigator.language || ''];
+  for (const tag of langs) {
+    const norm = tag.trim();
+    if (SUPPORTED_LANGS.includes(norm)) return norm;
+    const base = norm.split('-')[0];
+    if (base === 'zh') return 'zh-TW';
+    const match = SUPPORTED_LANGS.find(s => s.startsWith(base));
+    if (match) return match;
+  }
+  return FALLBACK_LANG;
+}
 
 export function initI18n() {
   const saved = localStorage.getItem('holo-card-lang');
   if (saved && SUPPORTED_LANGS.includes(saved)) {
     currentLang = saved;
+  } else {
+    currentLang = _detectBrowserLang();
   }
   document.documentElement.lang = currentLang;
   return currentLang;
@@ -375,7 +390,7 @@ export function getLang() {
 }
 
 export function t(key, params) {
-  let str = TRANSLATIONS[currentLang]?.[key] ?? TRANSLATIONS[DEFAULT_LANG]?.[key] ?? key;
+  let str = TRANSLATIONS[currentLang]?.[key] ?? TRANSLATIONS[FALLBACK_LANG]?.[key] ?? key;
   if (params) {
     for (const [k, v] of Object.entries(params)) {
       str = str.replace(`{${k}}`, v);
