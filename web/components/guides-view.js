@@ -52,8 +52,10 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
     });
   }
   if (tierFilter !== 'all') {
-    if (tierFilter === 'guide') {
-      filtered = filtered.filter(d => !d.tier);
+    if (tierFilter === 'official') {
+      filtered = filtered.filter(d => d._source === 'official');
+    } else if (tierFilter === 'guide') {
+      filtered = filtered.filter(d => !d.tier && d._source !== 'official');
     } else {
       filtered = filtered.filter(d => String(d.tier) === tierFilter);
     }
