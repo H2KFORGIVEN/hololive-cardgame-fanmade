@@ -10472,10 +10472,10 @@
     "effectB": {
       "name": "心を込めて歌って、踊ります。",
       "effect": {
-        "zh-TW": "自己舞台上的吶喊卡每有1種顏色，自己的1位成員HP回復10點。",
-        "ja": "自分のステージ上のシャウトカードの色ごとに、メンバーのうち1人のHPが10ポイント回復する。",
-        "en": "For each color of the shout card on your stage, one of your members' HP will be restored by 10 points.",
-        "fr": "Pour chaque couleur de carte de cri sur votre scène, les PV d'un de vos membres seront restaurés de 10 points."
+        "zh-TW": "自己的舞台上每有1種顏色的吶喊卡，自己的1位成員HP回復10點。",
+        "ja": "ステージ上にある1色のシャウトカード1枚につき、メンバー1人のHPが10ポイント回復する。",
+        "en": "For every shout card of one color on your stage, the HP of one of your members will be restored by 10 points.",
+        "fr": "Pour chaque carte de cri d'une couleur sur votre scène, les PV d'un de vos membres seront restaurés de 10 points."
       }
     },
     "effectG": null,
@@ -10619,10 +10619,10 @@
       "damage": "100+",
       "specialAttackImage": "icons/tokkou_50_white.png",
       "effect": {
-        "zh-TW": "自己舞台上的吶喊卡每有1種顏色，這個藝能傷害+20。",
-        "ja": "自分のステージのシャウトカードの色1色につき、このパフォーマンスのダメージ+20。",
-        "en": "For each color of the shout card on your stage, the damage of this performance +20.",
-        "fr": "Pour chaque couleur de la carte cri sur votre scène, les dégâts de cette performance +20."
+        "zh-TW": "自己的舞台上每有1種顏色的吶喊卡，這個藝能傷害+20。",
+        "ja": "自分のステージにある一色のシャウトカード1枚につき、このパフォーマンスのダメージ+20。",
+        "en": "For every shout card of one color on your stage, the damage of this performance +20.",
+        "fr": "Pour chaque carte de cri d'une couleur sur votre scène, les dégâts de cette performance +20."
       }
     },
     "art2": null,
@@ -10665,10 +10665,10 @@
       "damage": "100+",
       "specialAttackImage": "icons/tokkou_50_white.png",
       "effect": {
-        "zh-TW": "自己舞台上的吶喊卡每有1種顏色，這個藝能傷害+20。",
-        "ja": "自分のステージのシャウトカードの色1色につき、このパフォーマンスのダメージ+20。",
-        "en": "For each color of the shout card on your stage, the damage of this performance +20.",
-        "fr": "Pour chaque couleur de la carte cri sur votre scène, les dégâts de cette performance +20."
+        "zh-TW": "自己的舞台上每有1種顏色的吶喊卡，這個藝能傷害+20。",
+        "ja": "自分のステージにある一色のシャウトカード1枚につき、このパフォーマンスのダメージ+20。",
+        "en": "For every shout card of one color on your stage, the damage of this performance +20.",
+        "fr": "Pour chaque carte de cri d'une couleur sur votre scène, les dégâts de cette performance +20."
       }
     },
     "art2": null,
@@ -10711,10 +10711,10 @@
       "damage": "100+",
       "specialAttackImage": "icons/tokkou_50_white.png",
       "effect": {
-        "zh-TW": "自己舞台上的吶喊卡每有1種顏色，這個藝能傷害+20。",
-        "ja": "自分のステージのシャウトカードの色1色につき、このパフォーマンスのダメージ+20。",
-        "en": "For each color of the shout card on your stage, the damage of this performance +20.",
-        "fr": "Pour chaque couleur de la carte cri sur votre scène, les dégâts de cette performance +20."
+        "zh-TW": "自己的舞台上每有1種顏色的吶喊卡，這個藝能傷害+20。",
+        "ja": "自分のステージにある一色のシャウトカード1枚につき、このパフォーマンスのダメージ+20。",
+        "en": "For every shout card of one color on your stage, the damage of this performance +20.",
+        "fr": "Pour chaque carte de cri d'une couleur sur votre scène, les dégâts de cette performance +20."
       }
     },
     "art2": null,
