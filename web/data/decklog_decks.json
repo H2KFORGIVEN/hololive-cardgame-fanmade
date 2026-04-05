@@ -5,7 +5,7 @@
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Trio",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
     "placement": "Trio 1st (きりご)",
     "url": "https://decklog-en.bushiroad.com/ja/view/44ZSC",
@@ -144,7 +144,7 @@
     "title": "すいせい単",
     "oshi": "星街すいせい",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Trio",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
     "placement": "Trio 1st (おりがみ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/4V2CC",
@@ -283,9 +283,9 @@
     "title": "オリー単",
     "oshi": "クレイジー・オリー",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Individual A",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "1st (マトフ)",
+    "placement": "Individual A 1st (マトフ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/6882Y",
     "oshi_cards": [
       {
@@ -478,9 +478,9 @@
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Individual A",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "2nd (ける/OGTpros)",
+    "placement": "Individual A 2nd (ける/OGTpros)",
     "url": "https://decklog-en.bushiroad.com/ja/view/34EEY",
     "oshi_cards": [
       {
@@ -633,9 +633,9 @@
     "title": "AZKi単",
     "oshi": "AZKi",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Individual B",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "1st (ギリャー)",
+    "placement": "Individual B 1st (ギリャー)",
     "url": "https://decklog-en.bushiroad.com/ja/view/3GXGQ",
     "oshi_cards": [
       {
@@ -844,9 +844,9 @@
     "title": "マリン単",
     "oshi": "宝鐘マリン",
     "source": "decklog",
-    "event": "WGP2025 Tokyo - Individual B",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "2nd (RasK)",
+    "placement": "Individual B 2nd (RasK)",
     "url": "https://decklog-en.bushiroad.com/ja/view/4F9GY",
     "oshi_cards": [
       {
@@ -1023,9 +1023,9 @@
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "decklog",
-    "event": "WGP2025 Chiba - A Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ユキ)",
+    "placement": "1st A Block (ユキ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/5Y4A8",
     "oshi_cards": [
       {
@@ -1178,9 +1178,9 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "decklog",
-    "event": "WGP2025 Chiba - B Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (タナカ)",
+    "placement": "1st B Block (タナカ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/3A5JS",
     "oshi_cards": [
       {
@@ -1317,9 +1317,9 @@
     "title": "ポルカ単",
     "oshi": "小鳥遊キアラ",
     "source": "decklog",
-    "event": "WGP2025 Chiba - C Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ころね)",
+    "placement": "1st C Block (ころね)",
     "url": "https://decklog-en.bushiroad.com/ja/view/6T5BE",
     "oshi_cards": [
       {
@@ -1456,9 +1456,9 @@
     "title": "すいせいクロヱ",
     "oshi": "星街すいせい",
     "source": "decklog",
-    "event": "WGP2025 Chiba - D Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (めるか)",
+    "placement": "1st D Block (めるか)",
     "url": "https://decklog-en.bushiroad.com/ja/view/2L2MN",
     "oshi_cards": [
       {
@@ -1595,9 +1595,9 @@
     "title": "かなクロ",
     "oshi": "天音かなた",
     "source": "decklog",
-    "event": "WGP2025 Chiba - E Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ロール)",
+    "placement": "1st E Block (ロール)",
     "url": "https://decklog-en.bushiroad.com/ja/view/22WWC",
     "oshi_cards": [
       {
@@ -1750,9 +1750,9 @@
     "title": "レイネイオフィ",
     "oshi": "クレイジー・オリー",
     "source": "decklog",
-    "event": "WGP2025 Chiba - A Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (ける/OGTpros)",
+    "placement": "2nd A Block (ける/OGTpros)",
     "url": "https://decklog-en.bushiroad.com/ja/view/1YQ5Y",
     "oshi_cards": [
       {
@@ -1921,9 +1921,9 @@
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "decklog",
-    "event": "WGP2025 Chiba - B Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (くるはむ)",
+    "placement": "2nd B Block (くるはむ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/67V96",
     "oshi_cards": [
       {
@@ -2084,9 +2084,9 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "decklog",
-    "event": "WGP2025 Chiba - C Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (スズカ)",
+    "placement": "2nd C Block (スズカ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/5779W",
     "oshi_cards": [
       {
@@ -2215,9 +2215,9 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "decklog",
-    "event": "WGP2025 Chiba - D Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (アカシキフ)",
+    "placement": "2nd D Block (アカシキフ)",
     "url": "https://decklog-en.bushiroad.com/ja/view/1P3BS",
     "oshi_cards": [
       {
@@ -2354,9 +2354,9 @@
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "decklog",
-    "event": "WGP2025 Chiba - E Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (クーデレスキー)",
+    "placement": "2nd E Block (クーデレスキー)",
     "url": "https://decklog-en.bushiroad.com/ja/view/112ZE",
     "oshi_cards": [
       {
@@ -4292,6 +4292,23 @@
     ],
     "main_deck_count": 50,
     "cheer_deck_count": 20
+  },
+  {
+    "deck_id": "missing-26",
+    "deck_code": "",
+    "title": "未公開",
+    "oshi": "",
+    "source": "decklog",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st A Block (グランメゾン大阪)",
+    "missing": true,
+    "url": "",
+    "oshi_cards": [],
+    "main_deck": [],
+    "cheer_deck": [],
+    "main_deck_count": 0,
+    "cheer_deck_count": 0
   },
   {
     "deck_id": "decklog-6QCNY",
