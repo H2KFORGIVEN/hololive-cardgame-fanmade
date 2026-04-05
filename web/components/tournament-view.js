@@ -1,15 +1,9 @@
 import { t, getLang } from '../i18n.js';
 
 const KNOWN_WGP_EVENTS = [
-  { event: 'WGP2025 Tokyo - Trio',        date: '2025-05-05', location: 'Tokyo Big Sight' },
-  { event: 'WGP2025 Tokyo - Individual A', date: '2025-05-05', location: 'Tokyo Big Sight' },
-  { event: 'WGP2025 Tokyo - Individual B', date: '2025-05-05', location: 'Tokyo Big Sight' },
+  { event: 'WGP2025 Tokyo',               date: '2025-05-05', location: 'Tokyo Big Sight' },
   { event: 'WGP2025 Nagoya',              date: '2025-08-17', location: 'Portmesse Nagoya' },
-  { event: 'WGP2025 Chiba - A Block',     date: '2025-09-15', location: 'Makuhari Messe' },
-  { event: 'WGP2025 Chiba - B Block',     date: '2025-09-15', location: 'Makuhari Messe' },
-  { event: 'WGP2025 Chiba - C Block',     date: '2025-09-15', location: 'Makuhari Messe' },
-  { event: 'WGP2025 Chiba - D Block',     date: '2025-09-15', location: 'Makuhari Messe' },
-  { event: 'WGP2025 Chiba - E Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP2025 Chiba',               date: '2025-09-15', location: 'Makuhari Messe' },
   { event: 'WGP25-26 Aichi',              date: '2026-02-08', location: 'Aichi Sky Expo' },
   { event: 'WGP25-26 Taipei',             date: '2026-03-14', location: 'Taipei International Convention Center' },
   { event: 'WGP25-26 Kuala Lumpur',       date: '2026-04-19', location: 'World Trade Centre KL' },
@@ -191,6 +185,26 @@ function _renderUsageChart(data) {
 }
 
 function renderTournamentDeckCard(deck, cardsMap) {
+  if (deck.missing) {
+    const placementHtml = deck.placement
+      ? `<span class="tournament-placement">${deck.placement}</span>`
+      : '';
+    return `
+      <div class="tournament-deck-card missing-deck">
+        <div class="tournament-deck-top">
+          <div class="tournament-oshi-placeholder missing-placeholder">?</div>
+          <div class="tournament-deck-info">
+            <div class="tournament-deck-name">${t('tournament_missing_deck')}</div>
+            ${placementHtml}
+          </div>
+        </div>
+        <div class="tournament-deck-stats">
+          <span class="missing-deck-note">${t('tournament_missing_deck_note')}</span>
+        </div>
+      </div>
+    `;
+  }
+
   const oshiCard = deck.oshi_cards?.[0];
   const oshiInfo = oshiCard ? cardsMap[oshiCard.card_id] : null;
   const oshiImage = oshiInfo?.imageUrl || '';

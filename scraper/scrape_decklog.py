@@ -69,6 +69,28 @@ def scrape_decklog(deck_codes_path: Path, cards_path: Path, output_dir: Path) ->
 
     results = []
     for i, entry in enumerate(codes):
+        if entry.get("missing"):
+            print(f"  [{i+1}/{len(codes)}] Missing deck placeholder: {entry.get('title', '?')}")
+            deck = {
+                "deck_id": f"missing-{i}",
+                "deck_code": "",
+                "title": entry.get("title", "未公開"),
+                "oshi": entry.get("oshi", ""),
+                "source": "decklog",
+                "event": entry.get("event"),
+                "event_date": entry.get("event_date"),
+                "placement": entry.get("placement"),
+                "missing": True,
+                "url": "",
+                "oshi_cards": [],
+                "main_deck": [],
+                "cheer_deck": [],
+                "main_deck_count": 0,
+                "cheer_deck_count": 0,
+            }
+            results.append(deck)
+            continue
+
         code = entry["code"]
         print(f"  [{i+1}/{len(codes)}] Fetching deck code: {code}")
 

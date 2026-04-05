@@ -4,7 +4,7 @@
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Trio",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
     "placement": "Trio 1st (きりご)"
   },
@@ -13,7 +13,7 @@
     "title": "すいせい単",
     "oshi": "星街すいせい",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Trio",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
     "placement": "Trio 1st (おりがみ)"
   },
@@ -22,126 +22,126 @@
     "title": "オリー単",
     "oshi": "クレイジー・オリー",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Individual A",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "1st (マトフ)"
+    "placement": "Individual A 1st (マトフ)"
   },
   {
     "code": "34EEY",
     "title": "キアラ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Individual A",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "2nd (ける/OGTpros)"
+    "placement": "Individual A 2nd (ける/OGTpros)"
   },
   {
     "code": "3GXGQ",
     "title": "AZKi単",
     "oshi": "AZKi",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Individual B",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "1st (ギリャー)"
+    "placement": "Individual B 1st (ギリャー)"
   },
   {
     "code": "4F9GY",
     "title": "マリン単",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Tokyo",
-    "event": "WGP2025 Tokyo - Individual B",
+    "event": "WGP2025 Tokyo",
     "event_date": "2025-05-05",
-    "placement": "2nd (RasK)"
+    "placement": "Individual B 2nd (RasK)"
   },
   {
     "code": "5Y4A8",
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - A Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ユキ)"
+    "placement": "1st A Block (ユキ)"
   },
   {
     "code": "3A5JS",
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - B Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (タナカ)"
+    "placement": "1st B Block (タナカ)"
   },
   {
     "code": "6T5BE",
     "title": "ポルカ単",
     "oshi": "小鳥遊キアラ",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - C Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ころね)"
+    "placement": "1st C Block (ころね)"
   },
   {
     "code": "2L2MN",
     "title": "すいせいクロヱ",
     "oshi": "星街すいせい",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - D Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (めるか)"
+    "placement": "1st D Block (めるか)"
   },
   {
     "code": "22WWC",
     "title": "かなクロ",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - E Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "1st (ロール)"
+    "placement": "1st E Block (ロール)"
   },
   {
     "code": "1YQ5Y",
     "title": "レイネイオフィ",
     "oshi": "クレイジー・オリー",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - A Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (ける/OGTpros)"
+    "placement": "2nd A Block (ける/OGTpros)"
   },
   {
     "code": "67V96",
     "title": "ぺこマリ",
     "oshi": "宝鐘マリン",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - B Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (くるはむ)"
+    "placement": "2nd B Block (くるはむ)"
   },
   {
     "code": "5779W",
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - C Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (スズカ)"
+    "placement": "2nd C Block (スズカ)"
   },
   {
     "code": "1P3BS",
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - D Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (アカシキフ)"
+    "placement": "2nd D Block (アカシキフ)"
   },
   {
     "code": "112ZE",
     "title": "かなた単",
     "oshi": "天音かなた",
     "source": "WGP2025 Chiba",
-    "event": "WGP2025 Chiba - E Block",
+    "event": "WGP2025 Chiba",
     "event_date": "2025-09-15",
-    "placement": "2nd (クーデレスキー)"
+    "placement": "2nd E Block (クーデレスキー)"
   },
   {
     "code": "54V0D",
@@ -228,6 +228,15 @@
     "code": "54DTE",
     "title": "名古屋",
     "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st A Block (グランメゾン大阪)"
+  },
+  {
+    "missing": true,
+    "title": "未公開",
+    "oshi": "",
     "source": "WGP25-26 Aichi",
     "event": "WGP25-26 Aichi",
     "event_date": "2026-02-08",

@@ -1022,6 +1022,31 @@ body {
   color: var(--text-secondary);
 }
 
+/* Missing deck card */
+.tournament-deck-card.missing-deck {
+  opacity: 0.55;
+  border-style: dashed;
+  cursor: default;
+}
+.tournament-deck-card.missing-deck:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border);
+  background: var(--bg-card);
+}
+.missing-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.missing-deck-note {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 /* Tournament Modal */
 .tournament-oshi-badge {
   display: inline-block;
