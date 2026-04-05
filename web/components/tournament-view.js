@@ -6,6 +6,7 @@ const KNOWN_WGP_EVENTS = [
   { event: 'WGP2025 Chiba',               date: '2025-09-15', location: 'Makuhari Messe' },
   { event: 'WGP25-26 Aichi',              date: '2026-02-08', location: 'Aichi Sky Expo' },
   { event: 'WGP25-26 Taipei',             date: '2026-03-14', location: 'Taipei International Convention Center' },
+  { event: 'ぐるっとツアー2026 Miyagi',    date: '2026-04-04', location: '仙台市中小企業活性化センター' },
   { event: 'WGP25-26 Kuala Lumpur',       date: '2026-04-19', location: 'World Trade Centre KL' },
   { event: 'WGP25-26 Fukuoka',            date: '2026-05-10', location: 'Kitakyushu Messe' },
 ];
