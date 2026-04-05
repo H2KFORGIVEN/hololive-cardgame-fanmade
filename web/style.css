@@ -779,6 +779,88 @@ body {
   border-radius: 8px;
   border: 1px dashed var(--border);
 }
+.usage-chart-wrapper {
+  margin-bottom: 1rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+}
+.usage-chart-wrapper[open] > summary {
+  margin-bottom: 0.6rem;
+}
+.usage-chart-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  list-style: none;
+}
+.usage-chart-title::-webkit-details-marker { display: none; }
+.usage-chart-title::before {
+  content: '▶';
+  font-size: 0.6rem;
+  transition: transform 0.2s;
+}
+.usage-chart-wrapper[open] > .usage-chart-title::before {
+  transform: rotate(90deg);
+}
+.usage-chart-scope {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.usage-chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.usage-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.usage-bar-label {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  min-width: 110px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.usage-bar-track {
+  flex: 1;
+  height: 20px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.usage-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  transition: width 0.4s ease;
+  min-width: fit-content;
+}
+.usage-bar-pct {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.usage-chart-source {
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
 .tournament-deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
