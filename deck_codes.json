@@ -144,141 +144,6 @@
     "placement": "2nd (クーデレスキー)"
   },
   {
-    "code": "3TDYU",
-    "title": "ころね単",
-    "oshi": "戌神ころね",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "6BXQ6",
-    "title": "ころね単",
-    "oshi": "戌神ころね",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "4XP0G",
-    "title": "あやめ単",
-    "oshi": "百鬼あやめ",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "Z010",
-    "title": "あやめ単",
-    "oshi": "百鬼あやめ",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "11QBS",
-    "title": "いろは単",
-    "oshi": "風真いろは",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "2BCZW",
-    "title": "いろはルイ",
-    "oshi": "風真いろは",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "1XNQ2",
-    "title": "ころねカリオペ",
-    "oshi": "兎田ぺこら",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "6VAHW",
-    "title": "カリオペクロヱ",
-    "oshi": "森カリオペ",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "24CJN",
-    "title": "かなた単",
-    "oshi": "天音かなた",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "5RM6L",
-    "title": "こより単",
-    "oshi": "博衣こより",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "3JZ0W",
-    "title": "マリンノエル",
-    "oshi": "白銀ノエル",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "5K4CL",
-    "title": "ラオーラ単",
-    "oshi": "ラオーラ・パンテーラ",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "5QYWG",
-    "title": "マリンゼータエリザベス",
-    "oshi": "AZKi",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "6VU6Y",
-    "title": "ころねかなた",
-    "oshi": "ロボ子さん",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
-    "code": "3M4P6",
-    "title": "スバル単",
-    "oshi": "大空スバル",
-    "source": "WGP25-26 Aichi",
-    "event": "WGP25-26 Aichi",
-    "event_date": "2026-02-08",
-    "placement": "Undefeated"
-  },
-  {
     "code": "54V0D",
     "title": "はあちゃま単",
     "oshi": "赤井はあと",
@@ -295,5 +160,104 @@
     "event": "WGP25-26 Taipei",
     "event_date": "2026-03-14",
     "placement": "2nd (oKIWIo)"
+  },
+  {
+    "code": "1CUGQ",
+    "title": "いろは単",
+    "oshi": "風真いろは",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st A Block (藍色)"
+  },
+  {
+    "code": "68VSE",
+    "title": "あやめ単",
+    "oshi": "百鬼あやめ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st B Block (THE STAR.)"
+  },
+  {
+    "code": "713NL",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st C Block (スマデキン)"
+  },
+  {
+    "code": "1ENUU",
+    "title": "ゲーマーズ",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st D Block (大赦の店主)"
+  },
+  {
+    "code": "2KTA4",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st E Block (たき@Mush pros)"
+  },
+  {
+    "code": "3RFM6",
+    "title": "ころね単",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "1st F Block (おばけ)"
+  },
+  {
+    "code": "5GXHA",
+    "title": "スバ単",
+    "oshi": "大空スバル",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st A Block (グランメゾン大阪)"
+  },
+  {
+    "code": "54DTE",
+    "title": "名古屋",
+    "oshi": "戌神ころね",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st A Block (グランメゾン大阪)"
+  },
+  {
+    "code": "6QCNY",
+    "title": "いじっぱりAS252",
+    "oshi": "百鬼あやめ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st B Block (ういビ〜ム)"
+  },
+  {
+    "code": "69QGU",
+    "title": "設定4",
+    "oshi": "森カリオペ",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st B Block (ういビ〜ム)"
+  },
+  {
+    "code": "7AD9J",
+    "title": "ござのかーさん",
+    "oshi": "風真いろは",
+    "source": "WGP25-26 Aichi",
+    "event": "WGP25-26 Aichi",
+    "event_date": "2026-02-08",
+    "placement": "Trio 1st B Block (ういビ〜ム)"
   }
 ]
