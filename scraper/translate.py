@@ -319,6 +319,42 @@ def translate_official(data_dir: Path):
     print("[translate] official_decks.json done")
 
 
+def translate_rules(data_dir: Path):
+    rules_path = data_dir / "rules.json"
+    if not rules_path.exists():
+        print("[translate] rules.json not found, skipping")
+        return
+
+    rules = json.loads(rules_path.read_text(encoding="utf-8"))
+
+    unique_texts = set()
+    for art in rules.get("articles", []):
+        if isinstance(art.get("title"), str) and art["title"].strip():
+            unique_texts.add(art["title"])
+
+    for cid, info in rules.get("errata", {}).items():
+        if isinstance(info.get("title"), str) and info["title"].strip():
+            unique_texts.add(info["title"])
+
+    unique_list = sorted(unique_texts)
+    print(f"  Rules: {len(unique_list)} unique strings")
+
+    lang_maps = {}
+    for lang in TARGET_LANGS_JA:
+        lang_maps[lang] = _translate_unique_map(unique_list, "ja", lang)
+
+    for art in rules.get("articles", []):
+        if isinstance(art.get("title"), str) and art["title"].strip():
+            art["title"] = _make_multilang_from_maps(art["title"], "ja", lang_maps)
+
+    for cid, info in rules.get("errata", {}).items():
+        if isinstance(info.get("title"), str) and info["title"].strip():
+            info["title"] = _make_multilang_from_maps(info["title"], "ja", lang_maps)
+
+    rules_path.write_text(json.dumps(rules, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("[translate] rules.json done")
+
+
 def translate_all(data_dir: Path):
     base_dir = data_dir.parent
     _load_cache(base_dir)
@@ -333,6 +369,8 @@ def translate_all(data_dir: Path):
     translate_official(data_dir)
     print("[translate] Translating cards.json...")
     translate_cards(data_dir)
+    print("[translate] Translating rules.json...")
+    translate_rules(data_dir)
 
     _save_cache()
     print("[translate] All translations complete")

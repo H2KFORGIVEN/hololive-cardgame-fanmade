@@ -1,0 +1,103 @@
+{
+  "scraped_at": "2026-04-05",
+  "restricted_cards": [
+    "hBP01-030",
+    "hBP02-094"
+  ],
+  "errata": {
+    "hSD01-004": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": "一部カード効果の裁定変更のお知らせ"
+    },
+    "hBP01-030": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": "一部カード効果の裁定変更のお知らせ"
+    },
+    "hSD11-009": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": "一部カード効果の裁定変更のお知らせ"
+    }
+  },
+  "articles": [
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "date": "2026-03-05",
+      "slug": "44",
+      "title": "一部カード効果の裁定変更のお知らせ",
+      "type": "errata",
+      "card_ids": [
+        "hSD01-004",
+        "hBP01-030",
+        "hSD11-009"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/39/",
+      "date": "2026-01-15",
+      "slug": "39",
+      "title": "ゲーム開始時の「手札の引き直し」に関するルール更新のお知らせ",
+      "type": "rule_update",
+      "card_ids": []
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/34/",
+      "date": "2025-12-04",
+      "slug": "34",
+      "title": "制限カード解除のお知らせ[2025/12/8(月)施行]",
+      "type": "unrestricted",
+      "card_ids": [
+        "hBP01-010",
+        "hBP01-014"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/rule01/",
+      "date": "2025-12-04",
+      "slug": "rule01",
+      "title": "デッキ構築ルール",
+      "type": "deck_rules",
+      "card_ids": [
+        "hBP01-030",
+        "hBP02-094",
+        "hBP01-010",
+        "hBP01-014"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/20/",
+      "date": "2025-04-09",
+      "slug": "20",
+      "title": "制限カード追加のお知らせ[2025/4/21(月)施行]",
+      "type": "restricted",
+      "card_ids": [
+        "hBP01-010",
+        "hBP01-014",
+        "hBP01-001",
+        "hBP02-023",
+        "hBP02-094",
+        "hBP02-022",
+        "hBP01-019",
+        "hBP01-030"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/09/",
+      "date": "2024-11-29",
+      "slug": "09",
+      "title": "制限カード追加のお知らせ[2024/12/20(金)施行]",
+      "type": "restricted",
+      "card_ids": [
+        "hBP01-019",
+        "hBP01-020",
+        "hBP01-016",
+        "hBP01-030",
+        "hBP01-001",
+        "hBP01-014",
+        "hBP01-010"
+      ]
+    }
+  ]
+}

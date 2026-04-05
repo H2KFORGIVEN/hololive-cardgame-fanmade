@@ -10,6 +10,7 @@ let decksData = [];
 let decklogDecks = [];
 let allGuides = [];
 let officialDecks = [];
+let rulesData = null;
 let currentView = 'guides';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
@@ -20,16 +21,18 @@ function _fetchJSON(url) {
 }
 
 async function loadCoreData() {
-  const [tierResp, decksResp, guidesResp, officialResp] = await Promise.all([
+  const [tierResp, decksResp, guidesResp, officialResp, rulesResp] = await Promise.all([
     _fetchJSON('data/tier_list.json'),
     _fetchJSON('data/decks.json'),
     _fetchJSON('data/all_guides.json'),
     _fetchJSON('data/official_decks.json'),
+    _fetchJSON('data/rules.json'),
   ]);
   tierData = tierResp;
   decksData = decksResp || [];
   allGuides = guidesResp || [];
   officialDecks = officialResp || [];
+  rulesData = rulesResp;
 }
 
 async function ensureCards() {
@@ -67,7 +70,7 @@ async function render() {
     renderTournamentView(tournamentView, decklogDecks, cardsData);
   } else {
     await ensureCards();
-    renderCardGallery(cardsView, cardsData, filters);
+    renderCardGallery(cardsView, cardsData, filters, rulesData);
   }
 }
 
@@ -151,7 +154,7 @@ function setupModals() {
         await ensureCards();
         const card = cardsData.find(c => c.id === cardId);
         if (card) {
-          renderCardDetail(cardModalBody, card, cardsData);
+          renderCardDetail(cardModalBody, card, cardsData, rulesData);
           cardModal.hidden = false;
           document.body.style.overflow = 'hidden';
           return;
@@ -183,7 +186,7 @@ function setupModals() {
       const cardId = galleryCard.dataset.cardId;
       await ensureCards();
       const card = cardsData.find(c => c.id === cardId);
-      renderCardDetail(cardModalBody, card, cardsData);
+      renderCardDetail(cardModalBody, card, cardsData, rulesData);
       cardModal.hidden = false;
       document.body.style.overflow = 'hidden';
       return;

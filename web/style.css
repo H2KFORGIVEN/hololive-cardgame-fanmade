@@ -542,6 +542,97 @@ body {
   line-height: 1.5;
 }
 
+/* Rule Badges */
+.gallery-card-img-wrap {
+  position: relative;
+}
+.card-rule-badges {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+.card-rule-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.card-rule-badge.restricted {
+  background: rgba(244,67,54,.9);
+  color: #fff;
+}
+.card-rule-badge.errata {
+  background: rgba(255,152,0,.9);
+  color: #fff;
+}
+.card-rule-badges-detail {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.card-rule-badges-detail .card-rule-badge {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+.card-rule-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.card-rule-note {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+.card-rule-note.restricted-note {
+  color: #f44336;
+}
+.card-rule-note.errata-note {
+  color: #ff9800;
+}
+.card-rule-articles {
+  margin-top: 0.5rem;
+}
+.card-rule-articles-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.3rem;
+}
+.rule-articles-list {
+  list-style: none;
+  padding: 0;
+}
+.rule-article-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-size: 0.75rem;
+  padding: 0.2rem 0;
+}
+.rule-article-date {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-size: 0.7rem;
+}
+.rule-article-link {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+.rule-article-link:hover {
+  text-decoration: underline;
+}
+
 /* Card Gallery */
 .card-gallery {
   display: grid;

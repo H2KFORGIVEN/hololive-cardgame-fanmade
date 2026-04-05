@@ -13,7 +13,10 @@ const PAGE_SIZE = 60;
 let currentPage = 0;
 let filteredCards = [];
 
-export function renderCardGallery(container, cards, filters) {
+let _rulesData = null;
+
+export function renderCardGallery(container, cards, filters, rulesData) {
+  _rulesData = rulesData;
   filteredCards = applyFilters(cards, filters);
   currentPage = 0;
   renderPage(container);
@@ -61,12 +64,24 @@ function renderPage(container) {
 
   let html = `<div class="card-count-info">${t('showing_cards', { shown: visible.length, total: filteredCards.length })}</div>`;
   html += '<div class="card-gallery">';
+  const restricted = new Set(_rulesData?.restricted_cards || []);
+  const errata = _rulesData?.errata || {};
+
   for (const card of visible) {
     const color = COLOR_MAP[card.color] || '#666';
+    const isRestricted = restricted.has(card.id);
+    const hasErrata = card.id in errata;
+    let badgesHtml = '';
+    if (isRestricted) badgesHtml += `<span class="card-rule-badge restricted" title="${t('rule_restricted_desc')}">${t('rule_restricted')}</span>`;
+    if (hasErrata) badgesHtml += `<span class="card-rule-badge errata" title="${t('rule_errata_desc')}">${t('rule_errata')}</span>`;
+
     html += `
       <div class="gallery-card" data-card-id="${card.id}">
-        <img class="gallery-card-img" src="${card.imageUrl || ''}" alt="${card.name}" loading="lazy"
-             onerror="this.style.display='none'">
+        <div class="gallery-card-img-wrap">
+          <img class="gallery-card-img" src="${card.imageUrl || ''}" alt="${card.name}" loading="lazy"
+               onerror="this.style.display='none'">
+          ${badgesHtml ? `<div class="card-rule-badges">${badgesHtml}</div>` : ''}
+        </div>
         <div class="gallery-card-info">
           <div class="gallery-card-name" title="${card.name}">${card.name}</div>
           <div class="gallery-card-meta">
@@ -97,7 +112,7 @@ function renderPage(container) {
   }
 }
 
-export function renderCardDetail(container, card, allCards) {
+export function renderCardDetail(container, card, allCards, rulesData) {
   if (!card) {
     container.innerHTML = `<p>${t('card_not_found')}</p>`;
     return;
@@ -177,6 +192,42 @@ export function renderCardDetail(container, card, allCards) {
 
   const productText = Array.isArray(card.product) ? card.product.join(', ') : (card.product || '');
 
+  const restricted = new Set(rulesData?.restricted_cards || []);
+  const errataMap = rulesData?.errata || {};
+  const isRestricted = restricted.has(card.id);
+  const errataInfo = errataMap[card.id];
+  const relatedArticles = (rulesData?.articles || []).filter(a => a.card_ids?.includes(card.id));
+
+  let ruleSectionHtml = '';
+  if (isRestricted || errataInfo || relatedArticles.length) {
+    let badges = '';
+    if (isRestricted) badges += `<span class="card-rule-badge restricted">${t('rule_restricted')}</span>`;
+    if (errataInfo) badges += `<span class="card-rule-badge errata">${t('rule_errata')}</span>`;
+
+    let articlesListHtml = '';
+    if (relatedArticles.length) {
+      articlesListHtml = relatedArticles.map(a => {
+        const title = typeof a.title === 'object' ? localized(a.title) : a.title;
+        return `<li class="rule-article-item">
+          <span class="rule-article-date">${a.date || ''}</span>
+          <a href="${a.url}" target="_blank" rel="noopener" class="rule-article-link">${title}</a>
+        </li>`;
+      }).join('');
+    }
+
+    ruleSectionHtml = `
+      <div class="card-rule-section">
+        <div class="card-rule-badges-detail">${badges}</div>
+        ${isRestricted ? `<div class="card-rule-note restricted-note">${t('rule_restricted_desc')}</div>` : ''}
+        ${errataInfo ? `<div class="card-rule-note errata-note">${t('rule_errata_desc')}</div>` : ''}
+        ${articlesListHtml ? `<div class="card-rule-articles">
+          <div class="card-rule-articles-title">${t('rule_articles_title')}</div>
+          <ul class="rule-articles-list">${articlesListHtml}</ul>
+        </div>` : ''}
+      </div>
+    `;
+  }
+
   const variantsHtml = variants.length > 1
     ? `<div class="card-variants">
         <div class="card-variants-label">${t('card_variants', { count: variants.length })}</div>
@@ -198,6 +249,7 @@ export function renderCardDetail(container, card, allCards) {
       <div class="card-detail-info">
         <div class="card-detail-name">${card.name}</div>
         <div class="card-detail-id">${card.id}</div>
+        ${ruleSectionHtml}
         ${tagsHtml ? `<div class="card-detail-tags">${tagsHtml}</div>` : ''}
         <div class="card-detail-stats">${statsHtml}</div>
         ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">${t('product_label')}: ${productText}</div>` : ''}
