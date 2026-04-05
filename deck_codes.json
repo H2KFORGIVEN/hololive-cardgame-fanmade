@@ -282,16 +282,18 @@
     "code": "54V0D",
     "title": "はあちゃま単",
     "oshi": "赤井はあと",
-    "source": "holocardstrategy",
-    "event": null,
-    "placement": null
+    "source": "WGP25-26 Taipei",
+    "event": "WGP25-26 Taipei",
+    "event_date": "2026-03-14",
+    "placement": "1st (35)"
   },
   {
     "code": "35W6M",
-    "title": "ころね単",
-    "oshi": "戌神ころね",
-    "source": "holocardstrategy",
-    "event": null,
-    "placement": null
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Taipei",
+    "event": "WGP25-26 Taipei",
+    "event_date": "2026-03-14",
+    "placement": "2nd (oKIWIo)"
   }
 ]

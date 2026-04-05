@@ -749,6 +749,36 @@ body {
   font-size: 0.8rem;
   color: var(--text-secondary);
 }
+.tournament-event-location {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+.tournament-event-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tournament-event-status.upcoming {
+  background: rgba(0, 200, 255, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+}
+.upcoming-event {
+  opacity: 0.7;
+}
+.tournament-no-deck-placeholder {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+}
 .tournament-deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

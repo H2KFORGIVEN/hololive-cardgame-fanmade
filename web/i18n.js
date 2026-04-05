@@ -85,6 +85,9 @@ const TRANSLATIONS = {
     tournament_cards: '張',
     tournament_view_decklog: '在 Deck Log 查看 →',
     tournament_no_decks: '尚無大賽牌組資料。',
+    tournament_upcoming: '即將舉辦',
+    tournament_upcoming_msg: '賽事尚未舉辦，敬請期待。',
+    tournament_no_deck_data: '目前尚無公開的牌組資料。',
   },
   en: {
     lang_label: 'EN',
@@ -172,6 +175,9 @@ const TRANSLATIONS = {
     tournament_cards: 'cards',
     tournament_view_decklog: 'View on Deck Log →',
     tournament_no_decks: 'No tournament deck data available.',
+    tournament_upcoming: 'Upcoming',
+    tournament_upcoming_msg: 'Event has not taken place yet. Stay tuned!',
+    tournament_no_deck_data: 'No deck data available for this event.',
   },
   ja: {
     lang_label: '日本語',
@@ -259,6 +265,9 @@ const TRANSLATIONS = {
     tournament_cards: '枚',
     tournament_view_decklog: 'Deck Logで見る →',
     tournament_no_decks: '大会デッキデータがありません。',
+    tournament_upcoming: '開催予定',
+    tournament_upcoming_msg: '大会はまだ開催されていません。お楽しみに！',
+    tournament_no_deck_data: 'この大会のデッキデータはまだありません。',
   },
   fr: {
     lang_label: 'FR',
@@ -346,6 +355,9 @@ const TRANSLATIONS = {
     tournament_cards: 'cartes',
     tournament_view_decklog: 'Voir sur Deck Log →',
     tournament_no_decks: 'Aucune donnée de deck de tournoi.',
+    tournament_upcoming: 'À venir',
+    tournament_upcoming_msg: "L'événement n'a pas encore eu lieu. Restez à l'écoute !",
+    tournament_no_deck_data: 'Aucune donnée de deck disponible pour cet événement.',
   },
 };
 

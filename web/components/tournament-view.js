@@ -1,21 +1,44 @@
 import { t } from '../i18n.js';
 
-export function renderTournamentView(container, decklogDecks, cardsData) {
-  if (!decklogDecks || !decklogDecks.length) {
-    container.innerHTML = `<div class="loading">${t('tournament_no_decks')}</div>`;
-    return;
-  }
+const KNOWN_WGP_EVENTS = [
+  { event: 'WGP2025 Tokyo - Trio',        date: '2025-05-05', location: 'Tokyo Big Sight' },
+  { event: 'WGP2025 Tokyo - Individual A', date: '2025-05-05', location: 'Tokyo Big Sight' },
+  { event: 'WGP2025 Tokyo - Individual B', date: '2025-05-05', location: 'Tokyo Big Sight' },
+  { event: 'WGP2025 Nagoya',              date: '2025-08-17', location: 'Portmesse Nagoya' },
+  { event: 'WGP2025 Chiba - A Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP2025 Chiba - B Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP2025 Chiba - C Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP2025 Chiba - D Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP2025 Chiba - E Block',     date: '2025-09-15', location: 'Makuhari Messe' },
+  { event: 'WGP25-26 Aichi',              date: '2026-02-08', location: 'Aichi Sky Expo' },
+  { event: 'WGP25-26 Taipei',             date: '2026-03-14', location: 'Taipei International Convention Center' },
+  { event: 'WGP25-26 Kuala Lumpur',       date: '2026-04-19', location: 'World Trade Centre KL' },
+  { event: 'WGP25-26 Fukuoka',            date: '2026-05-10', location: 'Kitakyushu Messe' },
+];
 
+export function renderTournamentView(container, decklogDecks, cardsData) {
   const cardsMap = {};
   if (cardsData) {
     for (const c of cardsData) cardsMap[c.id] = c;
   }
 
   const grouped = {};
-  for (const deck of decklogDecks) {
-    const key = deck.event || deck.source || 'Other';
-    if (!grouped[key]) grouped[key] = { decks: [], date: deck.event_date || '' };
-    grouped[key].decks.push(deck);
+
+  if (decklogDecks?.length) {
+    for (const deck of decklogDecks) {
+      const key = deck.event || deck.source || 'Other';
+      if (!grouped[key]) grouped[key] = { decks: [], date: deck.event_date || '' };
+      grouped[key].decks.push(deck);
+    }
+  }
+
+  for (const known of KNOWN_WGP_EVENTS) {
+    if (!grouped[known.event]) {
+      grouped[known.event] = { decks: [], date: known.date, location: known.location };
+    }
+    if (!grouped[known.event].location) {
+      grouped[known.event].location = known.location;
+    }
   }
 
   const _placementOrder = (p) => {
@@ -42,17 +65,31 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
     </div>
   `;
 
-  for (const [event, { decks, date }] of sortedEvents) {
+  const today = new Date().toISOString().slice(0, 10);
+
+  for (const [event, { decks, date, location }] of sortedEvents) {
+    const isUpcoming = date > today;
+    const statusBadge = isUpcoming
+      ? `<span class="tournament-event-status upcoming">${t('tournament_upcoming')}</span>`
+      : '';
+
+    const locationHtml = location
+      ? `<span class="tournament-event-location">${location}</span>`
+      : '';
+
     html += `
-      <section class="tournament-event-section">
+      <section class="tournament-event-section${isUpcoming ? ' upcoming-event' : ''}">
         <div class="tournament-event-header">
           <span class="tournament-event-name">${event}</span>
           ${date ? `<span class="tournament-event-date">${date}</span>` : ''}
-          <span class="tournament-event-count">${decks.length} ${t('decks_count')}</span>
+          ${locationHtml}
+          ${statusBadge}
+          ${decks.length ? `<span class="tournament-event-count">${decks.length} ${t('decks_count')}</span>` : ''}
         </div>
-        <div class="tournament-deck-grid">
-          ${decks.map(deck => renderTournamentDeckCard(deck, cardsMap)).join('')}
-        </div>
+        ${decks.length
+          ? `<div class="tournament-deck-grid">${decks.map(deck => renderTournamentDeckCard(deck, cardsMap)).join('')}</div>`
+          : `<div class="tournament-no-deck-placeholder">${isUpcoming ? t('tournament_upcoming_msg') : t('tournament_no_deck_data')}</div>`
+        }
       </section>
     `;
   }
