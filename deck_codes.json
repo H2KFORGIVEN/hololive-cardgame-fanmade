@@ -268,5 +268,59 @@
     "event": "WGP25-26 Aichi",
     "event_date": "2026-02-08",
     "placement": "Trio 1st B Block (ういビ〜ム)"
+  },
+  {
+    "code": "28Q69",
+    "title": "ミオ単",
+    "oshi": "大神ミオ",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st A Block (LGW)"
+  },
+  {
+    "code": "32JJR",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st A Block (LGW)"
+  },
+  {
+    "code": "61GBK",
+    "title": "ルーナ単",
+    "oshi": "姫森ルーナ",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st A Block (LGW)"
+  },
+  {
+    "code": "4XNGH",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st B Block (仙台女神トリオ頑張ろうの会)"
+  },
+  {
+    "code": "1V7CZ",
+    "title": "ミオ単",
+    "oshi": "大神ミオ",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st B Block (仙台女神トリオ頑張ろうの会)"
+  },
+  {
+    "code": "1JTUR",
+    "title": "かなた単",
+    "oshi": "天音かなた",
+    "source": "ぐるっとツアー2026 Miyagi",
+    "event": "ぐるっとツアー2026 Miyagi",
+    "event_date": "2026-04-04",
+    "placement": "Trio 1st B Block (仙台女神トリオ頑張ろうの会)"
   }
 ]
