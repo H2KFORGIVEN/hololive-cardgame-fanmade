@@ -59,6 +59,23 @@ const USAGE_RATE_DATA = {
       { oshi: 'その他', pct: 31 },
     ],
   },
+  'ぐるっとツアー2026 Miyagi': {
+    scope: { 'zh-TW': 'Trio 預選ラウンド', en: 'Trio Qualifier Round', ja: 'トリオバトル 予選ラウンド', fr: 'Trio Qualifications' },
+    source: 'hololive OFFICIAL CARD GAME (@hololive_OCG)',
+    rates: [
+      { oshi: 'AZKi', pct: 21 },
+      { oshi: '大神ミオ', pct: 19 },
+      { oshi: 'オーロ・クロニー', pct: 14 },
+      { oshi: '赤井はあと', pct: 11 },
+      { oshi: '角巻わため', pct: 9 },
+      { oshi: '響咲リオナ', pct: 4 },
+      { oshi: '風真いろは', pct: 4 },
+      { oshi: '桃鈴ねね', pct: 2 },
+      { oshi: '百鬼あやめ', pct: 2 },
+      { oshi: '兎田ぺこら', pct: 2 },
+      { oshi: 'その他', pct: 12 },
+    ],
+  },
 };
 
 const USAGE_COLORS = [
