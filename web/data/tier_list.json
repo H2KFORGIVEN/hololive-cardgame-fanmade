@@ -6,6 +6,42 @@
       "tier": 1,
       "decks": [
         {
+          "name": "クロニー単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/816edede419ef54297bdd7bca3f6844c-1080x608.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "○",
+            "stability": "○",
+            "endurance": "◎",
+            "pressure": "◎"
+          },
+          "features": {
+            "ja": [
+              "先行でも後攻でも相手より先に2ndを起動が可能",
+              "1stを使いまわして大量にエール加速やバフ効果を使える",
+              "SPで追加ターンを使って2面取りをしよう！"
+            ],
+            "zh-TW": [
+              "無論先攻擊或後攻擊，都可以在對手之前發動第二個。",
+              "你可以重複使用第一個並使用大量的加速和增益效果。",
+              "讓我們利用 SP 的額外回合來佔領兩側！"
+            ],
+            "en": [
+              "You can activate 2nd before your opponent, whether you attack first or second.",
+              "You can reuse the 1st and use a large amount of yell acceleration and buff effects.",
+              "Let's take two sides using the extra turn with SP!"
+            ],
+            "fr": [
+              "Vous pouvez activer le 2ème avant votre adversaire, que vous attaquiez en premier ou en second.",
+              "Vous pouvez réutiliser le 1er et utiliser une grande quantité d’effets d’accélération et de buff des cris.",
+              "Prenons deux côtés en utilisant le tour supplémentaire avec SP !"
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
+          "vtuber": "オーロ・クロニー",
+          "id": "オーロ-クロニー-クロニー単"
+        },
+        {
           "name": "AZKi単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/f1bf415c0add6572740384accb17646d-1080x608.png",
           "ratings": {
@@ -78,40 +114,40 @@
           "id": "azki-azkiカリ"
         },
         {
-          "name": "クロニー単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/816edede419ef54297bdd7bca3f6844c-1080x608.png",
+          "name": "ミオ推しハコリズ（エリザベールズ）",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/dd963b989112663676ce7a8e0c4ccccb-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
             "stability": "○",
-            "endurance": "◎",
+            "endurance": "○",
             "pressure": "◎"
           },
           "features": {
             "ja": [
-              "先行でも後攻でも相手より先に2ndを起動が可能",
-              "1stを使いまわして大量にエール加速やバフ効果を使える",
-              "SPで追加ターンを使って2面取りをしよう！"
+              "2ターン目からBuzzのハコスを含む2枚を並べて、毎ターン2面取りを狙う",
+              "速度で相手の盤面が並べきる前に倒しきれる",
+              "エリザベスを前に出すと260の耐久力を押し付けられるのが魅力"
             ],
             "zh-TW": [
-              "無論先攻擊或後攻擊，都可以在對手之前發動第二個。",
-              "你可以重複使用第一個並使用大量的加速和增益效果。",
-              "讓我們利用 SP 的額外回合來佔領兩側！"
+              "從第 2 回合開始，將包括巴茲的 Hakos 在內的 2 張牌排列起來，並每回合瞄準 2 張面孔。",
+              "速度で相手の盤面が並べきる前に倒しきれる",
+              "吸引力在於，當你把伊麗莎白帶到前面時，你可以給她 260 的耐久度。"
             ],
             "en": [
-              "You can activate 2nd before your opponent, whether you attack first or second.",
-              "You can reuse the 1st and use a large amount of yell acceleration and buff effects.",
-              "Let's take two sides using the extra turn with SP!"
+              "From the 2nd turn, line up 2 cards including Buzz's Hakos and aim for 2 faces every turn.",
+              "With speed, you can defeat your opponent before their board is completely lined up.",
+              "The appeal is that when you bring Elizabeth to the front, you can impose 260 durability on her."
             ],
             "fr": [
-              "Vous pouvez activer le 2ème avant votre adversaire, que vous attaquiez en premier ou en second.",
-              "Vous pouvez réutiliser le 1er et utiliser une grande quantité d’effets d’accélération et de buff des cris.",
-              "Prenons deux côtés en utilisant le tour supplémentaire avec SP !"
+              "Dès le 2ème tour, alignez 2 cartes dont les Hakos de Buzz et visez 2 faces à chaque tour.",
+              "Avec de la rapidité, vous pouvez vaincre votre adversaire avant que son plateau ne soit complètement aligné.",
+              "L'attrait est que lorsque vous amenez Elizabeth au premier plan, vous pouvez lui imposer une durabilité de 260."
             ]
           },
-          "recipe_url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
-          "vtuber": "オーロ・クロニー",
-          "id": "オーロ-クロニー-クロニー単"
+          "recipe_url": "https://www.holocardstrategy.jp/hakorizu_deck/",
+          "vtuber": "ハコス・ベールズ",
+          "id": "ハコス-ベールズ-ミオ推しハコリズ-エリザベールズ"
         }
       ]
     },
@@ -153,42 +189,6 @@
           "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
           "vtuber": "赤井はあと",
           "id": "赤井はあと-はあちゃま単"
-        },
-        {
-          "name": "ミオ推しハコリズ",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/19b790bdece26fcc69631e73efeccb19-1080x608.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "○",
-            "stability": "○",
-            "endurance": "○",
-            "pressure": "◎"
-          },
-          "features": {
-            "ja": [
-              "2ターン目からBuzzのハコスを含む2枚を並べて、毎ターン2面取りを狙う",
-              "速度で相手の盤面が並べきる前に倒しきれる",
-              "エリザベスを前に出すと260の耐久力を押し付けられるのが魅力"
-            ],
-            "zh-TW": [
-              "從第 2 回合開始，將包括巴茲的 Hakos 在內的 2 張牌排列起來，並每回合瞄準 2 張面孔。",
-              "速度で相手の盤面が並べきる前に倒しきれる",
-              "吸引力在於，當你把伊麗莎白帶到前面時，你可以給她 260 的耐久度。"
-            ],
-            "en": [
-              "From the 2nd turn, line up 2 cards including Buzz's Hakos and aim for 2 faces every turn.",
-              "With speed, you can defeat your opponent before their board is completely lined up.",
-              "The appeal is that when you bring Elizabeth to the front, you can impose 260 durability on her."
-            ],
-            "fr": [
-              "Dès le 2ème tour, alignez 2 cartes dont les Hakos de Buzz et visez 2 faces à chaque tour.",
-              "Avec de la rapidité, vous pouvez vaincre votre adversaire avant que son plateau ne soit complètement aligné.",
-              "L'attrait est que lorsque vous amenez Elizabeth au premier plan, vous pouvez lui imposer une durabilité de 260."
-            ]
-          },
-          "recipe_url": null,
-          "vtuber": "ハコス・ベールズ",
-          "id": "ハコス-ベールズ-ミオ推しハコリズ"
         },
         {
           "name": "AZKi推しルイクロ",
