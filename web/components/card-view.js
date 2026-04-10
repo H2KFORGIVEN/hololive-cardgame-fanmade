@@ -28,13 +28,28 @@ function _effectText(obj) {
   return typeof eff === 'object' ? localized(eff) : (eff || '');
 }
 
-function applyFilters(cards, filters) {
+function deduplicateById(cards) {
+  const seen = new Set();
   return cards.filter(card => {
+    if (seen.has(card.id)) return false;
+    seen.add(card.id);
+    return true;
+  });
+}
+
+function applyFilters(cards, filters) {
+  return deduplicateById(cards).filter(card => {
+    // Color filter — only applies to non-support cards (support cards have no color)
     if (filters.color && filters.color !== 'all') {
+      if (card.type?.startsWith('支援')) return false; // hide supports when color filter active
       if (card.color !== filters.color) return false;
     }
     if (filters.type && filters.type !== 'all') {
-      if (filters.type === 'support') {
+      // Support subtype: 'support_工作人員', 'support_活動', etc.
+      if (filters.type.startsWith('support_')) {
+        const sub = filters.type.slice(8);
+        if (card.type !== '支援・' + sub) return false;
+      } else if (filters.type === 'support') {
         if (!card.type?.startsWith('支援')) return false;
       } else {
         if (card.type !== filters.type) return false;
@@ -118,7 +133,20 @@ export function renderCardDetail(container, card, allCards, rulesData) {
     return;
   }
 
-  const variants = allCards ? allCards.filter(c => c.id === card.id) : [card];
+  // Merge data variants (different entries in cards.json with same id) with local image variants
+  const dataVariants = allCards ? allCards.filter(c => c.id === card.id) : [card];
+  const dataUrls = new Set(dataVariants.map(v => v.imageUrl));
+
+  // Add extra local image variants from allImages that aren't already in data variants
+  const extraVariants = [];
+  if (card.allImages) {
+    for (const imgPath of card.allImages) {
+      if (!dataUrls.has(imgPath)) {
+        extraVariants.push({ ...card, imageUrl: imgPath, _extraVariant: true });
+      }
+    }
+  }
+  const variants = [...dataVariants, ...extraVariants];
 
   const isOshi = card.type === '主推';
   const isMember = card.type === '成員';

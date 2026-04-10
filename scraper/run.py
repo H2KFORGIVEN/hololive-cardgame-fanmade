@@ -105,8 +105,16 @@ def main():
             shutil.copy2(src, web_data_dir / f)
             print(f"  Copied {f}")
 
+    print("\n[11/12] Enriching cards with local image metadata...")
+    import subprocess, sys
+    scripts_dir = base / "scripts"
+    subprocess.run([sys.executable, str(scripts_dir / "enrich-cards.py")], check=True)
+
+    print("\n[12/12] Localizing image URLs to use local files...")
+    subprocess.run([sys.executable, str(scripts_dir / "localize-data.py")], check=True)
+
     print("\n" + "=" * 50)
-    print("Done! Open web/index.html to view the app.")
+    print("Done! Run 'python3 -m http.server 8080 --directory web' to view the app.")
     print("=" * 50)
 
 

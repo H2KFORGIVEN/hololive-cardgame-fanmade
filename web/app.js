@@ -2,6 +2,7 @@ import { renderDeckModal } from './components/deck-view.js';
 import { renderCardGallery, renderCardDetail } from './components/card-view.js';
 import { renderTournamentView, renderTournamentDeckModal } from './components/tournament-view.js';
 import { renderGuidesView } from './components/guides-view.js';
+import { renderTutorialView } from './components/tutorial-view.js';
 import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations, t } from './i18n.js';
 
 let cardsData = [];
@@ -11,7 +12,7 @@ let decklogDecks = [];
 let allGuides = [];
 let officialDecks = [];
 let rulesData = null;
-let currentView = 'guides';
+let currentView = 'home';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
 const _loaded = { cards: false, decklog: false };
@@ -51,16 +52,38 @@ async function render() {
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
   const cardsView = document.getElementById('cardsView');
+  const tutorialView = document.getElementById('tutorialView');
   const tierFilterGroup = document.getElementById('tierFilterGroup');
   const cardSearchGroup = document.getElementById('cardSearchGroup');
   const cardTypeGroup = document.getElementById('cardTypeGroup');
+  const cardSupportSubGroup = document.getElementById('cardSupportSubGroup');
+  const filterBar = document.getElementById('filterBar');
+  const homeSections = document.getElementById('homeSections');
+  const carousel = document.getElementById('carousel');
+  const mainContent = document.getElementById('mainContent');
+
+  const isHome = currentView === 'home';
+
+  // Toggle homepage vs content
+  if (homeSections) homeSections.style.display = isHome ? '' : 'none';
+  if (carousel) carousel.style.display = isHome ? '' : 'none';
+  if (mainContent) mainContent.style.display = isHome ? 'none' : '';
+
+  // Filter bar: show for guides/cards/tournament, hide for home/tutorial
+  filterBar.style.display = (isHome || currentView === 'tutorial') ? 'none' : '';
 
   guidesView.classList.toggle('active', currentView === 'guides');
   tournamentView.classList.toggle('active', currentView === 'tournament');
   cardsView.classList.toggle('active', currentView === 'cards');
+  tutorialView.classList.toggle('active', currentView === 'tutorial');
   tierFilterGroup.style.display = currentView === 'guides' ? 'flex' : 'none';
   cardSearchGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
+  // Show support subtype filter only when type=support* is selected
+  const isSupportFilter = currentView === 'cards' && (filters.type === 'support' || filters.type?.startsWith('support_'));
+  if (cardSupportSubGroup) cardSupportSubGroup.style.display = isSupportFilter ? 'flex' : 'none';
+
+  if (isHome) return;
 
   if (currentView === 'guides') {
     await ensureCards();
@@ -68,7 +91,9 @@ async function render() {
   } else if (currentView === 'tournament') {
     await Promise.all([ensureDecklog(), ensureCards()]);
     renderTournamentView(tournamentView, decklogDecks, cardsData);
-  } else {
+  } else if (currentView === 'tutorial') {
+    renderTutorialView(tutorialView);
+  } else if (currentView === 'cards') {
     await ensureCards();
     renderCardGallery(cardsView, cardsData, filters, rulesData);
   }
@@ -77,28 +102,47 @@ async function render() {
 function renderLangSwitcher() {
   const container = document.getElementById('langSwitcher');
   const current = getLang();
+  const dropdownBtn = document.getElementById('langDropdownBtn');
+
   container.innerHTML = getSupportedLangs().map(({ code, label }) =>
     `<button class="lang-btn${code === current ? ' active' : ''}" data-lang="${code}">${label}</button>`
   ).join('');
+
+  // Update dropdown button text
+  const currentLabel = getSupportedLangs().find(l => l.code === current)?.label || current;
+  if (dropdownBtn) dropdownBtn.textContent = currentLabel + ' ▾';
 
   container.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       setLang(btn.dataset.lang);
       applyStaticTranslations();
       renderLangSwitcher();
+      // Close dropdown
+      const menu = document.getElementById('langDropdownMenu');
+      if (menu) menu.hidden = true;
       render();
     });
   });
 }
 
 function setupNav() {
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  document.querySelectorAll('.nav-btn[data-view]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentView = btn.dataset.view;
+      window.scrollTo(0, 0);
       render();
     });
+  });
+
+  // Click logo to go back to home
+  document.querySelector('.header-logo-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    currentView = 'home';
+    window.scrollTo(0, 0);
+    render();
   });
 }
 
@@ -215,6 +259,17 @@ function setupModals() {
   });
 }
 
+function setupScrollTop() {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.hidden = window.scrollY < 600;
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 async function init() {
   initI18n();
   renderLangSwitcher();
@@ -222,6 +277,7 @@ async function init() {
   setupNav();
   setupFilters();
   setupModals();
+  setupScrollTop();
   await loadCoreData();
   render();
 }

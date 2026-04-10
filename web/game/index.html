@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hololive CARD GAME Fan-made Practice Site｜hololive カードゲーム ファンメイド 練習サイト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <a class="game-home-link" href="../" title="返回主站">
+    <img src="../images/brand/logo.svg" alt="hololive OFFICIAL CARD GAME" class="game-header-logo">
+  </a>
+  <div id="app">
+    <div class="game-loading">載入卡片資料中...</div>
+  </div>
+  <script>
+    // Force clear all caches then reload as module
+    if ('caches' in window) {
+      caches.keys().then(names => names.forEach(n => caches.delete(n)));
+    }
+  </script>
+  <script type="module">
+    const { GameController } = await import('./GameController.js?v=' + Date.now());
+    const app = document.getElementById('app');
+    const game = new GameController(app);
+
+    // Show mode selection
+    app.innerHTML = `
+      <div class="mode-select-screen">
+        <img src="../images/brand/logo.svg" alt="hololive CARD GAME" class="mode-logo">
+        <h1 class="mode-title">Fan-made Practice Site</h1>
+        <div class="mode-buttons">
+          <button class="mode-btn mode-local" id="modeLocal">
+            <span class="mode-icon">🎮</span>
+            <span class="mode-label">本地對戰</span>
+            <span class="mode-desc">同螢幕雙人</span>
+          </button>
+          <button class="mode-btn mode-online" id="modeOnline">
+            <span class="mode-icon">🌐</span>
+            <span class="mode-label">線上對戰</span>
+            <span class="mode-desc">WebSocket 連線</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('modeLocal').addEventListener('click', () => game.start());
+    document.getElementById('modeOnline').addEventListener('click', () => game.startOnline());
+  </script>
+</body>
+</html>

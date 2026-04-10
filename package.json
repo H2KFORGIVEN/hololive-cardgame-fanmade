@@ -1,0 +1,21 @@
+{
+  "name": "hololive-card-meta",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hololive Card Game Meta - Local build with official card images",
+  "scripts": {
+    "build:images": "python3 scripts/build-images.py",
+    "build:enrich": "python3 scripts/enrich-cards.py",
+    "build:localize": "python3 scripts/localize-data.py",
+    "update:homepage": "python3 scripts/update-homepage.py",
+    "build": "npm run build:images && npm run build:enrich && npm run build:localize",
+    "serve": "python3 -m http.server 8080 --directory web",
+    "server": "node web/game/server/ws-server.js",
+    "dev": "npm run build && npm run serve",
+    "scrape": "uv run python -m scraper.run"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "private": true
+}

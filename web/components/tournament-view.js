@@ -79,7 +79,7 @@ const USAGE_RATE_DATA = {
 };
 
 const USAGE_COLORS = [
-  '#00c8ff', '#ff6b9d', '#ffd93d', '#6bcb77',
+  '#9b51e0', '#ff6b9d', '#ffd93d', '#6bcb77',
   '#9b59b6', '#ff8c42', '#45b7d1', '#96ceb4',
 ];
 
