@@ -124,8 +124,8 @@ scripts/
 ### Install
 
 ```bash
-git clone https://github.com/your-username/hololive-card-meta.git
-cd hololive-card-meta
+git clone https://github.com/H2KFORGIVEN/hololive-cardgame-fanmade.git
+cd hololive-cardgame-fanmade
 npm install
 ```
 
