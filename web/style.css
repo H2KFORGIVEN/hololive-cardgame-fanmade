@@ -400,6 +400,7 @@ body {
 .products-section {
   padding: 62px 0 45px;
   background-color: #fff;
+  width: 100%;
 }
 .products-slider {
   position: relative;
@@ -437,26 +438,24 @@ body {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
-  background: none;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   z-index: 5;
   font-size: 0;
-  opacity: 0.7;
+  background: url("images/brand/slide_arrow_gold.svg") no-repeat center;
+  background-size: contain;
   transition: opacity .2s;
+  opacity: 0.85;
 }
 .products-arrow:hover { opacity: 1; }
 .products-prev {
-  left: -25px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23887D54'%3E%3Cpath d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/%3E%3C/svg%3E") no-repeat center;
-  background-size: contain;
+  left: -30px;
+  transform: translateY(-50%) rotate(180deg);
 }
 .products-next {
-  right: -25px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23887D54'%3E%3Cpath d='M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z'/%3E%3C/svg%3E") no-repeat center;
-  background-size: contain;
+  right: -30px;
 }
 
 /* Products dots */
