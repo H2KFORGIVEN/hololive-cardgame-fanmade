@@ -1,4 +1,10 @@
 <p align="center">
+  <a href="./README.md">English</a> ·
+  <a href="./docs/README.zh-TW.md">繁體中文</a> ·
+  <a href="./docs/README.ja.md">日本語</a>
+</p>
+
+<p align="center">
   <img src="web/images/brand/logo.svg" alt="hololive OFFICIAL CARD GAME" width="400">
 </p>
 
