@@ -634,6 +634,46 @@ body {
 }
 .vs-text { font-weight: 700; color: var(--accent); font-size: 0.9rem; }
 
+/* Opponent hand count display */
+.opp-hand-count {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-160%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 20;
+}
+.opp-hand-label {
+  font-size: 0.65rem;
+  color: var(--text-light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.opp-hand-cards {
+  display: flex;
+  margin-left: 2px;
+}
+.opp-hand-back {
+  width: 22px;
+  height: 32px;
+  background: linear-gradient(135deg, #4f4982 0%, #6b5ce7 100%);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 2px;
+  margin-left: calc(var(--i) * -12px);
+  box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  position: relative;
+  z-index: calc(10 - var(--i));
+}
+.opp-hand-back::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 1px;
+}
+
 /* ===== Zones ===== */
 
 .zone {
@@ -1174,6 +1214,31 @@ body {
   15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
   30%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -120%) scale(0.8); }
+}
+
+/* Opponent action toast */
+.action-toast {
+  position: fixed;
+  top: 60px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(79,73,130,.9);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 200;
+  pointer-events: none;
+  animation: toast-in-out 2.5s ease-out forwards;
+  max-width: 80vw;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+@keyframes toast-in-out {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  10%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-5px); }
 }
 
 /* Knockdown flash */

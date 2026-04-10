@@ -167,7 +167,6 @@ function validateCollab(state, action, player) {
   const idx = action.backstageIndex;
   if (idx < 0 || idx >= backstage.length) return fail('後台位置無效');
   if (backstage[idx].state !== MEMBER_STATE.ACTIVE) return fail('休息狀態的成員不能聯動');
-  if (backstage[idx].placedThisTurn) return fail('本回合放置的成員不能聯動');
 
   return ok();
 }

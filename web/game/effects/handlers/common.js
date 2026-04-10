@@ -74,10 +74,12 @@ export function cheerFromArchive(player, memberInst, cheerInstanceId) {
 // Draw N cards from deck to hand
 export function drawCards(player, count) {
   const drawn = [];
+  const baseTime = Date.now();
   for (let i = 0; i < count; i++) {
     if (player.zones[ZONE.DECK].length === 0) break;
     const card = player.zones[ZONE.DECK].shift();
     card.faceDown = false;
+    card._drawnAt = baseTime + i * 120; // stagger animation by 120ms
     player.zones[ZONE.HAND].push(card);
     drawn.push(card);
   }

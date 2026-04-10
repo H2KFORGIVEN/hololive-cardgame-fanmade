@@ -206,6 +206,20 @@ function renderHand(state, localPlayer) {
   `;
 }
 
+function renderOppHandCount(state, oppIdx) {
+  const hand = state.players[oppIdx]?.zones?.[ZONE.HAND] || [];
+  const count = hand.length;
+  if (count === 0) return '<span class="opp-hand-label">對手手牌: 0</span>';
+  return `
+    <span class="opp-hand-label">對手手牌</span>
+    <div class="opp-hand-cards">
+      ${Array.from({length: count}, (_, i) =>
+        `<div class="opp-hand-back" style="--i:${i}"></div>`
+      ).join('')}
+    </div>
+  `;
+}
+
 function renderLog(state) {
   const recent = state.log.slice(-20);
   return `

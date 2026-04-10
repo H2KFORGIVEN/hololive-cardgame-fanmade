@@ -653,6 +653,21 @@ export class GameController {
     this.container.innerHTML = renderGameBoard(state, localPlayer);
     this.bindBoardEvents();
 
+    // Mark placement/bloom animations as shown so they don't replay
+    for (const p of state.players) {
+      const members = [p.zones['center'], p.zones['collab'], ...(p.zones['backstage'] || [])].filter(Boolean);
+      for (const m of members) {
+        if (m.placedThisTurn) m._animShown = true;
+        if (m.bloomedThisTurn) m._bloomAnimShown = true;
+      }
+    }
+
+    // Show opponent's latest action as a toast (online mode or when not our turn)
+    const lastLog = state.log[state.log.length - 1];
+    if (lastLog && state.activePlayer !== localPlayer && (Date.now() - lastLog.ts) < 2000) {
+      this._showActionToast(lastLog.msg);
+    }
+
     // Check for dice results in recent log entries and show dice UI
     const recentLogs = state.log.slice(-3);
     for (const entry of recentLogs) {
@@ -680,11 +695,11 @@ export class GameController {
 
     // Check for pending effect prompts after every render
     if (state.pendingEffect && state.pendingEffect.type === 'MANUAL_EFFECT') {
-      showEffectPromptModal(state.pendingEffect, () => {
-        const s = this.adapter.getState();
-        s.pendingEffect = null;
-        this.adapter.init(s);
-      });
+      // Auto-clear manual effects — no popup needed, effect text is in the log
+      const s = this.adapter.getState();
+      s.pendingEffect = null;
+      this.adapter.init(s);
+      return; // re-render will happen naturally
     } else if (state.pendingEffect && state.pendingEffect.type === 'LIFE_CHEER') {
       this.showHint(`P${state.pendingEffect.player + 1} 選擇成員接收生命吶喊卡`);
     } else if (state.pendingEffect && (
@@ -823,7 +838,13 @@ export class GameController {
           this.container.querySelectorAll('.drop-hint').forEach(z => z.classList.remove('drop-hint'));
           try {
             const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-            this._handleDrop(data.handIndex, zone, state);
+            if (data.type === 'collab' && zone.classList.contains('zone-collab')) {
+              this.adapter.sendAction({ type: ACTION.COLLAB, backstageIndex: data.backstageIndex });
+              this.interactionMode = null;
+              this.renderBoard();
+            } else if (data.handIndex != null) {
+              this._handleDrop(data.handIndex, zone, state);
+            }
           } catch(err) { /* ignore invalid drag data */ }
         });
       });
@@ -841,6 +862,33 @@ export class GameController {
             const targetInstanceId = parseInt(card.dataset.instanceId);
             this._handleDropOnCard(data.handIndex, targetInstanceId, state);
           } catch(err) {}
+        });
+      });
+
+      // Make backstage members draggable for collab
+      const backstage = state.players[p].zones[ZONE.BACKSTAGE];
+      this.container.querySelectorAll('.local-field .backstage-slot .game-card[data-instance-id]').forEach(el => {
+        const instId = parseInt(el.dataset.instanceId);
+        const bIdx = backstage.findIndex(c => c.instanceId === instId);
+        if (bIdx < 0) return;
+        const member = backstage[bIdx];
+        // Only active members can collab (not rested)
+        if (member.state === 'rest') return;
+        // Can only collab if collab zone is empty and haven't used collab this turn
+        if (state.players[p].zones[ZONE.COLLAB] || state.players[p].usedCollab) return;
+
+        const wrapper = el.closest('.backstage-slot') || el;
+        wrapper.setAttribute('draggable', 'true');
+        wrapper.style.cursor = 'grab';
+        wrapper.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', JSON.stringify({ backstageIndex: bIdx, type: 'collab' }));
+          e.dataTransfer.effectAllowed = 'move';
+          wrapper.classList.add('dragging');
+          this.container.querySelectorAll('.zone-collab').forEach(z => z.classList.add('drop-hint'));
+        });
+        wrapper.addEventListener('dragend', () => {
+          wrapper.classList.remove('dragging');
+          this.container.querySelectorAll('.drop-hint, .drop-hover').forEach(z => z.classList.remove('drop-hint', 'drop-hover'));
         });
       });
     }
@@ -1481,6 +1529,16 @@ export class GameController {
     this.container.querySelectorAll('.play-zone-overlay').forEach(el => el.remove());
   }
 
+  _showActionToast(msg) {
+    if (!msg) return;
+    document.querySelectorAll('.action-toast').forEach(el => el.remove());
+    const toast = document.createElement('div');
+    toast.className = 'action-toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
+
   _showKnockdownFlash() {
     const flash = document.createElement('div');
     flash.className = 'knockdown-flash';
@@ -1558,13 +1616,11 @@ export class GameController {
     const state = this.adapter.getState();
     if (state.pendingEffect) {
       if (state.pendingEffect.type === 'MANUAL_EFFECT') {
-        showEffectPromptModal(state.pendingEffect, () => {
-          // Clear pending effect
-          const s = this.adapter.getState();
-          s.pendingEffect = null;
-          this.adapter.init(s);
-          this.renderBoard();
-        });
+        // Auto-clear — no popup
+        const s = this.adapter.getState();
+        s.pendingEffect = null;
+        this.adapter.init(s);
+        this.renderBoard();
       } else if (state.pendingEffect.type === 'LIFE_CHEER') {
         // Life cheer assignment — handled by card click in handleCardClick
         this.showHint(`P${state.pendingEffect.player + 1} 選擇成員接收生命吶喊卡`);

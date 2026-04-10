@@ -13,6 +13,13 @@ export function triggerEffect(state, hookType, context) {
 
   // No handler — check if the card has effect text to show
   const card = getCard(cardId);
+
+  // Skip MANUAL_EFFECT for attachment-type support cards (mascot/tool/fan)
+  // Their supportEffect text describes passive bonuses, not actions needing player input
+  if (hookType === 'ON_PLAY') {
+    const attachTypes = ['支援・吉祥物', '支援・道具', '支援・粉絲'];
+    if (card && attachTypes.includes(card.type)) return { state };
+  }
   if (!card) return { state };
 
   const effectText = getEffectText(card, hookType);
