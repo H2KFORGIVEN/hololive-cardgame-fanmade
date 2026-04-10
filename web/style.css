@@ -406,11 +406,13 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   overflow: hidden;
+  padding: 0 40px;
 }
 .products-track {
   display: flex;
   gap: 14px;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -418,7 +420,7 @@ body {
 }
 .products-track::-webkit-scrollbar { display: none; }
 .product-card {
-  flex: 0 0 353px;
+  flex: 0 0 calc((100% - 28px) / 3);
   box-sizing: border-box;
   border: 2px solid #000;
   overflow: hidden;
@@ -426,6 +428,7 @@ body {
   color: var(--text-primary);
   transition: transform .25s ease;
   display: block;
+  scroll-snap-align: start;
 }
 .product-card:hover {
   transform: scale(1.03);
@@ -2476,5 +2479,5 @@ body {
   .nav-btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
   .news-grid { flex-wrap: wrap; }
   .news-card { width: calc(50% - 10px); }
-  .product-card { flex: 0 0 200px; }
+  .product-card { flex: 0 0 calc((100% - 14px) / 2); }
 }

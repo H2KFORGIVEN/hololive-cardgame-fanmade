@@ -34,34 +34,64 @@
   ],
   "products": [
     {
-      "url": "https://hololive-official-cardgame.com/products/post/holo_wgp_sleeve-set_ex7/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/official-card-sleeve10_thumb.jpg",
-      "name": "",
-      "localImage": "images/products/product1.jpg"
+      "url": "https://hololive-official-cardgame.com/products/post/diva-fever/",
+      "localImage": "images/products/bp07.png",
+      "name": "ブースターパック ディーヴァフィーバー"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case08/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_hbp08_basic_v2.jpg",
-      "name": "",
-      "localImage": "images/products/product2.jpg"
+      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case07/",
+      "localImage": "images/products/case7.png",
+      "name": "オフィシャルホロカケース 7th"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/ocg_storage_box/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/02/hBP07_pillow.png",
-      "name": "",
-      "localImage": "images/products/product3.png"
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve09/",
+      "localImage": "images/products/sleeve9.png",
+      "name": "オフィシャルホロカスリーブ 9"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
+      "localImage": "images/products/sd12.png",
+      "name": "スタートデッキ Advent"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
+      "localImage": "images/products/sd13.png",
+      "name": "スタートデッキ Justice"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve08/",
+      "localImage": "images/products/sleeve8.png",
+      "name": "オフィシャルホロカスリーブ 8"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/ayakashi-vermilion/",
+      "localImage": "images/products/bp06.png",
+      "name": "ブースターパック アヤカシヴァーミリオン"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case06/",
+      "localImage": "images/products/case6.png",
+      "name": "オフィシャルホロカケース 6th"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve06/",
+      "localImage": "images/products/sleeve6.png",
+      "name": "オフィシャルホロカスリーブ 6"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia/",
+      "localImage": "images/products/bp05.png",
+      "name": "ブースターパック エンチャントレガリア"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/rindo-koganei/",
+      "localImage": "images/products/sd10-11.png",
+      "name": "スタートデッキ SD10-11"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/starter-hsd14-19/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/starter-hsd14-19-sleeve.jpg",
-      "name": "",
-      "localImage": "images/products/product4.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/products/post/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%83%87%E3%83%83%E3%82%AD-%E6%8E%A8%E3%81%97-justice/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2025/11/hOCG_hSD12_1BOX_image_3d.png",
-      "name": "",
-      "localImage": "images/products/product5.png"
+      "localImage": "images/products/product4.jpg",
+      "name": "スタートデッキ hSD14-19"
     }
   ],
   "news": [

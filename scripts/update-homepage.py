@@ -109,7 +109,14 @@ def scrape_products():
     for p in products:
         p["name"] = name_map.get(p["url"], "")
 
-    return products[:12]
+    # Deduplicate by URL
+    seen_urls = set()
+    unique = []
+    for p in products:
+        if p["url"] not in seen_urls:
+            seen_urls.add(p["url"])
+            unique.append(p)
+    return unique[:12]
 
 
 def scrape_news():
