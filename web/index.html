@@ -163,8 +163,9 @@
       <div class="section-inner">
         <div class="products-slider" id="productsSlider">
           <div class="products-track" id="productsTrack"></div>
-          <button class="products-arrow products-prev" id="productsPrev">&lsaquo;</button>
-          <button class="products-arrow products-next" id="productsNext">&rsaquo;</button>
+          <button class="products-arrow products-prev" id="productsPrev">Previous</button>
+          <button class="products-arrow products-next" id="productsNext">Next</button>
+          <div class="products-dots" id="productsDots"></div>
         </div>
       </div>
     </section>
@@ -401,13 +402,48 @@
     // Products slider
     function initProductsSlider() {
       var track = document.getElementById('productsTrack');
+      var dotsWrap = document.getElementById('productsDots');
       if (!track) return;
-      var scrollAmount = 300;
-      document.getElementById('productsPrev')?.addEventListener('click', function() {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      document.getElementById('productsNext')?.addEventListener('click', function() {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      var items = track.querySelectorAll('.product-card');
+      var total = items.length;
+      if (total === 0) return;
+      var visible = 3;
+      var current = 0;
+      var maxIdx = Math.max(0, total - visible);
+      var itemW = 353 + 14; // 353px + 7px margin each side
+
+      // Create dots
+      if (dotsWrap) {
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i <= maxIdx; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'products-dot' + (i === 0 ? ' active' : '');
+          dot.dataset.index = i;
+          dotsWrap.appendChild(dot);
+        }
+        dotsWrap.addEventListener('click', function(e) {
+          if (e.target.dataset.index !== undefined) { goTo(parseInt(e.target.dataset.index)); }
+        });
+      }
+
+      function goTo(idx) {
+        current = Math.max(0, Math.min(idx, maxIdx));
+        track.style.transform = 'translate3d(-' + (current * itemW) + 'px, 0, 0)';
+        if (dotsWrap) {
+          dotsWrap.querySelectorAll('.products-dot').forEach(function(d, j) {
+            d.classList.toggle('active', j === current);
+          });
+        }
+      }
+
+      document.getElementById('productsPrev')?.addEventListener('click', function() { goTo(current - 1); });
+      document.getElementById('productsNext')?.addEventListener('click', function() { goTo(current + 1); });
+
+      // Auto slide
+      var autoTimer = setInterval(function() { goTo(current >= maxIdx ? 0 : current + 1); }, 4000);
+      track.parentElement.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+      track.parentElement.addEventListener('mouseleave', function() {
+        autoTimer = setInterval(function() { goTo(current >= maxIdx ? 0 : current + 1); }, 4000);
       });
     }
 

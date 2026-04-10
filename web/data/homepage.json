@@ -35,63 +35,55 @@
   "products": [
     {
       "url": "https://hololive-official-cardgame.com/products/post/diva-fever/",
-      "localImage": "images/products/bp07.png",
-      "name": "ブースターパック ディーヴァフィーバー"
+      "localImage": "images/products/bnr_diva-fever.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-deck-case07/",
-      "localImage": "images/products/case7.png",
-      "name": "オフィシャルホロカケース 7th"
+      "localImage": "images/products/bnr_deck-case07.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve09/",
-      "localImage": "images/products/sleeve9.png",
-      "name": "オフィシャルホロカスリーブ 9"
+      "localImage": "images/products/bnr_sleeve09.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
-      "localImage": "images/products/sd12.png",
-      "name": "スタートデッキ Advent"
+      "localImage": "images/products/bnr_sd12.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
-      "localImage": "images/products/sd13.png",
-      "name": "スタートデッキ Justice"
+      "localImage": "images/products/bnr_sd13.png"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve08/",
-      "localImage": "images/products/sleeve8.png",
-      "name": "オフィシャルホロカスリーブ 8"
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve8/",
+      "localImage": "images/products/bnr_sleeve08.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/ayakashi-vermilion/",
-      "localImage": "images/products/bp06.png",
-      "name": "ブースターパック アヤカシヴァーミリオン"
+      "localImage": "images/products/bnr_bp06.png"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case06/",
-      "localImage": "images/products/case6.png",
-      "name": "オフィシャルホロカケース 6th"
+      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case6th/",
+      "localImage": "images/products/bnr_deck-case06.png"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve06/",
-      "localImage": "images/products/sleeve6.png",
-      "name": "オフィシャルホロカスリーブ 6"
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve6/",
+      "localImage": "images/products/bnr_sleeve06.png"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia/",
-      "localImage": "images/products/bp05.png",
-      "name": "ブースターパック エンチャントレガリア"
+      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case5th/",
+      "localImage": "images/products/bnr_deck-case05.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/rindo-koganei/",
-      "localImage": "images/products/sd10-11.png",
-      "name": "スタートデッキ SD10-11"
+      "localImage": "images/products/bnr_sd10-11.png"
     },
     {
-      "url": "https://hololive-official-cardgame.com/products/post/starter-hsd14-19/",
-      "localImage": "images/products/product4.jpg",
-      "name": "スタートデッキ hSD14-19"
+      "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve7/",
+      "localImage": "images/products/bnr_sleeve07.png"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia/",
+      "localImage": "images/products/bnr_bp05.png"
     }
   ],
   "news": [
