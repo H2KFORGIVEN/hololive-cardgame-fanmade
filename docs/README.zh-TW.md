@@ -28,6 +28,9 @@
   <img src="https://img.shields.io/badge/框架-vanilla%20JS-yellow?style=flat-square" alt="Vanilla JS">
 </p>
 
+> [!NOTE]
+> 卡牌效果仍在持續修正中，部分效果可能無法正確觸發或需要手動調整。歡迎回報問題或協助修正！
+
 ---
 
 ## 功能特色

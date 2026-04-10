@@ -29,6 +29,9 @@
   <img src="https://img.shields.io/badge/framework-vanilla%20JS-yellow?style=flat-square" alt="Vanilla JS">
 </p>
 
+> [!NOTE]
+> Card effects are still being fixed and refined. Some effects may not work correctly or may require manual adjustment. Contributions and bug reports are welcome!
+
 ---
 
 ## Features

@@ -28,6 +28,9 @@
   <img src="https://img.shields.io/badge/フレームワーク-vanilla%20JS-yellow?style=flat-square" alt="Vanilla JS">
 </p>
 
+> [!NOTE]
+> カード効果は現在も修正・改善中です。一部の効果が正しく動作しない場合や、手動調整が必要な場合があります。バグ報告や修正への協力を歓迎します！
+
 ---
 
 ## 機能
