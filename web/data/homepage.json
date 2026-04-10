@@ -30,16 +30,6 @@
       "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_hbp05_2000x1010.jpg",
       "localImage": "images/banners/banner6.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/products/post/diva-fever/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_boosters_bp07.png",
-      "localImage": "images/banners/banner7.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/products/post/official-deck-case07/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_accessories_official-deck-case7th.png",
-      "localImage": "images/banners/banner8.jpg"
     }
   ],
   "products": [
@@ -81,7 +71,8 @@
       "date": "2026.04.03",
       "tag": "",
       "title": "イチ推し！デッキ紹介！vol.2 ～ディーヴァフィーバー～",
-      "localImage": "images/news/news1.jpg"
+      "localImage": "images/news/news1.jpg",
+      "isNew": true
     },
     {
       "url": "https://hololive-official-cardgame.com/news/post/47/",
@@ -106,22 +97,6 @@
       "tag": "",
       "title": "ディーヴァフィーバー発売記念「フォロー＆リポスト」キャンペーン開催！",
       "localImage": "images/news/news4.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/news/post/45/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_45.jpg",
-      "date": "2026.03.12",
-      "tag": "",
-      "title": "初のホロカ公式オリジナルソング「ディーヴァフィーバー」がリリース！",
-      "localImage": "images/news/news5.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/news/post/44/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2024/06/news_kv.png",
-      "date": "2026.03.05",
-      "tag": "",
-      "title": "一部カード効果の裁定変更のお知らせ",
-      "localImage": "images/news/news6.png"
     }
   ]
 }

@@ -468,7 +468,7 @@ body {
 }
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
 }
 .news-card {
@@ -2453,4 +2453,5 @@ body {
   .tut-step, .tut-step-reverse { flex-direction: column; }
   .tut-step-img, .tut-step-img-sm { flex: none; max-width: 100%; }
   .nav-btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+  .news-grid { grid-template-columns: 1fr; }
 }

@@ -73,7 +73,7 @@ def scrape_main_page():
             if img_src.startswith("http") and any(ext in img_src.lower() for ext in [".jpg", ".png", ".webp"]):
                 banners.append({"url": href, "image": img_src})
 
-    return banners[:8]  # Max 8 banners
+    return banners[:6]  # Max 6 banners (match official site)
 
 
 def scrape_products():
@@ -176,7 +176,11 @@ def scrape_news():
             "title": title[:80],
         })
 
-    return news[:6]
+    # Max 4 news, mark first as NEW
+    news = news[:4]
+    if news:
+        news[0]["isNew"] = True
+    return news
 
 
 def main():
