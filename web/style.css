@@ -334,15 +334,24 @@ body {
   width: 100%;
 }
 .carousel-track {
-  display: flex;
-  transition: transform 0.6s ease;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2000/1010;
 }
 .carousel-slide {
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
   display: block;
+}
+.carousel-slide.active {
+  opacity: 1;
 }
 .carousel-slide img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 .carousel-dots {
@@ -398,35 +407,35 @@ body {
 }
 .products-track::-webkit-scrollbar { display: none; }
 .product-card {
-  flex: 0 0 200px;
-  background: rgba(255,255,255,.85);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  flex: 0 0 180px;
   overflow: hidden;
   text-decoration: none;
   color: var(--text-primary);
-  transition: transform .15s, box-shadow .15s;
+  transition: transform .2s, opacity .2s;
   display: block;
+  border-radius: var(--radius);
 }
 .product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(79,73,130,.15);
+  transform: scale(1.05);
+  opacity: 0.85;
 }
 .product-card img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   display: block;
+  border-radius: var(--radius);
 }
 .product-card span {
   display: block;
-  padding: 0.4rem 0.5rem;
-  font-size: 0.72rem;
-  font-weight: 600;
+  padding: 0.3rem 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 500;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--text-secondary);
 }
 .products-arrow {
   position: absolute;
@@ -469,11 +478,9 @@ body {
   margin-bottom: 1.5rem;
 }
 .news-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
 }
 .news-card {
   background: rgba(255,255,255,.85);
@@ -483,19 +490,15 @@ body {
   text-decoration: none;
   color: var(--text-primary);
   transition: transform .15s, box-shadow .15s;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  display: block;
 }
 .news-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(79,73,130,.12);
 }
 .news-card-img {
   position: relative;
-  width: 200px;
-  min-height: 120px;
-  flex-shrink: 0;
+  aspect-ratio: 1/1;
   overflow: hidden;
   background: #f0eff5;
 }
@@ -518,12 +521,7 @@ body {
   letter-spacing: 0.05em;
 }
 .news-card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.8rem 1rem;
-  flex: 1;
-  min-width: 0;
+  padding: 0.5rem 0.7rem 0.7rem;
 }
 .news-card-info {
   display: flex;
@@ -2468,6 +2466,5 @@ body {
   .tut-step, .tut-step-reverse { flex-direction: column; }
   .tut-step-img, .tut-step-img-sm { flex: none; max-width: 100%; }
   .nav-btn { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
-  .news-card { flex-direction: column; }
-  .news-card-img { width: 100%; min-height: 160px; }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
 }

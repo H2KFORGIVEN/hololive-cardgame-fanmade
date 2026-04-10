@@ -374,9 +374,12 @@
         dotsWrap.appendChild(dot);
       }
 
+      // Set first slide active
+      if (slides.length > 0) slides[0].classList.add('active');
+
       function goTo(idx) {
         current = ((idx % total) + total) % total;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        slides.forEach(function(s, j) { s.classList.toggle('active', j === current); });
         dotsWrap.querySelectorAll('.carousel-dot').forEach(function(d, j) {
           d.classList.toggle('active', j === current);
         });
