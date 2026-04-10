@@ -400,13 +400,18 @@ body {
 .products-section {
   padding: 62px 0 45px;
   background-color: #fff;
-  width: 100%;
+  /* Break out of .home-section max-width to go full-width */
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 .products-slider {
   position: relative;
   width: 1100px;
-  max-width: 100%;
+  max-width: calc(100% - 120px);
   margin: 0 auto;
+}
+.products-viewport {
   overflow: hidden;
 }
 .products-track {
