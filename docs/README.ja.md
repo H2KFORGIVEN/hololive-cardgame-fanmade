@@ -22,11 +22,19 @@
 
 <p align="center">
   <a href="https://h2kforgiven.github.io/hololive-cardgame-fanmade/">
-    <img src="https://img.shields.io/badge/🌐_Webアプリを開く-4f4982?style=for-the-badge&logoColor=white" alt="Open Web App" height="40">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/btn-web-dark-ja.svg">
+      <source media="(prefers-color-scheme: light)" srcset="assets/btn-web-light-ja.svg">
+      <img src="assets/btn-web-dark-ja.svg" alt="Webアプリを開く" height="48">
+    </picture>
   </a>
-  &nbsp;&nbsp;
+  &nbsp;
   <a href="https://github.com/H2KFORGIVEN/hololive-cardgame-fanmade/releases">
-    <img src="https://img.shields.io/badge/📦_アプリをダウンロード-887D54?style=for-the-badge&logoColor=white" alt="Download App" height="40">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/btn-download-dark-ja.svg">
+      <source media="(prefers-color-scheme: light)" srcset="assets/btn-download-light-ja.svg">
+      <img src="assets/btn-download-dark-ja.svg" alt="デスクトップアプリをダウンロード" height="48">
+    </picture>
   </a>
 </p>
 
