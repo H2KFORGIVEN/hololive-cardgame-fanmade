@@ -22,19 +22,13 @@
 
 <p align="center">
   <a href="https://h2kforgiven.github.io/hololive-cardgame-fanmade/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/btn-web-dark-zh.svg">
-      <source media="(prefers-color-scheme: light)" srcset="assets/btn-web-light-zh.svg">
-      <img src="assets/btn-web-dark-zh.svg" alt="開啟網頁版" height="48">
-    </picture>
+    <img src="assets/btn-browser.jpg" alt="Open Browser" height="80">
   </a>
-  &nbsp;
   <a href="https://github.com/H2KFORGIVEN/hololive-cardgame-fanmade/releases">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/btn-download-dark-zh.svg">
-      <source media="(prefers-color-scheme: light)" srcset="assets/btn-download-light-zh.svg">
-      <img src="assets/btn-download-dark-zh.svg" alt="下載桌面應用程式" height="48">
-    </picture>
+    <img src="assets/btn-macos.jpg" alt="Download macOS" height="80">
+  </a>
+  <a href="https://github.com/H2KFORGIVEN/hololive-cardgame-fanmade/releases">
+    <img src="assets/btn-windows.jpg" alt="Download Windows" height="80">
   </a>
 </p>
 
