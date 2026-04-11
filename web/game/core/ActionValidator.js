@@ -184,11 +184,11 @@ function validateBatonPass(state, action, player) {
   if (idx < 0 || idx >= backstage.length) return fail('後台位置無效');
   if (backstage[idx].state !== MEMBER_STATE.ACTIVE) return fail('後台成員為休息狀態');
 
-  // Check baton cost
+  // Check baton cost (same color matching as art cost)
   const centerCard = getCard(center.cardId);
   const batonCost = parseCost(centerCard?.batonImage);
-  if (center.attachedCheer.length < batonCost.total) {
-    return fail(`吶喊卡不足以支付交棒費用（需要 ${batonCost.total}）`);
+  if (!canPayArtCost(center, batonCost)) {
+    return fail(`吶喊卡不足以支付交棒費用（需要 ${batonCost.total} 張）`);
   }
 
   return ok();

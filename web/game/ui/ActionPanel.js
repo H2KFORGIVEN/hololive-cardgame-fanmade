@@ -1,5 +1,6 @@
-import { PHASE, ZONE, ACTION, isMember, isSupport } from '../core/constants.js';
+import { PHASE, ZONE, ACTION, isMember, isSupport, parseCost } from '../core/constants.js';
 import { getCard } from '../core/CardDatabase.js';
+import { canPayArtCost } from '../core/ActionValidator.js';
 
 export function renderActionPanel(state, onAction, localPlayer = null) {
   const p = state.activePlayer;
@@ -59,7 +60,11 @@ function renderMainActions(state, player, p) {
   });
   const canCollab = !player.usedCollab && !player.zones[ZONE.COLLAB]
     && player.zones[ZONE.BACKSTAGE].length > 0 && player.zones[ZONE.DECK].length > 0;
-  const canBaton = !player.usedBaton && player.zones[ZONE.CENTER]
+  const center = player.zones[ZONE.CENTER];
+  const centerCard = center ? getCard(center.cardId) : null;
+  const batonCost = parseCost(centerCard?.batonImage);
+  const canPayBaton = center ? canPayArtCost(center, batonCost) : false;
+  const canBaton = !player.usedBaton && center && canPayBaton
     && player.zones[ZONE.BACKSTAGE].length > 0;
 
   const oshiCard = player.oshi ? getCard(player.oshi.cardId) : null;
@@ -82,8 +87,8 @@ function renderMainActions(state, player, p) {
       <button class="action-btn" data-action="COLLAB" ${!canCollab ? 'disabled' : ''}>
         聯動
       </button>
-      <button class="action-btn" data-action="BATON_PASS" ${!canBaton ? 'disabled' : ''}>
-        交棒
+      <button class="action-btn" data-action="BATON_PASS" ${!canBaton ? `disabled title="${player.usedBaton ? '本回合已交棒' : !canPayBaton ? '吶喊卡不足' : ''}"` : ''}>
+        交棒 ${batonCost.total > 0 ? '<span class="btn-cost">' + (centerCard?.batonImage || []).map(i => '<img class="cost-icon-sm" src="../images/' + i + '">').join('') + '</span>' : ''}
       </button>
       ${oshiCard?.oshiSkill ? `
         <button class="action-btn action-oshi" data-action="USE_OSHI_SKILL" data-skill="oshi" ${holoPower < oshiCost ? 'disabled' : ''}>
@@ -106,6 +111,19 @@ function renderMainActions(state, player, p) {
   `;
 }
 
+function renderArtButton(member, memberCard, artKey, artIndex, position) {
+  const art = memberCard?.[artKey];
+  if (!art) return '';
+  const cost = parseCost(art.image);
+  const canPay = canPayArtCost(member, cost);
+  const costIcons = (art.image || []).map(i => `<img class="cost-icon-sm" src="../images/${i}">`).join('');
+  const spIcon = art.specialAttackImage ? `<img class="cost-icon-sm" src="../images/${art.specialAttackImage}">` : '';
+  return `<button class="action-btn action-art" data-action="USE_ART" data-position="${position}" data-art="${artIndex}"
+    ${!canPay ? `disabled title="吶喊卡不足"` : ''}>
+    ${costIcons} ${memberCard.name}: ${art.name} [${art.damage || 0}] ${spIcon}
+  </button>`;
+}
+
 function renderPerformanceActions(state, player, p) {
   const center = player.zones[ZONE.CENTER];
   const collab = player.zones[ZONE.COLLAB];
@@ -115,29 +133,13 @@ function renderPerformanceActions(state, player, p) {
   let html = '<div class="action-panel"><div class="action-section-label">表演階段</div>';
 
   if (center && !player.performedArts.center && center.state === 'active') {
-    if (centerCard?.art1) {
-      html += `<button class="action-btn action-art" data-action="USE_ART" data-position="center" data-art="0">
-        ${centerCard.name} Arts1: ${centerCard.art1.name} [${centerCard.art1.damage || 0}]
-      </button>`;
-    }
-    if (centerCard?.art2) {
-      html += `<button class="action-btn action-art" data-action="USE_ART" data-position="center" data-art="1">
-        ${centerCard.name} Arts2: ${centerCard.art2.name} [${centerCard.art2.damage || 0}]
-      </button>`;
-    }
+    html += renderArtButton(center, centerCard, 'art1', 0, 'center');
+    html += renderArtButton(center, centerCard, 'art2', 1, 'center');
   }
 
   if (collab && !player.performedArts.collab && collab.state === 'active') {
-    if (collabCard?.art1) {
-      html += `<button class="action-btn action-art" data-action="USE_ART" data-position="collab" data-art="0">
-        ${collabCard.name} Arts1: ${collabCard.art1.name} [${collabCard.art1.damage || 0}]
-      </button>`;
-    }
-    if (collabCard?.art2) {
-      html += `<button class="action-btn action-art" data-action="USE_ART" data-position="collab" data-art="1">
-        ${collabCard.name} Arts2: ${collabCard.art2.name} [${collabCard.art2.damage || 0}]
-      </button>`;
-    }
+    html += renderArtButton(collab, collabCard, 'art1', 0, 'collab');
+    html += renderArtButton(collab, collabCard, 'art2', 1, 'collab');
   }
 
   html += `<button class="action-btn action-manual" data-action="MANUAL_ADJUST">手動調整</button>`;

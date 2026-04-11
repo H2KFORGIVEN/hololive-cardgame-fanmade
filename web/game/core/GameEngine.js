@@ -333,22 +333,41 @@ function processBatonPass(state, action) {
   const center = player.zones[ZONE.CENTER];
   const centerCard = getCard(center.cardId);
 
-  // Pay baton cost
+  // Pay baton cost — smart auto-select matching colors
   const batonCost = parseCost(centerCard?.batonImage);
   const cheerToRemove = action.cheerToArchive || [];
   if (cheerToRemove.length > 0) {
+    // Player manually selected which cheer to discard
     for (const instanceId of cheerToRemove) {
       const idx = center.attachedCheer.findIndex(c => c.instanceId === instanceId);
       if (idx !== -1) {
-        const cheer = center.attachedCheer.splice(idx, 1)[0];
-        player.zones[ZONE.ARCHIVE].push(cheer);
+        player.zones[ZONE.ARCHIVE].push(center.attachedCheer.splice(idx, 1)[0]);
       }
     }
   } else {
-    // Auto-remove from end
-    for (let i = 0; i < batonCost.total; i++) {
-      const cheer = center.attachedCheer.pop();
-      if (cheer) player.zones[ZONE.ARCHIVE].push(cheer);
+    // Auto-select: fulfill colored requirements first, then colorless
+    const used = new Set();
+    const colorMap = { white: '白', green: '綠', red: '紅', blue: '藍', purple: '紫', yellow: '黃' };
+    for (const [colorKey, count] of Object.entries(batonCost)) {
+      if (colorKey === 'total' || colorKey === 'colorless') continue;
+      const gameColor = colorMap[colorKey];
+      if (!gameColor) continue;
+      let assigned = 0;
+      for (let i = 0; i < center.attachedCheer.length && assigned < count; i++) {
+        if (!used.has(i) && getCard(center.attachedCheer[i].cardId)?.color === gameColor) {
+          used.add(i); assigned++;
+        }
+      }
+    }
+    const colorlessNeeded = batonCost.colorless || 0;
+    let assigned = 0;
+    for (let i = 0; i < center.attachedCheer.length && assigned < colorlessNeeded; i++) {
+      if (!used.has(i)) { used.add(i); assigned++; }
+    }
+    // Remove selected cheer (reverse order to preserve indices)
+    const indices = [...used].sort((a, b) => b - a);
+    for (const i of indices) {
+      player.zones[ZONE.ARCHIVE].push(center.attachedCheer.splice(i, 1)[0]);
     }
   }
 

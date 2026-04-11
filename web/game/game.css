@@ -1196,6 +1196,10 @@ body {
 }
 .play-zone-active .play-zone-text { color: #ffd700; }
 
+/* Cost icons on buttons */
+.cost-icon-sm { width: 16px; height: 16px; vertical-align: middle; margin: 0 1px; }
+.btn-cost { margin-left: 4px; }
+
 /* Floating damage number */
 .floating-damage {
   position: fixed;
