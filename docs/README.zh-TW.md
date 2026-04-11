@@ -21,6 +21,16 @@
 </p>
 
 <p align="center">
+  <a href="https://h2kforgiven.github.io/hololive-cardgame-fanmade/">
+    <img src="https://img.shields.io/badge/🌐_開啟網頁版-4f4982?style=for-the-badge&logoColor=white" alt="Open Web App" height="40">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/H2KFORGIVEN/hololive-cardgame-fanmade/releases">
+    <img src="https://img.shields.io/badge/📦_下載應用程式-887D54?style=for-the-badge&logoColor=white" alt="Download App" height="40">
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/卡牌-1%2C052-blue?style=flat-square" alt="Cards">
   <img src="https://img.shields.io/badge/效果-1%2C300%2B-green?style=flat-square" alt="Effects">
   <img src="https://img.shields.io/badge/語言-4-orange?style=flat-square" alt="Languages">
