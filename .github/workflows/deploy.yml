@@ -56,8 +56,8 @@ jobs:
       - name: Commit updated data & cache
         if: steps.check.outputs.fresh == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "H2KFORGIVEN"
+          git config user.email "22971845+H2KFORGIVEN@users.noreply.github.com"
           git add web/data/ translation_cache.json
           git diff --cached --quiet || git commit -m "chore: update scraped data & translation cache [skip ci]"
           git push || true
