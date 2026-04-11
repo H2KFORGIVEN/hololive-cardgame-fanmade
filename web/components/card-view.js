@@ -160,10 +160,12 @@ export function renderCardDetail(container, card, allCards, rulesData) {
       <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
     `;
   } else if (isMember) {
+    const batonIcons = (card.batonImage || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
     statsHtml = `
       <div class="stat-label">${t('stat_hp')}</div><div class="stat-value">${card.hp || '?'}</div>
       <div class="stat-label">${t('stat_bloom')}</div><div class="stat-value">${card.bloom || '?'}</div>
       <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
+      ${batonIcons ? `<div class="stat-label">交棒</div><div class="stat-value stat-icons">${batonIcons}</div>` : ''}
     `;
   } else if (isSupport || isCheer) {
     statsHtml = `
@@ -188,17 +190,21 @@ export function renderCardDetail(container, card, allCards, rulesData) {
       if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${eff.name}`, _effectText(eff));
     }
     if (card.art1) {
+      const artIcons = (card.art1.image || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
+      const spAtk = card.art1.specialAttackImage ? `<img class="cost-icon cost-sp" src="images/${card.art1.specialAttackImage}" alt="">` : '';
       const artEffect = _effectText(card.art1);
       effectsHtml += renderEffect(
-        `${t('effect_arts')}: ${card.art1.name}`,
-        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage}` : '', artEffect].filter(Boolean).join('\n')
+        `${artIcons} ${t('effect_arts')}: ${card.art1.name}`,
+        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage} ${spAtk}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.art2) {
+      const artIcons = (card.art2.image || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
+      const spAtk = card.art2.specialAttackImage ? `<img class="cost-icon cost-sp" src="images/${card.art2.specialAttackImage}" alt="">` : '';
       const artEffect = _effectText(card.art2);
       effectsHtml += renderEffect(
-        `${t('effect_arts2')}: ${card.art2.name}`,
-        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage}` : '', artEffect].filter(Boolean).join('\n')
+        `${artIcons} ${t('effect_arts2')}: ${card.art2.name}`,
+        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage} ${spAtk}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.extra) {

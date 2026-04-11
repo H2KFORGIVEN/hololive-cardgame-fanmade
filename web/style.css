@@ -1208,6 +1208,9 @@ body {
 }
 .stat-label { color: var(--text-secondary); font-weight: 500; }
 .stat-value { color: var(--text-primary); }
+.stat-icons { display: flex; gap: 2px; align-items: center; }
+.cost-icon { width: 20px; height: 20px; vertical-align: middle; display: inline-block; }
+.cost-sp { width: auto; height: 18px; margin-left: 4px; }
 .card-detail-effects {
   font-size: 0.85rem;
   line-height: 1.7;
