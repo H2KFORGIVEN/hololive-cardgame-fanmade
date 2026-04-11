@@ -640,6 +640,219 @@
     "tier": 2
   },
   {
+    "url": "https://www.holocardstrategy.jp/rapurasuda-kunesu-deck/",
+    "title": {
+      "ja": "【ホロカ】7弾更新版！ラプラス・ダークネス単のデッキレシピと回し方",
+      "zh-TW": "[螢火蟲]第七次更新版本！拉普拉斯黑暗單牌配方和玩法",
+      "en": "[Horoka] 7th updated version! Laplace Darkness single deck recipe and how to play",
+      "fr": "[Horoka] 7ème version mise à jour ! Recette de Laplace Darkness à un seul deck et comment jouer"
+    },
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/28dfb1f82803c2b8165d75a3b9120f27-1080x608.png",
+    "description": {
+      "ja": "ホロカの「ラプラス単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するのでラプ様のデッキを組もうと思っている方は、ぜひ参考にしてください。 ラプ単のデッキレシピ  推しホロメン エールデッキラ",
+      "zh-TW": "解釋堀花的「單拉普拉斯」的牌組結構以及所採用卡牌的作用！我们还将介绍如何旋转牌组以及如何做出强力动作，所以如果您正在考虑构建 Rap-sama 牌组，请将此作为参考。 Rap Single Deck 食譜 Oshi Holomen Ale Dekkura",
+      "en": "Explaining the deck construction of Horoka's \"Single Laplace\" and the role of the adopted cards! We will also introduce how to spin the deck and how to make strong moves, so if you are thinking of building a Rap-sama deck, please use this as a reference. Rap Single Deck Recipe Oshi Holomen Ale Dekkura",
+      "fr": "Explication de la construction du deck du \"Single Laplace\" d'Horoka et du rôle des cartes adoptées ! Nous présenterons également comment faire tourner le deck et comment effectuer des mouvements forts, donc si vous envisagez de construire un deck Rap-sama, veuillez l'utiliser comme référence. Recette Rap Single Deck Oshi Holomen Ale Dekkura"
+    },
+    "cards": [
+      {
+        "name": "",
+        "card_id": "hBP04-005",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-005_OSR.png",
+        "role": {
+          "ja": "【ドロソ&エール軽減】\n・推しスキルで2ndと1stに使えるダイス操作\n└特に2ndの確定3ドローが強い！\n・SP推しスキルで＃秘密結社holoXを持つホロメン1人のアーツをタダ打ち！",
+          "zh-TW": "[減少果醬和麥芽酒]\n・骰子操作可透過推技能用於第2次和第1次\n└特強2保3抽！\n・與 #秘密社團 HoloX 一起使用 SP 推送技能的 Holomen 的自由藝術！",
+          "en": "[Droso & Ale reduction]\n・Dice operation that can be used for 2nd and 1st with push skills\n└Especially strong 2nd guaranteed 3 draw!\n・Free arts of one Holomen with #secret society holoX with SP push skill!",
+          "fr": "[Réduction Droso & Ale]\n・Opération de dés qui peut être utilisée pour le 2ème et le 1er avec des compétences de poussée\n└2e 3 nul garanti particulièrement fort !\n・Arts gratuits d'un Holomen avec #secret company holoX avec la compétence push SP !"
+        }
+      },
+      {
+        "name": "ラプラス・ダークネス",
+        "card_id": "hBD24-048",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-048_P.png",
+        "role": {
+          "ja": "【序中盤のアタッカー】\n・コラボエフェクト持ちのDebut\n・相手のお休みしてるホロメン1人につきアーツの威力が＋10される（素点は30）\n・バトンタッチエールは0\n・先1で開いてホロメン1人をおやすみ拘束出来る\n┗\nQ&A391\nより",
+          "zh-TW": "【早期攻擊者】\n・以協作效果登場\n・对手每缺席一个霍洛门，艺术威力+10（原始分数为30）\n・接力棒接觸啤酒是0\n・你可以用第一个打开它并限制一个霍洛门睡觉。\n┗\n問答391\n比",
+          "en": "[Early and mid-stage attacker]\n・Debut with collaboration effects\n・The power of arts is +10 for each Holomen who is absent from the opponent (raw score is 30)\n・Baton touch ale is 0\n・You can open it with the first one and restrain one Holomen to sleep.\n┗\nQ&A391\nthan",
+          "fr": "[Attaquant précoce et intermédiaire]\n・Début avec des effets de collaboration\n・La puissance des arts est de +10 pour chaque Holomen absent de l'adversaire (le score brut est de 30)\n・La bière Baton Touch est de 0\n・Vous pouvez l'ouvrir avec le premier et empêcher un Holomen de dormir.\n┗\nQuestions et réponses391\nque"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP04-058",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-058_R.png",
+        "role": {
+          "ja": "【アタッカー】\n・HP140のバトンタッチエール0の1stホロメン\n・コラボエフェクトでダイスを3回振り奇数の数×10の特殊ダメージを相手のセンターホロメンに与える\n・コラボエフェクトを使用して2ndの火力を上げたい\n・最大1エール60点",
+          "zh-TW": "[攻擊者]\n・第一名 Holomen，HP 140，指揮棒觸摸喊叫 0\n・透過連動效果擲骰子3次，對對方中央霍洛曼造成奇數×10的特殊傷害。\n・我想利用協同效果來增強第二名的火力\n・每麥酒最多 60 分",
+          "en": "[Attacker]\n・1st Holomen with HP 140 and Baton Touch Yell 0\n・Roll the dice 3 times with the collaboration effect and deal special damage equal to the odd number x 10 to the opponent's center Holomen.\n・I want to increase the firepower of 2nd using collaboration effects\n・Maximum 60 points per ale",
+          "fr": "[Attaquant]\n・1er Holomen avec HP 140 et Baton Touch Yell 0\n・Lancez les dés 3 fois avec l'effet de collaboration et infligez des dégâts spéciaux égaux au nombre impair x 10 à l'Holomen central de l'adversaire.\n・Je souhaite augmenter la puissance de feu du 2e en utilisant les effets de collaboration\n・Maximum 60 points par bière"
+        }
+      },
+      {
+        "name": "",
+        "card_id": "hBP04-059",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-059_RR.png",
+        "role": {
+          "ja": "【ドロソ&アタッカー】\n・ターン1だが優秀なドローソース！（推しスキルを使っていれば確定で3ドローできる）\n・アーツ効果でこのターン中にダイスを振った回数×10の特殊ダメージをセンターに与えるので、コラボエフェクトの1stと合わせて使いたい",
+          "zh-TW": "[德羅索與攻擊者]\n・第一回合的優秀抽獎來源！ （如果使用推技能，絕對可以抽到3）\n・藝術效果會對中心造成相當於本回合擲骰子次數×10的特殊傷害，所以我想將其與第一個協作效果結合使用。",
+          "en": "[Droso & Attacker]\n・Excellent draw source for turn 1! (If you use the push skill, you can definitely draw 3)\n・The arts effect deals special damage to the center equal to the number of times the dice are rolled during this turn x 10, so I would like to use it in conjunction with the 1st collaboration effect.",
+          "fr": "[Droso et attaquant]\n・Excellente source de tirage pour le tour 1 ! (Si vous utilisez la compétence pousser, vous pouvez certainement en tirer 3)\n・L'effet artistique inflige des dégâts spéciaux au centre égaux au nombre de fois où les dés sont lancés pendant ce tour x 10, j'aimerais donc l'utiliser en conjonction avec le 1er effet de collaboration."
+        }
+      }
+    ],
+    "strategy": [
+      {
+        "title": {
+          "ja": "【1ターン目】最初のエールはセンターorバックへ",
+          "zh-TW": "[第一回合]第一聲喊叫到中間或後面",
+          "en": "[1st turn] First yell goes to center or back",
+          "fr": "[1er tour] Le premier cri va au centre ou à l'arrière"
+        },
+        "text": {
+          "ja": "先攻の場合はDebutの数に余裕があればバトンタッチしてバックにエールのついたラプラスを避難させよう。\n後攻はセンターに付けて攻撃していきたい。コラボエフェクトで盤面のdebutを増やそう。",
+          "zh-TW": "如果你先走，如果你有足夠的首秀，請觸摸接力棒並在背上喊叫的情況下撤離拉普拉斯。\n我想與中間的第二名球員一起進攻。透過協作效果提高您的董事會的首次亮相。",
+          "en": "If you are going first, if you have enough Debuts, touch the baton and evacuate Lapras with Yell on the back.\nI want to attack with the second player in the center. Increase the debut of your board with collaboration effects.",
+          "fr": "Si vous partez en premier, si vous avez suffisamment de Debuts, touchez le bâton et évacuez Lapras avec Yell dans le dos.\nJe veux attaquer avec le deuxième joueur au centre. Augmentez les débuts de votre tableau avec des effets de collaboration."
+        }
+      },
+      {
+        "title": {
+          "ja": "【2ターン目】1stを出来るだけ有効活用",
+          "zh-TW": "[第二回合] 盡可能有效地使用第一回合",
+          "en": "[2nd turn] Use 1st as effectively as possible",
+          "fr": "[2ème tour] Utilisez le 1er aussi efficacement que possible"
+        },
+        "text": {
+          "ja": "このターンは次の相手ターンにホロメンがダウンさせられるかで大きく変わります。\nコラボエフェクトを活用して横から0エール30点＆サーチを行って2ndを探しておこう。コラボエフェクト1stを余裕があるならバックに置いておこう。",
+          "zh-TW": "這一回合很大程度上取決於霍洛門是否會在對手的下回合中被擊倒。\n讓我們利用協作效果從側面搜尋30個0點，然後搜尋第2個。如果你能負擔得起第一個協作效果，就把它放在你的包包裡。",
+          "en": "This turn will depend greatly on whether Holomen is knocked down in the opponent's next turn.\nLet's use the collaboration effect to search for 30 points of 0 yell from the side and search for the 2nd one. If you can afford the first collaboration effect, keep it in your bag.",
+          "fr": "Ce tour dépendra grandement du fait que Holomen soit renversé lors du prochain tour de l'adversaire.\nUtilisons l'effet de collaboration pour rechercher 30 points de 0 cri sur le côté et recherchons le 2ème. Si vous pouvez vous permettre le premier effet de collaboration, gardez-le dans votre sac."
+        }
+      },
+      {
+        "title": {
+          "ja": "【3ターン目】2nd bloomと1stのコラボ",
+          "zh-TW": "[第3回合]第2次綻放與第1次綻放的合作",
+          "en": "[3rd turn] Collaboration between 2nd bloom and 1st",
+          "fr": "[3ème tour] Collaboration entre 2ème floraison et 1ère"
+        },
+        "text": {
+          "ja": "コラボからCEを使って１エール2ndでアタックしていこう。\n基本的にSPのためのホロパワーを貯めておきたいが手札が芳しくない場合は推しスキルで確定3ドローする。",
+          "zh-TW": "從協作開始，使用CE攻擊1喊2。\n基本上，你想節省全息能量來獲得SP，但如果你沒有好牌，使用推技能肯定會抽3。",
+          "en": "From collaboration, use CE to attack with 1 yell 2nd.\nBasically, you want to save Holo Power for SP, but if you don't have a good hand, use the push skill to draw 3 for sure.",
+          "fr": "De la collaboration, utilisez CE pour attaquer avec 1 cri 2ème.\nFondamentalement, vous souhaitez conserver Holo Power pour SP, mais si vous n'avez pas une bonne main, utilisez la compétence push pour en tirer 3 à coup sûr."
+        }
+      },
+      {
+        "title": {
+          "ja": "【4ターン目以降】1stを使いながら2ndの維持SP",
+          "zh-TW": "[第4回合以後]使用第1 SP的同時維持第2 SP",
+          "en": "[4th turn onwards] Maintain 2nd SP while using 1st",
+          "fr": "[À partir du 4ème tour] Maintenez le 2ème SP tout en utilisant le 1er"
+        },
+        "text": {
+          "ja": "2nd2面で攻撃しライフを2枚取れる状況があれば迷わずSP推しスキルを使おう。\n1stコラボしながら2ndで攻撃することでダイスを振った数を底上げ。",
+          "zh-TW": "如果你處於可以用第二方和第二方攻擊並獲得2點生命的情況下，請毫不猶豫地使用SP提陞技能。\n透過在第二個回合中進行攻擊，在第一個回合中合作，可以提高擲出的骰子數量。",
+          "en": "If you are in a situation where you can attack with 2nd and 2nd sides and gain 2 lives, don't hesitate to use SP boosting skills.\nBy attacking in the 2nd while collaborating in the 1st, you can raise the number of dice rolled.",
+          "fr": "Si vous êtes dans une situation où vous pouvez attaquer avec le 2ème et le 2ème camp et gagner 2 vies, n'hésitez pas à utiliser les compétences de boosting SP.\nEn attaquant dans le 2ème tout en collaborant dans le 1er, vous pouvez augmenter le nombre de dés lancés."
+        }
+      }
+    ],
+    "date": "2026-04-10",
+    "deck_id": "ラプラス-ダークネス-ラプ推しラプラス単",
+    "tier": 2
+  },
+  {
+    "url": "https://www.holocardstrategy.jp/watame-white-deck/",
+    "title": {
+      "ja": "【ホロカ】わため単‐白のレシピと回し方",
+      "zh-TW": "[Horoka] 渡月團四郎的食譜與製作方法",
+      "en": "[Horoka] Recipe and how to make Watamedan-shiro",
+      "fr": "[Horoka] Recette et comment faire du Watamedan-shiro"
+    },
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/image-1.png",
+    "description": {
+      "ja": "ホロカの「わため単‐白」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、わためぇのデッキを組もうと思っている方は、ぜひ参考にしてください。 わため単のデッキレシピ 推しホロメンエールデッキ角巻わため白エール",
+      "zh-TW": "解釋堀花的「渡女純白」牌組結構以及所採用卡牌的作用！我們還將介紹如何旋轉牌組及其強大的招式，所以如果您正在考慮建立輪手牌組，請將此作為參考。 Watame 單牌組格配方 Oshi Holomen 麥芽啤酒 Deck Kadomaki Watame 白啤酒",
+      "en": "Explanation of Horoka's \"Watame Mono-White\" deck construction and the role of the adopted cards! We will also introduce how to spin the deck and its powerful moves, so if you are thinking of building a Watame deck, please use this as a reference. Watame Single Deck Recipe Oshi Holomen Ale Deck Kadomaki Watame White Ale",
+      "fr": "Explication de la construction du deck \"Watame Mono-White\" de Horoka et du rôle des cartes adoptées ! Nous présenterons également comment faire tourner le deck et ses mouvements puissants, donc si vous envisagez de construire un deck Watame, veuillez l'utiliser comme référence. Recette de Watame à un seul pont Oshi Holomen Ale Deck Kadomaki Watame White Ale"
+    },
+    "cards": [
+      {
+        "name": "角巻わため",
+        "card_id": "hBD24-050",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-050_P.png",
+        "role": {
+          "ja": "・ライフ5推しホロメン\n・推しステージスキルにより、アーツを使うたびにホロパワーを増やせる\n・ 推しスキルで、自分のステージのわため全員のアーツ＋100",
+          "zh-TW": "・Life 5 奧西‧霍洛門\n・透過押舞台技能，每次使用藝術時都可以增加光環威力。\n・使用推擊技能時，舞台上的所有人的藝術值+100。",
+          "en": "・Life 5 Oshi Holomen\n・With Oshi stage skills, you can increase Holo power every time you use arts.\n・Using the pushing skill, all the people on your stage get Arts +100.",
+          "fr": "・Vie 5 Oshi Holomen\n・Grâce aux compétences de scène Oshi, vous pouvez augmenter la puissance Holo à chaque fois que vous utilisez les arts.\n・En utilisant la compétence de poussée, toutes les personnes présentes sur votre scène obtiennent Arts +100."
+        }
+      }
+    ],
+    "strategy": [
+      {
+        "title": {
+          "ja": "【1ターン目】後手なら高火力を狙ってみよう",
+          "zh-TW": "[第一回合]如果你處於平局，瞄準高火力",
+          "en": "[1st turn] If you are on the draw, aim for high firepower",
+          "fr": "[1er tour] Si vous êtes en tirage au sort, visez une puissance de feu élevée"
+        },
+        "text": {
+          "ja": "後手の場合、debutのコラボエフェクトとツールを組み合わせて、高火力を狙うことができます。\n先攻の場合でもエールは基本センターになると思います。\ndebutを３枚以上ならべられるように意識しましょう。",
+          "zh-TW": "如果您符合條件，您可以透過結合首次亮相的協作效果和工具來瞄準高火力。\n我認為即使阿萊先擊球，他也會成為基礎中鋒。\n讓我們意識到能夠排列 3 個或更多首次亮相。",
+          "en": "If you are on the draw, you can aim for high firepower by combining debut collaboration effects and tools.\nI think Ale will be the basic center even if he bats first.\nLet's be conscious of being able to line up 3 or more debuts.",
+          "fr": "Si vous êtes dans le tirage au sort, vous pouvez viser une puissance de feu élevée en combinant les premiers effets et outils de collaboration.\nJe pense qu'Ale sera le centre de base même s'il frappe en premier.\nSoyons conscients de pouvoir aligner 3 débuts ou plus."
+        }
+      },
+      {
+        "title": {
+          "ja": "【2ターン目】 1stを並べて盤面を整えよう",
+          "zh-TW": "[第二回合] 排列第一張牌以準備棋盤",
+          "en": "[2nd turn] Arrange the 1st cards to prepare the board",
+          "fr": "[2ème tour] Disposez les 1ères cartes pour préparer le plateau"
+        },
+        "text": {
+          "ja": "1stを並べて盤面を整えつつ、２面で攻撃してホロパワーを貯めましょう。\nダメージを与えることで次につなげましょう。",
+          "zh-TW": "在安排第一方準備棋盤的同時，與第二方一起攻擊並累積全像力量。\n讓我們透過造成傷害來連接下一個。",
+          "en": "While arranging the 1st to prepare the board, attack with the 2nd and accumulate holo power.\nLet's connect to the next one by dealing damage.",
+          "fr": "Tout en disposant le 1er pour préparer le plateau, attaquez avec le 2ème côté et accumulez de la puissance holo.\nConnectons-nous au suivant en infligeant des dégâts."
+        }
+      },
+      {
+        "title": {
+          "ja": "【3ターン目】推しスキルを使ってライフを取ろう",
+          "zh-TW": "[第3回合]運用推技能獲得生命",
+          "en": "[3rd turn] Use push skill to gain life",
+          "fr": "[3e tour] Utilisez la compétence de poussée pour gagner de la vie"
+        },
+        "text": {
+          "ja": "推しスキルを使えばセンター、コラボともにアーツ＋100できるので、状況によっては２面取りも可能です。\nエールを分散して２面で攻撃しましょう。",
+          "zh-TW": "如果使用忍技能，中心和協作都可以獲得Arts+100，所以根據情況，有可能獲得兩側。\n散佈麥芽酒並從兩側進攻。",
+          "en": "If you use the Oshi skill, you can get Arts +100 for both Center and Collaboration, so depending on the situation, it is possible to get two sides.\nSpread the ale and attack from two sides.",
+          "fr": "Si vous utilisez la compétence Oshi, vous pouvez obtenir Arts +100 pour le Centre et la Collaboration, donc selon la situation, il est possible d'obtenir deux côtés.\nÉtalez votre bière et attaquez des deux côtés."
+        }
+      },
+      {
+        "title": {
+          "ja": "【4ターン目以降】2nd使用で一気にライフを詰める",
+          "zh-TW": "【4ターン目以降】2nd使用で一気にライフを詰める",
+          "en": "[4th turn onwards] Use 2nd to fill up your life at once",
+          "fr": "[À partir du 4ème tour] Utilisez le 2ème pour remplir votre vie d'un coup"
+        },
+        "text": {
+          "ja": "ここからは最大火力わためぇが大暴れです。\n推しスキルと組み合わせて高火力で相手のホロメンをダウンさせていきましょう。アーツ効果を利用すれば１回の攻撃で２面取ることも可能です。\nラムダックはセンターが2ndわためなら無エールでアーツを打つこともできます。推しスキルを使えば180点出せるのでうまく使っていきましょう。",
+          "zh-TW": "從這裡開始，最大火力將變得瘋狂。\n與推擊技能結合，以高火力打倒對手的霍洛門。如果使用藝術效果，則可以一擊奪取兩側。\n如果中心是第二個，Lambduck 也可以在不喊叫的情況下擊中藝術。如果你使用推技能，你可以獲得180點，所以明智地使用它。",
+          "en": "From here, the maximum firepower will go wild.\nCombine it with push skills to bring down your opponent's Holomen with high firepower. If you use arts effects, it is possible to take two sides with one attack.\nLambduck can also hit arts without yelling if the center is the 2nd one. If you use the push skill, you can get 180 points, so use it wisely.",
+          "fr": "À partir de là, la puissance de feu maximale deviendra folle.\nCombinez-le avec des compétences de poussée pour abattre l'Holomen de votre adversaire avec une puissance de feu élevée. Si vous utilisez des effets artistiques, il est possible de prendre deux camps en une seule attaque.\nLambduck peut aussi frapper les arts sans crier si le centre est le 2ème. Si vous utilisez la compétence pousser, vous pouvez obtenir 180 points, alors utilisez-la judicieusement."
+        }
+      }
+    ],
+    "date": "2026-04-10",
+    "deck_id": "角巻わため-わため単",
+    "tier": 3
+  },
+  {
     "url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
     "title": {
       "ja": "【ホロカ】風真いろは単のデッキレシピと回し方（7弾更新版）",
