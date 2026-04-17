@@ -678,18 +678,32 @@ export class GameController {
       }
     }
 
-    // Check for damage / knockdown in recent logs
+    // Check for attack / damage / knockdown in recent logs — trigger cinematic animations
     for (const entry of recentLogs) {
+      if (entry.msg?.includes('使用') && entry.msg?.match(/使用 (.+?)！/) && (Date.now() - entry.ts) < 1500) {
+        const artName = entry.msg.match(/使用 (.+?)！/)?.[1];
+        this._animateArtAttack(artName);
+      }
       const dmgMatch = entry.msg?.match(/造成 (\d+) 傷害/);
       if (dmgMatch && (Date.now() - entry.ts) < 2000) {
         const amount = parseInt(dmgMatch[1]);
         const knockMatch = entry.msg.match(/對 (.+?) 造成/);
-        this._showFloatingDamage(amount, knockMatch?.[1] || '', localPlayer);
+        const targetName = knockMatch?.[1] || '';
+        this._showFloatingDamage(amount, targetName, localPlayer);
+        this._animateHitShake(targetName);
         break;
       }
       if (entry.msg?.includes('被擊倒') && (Date.now() - entry.ts) < 2000) {
         this._showKnockdownFlash();
+        const koMatch = entry.msg.match(/(.+?) 被擊倒/);
+        this._animateKnockdown(koMatch?.[1] || '');
         break;
+      }
+      if (entry.msg?.includes('推し技能') && (Date.now() - entry.ts) < 1500) {
+        this._animateOshiBurst();
+      }
+      if (entry.msg?.includes('聯動') && !entry.msg?.includes('聯動位置') && (Date.now() - entry.ts) < 1500) {
+        this._animateCollab();
       }
     }
 
@@ -1544,6 +1558,67 @@ export class GameController {
     flash.className = 'knockdown-flash';
     document.body.appendChild(flash);
     setTimeout(() => flash.remove(), 600);
+  }
+
+  _findCardByName(name, scope) {
+    if (!name) return null;
+    const root = scope === 'opponent' ? this.container.querySelector('.opponent-field')
+                : scope === 'local' ? this.container.querySelector('.local-field')
+                : this.container;
+    if (!root) return null;
+    const cards = root.querySelectorAll('.game-card[data-card-id]');
+    for (const el of cards) {
+      const c = getCard(el.dataset.cardId);
+      if (c && c.name === name) return el;
+    }
+    return null;
+  }
+
+  _animateArtAttack(artName) {
+    // Find the attacker (local player's active center or collab using an art)
+    const attackers = this.container.querySelectorAll('.local-field .zone-center .game-card, .local-field .zone-collab .game-card');
+    attackers.forEach(el => {
+      if (!el.classList.contains('card-art-attack')) {
+        el.classList.add('card-art-attack');
+        setTimeout(() => el.classList.remove('card-art-attack'), 600);
+      }
+    });
+  }
+
+  _animateHitShake(targetName) {
+    // Target is on opponent field
+    const el = this._findCardByName(targetName, 'opponent');
+    if (!el) return;
+    el.classList.remove('card-hit-shake');
+    void el.offsetWidth; // force reflow
+    el.classList.add('card-hit-shake');
+    setTimeout(() => el.classList.remove('card-hit-shake'), 550);
+  }
+
+  _animateKnockdown(targetName) {
+    const el = this._findCardByName(targetName, 'opponent') || this._findCardByName(targetName, 'local');
+    if (!el) return;
+    el.classList.add('card-knockdown-anim');
+    setTimeout(() => el.classList.remove('card-knockdown-anim'), 950);
+  }
+
+  _animateOshiBurst() {
+    const oshis = this.container.querySelectorAll('.local-field .oshi-pos-card, .local-field .zone-oshi-pos');
+    oshis.forEach(el => {
+      el.classList.remove('card-oshi-activate');
+      void el.offsetWidth;
+      el.classList.add('card-oshi-activate');
+      setTimeout(() => el.classList.remove('card-oshi-activate'), 950);
+    });
+  }
+
+  _animateCollab() {
+    const collab = this.container.querySelector('.local-field .zone-collab .game-card');
+    if (!collab) return;
+    collab.classList.remove('card-collab-move');
+    void collab.offsetWidth;
+    collab.classList.add('card-collab-move');
+    setTimeout(() => collab.classList.remove('card-collab-move'), 550);
   }
 
   _showFloatingDamage(amount, targetName, localPlayer) {
