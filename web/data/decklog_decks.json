@@ -114,7 +114,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-121",
@@ -261,7 +261,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       }
     ],
     "cheer_deck": [
@@ -400,7 +400,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-079",
@@ -595,7 +595,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-121",
@@ -766,7 +766,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-094",
@@ -969,7 +969,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-076",
@@ -1148,7 +1148,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-095",
@@ -1287,7 +1287,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-116",
@@ -1410,7 +1410,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-123",
@@ -1427,14 +1427,6 @@
         "type": "支援・粉絲",
         "color": "",
         "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-125_C.png"
-      },
-      {
-        "card_id": "hBP01-126",
-        "count": 4,
-        "name": "座員",
-        "type": "支援・粉絲",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-126_P_02.png"
       }
     ],
     "cheer_deck": [
@@ -1447,7 +1439,7 @@
         "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY03-002_SY.png"
       }
     ],
-    "main_deck_count": 50,
+    "main_deck_count": 46,
     "cheer_deck_count": 20
   },
   {
@@ -1573,7 +1565,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       }
     ],
     "cheer_deck": [
@@ -1720,7 +1712,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-116",
@@ -1851,7 +1843,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-079",
@@ -2046,7 +2038,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-095",
@@ -2177,7 +2169,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-116",
@@ -2316,7 +2308,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-116",
@@ -2471,7 +2463,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-104",
@@ -2479,7 +2471,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-116",
@@ -2658,7 +2650,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-079",
@@ -3139,7 +3131,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-107",
@@ -3815,7 +3807,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP03-102",
@@ -4010,7 +4002,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-079",
@@ -4441,7 +4433,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-107",
@@ -4767,7 +4759,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP05-074",
@@ -5109,7 +5101,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-124",
@@ -5328,7 +5320,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP05-074",
@@ -5523,7 +5515,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-124",
@@ -5702,7 +5694,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-106",
@@ -5985,7 +5977,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP01-104",
@@ -5993,7 +5985,7 @@
         "name": "ふつうのパソコン",
         "type": "支援・物品",
         "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-104_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
       },
       {
         "card_id": "hBP02-079",

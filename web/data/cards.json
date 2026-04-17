@@ -9189,6 +9189,96 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hSD14/hBP01-104_02_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hBP01-104_02_C.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hBP01-104_03_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hBP01-104_03_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hBP01-104_04_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hBP01-104_04_C.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hBP01-104_05_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hBP01-104_05_C.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hBP01-104_06_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hBP01-104_06_C.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hBP01-104_07_C.png",
+    "name": "ふつうのパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+      "ja": "自分のデッキからデビューメンバー1枚を公開し、ステージに置く。デッキを再シャッフルします。",
+      "en": "Reveal 1 Debut member from your deck and place it on the stage. Reshuffle the deck.",
+      "fr": "Révélez 1 membre Débutant de votre deck et placez-le sur la scène. Remaniez le jeu."
+    },
+    "id": "hBP01-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
+  },
+  {
     "image": "cardListImages/hBP01/hBP01-105_U.png",
     "name": "ペンライト",
     "type": "支援・物品",
@@ -15916,7 +16006,13 @@
     "product": [
       "補充包「クインテットスペクトラム (hBP02)」",
       "起始牌組「FLOW GLOW 推し 輪堂千速 (hSD10)」",
-      "起始牌組「推し Advent (hSD12)」"
+      "起始牌組「推し Advent (hSD12)」",
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+      "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」"
     ],
     "supportEffect": {
       "zh-TW": "自己的生命值在3以下才能使用。\n\n將自己存檔區的1張成員返回手牌。\n\nLIMITED：每個回合只能使用一張。",
@@ -16103,7 +16199,13 @@
     "product": [
       "補充包「クインテットスペクトラム (hBP02)」",
       "起始牌組「白 天音かなた (hSD08)」",
-      "起始牌組「赤 宝鐘マリン (hSD09)」"
+      "起始牌組「赤 宝鐘マリン (hSD09)」",
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+      "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」"
     ],
     "supportEffect": {
       "zh-TW": "從自己的牌組抽2張牌，擲1次骰子：如果為3、5、6時，從自己的牌組展示1張Debut成員並加入手牌。將牌組重新洗牌。如果為2、4時，從自己的牌組抽1張牌。\n\nLIMITED：每個回合只能使用一張。",
@@ -53197,7 +53299,13 @@
       "起始牌組「白 天音かなた (hSD08)」",
       "起始牌組「赤 宝鐘マリン (hSD09)」",
       "起始牌組「FLOW GLOW 推し 輪堂千速 (hSD10)」",
-      "起始牌組「FLOW GLOW 推し 虎金妃笑虎 (hSD11)」"
+      "起始牌組「FLOW GLOW 推し 虎金妃笑虎 (hSD11)」",
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+      "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」"
     ],
     "supportEffect": {
       "zh-TW": "不包含這張牌，自己的手牌在1張以上才能使用。\n\n將自己所有手牌放回牌組重新洗牌。從自己的牌組抽5張牌。\n\nLIMITED：每個回合只能使用一張。",
@@ -53280,7 +53388,12 @@
       "起始牌組「青 猫又おかゆ (hSD03)」",
       "起始牌組「紫 癒月ちょこ (hSD04)」",
       "起始牌組「FLOW GLOW 推し 虎金妃笑虎 (hSD11)」",
-      "起始牌組「推し Justice (hSD13)」"
+      "起始牌組「推し Justice (hSD13)」",
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+      "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」"
     ],
     "supportEffect": {
       "zh-TW": "將自己的1張吶喊卡放到存檔區才能使用。\n\n從自己的牌組展示1張Buzz以外的1st成員或2nd成員並加入手牌。將牌組重新洗牌。\n\nLIMITED：每個回合只能使用一張。",
@@ -60147,6 +60260,362 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hSD14/hSD14-001_OC.png",
+    "name": "白上フブキ",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -2,
+      "name": "みんな一緒にいくぞぉおっ",
+      "effect": {
+        "zh-TW": "[每個回合一次]選擇自己1位帶有吉祥物的「白上フブキ」。這個回合中，該成員的藝能傷害+20。",
+        "ja": "【1ラウンドに1回】マスコット付きの「白神福」を1つお選びください。このラウンド中、メンバーのスキルダメージ+20。",
+        "en": "[Once per round] Choose one of your own \"Shirakami Fuku\" with a mascot. During this round, the member's skill damage +20.",
+        "fr": "[Une fois par tour] Choisissez l'un de vos propres \"Shirakami Fuku\" avec une mascotte. Pendant ce tour, les dégâts de compétence du membre +20."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "マスコッツ、アッセンブル!!",
+      "effect": {
+        "zh-TW": "[每場比賽一次]從自己的牌組展示1~2張吉祥物並加入手牌。將牌組重新洗牌。",
+        "ja": "【1ゲームに1回】自分のデッキからマスコットを1～2枚公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per game] Reveal 1~2 mascots from your deck and add them to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par partie] Révélez 1 à 2 mascottes de votre deck et ajoutez-les à votre main. Remaniez le jeu."
+      }
+    },
+    "id": "hSD14-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-002_C.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "はじまんぼう！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-003_C.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 70,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_white.png"
+      ],
+      "name": "今日もあなたのそばに -フブキ-",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-004_C.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 90,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "白上のとこにおいでー",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，從自己的牌組展示1張吉祥物並加入手牌。將牌組重新洗牌。",
+        "ja": "最初のターンに攻撃した場合、デッキからマスコットを1枚公開して手札に加える。デッキを再シャッフルします。",
+        "en": "If you attack in the first turn, reveal 1 mascot from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "Si vous attaquez au premier tour, révélez 1 mascotte de votre deck et ajoutez-la à votre main. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ハイ　フレンズ！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-005_U.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "いっちにー、さんしー",
+      "effect": {
+        "zh-TW": "選擇自己的中心成員。這個回合中，該成員的藝能傷害+10。",
+        "ja": "自分のセンターメンバーを選択してください。このラウンド中、メンバーのスキルダメージ+10。",
+        "en": "Choose your own center members. During this round, the member's skill damage +10.",
+        "fr": "Choisissez les membres de votre propre centre. Pendant ce tour, les dégâts de compétence du membre +10."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いつでもいけるよ！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-006_C.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ようやくキミに会えた！！！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "キラキラなきーつね！",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD14-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-007_U.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "Message for You -フブキ-",
+      "effect": {
+        "zh-TW": "選擇自己的中心成員。這個回合中，該成員的藝能傷害+10。",
+        "ja": "自分のセンターメンバーを選択してください。このラウンド中、メンバーのスキルダメージ+10。",
+        "en": "Choose your own center members. During this round, the member's skill damage +10.",
+        "fr": "Choisissez les membres de votre propre centre. Pendant ce tour, les dégâts de compétence du membre +10."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "あーまいーこのきーもちー",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-008_R.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "大丈夫ですよ！",
+      "effect": {
+        "zh-TW": "將自己存檔區的1張吉祥物附加給這個成員。",
+        "ja": "セーブエリアからマスコットをこのメンバーに添付します。",
+        "en": "Attach a mascot from your save area to this member.",
+        "fr": "Attachez une mascotte de votre zone de sauvegarde à ce membre."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "一緒に行こう(๑•̀ㅂ•́)و✧",
+      "damage": "20+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "[限定聯動位置]如果這個成員帶有吉祥物，這個藝能傷害+20。",
+        "ja": "【限定連動位置】このメンバーにマスコットがいる場合、この演出のダメージ+20。",
+        "en": "[Limited linkage position] If this member has a mascot, the damage of this performance +20.",
+        "fr": "[Position de liaison limitée] Si ce membre a une mascotte, les dégâts de cette performance +20."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-009_RR.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "color": "白",
+    "hp": 170,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "私は倒れちゃいけないな",
+      "effect": {
+        "zh-TW": "對手回合中，這個成員被擊倒時，如果這個成員帶有吉祥物，從自己的牌組抽1張牌。",
+        "ja": "相手のターン中、このメンバーがダウンした時、このメンバーにマスコットがいる場合、自分のデッキから1枚引く。",
+        "en": "During the opponent's turn, when this member is knocked down, if this member has a mascot, draw 1 card from your deck.",
+        "fr": "Durant le tour de l'adversaire, lorsque ce membre est renversé, si ce membre possède une mascotte, piochez 1 carte de votre deck."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "胸を張って歌い続けるよ",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_30_red.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD14-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-009_RR.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-010_C.png",
+    "name": "holoAN",
+    "type": "支援・工作人員",
+    "tag": null,
+    "product": [
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+      "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」"
+    ],
+    "supportEffect": {
+      "zh-TW": "從自己的牌組抽3張牌。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "自分のデッキからカードを3枚引く。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "Draw 3 cards from your deck.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Piochez 3 cartes de votre deck.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hSD14-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-010_C.png"
+  },
+  {
+    "image": "cardListImages/hSD14/hSD14-011_C.png",
+    "name": "ありよりのアリゲーター",
+    "type": "支援・吉祥物",
+    "tag": "#白上'sキャラクター",
+    "product": "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個吉祥物的成員HP+10。\n\n◆附加給「白上フブキ」有追加效果\n這個成員擊倒對手的成員時，將自己吶喊牌組上方的1張牌發送給自己的成員。\n\n每位成員只能帶有1張吉祥物。",
+      "ja": "このマスコットを持ったメンバーのHPは+10されます。\n\n◆「白神降る」に追加効果を追加\nこのメンバーが相手メンバーをダウンさせた時、自分のシャウト山札の上から1枚を自分のメンバーに送る。\n\n各メンバーはマスコットを1つだけ持つことができます。",
+      "en": "Members with this mascot have +10 HP.\n\n◆Adds additional effects to \"Shirakami Furu\"\nWhen this member knocks down an opponent's member, he sends the 1 card from the top of his shout deck to his own member.\n\nEach member can only have 1 mascot.",
+      "fr": "Les membres avec cette mascotte ont +10 HP.\n\n◆Ajoute des effets supplémentaires à \"Shirakami Furu\"\nLorsque ce membre renverse le membre d'un adversaire, il envoie la 1 carte du haut de son deck de cris à son propre membre.\n\nChaque membre ne peut avoir qu'une seule mascotte."
+    },
+    "id": "hSD14-011",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-011_C.png"
+  },
+  {
     "image": "cardListImages/hYS0/hYS01-001_OC.png",
     "name": "七詩ムメイ",
     "type": "主推",
@@ -60289,6 +60758,7 @@
       "起始牌組「ときのそら＆AZKi (hSD01)」",
       "起始牌組「白 轟はじめ (hSD05)」",
       "起始牌組「白 天音かなた (hSD08)」",
+      "起始牌組「ライブスタートデッキ 白上フブキ (hSD14)」",
       "スタートエールセット"
     ],
     "color": "白",
