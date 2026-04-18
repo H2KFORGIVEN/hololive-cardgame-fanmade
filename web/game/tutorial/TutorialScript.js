@@ -208,10 +208,10 @@ export const LESSONS = [
       },
       {
         id: 'l4s2',
-        prompt: '點中央 Center 的 1st 成員，選它的藝能來攻擊對手的 Center。',
+        prompt: '點右邊動作面板中的藝能按鈕（紅色方塊是 Cheer 能量費用，你的 Center 有 2 張白 Cheer 足以使用）。',
         expectedAction: { type: ACTION.USE_ART, position: 'center' },
-        highlightSelector: '.local-field .zone-center',
-        hint: '點中央 Center 成員 → 選一個藝能 → 選對手 Center 為目標。',
+        highlightSelector: '[data-action="USE_ART"][data-position="center"]',
+        hint: '點右側動作面板中 Center 的藝能按鈕（會自動攻擊對手 Center）。',
         successToast: '攻擊命中！',
       },
       {
@@ -267,10 +267,10 @@ export const LESSONS = [
       },
       {
         id: 'l5s2',
-        prompt: '用中央 Center 的藝能攻擊對手的 Center。60 傷害 > 對手剩餘 HP 50，會擊倒對手。',
-        expectedAction: { type: ACTION.USE_ART, position: 'center' },
-        highlightSelector: '.local-field .zone-center',
-        hint: '點中央 Center → 選 Thank You Friends♥（60 傷害）→ 選對手 Center。',
+        prompt: '用你 Center 的第二個藝能「Thank You Friends♥」（60 傷害）攻擊。對手 Debut 剩餘 50 HP，60 > 50 會擊倒。',
+        expectedAction: { type: ACTION.USE_ART, position: 'center', artIndex: 1 },
+        highlightSelector: '[data-action="USE_ART"][data-position="center"][data-art="1"]',
+        hint: '點右側動作面板中的「Thank You Friends♥」按鈕（art2, 60 傷害）。',
         successToast: '擊倒對手！Life -1，對手 Life 歸零。',
       },
     ],

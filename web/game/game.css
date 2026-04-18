@@ -1497,12 +1497,12 @@ body {
 .tutorial-overlay > * { pointer-events: auto; }
 
 .tutorial-prompt-panel {
-  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-  max-width: 720px; width: calc(100% - 32px);
+  position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
+  max-width: 320px; width: calc(100% - 32px);
   background: linear-gradient(180deg, rgba(35, 30, 70, 0.96) 0%, rgba(55, 45, 95, 0.96) 100%);
   color: #fff;
-  border-radius: 14px; box-shadow: 0 -4px 28px rgba(0,0,0,.35);
-  padding: 14px 20px; z-index: 9000;
+  border-radius: 14px; box-shadow: 4px 0 28px rgba(0,0,0,.35);
+  padding: 16px 20px; z-index: 9000;
   border: 2px solid rgba(245, 194, 74, 0.6);
   font-family: inherit;
 }
@@ -1532,11 +1532,11 @@ body {
   border-color: #ff6b6b;
 }
 @keyframes tutorial-shake {
-  0%, 100% { transform: translateX(-50%); }
-  20% { transform: translateX(calc(-50% - 8px)); }
-  40% { transform: translateX(calc(-50% + 8px)); }
-  60% { transform: translateX(calc(-50% - 5px)); }
-  80% { transform: translateX(calc(-50% + 5px)); }
+  0%, 100% { transform: translateY(-50%); }
+  20% { transform: translateY(-50%) translateX(-8px); }
+  40% { transform: translateY(-50%) translateX(8px); }
+  60% { transform: translateY(-50%) translateX(-5px); }
+  80% { transform: translateY(-50%) translateX(5px); }
 }
 
 .tutorial-toast {
@@ -1552,14 +1552,17 @@ body {
   opacity: 1; transform: translateX(-50%) translateY(0);
 }
 
+/* NOTE: do NOT set `position: relative` here — it would break zones that rely on
+   `.zone-pos { position: absolute }` for their top/left %. Use only outline/shadow. */
 .tutorial-highlight-pulse {
-  position: relative;
   animation: tutorial-pulse 1.2s ease-in-out infinite;
-  z-index: 200;
+  outline: 3px solid rgba(245, 194, 74, 0.85);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 @keyframes tutorial-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 194, 74, 0.7), 0 0 0 0 rgba(245, 194, 74, 0); }
-  50%      { box-shadow: 0 0 0 6px rgba(245, 194, 74, 0.15), 0 0 18px 4px rgba(245, 194, 74, 0.5); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 194, 74, 0.7), 0 0 0 0 rgba(245, 194, 74, 0); outline-color: rgba(245, 194, 74, 0.85); }
+  50%      { box-shadow: 0 0 0 6px rgba(245, 194, 74, 0.15), 0 0 18px 4px rgba(245, 194, 74, 0.5); outline-color: rgba(255, 220, 120, 1); }
 }
 
 .tutorial-modal-backdrop {
