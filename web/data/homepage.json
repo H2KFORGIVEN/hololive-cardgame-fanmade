@@ -1,102 +1,102 @@
 {
-  "updatedAt": "2026-04-18T10:25:58.354296",
+  "updatedAt": "2026-04-18T16:58:44.253595",
   "banners": [
     {
       "url": "https://hololive-official-cardgame.com/products/post/starter-hsd14-19/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_starter-hsd14-19_2000x1010.png",
-      "localImage": "images/banners/banner1.png"
+      "localImage": "images/banners/banner_starter-hsd14-19.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/diva-fever/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/02/bnr_hbp07_2000x1010.jpg",
-      "localImage": "images/banners/banner2.jpg"
+      "localImage": "images/banners/banner_diva-fever.jpg"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2025/11/bnr_sd12-13_2000x1010.png",
-      "localImage": "images/banners/banner3.png"
+      "localImage": "images/banners/banner_advent-justice.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/ayakashi-vermilion/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_hbp06_2000x1010.jpg",
-      "localImage": "images/banners/banner4.jpg"
+      "localImage": "images/banners/banner_ayakashi-vermilion.jpg"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/rindo-koganei/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_sd10-11_2000x1010.png",
-      "localImage": "images/banners/banner5.png"
+      "localImage": "images/banners/banner_rindo-koganei.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_hbp05_2000x1010.jpg",
-      "localImage": "images/banners/banner6.jpg"
+      "localImage": "images/banners/banner_enchant-regalia.jpg"
     }
   ],
   "products": [
     {
       "url": "https://hololive-official-cardgame.com/products/post/diva-fever/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_boosters_bp07.png",
-      "localImage": "images/products/bnr_product1.png"
+      "localImage": "images/products/product_diva-fever__bp07.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-deck-case07/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_accessories_official-deck-case7th.png",
-      "localImage": "images/products/bnr_product2.png"
+      "localImage": "images/products/product_official-deck-case07__deck-case7th.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve09/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/bnr_accessories_official-card-sleeve9.png",
-      "localImage": "images/products/bnr_product3.png"
+      "localImage": "images/products/product_official-card-sleeve09__card-sleeve9.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/02/bnr_decks_sd12.png",
-      "localImage": "images/products/bnr_product4.png"
+      "localImage": "images/products/product_advent-justice__sd12.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/advent-justice/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/02/bnr_decks_sd13.png",
-      "localImage": "images/products/bnr_product5.png"
+      "localImage": "images/products/product_advent-justice__sd13.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve8/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/02/bnr_accessories_official-card-sleeve8.png",
-      "localImage": "images/products/bnr_product6.png"
+      "localImage": "images/products/product_official-card-sleeve8__card-sleeve8.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/ayakashi-vermilion/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_boosters_bp06.png",
-      "localImage": "images/products/bnr_product7.png"
+      "localImage": "images/products/product_ayakashi-vermilion__bp06.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-deck-case6th/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_accessories_official-deck-case6th.png",
-      "localImage": "images/products/bnr_product8.png"
+      "localImage": "images/products/product_official-deck-case6th__deck-case6th.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve6/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_accessories_official-card-sleeve6.png",
-      "localImage": "images/products/bnr_product9.png"
+      "localImage": "images/products/product_official-card-sleeve6__card-sleeve6.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-deck-case5th/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_accessories_official-deck-case5th.png",
-      "localImage": "images/products/bnr_product10.png"
+      "localImage": "images/products/product_official-deck-case5th__deck-case5th.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/rindo-koganei/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_decks_sd10-11.png",
-      "localImage": "images/products/bnr_product11.png"
+      "localImage": "images/products/product_rindo-koganei__sd10-11.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/official-card-sleeve7/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_accessories_official-card-sleeve7.png",
-      "localImage": "images/products/bnr_product12.png"
+      "localImage": "images/products/product_official-card-sleeve7__card-sleeve7.png"
     },
     {
       "url": "https://hololive-official-cardgame.com/products/post/enchant-regalia/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/01/bnr_boosters_bp05.png",
-      "localImage": "images/products/bnr_product13.png"
+      "localImage": "images/products/product_enchant-regalia__bp05.png"
     }
   ],
   "news": [
@@ -107,7 +107,34 @@
       "tag": "Column",
       "title": "イチ推し！デッキ紹介！vol.3 ～ディーヴァフィーバー～",
       "isNew": true,
-      "localImage": "images/news/news1.jpg"
+      "localImage": "images/news/news_50.jpg"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/49/",
+      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/04/thumb_deck02.jpg",
+      "date": "2026.04.03",
+      "tag": "Column",
+      "title": "イチ推し！デッキ紹介！vol.2 ～ディーヴァフィーバー～",
+      "isNew": false,
+      "localImage": "images/news/news_49.jpg"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/47/",
+      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/03/thumb_deck01.jpg",
+      "date": "2026.03.19",
+      "tag": "Column",
+      "title": "イチ推し！デッキ紹介！vol.1 ～ディーヴァフィーバー～",
+      "isNew": false,
+      "localImage": "images/news/news_47.jpg"
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/48/",
+      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2024/06/news_kv.png",
+      "date": "2026.03.19",
+      "tag": "Products",
+      "title": "「ブースターパック ディーヴァフィーバー」コンビニでも販売中！",
+      "isNew": false,
+      "localImage": "images/news/news_48.png"
     }
   ]
 }
