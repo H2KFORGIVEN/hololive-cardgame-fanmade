@@ -23781,7 +23781,10 @@
     "name": "35P",
     "type": "支援・粉絲",
     "tag": null,
-    "product": "補充包「エリートスパーク (hBP03)」",
+    "product": [
+      "補充包「エリートスパーク (hBP03)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」"
+    ],
     "supportEffect": {
       "zh-TW": "■帶有這個粉絲的成員使用藝能時，這個粉絲也視為紅色吶喊卡。\n■帶有這個粉絲的成員被擊倒時，對手可以從牌組抽1張牌。\n\n這個粉絲只能附加給「さくらみこ」，每位成員可以帶有任意數量的粉絲。",
       "ja": "■この扇を持ったメンバーがパフォーマンススキルを使用した場合、この扇も赤の叫びカードとみなされます。\n■このファンを持ったメンバーがダウンした時、相手は山札から1枚ドローできる。\n\nこのファンは「さくらみこ」のみに付けることができ、各メンバーは何個でも持つことができます。",
@@ -40664,10 +40667,10 @@
     "effectB": {
       "name": "濡羽色のほころび",
       "effect": {
-        "zh-TW": "如果這個回合有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
-        "ja": "このラウンドで #きのこ とマークされたアクティビティが使用されている場合、あなたのデッキからカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
-        "en": "If an activity marked #きのこ has been used this round, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
-        "fr": "Si une activité marquée #きのこ a été utilisée ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
+        "zh-TW": "如果這個回合自己有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
+        "ja": "このターンに #きのこ とマークされたアクティビティを使用した場合、山札からカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
+        "en": "If you have used an activity marked #きのこ this turn, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
+        "fr": "Si vous avez utilisé une activité marquée #きのこ ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
       }
     },
     "effectG": null,
@@ -40709,10 +40712,10 @@
     "effectB": {
       "name": "濡羽色のほころび",
       "effect": {
-        "zh-TW": "如果這個回合有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
-        "ja": "このラウンドで #きのこ とマークされたアクティビティが使用されている場合、あなたのデッキからカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
-        "en": "If an activity marked #きのこ has been used this round, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
-        "fr": "Si une activité marquée #きのこ a été utilisée ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
+        "zh-TW": "如果這個回合自己有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
+        "ja": "このターンに #きのこ とマークされたアクティビティを使用した場合、山札からカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
+        "en": "If you have used an activity marked #きのこ this turn, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
+        "fr": "Si vous avez utilisé une activité marquée #きのこ ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
       }
     },
     "effectG": null,
@@ -40754,10 +40757,10 @@
     "effectB": {
       "name": "濡羽色のほころび",
       "effect": {
-        "zh-TW": "如果這個回合有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
-        "ja": "このラウンドで #きのこ とマークされたアクティビティが使用されている場合、あなたのデッキからカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
-        "en": "If an activity marked #きのこ has been used this round, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
-        "fr": "Si une activité marquée #きのこ a été utilisée ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
+        "zh-TW": "如果這個回合自己有使用過標示#きのこ的活動，從自己的牌組抽2張牌。「濡羽色のほころび」每個回合只能使用一次。",
+        "ja": "このターンに #きのこ とマークされたアクティビティを使用した場合、山札からカードを 2 枚引く。 「桡飞色のほころび」は１ターンに１回だけ使用できる。",
+        "en": "If you have used an activity marked #きのこ this turn, draw 2 cards from your deck. \"桡飞色のほころび\" can only be used once per turn.",
+        "fr": "Si vous avez utilisé une activité marquée #きのこ ce tour-ci, piochez 2 cartes de votre deck. \"桡飞色のほころび\" ne peut être utilisé qu'une fois par tour."
       }
     },
     "effectG": null,
@@ -60856,7 +60859,7 @@
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-007_U.png"
   },
   {
-    "image": "cardListImages/hSD15/hSD15-008.png",
+    "image": "cardListImages/hSD15/hSD15-008_R.png",
     "name": "儒烏風亭らでん",
     "type": "成員",
     "tag": "#DEV_IS / #ReGLOSS / #お酒",
@@ -60887,16 +60890,388 @@
       "damage": "40+",
       "specialAttackImage": null,
       "effect": {
-        "zh-TW": "如果這個回合有使用過標示#きのこ的活動，這個藝能傷害+10。",
-        "ja": "#きのこ とマークされたアクティビティがこのラウンドで使用されている場合、このスキルのダメージは+10されます。",
-        "en": "If an activity marked #きのこ has been used this round, the damage of this skill will be +10.",
-        "fr": "Si une activité marquée #きのこ a été utilisée ce tour, les dégâts de cette compétence seront de +10."
+        "zh-TW": "如果這個回合自己有使用過標示#きのこ的活動，這個藝能傷害+10。",
+        "ja": "このラウンドに #きのこ とマークされたアクティビティを使用した場合、このスキルのダメージは +10 されます。",
+        "en": "If you have used an activity marked #きのこ this round, the damage of this skill will be +10.",
+        "fr": "Si vous avez utilisé une activité marquée #きのこ ce tour-ci, les dégâts de cette compétence seront de +10."
       }
     },
     "art2": null,
     "extra": null,
     "id": "hSD15-008",
-    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-008.png"
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-009_RR.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 170,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ザ・破天荒",
+      "effect": {
+        "zh-TW": "[限定中心位置]這個回合中，這個成員的藝能傷害+20。",
+        "ja": "【センター限定】このラウンド中、このメンバーのスキルダメージ+20。",
+        "en": "[Limited to center position] During this round, this member's skill damage +20.",
+        "fr": "[Limité à la position centrale] Pendant ce tour, les dégâts de compétence de ce membre +20."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "伝統と革新をあなたに",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_30_blue.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-009_RR.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-010_C.png",
+    "name": "まつたけダンス",
+    "type": "支援・活動",
+    "tag": "#きのこ",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "supportEffect": {
+      "zh-TW": "選擇自己舞台上的1位「儒烏風亭らでん」。這個回合中，該成員的藝能傷害+10。如果該成員有3張以上的吶喊卡，則該成員的藝能傷害+20。",
+      "ja": "ステージ上のキャラクター「楽風亭雪」から1人を選択します。このラウンド中、メンバーのスキルダメージ+10。メンバーがシャウトカードを3枚以上持っている場合、メンバーのスキルダメージ+20。",
+      "en": "Choose one of the characters on your stage, \"Rakufufutei Yuki\". During this round, the member's skill damage +10. If the member has more than 3 shout cards, the member's skill damage +20.",
+      "fr": "Choisissez l'un des personnages de votre scène, \"Rakufufutei Yuki\". Pendant ce tour, les dégâts de compétence du membre +10. Si le membre possède plus de 3 cartes de cri, les dégâts de compétence du membre +20."
+    },
+    "id": "hSD15-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-010_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-001_OC.png",
+    "name": "さくらみこ",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -2,
+      "name": "35Pこっちこっちー",
+      "effect": {
+        "zh-TW": "[每個回合一次]如果自己的成員帶有「35P」，從自己的牌組抽1張牌。",
+        "ja": "【１ターンに１回】君のメンバーが「３５Ｐ」を持つなら、君のデッキからカードを１枚引く。",
+        "en": "[Once per turn] If one of your members has \"35P\", draw 1 card from your deck.",
+        "fr": "[Une fois par tour] Si l'un de vos membres possède « 35P », piochez 1 carte de votre deck."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "35Pいくぞー！",
+      "effect": {
+        "zh-TW": "[每場比賽一次]選擇自己1位帶有粉絲的「さくらみこ」。這個回合中，該成員的藝能傷害+50。",
+        "ja": "【1ゲームにつき1回】ファンと一緒にあなたの「さくらみこ」を1枚お選びください。このラウンド中、メンバーのスキルダメージが+50されます。",
+        "en": "[Once per game] Choose your 1 \"さくらみこ\" with fans. During this round, the member's skill damage is +50.",
+        "fr": "[Une fois par jeu] Choisissez votre 1 \"さくらみこ\" avec les fans. Pendant ce tour, les dégâts de compétence du membre sont de +50."
+      }
+    },
+    "id": "hSD16-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-002_C.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "さくらみこだよ～",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-003_C.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 70,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png"
+      ],
+      "name": "エリート巫女アイドル！ さくらみこだよ～",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-004_C.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "後攻なんですｹｰﾄﾞ",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，從自己的牌組展示1張「35P」，附加給這個成員。將牌組重新洗牌。",
+        "ja": "自分のバックアタックの1ターン目に、自分のデッキから「35P」1枚を公開し、このメンバーにつける。デッキを再シャッフルします。",
+        "en": "If during the first turn of your back attack, reveal 1 \"35P\" from your deck and attach it to this member. Reshuffle the deck.",
+        "fr": "Si lors du premier tour de votre attaque arrière, révélez 1 \"35P\" de votre deck et attachez-le à ce membre. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "でゃまれ！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-005_U.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "桜風ランニング",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "擲1次骰子。如果為3或5，從自己的牌組抽1張牌。",
+        "ja": "サイコロを1回振ります。 ３か５の場合、山札からカードを１枚引く。",
+        "en": "Roll the dice once. If it is 3 or 5, draw 1 card from your deck.",
+        "fr": "Lancez les dés une fois. Si c'est 3 ou 5, piochez 1 carte de votre deck."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-006_C.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "みんなみててにぇ",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "いっくぞぉおおおお",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD16-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-007_U.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "みこの膝にごろーんってして",
+      "effect": {
+        "zh-TW": "對手回合中，這個成員被擊倒時，從自己的牌組抽1張牌。",
+        "ja": "相手ターン中、このメンバーがダウンした時、自分はデッキから１枚ドローする。",
+        "en": "During the opponent's turn, when this member is knocked down, draw 1 card from your deck.",
+        "fr": "Pendant le tour de l'adversaire, lorsque ce membre est renversé, piochez 1 carte de votre deck."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "みこの耳かきスキルに蕩けちゃえ",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "[限定中心位置]擲1次骰子。如果為3或5，這個藝能傷害+10。",
+        "ja": "【中心位置限定】サイコロを1回振る。 3か5の場合、このスキルのダメージは+10されます。",
+        "en": "[Limited center position] Roll the dice once. If it is 3 or 5, the damage of this skill is +10.",
+        "fr": "[Position centrale limitée] Lancez les dés une fois. Si c'est 3 ou 5, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-008_R.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "待ってたにぇ",
+      "effect": {
+        "zh-TW": "擲1次骰子。如果為3或5，將自己存檔區的1張「35P」返回手牌。",
+        "ja": "サイコロを1回振ります。 ３か５の場合、自分のセーブエリアの「35P」カード１枚を手札に戻す。",
+        "en": "Roll the dice once. If it is 3 or 5, return 1 \"35P\" card in your save area to your hand.",
+        "fr": "Lancez les dés une fois. S'il est 3 ou 5, remettez dans votre main 1 carte \"35P\" de votre zone de sauvegarde."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いっぱい遊ぼっ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD16/hSD16-009_RR.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+    "color": "紅",
+    "hp": 170,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "35P、ありがとうだよー！",
+      "effect": {
+        "zh-TW": "這個回合中，自己的舞台上每有1張「35P」，這個成員的藝能傷害+10。",
+        "ja": "このラウンド中、自分のステージの「35P」1枚につき、このメンバーのスキルダメージ+10。",
+        "en": "During this round, for each \"35P\" on your stage, this member's skill damage +10.",
+        "fr": "Pendant ce tour, pour chaque \"35P\" sur votre scène, les dégâts de compétence de ce membre +10."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "この瞬間を見せてあげたいなって",
+      "damage": 100,
+      "specialAttackImage": "icons/tokkou_30_yellow.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD16-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-009_RR.png"
   },
   {
     "image": "cardListImages/hYS0/hYS01-001_OC.png",
@@ -61230,6 +61605,7 @@
       "起始牌組「ときのそら＆AZKi (hSD01)」",
       "起始牌組「緑 風真いろは (hSD06)」",
       "起始牌組「FLOW GLOW 推し 輪堂千速 (hSD10)」",
+      "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
       "スタートエールセット"
     ],
     "color": "綠",
@@ -61399,8 +61775,9 @@
       "補充包「エリートスパーク (hBP03)」",
       "起始牌組「赤 百鬼あやめ (hSD02)」",
       "起始牌組「赤 宝鐘マリン (hSD09)」",
-      "スタートエールセット",
-      "起始牌組「推し Justice (hSD13)」"
+      "起始牌組「推し Justice (hSD13)」",
+      "起始牌組「ライブスタートデッキ さくらみこ (hSD16)」",
+      "スタートエールセット"
     ],
     "color": "紅",
     "yellEffect": {
