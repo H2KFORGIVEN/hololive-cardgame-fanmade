@@ -342,7 +342,8 @@
             if (n.tag === 'Products') tagClass = ' tag-products';
             else if (n.tag === 'Campaign') tagClass = ' tag-campaign';
             return '<a class="news-card" href="' + (n.url||'#') + '" target="_blank" rel="noopener">' +
-              '<div class="news-card-img">' + (n.isNew ? '<span class="news-new-badge">NEW</span>' : '') +
+              (n.isNew ? '<span class="news-new-badge">NEW</span>' : '') +
+              '<div class="news-card-img">' +
                 '<img src="' + (n.localImage||n.image||'') + '" alt="" loading="lazy"></div>' +
               '<div class="news-card-body">' +
                 '<div class="news-card-info"><span class="news-date">' + (n.date||'') + '</span>' +
