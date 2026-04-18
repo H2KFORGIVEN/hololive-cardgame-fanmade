@@ -993,6 +993,310 @@ section('Effect handler execution tests');
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Effect-system boundary tests — stress the new hooks + edge cases
+// ══════════════════════════════════════════════════════════════════
+section('Effect system boundaries');
+
+// Helpers for boundary tests
+function freshGame() {
+  let state = buildGame();
+  state = setupToMain(state);
+  return runToMainPhase(state).state;
+}
+
+function makeInstance(cardId, overrides = {}) {
+  return {
+    instanceId: Math.floor(Math.random() * 1e9),
+    cardId,
+    state: MEMBER_STATE.ACTIVE,
+    damage: 0,
+    attachedCheer: [],
+    attachedSupport: [],
+    bloomedThisTurn: false,
+    placedThisTurn: false,
+    bloomStack: [],
+    faceDown: false,
+    ...overrides,
+  };
+}
+
+{
+  // New hooks fire without throwing
+  const state = freshGame();
+  if (!state || state.phase !== PHASE.MAIN) {
+    fail('Boundary setup', 'could not reach MAIN phase');
+  } else {
+    pass('Fresh game reaches MAIN phase after new hooks wired');
+  }
+}
+
+{
+  // ON_PLACE fires on place_member
+  const state = freshGame();
+  if (!state) { fail('ON_PLACE test', 'no state'); }
+  else {
+    const hand = state.players[state.activePlayer].zones[ZONE.HAND];
+    const debutIdx = hand.findIndex(c => {
+      const d = CardDB.getCard(c.cardId);
+      return d && isMember(d.type) && d.bloom === 'Debut';
+    });
+    if (debutIdx < 0) {
+      warn('ON_PLACE test', 'no debut in hand after setup (rare)');
+    } else {
+      const r = processAction(state, { type: ACTION.PLACE_MEMBER, handIndex: debutIdx });
+      if (r.error) fail('ON_PLACE fires without error', r.error);
+      else if (r.state.players[r.state.activePlayer].zones[ZONE.BACKSTAGE].length < 1) {
+        fail('ON_PLACE side effect', 'backstage didn\'t grow');
+      } else {
+        pass('PLACE_MEMBER with ON_PLACE hook succeeds, backstage +1');
+      }
+    }
+  }
+}
+
+{
+  // End phase clears _turnBoosts
+  const state = freshGame();
+  state._turnBoosts = [{ type: 'DAMAGE_BOOST', amount: 999 }];
+  // End main → performance (first player turn 1 auto-skips to next turn)
+  const r = processAction(state, { type: ACTION.END_MAIN_PHASE });
+  if (r.error) fail('End-phase boost clear', r.error);
+  else if ((r.state._turnBoosts?.length ?? 0) !== 0) {
+    fail('End phase clears _turnBoosts', `still has ${r.state._turnBoosts.length} boosts after end-of-turn`);
+  } else {
+    pass('End phase clears _turnBoosts (was leaking across turns)');
+  }
+}
+
+{
+  // Oshi skill once-per-turn is enforced by validator
+  const state = freshGame();
+  const p = state.players[state.activePlayer];
+  p.oshiSkillUsedThisTurn = true;
+  p.zones[ZONE.HOLO_POWER] = [makeInstance('__power__'), makeInstance('__power__')];
+  const r = validateAction(state, { type: ACTION.USE_OSHI_SKILL, skillType: 'oshi' });
+  if (r.valid) fail('Oshi skill once/turn enforced', 'validator let it through');
+  else if (!r.reason.includes('每回合')) fail('Oshi once-per-turn error msg', `got ${r.reason}`);
+  else pass('Oshi skill blocked by validator after use');
+}
+
+{
+  // Baton Pass leaves outgoing center in REST
+  let state = freshGame();
+  const p = state.players[state.activePlayer];
+  // Ensure a backstage member exists and center has enough cheer for the baton
+  if (p.zones[ZONE.BACKSTAGE].length === 0) {
+    p.zones[ZONE.BACKSTAGE].push(makeInstance(p.zones[ZONE.CENTER].cardId));
+  }
+  const center = p.zones[ZONE.CENTER];
+  const batonCost = parseCost(CardDB.getCard(center.cardId)?.batonImage);
+  // Attach enough fresh cheer for the cost
+  for (let i = 0; i < batonCost.total; i++) {
+    center.attachedCheer.push(makeInstance('hY01-001'));
+  }
+  const oldCenterId = center.instanceId;
+  const r = processAction(state, { type: ACTION.BATON_PASS, backstageIndex: 0 });
+  if (r.error) warn('Baton test', r.error); // skip if cost can't be met etc.
+  else {
+    const moved = r.state.players[state.activePlayer].zones[ZONE.BACKSTAGE].find(m => m.instanceId === oldCenterId);
+    if (!moved) fail('Baton swap', 'outgoing center not found on backstage');
+    else if (moved.state !== MEMBER_STATE.REST) fail('Baton outgoing REST', `state=${moved.state}, expected rest`);
+    else pass('Baton outgoing center becomes REST');
+  }
+}
+
+{
+  // DeckBuilder: main deck exactly 50 enforced
+  const { validateDeck } = await import(new URL('../web/game/core/DeckBuilder.js', import.meta.url));
+  const tooSmall = {
+    oshi: 'hBP02-001',
+    mainDeck: [{ cardId: 'hBP02-008', count: 49 }],
+    cheerDeck: [{ cardId: 'hY01-001', count: 20 }],
+  };
+  const r = validateDeck(tooSmall);
+  if (r.valid) fail('Deck size=49 rejected', 'accepted 49-card main deck');
+  else pass('Deck size != 50 rejected');
+
+  const exactly = {
+    oshi: 'hBP02-001',
+    mainDeck: [
+      { cardId: 'hBP02-008', count: 46 },
+      { cardId: 'hBP02-010', count: 4 },
+    ],
+    cheerDeck: [{ cardId: 'hY01-001', count: 20 }],
+  };
+  const r2 = validateDeck(exactly);
+  if (!r2.valid) fail('Deck size=50 accepted', r2.errors.join('; '));
+  else pass('Deck size == 50 accepted');
+}
+
+{
+  // bloomStack after knockdown: cards should be in archive as instances
+  const state = freshGame();
+  const p1 = state.players[1 - state.activePlayer];
+  const target = p1.zones[ZONE.CENTER];
+  if (!target) { fail('Knockdown archive test', 'no opponent center'); }
+  else {
+    // Seed a bloomStack
+    target.bloomStack = [
+      { cardId: 'hBP02-008', instanceId: 999001 },
+      { cardId: 'hBP02-008', instanceId: 999002 },
+    ];
+    target.damage = 9999; // force knockdown
+    const { archiveMember } = await import(new URL('../web/game/core/GameState.js', import.meta.url));
+    archiveMember(p1, target.instanceId);
+    const archived = p1.zones[ZONE.ARCHIVE].filter(c => c.cardId === 'hBP02-008');
+    if (archived.length < 2) fail('bloomStack → archive', `expected ≥2 archived copies, got ${archived.length}`);
+    else if (archived.some(c => !c.instanceId || typeof c.cardId !== 'string')) fail('Archived shape', 'not proper instances');
+    else pass('bloomStack cards archived as proper instances on knockdown');
+  }
+}
+
+{
+  // REVERT_TO_DEBUT converts bloomStack entries to card instances
+  const state = freshGame();
+  const p = state.players[state.activePlayer];
+  const center = p.zones[ZONE.CENTER];
+  center.bloomStack = [{ cardId: 'hBP02-008', instanceId: 5000 }];
+  const handBefore = p.zones[ZONE.HAND].length;
+  state.pendingEffect = {
+    type: 'REVERT_TO_DEBUT',
+    player: state.activePlayer,
+  };
+  // EffectResolver expects `selected` with instanceId referring to a member on stage
+  const r = resolveEffectChoice(state, state.pendingEffect, { instanceId: center.instanceId, name: 'test' });
+  const hand = r.players[state.activePlayer].zones[ZONE.HAND];
+  const addedCount = hand.length - handBefore;
+  if (addedCount < 1) fail('REVERT_TO_DEBUT hand growth', `hand grew ${addedCount}`);
+  else {
+    const added = hand[hand.length - 1];
+    if (!added || !added.instanceId || typeof added.cardId !== 'string') {
+      fail('REVERT_TO_DEBUT instance shape', `hand top: ${JSON.stringify(added)?.slice(0, 80)}`);
+    } else pass('REVERT_TO_DEBUT creates proper instances in hand (no more raw strings)');
+  }
+}
+
+{
+  // LIFE_CHEER branch attaches cheer to chosen member
+  const state = freshGame();
+  const p = state.players[state.activePlayer];
+  const cheerInst = makeInstance('hY01-001', { faceDown: true });
+  state.pendingEffect = {
+    type: 'LIFE_CHEER',
+    player: state.activePlayer,
+    cheerInstances: [cheerInst],
+  };
+  const target = p.zones[ZONE.CENTER];
+  const cheerBefore = target.attachedCheer.length;
+  const r = resolveEffectChoice(state, state.pendingEffect, { instanceId: target.instanceId });
+  const tgtAfter = r.players[state.activePlayer].zones[ZONE.CENTER];
+  if (tgtAfter.attachedCheer.length !== cheerBefore + 1) {
+    fail('LIFE_CHEER attaches', `cheer count ${cheerBefore} → ${tgtAfter.attachedCheer.length}`);
+  } else if (tgtAfter.attachedCheer.some(c => c.faceDown)) {
+    fail('LIFE_CHEER face-up', 'cheer still face-down after life reveal');
+  } else {
+    pass('LIFE_CHEER: life card attached face-up to chosen member');
+  }
+}
+
+{
+  // Setup backstage capped at 5 — overflow Debut/Spot stays in hand
+  const { placeCenter, initGameState, drawInitialHand } = await import(new URL('../web/game/core/SetupManager.js', import.meta.url));
+  const deck = makeDeckConfig(officialDecks['0']);
+  let state = initGameState(deck, deck);
+  // Force a hand of 7 Debut cards to trigger overflow
+  const allDebut = state.players[0].zones[ZONE.DECK].filter(c => {
+    const d = CardDB.getCard(c.cardId);
+    return d && isMember(d.type) && (d.bloom === 'Debut' || d.bloom === 'Spot');
+  });
+  if (allDebut.length >= 7) {
+    const hand = state.players[0].zones[ZONE.HAND];
+    hand.length = 0;
+    for (let i = 0; i < 7; i++) hand.push(allDebut[i]);
+    const forced = placeCenter(state, 0, 0);
+    const back = forced.players[0].zones[ZONE.BACKSTAGE].length;
+    if (back > 5) fail('Backstage cap', `backstage has ${back} members (>5)`);
+    else pass(`Backstage capped at ${back} ≤ 5 even with overflow Debut in hand`);
+  } else {
+    warn('Backstage cap test', 'deck does not have 7 Debut to force overflow');
+  }
+}
+
+{
+  // ON_CHEER_ATTACH fires cleanly: force state back to CHEER phase so assign is legal
+  const state = freshGame();
+  const p = state.players[state.activePlayer];
+  if (p.zones[ZONE.CHEER_DECK].length > 0) {
+    state.phase = PHASE.CHEER;
+    const r = processAction(state, { type: ACTION.CHEER_ASSIGN, targetInstanceId: p.zones[ZONE.CENTER].instanceId });
+    if (r.error) fail('Cheer assign hook chain', r.error);
+    else if (r.state.players[state.activePlayer].zones[ZONE.CENTER].attachedCheer.length < 1) {
+      fail('Cheer attach result', 'cheer count did not grow');
+    } else pass('ON_CHEER_ATTACH fires cleanly on cheer assignment');
+  } else {
+    warn('Cheer attach test', 'cheer deck empty, skipped');
+  }
+}
+
+{
+  // ORDER_TO_BOTTOM handles empty ordered list
+  const state = freshGame();
+  state.pendingEffect = { type: 'ORDER_TO_BOTTOM', player: state.activePlayer, cards: [] };
+  const r = resolveEffectChoice(state, state.pendingEffect, { orderedIds: [] });
+  if (!r) fail('ORDER_TO_BOTTOM empty', 'resolver returned null');
+  else pass('ORDER_TO_BOTTOM handles empty ordered list without crash');
+}
+
+{
+  // SEARCH_SELECT with missing instanceId in deck no-ops gracefully
+  const state = freshGame();
+  state.pendingEffect = { type: 'SEARCH_SELECT', player: state.activePlayer };
+  const handBefore = state.players[state.activePlayer].zones[ZONE.HAND].length;
+  const r = resolveEffectChoice(state, state.pendingEffect, { instanceId: 999999, name: 'ghost' });
+  const handAfter = r.players[state.activePlayer].zones[ZONE.HAND].length;
+  if (handAfter !== handBefore) fail('SEARCH_SELECT ghost', `hand unexpectedly changed ${handBefore} → ${handAfter}`);
+  else pass('SEARCH_SELECT with unknown instanceId no-ops');
+}
+
+{
+  // Archive + knockdown: ensure cheer + support are also archived
+  const state = freshGame();
+  const p1 = state.players[1 - state.activePlayer];
+  const target = p1.zones[ZONE.CENTER];
+  target.attachedCheer = [makeInstance('hY01-001'), makeInstance('hY01-001')];
+  target.attachedSupport = [makeInstance('hBP01-108')];
+  const archiveBefore = p1.zones[ZONE.ARCHIVE].length;
+  const { archiveMember } = await import(new URL('../web/game/core/GameState.js', import.meta.url));
+  archiveMember(p1, target.instanceId);
+  const archiveAfter = p1.zones[ZONE.ARCHIVE].length;
+  // 1 member + 2 cheer + 1 support = 4
+  if (archiveAfter - archiveBefore !== 4) {
+    fail('Full archive on knockdown', `archive grew by ${archiveAfter - archiveBefore}, expected 4`);
+  } else pass('Knockdown archives member + all attached cheer + support');
+}
+
+{
+  // Handler integrity: handlers for firing hooks should not crash on minimal context
+  const state = freshGame();
+  const { triggerEffect } = await import(new URL('../web/game/effects/EffectEngine.js', import.meta.url));
+  let crashed = 0, tested = 0;
+  const sampleCards = ['hBP02-008', 'hBP02-010', 'hBP01-013', 'hBP01-014', 'hBP02-001'];
+  const allHooks = ['ON_PLACE', 'ON_TURN_START', 'ON_TURN_END', 'ON_CHEER_ATTACH', 'ON_KNOCKDOWN', 'ON_DAMAGE_DEALT', 'ON_DAMAGE_TAKEN', 'ON_PASSIVE_GLOBAL'];
+  for (const cardId of sampleCards) {
+    for (const hook of allHooks) {
+      tested++;
+      try {
+        triggerEffect(state, hook, { cardId, player: 0 });
+      } catch (e) {
+        crashed++;
+      }
+    }
+  }
+  if (crashed > 0) fail('Handler minimal context', `${crashed}/${tested} crashed`);
+  else pass(`${tested} handler/hook combos survive minimal context`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Summary
 // ══════════════════════════════════════════════════════════════════
 console.log('\n' + '═'.repeat(60));
