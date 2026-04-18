@@ -29,13 +29,20 @@ export class GameController {
     await loadCards('../data/cards.json');
     const result = await initEffects();
     console.log('Effects system initialized:', result);
+    this._warmPixi();
     this.showDeckSelect(0);
+  }
+
+  _warmPixi() {
+    // Fire-and-forget pre-load so first effect has no import delay
+    this._getFx().catch(err => console.warn('Pixi FX warm-up failed (effects will still work on demand):', err));
   }
 
   async startOnline() {
     this.mode = 'online';
     await loadCards('../data/cards.json');
     await initEffects();
+    this._warmPixi();
     this.showLobby();
   }
 
@@ -43,6 +50,7 @@ export class GameController {
     this.mode = 'tutorial';
     await loadCards('../data/cards.json');
     await initEffects();
+    this._warmPixi();
 
     const { TUTORIAL_DECK_P0, TUTORIAL_DECK_P1 } = await import('./tutorial/tutorial-deck.js');
     const { LESSONS } = await import('./tutorial/TutorialScript.js');
@@ -822,6 +830,10 @@ export class GameController {
       }
       if (entry.msg?.includes('聯動') && !entry.msg?.includes('聯動位置') && (Date.now() - entry.ts) < 1500) {
         this._animateCollab();
+      }
+      const bloomMatch = entry.msg?.match(/綻放為 (.+?) \(/);
+      if (bloomMatch && (Date.now() - entry.ts) < 1500) {
+        this._animateBloom(bloomMatch[1]);
       }
     }
 
@@ -1692,6 +1704,17 @@ export class GameController {
     return null;
   }
 
+  async _getFx() {
+    if (!this._fx) {
+      const [effects, beam] = await Promise.all([
+        import('./fx/effects.js'),
+        import('./fx/beam.js'),
+      ]);
+      this._fx = { ...effects, ...beam };
+    }
+    return this._fx;
+  }
+
   _animateArtAttack(artName) {
     // Find the attacker (local player's active center or collab using an art)
     const attackers = this.container.querySelectorAll('.local-field .zone-center .game-card, .local-field .zone-collab .game-card');
@@ -1701,16 +1724,35 @@ export class GameController {
         setTimeout(() => el.classList.remove('card-art-attack'), 600);
       }
     });
+    // Pixi: ember charge-up at attacker
+    this._getFx().then(fx => {
+      for (const el of attackers) {
+        const r = el.getBoundingClientRect();
+        fx.ember(r.left + r.width / 2, r.top + r.height / 2, { count: 10, color: 0xffcc66, spread: 40, rise: 50 });
+      }
+    }).catch(() => {});
   }
 
   _animateHitShake(targetName) {
-    // Target is on opponent field
     const el = this._findCardByName(targetName, 'opponent');
     if (!el) return;
     el.classList.remove('card-hit-shake');
     void el.offsetWidth; // force reflow
     el.classList.add('card-hit-shake');
     setTimeout(() => el.classList.remove('card-hit-shake'), 550);
+
+    // Pixi: attack beam from local attacker → target, then impact + shockwave
+    this._getFx().then(fx => {
+      const attackerEl = this.container.querySelector('.local-field .zone-center .game-card, .local-field .zone-collab .game-card');
+      if (attackerEl) {
+        fx.attackBeam(attackerEl, el, { color: 0xffeeaa, trailColor: 0xff7733, duration: 380 });
+      } else {
+        // Fallback: just impact at target
+        const r = el.getBoundingClientRect();
+        fx.impact(r.left + r.width / 2, r.top + r.height / 2, { color: 0xffeeaa, size: 120 });
+        fx.shockwave(r.left + r.width / 2, r.top + r.height / 2, { color: 0xff7733, maxRadius: 180 });
+      }
+    }).catch(() => {});
   }
 
   _animateKnockdown(targetName) {
@@ -1718,6 +1760,17 @@ export class GameController {
     if (!el) return;
     el.classList.add('card-knockdown-anim');
     setTimeout(() => el.classList.remove('card-knockdown-anim'), 950);
+
+    // Pixi: debris shatter after brief delay (let hit-shake play first)
+    this._getFx().then(fx => {
+      const r = el.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      setTimeout(() => {
+        fx.shatter(cx, cy, { count: 22, color: 0xff4444, size: 160, duration: 900 });
+        fx.flash(cx, cy, { color: 0xff6666, radius: 200, duration: 300 });
+      }, 300);
+    }).catch(() => {});
   }
 
   _animateOshiBurst() {
@@ -1728,6 +1781,16 @@ export class GameController {
       el.classList.add('card-oshi-activate');
       setTimeout(() => el.classList.remove('card-oshi-activate'), 950);
     });
+    // Pixi: bright flash + sparkle at oshi
+    this._getFx().then(fx => {
+      for (const el of oshis) {
+        const r = el.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        fx.flash(cx, cy, { color: 0xffe066, radius: 260, duration: 400 });
+        fx.sparkle(cx, cy, { count: 24, color: 0xffd84a, spread: 120, rise: 200, duration: 1400 });
+      }
+    }).catch(() => {});
   }
 
   _animateCollab() {
@@ -1737,6 +1800,25 @@ export class GameController {
     void collab.offsetWidth;
     collab.classList.add('card-collab-move');
     setTimeout(() => collab.classList.remove('card-collab-move'), 550);
+
+    // Pixi: cyan sparkle swirl
+    this._getFx().then(fx => {
+      const r = collab.getBoundingClientRect();
+      fx.sparkle(r.left + r.width / 2, r.top + r.height / 2, { count: 18, color: 0x66ddff, spread: 90, rise: 140, duration: 1100 });
+    }).catch(() => {});
+  }
+
+  _animateBloom(cardName) {
+    // Gold sparkle burst on the bloomed card (center, collab, or backstage)
+    const el = this._findCardByName(cardName, 'local') || this._findCardByName(cardName, 'opponent');
+    if (!el) return;
+    this._getFx().then(fx => {
+      const r = el.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      fx.flash(cx, cy, { color: 0xffffff, radius: 180, duration: 350 });
+      fx.sparkle(cx, cy, { count: 20, color: 0xffd84a, spread: 80, rise: 160, duration: 1200 });
+    }).catch(() => {});
   }
 
   _showFloatingDamage(amount, targetName, localPlayer) {
