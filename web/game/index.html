@@ -35,6 +35,11 @@
         <img src="../images/brand/logo.svg" alt="hololive CARD GAME" class="mode-logo">
         <h1 class="mode-title">Fan-made Practice Site</h1>
         <div class="mode-buttons">
+          <button class="mode-btn mode-tutorial" id="modeTutorial">
+            <span class="mode-icon">📖</span>
+            <span class="mode-label">新手教學</span>
+            <span class="mode-desc">5 分鐘快速上手</span>
+          </button>
           <button class="mode-btn mode-local" id="modeLocal">
             <span class="mode-icon">🎮</span>
             <span class="mode-label">本地對戰</span>
@@ -49,6 +54,7 @@
       </div>
     `;
 
+    document.getElementById('modeTutorial').addEventListener('click', () => game.startTutorial());
     document.getElementById('modeLocal').addEventListener('click', () => game.start());
     document.getElementById('modeOnline').addEventListener('click', () => game.startOnline());
   </script>

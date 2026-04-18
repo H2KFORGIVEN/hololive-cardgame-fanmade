@@ -39,6 +39,124 @@ export class GameController {
     this.showLobby();
   }
 
+  async startTutorial() {
+    this.mode = 'tutorial';
+    await loadCards('../data/cards.json');
+    await initEffects();
+
+    const { TUTORIAL_DECK_P0, TUTORIAL_DECK_P1 } = await import('./tutorial/tutorial-deck.js');
+    const { LESSONS } = await import('./tutorial/TutorialScript.js');
+    const { TutorialAdapter } = await import('./tutorial/TutorialAdapter.js');
+    const { TutorialOverlay } = await import('./tutorial/TutorialOverlay.js');
+    const { jumpToMainPhase } = await import('./core/GameState.js');
+
+    this.adapter = new TutorialAdapter();
+    this.tutorialOverlay = new TutorialOverlay();
+    this.tutorialLessons = LESSONS;
+    this.tutorialJump = jumpToMainPhase;
+
+    // Build base state from tutorial decks, then jump into lesson 1 state
+    const baseState = initGameState(TUTORIAL_DECK_P0, TUTORIAL_DECK_P1);
+    this.adapter.init(baseState);
+    this.adapter.setLocalPlayer(0);
+    this.adapter.onStateUpdate((s) => this.onStateUpdate(s));
+    this.adapter.onError((msg) => this._tutorialError(msg));
+
+    this.tutorialOverlay.mount();
+    this.tutorialOverlay.setCallbacks({
+      onSkipLesson: () => this._skipTutorialLesson(),
+      onExit: () => this._exitTutorial(),
+    });
+    this.adapter.setScriptCallbacks({
+      onStepAdvance: ({ step }) => {
+        if (step?.successToast) this.tutorialOverlay.toast(step.successToast);
+        this._refreshTutorialPrompt();
+      },
+      onLessonComplete: ({ lesson }) => this._onLessonComplete(lesson),
+      onActionBlocked: ({ hint }) => this.tutorialOverlay.showHint(hint),
+    });
+
+    this._loadTutorialLesson(0);
+  }
+
+  async _loadTutorialLesson(index) {
+    const lesson = this.tutorialLessons[index];
+    if (!lesson) return;
+    this.adapter.setLessonIndex(index);
+
+    const { TUTORIAL_DECK_P0, TUTORIAL_DECK_P1 } = await import('./tutorial/tutorial-deck.js');
+    const base = initGameState(TUTORIAL_DECK_P0, TUTORIAL_DECK_P1);
+    this.tutorialJump(base, lesson.startConfig);
+    if (typeof lesson.postSetup === 'function') {
+      lesson.postSetup(base);
+    }
+    this.adapter.init(base);
+    this.renderBoard();
+    this._refreshTutorialPrompt();
+  }
+
+  _refreshTutorialPrompt() {
+    if (!this.tutorialOverlay) return;
+    const lesson = this.adapter.getCurrentLesson?.();
+    const step = this.adapter.getCurrentStep?.();
+    if (!lesson || !step) return;
+    this.tutorialOverlay.showStep(lesson, step, this.adapter.getStepIndex(), lesson.steps.length);
+    this._applyTutorialHighlight(step.highlightSelector);
+  }
+
+  _applyTutorialHighlight(selector) {
+    document.querySelectorAll('.tutorial-highlight-pulse').forEach(el => el.classList.remove('tutorial-highlight-pulse'));
+    if (!selector) return;
+    // Delay so DOM is rendered after renderBoard
+    setTimeout(() => {
+      document.querySelectorAll(selector).forEach(el => el.classList.add('tutorial-highlight-pulse'));
+    }, 50);
+  }
+
+  _onLessonComplete(lesson) {
+    this.tutorialOverlay.showLessonCompleteModal(
+      lesson,
+      () => {
+        // Next lesson
+        const nextIndex = this.adapter.getLessonIndex() + 1;
+        if (nextIndex < this.tutorialLessons.length) {
+          this._loadTutorialLesson(nextIndex);
+        } else {
+          this.tutorialOverlay.showVictoryModal(() => this._exitTutorial());
+        }
+      },
+      () => this._exitTutorial()
+    );
+  }
+
+  _skipTutorialLesson() {
+    const idx = this.adapter.getLessonIndex();
+    if (idx + 1 >= this.tutorialLessons.length) {
+      this.tutorialOverlay.showVictoryModal(() => this._exitTutorial());
+    } else {
+      this._loadTutorialLesson(idx + 1);
+    }
+  }
+
+  _exitTutorial() {
+    if (this.tutorialOverlay) {
+      this.tutorialOverlay.unmount();
+      this.tutorialOverlay = null;
+    }
+    document.querySelectorAll('.tutorial-highlight-pulse').forEach(el => el.classList.remove('tutorial-highlight-pulse'));
+    // Return to mode selection
+    location.reload();
+  }
+
+  _tutorialError(msg) {
+    // In tutorial mode, show inline toast instead of red error toast
+    if (this.tutorialOverlay) {
+      this.tutorialOverlay.showHint(msg);
+    } else {
+      this.showError(msg);
+    }
+  }
+
   showLobby() {
     this.container.innerHTML = `
       <div class="lobby-screen">

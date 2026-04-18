@@ -1,4 +1,5 @@
 import { PHASE, ZONE, MEMBER_STATE } from './constants.js';
+export { MEMBER_STATE } from './constants.js';
 
 let _nextInstanceId = 1;
 
@@ -103,6 +104,95 @@ export function removeInstance(playerState, instanceId) {
     }
   }
   return null;
+}
+
+// Jump an initialized state directly to Main phase with cards pre-placed.
+// Used by tutorial mode to skip mulligan/setup and start from a known state.
+//
+// config: {
+//   player0: { center?, collab?, backstage?, hand? },
+//   player1: { center?, collab?, backstage?, hand? },
+//   activePlayer?, firstPlayer?, turnNumber?
+// }
+// Each member entry: { cardId, cheer?: ['white'|'green'|..., ...], state?: 'active'|'rest', damage? }
+// Each hand entry: { cardId } (just a cardId string also accepted)
+//
+// Cards are pulled from the player's deck if available; otherwise a fresh instance is made.
+// Cheer attachments are pulled from cheerDeck (same rule).
+export function jumpToMainPhase(state, config = {}) {
+  const pullFromDeck = (deck, cardId) => {
+    const idx = deck.findIndex(c => c?.cardId === cardId);
+    if (idx !== -1) {
+      const card = deck.splice(idx, 1)[0];
+      card.faceDown = false;
+      return card;
+    }
+    return createCardInstance(cardId, false);
+  };
+
+  const attachCheer = (member, cheerDeck, colorOrId) => {
+    // If cheerDeck has any cheer, grab the first; otherwise create a fresh instance by id.
+    if (cheerDeck.length > 0) {
+      const card = cheerDeck.shift();
+      card.faceDown = false;
+      member.attachedCheer.push(card);
+      return;
+    }
+    // Fallback: create a fresh cheer instance (color passed as cardId for simplicity)
+    const inst = createCardInstance(colorOrId, false);
+    member.attachedCheer.push(inst);
+  };
+
+  const placeMember = (entry, playerState, zoneArrayOrSetter) => {
+    const member = pullFromDeck(playerState.zones[ZONE.DECK], entry.cardId);
+    member.state = entry.state || MEMBER_STATE.ACTIVE;
+    member.damage = entry.damage || 0;
+    const cheerList = entry.cheer || [];
+    for (const cheerId of cheerList) {
+      attachCheer(member, playerState.zones[ZONE.CHEER_DECK], cheerId);
+    }
+    if (typeof zoneArrayOrSetter === 'function') {
+      zoneArrayOrSetter(member);
+    } else {
+      zoneArrayOrSetter.push(member);
+    }
+    return member;
+  };
+
+  for (let p = 0; p < 2; p++) {
+    const cfg = config[`player${p}`] || {};
+    const player = state.players[p];
+
+    if (cfg.center) {
+      placeMember(cfg.center, player, (m) => { player.zones[ZONE.CENTER] = m; });
+    }
+    if (cfg.collab) {
+      placeMember(cfg.collab, player, (m) => { player.zones[ZONE.COLLAB] = m; });
+    }
+    if (cfg.backstage) {
+      for (const entry of cfg.backstage) {
+        placeMember(entry, player, player.zones[ZONE.BACKSTAGE]);
+      }
+    }
+    if (cfg.hand) {
+      for (const entry of cfg.hand) {
+        const cardId = typeof entry === 'string' ? entry : entry.cardId;
+        const card = pullFromDeck(player.zones[ZONE.DECK], cardId);
+        player.zones[ZONE.HAND].push(card);
+      }
+    }
+  }
+
+  state.phase = PHASE.MAIN;
+  state.activePlayer = config.activePlayer ?? 0;
+  state.firstPlayer = config.firstPlayer ?? 0;
+  state.turnNumber = config.turnNumber ?? 1;
+  // Mark both players as past-first-turn so Performance phase isn't skipped for activePlayer
+  // (first player's turn 1 auto-skips Performance — not what we want for Lesson 4/5)
+  state.firstTurn = [false, false];
+  state.mulliganDone = [true, true];
+  state.setupDone = [true, true];
+  return state;
 }
 
 // Move cards to archive (member + all attached cheer/support)
