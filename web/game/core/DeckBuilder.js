@@ -62,10 +62,8 @@ export function validateDeck(deckConfig) {
     mainCounts.set(cardId, newCount);
     mainTotal += count;
   }
-  if (mainTotal > MAIN_DECK_SIZE) {
-    errors.push(`主牌組不能超過 ${MAIN_DECK_SIZE} 張（目前 ${mainTotal} 張）`);
-  } else if (mainTotal === 0) {
-    errors.push(`主牌組至少需要 1 張卡片`);
+  if (mainTotal !== MAIN_DECK_SIZE) {
+    errors.push(`主牌組需要剛好 ${MAIN_DECK_SIZE} 張（目前 ${mainTotal} 張）`);
   }
 
   // Check at least 1 Debut member

@@ -148,6 +148,7 @@ function validateOshiSkill(state, action, player) {
       return fail(`holo 能量不足（需要 ${cost}，目前 ${player.zones[ZONE.HOLO_POWER].length}）`);
     }
   } else {
+    if (player.oshiSkillUsedThisTurn) return fail('推し技能每回合只能使用一次');
     const cost = Math.abs(oshiCard.oshiSkill?.holoPower || 0);
     if (player.zones[ZONE.HOLO_POWER].length < cost) {
       return fail(`holo 能量不足（需要 ${cost}，目前 ${player.zones[ZONE.HOLO_POWER].length}）`);

@@ -32,4 +32,5 @@ export const HOOK = {
   ON_PASSIVE_GLOBAL: 'ON_PASSIVE_GLOBAL', // effectG: while on stage
   ON_STAGE_SKILL: 'ON_STAGE_SKILL',       // stageSkill (oshi alt skill)
   ON_CHEER_ATTACH: 'ON_CHEER_ATTACH',     // yellEffect on cheer cards
+  ON_PLACE: 'ON_PLACE',                   // when placed from hand to stage
 };

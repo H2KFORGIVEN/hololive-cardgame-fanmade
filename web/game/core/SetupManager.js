@@ -141,8 +141,10 @@ export function placeCenter(state, playerNum, handIndex) {
   member.faceDown = false;
   player.zones[ZONE.CENTER] = member;
 
-  // Auto-place remaining Debut/Spot to backstage
+  // Auto-place remaining Debut/Spot to backstage (max 5 per official rules)
+  const MAX_BACKSTAGE = 5;
   for (let i = player.zones[ZONE.HAND].length - 1; i >= 0; i--) {
+    if (player.zones[ZONE.BACKSTAGE].length >= MAX_BACKSTAGE) break;
     const c = getCard(player.zones[ZONE.HAND][i].cardId);
     if (c && isMember(c.type) && (c.bloom === 'Debut' || c.bloom === 'Spot')) {
       const m = player.zones[ZONE.HAND].splice(i, 1)[0];

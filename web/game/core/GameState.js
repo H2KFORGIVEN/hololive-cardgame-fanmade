@@ -211,7 +211,8 @@ export function jumpToMainPhase(state, config = {}) {
   return state;
 }
 
-// Move cards to archive (member + all attached cheer/support)
+// Move cards to archive (member + all attached cheer/support + bloom stack).
+// Official rule: all cards attached to or beneath the knocked-down member go to archive.
 export function archiveMember(playerState, instanceId) {
   const inst = removeInstance(playerState, instanceId);
   if (!inst) return;
@@ -224,8 +225,16 @@ export function archiveMember(playerState, instanceId) {
   for (const sup of inst.attachedSupport) {
     archive.push(sup);
   }
+  // Archive the bloom stack (underneath cards)
+  if (Array.isArray(inst.bloomStack)) {
+    for (const entry of inst.bloomStack) {
+      const cardId = typeof entry === 'string' ? entry : entry?.cardId;
+      if (cardId) archive.push(createCardInstance(cardId));
+    }
+  }
   inst.attachedCheer = [];
   inst.attachedSupport = [];
+  inst.bloomStack = [];
   inst.damage = 0;
   archive.push(inst);
 }

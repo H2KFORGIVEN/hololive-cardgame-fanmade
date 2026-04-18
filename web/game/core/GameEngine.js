@@ -132,6 +132,8 @@ function processResetPhase(state) {
   }
 
   resetTurnFlags(player);
+  // Fire ON_TURN_START so passive effects can kick in (e.g. "at the start of your turn…")
+  fireEffect(state, HOOK.ON_TURN_START, { player: p });
   addLog(state, `P${p + 1} 重置階段完成`);
 }
 
@@ -186,6 +188,12 @@ function processCheerAssign(state, action) {
   if (target) {
     target.card.attachedCheer.push(cheerCard);
     addLog(state, `P${p + 1} 發送吶喊給 ${getCard(target.card.cardId)?.name || ''}`);
+    // Fire ON_CHEER_ATTACH so yell effects on the cheer card (or on the receiving member) can trigger
+    fireEffect(state, HOOK.ON_CHEER_ATTACH, {
+      cardId: cheerCard.cardId,
+      player: p,
+      memberInst: target.card,
+    });
   }
 
   state.phase = PHASE.MAIN;
@@ -202,6 +210,8 @@ function processPlaceMember(state, action) {
   card.faceDown = false;
   player.zones[ZONE.BACKSTAGE].push(card);
   addLog(state, `P${p + 1} 放置 ${getCard(card.cardId)?.name || ''} 到後台`);
+  // Fire ON_PLACE so "when placed" effects can trigger (draw, search, etc.)
+  fireEffect(state, HOOK.ON_PLACE, { cardId: card.cardId, player: p, memberInst: card });
   return state;
 }
 
@@ -214,9 +224,10 @@ function processBloom(state, action) {
   const target = findInstance(player, action.targetInstanceId);
   if (!target) return state;
 
-  // Store previous card in bloom stack
-  target.card.bloomStack.push(target.card.cardId);
+  // Store a snapshot of the pre-bloom card in the stack so archive / revert paths
+  // can retrieve the underneath cards as proper instances (not bare strings).
   const oldCardId = target.card.cardId;
+  target.card.bloomStack.push({ cardId: oldCardId, instanceId: target.card.instanceId });
   target.card.cardId = bloomCard.cardId;
   target.card.bloomedThisTurn = true;
   // Carries over: damage, cheer, supports, state (active/rest)
@@ -371,8 +382,9 @@ function processBatonPass(state, action) {
     }
   }
 
-  // Swap center with backstage member — both retain their current state
+  // Swap center ↔ backstage. Official rule: outgoing center becomes REST on backstage.
   const backstageMember = player.zones[ZONE.BACKSTAGE].splice(action.backstageIndex, 1)[0];
+  center.state = MEMBER_STATE.REST;
   player.zones[ZONE.CENTER] = backstageMember;
   player.zones[ZONE.BACKSTAGE].push(center);
   player.usedBaton = true;
@@ -401,6 +413,13 @@ function processUseArt(state, action) {
   const artKey = action.artIndex === 0 ? 'art1' : 'art2';
   fireEffect(state, HOOK.ON_ART_DECLARE, { cardId: attacker.cardId, player: p, memberInst: attacker, artKey });
 
+  // Fire passive global effects — "while on stage" modifiers from every member on both sides.
+  // Each handler may push DAMAGE_BOOST entries into _turnBoosts for this attack only.
+  firePassiveModifiers(state, {
+    attacker, target, artKey,
+    attackerPlayer: p, defenderPlayer: 1 - p,
+  });
+
   // Calculate damage
   const dmgResult = calculateDamage(attacker, action.artIndex, target);
 
@@ -425,7 +444,9 @@ function processUseArt(state, action) {
   // Mark art as used for this position
   player.performedArts[position] = true;
 
-  // Trigger ON_ART_RESOLVE (after damage applied)
+  // Trigger damage hooks and ON_ART_RESOLVE (after damage applied)
+  fireEffect(state, HOOK.ON_DAMAGE_DEALT, { cardId: attacker.cardId, player: p, memberInst: attacker, target, amount: totalDmg });
+  fireEffect(state, HOOK.ON_DAMAGE_TAKEN, { cardId: target.cardId, player: 1 - p, memberInst: target, attacker, amount: totalDmg });
   fireEffect(state, HOOK.ON_ART_RESOLVE, { cardId: attacker.cardId, player: p, memberInst: attacker, target, artKey });
 
   // Check knockdown
@@ -443,7 +464,15 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
 
   addLog(state, `  ${targetCard?.name || ''} 被擊倒！${isBuzz ? '(Buzz 生命 -2)' : ''}`);
 
-  // Archive the knocked-down member and all attached cards
+  // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react (e.g. "return to hand instead")
+  fireEffect(state, HOOK.ON_KNOCKDOWN, {
+    cardId: target.cardId,
+    player: 1 - attackerPlayer,
+    memberInst: target,
+    attackerPlayer,
+  });
+
+  // Archive the knocked-down member and all attached cards (+ bloom stack)
   archiveMember(opponent, target.instanceId);
 
   // Life loss
@@ -512,8 +541,12 @@ function processEndPhase(state) {
   const p = state.activePlayer;
   const player = state.players[p];
 
-  // 1. "Until end of turn" effects expire
-  // (Handled by clearing turnModifiers if we add them later)
+  // 1. "Until end of turn" effects expire — clear any queued turn boosts/modifiers
+  state._turnBoosts = [];
+  state._turnModifiers = [];
+
+  // Fire ON_TURN_END hook so passive handlers can react (cleanup, draws, etc.)
+  fireEffect(state, HOOK.ON_TURN_END, { player: p });
 
   // 2. Clear first turn flag
   state.firstTurn[p] = false;
@@ -620,6 +653,30 @@ function processManualAdjust(state, action) {
 
 function addLog(state, msg) {
   state.log.push({ turn: state.turnNumber, player: state.activePlayer, msg, ts: Date.now() });
+}
+
+// Fire ON_PASSIVE_GLOBAL for every member currently on either side's stage, plus any
+// attached support that has passive effect text. Used at damage-calc time so "while on
+// stage" modifiers affect the current attack. Handlers push DAMAGE_BOOST into _turnBoosts.
+function firePassiveModifiers(state, artContext) {
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    const stageMembers = [pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB], ...(pl.zones[ZONE.BACKSTAGE] || [])].filter(Boolean);
+    for (const m of stageMembers) {
+      // Fire global passive for each stage member
+      fireEffect(state, HOOK.ON_PASSIVE_GLOBAL, {
+        cardId: m.cardId, player: idx, memberInst: m, ...artContext,
+      });
+      // Fire passive from attached support (tool/mascot) — their effects often act as board-wide modifiers
+      if (Array.isArray(m.attachedSupport)) {
+        for (const sup of m.attachedSupport) {
+          fireEffect(state, HOOK.ON_PASSIVE_GLOBAL, {
+            cardId: sup.cardId, player: idx, memberInst: m, attachedSupport: sup, ...artContext,
+          });
+        }
+      }
+    }
+  }
 }
 
 // Fire an effect hook, queue prompt if needed

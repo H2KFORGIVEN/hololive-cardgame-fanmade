@@ -2,6 +2,18 @@
 // Used by both GameController (client) and ws-server (server)
 
 import { getCard } from './CardDatabase.js';
+import { createCardInstance } from './GameState.js';
+
+// Convert bloomStack entry (string | {cardId} | full instance) to a fresh card instance.
+// The stack only records cardIds, not full state — any revert/archive path creates new instances.
+function bloomStackEntryToInstance(entry) {
+  if (!entry) return null;
+  if (typeof entry === 'string') return createCardInstance(entry);
+  if (entry.cardId && !entry.instanceId) return createCardInstance(entry.cardId);
+  // Legacy object with instanceId — preserve the id but treat as a fresh instance shape
+  if (entry.cardId) return createCardInstance(entry.cardId);
+  return null;
+}
 
 function shuffleArr(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -114,7 +126,10 @@ export function resolveEffectChoice(state, prompt, selected) {
     }
     if (found) {
       if (found.bloomStack) {
-        for (const card of found.bloomStack) targetPlayer.zones['hand'].push(card);
+        for (const entry of found.bloomStack) {
+          const inst = bloomStackEntryToInstance(entry);
+          if (inst) targetPlayer.zones['hand'].push(inst);
+        }
         found.bloomStack = [];
       }
       if (found.attachedSupport) {
@@ -197,6 +212,20 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
     addLog(state, prompt.player, `${ids.length} 張牌放回牌組下方`);
+
+  } else if (action === 'LIFE_CHEER') {
+    // Defender chooses which of their own members receives the revealed life cheer.
+    // prompt.cheerInstances holds the already-flipped life cards waiting to attach.
+    const cheerCards = prompt.cheerInstances || [];
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    if (target && cheerCards.length > 0) {
+      if (!target.attachedCheer) target.attachedCheer = [];
+      for (const c of cheerCards) {
+        c.faceDown = false;
+        target.attachedCheer.push(c);
+      }
+      addLog(state, prompt.player, `${cheerCards.length} 張生命吶喊附加到 ${selected.name || getCard(target.cardId)?.name || '成員'}`);
+    }
 
   } else {
     addLog(state, prompt.player, `選擇了 ${selected.name}`);
