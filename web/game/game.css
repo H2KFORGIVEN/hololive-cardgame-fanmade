@@ -392,7 +392,7 @@ body {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   max-width: 1400px; margin: 0 auto;
 }
-.phase-bar-left { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+.phase-bar-left { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
 .phase-bar-right { flex: 1; display: flex; justify-content: center; }
 
 .turn-number {
@@ -403,26 +403,35 @@ body {
   border-radius: 6px;
 }
 .player-badge {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 7px;
   color: #fff;
-  padding: 5px 14px; border-radius: 9999px;
+  padding: 6px 16px; border-radius: 9999px;
   font-size: 0.85rem; font-weight: 700;
   letter-spacing: 0.02em;
+  margin-left: 0.6rem;
 }
 .badge-dot {
   width: 8px; height: 8px; border-radius: 50%; background: #fff;
   animation: badge-pulse 1.4s ease-in-out infinite;
 }
-@keyframes badge-pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+@keyframes badge-pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,.7); } 50% { opacity: .5; box-shadow: 0 0 0 5px rgba(255,255,255,0); } }
+/* Theme-aligned: purple base + gold highlight for "my turn", muted purple for opponent */
 .badge-my-turn {
-  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
-  box-shadow: 0 2px 10px rgba(46,125,50,.4);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  box-shadow: 0 2px 12px rgba(79,73,130,.35), 0 0 0 2px rgba(245,194,74,.55);
+  animation: badge-my-glow 2.2s ease-in-out infinite;
 }
+@keyframes badge-my-glow {
+  0%, 100% { box-shadow: 0 2px 12px rgba(79,73,130,.35), 0 0 0 2px rgba(245,194,74,.55); }
+  50%      { box-shadow: 0 2px 18px rgba(79,73,130,.5), 0 0 0 3px rgba(255,215,120,.85); }
+}
+.badge-my-turn .badge-dot { background: #ffdf7a; box-shadow: 0 0 6px rgba(255,223,122,.9); }
 .badge-opp-turn {
-  background: linear-gradient(135deg, #757575 0%, #616161 100%);
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  background: linear-gradient(135deg, rgba(79,73,130,.55) 0%, rgba(122,116,168,.6) 100%);
+  color: rgba(255,255,255,.92);
+  box-shadow: 0 2px 6px rgba(79,73,130,.2);
 }
-.badge-opp-turn .badge-dot { background: #ffcdd2; }
+.badge-opp-turn .badge-dot { background: rgba(255,255,255,.7); }
 
 .phase-steps { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; }
 .phase-step {
