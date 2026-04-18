@@ -6,12 +6,18 @@ import { renderActionPanel } from './ActionPanel.js';
 
 export function renderGameBoard(state, localPlayer) {
   const opponent = 1 - localPlayer;
+  const isMyTurn = state.activePlayer === localPlayer;
 
   return `
     <div class="game-container">
+      <!-- Top HUD: prominent phase + turn indicator (full width) -->
+      <div class="top-hud ${isMyTurn ? 'hud-my-turn' : 'hud-opp-turn'}">
+        ${renderPhaseBar(state, localPlayer)}
+      </div>
+
       <div class="board">
         <!-- Opponent field (top, mirrored) -->
-        <div class="player-field opponent-field">
+        <div class="player-field opponent-field ${!isMyTurn ? 'field-active' : 'field-idle'}">
           ${renderPlayerField(state, opponent, localPlayer, true)}
         </div>
 
@@ -21,7 +27,7 @@ export function renderGameBoard(state, localPlayer) {
         </div>
 
         <!-- Local player field (bottom) -->
-        <div class="player-field local-field">
+        <div class="player-field local-field ${isMyTurn ? 'field-active' : 'field-idle'}">
           ${renderPlayerField(state, localPlayer, localPlayer, false)}
         </div>
       </div>
@@ -31,11 +37,8 @@ export function renderGameBoard(state, localPlayer) {
         ${renderHand(state, localPlayer)}
       </div>
 
-      <!-- Side panels -->
+      <!-- Side panels (now just action panel — phase moved to top HUD) -->
       <div class="side-panels">
-        <div class="phase-info-bar">
-          ${renderPhaseBar(state, localPlayer)}
-        </div>
         <div class="action-panel-wrap" id="actionPanel">
           ${renderActionPanel(state, null, localPlayer)}
         </div>

@@ -25,6 +25,19 @@ export function renderCard(instance, size = 'field', options = {}) {
     ? `<div class="card-damage-badge">${instance.damage}</div>`
     : '';
 
+  // HP bar: only for members with hp, only on field size, only face-up
+  const hpBarHtml = (!isFaceDown && size === 'field' && card?.hp)
+    ? (() => {
+        const remaining = Math.max(0, card.hp - (instance.damage || 0));
+        const pct = Math.max(0, Math.min(100, (remaining / card.hp) * 100));
+        const lvl = pct > 60 ? 'hp-high' : pct > 30 ? 'hp-mid' : 'hp-low';
+        return `<div class="card-hp-bar ${lvl}" title="${remaining} / ${card.hp} HP">
+          <div class="card-hp-fill" style="width:${pct}%"></div>
+          <div class="card-hp-text">${remaining}/${card.hp}</div>
+        </div>`;
+      })()
+    : '';
+
   const cheerCount = instance.attachedCheer?.length || 0;
   const cheerHtml = (!isFaceDown && cheerCount > 0)
     ? `<div class="card-cheer-badges">${renderCheerBadges(instance.attachedCheer)}</div>`
@@ -50,6 +63,7 @@ export function renderCard(instance, size = 'field', options = {}) {
       <div class="${classes}" data-instance-id="${instance.instanceId}" data-card-id="${instance.cardId}">
         ${imgHtml}
         ${damageHtml}
+        ${hpBarHtml}
       </div>
       ${cheerHtml}
     </div>
