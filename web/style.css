@@ -511,11 +511,11 @@ body {
   margin: 0 auto;
 }
 .news-card {
+  position: relative;
   width: 285px;
   flex-shrink: 0;
   background: #fff;
   border-radius: 20px;
-  overflow: hidden;
   text-decoration: none;
   color: var(--text-primary);
   transition: transform .25s ease;
@@ -533,6 +533,7 @@ body {
   aspect-ratio: 285/180;
   overflow: hidden;
   background: #f0eff5;
+  border-radius: 20px 20px 0 0;
 }
 .news-card-img img {
   width: 100%;
@@ -543,15 +544,15 @@ body {
 }
 .news-new-badge {
   position: absolute;
-  top: -10px;
-  left: -4px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><circle cx="36" cy="36" r="34" fill="%23887D54"/><text x="36" y="42" text-anchor="middle" fill="white" font-size="20" font-weight="bold" font-family="sans-serif">NEW</text></svg>') no-repeat;
-  background-size: contain;
-  width: 56px;
-  height: 56px;
-  z-index: 2;
+  top: -22px;
+  left: -7px;
+  width: 72px;
+  height: 72px;
+  background: url('../images/brand/new.svg') no-repeat center / contain;
+  z-index: 3;
   color: transparent;
   overflow: hidden;
+  pointer-events: none;
 }
 .news-card-body {
   padding: 0.8rem 1rem 1rem;
