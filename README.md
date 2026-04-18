@@ -242,10 +242,11 @@ scraper (Python) → JSON data → static frontend (HTML/CSS/JS) → GitHub Page
 - [ ] Phase 2B — Reconnection, spectator mode
 - [ ] Phase 3 — Electron desktop app (DMG / EXE)
 - [ ] Phase 4 — Cloud server deployment
-- [ ] Phase 5 — Unity port for commercial-grade release (long-term)
+- [ ] Phase 5 — Unity native port (fan-made, non-commercial; long-term practice experiment)
   - Leverage Unity 6 `com.unity.ai.assistant` MCP for automated Editor workflow
   - Preserve web version for rapid iteration and community demo
   - Reuse existing pure-function engine + card data (migration, not rewrite)
+  - Not for sale / not for store distribution — same fan-made disclaimer as the web version applies
 
 ---
 

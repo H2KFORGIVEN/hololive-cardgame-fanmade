@@ -170,10 +170,11 @@ npm run update:homepage
 - [ ] Phase 2B — 斷線重連、觀戰模式
 - [ ] Phase 3 — Electron 桌面應用程式（DMG / EXE）
 - [ ] Phase 4 — 雲端伺服器部署
-- [ ] Phase 5 — Unity 移植（商業級長期規劃）
+- [ ] Phase 5 — Unity 原生版本移植（同人非商業，長期練習專案）
   - 運用 Unity 6 `com.unity.ai.assistant` MCP 自動化 Editor 工作流程
   - 保留 Web 版本作為快速迭代工具與社群 demo
   - 複用現有純函數引擎 + 卡牌資料（遷移而非重寫）
+  - 不販售 / 不上架 — 與網頁版相同的同人免責聲明適用
 
 ---
 

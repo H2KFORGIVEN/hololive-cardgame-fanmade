@@ -170,10 +170,11 @@ npm run update:homepage
 - [ ] Phase 2B — 再接続、観戦モード
 - [ ] Phase 3 — Electron デスクトップアプリ（DMG / EXE）
 - [ ] Phase 4 — クラウドサーバーデプロイ
-- [ ] Phase 5 — Unity 移植（商用リリース向けの長期計画）
+- [ ] Phase 5 — Unity ネイティブ版移植（ファンメイド非商用・長期習作）
   - Unity 6 の `com.unity.ai.assistant` MCP を活用し Editor ワークフローを自動化
   - Web 版は高速イテレーションとコミュニティデモ用として維持
   - 既存の純粋関数エンジンとカードデータを再利用（リライトではなく移行）
+  - 販売しない / ストア配布しない — Web 版と同じファンメイド免責事項が適用される
 
 ---
 
