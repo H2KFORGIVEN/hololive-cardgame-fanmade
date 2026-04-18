@@ -274,7 +274,214 @@ export const LESSONS = [
         successToast: '擊倒對手！Life -1，對手 Life 歸零。',
       },
     ],
-    onComplete: { message: '恭喜完成全部教學！', next: null, victory: true },
+    onComplete: { message: '基礎教學完成！繼續進階規則。', next: 'l6_cheer' },
+  },
+
+  // ───────────────────────── Lesson 6: Cheer 指派 ─────────────────────────
+  {
+    id: 'l6_cheer',
+    title: '第六課：Cheer 能量指派',
+    intro: '每回合的 Cheer 階段會自動從 Cheer 牌組頂翻 1 張，你要指派給場上某個成員。Cheer 是藝能的能量來源。',
+    startConfig: {
+      phase: PHASE.CHEER,
+      activePlayer: 0,
+      firstPlayer: 0,
+      turnNumber: 2,
+      player0: {
+        center: { cardId: DEBUT, state: 'active' },
+        backstage: [{ cardId: DEBUT, state: 'active' }],
+        hand: [DEBUT, DEBUT],
+      },
+      player1: {
+        center: { cardId: DEBUT, state: 'active' },
+      },
+    },
+    steps: [
+      {
+        id: 'l6s1',
+        prompt: 'Cheer 階段：從 Cheer 牌組頂翻出 1 張 Cheer，指派給中央的成員作為能量。',
+        expectedAction: { type: ACTION.CHEER_ASSIGN },
+        highlightSelector: '.local-field .zone-center',
+        hint: '直接點中央 Center 的成員卡接收 Cheer。',
+        successToast: 'Cheer 已指派！成員多了 1 點能量。',
+      },
+      {
+        id: 'l6s2',
+        prompt: '很好！接下來進入主階段，按「結束主階段」結束即可。',
+        expectedAction: { type: ACTION.END_MAIN_PHASE },
+        highlightSelector: '[data-action="END_MAIN_PHASE"]',
+        hint: '點「結束主要階段」。',
+      },
+    ],
+    onComplete: { message: '第六課完成！', next: 'l7_first_turn' },
+  },
+
+  // ───────────────────────── Lesson 7: 第一回合限制 ─────────────────────────
+  {
+    id: 'l7_first_turn',
+    title: '第七課：第一回合限制',
+    intro: '先攻第一回合有嚴格限制：不能綻放、不能攻擊（表演階段會自動跳過）。只能放置成員、使用支援卡、結束階段。',
+    startConfig: {
+      phase: PHASE.MAIN,
+      activePlayer: 0,
+      firstPlayer: 0,
+      turnNumber: 1,
+      firstTurn: [true, true],
+      player0: {
+        center: { cardId: DEBUT, state: 'active' },
+        hand: [DEBUT, FIRST, DEBUT],
+      },
+      player1: {
+        center: { cardId: DEBUT, state: 'active' },
+      },
+    },
+    steps: [
+      {
+        id: 'l7s1',
+        prompt: '你現在是先攻第一回合。觀察：綻放按鈕被禁用（顯示「第一回合禁止」）。先把 Debut 放到後台。',
+        expectedAction: { type: ACTION.PLACE_MEMBER, cardBloom: 'Debut' },
+        highlightSelector: '.hand-area',
+        hint: '從手牌點綠框的 Debut 放到後台。',
+        successToast: '第一回合放置 OK！',
+      },
+      {
+        id: 'l7s2',
+        prompt: '現在點「結束主階段」— 先攻第一回合會**自動跳過表演階段**（無法攻擊），直接進入下回合。',
+        expectedAction: { type: ACTION.END_MAIN_PHASE },
+        highlightSelector: '[data-action="END_MAIN_PHASE"]',
+        hint: '點「結束主要階段」— 接下來會自動結束回合。',
+        successToast: '先攻第一回合無法攻擊，已自動跳過表演。',
+      },
+    ],
+    onComplete: { message: '第七課完成！', next: 'l8_baton' },
+  },
+
+  // ───────────────────────── Lesson 8: 交棒 Baton Pass ─────────────────────────
+  {
+    id: 'l8_baton',
+    title: '第八課：交棒（Baton Pass）',
+    intro: '交棒可以把 Center 和 Backstage 成員互換位置，需支付 Center 身上 Cheer 作為費用（卡片上的「Baton」圖示表示費用）。每回合限 1 次。',
+    startConfig: {
+      phase: PHASE.MAIN,
+      activePlayer: 0,
+      firstPlayer: 0,
+      turnNumber: 3,
+      player0: {
+        center: { cardId: DEBUT, state: 'active', cheer: [CHEER, CHEER] },
+        backstage: [
+          { cardId: DEBUT, state: 'active' },
+          { cardId: DEBUT, state: 'active' },
+        ],
+        hand: [DEBUT],
+      },
+      player1: {
+        center: { cardId: DEBUT, state: 'active' },
+      },
+    },
+    steps: [
+      {
+        id: 'l8s1',
+        prompt: '按「交棒」，然後選一個後台成員，Center 身上 1 張 Cheer 會移到存檔，後台成員上來當新 Center。',
+        expectedAction: { type: ACTION.BATON_PASS },
+        highlightSelector: '[data-action="BATON_PASS"]',
+        hint: '點「交棒」按鈕 → 選任一後台成員。',
+        successToast: '交棒成功！後台成員上場。',
+      },
+      {
+        id: 'l8s2',
+        prompt: '按「結束主階段」結束這一步。',
+        expectedAction: { type: ACTION.END_MAIN_PHASE },
+        highlightSelector: '[data-action="END_MAIN_PHASE"]',
+        hint: '點「結束主要階段」。',
+      },
+    ],
+    onComplete: { message: '第八課完成！', next: 'l9_oshi' },
+  },
+
+  // ───────────────────────── Lesson 9: 推し技能 / SP 技能 ─────────────────────────
+  {
+    id: 'l9_oshi',
+    title: '第九課：推し技能 / SP 技能',
+    intro: '聯動後會產生 HoloPower（推し能量），可用來發動推し技能（每回合 1 次）或 SP 技能（每場比賽 1 次，威力更強）。能量從牌組頂翻出，消耗時送入存檔。',
+    startConfig: {
+      phase: PHASE.MAIN,
+      activePlayer: 0,
+      firstPlayer: 0,
+      turnNumber: 3,
+      player0: {
+        center: { cardId: FIRST, state: 'active' },
+        backstage: [{ cardId: DEBUT, state: 'active' }],
+        hand: [DEBUT],
+        holoPower: 3, // pre-seed 3 holoPower for testing oshi + sp skills
+      },
+      player1: {
+        center: { cardId: DEBUT, state: 'active' },
+      },
+    },
+    steps: [
+      {
+        id: 'l9s1',
+        prompt: '你已有 3 張 HoloPower。按「推し技能」消耗 2 張發動（Fubuki 推し技能：從牌組找 Mascot 加入手牌）。',
+        expectedAction: { type: ACTION.USE_OSHI_SKILL, skillType: 'oshi' },
+        highlightSelector: '[data-action="USE_OSHI_SKILL"][data-skill="oshi"]',
+        hint: '點「推し技能」按鈕（顯示成本 2）。',
+        successToast: '推し技能發動！2 張 HoloPower 送入存檔。',
+      },
+      {
+        id: 'l9s2',
+        prompt: '推し技能本回合不能再用（每回合 1 次）。按「結束主階段」結束。',
+        expectedAction: { type: ACTION.END_MAIN_PHASE },
+        highlightSelector: '[data-action="END_MAIN_PHASE"]',
+        hint: '點「結束主要階段」。',
+      },
+    ],
+    onComplete: { message: '第九課完成！', next: 'l10_special_attack' },
+  },
+
+  // ───────────────────────── Lesson 10: 特攻顏色加成 ─────────────────────────
+  {
+    id: 'l10_special_attack',
+    title: '第十課：特攻顏色加成',
+    intro: '某些藝能對**特定顏色**的對手造成額外傷害（卡片上的「特攻」圖示表示加成顏色和數值）。若藝能有「特攻 +50 紅」且對手是紅色成員，傷害就會 +50。本課沒有實際特攻卡，以概念說明為主。',
+    startConfig: {
+      phase: PHASE.MAIN,
+      activePlayer: 0,
+      firstPlayer: 0,
+      turnNumber: 4,
+      player0: {
+        center: { cardId: FIRST, state: 'active', cheer: [CHEER, CHEER] },
+        backstage: [{ cardId: DEBUT, state: 'active' }],
+        hand: [],
+      },
+      player1: {
+        center: { cardId: DEBUT, state: 'active' },
+      },
+    },
+    steps: [
+      {
+        id: 'l10s1',
+        prompt: '按「結束主階段」進入表演階段。',
+        expectedAction: { type: ACTION.END_MAIN_PHASE },
+        highlightSelector: '[data-action="END_MAIN_PHASE"]',
+        hint: '點「結束主要階段」。',
+      },
+      {
+        id: 'l10s2',
+        prompt: '用 Thank You Friends♥ 攻擊。如果這個藝能有「特攻 白」圖示且對手是白色（本課場景裡對手就是白色），傷害會額外 +50。',
+        expectedAction: { type: ACTION.USE_ART, position: 'center', artIndex: 1 },
+        highlightSelector: '[data-action="USE_ART"][data-position="center"][data-art="1"]',
+        hint: '點「Thank You Friends♥」按鈕（art2）。',
+        successToast: '攻擊命中！觀察操作紀錄確認是否有特攻加成。',
+      },
+      {
+        id: 'l10s3',
+        prompt: '按「結束表演」完成回合。',
+        expectedAction: { type: ACTION.END_PERFORMANCE },
+        highlightSelector: '[data-action="END_PERFORMANCE"]',
+        hint: '點「結束表演」按鈕。',
+      },
+    ],
+    onComplete: { message: '🏆 恭喜完成全部 10 課教學！', next: null, victory: true },
   },
 ];
 

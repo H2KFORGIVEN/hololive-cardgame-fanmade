@@ -14,19 +14,19 @@ export function calculateDamage(attackerInstance, artIndex, targetInstance) {
   const base = parseInt(art.damage) || 0;
 
   // Special attack color bonus
+  // Filename patterns: "icons/tokkou_30_red.png" / "icons/tokkou_50_blue.png" → +30/+50
+  // Also accept legacy "icons/arts_color.png" (default +50)
   let special = 0;
   if (art.specialAttackImage) {
-    // Parse color from icon filename: "icons/arts_red.png" => "red"
-    const match = art.specialAttackImage.match(/arts_(\w+)\.png/);
-    if (match) {
-      const iconColor = match[1];
-      const gameColor = ICON_TO_COLOR[iconColor];
-      if (gameColor && targetCard.color === gameColor) {
-        // Special attack bonus: typically +50 but varies
-        // The bonus is often encoded in the damage string "70+" or in the effect text
-        // For now, use a standard +50 bonus (most common value)
-        special = 50;
-      }
+    const tokkouMatch = art.specialAttackImage.match(/tokkou_(\d+)_(\w+)\.png/);
+    const legacyMatch = art.specialAttackImage.match(/arts_(\w+)\.png/);
+    if (tokkouMatch) {
+      const amount = parseInt(tokkouMatch[1]);
+      const gameColor = ICON_TO_COLOR[tokkouMatch[2]];
+      if (gameColor && targetCard.color === gameColor) special = amount;
+    } else if (legacyMatch) {
+      const gameColor = ICON_TO_COLOR[legacyMatch[1]];
+      if (gameColor && targetCard.color === gameColor) special = 50;
     }
   }
 

@@ -183,15 +183,31 @@ export function jumpToMainPhase(state, config = {}) {
     }
   }
 
-  state.phase = PHASE.MAIN;
+  state.phase = config.phase || PHASE.MAIN;
   state.activePlayer = config.activePlayer ?? 0;
   state.firstPlayer = config.firstPlayer ?? 0;
   state.turnNumber = config.turnNumber ?? 1;
-  // Mark both players as past-first-turn so Performance phase isn't skipped for activePlayer
-  // (first player's turn 1 auto-skips Performance — not what we want for Lesson 4/5)
-  state.firstTurn = [false, false];
+  // Default: past-first-turn so Performance isn't auto-skipped. Override via config.firstTurn.
+  state.firstTurn = config.firstTurn || [false, false];
   state.mulliganDone = [true, true];
   state.setupDone = [true, true];
+
+  // Optional: mark specific player flags
+  if (config.player0?.flags) Object.assign(state.players[0], config.player0.flags);
+  if (config.player1?.flags) Object.assign(state.players[1], config.player1.flags);
+
+  // Optional: pre-populate holoPower (face-down cards from top of deck)
+  for (let p = 0; p < 2; p++) {
+    const cfg = config[`player${p}`] || {};
+    const holoCount = cfg.holoPower || 0;
+    const player = state.players[p];
+    for (let i = 0; i < holoCount && player.zones[ZONE.DECK].length > 0; i++) {
+      const card = player.zones[ZONE.DECK].shift();
+      card.faceDown = true;
+      player.zones[ZONE.HOLO_POWER].push(card);
+    }
+  }
+
   return state;
 }
 
