@@ -63,6 +63,8 @@
 - **1,300+ Effect Handlers** — Card effects automated with player selection UI
 - **Local 2-Player** — Hot-seat play on the same screen
 - **Online Multiplayer** — WebSocket-based LAN/internet play with room codes
+- **Interactive Tutorial** — 5-lesson guided walkthrough (placement → bloom → collab → art → victory)
+- **Pixi.js WebGL FX** — Particle effects, shockwaves, attack beams, sparkles layered over DOM
 - **Drag & Drop** — Place members, bloom, equip supports by dragging
 - **Deck Selection** — Build from official/tournament deck recipes
 - **Dice UI** — Visual dice rolls for effect resolution
@@ -87,6 +89,7 @@
 | Frontend | Vanilla ES Modules (no framework, no build step) |
 | Game Engine | Pure function state machine `(state, action) → newState` |
 | Rendering | DOM + CSS (playsheet-based board layout) |
+| VFX | Pixi.js v8 (WebGL overlay, loaded from CDN as ESM) |
 | Multiplayer | Node.js + `ws` WebSocket server |
 | Data | JSON (cards, decks, tournaments, homepage) |
 | Scraping | Python scripts for card data and homepage updates |
@@ -120,6 +123,15 @@ web/
 │   │   ├── handlers/       # 1,300+ effect handlers across 8 files
 │   │   └── registerAll.js  # Master registration
 │   ├── ui/                 # UI components
+│   ├── tutorial/           # 5-lesson interactive tutorial mode
+│   │   ├── TutorialScript.js   # Lesson + step definitions
+│   │   ├── TutorialAdapter.js  # Wraps LocalAdapter with action gating
+│   │   ├── TutorialOverlay.js  # DOM prompt panel + modals
+│   │   └── tutorial-deck.js    # Effect-free Fubuki deck
+│   ├── fx/                 # Pixi.js WebGL effect layer
+│   │   ├── PixiStage.js    # Fullscreen canvas singleton
+│   │   ├── effects.js      # impact / shockwave / sparkle / shatter / ember / flash
+│   │   └── beam.js         # Attack beam (attacker → target)
 │   ├── net/
 │   │   ├── LocalAdapter.js       # Local 2-player
 │   │   └── WebSocketAdapter.js   # Online multiplayer
@@ -224,10 +236,16 @@ scraper (Python) → JSON data → static frontend (HTML/CSS/JS) → GitHub Page
 - [x] Phase 1B — 1,300+ card effect handlers with selection UI
 - [x] Phase 1C — Animations, drag & drop, dice UI, damage effects
 - [x] Phase 2A — WebSocket online multiplayer with room codes
+- [x] Phase 2C — 5-lesson interactive tutorial mode
+- [x] Phase 2D — Pixi.js WebGL particle effects layer
 - [x] Homepage — Dynamic content from official site (auto-updatable)
 - [ ] Phase 2B — Reconnection, spectator mode
 - [ ] Phase 3 — Electron desktop app (DMG / EXE)
 - [ ] Phase 4 — Cloud server deployment
+- [ ] Phase 5 — Unity port for commercial-grade release (long-term)
+  - Leverage Unity 6 `com.unity.ai.assistant` MCP for automated Editor workflow
+  - Preserve web version for rapid iteration and community demo
+  - Reuse existing pure-function engine + card data (migration, not rewrite)
 
 ---
 

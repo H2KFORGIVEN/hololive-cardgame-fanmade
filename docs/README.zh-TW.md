@@ -62,6 +62,8 @@
 - **1,300+ 效果處理器** — 卡牌效果自動化，含玩家選擇 UI
 - **本地雙人** — 同螢幕輪流操作
 - **線上對戰** — 基於 WebSocket 的區網/網路對戰，支援房間代碼
+- **新手教學** — 5 堂互動式教學（放置 → 綻放 → 聯動 → 藝能 → 擊倒勝利）
+- **Pixi.js WebGL 特效** — 粒子、衝擊波、攻擊光束、金色星芒疊在 DOM 上
 - **拖曳放置** — 拖曳放置成員、綻放、裝備支援卡、聯動
 - **牌組選擇** — 從官方/大賽牌組配方中選擇
 - **骰子 UI** — 視覺化骰子效果
@@ -86,6 +88,7 @@
 | 前端 | 原生 ES Modules（無框架、無建置步驟） |
 | 遊戲引擎 | 純函數狀態機 `(state, action) → newState` |
 | 渲染 | DOM + CSS（基於遊戲墊的棋盤佈局） |
+| 特效 | Pixi.js v8（WebGL overlay，從 CDN 以 ESM 載入） |
 | 多人連線 | Node.js + `ws` WebSocket 伺服器 |
 | 資料 | JSON（卡牌、牌組、大賽、首頁） |
 | 爬蟲 | Python 腳本（卡牌資料與首頁更新） |
@@ -161,10 +164,16 @@ npm run update:homepage
 - [x] Phase 1B — 1,300+ 卡牌效果處理器與選擇 UI
 - [x] Phase 1C — 動畫、拖曳放置、骰子 UI、傷害特效
 - [x] Phase 2A — WebSocket 線上對戰（房間代碼）
+- [x] Phase 2C — 5 堂互動式新手教學
+- [x] Phase 2D — Pixi.js WebGL 粒子特效層
 - [x] 首頁 — 從官網動態更新內容
 - [ ] Phase 2B — 斷線重連、觀戰模式
 - [ ] Phase 3 — Electron 桌面應用程式（DMG / EXE）
 - [ ] Phase 4 — 雲端伺服器部署
+- [ ] Phase 5 — Unity 移植（商業級長期規劃）
+  - 運用 Unity 6 `com.unity.ai.assistant` MCP 自動化 Editor 工作流程
+  - 保留 Web 版本作為快速迭代工具與社群 demo
+  - 複用現有純函數引擎 + 卡牌資料（遷移而非重寫）
 
 ---
 
