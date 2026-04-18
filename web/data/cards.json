@@ -60616,6 +60616,289 @@
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD14/hSD14-011_C.png"
   },
   {
+    "image": "cardListImages/hSD15/hSD15-001_OC.png",
+    "name": "儒烏風亭らでん",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -2,
+      "name": "ちょっとまつたけ～♪",
+      "effect": {
+        "zh-TW": "[每個回合一次]從自己的牌組展示1張標示#きのこ的活動並加入手牌。將牌組重新洗牌。",
+        "ja": "【1ターンに1回】自分のデッキから「#きのこ」と書かれたアクティビティカードを1枚公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per turn] Reveal 1 activity card marked #きのこ from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par tour] Révélez 1 carte d'activité marquée #きのこ depuis votre deck et ajoutez-la à votre main. Remaniez le jeu."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "あなたの世界を広げに行こう",
+      "effect": {
+        "zh-TW": "[每場比賽一次]將自己吶喊牌組上方的1張牌發送給自己的「儒烏風亭らでん」。之後，將自己存檔區1張標示#きのこ的活動返回手牌。",
+        "ja": "【１ゲームに１回】自分のシャウトデッキの上から１枚を自分の「ルゥ・風帝ユウキ」に送る。その後、自分のセーブエリアにある「#きのこ」と書かれたアクティビティカード1枚を手札に戻す。",
+        "en": "[Once per game] Send 1 card from the top of your shout deck to your own \"Ruwu Fuutei Yuki\". After that, return 1 activity card marked #きのこ in your save area to your hand.",
+        "fr": "[Une fois par partie] Envoyez 1 carte du haut de votre deck de cris à votre propre \"Ruwu Fuutei Yuki\". Après cela, remettez dans votre main 1 carte d'activité marquée #きのこ dans votre zone de sauvegarde."
+      }
+    },
+    "id": "hSD15-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-002_C.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "寄ってらっしゃい見てらっしゃい",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-003_C.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 70,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png"
+      ],
+      "name": "今日もあなたのそばに -らでん-",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-004_C.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 90,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "一服朝っぱらでん",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，將自己吶喊牌組上方的1張牌發送給自己的後台成員。",
+        "ja": "バックアタックの最初のラウンドにある場合、シャウトデッキの上からカードを1枚バックステージメンバーに送る。",
+        "en": "If in the first round of your back attack, send 1 card from the top of your shouting deck to your backstage members.",
+        "fr": "Si vous êtes au premier tour de votre attaque arrière, envoyez 1 carte du haut de votre deck de cris à vos membres des coulisses."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "散歩でもいかがですかな？",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-005_U.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "体力作り頑張るぞー！！！！！",
+      "effect": {
+        "zh-TW": "對手回合中，這個成員被擊倒時，可以將這個成員的1張吶喊卡替換給自己其他的成員。",
+        "ja": "相手ターン中、このメンバーがダウンした時、このメンバーのシャウトカード1枚を自分の他のメンバーと入れ替えることができる。",
+        "en": "During the opponent's turn, when this member is knocked down, you can replace 1 of this member's shout cards with another of your own members.",
+        "fr": "Pendant le tour de l'adversaire, lorsque ce membre est renversé, vous pouvez remplacer 1 de ses cartes cri par un autre de vos propres membres."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "そろそろ始めちゃいますか",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-006_C.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "世界を彩る -らでん-",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ちょいと一席付き合ってみませんか？",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD15-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-007_U.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "旅の前日",
+      "effect": {
+        "zh-TW": "將自己牌組上方的1張牌放到存檔區。之後，可以將自己存檔區的1張Debut成員放到舞台上。",
+        "ja": "自分の山札の一番上のカードをセーブエリアに置きます。その後、自分のセーブエリアからデビューメンバー1名をステージ上に配置できます。",
+        "en": "Put the top card of your deck into the save area. After that, you can place 1 Debut member from your save area on the stage.",
+        "fr": "Placez la carte du dessus de votre deck dans la zone de sauvegarde. Après cela, vous pouvez placer 1 membre Debut de votre zone de sauvegarde sur la scène."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "この博物館おもしろそう！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD15/hSD15-008.png",
+    "name": "儒烏風亭らでん",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #お酒",
+    "product": "起始牌組「ライブスタートデッキ 儒烏風亭らでん (hSD15)」",
+    "color": "綠",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "薄明",
+      "effect": {
+        "zh-TW": "這個成員擊倒對手的成員時，這個成員HP回復20點。",
+        "ja": "このメンバーが相手メンバーをダウンさせると、このメンバーのHPが20ポイント回復する。",
+        "en": "When this member knocks down the opponent's member, this member's HP is restored by 20 points.",
+        "fr": "Lorsque ce membre renverse le membre adverse, les PV de ce membre sont restaurés de 20 points."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "きのこ狩り",
+      "damage": "40+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果這個回合有使用過標示#きのこ的活動，這個藝能傷害+10。",
+        "ja": "#きのこ とマークされたアクティビティがこのラウンドで使用されている場合、このスキルのダメージは+10されます。",
+        "en": "If an activity marked #きのこ has been used this round, the damage of this skill will be +10.",
+        "fr": "Si une activité marquée #きのこ a été utilisée ce tour, les dégâts de cette compétence seront de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD15-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD15/hSD15-008.png"
+  },
+  {
     "image": "cardListImages/hYS0/hYS01-001_OC.png",
     "name": "七詩ムメイ",
     "type": "主推",
