@@ -1,12 +1,12 @@
 import { PHASE } from '../core/constants.js';
 
 const PHASE_STEPS = [
-  { phase: PHASE.RESET, label: '重置', icon: '♻️' },
-  { phase: PHASE.DRAW, label: '抽牌', icon: '🃏' },
-  { phase: PHASE.CHEER, label: '應援', icon: '📣' },
-  { phase: PHASE.MAIN, label: '主要', icon: '🎴' },
-  { phase: PHASE.PERFORMANCE, label: '表演', icon: '⚡' },
-  { phase: PHASE.END, label: '結束', icon: '🌙' },
+  { phase: PHASE.RESET, label: '重置' },
+  { phase: PHASE.DRAW, label: '抽牌' },
+  { phase: PHASE.CHEER, label: '應援' },
+  { phase: PHASE.MAIN, label: '主要' },
+  { phase: PHASE.PERFORMANCE, label: '表演' },
+  { phase: PHASE.END, label: '結束' },
 ];
 
 export function renderPhaseBar(state, localPlayer = null) {
@@ -29,7 +29,7 @@ export function renderPhaseBar(state, localPlayer = null) {
     const active = s.phase === state.phase;
     const passed = PHASE_STEPS.findIndex(x => x.phase === state.phase) > i;
     const cls = active ? 'phase-active' : passed ? 'phase-passed' : '';
-    return `<span class="phase-step ${cls}" title="${s.label}"><span class="phase-icon">${s.icon}</span><span class="phase-label">${s.label}</span></span>`;
+    return `<span class="phase-step ${cls}"><span class="phase-label">${s.label}</span></span>`;
   }).join('<span class="phase-sep">›</span>');
 
   return `
