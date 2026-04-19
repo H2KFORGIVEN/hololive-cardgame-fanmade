@@ -9,13 +9,14 @@ let cardsData = [];
 let tierData = null;
 let decksData = [];
 let decklogDecks = [];
+let tournamentsData = [];
 let allGuides = [];
 let officialDecks = [];
 let rulesData = null;
 let currentView = 'home';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
-const _loaded = { cards: false, decklog: false };
+const _loaded = { cards: false, decklog: false, tournaments: false };
 
 // Cache-bust JSON fetches — browsers (and Python's http.server) don't set
 // cache-control, so data/*.json can serve stale copies for hours across deploys.
@@ -51,6 +52,12 @@ async function ensureDecklog() {
   if (_loaded.decklog) return;
   _loaded.decklog = true;
   decklogDecks = (await _fetchJSON('data/decklog_decks.json')) || [];
+}
+
+async function ensureTournaments() {
+  if (_loaded.tournaments) return;
+  _loaded.tournaments = true;
+  tournamentsData = (await _fetchJSON('data/tournaments.json')) || [];
 }
 
 async function render() {
@@ -94,8 +101,8 @@ async function render() {
     await ensureCards();
     renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks);
   } else if (currentView === 'tournament') {
-    await Promise.all([ensureDecklog(), ensureCards()]);
-    renderTournamentView(tournamentView, decklogDecks, cardsData);
+    await Promise.all([ensureDecklog(), ensureCards(), ensureTournaments()]);
+    renderTournamentView(tournamentView, decklogDecks, cardsData, tournamentsData);
   } else if (currentView === 'tutorial') {
     renderTutorialView(tutorialView);
   } else if (currentView === 'cards') {

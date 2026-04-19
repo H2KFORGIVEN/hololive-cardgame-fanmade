@@ -252,3 +252,166 @@ button:hover { border-color: #6b5ce7; background: #f4f1fa; }
   border-color: #6b5ce7;
   background: #f4f1fa;
 }
+
+/* Collapsible help panel — reused by tournaments.html */
+.admin-help {
+  margin: 10px 0;
+  background: #f0edf9;
+  border: 1px solid #d4cfe6;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+.admin-help summary {
+  cursor: pointer;
+  color: #4f4982;
+  font-weight: 600;
+  user-select: none;
+  padding: 2px 0;
+}
+.admin-help-body {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #d4cfe6;
+  color: #4f4982;
+  line-height: 1.6;
+}
+.admin-help-body p { margin: 4px 0; }
+.admin-help-body ul { margin: 4px 0 4px 20px; padding: 0; }
+.admin-help-body code { font-size: 0.85em; }
+
+/* tournaments.html — usage rate status + modal */
+.tm-usage-cell { text-align: center; }
+.tm-usage-btn {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #d4cfe6;
+  background: #fff;
+  color: #4f4982;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.tm-usage-btn:hover {
+  border-color: #6b5ce7;
+  background: #f4f1fa;
+}
+.tm-usage-filled {
+  background: #e8f5ea;
+  border-color: #a8d9b5;
+  color: #2e7d32;
+  font-weight: 600;
+}
+.tm-usage-filled:hover {
+  background: #d8ecdf;
+  border-color: #2e8a50;
+}
+.tm-usage-empty {
+  background: #fff4e0;
+  border-color: #f0d8a8;
+  color: #b87500;
+}
+.tm-usage-empty:hover {
+  background: #ffe8c4;
+  border-color: #b87500;
+}
+
+.tm-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+.tm-modal[hidden] { display: none; }
+.tm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(30,25,60,0.55);
+  backdrop-filter: blur(2px);
+}
+.tm-modal-card {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  width: 100%;
+  max-width: 620px;
+  border: 1px solid #d4cfe6;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 80px);
+}
+.tm-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #d4cfe6;
+  background: #f0edf9;
+  border-radius: 12px 12px 0 0;
+}
+.tm-modal-header h2 {
+  margin: 0;
+  color: #4f4982;
+  font-size: 1.1rem;
+}
+.tm-modal-close {
+  background: transparent;
+  border: none;
+  color: #7a74a8;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.tm-modal-close:hover { color: #4f4982; background: transparent; border-color: transparent; }
+.tm-modal-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+.tm-modal-footer {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid #d4cfe6;
+  background: #fafafd;
+  border-radius: 0 0 12px 12px;
+  gap: 8px;
+}
+
+.tm-scope {
+  border: 1px solid #d4cfe6;
+  border-radius: 8px;
+  padding: 8px 14px 4px;
+  margin: 4px 0 14px;
+}
+.tm-scope legend {
+  font-size: 0.8rem;
+  color: #4f4982;
+  font-weight: 600;
+  padding: 0 6px;
+}
+.tm-scope .admin-field { margin-bottom: 8px; }
+.tm-scope .admin-field label { font-size: 0.72rem; color: #7a74a8; }
+
+.tm-rates-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+.tm-rates-sum {
+  font-size: 0.82rem;
+  color: #7a74a8;
+  font-variant-numeric: tabular-nums;
+}
+.tm-rates-table input {
+  padding: 4px 8px !important;
+}

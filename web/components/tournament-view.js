@@ -1,89 +1,21 @@
 import { t, getLang } from '../i18n.js';
 
-const KNOWN_WGP_EVENTS = [
-  { event: 'WGP2025 Tokyo',               date: '2025-05-05', location: 'Tokyo Big Sight' },
-  { event: 'WGP2025 Nagoya',              date: '2025-08-17', location: 'Portmesse Nagoya' },
-  { event: 'WGP2025 Chiba',               date: '2025-09-15', location: 'Makuhari Messe' },
-  { event: 'WGP25-26 Aichi',              date: '2026-02-08', location: 'Aichi Sky Expo' },
-  { event: 'WGP25-26 Taipei',             date: '2026-03-14', location: 'Taipei International Convention Center' },
-  { event: 'ぐるっとツアー2026 Miyagi',    date: '2026-04-04', location: '仙台市中小企業活性化センター' },
-  { event: 'WGP25-26 Kuala Lumpur',       date: '2026-04-19', location: 'World Trade Centre KL' },
-  { event: 'WGP25-26 Fukuoka',            date: '2026-05-10', location: 'Kitakyushu Messe' },
-];
-
-const USAGE_RATE_DATA = {
-  'WGP2025 Chiba': {
-    scope: { 'zh-TW': '預選ラウンド 約2000人', en: 'Qualifier ~2000 players', ja: '予選ラウンド 約2000人', fr: 'Qualifications ~2000 joueurs' },
-    source: 'hololive OFFICIAL CARD GAME X (@hololive_OCG)',
-    rates: [
-      { oshi: 'クレイジー・オリー', pct: 25 },
-      { oshi: '天音かなた', pct: 23 },
-      { oshi: '紫咲シオン', pct: 9 },
-      { oshi: '小鳥遊キアラ', pct: 8 },
-      { oshi: '沙花叉クロヱ', pct: 8 },
-      { oshi: '星街すいせい', pct: 6 },
-      { oshi: '宝鐘マリン', pct: 6 },
-      { oshi: 'その他', pct: 15 },
-    ],
-  },
-  'WGP25-26 Aichi': {
-    scope: { 'zh-TW': '個人戰 預選ラウンド', en: 'Individual Qualifier Round', ja: '個人戦 予選ラウンド', fr: 'Qualifications individuelles' },
-    source: 'hololive OFFICIAL CARD GAME (@hololive_OCG)',
-    rates: [
-      { oshi: '戌神ころね', pct: 25 },
-      { oshi: '百鬼あやめ', pct: 17 },
-      { oshi: '風真いろは', pct: 10 },
-      { oshi: '森カリオペ', pct: 8 },
-      { oshi: 'ラオーラ・パンデーラ', pct: 5 },
-      { oshi: '大空スバル', pct: 4 },
-      { oshi: 'ロボ子さん', pct: 4 },
-      { oshi: '儒烏風亭らでん', pct: 4 },
-      { oshi: '兎田ぺこら', pct: 3 },
-      { oshi: '星咲リオナ', pct: 3 },
-      { oshi: 'その他', pct: 17 },
-    ],
-  },
-  'WGP25-26 Taipei': {
-    scope: { 'zh-TW': '預選ラウンド', en: 'Qualifier Round', ja: '予選ラウンド', fr: 'Qualifications' },
-    source: 'hololive OFFICIAL CARD GAME',
-    rates: [
-      { oshi: 'AZKi', pct: 22 },
-      { oshi: '角巻わため', pct: 9 },
-      { oshi: '風真いろは', pct: 8 },
-      { oshi: '百鬼あやめ', pct: 8 },
-      { oshi: '赤井はあと', pct: 7 },
-      { oshi: '戌神ころね', pct: 5 },
-      { oshi: '森カリオペ', pct: 4 },
-      { oshi: '桃鈴ねね', pct: 3 },
-      { oshi: '古石ビジュー', pct: 3 },
-      { oshi: 'その他', pct: 31 },
-    ],
-  },
-  'ぐるっとツアー2026 Miyagi': {
-    scope: { 'zh-TW': 'Trio 預選ラウンド', en: 'Trio Qualifier Round', ja: 'トリオバトル 予選ラウンド', fr: 'Trio Qualifications' },
-    source: 'hololive OFFICIAL CARD GAME (@hololive_OCG)',
-    rates: [
-      { oshi: 'AZKi', pct: 21 },
-      { oshi: '大神ミオ', pct: 19 },
-      { oshi: 'オーロ・クロニー', pct: 14 },
-      { oshi: '赤井はあと', pct: 11 },
-      { oshi: '角巻わため', pct: 9 },
-      { oshi: '響咲リオナ', pct: 4 },
-      { oshi: '風真いろは', pct: 4 },
-      { oshi: '桃鈴ねね', pct: 2 },
-      { oshi: '百鬼あやめ', pct: 2 },
-      { oshi: '兎田ぺこら', pct: 2 },
-      { oshi: 'その他', pct: 12 },
-    ],
-  },
-};
+// Tournament metadata (events + usage rates) is loaded from
+// /data/tournaments.json via the admin UI at /admin/tournaments.html.
+// Callers pass the parsed array in as the `tournamentsData` parameter.
 
 const USAGE_COLORS = [
   '#9b51e0', '#ff6b9d', '#ffd93d', '#6bcb77',
   '#9b59b6', '#ff8c42', '#45b7d1', '#96ceb4',
 ];
 
-export function renderTournamentView(container, decklogDecks, cardsData) {
+export function renderTournamentView(container, decklogDecks, cardsData, tournamentsData) {
+  const tournaments = tournamentsData || [];
+  const usageByEvent = {};
+  for (const entry of tournaments) {
+    if (entry.usage_rate) usageByEvent[entry.event] = entry.usage_rate;
+  }
+
   const cardsMap = {};
   if (cardsData) {
     for (const c of cardsData) cardsMap[c.id] = c;
@@ -99,11 +31,11 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
     }
   }
 
-  for (const known of KNOWN_WGP_EVENTS) {
+  for (const known of tournaments) {
     if (!grouped[known.event]) {
-      grouped[known.event] = { decks: [], date: known.date, location: known.location };
+      grouped[known.event] = { decks: [], date: known.date || '', location: known.location || '' };
     }
-    if (!grouped[known.event].location) {
+    if (!grouped[known.event].location && known.location) {
       grouped[known.event].location = known.location;
     }
   }
@@ -145,11 +77,11 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
       ? `<span class="tournament-event-location">${location}</span>`
       : '';
 
-    const usageKey = _findUsageKey(event);
+    const usageKey = _findUsageKey(event, usageByEvent);
     let usageHtml = '';
     if (usageKey && !usageRendered.has(usageKey)) {
       usageRendered.add(usageKey);
-      usageHtml = _renderUsageChart(USAGE_RATE_DATA[usageKey]);
+      usageHtml = _renderUsageChart(usageByEvent[usageKey]);
     }
 
     html += `
@@ -173,8 +105,8 @@ export function renderTournamentView(container, decklogDecks, cardsData) {
   container.innerHTML = html;
 }
 
-function _findUsageKey(eventName) {
-  for (const key of Object.keys(USAGE_RATE_DATA)) {
+function _findUsageKey(eventName, usageByEvent) {
+  for (const key of Object.keys(usageByEvent)) {
     if (eventName === key || eventName.startsWith(key + ' -')) return key;
   }
   return null;

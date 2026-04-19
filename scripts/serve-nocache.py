@@ -18,9 +18,13 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 WEB_DIR = PROJECT_ROOT / "web"
 
 # Files the admin API can manage. Key = URL segment, value = absolute path.
+# Note: tournaments.json lives directly inside web/data/ because the frontend
+# fetches it at /data/tournaments.json — no separate scraper stage produces it,
+# so there's no root-level source + web/data/ copy split like deck_codes.json.
 ADMIN_FILES = {
     "deck-codes": PROJECT_ROOT / "deck_codes.json",
     "x-posts": PROJECT_ROOT / "x_posts.json",
+    "tournaments": PROJECT_ROOT / "web" / "data" / "tournaments.json",
 }
 
 

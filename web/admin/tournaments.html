@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>大賽資訊 · 管理後台</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>大賽資訊</h1>
+    <nav class="admin-crumb"><a href="index.html">← 後台首頁</a></nav>
+    <p class="admin-note">
+      維護 <code>web/data/tournaments.json</code> — 大賽基本資料（event / date / location）+ 官方使用率統計。
+      這裡填的資料會顯示在前台「大賽」頁的 event 標題 + 使用率長條圖。
+    </p>
+    <details class="admin-help">
+      <summary>❓ 這頁能填什麼？</summary>
+      <div class="admin-help-body">
+        <p><b>大賽基本資料（每一列）</b></p>
+        <ul>
+          <li><code>event</code>：大賽名稱，要跟 <code>deck_codes.json</code> 裡的 event 完全一致（前台用這個對上 decks）</li>
+          <li><code>date</code>：大賽日期 YYYY-MM-DD</li>
+          <li><code>location</code>：會場名稱</li>
+        </ul>
+        <p><b>使用率（optional，官方公布後再填）</b></p>
+        <ul>
+          <li>點每列的「使用率」按鈕展開 modal</li>
+          <li><code>scope</code> 要填四個語系（zh-TW / en / ja / fr），例：「預選ラウンド」</li>
+          <li><code>source</code>：資料來源（例：hololive OFFICIAL CARD GAME）</li>
+          <li><code>rates</code>：推し使用率列表，加總 ~= 100%，最後通常一列「その他」補尾數</li>
+        </ul>
+      </div>
+    </details>
+  </header>
+
+  <main>
+    <div class="admin-toolbar">
+      <button id="addBtn" class="btn-primary">＋ 新增大賽</button>
+      <button id="saveBtn" class="btn-save">💾 存檔</button>
+      <button id="reloadBtn" class="btn-ghost">重新載入</button>
+      <span class="admin-status" id="status"></span>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="table">
+        <thead>
+          <tr>
+            <th style="min-width:180px">event</th>
+            <th style="min-width:110px">date</th>
+            <th>location</th>
+            <th style="min-width:140px">使用率統計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <p>存檔後叫 Claude 幫你 push-deploy，或自己跑 <code>./scripts/push-deploy.sh</code>。</p>
+  </footer>
+
+  <!-- Usage rate modal -->
+  <div id="usageModal" class="tm-modal" hidden>
+    <div class="tm-modal-backdrop" data-close="1"></div>
+    <div class="tm-modal-card">
+      <div class="tm-modal-header">
+        <h2 id="tmEventName">—</h2>
+        <button class="tm-modal-close" data-close="1" aria-label="關閉">×</button>
+      </div>
+
+      <div class="tm-modal-body">
+        <div class="admin-field">
+          <label>source（資料來源）</label>
+          <input type="text" id="tmSource" placeholder="hololive OFFICIAL CARD GAME (@hololive_OCG)">
+        </div>
+
+        <fieldset class="tm-scope">
+          <legend>scope（範圍描述，四語）</legend>
+          <div class="admin-field">
+            <label>zh-TW</label>
+            <input type="text" id="tmScopeZhTw" placeholder="預選ラウンド">
+          </div>
+          <div class="admin-field">
+            <label>en</label>
+            <input type="text" id="tmScopeEn" placeholder="Qualifier Round">
+          </div>
+          <div class="admin-field">
+            <label>ja</label>
+            <input type="text" id="tmScopeJa" placeholder="予選ラウンド">
+          </div>
+          <div class="admin-field">
+            <label>fr</label>
+            <input type="text" id="tmScopeFr" placeholder="Qualifications">
+          </div>
+        </fieldset>
+
+        <div class="tm-rates-header">
+          <strong>rates（推し使用率）</strong>
+          <span class="tm-rates-sum" id="tmRatesSum">總和：—</span>
+          <button type="button" id="tmAddRate" class="btn-primary" style="margin-left:auto">＋ 新增一列</button>
+        </div>
+
+        <table class="admin-table tm-rates-table">
+          <thead>
+            <tr>
+              <th style="width:70%">oshi</th>
+              <th style="width:20%">pct</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tmRatesBody"></tbody>
+        </table>
+
+        <details class="admin-help" style="margin-top:12px">
+          <summary>如果這場還沒官方統計怎辦？</summary>
+          <div class="admin-help-body">
+            <p>不用填這個 modal，直接關掉就好。沒填使用率的 event 在前台顯示時只會有標題 + 牌組，不會顯示長條圖。</p>
+            <p>有填過但想整個刪掉 → 點下方「清除使用率」按鈕。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="tm-modal-footer">
+        <button type="button" id="tmClear" class="btn-del">清除使用率</button>
+        <div style="margin-left:auto; display:flex; gap:8px">
+          <button type="button" class="btn-ghost" data-close="1">取消</button>
+          <button type="button" id="tmSave" class="btn-save">套用到這列</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API = '/api/admin/tournaments';
+    const BASE_FIELDS = ['event', 'date', 'location'];
+    const tbody = document.getElementById('tbody');
+    const statusEl = document.getElementById('status');
+
+    function setStatus(msg, tone) {
+      statusEl.textContent = msg;
+      statusEl.className = 'admin-status' + (tone ? ' admin-status-' + tone : '');
+    }
+
+    function makeRow(entry = {}) {
+      const tr = document.createElement('tr');
+      tr._usageRate = entry.usage_rate || null;
+      for (const f of BASE_FIELDS) {
+        const td = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.dataset.field = f;
+        input.value = entry[f] || '';
+        if (f === 'date') input.placeholder = 'YYYY-MM-DD';
+        if (f === 'event') input.placeholder = '例: WGP25-26 Fukuoka';
+        if (f === 'location') input.placeholder = '例: Kitakyushu Messe';
+        td.appendChild(input);
+        tr.appendChild(td);
+      }
+
+      // Usage rate status + edit button
+      const usageTd = document.createElement('td');
+      usageTd.className = 'tm-usage-cell';
+      const usageBtn = document.createElement('button');
+      usageBtn.type = 'button';
+      usageBtn.className = 'tm-usage-btn';
+      usageBtn.onclick = () => openUsageModal(tr);
+      usageTd.appendChild(usageBtn);
+      tr.appendChild(usageTd);
+      _refreshUsageCell(tr);
+
+      // Delete row
+      const actionsTd = document.createElement('td');
+      const del = document.createElement('button');
+      del.className = 'btn-del';
+      del.textContent = '刪除';
+      del.onclick = () => { if (confirm('刪除這筆大賽？')) tr.remove(); };
+      actionsTd.appendChild(del);
+      tr.appendChild(actionsTd);
+
+      return tr;
+    }
+
+    function _refreshUsageCell(tr) {
+      const btn = tr.querySelector('.tm-usage-btn');
+      if (tr._usageRate) {
+        const n = (tr._usageRate.rates || []).length;
+        btn.textContent = `✓ 已設定（${n} 筆）`;
+        btn.className = 'tm-usage-btn tm-usage-filled';
+      } else {
+        btn.textContent = '＋ 設定使用率';
+        btn.className = 'tm-usage-btn tm-usage-empty';
+      }
+    }
+
+    // ─── Usage rate modal ──────────────────────────────────────────────
+    const modal = document.getElementById('usageModal');
+    const ratesBody = document.getElementById('tmRatesBody');
+    let _modalTr = null;
+
+    function openUsageModal(tr) {
+      _modalTr = tr;
+      const eventName = tr.querySelector('input[data-field="event"]').value.trim();
+      document.getElementById('tmEventName').textContent = eventName || '（未命名大賽）';
+
+      const u = tr._usageRate || { scope: {}, source: '', rates: [] };
+      document.getElementById('tmSource').value = u.source || '';
+      document.getElementById('tmScopeZhTw').value = u.scope?.['zh-TW'] || '';
+      document.getElementById('tmScopeEn').value = u.scope?.en || '';
+      document.getElementById('tmScopeJa').value = u.scope?.ja || '';
+      document.getElementById('tmScopeFr').value = u.scope?.fr || '';
+
+      ratesBody.innerHTML = '';
+      const rates = u.rates && u.rates.length ? u.rates : [{ oshi: '', pct: 0 }];
+      for (const r of rates) ratesBody.appendChild(_makeRateRow(r));
+      _updateSum();
+
+      modal.hidden = false;
+      setTimeout(() => document.getElementById('tmSource').focus(), 50);
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      _modalTr = null;
+    }
+
+    modal.addEventListener('click', e => {
+      if (e.target.dataset.close) closeModal();
+    });
+
+    function _makeRateRow(r = { oshi: '', pct: 0 }) {
+      const tr = document.createElement('tr');
+      const oshiTd = document.createElement('td');
+      const oshiInp = document.createElement('input');
+      oshiInp.type = 'text';
+      oshiInp.placeholder = '例: AZKi / その他';
+      oshiInp.value = r.oshi || '';
+      oshiInp.dataset.field = 'oshi';
+      oshiTd.appendChild(oshiInp);
+      tr.appendChild(oshiTd);
+
+      const pctTd = document.createElement('td');
+      const pctInp = document.createElement('input');
+      pctInp.type = 'number';
+      pctInp.min = '0';
+      pctInp.max = '100';
+      pctInp.step = '1';
+      pctInp.placeholder = '%';
+      pctInp.value = r.pct != null ? r.pct : '';
+      pctInp.dataset.field = 'pct';
+      pctInp.addEventListener('input', _updateSum);
+      pctTd.appendChild(pctInp);
+      tr.appendChild(pctTd);
+
+      const actionsTd = document.createElement('td');
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'btn-del';
+      del.textContent = '×';
+      del.style.padding = '2px 8px';
+      del.onclick = () => { tr.remove(); _updateSum(); };
+      actionsTd.appendChild(del);
+      tr.appendChild(actionsTd);
+
+      return tr;
+    }
+
+    function _updateSum() {
+      let sum = 0;
+      for (const inp of ratesBody.querySelectorAll('input[data-field="pct"]')) {
+        const n = parseFloat(inp.value);
+        if (!isNaN(n)) sum += n;
+      }
+      const el = document.getElementById('tmRatesSum');
+      const rounded = Math.round(sum * 10) / 10;
+      el.textContent = `總和：${rounded}%`;
+      el.style.color = (sum >= 95 && sum <= 105) ? '#2e8a50' : (sum === 0 ? '#7a74a8' : '#b87500');
+    }
+
+    document.getElementById('tmAddRate').onclick = () => {
+      ratesBody.appendChild(_makeRateRow());
+      _updateSum();
+    };
+
+    document.getElementById('tmClear').onclick = () => {
+      if (!_modalTr) return;
+      if (!confirm('清除這筆大賽的使用率統計？')) return;
+      _modalTr._usageRate = null;
+      _refreshUsageCell(_modalTr);
+      closeModal();
+    };
+
+    document.getElementById('tmSave').onclick = () => {
+      if (!_modalTr) return;
+      const source = document.getElementById('tmSource').value.trim();
+      const scope = {
+        'zh-TW': document.getElementById('tmScopeZhTw').value.trim(),
+        en: document.getElementById('tmScopeEn').value.trim(),
+        ja: document.getElementById('tmScopeJa').value.trim(),
+        fr: document.getElementById('tmScopeFr').value.trim(),
+      };
+      const rates = [];
+      for (const tr of ratesBody.querySelectorAll('tr')) {
+        const oshi = tr.querySelector('input[data-field="oshi"]').value.trim();
+        const pctStr = tr.querySelector('input[data-field="pct"]').value.trim();
+        if (!oshi && !pctStr) continue;
+        const pct = parseFloat(pctStr);
+        if (!oshi) { alert('有一列 pct 填了但 oshi 空著 — 請補 oshi 名稱或刪掉該列。'); return; }
+        if (isNaN(pct)) { alert(`oshi「${oshi}」的 pct 不是數字。`); return; }
+        rates.push({ oshi, pct });
+      }
+      if (!rates.length) {
+        alert('rates 列表空著 — 要清除使用率請點「清除使用率」按鈕。');
+        return;
+      }
+      _modalTr._usageRate = { scope, source, rates };
+      _refreshUsageCell(_modalTr);
+      closeModal();
+    };
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // ─── Load / save ───────────────────────────────────────────────────
+    async function load() {
+      setStatus('載入中...', '');
+      try {
+        const r = await fetch(API);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const data = await r.json();
+        tbody.innerHTML = '';
+        for (const entry of data) tbody.appendChild(makeRow(entry));
+        const withUsage = data.filter(d => d.usage_rate).length;
+        setStatus(`已載入 ${data.length} 筆大賽（${withUsage} 筆已設使用率）`, 'ok');
+      } catch (e) {
+        setStatus('載入失敗: ' + e.message, 'err');
+      }
+    }
+
+    function collect() {
+      const out = [];
+      for (const tr of tbody.querySelectorAll('tr')) {
+        const obj = {};
+        let hasAny = false;
+        for (const inp of tr.querySelectorAll('input[data-field]')) {
+          const f = inp.dataset.field;
+          const v = inp.value.trim();
+          if (v) hasAny = true;
+          obj[f] = v;
+        }
+        if (!hasAny && !tr._usageRate) continue;
+        obj.usage_rate = tr._usageRate || null;
+        out.push(obj);
+      }
+      return out;
+    }
+
+    async function save() {
+      const data = collect();
+      if (!confirm('存檔 ' + data.length + ' 筆大賽資訊？這會覆寫 web/data/tournaments.json。')) return;
+      setStatus('寫入中...', '');
+      try {
+        const r = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+        setStatus('✓ 已存檔 (' + j.bytes + ' bytes)。記得叫 Claude push-deploy。', 'ok');
+      } catch (e) {
+        setStatus('存檔失敗: ' + e.message + ' — LAN 無法寫入，請從 localhost 打開。', 'err');
+      }
+    }
+
+    document.getElementById('addBtn').onclick = () => tbody.appendChild(makeRow());
+    document.getElementById('saveBtn').onclick = save;
+    document.getElementById('reloadBtn').onclick = load;
+    load();
+  </script>
+</body>
+</html>
