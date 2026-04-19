@@ -2,6 +2,7 @@
 // Server-authoritative: runs GameEngine, clients are views
 
 import { WebSocketServer } from 'ws';
+import { fileURLToPath } from 'node:url';
 import { loadCardsFromFile, getCard } from '../core/CardDatabase.js';
 import { processAction } from '../core/GameEngine.js';
 import { PHASE, ZONE, ACTION, INITIAL_HAND_SIZE, isMember } from '../core/constants.js';
@@ -375,8 +376,9 @@ function send(ws, data) {
 // ── Server Startup ──
 
 async function main() {
-  // Load card database
-  const cardsPath = new URL('../../data/cards.json', import.meta.url).pathname;
+  // Load card database. Use fileURLToPath so paths with spaces (e.g. packaged ".app"
+  // bundles with "Fan-made" in the name) decode correctly — pathname would keep %20.
+  const cardsPath = fileURLToPath(new URL('../../data/cards.json', import.meta.url));
   await loadCardsFromFile(cardsPath);
   console.log('Card database loaded');
 

@@ -25,7 +25,20 @@
     }
   </script>
   <script type="module">
-    const { GameController } = await import('./GameController.js?v=' + Date.now());
+    // Surface any uncaught error as a visible banner (packaged-app users can't open devtools easily)
+    window.addEventListener('error', (e) => showFatal(e.error?.stack || e.message));
+    window.addEventListener('unhandledrejection', (e) => showFatal(e.reason?.stack || String(e.reason)));
+    function showFatal(msg) {
+      const app = document.getElementById('app');
+      if (!app) return;
+      app.innerHTML = '<pre style="padding:20px;color:#b00;background:#fff;white-space:pre-wrap;font-size:12px;overflow:auto;max-height:100vh">[錯誤] 遊戲載入失敗\n\n' + String(msg).replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) + '</pre>';
+    }
+
+    // `?v=timestamp` cache-buster breaks file:// in packaged Electron (query goes into the path).
+    // Skip it when running inside the desktop app; keep it in the browser for dev.
+    const isDesktop = !!window.hocgDesktop?.isElectron;
+    const controllerUrl = isDesktop ? './GameController.js' : './GameController.js?v=' + Date.now();
+    const { GameController } = await import(controllerUrl);
     const app = document.getElementById('app');
     const game = new GameController(app);
 
