@@ -10,42 +10,42 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_006/",
     "oshi": "Nerissa Ravencroft",
     "oshi_card_id": "hBP05-006",
-    "oshi_image": "images/cards/hBP05-006_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-006_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-065",
         "count": 5,
-        "imageUrl": "images/cards/hBP02-065_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP02-065_02_C.png"
       },
       {
         "card_id": "hBP05-057",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-057_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-057_U.png"
       },
       {
         "card_id": "hBP05-058",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-058_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-058_C.png"
       },
       {
         "card_id": "hBP02-067",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-067_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-067_U.png"
       },
       {
         "card_id": "hBP05-059",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-059_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-059_U.png"
       },
       {
         "card_id": "hBP05-060",
         "count": 3,
-        "imageUrl": "images/cards/hBP05-060_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-060_R.png"
       },
       {
         "card_id": "hBP02-068",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-068_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-068_R.png"
       },
       {
         "card_id": "hBP05-061",
@@ -55,39 +55,39 @@
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hBP05-083",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-083_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-083_U.png"
       },
       {
         "card_id": "hBP05-087",
         "count": 1,
-        "imageUrl": "images/cards/hBP05-087_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-087_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -106,7 +106,7 @@
       {
         "name": "Nerissa Ravencroft's Staff",
         "card_id": "hBP05-083",
-        "imageUrl": "images/cards/hBP05-083_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-083_U.png",
         "text": {
           "en": "When combined with the Arts of hBP05-061 [Nerissa Ravencroft], it can deal up to 210 damage at maximum and also allows for precise damage adjustment, and it can be searched directly from the deck with hBP05-060 [Nerissa Ravencroft], making it a highly versatile tool.",
           "ja": "hBP05-061『ネリッサ・レイブンクロフト』のアーツと組み合わせることで最大210ダメージを与えることができ、緻密なダメージ調整も可能で、hBP05-060『ネリッサ・レイブンクロフト』でデッキから直接サーチできるため汎用性が高い。",
@@ -117,7 +117,7 @@
       {
         "name": "Jailbird",
         "card_id": "hBP05-087",
-        "imageUrl": "images/cards/hBP05-087_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-087_U.png",
         "text": {
           "en": "A fan that allows you to reattach cheer when your holomem is downed. By attaching it early to a [Nerissa Ravencroft] that is likely to be downed, you can minimize the loss of cheer.To enable multiple 2nd holomem to use Arts in the late game, be sure to manage your early-game cheer carefully.",
           "ja": "ホロメムがダウンしたときにチアを再取り付けできるファン。ダウンしやすい「ネリッサ・レイブンクロフト」に早めにつけることで、チアのロスを最小限に抑えることができます。終盤に複数の2ndホロメムがアーツを使えるようにするために、序盤のチアはしっかり管理しましょう。",
@@ -141,42 +141,42 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_002/",
     "oshi": "Airani Iofifteen",
     "oshi_card_id": "hBP05-002",
-    "oshi_image": "images/cards/hBP05-002_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-002_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-052",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-052_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP01-052_02_C.png"
       },
       {
         "card_id": "hBP05-019",
         "count": 3,
-        "imageUrl": "images/cards/hBP05-019_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-019_U.png"
       },
       {
         "card_id": "hBP05-020",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-020_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-020_C.png"
       },
       {
         "card_id": "hBP01-053",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-053_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-053_C.png"
       },
       {
         "card_id": "hBP01-054",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-054_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-054_U.png"
       },
       {
         "card_id": "hBP05-021",
         "count": 1,
-        "imageUrl": "images/cards/hBP05-021_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-021_U.png"
       },
       {
         "card_id": "hBP05-022",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-022_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-022_R.png"
       },
       {
         "card_id": "hBP01-055",
@@ -186,17 +186,17 @@
       {
         "card_id": "hBP05-023",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-023_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-023_RR.png"
       },
       {
         "card_id": "hBP03-073",
         "count": 3,
-        "imageUrl": "images/cards/hBP03-073_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-073_C.png"
       },
       {
         "card_id": "hBP03-076",
         "count": 3,
-        "imageUrl": "images/cards/hBP03-076_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-076_U.png"
       },
       {
         "card_id": "hBP03-077",
@@ -206,44 +206,44 @@
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP05-074",
         "count": 1,
-        "imageUrl": "images/cards/hBP05-074_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-074_C.png"
       },
       {
         "card_id": "hBP01-114",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY02-001",
         "count": 20,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -262,7 +262,7 @@
       {
         "name": "Airani Iofifteen",
         "card_id": "hBP05-002",
-        "imageUrl": "images/cards/hBP05-002_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-002_OSR.png",
         "text": {
           "en": "With the Oshi skill, you can reattach the cheer from a holomem that is about to take damage, allowing you to reduce the amount of cheer sent to the archive. Since it can be activated by spending just 1 holo Power, use it proactively on holomem that are likely to be downed.The SP Oshi skill is very powerful, as it allows you to add 2 holomem from ID Gen 1 to your hand, so choose the holomem you need from your deck depending on the situation.",
           "ja": "推しスキルを使えば、ダメージを受けそうなホロメムからの応援を貼り直すことができ、アーカイブに送られる応援の量を減らすことができます。ホロパワーを1消費するだけで発動できるので、ダウンしやすいホロメムには積極的に使っていきましょう。SP推しスキルはID第1世代のホロメムを2枚手札に加えることができるため非常に強力なので、状況に応じてデッキから必要なホロメムを選択しましょう。",
@@ -273,7 +273,7 @@
       {
         "name": "Airani Iofifteen【1st】",
         "card_id": "hBP05-022",
-        "imageUrl": "images/cards/hBP05-022_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-022_R.png",
         "text": {
           "en": "If you have 4 or more cheer on your stage, you can use its collab effect to give +20 Arts to one of your holomem.Since this can also boost the Arts of hBP05-023 [Airani Iofifteen], use this ability to make up for damage when you are unable to gather enough cheer on your stage.",
           "ja": "ステージ上にチアが4体以上いる場合、コラボ効果でホロメム1体にアーツ+20を与えることができます。hBP05-023「アイラニ・イオフィフティーン」のアーツも強化できるので、ステージにチアが集まらない時のダメージを補うことができます。",
@@ -297,99 +297,99 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_001/",
     "oshi": "Shirogane Noel",
     "oshi_card_id": "hBP05-001",
-    "oshi_image": "images/cards/hBP05-001_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-001_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-014",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-014_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP02-014_02_C.png"
       },
       {
         "card_id": "hBP05-008",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-008_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-008_U.png"
       },
       {
         "card_id": "hBP05-009",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-009_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-009_C.png"
       },
       {
         "card_id": "hBP02-016",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-016_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-016_U.png"
       },
       {
         "card_id": "hBP02-017",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-017_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-017_RR.png"
       },
       {
         "card_id": "hBP05-010",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-010_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-010_U.png"
       },
       {
         "card_id": "hBP05-012",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-012_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-012_RR.png"
       },
       {
         "card_id": "hBP01-038",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-038_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP01-038_02_C.png"
       },
       {
         "card_id": "hBP05-014",
         "count": 1,
-        "imageUrl": "images/cards/hBP05-014_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-014_C.png"
       },
       {
         "card_id": "hBP01-041",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-041_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-041_U.png"
       },
       {
         "card_id": "hBP05-016",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-016_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-016_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hBP05-074",
         "count": 3,
-        "imageUrl": "images/cards/hBP05-074_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-074_C.png"
       },
       {
         "card_id": "hBP05-081",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-081_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-081_U.png"
       },
       {
         "card_id": "hBP05-075",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-075_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-075_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -408,7 +408,7 @@
       {
         "name": "Shirogane Noel【1st】",
         "card_id": "hBP05-010",
-        "imageUrl": "images/cards/hBP05-010_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-010_U.png",
         "text": {
           "en": "A powerful tool that can grant +30 Arts under certain conditions.Attach it to hBP02-017 [Shirogane Noel] or hBP05-012 [Shirogane Noel] to deal significant damage to your opponent’s holomem.",
           "ja": "特定条件下でArts+30を付与できる強力なツール。hBP02-017『白銀ノエル』またはhBP05-012『白銀ノエル』に装着すると、相手のホロメムに大ダメージを与えることができる。",
@@ -419,7 +419,7 @@
       {
         "name": "Shirogane Noel's Mace",
         "card_id": "hBP05-081",
-        "imageUrl": "images/cards/hBP05-081_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-081_U.png",
         "text": {
           "en": "It has a gift ability that can protect your center holomem with #Gen3.Ideally, use this ability to create a situation where your 2nd holomem can use Arts multiple times.",
           "ja": "#Gen3 でセンターのホロメムを守れるギフトアビリティを持っており、このアビリティを利用して2番目のホロメムがアーツを複数回使える状況を作り出すのが理想的です。",
@@ -443,82 +443,82 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_008/",
     "oshi": "Houshou Marine",
     "oshi_card_id": "hBP02-003",
-    "oshi_image": "images/cards/hBP02-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-028",
         "count": 9,
-        "imageUrl": "images/cards/hBP02-028_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-028_C.png"
       },
       {
         "card_id": "hBP02-029",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-029_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-029_U.png"
       },
       {
         "card_id": "hBP02-030",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-030_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-030_C.png"
       },
       {
         "card_id": "hBP02-031",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-031_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-031_U.png"
       },
       {
         "card_id": "hBP02-032",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-032_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-032_R.png"
       },
       {
         "card_id": "hBP02-033",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-033_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-033_RR.png"
       },
       {
         "card_id": "hBP04-038",
         "count": 1,
-        "imageUrl": "images/cards/hBP04-038_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-038_R.png"
       },
       {
         "card_id": "hSD09-003",
         "count": 1,
-        "imageUrl": "images/cards/hSD09-003_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD09-003_R.png"
       },
       {
         "card_id": "hSD09-004",
         "count": 1,
-        "imageUrl": "images/cards/hSD09-004_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD09-004_RR.png"
       },
       {
         "card_id": "hSD09-006",
         "count": 1,
-        "imageUrl": "images/cards/hSD09-006_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD09-006_C.png"
       },
       {
         "card_id": "hBP01-098",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-098_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-098_R.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP02-085",
@@ -528,24 +528,24 @@
       {
         "card_id": "hBP03-088",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-095",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-095_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-095_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 20,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -564,7 +564,7 @@
       {
         "name": "Houshou Marine【1st】",
         "card_id": "hSD09-003",
-        "imageUrl": "images/cards/hSD09-003_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD09-003_R.png",
         "text": {
           "en": "As a 1st Buzz, it has high HP and is difficult to be downed, and its collab effect allows you to deal steady damage.By blooming into a 2nd, you can avoid the drawback of Buzz holomem that reduces your life by 2.",
           "ja": "1stバズとしてはHPが高くダウンされにくく、連携効果で安定したダメージを与えることができ、2ndに開花させることでバズホロメムのライフが2減るデメリットを回避できます。",
@@ -575,7 +575,7 @@
       {
         "name": "Houshou Marine【2nd】",
         "card_id": "hSD09-004",
-        "imageUrl": "images/cards/hSD09-004_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD09-004_RR.png",
         "text": {
           "en": "It has Arts that can be used for just 1 cheer, as well as Arts that deal damage to both your opponent’s center and collab holomem.One of this deck’s strengths is the ability to choose which [Houshou Marine] to use for Arts depending on the situation.",
           "ja": "1チアだけで使えるアーツや、相手のセンターとコラボホロメムにダメージを与えられるアーツを持っており、状況に応じてアーツに使用する「鳳翔マリン」を選べるのもこのデッキの強みです。",
@@ -599,89 +599,89 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_005/",
     "oshi": "Yuzuki Choco",
     "oshi_card_id": "hBP05-005",
-    "oshi_image": "images/cards/hBP05-005_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-005_OSR.png",
     "main_deck": [
       {
         "card_id": "hSD04-002",
         "count": 6,
-        "imageUrl": "images/cards/hSD04-002_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD04-002_02_C.png"
       },
       {
         "card_id": "hSD04-003",
         "count": 4,
-        "imageUrl": "images/cards/hSD04-003_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD04/EN_hSD04-003_C.png"
       },
       {
         "card_id": "hBP05-053",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-053_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-053_C.png"
       },
       {
         "card_id": "hBP05-055",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-055_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-055_R.png"
       },
       {
         "card_id": "hSD04-007",
         "count": 4,
-        "imageUrl": "images/cards/hSD04-007_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD04/EN_hSD04-007_U.png"
       },
       {
         "card_id": "hBP02-060",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-060_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-060_R.png"
       },
       {
         "card_id": "hBP05-056",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-056_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-056_RR.png"
       },
       {
         "card_id": "hSD04-009",
         "count": 2,
-        "imageUrl": "images/cards/hSD04-009_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD04/EN_hSD04-009_RR.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP05-076",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-076_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-076_U.png"
       },
       {
         "card_id": "hSD04-013",
         "count": 2,
-        "imageUrl": "images/cards/hSD04-013_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD04/EN_hSD04-013_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -700,7 +700,7 @@
       {
         "name": "Yuzuki Choco",
         "card_id": "hBP05-005",
-        "imageUrl": "images/cards/hBP05-005_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-005_OSR.png",
         "text": {
           "en": "This is a crucial card for the deck. Since her Oshi skill and SP Oshi skill allow you to add #Food cards to your hand, use them to aggressively increase the damage dealt by your [Yuzuki Choco] holomem.",
           "ja": "デッキに欠かせないカードです。推しスキルやSP推しスキルで#食べ物カードを手札に加えることができるので、積極的に「柚木チョコ」ホロメムのダメージを伸ばしていきましょう。",
@@ -711,7 +711,7 @@
       {
         "name": "Yuzuki Choco【2nd】",
         "card_id": "hBP05-056",
-        "imageUrl": "images/cards/hBP05-056_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-056_RR.png",
         "text": {
           "en": "She is your main attacker with #Food. She has excellent synergy with hBP05-005 [Yuzuki Choco]. By using #Food cards returned to your hand, you can increase your damage while also returning holomem from the archive to your hand. This allows you to fight while simultaneously preparing your holomem in the back position.",
           "ja": "彼女は #Food のメインアタッカーです。 hBP05-005「柚木チョコ」との相乗効果が抜群です。手札に戻った #Food カードを使用することで、ダメージを増加させながら、アーカイブからホロメムを手札に戻すことができます。これにより、バックポジションでホロメムを準備しながら戦うことができます。",
@@ -735,79 +735,79 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_004/",
     "oshi": "Nekomata Okayu",
     "oshi_card_id": "hBP05-004",
-    "oshi_image": "images/cards/hBP05-004_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-004_OSR.png",
     "main_deck": [
       {
         "card_id": "hSD03-002",
         "count": 6,
-        "imageUrl": "images/cards/hSD03-002_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD03-002_02_C.png"
       },
       {
         "card_id": "hBP05-041",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-041_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-041_U.png"
       },
       {
         "card_id": "hBP05-042",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-042_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-042_C.png"
       },
       {
         "card_id": "hBP05-043",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-043_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-043_U.png"
       },
       {
         "card_id": "hBP05-044",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-044_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-044_R.png"
       },
       {
         "card_id": "hBP02-041",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-041_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-041_RR.png"
       },
       {
         "card_id": "hBP05-045",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-045_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-045_RR.png"
       },
       {
         "card_id": "hSD03-009",
         "count": 1,
-        "imageUrl": "images/cards/hSD03-009_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD03/EN_hSD03-009_RR.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD03-013",
         "count": 3,
-        "imageUrl": "images/cards/hSD03-013_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD03/EN_hSD03-013_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY04-001",
         "count": 20,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -826,7 +826,7 @@
       {
         "name": "Nekomata Okayu",
         "card_id": "hBP05-004",
-        "imageUrl": "images/cards/hBP05-004_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-004_OSR.png",
         "text": {
           "en": "This is the card that leads the deck to victory. Her SP Oshi skill can create a situation where you down two holomem at once, allowing you to turn the tide of an unfavorable game.",
           "ja": "デッキを勝利に導くカードです。 SP推しスキルでホロメムを2体同時にダウンさせる状況を作り出し、不利な試合の流れを変えることができる。",
@@ -837,7 +837,7 @@
       {
         "name": "Nekomata Okayu【2nd】",
         "card_id": "hBP05-045",
-        "imageUrl": "images/cards/hBP05-045_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-045_RR.png",
         "text": {
           "en": "This is the key card of the deck that boosts Nekomata Okayu’s special damage. Pair her with hBP02-041 [Nekomata Okayu] to aim for massive damage.",
           "ja": "猫又おかゆの特殊ダメージを強化するデッキのキーカードです。 hBP02-041「猫又おかゆ」と組み合わせて大ダメージを狙いましょう。",
@@ -861,84 +861,84 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_003/",
     "oshi": "Omaru Polka",
     "oshi_card_id": "hBP05-003",
-    "oshi_image": "images/cards/hBP05-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-068",
         "count": 5,
-        "imageUrl": "images/cards/hBP01-068_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP01-068_02_C.png"
       },
       {
         "card_id": "hBP05-030",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-030_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-030_U.png"
       },
       {
         "card_id": "hBP05-031",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-031_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-031_C.png"
       },
       {
         "card_id": "hBP01-070",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-070_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-070_U.png"
       },
       {
         "card_id": "hBP05-033",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-033_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-033_R.png"
       },
       {
         "card_id": "hBP01-071",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-071_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-071_RR.png"
       },
       {
         "card_id": "hBP05-034",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-034_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-034_RR.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP01-126",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-126_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-126_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 20,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -957,7 +957,7 @@
       {
         "name": "Omaru Polka",
         "card_id": "hBP05-003",
-        "imageUrl": "images/cards/hBP05-003_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-003_OSR.png",
         "text": {
           "en": "Her SP Oshi skill lets you add [Omaru Polka] cards for blooming and staff cards to your hand. The remaining cards are archived, which helps increase your archive count. If you lack limited support cards, using this skill boldly to find [Harusaki Nodoka] or [Manager-chan] is a great tactic. Save your holo Power for this Oshi skill until your hand is low and your stage is filled with [Troupe Member] cards.",
           "ja": "SP推しスキルで「オマルポルカ」の開花カードやスタッフカードを手札に加えることができます。残りのカードはアーカイブされるため、アーカイブ数を増やすことができます。限られたサポートカードが不足している場合は、このスキルを大胆に使って「春咲のどか」や「マネージャーちゃん」を探すのも良い戦術です。手札が少なくなり、ステージが[団員]のカードで埋まるまで、この推しスキルのためにホロパワーを温存してください。",
@@ -968,7 +968,7 @@
       {
         "name": "Omaru Polka【2nd】",
         "card_id": "hBP05-034",
-        "imageUrl": "images/cards/hBP05-034_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-034_RR.png",
         "text": {
           "en": "Her Art deals +30 damage for every 10 cards in your archive. Since each cheer card counts as a card in the archive, having holomem with cheer attached in your archive by the late game will significantly boost this Art's power. Advanced players can try to induce the opponent into targeting holomem that have cheer attached to fuel this damage.",
           "ja": "彼女のアートは、アーカイブ内のカード 10 枚ごとに +30 ダメージを与えます。各チアカードはアーカイブ内のカードとしてカウントされるため、ゲーム後半までにチア付きホロメムがアーカイブに添付されていると、このアートの威力が大幅に向上します。上級プレイヤーは、このダメージを増大させるためにチアが付加されたホロメムをターゲットにするよう対戦相手を誘導しようとすることができます。",
@@ -992,84 +992,84 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_007/",
     "oshi": "Shiranui Flare",
     "oshi_card_id": "hBP05-007",
-    "oshi_image": "images/cards/hBP05-007_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-007_OSR.png",
     "main_deck": [
       {
         "card_id": "hSD07-002",
         "count": 9,
-        "imageUrl": "images/cards/hSD07-002_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hSD07-002_02_C.png"
       },
       {
         "card_id": "hBP05-064",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-064_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-064_C.png"
       },
       {
         "card_id": "hBP03-079",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-079_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-079_RR.png"
       },
       {
         "card_id": "hBP05-065",
         "count": 2,
-        "imageUrl": "images/cards/hBP05-065_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-065_U.png"
       },
       {
         "card_id": "hBP05-066",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-066_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-066_R.png"
       },
       {
         "card_id": "hBP05-067",
         "count": 4,
-        "imageUrl": "images/cards/hBP05-067_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-067_RR.png"
       },
       {
         "card_id": "hSD07-009",
         "count": 3,
-        "imageUrl": "images/cards/hSD07-009_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD07/EN_hSD07-009_RR.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP05-080",
         "count": 3,
-        "imageUrl": "images/cards/hBP05-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-080_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP01-114",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY06-001",
         "count": 20,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1088,7 +1088,7 @@
       {
         "name": "Shiranui Flare【2nd】",
         "card_id": "hBP05-067",
-        "imageUrl": "images/cards/hBP05-067_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP05/EN_hBP05-067_RR.png",
         "text": {
           "en": "She possesses an Art whose effect changes based on a die roll. If the roll matches your remaining life total, both effects apply, making it an extremely powerful Art that deals 180 damage and lets you draw 1 card. Additionally, when using her Art, you can send cheer to a back holomem and return a 1st holomem to your hand, allowing you to stabilize your stage and use Arts consistently every turn.",
           "ja": "彼女はダイスロールによって効果が変化するアーツを持っています。出目が自分の残りライフと一致した場合、両方の効果が適用され、180ダメージを与え、カードを1枚ドローできる非常に強力なArtです。さらに、アーツ使用時に後列のホロメムにエールを送り、1枚目のホロメムを手札に戻すことができるため、ステージを安定させ毎ターン安定してアーツを使用することが可能です。",
@@ -1099,7 +1099,7 @@
       {
         "name": "Shiranui Flare【2nd】",
         "card_id": "hSD07-009",
-        "imageUrl": "images/cards/hSD07-009_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD07/EN_hSD07-009_RR.png",
         "text": {
           "en": "If your life is 3 or less, her Art gains additional damage, allowing her to deal 140 damage. She also has a damage reduction ability exclusive to the center position. Prepare her in the back position until she has enough cheer, then move her to the center position to down opponent's holomem once your life reaches 3 or less.",
           "ja": "自分のライフが３以下の場合、術に追加​​ダメージを与え、１４０ダメージを与えることができる。センターポジション限定のダメージ軽減アビリティも持つ。十分な応援が得られるまで彼女を後ろの位置に準備し、ライフが 3 以下になったら彼女を中央の位置に移動して相手のホロメムをダウンさせます。",
@@ -1123,17 +1123,17 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp01_001/",
     "oshi": "Amane Kanata",
     "oshi_card_id": "hBP01-001",
-    "oshi_image": "images/cards/hBP01-001_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-001_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-009",
         "count": 12,
-        "imageUrl": "images/cards/hBP01-009_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-009_C.png"
       },
       {
         "card_id": "hBP01-010",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-010_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-010_U.png"
       },
       {
         "card_id": "hBP01-012",
@@ -1148,57 +1148,57 @@
       {
         "card_id": "hBP01-014",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-014_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-014_RR.png"
       },
       {
         "card_id": "hSD08-004",
         "count": 2,
-        "imageUrl": "images/cards/hSD08-004_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD08-004_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-079",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-079_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-079_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP01-114",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       },
       {
         "card_id": "hBP01-116",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-116_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-116_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-018",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-018_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-018_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -1210,7 +1210,7 @@
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1229,7 +1229,7 @@
       {
         "name": "Amane Kanata【2nd】",
         "card_id": "hSD08-004",
-        "imageUrl": "images/cards/hSD08-004_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD08-004_RR.png",
         "text": {
           "en": "While she is in the center position, the Arts of your Debut holomem in the collab position gain +40. When hBP01-009 [Amane Kanata] collabs, it can deal 80 damage to your opponent’s center holomem with just one white cheer. Deal heavy damage with minimal cheer, and prepare your next holomem in the back position to maintain your momentum.",
           "ja": "センターにいる間、コラボ位置のデビューホロメムのアーツ+40。 hBP01-009 [天音かなた]はコラボ時、白応援1回で相手のセンターホロメムに80ダメージを与えることができます。最小限の応援で大きなダメージを与え、勢いを維持するためにバックポジションで次のホロメムを準備します。",
@@ -1240,7 +1240,7 @@
       {
         "name": "Amane Kanata【Debut】",
         "card_id": "hBP01-009",
-        "imageUrl": "images/cards/hBP01-009_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-009_C.png",
         "text": {
           "en": "She can only use Arts on your opponent’s center holomem, but even so, she is an extremely powerful Debut holomem who can deal 40 damage with just one white cheer.By combining her with hBP01-114 [Stone Axe], hBP02-079 [Explosion Magic], and other holomem abilities, that damage can increase two to three times over. Catch your opponent off guard and deliver a devastating blow.",
           "ja": "アーツは相手のセンターホロメムにしか使用できませんが、それでも白応援1回で40ダメージを与えることができる非常に強力なデビューホロメムです。 hBP01-114「石斧」やhBP02-079「爆裂魔法」などのホロメムアビリティと組み合わせることで、ダメージが2～3倍に増加します。相手の不意を突いて、壊滅的な打撃を与えます。",
@@ -1259,84 +1259,84 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_007/",
     "oshi": "Anya Melfissa",
     "oshi_card_id": "hBP04-007",
-    "oshi_image": "images/cards/hBP04-007_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-007_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-073",
         "count": 9,
-        "imageUrl": "images/cards/hBP04-073_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-073_C.png"
       },
       {
         "card_id": "hBP04-074",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-074_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-074_U.png"
       },
       {
         "card_id": "hBP04-075",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-075_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-075_C.png"
       },
       {
         "card_id": "hBP04-076",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-076_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-076_U.png"
       },
       {
         "card_id": "hBP04-077",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-077_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-077_R.png"
       },
       {
         "card_id": "hBP04-078",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-078_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-078_RR.png"
       },
       {
         "card_id": "hBP02-018",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-018_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-018_C.png"
       },
       {
         "card_id": "hBP04-027",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-027_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-027_R.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP04-089",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-089_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-089_U.png"
       },
       {
         "card_id": "hBP04-099",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-099_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-099_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY06-001",
         "count": 20,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1355,7 +1355,7 @@
       {
         "name": "Anya Melfissa【1st】",
         "card_id": "hBP04-077",
-        "imageUrl": "images/cards/hBP04-077_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-077_R.png",
         "text": {
           "en": "With its gift ability, when this holomem is downed, you can return one holomem from among this holomem and the holomem stacked beneath it to your hand.If [Ancient Weapon] is attached to this holomem, the holomem returned to your hand by the gift ability can be used as the recovery cost for [Ancient Weapon], making this ability useful in many situations.Until you have enough [Ancient Weapon] on your stage and are ready to bloom into your 2nd holomem, continue attaching [Ancient Weapon] and deal 60–90 damage consistently to maintain pressure.",
           "ja": "ギフトアビリティにより、このホロメムがダウンした際に、このホロメムとその下に重ねられているホロメムの中からホロメム1枚を手札に戻すことができます。このホロメムに【古代兵器】が付いている場合、ギフトアビリティで手札に戻したホロメムは【古代兵器】の回復コストとして使用できるため、様々なシーンで活躍します。ステージ上に十分な【古代兵器】が揃って第二のホロメムが開花するまでは、ホロメム、[古代兵器]を付け続け、60〜90のダメージを継続的に与えて圧力を維持します。",
@@ -1366,7 +1366,7 @@
       {
         "name": "Ancient Weapon",
         "card_id": "hBP04-099",
-        "imageUrl": "images/cards/hBP04-099_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-099_U.png",
         "text": {
           "en": "[Ancient Weapon] is a tool that increases Arts damage by +10 for each [Ancient Weapon] on your stage.Since the Arts value increases based on the number of [Ancient Weapon] on your stage, aim to place all four [Ancient Weapon] from your deck onto the stage to create an [Ancient Weapon] with the maximum Arts +40.When a holomem with [Ancient Weapon] is downed, you can archive one card from your hand instead of the [Ancient Weapon] itself to recover it. If [Ancient Weapon] is about to be archived, use an unnecessary card from your hand as a substitute.",
           "ja": "[古代兵器]は、ステージ上の[古代兵器]1個につき、アーツダメージを+10するツールです。ステージ上の[古代兵器]の数に応じてアーツ値が増加するので、デッキから[古代兵器]を4つすべてステージに配置して、最大アーツ+40の[古代兵器]を生成します。[古代兵器]を持つホロメムがダウンした場合、[古代兵器]そのものの代わりに手札から1枚アーカイブして回復することができます。 【古代兵器】がアーカイブされそうになった場合は、手札の不要なカードで代用してください。",
@@ -1385,62 +1385,62 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_006/",
     "oshi": "Oozora Subaru",
     "oshi_card_id": "hBP04-006",
-    "oshi_image": "images/cards/hBP04-006_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-006_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-067",
         "count": 12,
-        "imageUrl": "images/cards/hBP04-067_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-067_C.png"
       },
       {
         "card_id": "hBP04-068",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-068_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-068_U.png"
       },
       {
         "card_id": "hBP04-069",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-069_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-069_C.png"
       },
       {
         "card_id": "hBP04-070",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-070_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-070_U.png"
       },
       {
         "card_id": "hBP04-071",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-071_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-071_R.png"
       },
       {
         "card_id": "hBP04-072",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-072_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-072_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -1450,19 +1450,19 @@
       {
         "card_id": "hBP01-114",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       },
       {
         "card_id": "hBP04-104",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-104_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY06-001",
         "count": 20,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1481,7 +1481,7 @@
       {
         "name": "Oozora Subaru【1st】",
         "card_id": "hBP04-070",
-        "imageUrl": "images/cards/hBP04-070_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-070_U.png",
         "text": {
           "en": "Its collab effect gives it a powerful ability to boost its Arts by up to +30. Since it can use its Arts with just 1 cheer, concentrating cheers on the center holomem allows it to effectively deal 50 damage to an opponent holomem with a single cheer.",
           "ja": "コラボ効果によりアーツを最大+30アップする強力な能力を発揮します。たった1回のチアでアーツを使用できるため、中央のホロメムにチアを集中させると、1回のチアで相手のホロメムに実質50ダメージを与えることができる。",
@@ -1492,7 +1492,7 @@
       {
         "name": "Subaru Duck",
         "card_id": "hBP04-104",
-        "imageUrl": "images/cards/hBP04-104_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-104_C.png",
         "text": {
           "en": "In addition to its HP boost, if there are 10 or more cheers on both stages, its Arts is increased by +20. Being a mascot, it can be attached alongside other tools, and attaching hBP01-114 [Stone Axe] allows it to reach a maximum Arts of +40.",
           "ja": "HPアップに加え、両ステージの応援数が10以上の場合、アーツが+20される。マスコットなので他の道具と併用することができ、hBP01-114「ストーンアックス」を装着すると最大Arts+40が可能。",
@@ -1511,17 +1511,17 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_005/",
     "oshi": "La+ Darknesss",
     "oshi_card_id": "hBP04-005",
-    "oshi_image": "images/cards/hBP04-005_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-005_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-054",
         "count": 6,
-        "imageUrl": "images/cards/hBP04-054_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-054_C.png"
       },
       {
         "card_id": "hBP04-055",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-055_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-055_U.png"
       },
       {
         "card_id": "hBP04-056",
@@ -1531,69 +1531,69 @@
       {
         "card_id": "hBP04-057",
         "count": 3,
-        "imageUrl": "images/cards/hBP04-057_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-057_U.png"
       },
       {
         "card_id": "hBP04-058",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-058_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-058_R.png"
       },
       {
         "card_id": "hBP04-059",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-059_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-059_RR.png"
       },
       {
         "card_id": "hBP01-056",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-056_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-056_C.png"
       },
       {
         "card_id": "hBP01-060",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-060_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-060_U.png"
       },
       {
         "card_id": "hBP01-061",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-061_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP04-089",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-089_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-089_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1612,7 +1612,7 @@
       {
         "name": "La+ Darknesss【2nd】",
         "card_id": "hBP04-059",
-        "imageUrl": "images/cards/hBP04-059_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-059_RR.png",
         "text": {
           "en": "She has Arts that deal greater damage the more times you roll a die.This includes die rolls not only from holomem abilities, but also from cards such as hBP02-084 [Mikkorone 24].Try combining her with various cards that allow you to roll a die to maximize her damage output.",
           "ja": "サイコロを振る回数が多いほどダメージが大きくなるアーツを持っています。ホロメムアビリティだけでなく、hBP02-084「ミッコローネ24」などのカードによるサイコロの振りも含まれます。サイコロを振るカードと組み合わせて、ダメージを最大化しましょう。",
@@ -1623,7 +1623,7 @@
       {
         "name": "Two-Tone PC",
         "card_id": "hBP04-089",
-        "imageUrl": "images/cards/hBP04-089_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-089_U.png",
         "text": {
           "en": "This deck is designed to shine when you combine holomem of multiple colors.While it requires two or more holomem of different colors to activate its effects, many 1st holomem have bloom effects that support your plays in subsequent turns, contributing to the overall stability and consistency of the deck.",
           "ja": "このデッキは複数の色のホロメムを組み合わせることで輝くように設計されています。効果を発動するには異なる色のホロメムが2枚以上必要ですが、多くの1枚目のホロメムにはその後のターンのプレイをサポートするブルーム効果があり、デッキ全体の安定性と一貫性に貢献します。",
@@ -1642,79 +1642,79 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_004/",
     "oshi": "Yukihana Lamy",
     "oshi_card_id": "hBP04-004",
-    "oshi_image": "images/cards/hBP04-004_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-004_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-043",
         "count": 10,
-        "imageUrl": "images/cards/hBP04-043_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-043_C.png"
       },
       {
         "card_id": "hBP04-044",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-044_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-044_U.png"
       },
       {
         "card_id": "hBP04-045",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-045_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-045_C.png"
       },
       {
         "card_id": "hBP04-046",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-046_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-046_U.png"
       },
       {
         "card_id": "hBP04-047",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-047_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-047_R.png"
       },
       {
         "card_id": "hBP04-048",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-048_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-048_RR.png"
       },
       {
         "card_id": "hBP04-101",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-101_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-101_C.png"
       },
       {
         "card_id": "hBP04-106",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-106_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-106_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY04-001",
         "count": 20,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1733,7 +1733,7 @@
       {
         "name": "Yukihana Lamy【2nd】",
         "card_id": "hBP04-048",
-        "imageUrl": "images/cards/hBP04-048_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-048_RR.png",
         "text": {
           "en": "With the bloom effect \"Lady of Unylia\", you can assign cheers to [Yukihana Lamy] with hBP04-106 [Yukimin] attached.Additionally, the Arts \"May Today Be a Blessed Day\" can be combined with the SP Oshi skill \"Vroom, Bari Bari Bari Bari\" to draw a large number of cards.",
           "ja": "開花効果「レディ・オブ・ユニリア」により、hBP04-106「ゆきみん」が付与された「雪花ラミィ」にチアを割り当てることができ、さらにアーツ「今日が祝福の日でありますように」はSP推しスキル「ブルーム バリバリバリバリ」と組み合わせることで大量のカードをドローすることが可能です。",
@@ -1744,7 +1744,7 @@
       {
         "name": "Yukimin",
         "card_id": "hBP04-106",
-        "imageUrl": "images/cards/hBP04-106_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-106_U.png",
         "text": {
           "en": "This card is designed to maximize the potential of various [Yukihana Lamy] abilities.It boosts special damage and can be searched from your deck using abilities from the early game, making it a central piece of your strategy.",
           "ja": "「雪花ラミィ」の様々なアビリティの可能性を最大限に引き出すカードで、特殊ダメージを強化したり、序盤からアビリティでデッキからサーチできるなど、戦略の中心となるカードです。",
@@ -1763,77 +1763,77 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_003/",
     "oshi": "Ichijou Ririka",
     "oshi_card_id": "hBP04-003",
-    "oshi_image": "images/cards/hBP04-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hSD05-011",
         "count": 2,
-        "imageUrl": "images/cards/hSD05-011_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD05/EN_hSD05-011_U.png"
       },
       {
         "card_id": "hBP04-032",
         "count": 8,
-        "imageUrl": "images/cards/hBP04-032_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-032_C.png"
       },
       {
         "card_id": "hBP04-033",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-033_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-033_U.png"
       },
       {
         "card_id": "hBP04-034",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-034_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-034_C.png"
       },
       {
         "card_id": "hBP04-035",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-035_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-035_U.png"
       },
       {
         "card_id": "hBP04-036",
         "count": 3,
-        "imageUrl": "images/cards/hBP04-036_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-036_R.png"
       },
       {
         "card_id": "hBP04-037",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-037_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-037_RR.png"
       },
       {
         "card_id": "hBP03-080",
         "count": 2,
-        "imageUrl": "images/cards/hBP03-080_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-080_C.png"
       },
       {
         "card_id": "hBP03-083",
         "count": 3,
-        "imageUrl": "images/cards/hBP03-083_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-083_R.png"
       },
       {
         "card_id": "hBP04-091",
         "count": 3,
-        "imageUrl": "images/cards/hBP04-091_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-091_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "",
@@ -1843,24 +1843,24 @@
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 16,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       },
       {
         "card_id": "hY06-001",
         "count": 4,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -1879,7 +1879,7 @@
       {
         "name": "Ichijou Ririka【2nd】",
         "card_id": "hBP04-037",
-        "imageUrl": "images/cards/hBP04-037_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-037_RR.png",
         "text": {
           "en": "The bloom effect \"KPG\" allows you to forcibly move your opponent’s holomem into the collab position, creating an opportunity to turn the tables.By using the Arts of your center holomem in combination with hBP04-091 [Struggle Meal], you can deal up to 210 damage by combining special damage while spending only a small amount of cheer.",
           "ja": "ブルーム効果「KPG」は、相手のホロメムをコラボ位置に強制的に移動させ、逆転のチャンスを生み出すことができます。センターのホロメムのアーツとhBP04-091【奮闘飯】を併用することで、少ない応援を消費しながら特殊ダメージを合わせて最大210ダメージを与えることができます。",
@@ -1890,7 +1890,7 @@
       {
         "name": "Struggle Meal",
         "card_id": "hBP04-091",
-        "imageUrl": "images/cards/hBP04-091_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-091_U.png",
         "text": {
           "en": "This is a key card exclusive to [Ichijou Ririka] that reduces the number of cheer required to use Arts.It can be added to your hand with the SP Oshi skill “Cute! Positive! Genius!” of hBP04-003 [Ichijou Ririka], or returned to your hand with the bloom effect “Struggle Meal Chef” of hBP04-035 [Ichijou Ririka], making it a core card that sees frequent use throughout the match.",
           "ja": "ARツ発動に必要なチア数を軽減する【一条りりか】専用のキーカードで、SP推しスキル「かわいい！前向き！天才！」で手札に加えることができます。 hBP04-003 【一条りりか】のブルーム効果「一条りりか」で手札に戻ったり、hBP04-035 【一条りりか】のブルーム効果「奮闘料理シェフ」で手札に戻ったりと、試合を通して使用頻度の高い中心カードとなっている。",
@@ -1909,47 +1909,47 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_002/",
     "oshi": "Juufuutei Raden",
     "oshi_card_id": "hBP04-002",
-    "oshi_image": "images/cards/hBP04-002_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-002_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-020",
         "count": 10,
-        "imageUrl": "images/cards/hBP04-020_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-020_C.png"
       },
       {
         "card_id": "hBP04-021",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-021_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-021_U.png"
       },
       {
         "card_id": "hBP04-022",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-022_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-022_C.png"
       },
       {
         "card_id": "hBP04-023",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-023_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-023_U.png"
       },
       {
         "card_id": "hBP04-024",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-024_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-024_R.png"
       },
       {
         "card_id": "hBP04-025",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-025_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-025_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-017_02_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -1959,39 +1959,39 @@
       {
         "card_id": "hBP01-104",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP02-086",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-086_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-086_C.png"
       },
       {
         "card_id": "hBP04-094",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-094_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-094_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY02-001",
         "count": 20,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2010,7 +2010,7 @@
       {
         "name": "Juufuutei Raden【1st】",
         "card_id": "hBP04-023",
-        "imageUrl": "images/cards/hBP04-023_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-023_U.png",
         "text": {
           "en": "When she is downed during your opponent’s turn, you can reassign her cheer to another [Juufuutei Raden].Since all 1st holomem of [Juufuutei Raden] can use Arts with just 1–2 green cheer, you can keep up the pressure and continue using Arts without losing momentum by reassigning cheer as needed.If you end up with excess cheer, use it as the cost for hSD01-019 [Amazing PC] to add a 2nd holomem to your hand.",
           "ja": "相手ターン中にダウンした場合、別の【重風帝螺電】にチアを振り替えることができます。 【重風帝螺電】の1stホロメムは全て緑チア1～2個でアーツを使用できるので、必要に応じてチアを振り替えることでプレッシャーを掛け続け、勢いを落とさずアーツを使い続けることができます。 チアが余ってしまった場合はhSD01-019【驚異のPC】のコストとして2つ目を追加しましょう。ホロメムをあなたの手に。",
@@ -2021,7 +2021,7 @@
       {
         "name": "Maitake Dance",
         "card_id": "hBP04-094",
-        "imageUrl": "images/cards/hBP04-094_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-094_U.png",
         "text": {
           "en": "You can reassign cheer on the stage to [Juufuutei Raden].Since 2nd holomem hBP04-025 [Juufuutei Raden] requires 4 cheer to use her Arts, wait until you are fully prepared to put your 2nd holomem on the stage before using [Maitake Dance].The collab effect of 2nd holomem hBP04-025 [Juufuutei Raden] allows you to add [Maitake Dance] from your deck to your hand, so be sure to make active use of it when you do not have [Maitake Dance] in hand.",
           "ja": "ステージ上のチアを「十風亭螺邇」に振り替えることができます。 2ndホロメム hBP04-025 「十風帝螺邇」はアーツを使用するために4つのチアが必要となるため、2ndホロメムの準備が整ってから「舞茸ダンス」を使用してください。 2ndホロメム hBP04-025 「十風亭螺鈿」のコラボ効果により、追加することができます。 「舞茸の舞」はデッキから手札に追加されるので、手札に「舞茸の舞」がない場合は積極的に活用しましょう。",
@@ -2040,37 +2040,37 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp04_001/",
     "oshi": "Hakui Koyori",
     "oshi_card_id": "hBP04-001",
-    "oshi_image": "images/cards/hBP04-001_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-001_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP04-008",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-008_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-008_C.png"
       },
       {
         "card_id": "hBP04-009",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-009_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-009_U.png"
       },
       {
         "card_id": "hBP04-010",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-010_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-010_C.png"
       },
       {
         "card_id": "hBP04-011",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-011_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-011_U.png"
       },
       {
         "card_id": "hBP04-012",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-012_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-012_R.png"
       },
       {
         "card_id": "hBP04-013",
         "count": 4,
-        "imageUrl": "images/cards/hBP04-013_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-013_RR.png"
       },
       {
         "card_id": "hBP01-048",
@@ -2080,54 +2080,54 @@
       {
         "card_id": "hBP01-050",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-050_U_02.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD06/EN_hBP01-050_U_02.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_02_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hSD01-016_02_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_02_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP02-084_02_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP04-089",
         "count": 2,
-        "imageUrl": "images/cards/hBP04-089_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-089_U.png"
       },
       {
         "card_id": "hBP04-097",
         "count": 1,
-        "imageUrl": "images/cards/hBP04-097_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-097_U.png"
       },
       {
         "card_id": "hBP04-100",
         "count": 1,
-        "imageUrl": "images/cards/hBP04-100_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-100_C.png"
       },
       {
         "card_id": "hBP04-105",
         "count": 3,
-        "imageUrl": "images/cards/hBP04-105_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-105_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2146,7 +2146,7 @@
       {
         "name": "Hakui Koyori【1st】",
         "card_id": "hBP04-011",
-        "imageUrl": "images/cards/hBP04-011_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-011_U.png",
         "text": {
           "en": "If hBP04-105 [Koyori's Assistants] is in the archive, you can perform more technical plays by using Arts effects to attach hBP04-105 [Koyori's Assistants] to another [Hakui Koyori], then reassigning cheer to meet the cheer requirement and use Arts.",
           "ja": "hBP04-105「こよりの助手」がアーカイブにある場合、アーツエフェクトを使用してhBP04-105「こよりの助手」を別の「白衣こより」に付け、チア条件を満たすようにチアを割り当て直してアーツを使用することで、よりテクニカルなプレイが可能になります。",
@@ -2157,7 +2157,7 @@
       {
         "name": "Koyori's Assistants",
         "card_id": "hBP04-105",
-        "imageUrl": "images/cards/hBP04-105_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP04/EN_hBP04-105_U.png",
         "text": {
           "en": "This is a key card in the [Hakui Koyori] deck, as it fulfills the activation condition for the SP Oshi skill  \"Assistants, mmmwah!\" and influences the Arts effects of various [Hakui Koyori] cards.Make sure to have it attached to [Hakui Koyori] when you bloom into 2nd in the late game.",
           "ja": "SP推しスキル「助手さん、うーん！」の発動条件を満たしている『白衣こより』デッキのキーカードです。各種「白衣こより」カードのアーツ効果に影響を与えるため、終盤の2nd開花時には必ず「白衣こより」につけておきましょう。",
@@ -2176,84 +2176,84 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_005/",
     "oshi": "Tokoyami Towa",
     "oshi_card_id": "hBP03-005",
-    "oshi_image": "images/cards/hBP03-005_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-005_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP03-051",
         "count": 12,
-        "imageUrl": "images/cards/hBP03-051_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-051_C.png"
       },
       {
         "card_id": "hBP03-052",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-052_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-052_U.png"
       },
       {
         "card_id": "hBP03-053",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-053_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-053_C.png"
       },
       {
         "card_id": "hBP03-054",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-054_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-054_U.png"
       },
       {
         "card_id": "hBP03-055",
         "count": 2,
-        "imageUrl": "images/cards/hBP03-055_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-055_R.png"
       },
       {
         "card_id": "hBP03-056",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-056_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-056_RR.png"
       },
       {
         "card_id": "hBP03-096",
         "count": 3,
-        "imageUrl": "images/cards/hBP03-096_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png"
       },
       {
         "card_id": "hBP03-101",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-101_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-101_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP03-094",
         "count": 2,
-        "imageUrl": "images/cards/hBP03-094_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-094_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP03-088",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2272,7 +2272,7 @@
       {
         "name": "Tokoyami Towa【1st】",
         "card_id": "hBP03-054",
-        "imageUrl": "images/cards/hBP03-054_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-054_U.png",
         "text": {
           "en": "She has a very powerful ability that deals special damage through her collab effect. In addition, her strong synergy with the mascot hBP03-101 Bibi and the tool hBP03-096 Rifle allows her to deal significant damage from the early game with just 1 cheer.",
           "ja": "連携効果で特殊ダメージを与える非常に強力な能力を持っています。さらに、マスコットの hBP03-101 ビビとツール hBP03-096 ライフルとの強力な相乗効果により、わずか 1 回の応援でゲーム序盤から大きなダメージを与えることができます。",
@@ -2283,7 +2283,7 @@
       {
         "name": "Bibi",
         "card_id": "hBP03-101",
-        "imageUrl": "images/cards/hBP03-101_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-101_C.png",
         "text": {
           "en": "The Tokoyami Towa Deck includes many holomem with relatively low HP, but the +20 HP effect from hBP03-101 Bibi comes in handy here. The boost to special damage can be effective throughout the game, so make sure to attach it when the time is right.",
           "ja": "常闇トワデッキには比較的HPの低いホロメムが多く採用されていますが、hBP03-101ビビのHP+20効果が役に立ちます。特殊ダメージ増加効果はゲーム全体を通して効果を発揮するので、タイミングを見計らって付けておきましょう。",
@@ -2307,62 +2307,62 @@
       {
         "card_id": "hBP03-061",
         "count": 10,
-        "imageUrl": "images/cards/hBP03-061_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-061_C.png"
       },
       {
         "card_id": "hBP03-062",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-062_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-062_U.png"
       },
       {
         "card_id": "hBP03-063",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-063_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-063_C.png"
       },
       {
         "card_id": "hBP03-064",
         "count": 2,
-        "imageUrl": "images/cards/hBP03-064_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-064_U.png"
       },
       {
         "card_id": "hBP03-065",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-065_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-065_R.png"
       },
       {
         "card_id": "hBP03-066",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-066_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-066_RR.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP03-088",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
       },
       {
         "card_id": "hBP03-102",
@@ -2372,14 +2372,14 @@
       {
         "card_id": "hBP01-114",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY06-001",
         "count": 20,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2409,7 +2409,7 @@
       {
         "name": "Inugami Korone【1st】",
         "card_id": "hBP03-065",
-        "imageUrl": "images/cards/hBP03-065_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-065_R.png",
         "text": {
           "en": "“Boxing Style” can be used when this card is in your collab position.With “Boxing Style”, the “Inugami Korone” in your center position is protected from special damage and changes to HP during your opponent’s main step. When you have a 2nd holomem “Inugami Korone” in your center position and want to avoid her being downed, aiming for a collab is an effective strategy.",
           "ja": "「ボクシングスタイル」は、このカードがコラボポジションに存在する場合に使用できる。「ボクシングスタイル」を使用すると、センターポジションの「犬神ころね」が特殊ダメージから守られ、相手のメインステップ時にHPが変化する。センターポジションに2枚目のホロメム「戌神ころね」がいて、ダウンを避けたい場合は連携を狙うのが有効な戦略です。",
@@ -2428,17 +2428,17 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_003/",
     "oshi": "Sakura Miko",
     "oshi_card_id": "hBP03-003",
-    "oshi_image": "images/cards/hBP03-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP03-025",
         "count": 8,
-        "imageUrl": "images/cards/hBP03-025_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-025_C.png"
       },
       {
         "card_id": "hBP03-026",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-026_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-026_U.png"
       },
       {
         "card_id": "hBP03-027",
@@ -2448,12 +2448,12 @@
       {
         "card_id": "hBP03-028",
         "count": 2,
-        "imageUrl": "images/cards/hBP03-028_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-028_U.png"
       },
       {
         "card_id": "hBP03-029",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-029_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-029_R.png"
       },
       {
         "card_id": "hBP03-030",
@@ -2463,54 +2463,54 @@
       {
         "card_id": "hBP03-098",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-098_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-098_U.png"
       },
       {
         "card_id": "hBP03-099",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-099_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-099_C.png"
       },
       {
         "card_id": "hBP03-107",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-107_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-107_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP03-088",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 20,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2540,7 +2540,7 @@
       {
         "name": "35P",
         "card_id": "hBP03-107",
-        "imageUrl": "images/cards/hBP03-107_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-107_U.png",
         "text": {
           "en": "A fan with the ability to be treated as red cheer. Despite the drawback of allowing your opponent to draw a card when the attached holomem is downed, it can be searched for with hBP03-029 Sakura Miko. It is a key card of the deck, as many holomem in this deck have bonus effects when hBP03-107 35P is attached.",
           "ja": "レッドチアとして扱われる実力を持つファン。付属のホロメムがダウンすると相手にカードを引けるという欠点はあるものの、hBP03-029 桜巫女でサーチ可能。このデッキのホロメムにはhBP03-107 35Pを付けるとボーナス効果を持つカードが多く、このデッキのキーカードです。",
@@ -2559,17 +2559,17 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_004/",
     "oshi": "FUWAMOCO",
     "oshi_card_id": "hBP03-004",
-    "oshi_image": "images/cards/hBP03-004_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-004_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP03-037",
         "count": 5,
-        "imageUrl": "images/cards/hBP03-037_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-037_C.png"
       },
       {
         "card_id": "hBP03-038",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-038_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-038_C.png"
       },
       {
         "card_id": "hBP03-039",
@@ -2579,7 +2579,7 @@
       {
         "card_id": "hBP03-040",
         "count": 7,
-        "imageUrl": "images/cards/hBP03-040_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-040_C.png"
       },
       {
         "card_id": "hBP03-041",
@@ -2589,12 +2589,12 @@
       {
         "card_id": "hBP03-042",
         "count": 3,
-        "imageUrl": "images/cards/hBP03-042_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-042_U.png"
       },
       {
         "card_id": "hBP03-043",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-043_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-043_RR.png"
       },
       {
         "card_id": "hBP03-050",
@@ -2604,54 +2604,54 @@
       {
         "card_id": "hBP03-100",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-100_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-100_C.png"
       },
       {
         "card_id": "hBP03-109",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-109_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-109_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP03-086",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-086_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-086_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 8,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       },
       {
         "card_id": "hY04-001",
         "count": 12,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2681,7 +2681,7 @@
       {
         "name": "Fuwawa Abyssgard【1st】",
         "card_id": "hBP03-042",
-        "imageUrl": "images/cards/hBP03-042_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-042_U.png",
         "text": {
           "en": "The bloom effect “Fuwa Floating with the Current” can deal special damage to back holomem, as well. When combined with the SP Oshi skill “BAU BAU!”, you can down your opponent’s back holomem while they are unprepared, disrupting your opponent’s game plan.",
           "ja": "ブルーム効果「流れに浮かぶふわ」はバックホロメムにも特殊ダメージを与えることができる。 SP推しスキル「BAU BAU!」と組み合わせることで、相手の油断した隙にバックホロメムをダウンさせ、相手のゲームプランを混乱させることができます。",
@@ -2700,67 +2700,67 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_007/",
     "oshi": "Tsunomaki Watame",
     "oshi_card_id": "hBP03-007",
-    "oshi_image": "images/cards/hBP03-007_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-007_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP03-067",
         "count": 12,
-        "imageUrl": "images/cards/hBP03-067_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-067_C.png"
       },
       {
         "card_id": "hBP03-068",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-068_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-068_U.png"
       },
       {
         "card_id": "hBP03-069",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-069_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png"
       },
       {
         "card_id": "hBP03-070",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-070_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-070_U.png"
       },
       {
         "card_id": "hBP03-071",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-071_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-071_R.png"
       },
       {
         "card_id": "hBP03-072",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-072_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-072_RR.png"
       },
       {
         "card_id": "hBP03-112",
         "count": 4,
-        "imageUrl": "images/cards/hBP03-112_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP03-088",
         "count": 1,
-        "imageUrl": "images/cards/hBP03-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
       },
       {
         "card_id": "hSD01-019",
@@ -2772,7 +2772,7 @@
       {
         "card_id": "hY06-001",
         "count": 20,
-        "imageUrl": "images/cards/hY06-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2791,7 +2791,7 @@
       {
         "name": "Tsunomaki Watame【1st】",
         "card_id": "hBP03-069",
-        "imageUrl": "images/cards/hBP03-069_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png",
         "text": {
           "en": "Even as a 1st holomem, she has HP comparable to a 2nd holomem. By combining the Arts “You'll cheer me on, right?” with the SP Oshi skill “Watame isn’t at fault, right?”, you can activate it as early as turn 2 to deal 90 damage, making it an exceptionally powerful play.",
           "ja": "1stホロメムながら2ndホロメムに匹敵するHPを持っている。アーツを組み合わせることで「応援してくれるよね？」 SP推しスキル「ワタメは悪くないですよね？」は2ターン目から発動でき、90ダメージを与えることができるので非常に強力です。",
@@ -2802,7 +2802,7 @@
       {
         "name": "Watamates",
         "card_id": "hBP03-112",
-        "imageUrl": "images/cards/hBP03-112_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png",
         "text": {
           "en": "Transferring the cheer from a downed “Tsunomaki Watame” to another “Tsunomaki Watame” and ultimately connecting 6 or more cheer onto the 2nd holomem hBP03-072 Tsunomaki Watame is the core strategy of this deck. Make active use of hBP03-112 Watamates to ensure that the cheer on your stage doesn’t decrease.",
           "ja": "ダウンした「角巻わため」から別の「角巻わため」に応援を移し、最終的に2枚目のホロメムhBP03-072角巻わために6個以上の応援をつなげるのがこのデッキの核となる戦略です。ステージ上の歓声を下げないよう、hBP03-112ワタメイトを積極的に活用してください。",
@@ -2821,74 +2821,74 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_001/",
     "oshi": "Mori Calliope",
     "oshi_card_id": "hBP02-007",
-    "oshi_image": "images/cards/hBP02-007_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-007_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-054",
         "count": 11,
-        "imageUrl": "images/cards/hBP02-054_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-054_C.png"
       },
       {
         "card_id": "hBP02-055",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-055_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-055_U.png"
       },
       {
         "card_id": "hBP02-056",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-056_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-056_C.png"
       },
       {
         "card_id": "hBP02-057",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-057_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png"
       },
       {
         "card_id": "hBP02-058",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-058_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-058_R.png"
       },
       {
         "card_id": "hBP02-059",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-059_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP02-088",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-088_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -2907,7 +2907,7 @@
       {
         "name": "Mori Calliope【2nd】",
         "card_id": "hBP02-059",
-        "imageUrl": "images/cards/hBP02-059_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png",
         "text": {
           "en": "This is the key card of this deck.She allows you to archive any card you like from your deck.You can archive hBP02-088 Mori Calliope's Scythe and return it to your hand with hBP02-058 Mori Calliope, or archive hBP02-059 Mori Calliope and return her to your hand with the Oshi skill of hBP02-007 Mori Calliope.",
           "ja": "このデッキのキーカードです。デッキから好きなカードをアーカイブできます。hBP02-088 森カリオペの鎌をアーカイブしてhBP02-058 森カリオペで手札に戻すか、hBP02-059 森カリオペをアーカイブしてhBP02-007 森カリオペのオシスキルで手札に戻すことができます。",
@@ -2918,7 +2918,7 @@
       {
         "name": "Mori Calliope【1st】",
         "card_id": "hBP02-057",
-        "imageUrl": "images/cards/hBP02-057_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png",
         "text": {
           "en": "She is a necessary card to power up the Arts of hBP02-059 Mori Calliope.Bloom assertively to increase your archive.",
           "ja": "hBP02-059 モリ・カリオペ・ブルームのアーツを積極的にパワーアップしてアーカイブを増やすために必要なカードです。",
@@ -2937,74 +2937,74 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_002/",
     "oshi": "Kureiji Ollie",
     "oshi_card_id": "hBP02-006",
-    "oshi_image": "images/cards/hBP02-006_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-006_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-048",
         "count": 10,
-        "imageUrl": "images/cards/hBP02-048_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-048_C.png"
       },
       {
         "card_id": "hBP02-049",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-049_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-049_U.png"
       },
       {
         "card_id": "hBP02-019",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-019_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-019_U.png"
       },
       {
         "card_id": "hBP02-050",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-050_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-050_C.png"
       },
       {
         "card_id": "hBP02-051",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-051_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png"
       },
       {
         "card_id": "hBP02-052",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-052_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-052_R.png"
       },
       {
         "card_id": "hBP02-053",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-053_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png"
       },
       {
         "card_id": "hBP02-081",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-081_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-081_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-097",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-097_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-097_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3023,7 +3023,7 @@
       {
         "name": "Kureiji Ollie【2nd】",
         "card_id": "hBP02-053",
-        "imageUrl": "images/cards/hBP02-053_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-053_RR.png",
         "text": {
           "en": "She is a holomem who can deal huge damage by archiving two cards from your hand.Use the Oshi skill of hBP02-006 Kureiji Ollie to bloom the holomem on the stage with the holomem you archived.",
           "ja": "手札を2枚アーカイブすることで大ダメージを与えられるホロメムです。hBP02-006 クレイジ・オーリーの推しスキルを使い、アーカイブしたホロメムをステージに咲かせましょう。",
@@ -3034,7 +3034,7 @@
       {
         "name": "Kureiji Ollie【1st】",
         "card_id": "hBP02-051",
-        "imageUrl": "images/cards/hBP02-051_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-051_U.png",
         "text": {
           "en": "She enables a bloom using a holomem from the archive.Bloom using the holomem archived by hBP02-049 Kureiji Ollie or hBP02-097 UDIN.",
           "ja": "彼女は、アーカイブからのホロメムを使用してブルームを有効にします。hBP02-049 Kureiji Ollie または hBP02-097 UDIN によってアーカイブされたホロメムを使用してブルームを実行します。",
@@ -3053,94 +3053,94 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_003/",
     "oshi": "Murasaki Shion",
     "oshi_card_id": "hBP02-005",
-    "oshi_image": "images/cards/hBP02-005_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-042",
         "count": 10,
-        "imageUrl": "images/cards/hBP02-042_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-042_C.png"
       },
       {
         "card_id": "hBP02-043",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-043_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-043_U.png"
       },
       {
         "card_id": "hBP02-044",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-044_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-044_C.png"
       },
       {
         "card_id": "hBP02-045",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-045_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-045_U.png"
       },
       {
         "card_id": "hBP02-046",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-046_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-046_R.png"
       },
       {
         "card_id": "hBP02-047",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-047_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png"
       },
       {
         "card_id": "hBP02-035",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-035_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
       },
       {
         "card_id": "hBP02-038",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-038_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP02-077",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-077_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
       },
       {
         "card_id": "hBP02-079",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-079_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-079_U.png"
       },
       {
         "card_id": "hBP02-083",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-083_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-083_U.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY05-001",
         "count": 20,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3159,7 +3159,7 @@
       {
         "name": "Murasaki Shion",
         "card_id": "hBP02-005",
-        "imageUrl": "images/cards/hBP02-005_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-005_OSR.png",
         "text": {
           "en": "A card that maximizes the strengths of your holomem Murasaki Shion.Its Oshi skill can increase the success rate of hBP02-043 Murasaki Shion and hBP05-047 Murasaki Shion, while its SP Oshi skill can down both your opponent’s center holomem and collab holomem at the same time, making it effective throughout the start to the end of the game.",
           "ja": "ホロメム ムラサキ シオンの長所を最大限に引き出すカード。推しスキルでhBP02-043 ムラサキ シオンとhBP05-047 ムラサキ シオンの成功率を高め、SP推しスキルで相手のセンターホロメムとコラボホロメムを同時にダウンさせることができ、序盤から終盤まで効果を発揮する。",
@@ -3170,7 +3170,7 @@
       {
         "name": "Murasaki Shion【2nd】",
         "card_id": "hBP02-047",
-        "imageUrl": "images/cards/hBP02-047_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-047_RR.png",
         "text": {
           "en": "The key card of this deck. It can manipulate your opponent’s cheers and increase the damage of its own Arts, making it useful in many situations. It also pairs well with the SP Oshi skill of hBP02-005 Murasaki Shion, so use it actively whenever possible.",
           "ja": "このデッキのキーカード。相手の歓声を操作したり、自身のアーツのダメージを増加させるなど、様々な場面で活躍する。 hBP02-005 紫シオンのSP推しスキルとも相性が良いので、積極的に使っていきましょう。",
@@ -3189,69 +3189,69 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_004/",
     "oshi": "Sakamata Chloe",
     "oshi_card_id": "hBP02-004",
-    "oshi_image": "images/cards/hBP02-004_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-004_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-035",
         "count": 12,
-        "imageUrl": "images/cards/hBP02-035_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
       },
       {
         "card_id": "hBP02-036",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-036_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-036_U.png"
       },
       {
         "card_id": "hBP02-038",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-038_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
       },
       {
         "card_id": "hBP02-039",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-039_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-039_R.png"
       },
       {
         "card_id": "hBP02-040",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-040_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png"
       },
       {
         "card_id": "hBP01-056",
         "count": 5,
-        "imageUrl": "images/cards/hBP01-056_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-056_C.png"
       },
       {
         "card_id": "hBP01-060",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-060_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-060_U.png"
       },
       {
         "card_id": "hBP01-061",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-061_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP02-080",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-080_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png"
       },
       {
         "card_id": "hSD01-018",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-018_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-018_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY04-001",
         "count": 20,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3270,7 +3270,7 @@
       {
         "name": "Sakamata Chloe【2nd】",
         "card_id": "hBP02-040",
-        "imageUrl": "images/cards/hBP02-040_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png",
         "text": {
           "en": "The key card of this deck.If all cards revealed by the Arts share the same bloom level, deal 160 damage and definitively reduce the opponent's life by 1. Even if you can't down the opponent's holomem, reducing their life by 1 is still possible with a matching bloom level, allowing you to win purely through luck.",
           "ja": "このデッキのキーカード。アーツで公開したカードがすべて同じブルームレベルの場合、160ダメージを与え、相手のライフを確実に1減らす。たとえ相手のホロメムをダウンできなくても、ブルームレベルが合っていればライフを1減らすことは可能で、純粋に運だけで勝つことができる。",
@@ -3281,7 +3281,7 @@
       {
         "name": "holoX",
         "card_id": "hBP02-080",
-        "imageUrl": "images/cards/hBP02-080_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png",
         "text": {
           "en": "This card increases the deck's stability.In addition, by returning cards you do not add to your hand to the bottom of the deck in any order, you can increase the success rate of holoX-lot in the late game.",
           "ja": "このカードはデッキの安定性を高めてくれます。また、手札に加えなかったカードを好きな順番でデッキの一番下に戻すことで、ゲーム終盤のホロXロットの成功率を高めることができます。",
@@ -3300,17 +3300,17 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_005/",
     "oshi": "Houshou Marine",
     "oshi_card_id": "hBP02-003",
-    "oshi_image": "images/cards/hBP02-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-028",
         "count": 7,
-        "imageUrl": "images/cards/hBP02-028_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-028_C.png"
       },
       {
         "card_id": "hBP02-029",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-029_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-029_U.png"
       },
       {
         "card_id": "hBP01-038",
@@ -3320,64 +3320,64 @@
       {
         "card_id": "hBP02-030",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-030_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-030_C.png"
       },
       {
         "card_id": "hBP02-031",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-031_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-031_U.png"
       },
       {
         "card_id": "hBP02-032",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-032_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-032_R.png"
       },
       {
         "card_id": "hBP01-041",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-041_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-041_U.png"
       },
       {
         "card_id": "hBP02-033",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-033_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-033_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-095",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-095_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-095_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 20,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3396,7 +3396,7 @@
       {
         "name": "Houshou Marine【1st】",
         "card_id": "hBP02-032",
-        "imageUrl": "images/cards/hBP02-032_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-032_R.png",
         "text": {
           "en": "The core card that provides stability to the Houshou Marine deck. By continuously blooming this card, you can maximize the effects of the 2nd holomem, hBP02-033 Houshou Marine, as well as your SP Oshi skill.",
           "ja": "鳳翔マリンデッキに安定をもたらす中心カード。このカードを開花させ続けることで、2枚目のホロメム「hBP02-033 鳳翔マリン」とSP推しスキルの効果を最大限に発揮することができます。",
@@ -3407,7 +3407,7 @@
       {
         "name": "Dokuro-kun",
         "card_id": "hBP02-095",
-        "imageUrl": "images/cards/hBP02-095_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-095_C.png",
         "text": {
           "en": "A mascot that increases Arts damage and, when bloomed in the center position, lets you draw a card. Bloom the holomem it’s attached to and draw a card, then search for hBP02-032 Houshou Marine, the holomem that kickstarts your offense.",
           "ja": "Artsダメージを増加させ、中央に開花させるとカードをドローできるマスコット。付いているホロメムを咲かせてカードを1枚引き、攻撃の起点となるホロメム hBP02-032 鳳翔マリンをサーチします。",
@@ -3426,47 +3426,47 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_006/",
     "oshi": "Pavolia Reine",
     "oshi_card_id": "hBP02-002",
-    "oshi_image": "images/cards/hBP02-002_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-002_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-018",
         "count": 8,
-        "imageUrl": "images/cards/hBP02-018_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-018_C.png"
       },
       {
         "card_id": "hBP02-019",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-019_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-019_U.png"
       },
       {
         "card_id": "hSD01-012",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-012_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-012_C.png"
       },
       {
         "card_id": "hBP02-020",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-020_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-020_C.png"
       },
       {
         "card_id": "hBP02-021",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-021_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-021_U.png"
       },
       {
         "card_id": "hBP02-022",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-022_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-022_R.png"
       },
       {
         "card_id": "hBP01-054",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-054_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-054_U.png"
       },
       {
         "card_id": "hBP02-023",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-023_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-023_RR.png"
       },
       {
         "card_id": "hBP01-055",
@@ -3476,17 +3476,17 @@
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP02-075",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-075_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-075_U.png"
       },
       {
         "card_id": "hSD01-019",
@@ -3496,44 +3496,44 @@
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-089",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-089_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-089_C.png"
       },
       {
         "card_id": "hBP02-094",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-094_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-094_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 3,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       },
       {
         "card_id": "hY02-001",
         "count": 11,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       },
       {
         "card_id": "hY03-001",
         "count": 2,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       },
       {
         "card_id": "hY04-001",
         "count": 2,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       },
       {
         "card_id": "hY05-001",
         "count": 2,
-        "imageUrl": "images/cards/hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3552,7 +3552,7 @@
       {
         "name": "Pavolia Reine【2nd】",
         "card_id": "hBP02-023",
-        "imageUrl": "images/cards/hBP02-023_RR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-023_RR.png",
         "text": {
           "en": "This holomem can recover up to 50 HP and, with its Arts ability, sends cheers from the archive. It is very powerful, but because it has a low HP, be careful not to have it downed on your opponent’s next turn when using Arts.",
           "ja": "このホロメムは最大 50 HP を回復でき、アーツ能力によりアーカイブからエールを送ります。非常に強力ですが、HPが低いのでアーツを使用する際は次の相手のターンにダウンされないように注意してください。",
@@ -3563,7 +3563,7 @@
       {
         "name": "Tatang",
         "card_id": "hBP02-094",
-        "imageUrl": "images/cards/hBP02-094_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-094_C.png",
         "text": {
           "en": "This holomem has a very high HP-boosting effect. The holomem it’s attached to becomes harder to be downed, so ideally attach it to holomem placed in the center or collab positions whenever possible.",
           "ja": "このホロメムはHP上昇効果が非常に高い。取り付けたホロメムはダウンされにくくなるので、なるべく中央やコラボ位置のホロメムに付けるのが理想的です。",
@@ -3582,99 +3582,99 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hbp02_007/",
     "oshi": "Shirakami Fubuki",
     "oshi_card_id": "hBP02-001",
-    "oshi_image": "images/cards/hBP02-001_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-001_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP02-008",
         "count": 8,
-        "imageUrl": "images/cards/hBP02-008_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-008_C.png"
       },
       {
         "card_id": "hBP02-009",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-009_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-009_U.png"
       },
       {
         "card_id": "hBP02-010",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-010_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-010_C.png"
       },
       {
         "card_id": "hBP02-011",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-011_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-011_U.png"
       },
       {
         "card_id": "hBP02-012",
         "count": 2,
-        "imageUrl": "images/cards/hBP02-012_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-012_R.png"
       },
       {
         "card_id": "hBP02-013",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-013_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-013_RR.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 3,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP02-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP02-084_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP02-089",
         "count": 3,
-        "imageUrl": "images/cards/hBP02-089_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-089_C.png"
       },
       {
         "card_id": "hBP02-090",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-090_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-090_C.png"
       },
       {
         "card_id": "hBP02-091",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-091_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-091_C.png"
       },
       {
         "card_id": "hBP02-092",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-092_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-092_U.png"
       },
       {
         "card_id": "hBP02-093",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-093_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-093_C.png"
       },
       {
         "card_id": "hBP02-099",
         "count": 1,
-        "imageUrl": "images/cards/hBP02-099_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-099_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3693,7 +3693,7 @@
       {
         "name": "Shirakami Fubuki【1st】",
         "card_id": "hBP02-011",
-        "imageUrl": "images/cards/hBP02-011_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-011_U.png",
         "text": {
           "en": "During the game, she can search your deck for the mascots best suited for your game. You should utilize her effectively by using hBP02-090 Nejimakitsune to make good use of your cheer on holomem who are about to be downed, defending with hBP02-093 Miteiru against opponents who target your back position with special damage, and using hBP02-092 Fubzilla when you want to deal huge Arts damage.",
           "ja": "ゲーム中に、彼女はあなたのデッキからあなたのゲームに最適なマスコットを検索します。ダウンしそうなホロメムへの声援は「hBP02-090 ネジキツネ」で、後方を狙ってくる相手には「hBP02-093 ミテイル」で特殊ダメージを守り、アーツで大ダメージを与えたい場合は「hBP02-092 フブジラ」と、有効に活用していきましょう。",
@@ -3704,7 +3704,7 @@
       {
         "name": "Fubzilla",
         "card_id": "hBP02-092",
-        "imageUrl": "images/cards/hBP02-092_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-092_U.png",
         "text": {
           "en": "A card that significantly boosts Arts damage in exchange for your cheer. Fubzilla allows you to down high-HP Buzz holomem in a single hit, or deal significant damage even with a 1st holomem on turns when you can't prepare a 2nd holomem.",
           "ja": "応援と引き換えにアーツダメージを大幅にアップするカード。 Fubzilla を使用すると、HP の高いバズ ホロメムを一撃でダウンさせることができ、2 番目のホロメムを準備できないターンでは 1 番目のホロメムでも大きなダメージを与えることができます。",
@@ -3723,7 +3723,7 @@
     "url": "https://en.hololive-official-cardgame.com/deck/usada-pekora-deck/",
     "oshi": "Usada Pekora",
     "oshi_card_id": "hBP01-004",
-    "oshi_image": "images/cards/hBP01-004_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-004_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-038",
@@ -3738,12 +3738,12 @@
       {
         "card_id": "hBP01-040",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-040_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-040_C.png"
       },
       {
         "card_id": "hBP01-041",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-041_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-041_U.png"
       },
       {
         "card_id": "hBP01-042",
@@ -3758,22 +3758,22 @@
       {
         "card_id": "hBP01-109",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-109_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-109_U.png"
       },
       {
         "card_id": "hBP01-123",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-123_C_02.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-123_C_02.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hSD01-020",
@@ -3783,12 +3783,12 @@
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -3800,7 +3800,7 @@
       {
         "card_id": "hY02-001",
         "count": 20,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3830,7 +3830,7 @@
       {
         "name": "Wild Rabbit Alliance",
         "card_id": "hBP01-123",
-        "imageUrl": "images/cards/hBP01-123_C_02.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-123_C_02.png",
         "text": {
           "en": "A support card for hBP01-043 Usada Pekora.It resets the rolled result and lets you roll the die once more, giving it a vital role in the deck.",
           "ja": "hBP01-043 兎田ぺこらのサポートカード。出た結果をリセットし、もう一度サイコロを振ることができるため、デッキ内で重要な役割を果たします。",
@@ -3849,22 +3849,22 @@
     "url": "https://en.hololive-official-cardgame.com/deck/amane-kanata-deck/",
     "oshi": "Amane Kanata",
     "oshi_card_id": "hBP01-001",
-    "oshi_image": "images/cards/hBP01-001_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-001_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-009",
         "count": 12,
-        "imageUrl": "images/cards/hBP01-009_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-009_C.png"
       },
       {
         "card_id": "hBP01-010",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-010_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-010_U.png"
       },
       {
         "card_id": "hBP01-011",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-011_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-011_C.png"
       },
       {
         "card_id": "hBP01-012",
@@ -3879,44 +3879,44 @@
       {
         "card_id": "hBP01-014",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-014_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-014_RR.png"
       },
       {
         "card_id": "hBP01-116",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-116_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-116_C.png"
       },
       {
         "card_id": "hBP01-114",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-102",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-102_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-102_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3935,7 +3935,7 @@
       {
         "name": "Upao",
         "card_id": "hBP01-116",
-        "imageUrl": "images/cards/hBP01-116_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-116_C.png",
         "text": {
           "en": "Has an ability that reflects 20 damage when taking damage. Can also be brought in with hBP01-012 Amane Kanata’s bloom effect, and combined with the +10 Arts damage, makes it easier to down your opponent’s holomem.",
           "ja": "ダメージを受けると20ダメージを反射する能力を持つ。 hBP01-012 天音かなたのブルーム効果と併用することもでき、Artsダメージ+10と合わせて相手のホロメムをダウンさせやすくなります。",
@@ -3946,7 +3946,7 @@
       {
         "name": "Amane Kanata【Debut】",
         "card_id": "hBP01-010",
-        "imageUrl": "images/cards/hBP01-010_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-010_U.png",
         "text": {
           "en": "Wields an exceptional ability that adds 30 damage to the center holomem’s Arts with the collab effect. This powerful boost enables the Amane Kanata Deck to down the opponent’s holomem with Arts even in the very early turns of the game.",
           "ja": "コラボ効果でセンターホロメムのArtsに30ダメージを追加するという超絶アビリティを持ちます。この強力なブーストにより、天音かなたデッキはゲームの非常に早いターンであってもアーツで相手のホロメムをダウンさせることができます。",
@@ -3965,37 +3965,37 @@
     "url": "https://en.hololive-official-cardgame.com/deck/takane-lui-deck/",
     "oshi": "Takane Lui",
     "oshi_card_id": "hBP01-005",
-    "oshi_image": "images/cards/hBP01-005_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-005_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-056",
         "count": 6,
-        "imageUrl": "images/cards/hBP01-056_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-056_C.png"
       },
       {
         "card_id": "hBP01-057",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-057_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-057_U.png"
       },
       {
         "card_id": "hBP01-058",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-058_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-058_C.png"
       },
       {
         "card_id": "hBP01-060",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-060_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-060_U.png"
       },
       {
         "card_id": "hBP01-061",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-061_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png"
       },
       {
         "card_id": "hBP01-048",
         "count": 5,
-        "imageUrl": "images/cards/hBP01-048_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-048_C.png"
       },
       {
         "card_id": "hBP01-050",
@@ -4005,44 +4005,44 @@
       {
         "card_id": "hBP01-051",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-051_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-051_RR.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-120",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-120_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-120_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 13,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       },
       {
         "card_id": "hY02-001",
         "count": 7,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4072,7 +4072,7 @@
       {
         "name": "Takane Lui【2nd】",
         "card_id": "hBP01-061",
-        "imageUrl": "images/cards/hBP01-061_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png",
         "text": {
           "en": "You can return holomem with the tag #holoX from your archive to hand using the bloom effect, Organization Command Center.You can return your downed hBP01-050 Kazama Iroha to your hand and place it in the collab position, or return hBP01-061 Takane Lui to increase your hand.You can strategize by using a card that you want to return to your hand later on when archiving a card for using the Arts, Hawkeye. With your Oshi holomem's Oshi skill, Female Commanding Officer, you can also choose to archive a holoPower instead of your hand!",
           "ja": "ブルーム効果「組織司令部」を利用して、アーカイブから#holoXタグが付いたホロメムを手札に戻すことができます。ダウンしたhBP01-050 ​​風間いろはを手札に戻してコラボ位置に置いたり、hBP01-061 高音ルイを戻して手札を増やしたりすることができます。アーツ使用用カード「ホークアイ」をアーカイブする際に、後から手札に戻したいカードを使用することで戦略を立てることができます。推しホロメムの推しスキル「女指揮官」を使えば、手札の代わりにホロパワーをアーカイブすることもできます！",
@@ -4091,27 +4091,27 @@
     "url": "https://en.hololive-official-cardgame.com/deck/hoshimachi-suisei-deck/",
     "oshi": "Hoshimachi Suisei",
     "oshi_card_id": "hBP01-007",
-    "oshi_image": "images/cards/hBP01-007_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-007_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-076",
         "count": 6,
-        "imageUrl": "images/cards/hBP01-076_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-076_C.png"
       },
       {
         "card_id": "hBP01-077",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-077_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-077_U.png"
       },
       {
         "card_id": "hBP01-078",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-078_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-078_C.png"
       },
       {
         "card_id": "hBP01-079",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-079_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-079_U.png"
       },
       {
         "card_id": "hBP01-081",
@@ -4126,37 +4126,37 @@
       {
         "card_id": "hBP01-090",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-090_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-090_U.png"
       },
       {
         "card_id": "hBP01-091",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-091_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-091_RR.png"
       },
       {
         "card_id": "hBP01-102",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-102_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-102_U.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -4173,7 +4173,7 @@
       {
         "card_id": "hY04-001",
         "count": 20,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4192,7 +4192,7 @@
       {
         "name": "Hoshimachi Suisei",
         "card_id": "hBP01-007",
-        "imageUrl": "images/cards/hBP01-007_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-007_OSR.png",
         "text": {
           "en": "The SP Oshi skill, Shooting Star, is an ability in which your blue holomem deals the same damage to your opponent's back holomem as you did to your opponent's center or collab holomem. You can reduce 2 of your opponent's life, and down the holomem that your opponent would have used in their next turn.",
           "ja": "SP推しスキル「シューティングスター」は、自分の青ホロメムが相手のセンターやコラボホロメムに与えたダメージと同じダメージを相手のバックホロメムに与える能力です。相手のライフを２つ減らし、相手が次のターンに使用するであろうホロメムを減らすことができます。",
@@ -4222,89 +4222,89 @@
     "url": "https://en.hololive-official-cardgame.com/deck/takanashi-kiara-deck/",
     "oshi": "Takanashi Kiara",
     "oshi_card_id": "hBP01-006",
-    "oshi_image": "images/cards/hBP01-006_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-006_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-062",
         "count": 6,
-        "imageUrl": "images/cards/hBP01-062_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-062_C.png"
       },
       {
         "card_id": "hBP01-063",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-063_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-063_U.png"
       },
       {
         "card_id": "hBP01-065",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-065_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-065_U.png"
       },
       {
         "card_id": "hBP01-066",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-066_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-066_R.png"
       },
       {
         "card_id": "hBP01-067",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-067_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-067_RR.png"
       },
       {
         "card_id": "hBP01-068",
         "count": 5,
-        "imageUrl": "images/cards/hBP01-068_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-068_C.png"
       },
       {
         "card_id": "hBP01-070",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-070_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-070_U.png"
       },
       {
         "card_id": "hBP01-071",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-071_RR.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-071_RR.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hBP01-121",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-121_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-121_C.png"
       },
       {
         "card_id": "hBP01-125",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-125_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-125_C.png"
       },
       {
         "card_id": "hBP01-126",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-126_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-126_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY03-001",
         "count": 20,
-        "imageUrl": "images/cards/hY03-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY03-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4323,7 +4323,7 @@
       {
         "name": "Takanashi Kiara",
         "card_id": "hBP01-006",
-        "imageUrl": "images/cards/hBP01-006_OSR.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-006_OSR.png",
         "text": {
           "en": "The SP Oshi skill Rise from the ashes is an incredible ability that reduces life loss by 1 and returns a downed holomem to your hand. Use this skill when your 2nd holomem is downed, then bloom the same card again as your 2nd on the next turn, and continue to deal damage with Arts.",
           "ja": "SP推しスキル「灰からの復活」は、ライフロスを1減らし、ダウンしたホロメムを手札に戻すという驚異的な能力です。 2枚目のホロメムがダウンしたときにこのスキルを使用し、次のターンに2枚目と同じカードを再び開花させ、アーツでダメージを与え続けます。",
@@ -4334,7 +4334,7 @@
       {
         "name": "Takanashi Kiara【1st】",
         "card_id": "hBP01-065",
-        "imageUrl": "images/cards/hBP01-065_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-065_U.png",
         "text": {
           "en": "Using the bloom effect, you can take a look at the top 3 cards of your deck and add one holomem to your hand. The remaining cards can be archived, so you should actively use this effect to increase the number of holomem in your archive. You can use hBP01-006 Takanashi Kiara's Oshi skill, Phoenix Tail, to return archived holomem to your hand.  Archiving holomem at the start of the game is also a useful plan.",
           "ja": "ブルーム効果を使用すると、デッキの上から3枚を見て、ホロメムを1枚手札に加えることができます。残ったカードはアーカイブできるので、この効果を積極的に利用してアーカイブ内のホロメムを増やしていきましょう。 hBP01-006 小鳥遊キアラの推しスキル「フェニックステイル」を使用して、アーカイブされたホロメムを手札に戻すことができます。  ゲーム開始時にホロメムをアーカイブすることも有用な計画です。",
@@ -4353,72 +4353,72 @@
     "url": "https://en.hololive-official-cardgame.com/deck/nanashi-mumei-deck/",
     "oshi": "Nanashi Mumei",
     "oshi_card_id": "hBP01-002",
-    "oshi_image": "images/cards/hBP01-002_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-002_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-015",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-015_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-015_C.png"
       },
       {
         "card_id": "hBP01-016",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-016_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-016_U.png"
       },
       {
         "card_id": "hBP01-018",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-018_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-018_C.png"
       },
       {
         "card_id": "hBP01-019",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-019_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-019_U.png"
       },
       {
         "card_id": "hBP01-020",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-020_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-020_R.png"
       },
       {
         "card_id": "hBP01-028",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-028_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-028_C.png"
       },
       {
         "card_id": "hBP01-030",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-030_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-030_U.png"
       },
       {
         "card_id": "hBP01-031",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-031_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-031_R.png"
       },
       {
         "card_id": "hSD01-007",
         "count": 2,
-        "imageUrl": "images/cards/hSD01-007_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-007_C.png"
       },
       {
         "card_id": "hBP01-092",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-092_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-092_C.png"
       },
       {
         "card_id": "hBP01-094",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-094_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-094_U.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hBP01-113",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-113_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-113_U.png"
       },
       {
         "card_id": "hBP01-110",
@@ -4428,19 +4428,19 @@
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 20,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4459,7 +4459,7 @@
       {
         "name": "Ouro Kronii【1st】",
         "card_id": "hBP01-094",
-        "imageUrl": "images/cards/hBP01-094_U.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-094_U.png",
         "text": {
           "en": "Use the bloom effect to send cheers to holomem with #Promise. As the Arts for 2nd hBP01-019 Nanashi Mumei and hSD01-007 IRyS require three cheers, the bloom effect is especially helpful for speeding things up.",
           "ja": "ブルームエフェクトを使用して、#Promise でホロメムにエールを送りましょう。 2nd hBP01-019 無名無名と hSD01-007 IRyS のアーツは 3 回の応援が必要なので、ブルーム効果は特にスピードアップに役立ちます。",
@@ -4489,12 +4489,12 @@
     "url": "https://en.hololive-official-cardgame.com/deck/kobo-kanaeru-deck/",
     "oshi": "Kobo Kanaeru",
     "oshi_card_id": "hBP01-008",
-    "oshi_image": "images/cards/hBP01-008_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-008_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-082",
         "count": 8,
-        "imageUrl": "images/cards/hBP01-082_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-082_C.png"
       },
       {
         "card_id": "hBP01-083",
@@ -4504,27 +4504,27 @@
       {
         "card_id": "hBP01-084",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-084_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-084_C.png"
       },
       {
         "card_id": "hBP01-086",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-086_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-086_U.png"
       },
       {
         "card_id": "hBP01-087",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-087_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-087_R.png"
       },
       {
         "card_id": "hBP01-024",
         "count": 2,
-        "imageUrl": "images/cards/hBP01-024_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-024_C.png"
       },
       {
         "card_id": "hBP01-026",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-026_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-026_U.png"
       },
       {
         "card_id": "hBP01-027",
@@ -4534,12 +4534,12 @@
       {
         "card_id": "hSD01-016",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -4554,24 +4554,24 @@
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       }
     ],
     "cheer_deck": [
       {
         "card_id": "hY01-001",
         "count": 4,
-        "imageUrl": "images/cards/hY01-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
       },
       {
         "card_id": "hY04-001",
         "count": 16,
-        "imageUrl": "images/cards/hY04-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4590,7 +4590,7 @@
       {
         "name": "Kobo Kanaeru【2nd】",
         "card_id": "hBP01-087",
-        "imageUrl": "images/cards/hBP01-087_R.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-087_R.png",
         "text": {
           "en": "This deck's key card for area-of-effect damage.Using Wave Mantra after Rain Mantra will allow you to deal immense damage.",
           "ja": "このデッキの範囲ダメージのキーカード。雨のマントラの後に波動のマントラを使用すると、絶大なダメージを与えることができます。",
@@ -4620,12 +4620,12 @@
     "url": "https://en.hololive-official-cardgame.com/deck/aki-rosenthal-deck/",
     "oshi": "Aki Rosenthal",
     "oshi_card_id": "hBP01-003",
-    "oshi_image": "images/cards/hBP01-003_OSR.png",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-003_OSR.png",
     "main_deck": [
       {
         "card_id": "hBP01-032",
         "count": 8,
-        "imageUrl": "images/cards/hBP01-032_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-032_C.png"
       },
       {
         "card_id": "hBP01-033",
@@ -4635,57 +4635,57 @@
       {
         "card_id": "hBP01-034",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-034_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-034_C.png"
       },
       {
         "card_id": "hBP01-035",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-035_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-035_C.png"
       },
       {
         "card_id": "hBP01-036",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-036_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-036_U.png"
       },
       {
         "card_id": "hBP01-037",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-037_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-037_R.png"
       },
       {
         "card_id": "hBP01-114",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-114_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
       },
       {
         "card_id": "hBP01-122",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-122_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-122_C.png"
       },
       {
         "card_id": "hBP01-119",
         "count": 3,
-        "imageUrl": "images/cards/hBP01-119_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-119_C.png"
       },
       {
         "card_id": "hSD01-016",
         "count": 1,
-        "imageUrl": "images/cards/hSD01-016_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
         "card_id": "hSD01-017",
         "count": 4,
-        "imageUrl": "images/cards/hSD01-017_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
       },
       {
         "card_id": "hBP01-108",
         "count": 1,
-        "imageUrl": "images/cards/hBP01-108_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
       },
       {
         "card_id": "hBP01-104",
         "count": 4,
-        "imageUrl": "images/cards/hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
       },
       {
         "card_id": "hSD01-019",
@@ -4697,7 +4697,7 @@
       {
         "card_id": "hY02-001",
         "count": 20,
-        "imageUrl": "images/cards/hY02-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -4716,7 +4716,7 @@
       {
         "name": "Stone Axe",
         "card_id": "hBP01-114",
-        "imageUrl": "images/cards/hBP01-114_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png",
         "text": {
           "en": "Although it is usually considered a debuff, it proves to be a useful card when used in the Aki Rosenthal Deck. The Arts +20 ability proves to be extremely advantageous throughout the game, so you should aim to have this card placed on holomem who use Arts.",
           "ja": "通常はデバフとみなされますが、アキ・ローゼンタールデッキで使用すると便利なカードであることがわかります。 Arts+20はゲーム全体を通して非常に有利なので、Artsを使うホロメムにこのカードを配置することを目指しましょう。",
@@ -4727,7 +4727,7 @@
       {
         "name": "Aki Rosenthal【1st】",
         "card_id": "hBP01-035",
-        "imageUrl": "images/cards/hBP01-035_C.png",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-035_C.png",
         "text": {
           "en": "With the bloom effect, you can retrieve hBP01-114 Stone Axe from your archive. It is beneficial for games where four copies of hBP01-114 Stone Axe are not enough. Additionally, being able to send cheers to your own holomem when using Arts is another powerful effect.",
           "ja": "ブルーム効果を使用すると、アーカイブから hBP01-114 ストーンアックスを取得できます。 hBP01-114 ストーンアックスが 4 枚では足りないゲームでは有利です。また、アーツ使用時に自分のホロメムにエールを送れるのも強力な効果だ。",
