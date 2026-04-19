@@ -48,6 +48,10 @@
           "**/*",
           "!**/*.map"
         ]
+      },
+      {
+        "from": "node_modules/ws",
+        "to": "node_modules/ws"
       }
     ],
     "mac": {

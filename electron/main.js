@@ -14,7 +14,9 @@ const repoRoot = app.isPackaged
   ? path.join(process.resourcesPath, 'web')
   : path.join(__dirname, '..', 'web');
 
-const indexPath = path.join(repoRoot, 'index.html');
+// Launch straight into the battle simulator (game/index.html) — this app is
+// specifically for practicing battles; the full meta/deck/news site stays web-only.
+const indexPath = path.join(repoRoot, 'game', 'index.html');
 
 let mainWindow = null;
 let wsServerProcess = null;
@@ -110,6 +112,9 @@ function buildMenu() {
 
 // Local-WebSocket-server startup for the "Online" mode: lets two players on the
 // same machine (or LAN) run the bundled ws-server against localhost.
+// The `ws` npm package is bundled at ${resourcesPath}/node_modules/ws so Node's
+// default "walk up from script" resolver finds it when walking from
+// Resources/web/game/server/ws-server.js → Resources/node_modules/ws.
 function startLocalWsServer() {
   if (wsServerProcess) return;
   const serverScript = path.join(repoRoot, 'game', 'server', 'ws-server.js');
