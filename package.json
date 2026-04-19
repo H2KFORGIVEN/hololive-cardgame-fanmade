@@ -14,6 +14,7 @@
     "server": "node web/game/server/ws-server.js",
     "dev": "npm run build && npm run serve",
     "scrape": "uv run python -m scraper.run",
+    "scrape:push": "./scripts/scrape-commit-push.sh",
     "electron": "electron .",
     "package:mac": "electron-builder --mac dmg --publish never",
     "package:win": "electron-builder --win nsis --publish never",
