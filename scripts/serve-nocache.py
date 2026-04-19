@@ -8,6 +8,7 @@
 
 Usage: python3 scripts/serve-nocache.py [port]   (default port 8080)
 """
+from __future__ import annotations  # so `str | None` works on Python 3.9 (Studio)
 import json
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
