@@ -6,6 +6,10 @@ dist/
 wheels/
 *.egg-info
 
+# Electron artifacts — keep source, skip binary output
+!electron/build/
+electron/build/*.map
+
 # Virtual environments
 .venv
 
