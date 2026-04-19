@@ -15,7 +15,59 @@ function _getDeckColors(deck, cardsMap) {
   return Object.keys(colors).sort((a, b) => colors[b] - colors[a]);
 }
 
-export function renderGuidesView(container, allGuides, decksData, cardsData, filters, officialDecks) {
+// Renders the official-style tier TABLE at the top of the guides page:
+//   [ Tier 1 | icon icon icon ]
+//   [ Tier 2 | icon icon ]
+//   [ Tier 3 | icon icon icon icon ]
+// Mirrors https://www.holocardstrategy.jp/saikyou-deck/ — click an icon → deck modal.
+function _renderTierTable(tierData, decksData) {
+  if (!tierData || !tierData.tiers || !tierData.tiers.length) return '';
+
+  // Index decksData by url + by name so we can attach clickable recipe links.
+  const byUrl = new Map();
+  const byName = new Map();
+  for (const d of decksData || []) {
+    if (d.url) byUrl.set(d.url, d);
+    const nm = (typeof d.name === 'string') ? d.name : (d.title && (d.title.ja || ''));
+    if (nm) byName.set(nm, d);
+  }
+
+  const tierColor = { 1: '#d32f2f', 2: '#f57c00', 3: '#00897b' };
+  let rows = '';
+  for (const tier of tierData.tiers) {
+    const color = tierColor[tier.tier] || '#4f4982';
+    const cells = (tier.decks || []).map(deck => {
+      const img = deck.image || '';
+      const matched = byUrl.get(deck.recipe_url) || byName.get(deck.name);
+      const clickableAttrs = matched
+        ? `data-deck-id="${matched.deck_id || matched.url || ''}"`
+        : '';
+      const label = deck.name || deck.vtuber || '?';
+      const noDetail = deck._no_detail ? ' tier-cell-nodetail' : '';
+      return `<a class="tier-cell${noDetail}" ${clickableAttrs} title="${label}" ${deck.recipe_url ? `href="${deck.recipe_url}" target="_blank" rel="noopener"` : ''}>
+        ${img ? `<img src="${img}" alt="${label}" loading="lazy">` : '<span class="tier-cell-placeholder">?</span>'}
+        <span class="tier-cell-name">${label}</span>
+      </a>`;
+    }).join('');
+    rows += `
+      <div class="tier-row">
+        <div class="tier-label" style="background:${color}">Tier ${tier.tier}</div>
+        <div class="tier-cells">${cells || '<span class="tier-empty">—</span>'}</div>
+      </div>`;
+  }
+
+  return `
+    <div class="tier-table-section">
+      <div class="tier-table-header">
+        <h3>${t('guides_tier_ranking') || '最強デッキランキング'}</h3>
+        <a class="tier-source-link" href="${tierData.source || '#'}" target="_blank" rel="noopener">來源 ↗</a>
+      </div>
+      <div class="tier-table">${rows}</div>
+    </div>
+  `;
+}
+
+export function renderGuidesView(container, allGuides, decksData, cardsData, filters, officialDecks, tierData) {
   const cardsMap = {};
   if (cardsData) {
     for (const c of cardsData) cardsMap[c.id] = c;
@@ -87,6 +139,7 @@ export function renderGuidesView(container, allGuides, decksData, cardsData, fil
         <input type="text" id="guideSearch" class="search-input" placeholder="${t('guides_search_placeholder')}" />
       </div>
     </div>
+    ${_renderTierTable(tierData, decksData)}
     <div class="guides-count" id="guidesCount">${t('guides_showing', { shown: Math.min(shown, filtered.length), total: filtered.length })}</div>
     <div class="guides-grid" id="guidesGrid">
       ${initial.map(d => renderGuideCard(d, cardsMap)).join('')}
