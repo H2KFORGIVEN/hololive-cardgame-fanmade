@@ -24,18 +24,41 @@ def _assign_tier_to_guides(data_dir: Path):
     tiers = json.loads(tier_path.read_text(encoding="utf-8"))
     guides = json.loads(guides_path.read_text(encoding="utf-8"))
 
+    # Build keyword list: for each tier-listed deck, produce multiple matchable forms.
+    # Deck names are things like "ジジ推しラプラス単" — we want BOTH halves (ジジ, ラプラス)
+    # plus the full vtuber name (ラプラス・ダークネス) to catch guides titled "ジジ・ムリン単" etc.
     lookup: list[tuple[str, int]] = []
+    seen_keywords: set[tuple[str, int]] = set()
+
+    def add(keyword: str, tier_num: int):
+        keyword = (keyword or "").strip()
+        if len(keyword) >= 2 and (keyword, tier_num) not in seen_keywords:
+            seen_keywords.add((keyword, tier_num))
+            lookup.append((keyword, tier_num))
+
     for tier in tiers.get("tiers", []):
         tier_num = tier["tier"]
         for d in tier.get("decks", []):
-            if d.get("vtuber"):
-                lookup.append((d["vtuber"], tier_num))
+            # Full vtuber name (e.g. "ラプラス・ダークネス")
+            vtuber = d.get("vtuber", "")
+            if vtuber:
+                add(vtuber, tier_num)
+                # Also the name without ・ separators to catch "ラプラスダークネス" variants
+                add(vtuber.replace("・", ""), tier_num)
+
             name = d.get("name", "")
             if name:
-                core = name.replace("単", "").replace("推し", "").strip()
-                if core:
-                    lookup.append((core, tier_num))
+                # Full deck name as-is
+                add(name, tier_num)
+                # Name minus 単 suffix (e.g. "クロニー単" → "クロニー")
+                add(name.rstrip("単"), tier_num)
+                # Split on 推し to get both oshi name and main deck name
+                # e.g. "ジジ推しラプラス単" → ["ジジ", "ラプラス"]
+                if "推し" in name:
+                    for part in name.split("推し"):
+                        add(part.rstrip("単").strip(), tier_num)
 
+    # Longest keywords first so specific matches beat generic ones
     lookup.sort(key=lambda x: len(x[0]), reverse=True)
 
     assigned = 0
