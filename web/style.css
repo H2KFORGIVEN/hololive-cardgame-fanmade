@@ -12,9 +12,11 @@
   --accent-gold: #b8860b;
   --accent-purple: #6b5ce7;
   --accent-official: #4f4982;
-  --tier1: #b8860b;
-  --tier2: #888;
-  --tier3: #a0522d;
+  /* All tiers in the gold family — bright T1 → mid T2 → deep T3.
+     Readable at a glance: warm color signals tier, number signals rank. */
+  --tier1: #f5c24a;
+  --tier2: #d4a030;
+  --tier3: #a0741c;
   --rating-s: #b8860b;
   --rating-a: #3a8a3a;
   --rating-b: #6a7a88;
@@ -680,9 +682,9 @@ body {
   border-radius: var(--radius);
   letter-spacing: 0.05em;
 }
-.tier-badge[data-tier="1"] { background: var(--tier1); color: #1a1200; }
-.tier-badge[data-tier="2"] { background: var(--tier2); color: #1a1a1a; }
-.tier-badge[data-tier="3"] { background: var(--tier3); color: #1a1200; }
+.tier-badge[data-tier="1"] { background: var(--tier1); color: #3a2500; }
+.tier-badge[data-tier="2"] { background: var(--tier2); color: #2e1c00; }
+.tier-badge[data-tier="3"] { background: var(--tier3); color: #fffaec; }
 .tier-label {
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -1731,9 +1733,26 @@ body {
   background: rgba(255,255,255,0.1);
   color: var(--text-secondary);
 }
-.guide-tier-badge[data-tier="1"] { background: #ffd700; color: #000; }
-.guide-tier-badge[data-tier="2"] { background: #c0c0c0; color: #000; }
-.guide-tier-badge[data-tier="3"] { background: #cd7f32; color: #fff; }
+/* Unified gold family — all tiers use gold shades for instant recognition.
+   T1 = brightest (champion), T2 = mid gold, T3 = deep gold/amber. */
+.guide-tier-badge[data-tier="1"] {
+  background: linear-gradient(135deg, #ffd84a 0%, #f5b800 100%);
+  color: #3a2500;
+  box-shadow: 0 1px 4px rgba(245, 184, 0, 0.4);
+  border: 1px solid #d4a000;
+}
+.guide-tier-badge[data-tier="2"] {
+  background: linear-gradient(135deg, #e6b84a 0%, #c89020 100%);
+  color: #2e1c00;
+  box-shadow: 0 1px 3px rgba(200, 144, 32, 0.35);
+  border: 1px solid #a87810;
+}
+.guide-tier-badge[data-tier="3"] {
+  background: linear-gradient(135deg, #c69a3e 0%, #8c6418 100%);
+  color: #fffaec;
+  box-shadow: 0 1px 3px rgba(140, 100, 24, 0.3);
+  border: 1px solid #6e4a10;
+}
 .guide-card-title {
   font-size: 0.95rem;
   font-weight: 700;
