@@ -209,33 +209,34 @@ def _is_ad_figure(fig) -> bool:
 
 
 def _extract_deck_image(soup: BeautifulSoup) -> str | None:
-    """Extract the main deck overview image.
+    """Extract the main deck overview image from a deck detail page.
+
+    The deck's hero graphic lives in a <figure class="wp-block-image"> right
+    after a heading like "クロニー単のデッキレシピ" / "デッキ構成". We scan the
+    article for a wp-block-image figure under any matching heading — NOT the
+    og:image (that's usually the author's generic social preview).
 
     Priority:
-      1. og:image — the author-set featured image / social preview. This is
-         the most reliable "canonical deck thumbnail" for a WordPress page.
-      2. .p-articleThumb__img — SWELL theme's article header image.
-      3. H2 "デッキ構成/レシピ" → next figure — the deck list graphic.
-      4. First non-ad, non-linked figure as last resort.
+      1. Heading (h2/h3) matching deck keywords → next wp-block-image figure.
+      2. First non-ad, non-linked wp-block-image figure in the article body.
     """
-    og = soup.find("meta", attrs={"property": "og:image"})
-    if og and og.get("content"):
-        return og["content"].strip()
+    for h in soup.find_all(["h2", "h3"], class_="wp-block-heading"):
+        h_text = h.get_text(strip=True)
+        if not any(kw in h_text for kw in DECK_H2_KEYWORDS):
+            continue
+        sib = h.find_next_sibling()
+        for _ in range(8):
+            if not sib:
+                break
+            if getattr(sib, "name", None) == "figure":
+                cls = " ".join(sib.get("class", []))
+                if "wp-block-image" in cls and not _is_ad_figure(sib):
+                    img = sib.find("img")
+                    if img and img.get("src"):
+                        return img["src"].strip()
+            sib = sib.find_next_sibling() if hasattr(sib, "find_next_sibling") else None
 
-    thumb = soup.find("img", class_="p-articleThumb__img")
-    if thumb and thumb.get("src"):
-        return thumb["src"].strip()
-
-    for h2 in soup.find_all("h2", class_="wp-block-heading"):
-        h2_text = h2.get_text(strip=True)
-        if any(kw in h2_text for kw in DECK_H2_KEYWORDS):
-            fig = h2.find_next("figure")
-            if fig and not _is_ad_figure(fig):
-                img = fig.find("img")
-                if img:
-                    return img.get("src")
-
-    for fig in soup.find_all("figure", limit=10):
+    for fig in soup.find_all("figure", class_="wp-block-image", limit=10):
         if _is_ad_figure(fig):
             continue
         a = fig.find("a")
@@ -243,7 +244,7 @@ def _extract_deck_image(soup: BeautifulSoup) -> str | None:
             continue
         img = fig.find("img")
         if img and img.get("src"):
-            return img.get("src")
+            return img["src"].strip()
 
     return None
 
