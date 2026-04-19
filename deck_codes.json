@@ -322,5 +322,149 @@
     "event": "ぐるっとツアー2026 Miyagi",
     "event_date": "2026-04-04",
     "placement": "Trio 1st B Block (仙台女神トリオ頑張ろうの会)"
+  },
+  {
+    "code": "59J29",
+    "title": "クロニー単",
+    "oshi": "オーロ・クロニー",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "1st(LightningJason)"
+  },
+  {
+    "code": "3K9T7",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "2nd(Bagataro)"
+  },
+  {
+    "code": "5UNSD",
+    "title": "クロニー単",
+    "oshi": "オーロ・クロニー",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "3rd(Natskii)"
+  },
+  {
+    "code": "60AKX",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "4th(Gikuto)"
+  },
+  {
+    "code": "1RPBX",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "5th(Zhenchin)"
+  },
+  {
+    "code": "77BQV",
+    "title": "ねね単",
+    "oshi": "桃鈴ねね",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "6th(Bombaxus)"
+  },
+  {
+    "code": "51G0Z",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "7th(bisa)"
+  },
+  {
+    "code": "6G72R",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "8th(Mojito)"
+  },
+  {
+    "code": "ZCMH",
+    "title": "AZKi単(1フレア)",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "9th(Noark)"
+  },
+  {
+    "code": "7D2JZ",
+    "title": "AZKi単(1フレア)",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "10th(ephyra)"
+  },
+  {
+    "code": "2RZW9",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "11th(Xile)"
+  },
+  {
+    "code": "6ZT7P",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "12th(CEO Nick)"
+  },
+  {
+    "code": "1WEDK",
+    "title": "クロニー単",
+    "oshi": "オーロ・クロニー",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "13th(Jo)"
+  },
+  {
+    "code": "7836H",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "14th(minato)"
+  },
+  {
+    "code": "152VP",
+    "title": "クロニー単",
+    "oshi": "オーロ・クロニー",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "15th(PY)"
+  },
+  {
+    "code": "5XP6M",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "WGP25-26 Kuala Lumpur",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "16th(Chocolat)"
   }
 ]
