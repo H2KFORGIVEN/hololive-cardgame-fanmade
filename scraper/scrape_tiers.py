@@ -54,11 +54,15 @@ def _parse_deck_block(h4: Tag) -> dict | None:
                                 if line.strip()
                             ]
 
-            link = sibling.find("a", class_="swell-block-button__link")
-            if link and link.get("href"):
-                href = link["href"].strip()
-                if href and href != "#":
-                    deck["recipe_url"] = href
+            # Scan ALL swell buttons — the first one may be an Amazon affiliate
+            # (amzn.to/...) promoting a strategy book; the real recipe link comes
+            # after. Only accept same-site links.
+            if deck.get("recipe_url") is None:
+                for link in sibling.find_all("a", class_="swell-block-button__link"):
+                    href = (link.get("href") or "").strip()
+                    if href and href != "#" and "holocardstrategy.jp" in href:
+                        deck["recipe_url"] = href
+                        break
 
         sibling = sibling.find_next_sibling()
 
