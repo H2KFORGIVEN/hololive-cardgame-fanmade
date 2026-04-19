@@ -97,8 +97,14 @@ def main():
     existing_urls = {d["url"] for d in tier_decks if d.get("url")}
     scrape_all_guides(data_dir, existing_urls, cards_path)
 
-    print("\n[5/10] Assigning tier levels to guides...")
-    _assign_tier_to_guides(data_dir)
+    # Guide tier assignment disabled: guide titles frequently contain the name
+    # of a current tier deck while being an older version or a different build
+    # (e.g. "5弾更新版！AZKi単" vs current T1 "AZKi単" at /7danazkideck-kaisetu/,
+    # or "ハコスクロニー" — a Hakos+Kronii combo — vs T1 "クロニー単" mono).
+    # Substring matching can't distinguish these reliably. Tier-linked decks are
+    # already captured accurately in decks.json via tier_list URL matching, so
+    # leave guides as "Guide"-badged without a tier label.
+    print("\n[5/10] (skipped) Guide tier assignment — false-positive-prone, disabled")
 
     print("\n[6/10] Discovering & scraping X posts for tournament results...")
     scrape_x_posts(base / "x_posts.json", base / "deck_codes.json", data_dir)

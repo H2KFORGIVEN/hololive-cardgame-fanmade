@@ -151,30 +151,22 @@ def _extract_tier_table_entries(soup: BeautifulSoup) -> list[tuple[int, str, str
 
 
 def scrape_tiers(output_dir: Path) -> dict:
-    """Tier list scraper — tier-table-authoritative with h3/h4 enrichment.
+    """Tier list scraper — h2 "TierN デッキの解説" sections are authoritative.
 
-    The source page has two disagreeing signals:
-      - TIER TABLE (top icons) — the author's current tier placement.
-      - h2 "TierN デッキの解説" with h3/h4 sections — keeps stale entries
-        when a deck moves between tiers (e.g. わため's h4 still lives in
-        the "Tier3 デッキの解説" h2 even though the top table placed her
-        in Tier 2). h3 is NOT reliable as a tier source.
+    Source site behaviour (verified 2026-04-19): the h2 "Tier1 デッキの解説" /
+    "Tier2 デッキの解説" / "Tier3 デッキの解説" groupings reflect the author's
+    CURRENT tier placement. The top icon TABLE is a visual summary and
+    often disagrees with the h2 sections — the TABLE places decks in
+    inconsistent rows (e.g. わため icon landed in T2 despite her h3 being
+    under "Tier3 デッキの解説", and the T1 hakorizu cell uses a broken
+    wp-admin edit link). Trusting the table produces wrong placements.
 
-    Strategy:
-      1. Build anchor → h4-blocks map by walking all h3/h4 sections
-         regardless of which h2 they live under. Each h4 keeps its full
-         deck block (image, ratings, features, recipe_url).
-      2. Walk the tier TABLE. For each cell, resolve its anchor to the
-         h3 entry, filter h4 blocks to those with a recipe_url (active
-         decks only), and assign the TABLE's tier to each. Skip cells
-         whose anchor doesn't resolve and has no usable alt text.
-
-    Example from 2026-04-13:
-      - Table T2 cell #watame → h3 "角巻わため" → h4 "わため単" (has link) → T2.
-      - Table T3 cell #rapurasu → h3 "ラプラス・ダークネス" → 3 h4s, only
-        "ラプ推しラプラス単" has link → T3.
-      - h3 "ハコス・ベールズ" lives under T1 h2 section BUT no table cell
-        references it → dropped (stale content).
+    Logic:
+      1. Walk h2 "TierN デッキの解説" → h3 (vtuber) → h4 (deck block).
+      2. An h4 is considered "currently in TierN" iff it has a same-site
+         recipe link on the "レシピと回し方はこちら" button.
+      3. Decks without a link are skipped — they're legacy content the
+         author hasn't removed yet.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -193,86 +185,33 @@ def scrape_tiers(output_dir: Path) -> dict:
     if date_match:
         updated = f"{date_match.group(1)}-{int(date_match.group(2)):02d}"
 
-    # Pass 1: build anchor → (vtuber, h4 blocks) map from every h3 on the page.
-    # We read h3s inside any h2, because the table may reference an h3 that's
-    # grouped under the "wrong" h2 (stale content). The table decides the tier;
-    # the h3 just provides metadata.
-    anchor_to_entry: dict[str, dict] = {}
-    for h3 in soup.find_all("h3"):
-        vtuber_name = h3.get_text(strip=True)
-        if not vtuber_name:
-            continue
-
-        ids: set[str] = set()
-        if h3.get("id"): ids.add(h3["id"])
-        for a in h3.find_all("a"):
-            if a.get("id"): ids.add(a["id"])
-            if a.get("name"): ids.add(a["name"])
-        prev = h3.find_previous_sibling()
-        for _ in range(3):
-            if not isinstance(prev, Tag):
-                break
-            for a in (prev.find_all("a") if prev.name != "a" else [prev]):
-                if a.get("id"): ids.add(a["id"])
-                if a.get("name"): ids.add(a["name"])
-            prev = prev.find_previous_sibling()
-
-        h4_blocks: list[dict] = []
-        el = h3.find_next_sibling()
-        while isinstance(el, Tag) and el.name not in ("h2", "h3"):
-            if el.name == "h4":
-                deck = _parse_deck_block(el)
-                if deck:
-                    deck["vtuber"] = vtuber_name
-                    deck["id"] = _slugify(f"{vtuber_name}-{deck['name']}")
-                    h4_blocks.append(deck)
-            el = el.find_next_sibling()
-
-        entry = {"vtuber": vtuber_name, "h4_blocks": h4_blocks}
-        for aid in ids:
-            anchor_to_entry[aid] = entry
-
-    # Pass 2: the tier table is the authoritative source of CURRENT placements.
-    table_entries = _extract_tier_table_entries(soup)
+    tier_headings: list[tuple[int, Tag]] = []
+    for h2 in soup.find_all("h2"):
+        m = re.match(r"Tier(\d+)デッキ", h2.get_text(strip=True))
+        if m:
+            tier_headings.append((int(m.group(1)), h2))
 
     tiers_data: dict[int, list[dict]] = {}
-    unresolved = 0
+    skipped_no_link = 0
 
-    for tier_num, anchor, image_url, alt in table_entries:
-        entry = anchor_to_entry.get(anchor) if anchor else None
-
-        if entry:
-            # Include only h4 blocks with an active recipe link — those are
-            # the decks the author maintains. h4s without a link are legacy.
-            active_blocks = [b for b in entry["h4_blocks"] if b.get("recipe_url")]
-            if active_blocks:
-                for b in active_blocks:
-                    if image_url and not b.get("image"):
-                        b["image"] = image_url
-                    tiers_data.setdefault(tier_num, []).append(b)
-                continue
-            # h3 resolves but no active deck block — fall through to synthetic
-            vtuber = entry["vtuber"]
-            tiers_data.setdefault(tier_num, []).append({
-                "name": f"{vtuber}単",
-                "image": image_url or None,
-                "ratings": {}, "features": [], "recipe_url": None,
-                "vtuber": vtuber, "id": _slugify(vtuber),
-                "_from_tier_table": True, "_no_detail": True,
-            })
-            continue
-
-        # Anchor unresolvable. Use alt text as a best-effort name.
-        if alt:
-            tiers_data.setdefault(tier_num, []).append({
-                "name": f"{alt}単",
-                "image": image_url or None,
-                "ratings": {}, "features": [], "recipe_url": None,
-                "vtuber": alt, "id": _slugify(alt),
-                "_from_tier_table": True, "_no_detail": True,
-            })
-        else:
-            unresolved += 1
+    for tier_num, h2 in tier_headings:
+        next_h2 = h2.find_next_sibling("h2")
+        current_h3_name: str | None = None
+        el = h2.find_next_sibling()
+        while el and el is not next_h2:
+            if isinstance(el, Tag):
+                if el.name == "h3":
+                    current_h3_name = el.get_text(strip=True)
+                elif el.name == "h4" and current_h3_name:
+                    deck = _parse_deck_block(el)
+                    if deck:
+                        if not deck.get("recipe_url"):
+                            skipped_no_link += 1
+                        else:
+                            deck["vtuber"] = current_h3_name
+                            deck["id"] = _slugify(f"{current_h3_name}-{deck['name']}")
+                            tiers_data.setdefault(tier_num, []).append(deck)
+            el = el.find_next_sibling()
 
     result = {
         "updated": updated,
@@ -289,7 +228,7 @@ def scrape_tiers(output_dir: Path) -> dict:
     total = sum(len(t["decks"]) for t in result["tiers"])
     print(
         f"[scrape_tiers] Saved {total} decks across {len(result['tiers'])} tiers "
-        f"(skipped {unresolved} unresolvable table cells; tier TABLE authoritative)"
+        f"(skipped {skipped_no_link} h4 blocks with no recipe link)"
     )
     return result
 
