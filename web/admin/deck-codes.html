@@ -33,6 +33,7 @@
             <th>event</th>
             <th>event_date</th>
             <th>placement</th>
+            <th>牌譜</th>
             <th></th>
           </tr>
         </thead>
@@ -42,14 +43,18 @@
   </main>
 
   <footer class="admin-footer">
-    <p>存檔後記得在終端機跑 <code>./scripts/push-deploy.sh</code> 推到 GitHub + 部署。</p>
+    <p>存檔後記得在終端機跑 <code>./scripts/push-deploy.sh</code> 推到 GitHub + 部署。新增的 code 要等下次 scrape（<code>npm run scrape:push</code>）才會抓牌譜。</p>
   </footer>
 
   <script>
     const API = '/api/admin/deck-codes';
+    const DECKLOG_URL = '/data/decklog_decks.json';
     const FIELDS = ['code','title','oshi','source','event','event_date','placement'];
     const tbody = document.getElementById('tbody');
     const statusEl = document.getElementById('status');
+
+    // decklog_decks.json lookup by code (populated after scrape)
+    let decklogByCode = {};
 
     function setStatus(msg, tone) {
       statusEl.textContent = msg;
@@ -66,10 +71,21 @@
         input.dataset.field = f;
         input.value = entry[f] || '';
         if (f === 'event_date') input.placeholder = 'YYYY-MM-DD';
-        if (f === 'code') input.placeholder = '5 碼 deck code';
+        if (f === 'code') {
+          input.placeholder = '5 碼';
+          // When code changes, refresh the deck-cell display
+          input.addEventListener('input', () => _renderDeckCell(tr));
+        }
         td.appendChild(input);
         tr.appendChild(td);
       }
+
+      // Deck contents cell — shows main/cheer card counts + "view" link
+      const deckCell = document.createElement('td');
+      deckCell.className = 'deck-cell';
+      tr.appendChild(deckCell);
+      _renderDeckCell(tr);
+
       const actions = document.createElement('td');
       const del = document.createElement('button');
       del.className = 'btn-del';
@@ -80,15 +96,55 @@
       return tr;
     }
 
+    function _renderDeckCell(tr) {
+      const codeInput = tr.querySelector('input[data-field="code"]');
+      const code = (codeInput?.value || '').trim().toUpperCase();
+      const cell = tr.querySelector('.deck-cell');
+      if (!cell) return;
+      if (!code) {
+        cell.innerHTML = '<span class="deck-cell-muted">—</span>';
+        return;
+      }
+      const scraped = decklogByCode[code];
+      const bushiLink = `https://decklog-en.bushiroad.com/ja/view/${code}`;
+      if (scraped) {
+        const main = scraped.main_deck_count ?? (scraped.main_deck || []).length;
+        const cheer = scraped.cheer_deck_count ?? (scraped.cheer_deck || []).length;
+        cell.innerHTML = `
+          <span class="deck-counts">主 ${main} · 應援 ${cheer}</span>
+          <a class="deck-view-btn" href="${bushiLink}" target="_blank" rel="noopener" title="Bushiroad Deck Log">看牌組 ↗</a>
+        `;
+      } else {
+        cell.innerHTML = `
+          <span class="deck-cell-pending" title="尚未 scrape，下次跑 scraper 會自動抓">未抓取</span>
+          <a class="deck-view-btn" href="${bushiLink}" target="_blank" rel="noopener">Bushiroad ↗</a>
+        `;
+      }
+    }
+
     async function load() {
       setStatus('載入中...', '');
       try {
-        const r = await fetch(API);
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const data = await r.json();
+        // Fetch deck_codes and decklog_decks in parallel
+        const [codesResp, decklogResp] = await Promise.all([
+          fetch(API),
+          fetch(DECKLOG_URL).catch(() => null),
+        ]);
+        if (!codesResp.ok) throw new Error('deck_codes HTTP ' + codesResp.status);
+        const codes = await codesResp.json();
+
+        decklogByCode = {};
+        if (decklogResp && decklogResp.ok) {
+          const decklog = await decklogResp.json();
+          for (const d of decklog) {
+            if (d.deck_code) decklogByCode[d.deck_code.toUpperCase()] = d;
+          }
+        }
+
         tbody.innerHTML = '';
-        for (const entry of data) tbody.appendChild(makeRow(entry));
-        setStatus('已載入 ' + data.length + ' 筆', 'ok');
+        for (const entry of codes) tbody.appendChild(makeRow(entry));
+        const scrapedCount = Object.keys(decklogByCode).length;
+        setStatus(`已載入 ${codes.length} 筆（${scrapedCount} 筆已有詳細牌譜）`, 'ok');
       } catch (e) {
         setStatus('載入失敗: ' + e.message, 'err');
       }

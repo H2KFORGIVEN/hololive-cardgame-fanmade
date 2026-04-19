@@ -209,3 +209,46 @@ button:hover { border-color: #6b5ce7; background: #f4f1fa; }
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.7rem;
 }
+
+/* deck-codes.html: deck contents cell */
+.deck-cell {
+  white-space: nowrap;
+  font-size: 0.8rem;
+}
+.deck-counts {
+  display: inline-block;
+  background: #e8f5ea;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.deck-cell-pending {
+  display: inline-block;
+  background: #fff4e0;
+  color: #b87500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-right: 6px;
+}
+.deck-cell-muted {
+  color: #aaa;
+  font-style: italic;
+}
+.deck-view-btn {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #4f4982;
+  text-decoration: none;
+  padding: 2px 6px;
+  border: 1px solid #d4cfe6;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.15s;
+}
+.deck-view-btn:hover {
+  border-color: #6b5ce7;
+  background: #f4f1fa;
+}
