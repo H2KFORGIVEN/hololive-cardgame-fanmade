@@ -92,7 +92,7 @@ async function render() {
 
   if (currentView === 'guides') {
     await ensureCards();
-    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks, tierData);
+    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks);
   } else if (currentView === 'tournament') {
     await Promise.all([ensureDecklog(), ensureCards()]);
     renderTournamentView(tournamentView, decklogDecks, cardsData);
