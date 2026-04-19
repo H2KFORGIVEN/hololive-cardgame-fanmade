@@ -103,11 +103,16 @@ export function getAllSupports() { return _supportCards || []; }
 export function getAllCheers() { return _cheerCards || []; }
 export function getAllCards() { return _cards || []; }
 
-// Get the image path for a card (relative to game/ directory)
+// Get the image path for a card (relative to game/ directory).
+// Priority: local `image` path (if set by localize-data.py) → remote `imageUrl` (CDN fallback).
+// Swapped from the original `imageUrl || image` so hosts without local card images
+// (e.g. Studio) still see card art via the remote CDN.
 export function getCardImage(cardId) {
   const card = getCard(cardId);
   if (!card) return '';
-  const path = card.imageUrl || card.image || '';
+  // Prefer local image path only when it points into images/cards/ (the localized form)
+  const isLocal = card.image && card.image.startsWith('images/cards/');
+  const path = isLocal ? card.image : (card.imageUrl || card.image || '');
   // Paths in cards.json are relative to web/ root, prefix ../ for game/ subdir
   if (path && !path.startsWith('http') && !path.startsWith('../')) {
     return '../' + path;

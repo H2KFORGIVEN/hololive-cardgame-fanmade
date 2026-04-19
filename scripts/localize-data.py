@@ -62,26 +62,30 @@ def _localize_strategy_card_url(url: str) -> str:
 
 
 def _process_cards_json():
+    """Localize cards.json image refs.
+
+    Rule: NEVER overwrite `imageUrl` — it must stay as the remote CDN URL so
+    deployments without local card images (Studio host, fresh clones) can fall
+    back to remote. Only `image` is set to a local web path when the file exists.
+    Frontend priority is `image || imageUrl` (see CardDatabase.getCardImage).
+    """
     path = DATA_DIR / "cards.json"
     if not path.exists():
         return
     cards = json.loads(path.read_text(encoding="utf-8"))
-    changed = 0
+    local_count = 0
     for card in cards:
-        old_url = card.get("imageUrl", "")
-        new_url = _localize_github_url(old_url)
-        if new_url != old_url:
-            card["imageUrl"] = new_url
-            changed += 1
-
         old_img = card.get("image", "")
         if old_img and "/" in old_img:
             basename = old_img.split("/")[-1]
             if basename in _get_local_files():
                 card["image"] = f"images/cards/{basename}"
+                local_count += 1
+            # If not local, leave `image` as the raw relative path — frontend will
+            # fall through to the remote `imageUrl` instead.
 
     path.write_text(json.dumps(cards, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"cards.json: {changed} imageUrls localized")
+    print(f"cards.json: {local_count}/{len(cards)} image paths localized (imageUrl preserved as remote fallback)")
 
 
 def _process_decks_json():
