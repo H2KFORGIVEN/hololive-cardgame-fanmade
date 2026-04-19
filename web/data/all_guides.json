@@ -10138,7 +10138,7 @@
     "date": "2025-07-17",
     "deck_id": "guide-watame-deck",
     "source": "holocardstrategy_guide",
-    "tier": 3
+    "tier": 2
   },
   {
     "url": "https://www.holocardstrategy.jp/kiara-deck/",
@@ -12909,8 +12909,7 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-ookamimio-deck",
-    "source": "holocardstrategy_guide",
-    "tier": 3
+    "source": "holocardstrategy_guide"
   },
   {
     "url": "https://www.holocardstrategy.jp/nekomataokayu-deck/",

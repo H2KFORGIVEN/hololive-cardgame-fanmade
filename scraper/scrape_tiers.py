@@ -102,22 +102,32 @@ def _build_anchor_to_vtuber(soup: BeautifulSoup) -> dict[str, str]:
 def _extract_tier_table_entries(soup: BeautifulSoup) -> list[tuple[int, str, str, str]]:
     """Parse the tier summary table at the top of the page.
     Returns list of (tier_num, anchor_id, image_url, label) tuples.
-    `label` is best-effort: alt text, else derived from the anchor, else empty."""
+    `label` is best-effort: alt text, else empty.
+
+    Note: Tier 3 (and sometimes Tier 2) use `rowspan="3"` for the header cell,
+    so the 2nd and 3rd rows have no th. We carry the current tier across rows
+    that are part of the same rowspan group.
+    """
     entries: list[tuple[int, str, str, str]] = []
     for table in soup.find_all("table"):
-        rows = table.find_all("tr")
-        for row in rows:
-            th = row.find("th")
-            if not th:
+        current_tier: int | None = None
+        for row in table.find_all("tr"):
+            cells = row.find_all(["th", "td"])
+            if not cells:
                 continue
-            header = th.get_text(strip=True)
-            m = re.match(r"Tier(\d+)", header)
-            if not m:
-                continue
-            tier_num = int(m.group(1))
-            for cell in row.find_all(["td", "th"]):
-                if cell is th:
-                    continue
+
+            # Check if the first cell is a Tier header (sets/resets current_tier)
+            first = cells[0]
+            m = re.match(r"Tier(\d+)", first.get_text(strip=True))
+            if m:
+                current_tier = int(m.group(1))
+                data_cells = cells[1:]
+            elif current_tier is None:
+                continue  # not inside a tier row group yet
+            else:
+                data_cells = cells
+
+            for cell in data_cells:
                 img = cell.find("img")
                 if not img:
                     continue
@@ -132,11 +142,33 @@ def _extract_tier_table_entries(soup: BeautifulSoup) -> list[tuple[int, str, str
                     if "#" in href and "wp-admin" not in href:
                         anchor = href.split("#", 1)[1]
                         break
-                entries.append((tier_num, anchor, image_url, alt))
+                entries.append((current_tier, anchor, image_url, alt))
     return entries
 
 
 def scrape_tiers(output_dir: Path) -> dict:
+    """Tier list scraper — TABLE-authoritative.
+
+    The source page has two tier signals:
+      1. A tier TABLE at the top with icon cells per tier row. Cells link to
+         anchors (#xxx) that point at the detail h3 section further down.
+      2. h3 detail sections inside h2 "TierN デッキの解説" areas.
+
+    These drift apart — the author updates the TABLE when a deck's tier
+    changes but often leaves the old h3 detail section in place. Using h3
+    as the source of truth produces stale tier placements (e.g. ハコス・
+    ベールズ was still tagged T1 even after the table dropped it).
+
+    This implementation treats the TABLE as authoritative:
+      - Walk each tier table row's cells, grab anchor + image for each deck.
+      - Build an anchor → h3 metadata map from the whole page (may include
+        stale h3s — that's fine, we only consult it when the table pointed
+        at that anchor).
+      - For each authoritative tier placement, enrich with detail section
+        data (h4 deck blocks with ratings/features) when available.
+      - Cells with unresolvable anchors (broken edit links, empty hrefs) are
+        logged and skipped.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
 
     resp = httpx.get(
@@ -154,94 +186,109 @@ def scrape_tiers(output_dir: Path) -> dict:
     if date_match:
         updated = f"{date_match.group(1)}-{int(date_match.group(2)):02d}"
 
-    tier_headings = soup.find_all("h2", class_="wp-block-heading")
-    tier_sections: list[tuple[int, Tag]] = []
-    for h2 in tier_headings:
-        text = h2.get_text(strip=True)
-        m = re.match(r"Tier(\d+)", text)
-        if m:
-            tier_sections.append((int(m.group(1)), h2))
+    # Build anchor → h3 metadata map. Each h3 gives us: vtuber name, list of
+    # h4 deck blocks, and anchor ids.
+    h3_by_anchor: dict[str, dict] = {}
+    for h3 in soup.find_all("h3"):
+        vtuber_name = h3.get_text(strip=True)
+        if not vtuber_name:
+            continue
+        ids: set[str] = set()
+        if h3.get("id"):
+            ids.add(h3["id"])
+        for a in h3.find_all("a"):
+            if a.get("id"): ids.add(a["id"])
+            if a.get("name"): ids.add(a["name"])
+        prev = h3.find_previous_sibling()
+        for _ in range(3):
+            if not isinstance(prev, Tag):
+                break
+            for a in (prev.find_all("a") if prev.name != "a" else [prev]):
+                if a.get("id"): ids.add(a["id"])
+                if a.get("name"): ids.add(a["name"])
+            prev = prev.find_previous_sibling()
 
-    result = {"updated": updated, "source": TIER_URL, "tiers": []}
-
-    # First pass: detailed h3/h4 deck blocks (existing logic).
-    seen_vtuber_per_tier: dict[int, set[str]] = {}
-    for tier_num, h2 in tier_sections:
-        tier_data: dict = {"tier": tier_num, "decks": []}
-        seen = seen_vtuber_per_tier.setdefault(tier_num, set())
-
-        next_boundary = h2.find_next_sibling("h2")
-
-        h3_tags = []
-        el = h2.find_next_sibling()
-        while el and el != next_boundary:
-            if isinstance(el, Tag) and el.name == "h3":
-                h3_tags.append(el)
-            el = el.find_next_sibling()
-
-        for h3 in h3_tags:
-            vtuber_name = h3.get_text(strip=True)
-            h4_tags = []
-            el = h3.find_next_sibling()
-            while el and el.name not in ("h2", "h3"):
-                if isinstance(el, Tag) and el.name == "h4":
-                    h4_tags.append(el)
-                el = el.find_next_sibling()
-
-            for h4 in h4_tags:
-                deck = _parse_deck_block(h4)
+        # Collect h4 deck blocks under this h3
+        h4_blocks: list[dict] = []
+        el = h3.find_next_sibling()
+        while isinstance(el, Tag) and el.name not in ("h2", "h3"):
+            if el.name == "h4":
+                deck = _parse_deck_block(el)
                 if deck:
                     deck["vtuber"] = vtuber_name
                     deck["id"] = _slugify(f"{vtuber_name}-{deck['name']}")
-                    tier_data["decks"].append(deck)
-                    seen.add(vtuber_name)
+                    h4_blocks.append(deck)
+            el = el.find_next_sibling()
 
-        result["tiers"].append(tier_data)
+        entry = {"vtuber": vtuber_name, "h4_blocks": h4_blocks}
+        for aid in ids:
+            h3_by_anchor[aid] = entry
 
-    # Second pass: tier-table icons. Some decks appear in the top tier TABLE as
-    # icons (with anchor links) but don't have their own h3/h4 detailed block —
-    # the source site lists them as tier placements without a write-up. Add them
-    # as minimal deck entries so guide tagging and UI tier filters cover them.
-    anchor_map = _build_anchor_to_vtuber(soup)
-    table_entries = _extract_tier_table_entries(soup)
+    # Walk the tier TABLE — authoritative placements
+    tier_entries = _extract_tier_table_entries(soup)
 
-    added_from_table = 0
-    tier_lookup: dict[int, dict] = {t["tier"]: t for t in result["tiers"]}
-    for tier_num, anchor, image_url, alt in table_entries:
-        vtuber = anchor_map.get(anchor, "") or alt
-        if not vtuber:
+    tiers_data: dict[int, list[dict]] = {}
+    skipped_broken = 0
+
+    for tier_num, anchor, image_url, alt in tier_entries:
+        if not anchor:
+            skipped_broken += 1
             continue
-        seen = seen_vtuber_per_tier.setdefault(tier_num, set())
-        if vtuber in seen:
-            continue  # already captured via detailed section
 
-        td = tier_lookup.get(tier_num)
-        if not td:
-            td = {"tier": tier_num, "decks": []}
-            result["tiers"].append(td)
-            tier_lookup[tier_num] = td
+        meta = h3_by_anchor.get(anchor)
+        if not meta:
+            # Try alt text as a last-resort name; still ship the entry so the
+            # tier list mirrors what the page visually shows.
+            if alt:
+                tiers_data.setdefault(tier_num, []).append({
+                    "name": f"{alt}単",
+                    "image": image_url or None,
+                    "ratings": {}, "features": [], "recipe_url": None,
+                    "vtuber": alt, "id": _slugify(f"{alt}"),
+                    "_from_tier_table": True,
+                    "_no_detail": True,
+                })
+            else:
+                skipped_broken += 1
+            continue
 
-        deck_name = f"{vtuber}単"  # synthetic name — matches convention for mono-color decks
-        td["decks"].append({
-            "name": deck_name,
-            "image": image_url or None,
-            "ratings": {},
-            "features": [],
-            "recipe_url": None,
-            "vtuber": vtuber,
-            "id": _slugify(f"{vtuber}-{deck_name}"),
-            "_from_tier_table": True,  # flag so UI / matcher can distinguish
-        })
-        seen.add(vtuber)
-        added_from_table += 1
+        vtuber = meta["vtuber"]
+        blocks = meta["h4_blocks"]
 
-    result["tiers"].sort(key=lambda t: t["tier"])
+        if blocks:
+            for b in blocks:
+                # Prefer the table cell's image if the h4 didn't grab one
+                if image_url and not b.get("image"):
+                    b["image"] = image_url
+                tiers_data.setdefault(tier_num, []).append(b)
+        else:
+            # Table cell exists but no detailed write-up — add a minimal entry
+            tiers_data.setdefault(tier_num, []).append({
+                "name": f"{vtuber}単",
+                "image": image_url or None,
+                "ratings": {}, "features": [], "recipe_url": None,
+                "vtuber": vtuber, "id": _slugify(f"{vtuber}"),
+                "_from_tier_table": True,
+                "_no_detail": True,
+            })
+
+    result = {
+        "updated": updated,
+        "source": TIER_URL,
+        "tiers": [
+            {"tier": t, "decks": tiers_data[t]}
+            for t in sorted(tiers_data)
+        ],
+    }
 
     out_path = output_dir / "tier_list.json"
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
     total = sum(len(t["decks"]) for t in result["tiers"])
-    print(f"[scrape_tiers] Saved {total} decks across {len(result['tiers'])} tiers (+{added_from_table} from tier table icons)")
+    print(
+        f"[scrape_tiers] Saved {total} decks across {len(result['tiers'])} tiers "
+        f"(skipped {skipped_broken} broken table cells) — tier table is authoritative"
+    )
     return result
 
 
