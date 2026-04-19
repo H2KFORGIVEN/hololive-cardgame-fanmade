@@ -131,7 +131,6 @@
     ],
     "date": "2026-04-13",
     "deck_id": "guide-chihaya-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -310,7 +309,6 @@
     ],
     "date": "2026-03-03",
     "deck_id": "guide-siori_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -500,7 +498,6 @@
     ],
     "date": "2026-03-02",
     "deck_id": "guide-biju-_tan",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -737,7 +734,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-whitepromise",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -863,7 +859,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-0kiseisuiseideckkaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1009,7 +1004,6 @@
     ],
     "date": "2026-03-01",
     "deck_id": "guide-noerutmarindeck-kaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1120,7 +1114,6 @@
     "strategy": [],
     "date": "2026-03-04",
     "deck_id": "guide-jiji_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1299,7 +1292,6 @@
     ],
     "date": "2026-03-25",
     "deck_id": "guide-porukatan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1522,7 +1514,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-hubuki-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1723,7 +1714,6 @@
     ],
     "date": "2025-09-18",
     "deck_id": "guide-fubukitan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1855,7 +1845,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-bluesuisei",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -1970,7 +1959,6 @@
     ],
     "date": "2025-09-22",
     "deck_id": "guide-suiseigozarudeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2092,7 +2080,6 @@
     "strategy": [],
     "date": "2026-03-05",
     "deck_id": "guide-hakos-baelz-promise-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2249,7 +2236,6 @@
     ],
     "date": "2026-02-17",
     "deck_id": "guide-kanatakoronedeckkaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2349,7 +2335,6 @@
     "strategy": [],
     "date": "2026-02-07",
     "deck_id": "guide-raora-panthera-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2558,7 +2543,6 @@
     ],
     "date": "2026-03-03",
     "deck_id": "guide-maturi_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2748,7 +2732,6 @@
     ],
     "date": "2025-11-27",
     "deck_id": "guide-suuniko_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2899,7 +2882,6 @@
     ],
     "date": "2025-12-17",
     "deck_id": "guide-mu-na_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -2966,7 +2948,6 @@
     "strategy": [],
     "date": "2025-12-18",
     "deck_id": "guide-rionatan-deck-6",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3109,7 +3090,6 @@
     ],
     "date": "2026-02-07",
     "deck_id": "guide-robocosan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3266,7 +3246,6 @@
     ],
     "date": "2026-02-03",
     "deck_id": "guide-kariopekuroe",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3368,7 +3347,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-akiroze-ta-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3558,7 +3536,6 @@
     ],
     "date": "2025-11-23",
     "deck_id": "guide-vivichiha_deckc",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3649,7 +3626,6 @@
     ],
     "date": "2025-09-08",
     "deck_id": "guide-risumu-nadeck-kaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3740,7 +3716,6 @@
     ],
     "date": "2025-09-08",
     "deck_id": "guide-iohulimu-nadeck-kaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -3864,7 +3839,6 @@
     ],
     "date": "2026-02-24",
     "deck_id": "guide-nerissa-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4065,7 +4039,6 @@
     ],
     "date": "2025-11-29",
     "deck_id": "guide-noemari-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4230,7 +4203,6 @@
     ],
     "date": "2025-12-08",
     "deck_id": "guide-okakuro-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4321,7 +4293,6 @@
     ],
     "date": "2026-03-03",
     "deck_id": "guide-tyokotan-5dan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4417,7 +4388,6 @@
     ],
     "date": "2025-09-18",
     "deck_id": "guide-koboiofi-5dan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4629,7 +4599,6 @@
     ],
     "date": "2025-09-07",
     "deck_id": "guide-ririkabiju-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4783,7 +4752,6 @@
     ],
     "date": "2025-09-29",
     "deck_id": "guide-babadona-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -4937,7 +4905,6 @@
     ],
     "date": "2025-12-20",
     "deck_id": "guide-lamy-deck-2",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -5149,7 +5116,6 @@
     ],
     "date": "2025-09-15",
     "deck_id": "guide-sorarobo-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -5372,7 +5338,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-ririrade-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -5562,7 +5527,6 @@
     ],
     "date": "2026-02-09",
     "deck_id": "guide-subaru-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -5719,7 +5683,6 @@
     ],
     "date": "2025-12-16",
     "deck_id": "guide-himemorisan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -5879,7 +5842,6 @@
     ],
     "date": "2026-03-03",
     "deck_id": "guide-furea_deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6135,7 +6097,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-koyoiroha-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6336,7 +6297,6 @@
     ],
     "date": "2026-02-07",
     "deck_id": "guide-raden-single-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6556,7 +6516,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-oshikanata-shiosyachi-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6680,7 +6639,6 @@
     ],
     "date": "2025-07-21",
     "deck_id": "guide-rapuruikuro-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6826,7 +6784,6 @@
     ],
     "date": "2025-12-16",
     "deck_id": "guide-ririka-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -6983,7 +6940,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-pekomuna-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7135,7 +7091,6 @@
     ],
     "date": "2025-12-14",
     "deck_id": "guide-anya-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7212,7 +7167,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-kanatareglossdeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7402,7 +7356,6 @@
     ],
     "date": "2025-09-01",
     "deck_id": "guide-magamaga-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7529,7 +7482,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-poru-na-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7708,7 +7660,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-pavoliareineonlydeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -7830,7 +7781,6 @@
     "strategy": [],
     "date": "2025-09-18",
     "deck_id": "guide-marinereine-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8067,7 +8017,6 @@
     ],
     "date": "2025-07-28",
     "deck_id": "guide-fureporudeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8166,7 +8115,6 @@
     ],
     "date": "2025-09-25",
     "deck_id": "guide-fuwamocodeckkaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8211,7 +8159,6 @@
     "strategy": [],
     "date": "2025-09-22",
     "deck_id": "guide-botandeckkaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8267,7 +8214,6 @@
     "strategy": [],
     "date": "2026-04-14",
     "deck_id": "guide-sakuramikotankaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8476,7 +8422,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-roboaz0kiseideckkaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8521,7 +8466,6 @@
     "strategy": [],
     "date": "2025-07-08",
     "deck_id": "guide-runatan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8645,7 +8589,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-kobomuna-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8747,7 +8690,6 @@
     ],
     "date": "2025-09-24",
     "deck_id": "guide-suiseitann-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8893,7 +8835,6 @@
     ],
     "date": "2025-03-20",
     "deck_id": "guide-akirozehaato-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -8995,7 +8936,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-ayunndarisu-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9100,7 +9040,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-okakoro-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9202,7 +9141,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-towanerissa-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9359,7 +9297,6 @@
     ],
     "date": "2025-09-14",
     "deck_id": "guide-akiroze-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9450,7 +9387,6 @@
     ],
     "date": "2025-09-22",
     "deck_id": "guide-towa-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9563,7 +9499,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-risuiofi-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9676,7 +9611,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-risumuna-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -9767,8 +9701,8 @@
     ],
     "date": "2025-07-17",
     "deck_id": "guide-watame-deck",
-    "tier": 3,
-    "source": "holocardstrategy_guide"
+    "source": "holocardstrategy_guide",
+    "tier": 2
   },
   {
     "url": "https://www.holocardstrategy.jp/kiara-deck/",
@@ -10037,7 +9971,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-kiara-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -10161,7 +10094,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-oretatihakuaki-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -10274,7 +10206,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-kanatagozaru-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -10506,7 +10437,6 @@
     "strategy": [],
     "date": "2025-09-19",
     "deck_id": "guide-azkireinezeta",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -10707,7 +10637,6 @@
     ],
     "date": "2026-02-23",
     "deck_id": "guide-ruikuro-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -10897,7 +10826,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-ollie-reine-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11098,7 +11026,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-kanakuro-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11252,7 +11179,6 @@
     ],
     "date": "2025-12-08",
     "deck_id": "guide-siosyati-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11431,7 +11357,6 @@
     ],
     "date": "2025-12-19",
     "deck_id": "guide-kuroeiroha-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11599,7 +11524,6 @@
     ],
     "date": "2025-10-30",
     "deck_id": "guide-marine-single-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11767,7 +11691,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-3kisei-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -11946,7 +11869,6 @@
     ],
     "date": "2025-09-08",
     "deck_id": "guide-noelpekora-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12103,7 +12025,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-inanisu-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12246,7 +12167,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-noerutandeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12337,7 +12257,6 @@
     ],
     "date": "2025-09-27",
     "deck_id": "guide-yuzukichoco-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12527,7 +12446,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-crazyollie-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12681,7 +12599,6 @@
     ],
     "date": "2025-11-29",
     "deck_id": "guide-marinedeck-temple",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -12868,7 +12785,6 @@
     ],
     "date": "2025-10-21",
     "deck_id": "guide-nekomataokayu-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13000,7 +12916,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-sakamatatan-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13168,7 +13083,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-ookamimio-deck",
-    "tier": 3,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13292,7 +13206,6 @@
     ],
     "date": "2026-02-07",
     "deck_id": "guide-kariopedeck-kaisetu",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13482,7 +13395,6 @@
     ],
     "date": "2025-09-19",
     "deck_id": "guide-kanatadeck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13705,7 +13617,6 @@
     ],
     "date": "2025-09-18",
     "deck_id": "guide-red-poruka",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -13870,7 +13781,6 @@
     ],
     "date": "2025-07-08",
     "deck_id": "guide-shion-deck",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -14010,7 +13920,6 @@
     ],
     "date": "2025-07-09",
     "deck_id": "guide-bluewhitekobo",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -14153,8 +14062,8 @@
     ],
     "date": "2025-09-29",
     "deck_id": "guide-green-azki",
-    "tier": 1,
-    "source": "holocardstrategy_guide"
+    "source": "holocardstrategy_guide",
+    "tier": 1
   },
   {
     "url": "https://www.holocardstrategy.jp/whitekanatasore/",
@@ -14354,7 +14263,6 @@
     ],
     "date": "2025-07-09",
     "deck_id": "guide-whitekanatasore",
-    "tier": null,
     "source": "holocardstrategy_guide"
   },
   {
@@ -14533,7 +14441,6 @@
     ],
     "date": "2025-09-16",
     "deck_id": "guide-kiara-poruka",
-    "tier": null,
     "source": "holocardstrategy_guide"
   }
 ]

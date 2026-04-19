@@ -144,85 +144,6 @@
     "tier": 1
   },
   {
-    "url": "https://www.holocardstrategy.jp/hakorizu_deck/",
-    "title": "【ホロカ】超アグロ！ミオ推しハコリズ（エリザベールズ）のデッキレシピと回し方！",
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/19b790bdece26fcc69631e73efeccb19-1080x608.png",
-    "description": "ホロカの第7弾「ディーヴァフィーバー」にて収録されたBuzzのハコス・ベールズを軸に、推しホロメンのミオとエリザベスで動きを安定させた「ミオ推しハコリズ」のデッキ構成や、採用カードの役割を解説します。デッキの回し方や強い動き方も紹介するので",
-    "cards": [
-      {
-        "name": "推し ミオ",
-        "card_id": "hBP07-003",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-003_OSR-1.png",
-        "role": "手札補充\n推しスキルはホロパワー-1でデッキ上2枚から1枚を回収！\nSPはホロパワー-2でデッキ上6枚から3枚を回収！\n└2ターン目に使用することで合計4枚手札を増やせる"
-      },
-      {
-        "name": "1stBuzz ハコス",
-        "card_id": "hBP07-045",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-045_R.png",
-        "role": "役割：メインアタッカー\n・センターかコラボにいれば、SPを使った時にホロパワーを1枚溜められる\n└2ターン目にSPと推しスキルを両方使える\n・2エールで素点20点から、手札1枚につきアーツが20上昇！\n└9枚で200点、10枚で220点の火力が出せるのを覚えておこう"
-      },
-      {
-        "name": "1st ハコス",
-        "card_id": "hBP01-074",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/hBP01-074_U.png",
-        "role": "役割：アーカイブ回収\n・ブルーム時にアーカイブの＃EN を持つDebutか1stを回収できる"
-      },
-      {
-        "name": "1stBuzz エリザベス",
-        "card_id": "hBP07-048",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-048_R.png",
-        "role": "役割：サブアタッカー\n・ギフトで他のENホロメンのアーツを使うことができる\n└Buzzハコスのアーツを使おう！\n・HPが260と高耐久なのも魅力！"
-      },
-      {
-        "name": "Debut ハコス",
-        "card_id": "hBP06-041",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/12/hBP06-041_U.png",
-        "role": "役割：初動＆手札入れ替え\n・後攻1ターン目のコラボで、3枚引いて2枚捨てる\n・110のHPが優秀"
-      },
-      {
-        "name": "ハコス・ベールズ",
-        "card_id": "hBD24-028",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-028_P.png",
-        "role": "役割：初動\n・フレンドリーパソコンで2枚出せるのが強力"
-      },
-      {
-        "name": "Debut エリザベス",
-        "card_id": "hSD13-003",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hSD13-003_C.png",
-        "role": "役割：初動\n・フレンドリーパソコンで2枚出せるのが強力\n・HPが140と高耐久なため、前に出しやすく優秀"
-      },
-      {
-        "name": "ASMRマイク",
-        "card_id": "hBP07-101",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP07-101_C.png",
-        "role": "役割：エール替わり\n・ついているBuzzホロメンのアーツに必要な無色エール-1"
-      },
-      {
-        "name": "フェイバリットパソコン",
-        "card_id": "hBP06-085",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/hBP06-085_U.png",
-        "role": "役割：Buzz＆マイクサーチ\n・デッキからDebut、Buzz、ASMRマイクを回収できるカード！"
-      }
-    ],
-    "strategy": [
-      {
-        "title": "【1ターン目】Debutを3～4人は出しておきたい",
-        "text": "盤面にdebut3面以上ならべ、センターにエールを付ける。\n後手を取った時はバックにエールを貼りもう1枚Debutを出して、センターがダウンしても後攻2ターン目に高火力を出せるように準備しておこう。"
-      },
-      {
-        "title": "【2ターン目】Buzzを前に出してライフを取る",
-        "text": "2ターン目にもコラボしてホロパワーを溜め、ハコスをBuzzにブルームしましょう。\n相手のデッキにギリわるロボが採用されにくいデッキであれば、SPを使用して2面取りを狙っていきましょう。逆に推しAZKiなど、ギリわるロボをほとんど確実に使ってくるだろうデッキに対しては推しスキルのみ使用して、3ターン目から2面取りができるような準備をしましょう。"
-      },
-      {
-        "title": "【3ターン目】相手がコラボしていたら2面取りをしよう",
-        "text": "ここからは手札の枚数に気を付けつつ2面取りをしていきましょう。\nステージが5人以下でも、Debutを出し切らないでおけば手札を温存してBuzzやサポートのカードを使うことができます。"
-      }
-    ],
-    "date": "2026-04-10",
-    "deck_id": "ハコス-ベールズ-ミオ推しハコリズ-エリザベールズ",
-    "tier": 1
-  },
-  {
     "url": "https://www.holocardstrategy.jp/ha-totandeck/",
     "title": "【ホロカ】赤井はあと単のデッキレシピと回し方",
     "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/eb5785e493aba4cb150e5def8be738ce-1080x608.png",
@@ -300,59 +221,6 @@
     "tier": 2
   },
   {
-    "url": "https://www.holocardstrategy.jp/rapurasuda-kunesu-deck/",
-    "title": "【ホロカ】7弾更新版！ラプラス・ダークネス単のデッキレシピと回し方",
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/28dfb1f82803c2b8165d75a3b9120f27-1080x608.png",
-    "description": "ホロカの「ラプラス単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するのでラプ様のデッキを組もうと思っている方は、ぜひ参考にしてください。 ラプ単のデッキレシピ  推しホロメン エールデッキラ",
-    "cards": [
-      {
-        "name": "",
-        "card_id": "hBP04-005",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-005_OSR.png",
-        "role": "【ドロソ&エール軽減】\n・推しスキルで2ndと1stに使えるダイス操作\n└特に2ndの確定3ドローが強い！\n・SP推しスキルで＃秘密結社holoXを持つホロメン1人のアーツをタダ打ち！"
-      },
-      {
-        "name": "ラプラス・ダークネス",
-        "card_id": "hBD24-048",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-048_P.png",
-        "role": "【序中盤のアタッカー】\n・コラボエフェクト持ちのDebut\n・相手のお休みしてるホロメン1人につきアーツの威力が＋10される（素点は30）\n・バトンタッチエールは0\n・先1で開いてホロメン1人をおやすみ拘束出来る\n┗\nQ&A391\nより"
-      },
-      {
-        "name": "",
-        "card_id": "hBP04-058",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-058_R.png",
-        "role": "【アタッカー】\n・HP140のバトンタッチエール0の1stホロメン\n・コラボエフェクトでダイスを3回振り奇数の数×10の特殊ダメージを相手のセンターホロメンに与える\n・コラボエフェクトを使用して2ndの火力を上げたい\n・最大1エール60点"
-      },
-      {
-        "name": "",
-        "card_id": "hBP04-059",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-059_RR.png",
-        "role": "【ドロソ&アタッカー】\n・ターン1だが優秀なドローソース！（推しスキルを使っていれば確定で3ドローできる）\n・アーツ効果でこのターン中にダイスを振った回数×10の特殊ダメージをセンターに与えるので、コラボエフェクトの1stと合わせて使いたい"
-      }
-    ],
-    "strategy": [
-      {
-        "title": "【1ターン目】最初のエールはセンターorバックへ",
-        "text": "先攻の場合はDebutの数に余裕があればバトンタッチしてバックにエールのついたラプラスを避難させよう。\n後攻はセンターに付けて攻撃していきたい。コラボエフェクトで盤面のdebutを増やそう。"
-      },
-      {
-        "title": "【2ターン目】1stを出来るだけ有効活用",
-        "text": "このターンは次の相手ターンにホロメンがダウンさせられるかで大きく変わります。\nコラボエフェクトを活用して横から0エール30点＆サーチを行って2ndを探しておこう。コラボエフェクト1stを余裕があるならバックに置いておこう。"
-      },
-      {
-        "title": "【3ターン目】2nd bloomと1stのコラボ",
-        "text": "コラボからCEを使って１エール2ndでアタックしていこう。\n基本的にSPのためのホロパワーを貯めておきたいが手札が芳しくない場合は推しスキルで確定3ドローする。"
-      },
-      {
-        "title": "【4ターン目以降】1stを使いながら2ndの維持SP",
-        "text": "2nd2面で攻撃しライフを2枚取れる状況があれば迷わずSP推しスキルを使おう。\n1stコラボしながら2ndで攻撃することでダイスを振った数を底上げ。"
-      }
-    ],
-    "date": "2026-04-10",
-    "deck_id": "ラプラス-ダークネス-ラプ推しラプラス単",
-    "tier": 2
-  },
-  {
     "url": "https://www.holocardstrategy.jp/watame-white-deck/",
     "title": "【ホロカ】わため単‐白のレシピと回し方",
     "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/image-1.png",
@@ -385,7 +253,7 @@
     ],
     "date": "2026-04-10",
     "deck_id": "角巻わため-わため単",
-    "tier": 3
+    "tier": 2
   },
   {
     "url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
@@ -445,6 +313,59 @@
     "strategy": [],
     "date": "2026-03-26",
     "deck_id": "風真いろは-いろは単",
+    "tier": 3
+  },
+  {
+    "url": "https://www.holocardstrategy.jp/rapurasuda-kunesu-deck/",
+    "title": "【ホロカ】7弾更新版！ラプラス・ダークネス単のデッキレシピと回し方",
+    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/28dfb1f82803c2b8165d75a3b9120f27-1080x608.png",
+    "description": "ホロカの「ラプラス単」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するのでラプ様のデッキを組もうと思っている方は、ぜひ参考にしてください。 ラプ単のデッキレシピ  推しホロメン エールデッキラ",
+    "cards": [
+      {
+        "name": "",
+        "card_id": "hBP04-005",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-005_OSR.png",
+        "role": "【ドロソ&エール軽減】\n・推しスキルで2ndと1stに使えるダイス操作\n└特に2ndの確定3ドローが強い！\n・SP推しスキルで＃秘密結社holoXを持つホロメン1人のアーツをタダ打ち！"
+      },
+      {
+        "name": "ラプラス・ダークネス",
+        "card_id": "hBD24-048",
+        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-048_P.png",
+        "role": "【序中盤のアタッカー】\n・コラボエフェクト持ちのDebut\n・相手のお休みしてるホロメン1人につきアーツの威力が＋10される（素点は30）\n・バトンタッチエールは0\n・先1で開いてホロメン1人をおやすみ拘束出来る\n┗\nQ&A391\nより"
+      },
+      {
+        "name": "",
+        "card_id": "hBP04-058",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-058_R.png",
+        "role": "【アタッカー】\n・HP140のバトンタッチエール0の1stホロメン\n・コラボエフェクトでダイスを3回振り奇数の数×10の特殊ダメージを相手のセンターホロメンに与える\n・コラボエフェクトを使用して2ndの火力を上げたい\n・最大1エール60点"
+      },
+      {
+        "name": "",
+        "card_id": "hBP04-059",
+        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/hBP04-059_RR.png",
+        "role": "【ドロソ&アタッカー】\n・ターン1だが優秀なドローソース！（推しスキルを使っていれば確定で3ドローできる）\n・アーツ効果でこのターン中にダイスを振った回数×10の特殊ダメージをセンターに与えるので、コラボエフェクトの1stと合わせて使いたい"
+      }
+    ],
+    "strategy": [
+      {
+        "title": "【1ターン目】最初のエールはセンターorバックへ",
+        "text": "先攻の場合はDebutの数に余裕があればバトンタッチしてバックにエールのついたラプラスを避難させよう。\n後攻はセンターに付けて攻撃していきたい。コラボエフェクトで盤面のdebutを増やそう。"
+      },
+      {
+        "title": "【2ターン目】1stを出来るだけ有効活用",
+        "text": "このターンは次の相手ターンにホロメンがダウンさせられるかで大きく変わります。\nコラボエフェクトを活用して横から0エール30点＆サーチを行って2ndを探しておこう。コラボエフェクト1stを余裕があるならバックに置いておこう。"
+      },
+      {
+        "title": "【3ターン目】2nd bloomと1stのコラボ",
+        "text": "コラボからCEを使って１エール2ndでアタックしていこう。\n基本的にSPのためのホロパワーを貯めておきたいが手札が芳しくない場合は推しスキルで確定3ドローする。"
+      },
+      {
+        "title": "【4ターン目以降】1stを使いながら2ndの維持SP",
+        "text": "2nd2面で攻撃しライフを2枚取れる状況があれば迷わずSP推しスキルを使おう。\n1stコラボしながら2ndで攻撃することでダイスを振った数を底上げ。"
+      }
+    ],
+    "date": "2026-04-10",
+    "deck_id": "ラプラス-ダークネス-ラプ推しラプラス単",
     "tier": 3
   },
   {
@@ -516,166 +437,6 @@
     ],
     "date": "2026-02-07",
     "deck_id": "戌神ころね-ころね単",
-    "tier": 3
-  },
-  {
-    "url": "https://www.holocardstrategy.jp/miotan_deck/",
-    "title": "【ホロカ】大神ミオ単のデッキレシピと回し方",
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/e8dada94296dde4ce52f854e3d9fc203-1080x608.png",
-    "description": "ホロカの「大神ミオ」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、ミオしゃのデッキを組もうと思っている方は、ぜひ参考にしてください！ ミオしゃ単のデッキレシピ 出典：hololive OFFICIAL C",
-    "cards": [
-      {
-        "name": "虎金妃笑虎",
-        "card_id": "hBD24-060",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-060_P.png",
-        "role": "役割：エール加速＆大ダメージ\n推しスキル：デッキ上2枚を見て、片方を手札、片方をデッキ上に戻す\nSPスキル：デッキ上6枚を見て、3枚を手札、3枚を好きな順でデッキ上に戻す\n└ミオのアーツや占いでサポートを捲れるように！"
-      },
-      {
-        "name": "大神ミオ",
-        "card_id": "hBD24-064",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-064_P.png",
-        "role": "役割：メインアタッカー\n・\nサポートが付いていれば、相手のターンでダメージを受けた時HPを50回復する\n・素点130ダメージから、デッキ上1枚をアーカイブしてそれがホロメンならエール1枚をホロメン1人に加速、サポートならアーツ＋50"
-      },
-      {
-        "name": "大神ミオ",
-        "card_id": "hBD24-064",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-064_P.png",
-        "role": "役割：バフ＆アタッカー\n・ブルーム時にバックホロメン1人のアーツを30上昇！\n└そのあとコラボして一気にダメージを与える！\n・2エールで70ダメージで、ダウンさせたら1枚ドロー！"
-      },
-      {
-        "name": "1st",
-        "card_id": "hBP02-026",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP02-026_U.png",
-        "role": "役割：エール加速\n・ブルーム時に1枚エールを加速する、使いやすい効果！"
-      },
-      {
-        "name": "大神ミオ",
-        "card_id": "hBD24-064",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-064_P.png",
-        "role": "役割：初動＆ドロー\n・ギフト効果でターンに1回、ミオファが付いた時に1枚ドローできる\n・1エール10点に加え、デッキ上1枚をアーカイブしてそれがサポートならアーツ＋30"
-      },
-      {
-        "name": "ビッグゴッドミオーンの占い",
-        "card_id": "hBP07-098",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-098_U.png",
-        "role": "役割：2面バフ\n・推しがミオしゃなら、デッキ上3枚を表向きにして、その中のサポート1枚につきステージのホロメン全員のアーツ＋20\n└2面取りや先行2ターン目の上振れも期待できる"
-      }
-    ],
-    "strategy": [
-      {
-        "title": "【1ターン目】センターにエールを付けて2ターン目以降に備える",
-        "text": "1ターン目はセンターにHPの高いDebutミオを置くようにしましょう。\n後攻であればコラボエフェクトの効果で、さらに手札や盤面を整えていきましょう。"
-      },
-      {
-        "title": "【2ターン目】1stでエール加速をしてライフを先行！",
-        "text": "2ターン目は女王様とエール加速の1stを引けると、SPスキルやビッグゴッドミオーンの占いを使わなくてもライフを取ることができます。\nSPを温存した場合は推しスキルを使用して、手札を整えていきましょう。"
-      },
-      {
-        "title": "【3ターン目】エールを温存して相手のホロメンを倒していく",
-        "text": "2ndのアーツでさらにライフを取っていきましょう。\n130で火力が足りている場合は、推しスキルやハトタウロスの効果でデッキ上をホロメンに固定すると、ステージのエールを増やすことができます。"
-      },
-      {
-        "title": "【4ターン目以降】2面取りができる盤面を作ろう",
-        "text": "SP推しスキルでデッキ上にサポートカードを固定して、ビッグゴッドミオーンの占いで両面に60点バフして、2面取りを狙いましょう。\nSP推しスキルがなくても、コラボ時にデッキ上2枚の好きなカードを固定、ハトタウロス効果でさらにもう1枚固定することで占い出のバフを40点以上安定させることができます。"
-      }
-    ],
-    "date": "2026-03-25",
-    "deck_id": "大神ミオ-ミオ単",
-    "tier": 3
-  },
-  {
-    "url": "https://www.holocardstrategy.jp/ayame-deck/",
-    "title": "【ホロカ】百鬼あやめ単のデッキレシピと回し方（6弾更新版）",
-    "deck_image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/0ccc899352ad749593c83361bccff831-1080x608.png",
-    "description": "ホロカの「百鬼あやめ」のデッキ構築や、採用カードの役割を解説！デッキの回し方や強い動き方も紹介するので、お嬢のデッキを組もうと思っている方は、ぜひ参考にしてください。",
-    "cards": [
-      {
-        "name": "推し あやめ",
-        "card_id": "hBP06-004",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-004_OSR.png",
-        "role": "役割：ドロー＆特殊ダメージ\n・エールデッキ1～2枚をアーカイブして、その数ドロー\n・アーカイブの赤エール枚数×20ダメージをセンターかコラボに与える\nカードの購入はこちら"
-      },
-      {
-        "name": "2ndあやめ",
-        "card_id": "hBP06-039",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-039_RR.png",
-        "role": "役割：メインアタッカー\n・80点から3枚までエールデッキをアーカイブし、その数×40ダメージを追加\n└2エールで200まで出せる！\n└残りライフ3以上ならセンター限定なのは注意\n・センターにいる時自分のコラボホロメンがいて相手のコラボホロメンがいなければ、相手のアーツダメージを受けないギフト\nカードの購入はこちら"
-      },
-      {
-        "name": "1stあやめ",
-        "card_id": "hBP06-038",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-038_R.png",
-        "role": "役割：アーカイブ回収\n・コラボ時にエールデッキ1枚をアーカイブしてアーカイブのあやめ1枚を回収\n・30点に加え、エールデッキ1枚をアーカイブして特殊20点追加\n└センターとコラボにダメージを振り分けも可能\nカードの購入はこちら"
-      },
-      {
-        "name": "1stあやめ",
-        "card_id": "hBP06-036",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-036_C.png",
-        "role": "役割：ルーター\n・コラボ時にあやめのツールかマスコットをデッキからサーチ\n└ぽよ余を回収してドローに繋げたい\n・30点とエールデッキ1枚をアーカイブして1ドロー\nカードの購入はこちら"
-      },
-      {
-        "name": "1stあやめ",
-        "card_id": "hBP06-037",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-037_U.png",
-        "role": "役割：エール山の回復\n・ブルーム時にアーカイブの赤エール2枚をデッキの下に戻せる\n・50点に加えエールデッキ1枚をアーカイブして特殊ダメージ30点を与えられる\nカードの購入はこちら"
-      },
-      {
-        "name": "百鬼あやめ",
-        "card_id": "hBD24-015",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-015_P.png",
-        "role": "役割：初動\n・HP90、1エール30、バトンタッチ0\n・フレンドリーパソコンで出せるのが魅力\nカードの購入はこちら"
-      },
-      {
-        "name": "Debutあやめ",
-        "card_id": "hBP06-035",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-035_U.png",
-        "role": "役割：ツール・マスコットサーチ\n・後攻1ターン目にコラボ時に、デッキからファン・ツール・マスコットのどれかをあやめ1人に付けられる\n・HP120と高耐久かつバトンタッチ０が優秀\nカードの購入はこちら"
-      },
-      {
-        "name": "Debutあやめ",
-        "card_id": "hBP06-034",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-034_C.png",
-        "role": "役割：高火力高耐久の初動\n・手札1枚をアーカイブすると1エールで40点\n・HP130と高耐久かつバトンタッチ0が優秀\nカードの購入はこちら"
-      },
-      {
-        "name": "ぽよ余",
-        "card_id": "hSD02-014",
-        "image": "https://hololive-cardgame.github.io/cards/cardListImages/hSD02/hSD02-014_C.png",
-        "role": "役割：ドロー＋HP補強\n・HP+20がまず優秀\n・Bloomするたびに1ドローできる\n・手札消費が激しいあやめデッキの重要パーツ\nカードの購入はこちら"
-      },
-      {
-        "name": "阿修羅&羅刹",
-        "card_id": null,
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/11/97aedcedafef08db6f29ec25995a5deb.png",
-        "role": "役割：打点補強\n・1st以上のあやめにつければアーツ+20\n└デメリットなし「石の斧」\n・雑に強いツール\nカードの購入はこちら"
-      },
-      {
-        "name": "鬼神刀「阿修羅」",
-        "card_id": "hBP06-098",
-        "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/12/hBP06-098_U.png",
-        "role": "役割：凸待ち効果\n・アーツ＋10が優秀\n・付けたホロメンが自分の残りライフが1の時にコラボすると、凸待ちと同じ効果を発揮！"
-      }
-    ],
-    "strategy": [
-      {
-        "title": "【1ターン目】先攻ならバックにエール加速が安牌",
-        "text": "Debutあやめはバトンタッチ0なので、先攻の場合はバックのあやめにエールをつけておくと、相手の1ターン目の攻撃を受けたセンターを無傷のDebutにノーリスクで入れ替えることができます。\n後攻の場合は、HPが120以上のDebutがセンターに置けたらセンターに加速してダメージを与えておくのがいいでしょう。"
-      },
-      {
-        "title": "【2ターン目】手札を整えつつダメージを稼いでいく",
-        "text": "HPが減っていないあやめにバトンタッチしてぽよ余をつけ、耐久力を上げつつ盤面を整えていきましょう。\n2ターン目から「ぽよ余」使ってガンガンドローできるのがあやめデッキの強みでもあります。ぽよ余をつけてからのブルームでドローし、次のターンに使う2ndを手札に引き込んで攻撃していきましょう。"
-      },
-      {
-        "title": "【3ターン目】2ndで相手のホロメンを倒す",
-        "text": "3ターン目には2ndのあやめの高火力で相手のホロメンをダウンさせましょう。\nこの時、エールデッキをアーカイブし過ぎると終盤にアーカイブできなくなってしまうので、できるだけ節約して落としていくようにしましょう。"
-      },
-      {
-        "title": "【4ターン目以降】2ndを回収して毎ターン大ダメージを与える",
-        "text": "SPを使用して2面取りができる盤面があれば積極的に狙っていきましょう！ライフレースで大きく差を広げることが勝利へのカギになります。\nエールデッキがなくなってきたら、1stのブルームエフェクトやアンコールを使用して回復させましょう。"
-      }
-    ],
-    "date": "2026-02-07",
-    "deck_id": "百鬼あやめ-あやめ単",
     "tier": 3
   }
 ]
