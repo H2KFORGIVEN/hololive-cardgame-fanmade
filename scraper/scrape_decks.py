@@ -209,7 +209,23 @@ def _is_ad_figure(fig) -> bool:
 
 
 def _extract_deck_image(soup: BeautifulSoup) -> str | None:
-    """Extract the main deck overview image, skipping ads and promo banners."""
+    """Extract the main deck overview image.
+
+    Priority:
+      1. og:image — the author-set featured image / social preview. This is
+         the most reliable "canonical deck thumbnail" for a WordPress page.
+      2. .p-articleThumb__img — SWELL theme's article header image.
+      3. H2 "デッキ構成/レシピ" → next figure — the deck list graphic.
+      4. First non-ad, non-linked figure as last resort.
+    """
+    og = soup.find("meta", attrs={"property": "og:image"})
+    if og and og.get("content"):
+        return og["content"].strip()
+
+    thumb = soup.find("img", class_="p-articleThumb__img")
+    if thumb and thumb.get("src"):
+        return thumb["src"].strip()
+
     for h2 in soup.find_all("h2", class_="wp-block-heading"):
         h2_text = h2.get_text(strip=True)
         if any(kw in h2_text for kw in DECK_H2_KEYWORDS):
