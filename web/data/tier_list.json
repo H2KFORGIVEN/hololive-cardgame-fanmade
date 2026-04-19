@@ -15,11 +15,28 @@
             "endurance": "◎",
             "pressure": "◎"
           },
-          "features": [
-            "先行でも後攻でも相手より先に2ndを起動が可能",
-            "1stを使いまわして大量にエール加速やバフ効果を使える",
-            "SPで追加ターンを使って2面取りをしよう！"
-          ],
+          "features": {
+            "ja": [
+              "先行でも後攻でも相手より先に2ndを起動が可能",
+              "1stを使いまわして大量にエール加速やバフ効果を使える",
+              "SPで追加ターンを使って2面取りをしよう！"
+            ],
+            "zh-TW": [
+              "無論先攻擊或後攻擊，都可以在對手之前發動第二個。",
+              "你可以重複使用第一個並使用大量的加速和增益效果。",
+              "讓我們利用 SP 的額外回合來佔領兩側！"
+            ],
+            "en": [
+              "You can activate 2nd before your opponent, whether you attack first or second.",
+              "You can reuse the 1st and use a large amount of yell acceleration and buff effects.",
+              "Let's take two sides using the extra turn with SP!"
+            ],
+            "fr": [
+              "Vous pouvez activer le 2ème avant votre adversaire, que vous attaquiez en premier ou en second.",
+              "Vous pouvez réutiliser le 1er et utiliser une grande quantité d’effets d’accélération et de buff des cris.",
+              "Prenons deux côtés en utilisant le tour supplémentaire avec SP !"
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
           "vtuber": "オーロ・クロニー",
           "id": "オーロ-クロニー-クロニー単"
@@ -34,11 +51,28 @@
             "endurance": "◎",
             "pressure": "◎"
           },
-          "features": [
-            "推しステージスキルでのバフで見た目以上の火力",
-            "ドローやエール加速、アーカイブ回収での高い安定感",
-            "フロンティアをアーカイブに溜めて、最後はライフ2枚取りを狙う"
-          ],
+          "features": {
+            "ja": [
+              "推しステージスキルでのバフで見た目以上の火力",
+              "ドローやエール加速、アーカイブ回収での高い安定感",
+              "フロンティアをアーカイブに溜めて、最後はライフ2枚取りを狙う"
+            ],
+            "zh-TW": [
+              "Oshi 舞台技能的增益效果比看起來更強大",
+              "繪圖、喊叫加速和存檔恢復方面具有高穩定性",
+              "在檔案中累積 Frontier，並爭取最終獲得 2 條生命。"
+            ],
+            "en": [
+              "More firepower than it looks with buffs from Oshi stage skills",
+              "High stability in draw, yell acceleration, and archive recovery",
+              "Accumulate Frontier in the archive and aim to get 2 lives at the end."
+            ],
+            "fr": [
+              "Plus de puissance de feu qu'il n'y paraît grâce aux améliorations des compétences de scène Oshi",
+              "Haute stabilité lors du tirage, de l'accélération des cris et de la récupération des archives",
+              "Accumulez Frontier dans les archives et visez à obtenir 2 vies à la fin."
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/7danazkideck-kaisetu/",
           "vtuber": "AZKi",
           "id": "azki-azki単"
@@ -53,11 +87,28 @@
             "endurance": "◎",
             "pressure": "◎"
           },
-          "features": [
-            "カリオペ1stのコラボエフェクトでフロンティアを早期に捨てれる",
-            "デッキを掘る速度が上昇し、ライフ2枚取りが安定",
-            "カスタマイズ性には劣る"
-          ],
+          "features": {
+            "ja": [
+              "カリオペ1stのコラボエフェクトでフロンティアを早期に捨てれる",
+              "デッキを掘る速度が上昇し、ライフ2枚取りが安定",
+              "カスタマイズ性には劣る"
+            ],
+            "zh-TW": [
+              "Calliope 1st協作效果讓你快速放棄Frontier",
+              "挖掘牌組的速度加快，取得兩張生命卡的能力變得穩定。",
+              "可自訂性較差"
+            ],
+            "en": [
+              "Calliope 1st collaboration effect allows you to quickly abandon Frontier",
+              "The speed of digging the deck increases, and the ability to take two life cards becomes stable.",
+              "Less customizable"
+            ],
+            "fr": [
+              "Calliope 1er effet de collaboration vous permet d'abandonner rapidement Frontier",
+              "La vitesse de creusement du jeu augmente et la possibilité de prendre deux cartes de vie devient stable.",
+              "Moins personnalisable"
+            ]
+          },
           "recipe_url": null,
           "vtuber": "AZKi",
           "id": "azki-azkiカリ"
@@ -77,11 +128,28 @@
             "endurance": "◎",
             "pressure": "○"
           },
-          "features": [
-            "大量のDebutとステージスキルのドローで高い安定感",
-            "AZKi環境に刺さる紫特攻が優秀！",
-            "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
-          ],
+          "features": {
+            "ja": [
+              "大量のDebutとステージスキルのドローで高い安定感",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
+            ],
+            "zh-TW": [
+              "出道及舞台技能抽取量大，穩定感高",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "將首秀返回卡組底部以獲得強大的附加效果和高火力"
+            ],
+            "en": [
+              "High sense of stability with a large amount of Debut and stage skill draws",
+              "The purple special attack that sticks in the AZKi environment is excellent!",
+              "Return Debut to the bottom of the deck to gain powerful additional effects and high firepower"
+            ],
+            "fr": [
+              "Sensation élevée de stabilité avec une grande quantité de compétences de début et de scène",
+              "L'attaque spéciale violette qui colle à l'environnement AZKi est excellente !",
+              "Remettez Debut au bas du deck pour obtenir de puissants effets supplémentaires et une puissance de feu élevée."
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
           "vtuber": "赤井はあと",
           "id": "赤井はあと-はあちゃま単"
@@ -96,11 +164,28 @@
             "endurance": "○",
             "pressure": "◎"
           },
-          "features": [
-            "ホロパワーを大量に溜めて、高火力アーツを使っていく",
-            "素の体力が200前後と高めなのも魅力",
-            "2ndで超過した分のダメージを与えて2面取り！"
-          ],
+          "features": {
+            "ja": [
+              "ホロパワーを大量に溜めて、高火力アーツを使っていく",
+              "素の体力が200前後と高めなのも魅力",
+              "2ndで超過した分のダメージを与えて2面取り！"
+            ],
+            "zh-TW": [
+              "收集大量的光能之力並使用高火力的藝術。",
+              "她的自然力量在200左右，這也很有吸引力。",
+              "在第二場造成額外傷害並獲得兩側！"
+            ],
+            "en": [
+              "Collect a large amount of Holo Power and use high-firepower arts.",
+              "Her natural strength is around 200, which is also attractive.",
+              "Deal the excess damage in 2nd and get two sides!"
+            ],
+            "fr": [
+              "Collectez une grande quantité de Holo Power et utilisez des arts à haute puissance de feu.",
+              "Sa force naturelle est d’environ 200, ce qui est également attrayant.",
+              "Infligez les dégâts excédentaires en 2ème et obtenez deux côtés !"
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/watame-white-deck/",
           "vtuber": "角巻わため",
           "id": "角巻わため-わため単"
@@ -115,11 +200,28 @@
             "endurance": "◎",
             "pressure": "△"
           },
-          "features": [
-            "デッキからDebut以外のカードを抜き去ってスロット成功を狙う",
-            "推しスキルで山田ルイ54世を回収して1stや2ndに繋げる",
-            "2スロット＋ダウンで、終盤にライフ3枚取りが可能"
-          ],
+          "features": {
+            "ja": [
+              "デッキからDebut以外のカードを抜き去ってスロット成功を狙う",
+              "推しスキルで山田ルイ54世を回収して1stや2ndに繋げる",
+              "2スロット＋ダウンで、終盤にライフ3枚取りが可能"
+            ],
+            "zh-TW": [
+              "透過從牌組中移除 Debut 以外的牌來爭取成功",
+              "使用推技能收集山田路易 54 號並將其連接到 1 號和 2 號",
+              "2槽+下，最後階段可獲得3張生命卡。"
+            ],
+            "en": [
+              "Aim for slot success by removing cards other than Debut from the deck",
+              "Collect Yamada Louis 54th with push skill and connect it to 1st and 2nd",
+              "With 2 slots + down, you can get 3 life cards in the final stage."
+            ],
+            "fr": [
+              "Visez le succès des machines à sous en supprimant les cartes autres que Debut du jeu.",
+              "Récupérez Yamada Louis 54e avec la compétence Push et connectez-le au 1er et au 2e",
+              "Avec 2 emplacements + down, vous pouvez obtenir 3 cartes de vie dans la phase finale."
+            ]
+          },
           "recipe_url": null,
           "vtuber": "沙花叉クロヱ",
           "id": "沙花叉クロヱ-azki推しルイクロ"
@@ -139,11 +241,28 @@
             "endurance": "○",
             "pressure": "○"
           },
-          "features": [
-            "2ndだけでなく、Buzzでエール加速や火力を出して戦うこともできる",
-            "SPによるドローとバフ効果で2ターン目に2面取りを狙える",
-            "デッキからholoXサーチのLimitedで状況に合わせて対応可能"
-          ],
+          "features": {
+            "ja": [
+              "2ndだけでなく、Buzzでエール加速や火力を出して戦うこともできる",
+              "SPによるドローとバフ効果で2ターン目に2面取りを狙える",
+              "デッキからholoXサーチのLimitedで状況に合わせて対応可能"
+            ],
+            "zh-TW": [
+              "除了2nd之外，你還可以用Buzz的吶喊加速和火力進行戰鬥。",
+              "你可以在第二回合以 SP 抽取和 buff 效果為目標瞄準第二回合。",
+              "您可以根據情況做出反應，從甲板上進行有限的holoX搜索"
+            ],
+            "en": [
+              "In addition to 2nd, you can also fight with yell acceleration and firepower with Buzz.",
+              "You can aim for a second turn on the second turn with SP draws and buff effects.",
+              "You can respond according to the situation with limited holoX search from the deck"
+            ],
+            "fr": [
+              "En plus du 2ème, vous pouvez également vous battre avec une accélération criante et une puissance de feu avec Buzz.",
+              "Vous pouvez viser un deuxième tour au deuxième tour avec des tirages SP et des effets buff.",
+              "Vous pouvez répondre en fonction de la situation avec une recherche holoX limitée depuis le deck"
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
           "vtuber": "風真いろは",
           "id": "風真いろは-いろは単"
@@ -158,11 +277,28 @@
             "endurance": "◎",
             "pressure": "○"
           },
-          "features": [
-            "ルイを採用して少し後ろ寄りにした構築",
-            "1stルイのブルーム時に手札の入れ替えが可能",
-            "2ndルイでアーカイブから好きなholoX2枚回収が優秀"
-          ],
+          "features": {
+            "ja": [
+              "ルイを採用して少し後ろ寄りにした構築",
+              "1stルイのブルーム時に手札の入れ替えが可能",
+              "2ndルイでアーカイブから好きなholoX2枚回収が優秀"
+            ],
+            "zh-TW": [
+              "ルイを採用して少し後ろ寄りにした構築",
+              "當第一路易斯開花時，你可以換手。",
+              "第二位 Louis 擅長從檔案中收集 2 個最喜歡的 HoloX"
+            ],
+            "en": [
+              "A structure that uses Louis and is slightly pushed back.",
+              "You can change your hand when 1st Louis blooms.",
+              "2nd Louis is excellent at collecting 2 favorite holoX from the archive"
+            ],
+            "fr": [
+              "Une structure qui utilise Louis et qui est légèrement repoussée.",
+              "Vous pourrez changer de main à la floraison du 1er Louis.",
+              "Le 2ème Louis est excellent pour collectionner 2 holoX préférés des archives"
+            ]
+          },
           "recipe_url": null,
           "vtuber": "風真いろは",
           "id": "風真いろは-るいろは"
@@ -177,11 +313,28 @@
             "endurance": "○",
             "pressure": "○"
           },
-          "features": [
-            "7弾の新カードで足回りが強化され、火力とエールの問題が解決！",
-            "SPを使えないターンでも、新1stのバフとエール軽減で楽に2面取りをすることも可能",
-            "AZKiに対しては不利だが、もう一方のクロニーには有利に戦える"
-          ],
+          "features": {
+            "ja": [
+              "7弾の新カードで足回りが強化され、火力とエールの問題が解決！",
+              "SPを使えないターンでも、新1stのバフとエール軽減で楽に2面取りをすることも可能",
+              "AZKiに対しては不利だが、もう一方のクロニーには有利に戦える"
+            ],
+            "zh-TW": [
+              "第七張新卡加強懸掛，解決火力大喊的問題！",
+              "即使在無法使用 SP 的回合中，您也可以透過新的第一增益和喊叫減少輕鬆進行雙邊戰鬥。",
+              "對 AZKi 不利，但對其他裙帶關係有利"
+            ],
+            "en": [
+              "The suspension is strengthened with the 7th new card, solving the problem of firepower and yell!",
+              "Even on turns where you can't use SP, you can easily do two-sided battles with the new 1st buff and yell reduction.",
+              "Disadvantageous against AZKi, but advantageous against the other Crony"
+            ],
+            "fr": [
+              "La suspension est renforcée avec la 7ème nouvelle carte, résolvant le problème de la puissance de feu et du cri !",
+              "Même dans les tours où vous ne pouvez pas utiliser SP, vous pouvez facilement mener des batailles à deux faces grâce au nouveau 1er buff et à la réduction des cris.",
+              "Inconvénient face à AZKi, mais avantageux face aux autres Crony"
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/rapurasuda-kunesu-deck/",
           "vtuber": "ラプラス・ダークネス",
           "id": "ラプラス-ダークネス-ラプ推しラプラス単"
@@ -225,11 +378,28 @@
             "endurance": "◎",
             "pressure": "◎"
           },
-          "features": [
-            "高火力と高耐久を持ち合わせるライフ６",
-            "専用ツール「ゆび」でアーカイブから回収が可能",
-            "盤面のエールを増やして2面取りも狙える"
-          ],
+          "features": {
+            "ja": [
+              "高火力と高耐久を持ち合わせるライフ６",
+              "専用ツール「ゆび」でアーカイブから回収が可能",
+              "盤面のエールを増やして2面取りも狙える"
+            ],
+            "zh-TW": [
+              "Life 6 高火力、高耐久",
+              "可以使用專用工具「Yubi」從檔案中檢索",
+              "您可以增加棋盤上的歡呼聲並瞄準兩側。"
+            ],
+            "en": [
+              "Life 6 with high firepower and high durability",
+              "Can be retrieved from the archive using the special tool \"Yubi\"",
+              "You can increase the cheer on the board and aim for two sides."
+            ],
+            "fr": [
+              "Life 6 avec une puissance de feu élevée et une durabilité élevée",
+              "Peut être récupéré de l'archive à l'aide de l'outil spécial \"Yubi\"",
+              "Vous pouvez augmenter la joie sur le plateau et viser deux côtés."
+            ]
+          },
           "recipe_url": "https://www.holocardstrategy.jp/korone-deck/",
           "vtuber": "戌神ころね",
           "id": "戌神ころね-ころね単"
@@ -244,11 +414,28 @@
             "endurance": "◎",
             "pressure": "◎"
           },
-          "features": [
-            "かなたを採用し序,中盤の火力をサポート",
-            "凸待ちの睨み合いで勝ち切ることができる",
-            "安定感がやや落ちるのは注意"
-          ],
+          "features": {
+            "ja": [
+              "かなたを採用し序,中盤の火力をサポート",
+              "凸待ちの睨み合いで勝ち切ることができる",
+              "安定感がやや落ちるのは注意"
+            ],
+            "zh-TW": [
+              "採用彼方支援前中期火力",
+              "一邊盯著對方，一邊等待突破，就能獲勝。",
+              "請注意，穩定感可能會略有下降。"
+            ],
+            "en": [
+              "Adopts Kanata to support firepower in the early and middle stages",
+              "You can win by staring at each other while waiting for a breakthrough.",
+              "Please note that the sense of stability may decrease slightly."
+            ],
+            "fr": [
+              "Adopte Kanata pour soutenir la puissance de feu au début et au milieu",
+              "Vous pouvez gagner en vous regardant en attendant une percée.",
+              "Veuillez noter que la sensation de stabilité peut légèrement diminuer."
+            ]
+          },
           "recipe_url": null,
           "vtuber": "戌神ころね",
           "id": "戌神ころね-かなころ"
