@@ -12,26 +12,6 @@
     <p class="admin-note">
       每一列是一個大賽牌組。存檔後下次跑 scraper 會自動從 Bushiroad API 抓牌譜詳細內容。
     </p>
-    <details class="admin-help">
-      <summary>❓ code 欄怎麼填？</summary>
-      <div class="admin-help-body">
-        <p>
-          <b>code 不是自己編的</b>。它是 Bushiroad Deck Log 網站給每個「有人上傳過」的牌組一個 5 碼唯一 ID，
-          URL 長這樣：<code>https://decklog-en.bushiroad.com/ja/view/<b>44ZSC</b></code> ← 最後那段就是 code。
-        </p>
-        <p><b>要從哪裡拿到 code？</b></p>
-        <ul>
-          <li>官方 X 帳號 <code>@hololive_OCG</code> po 大賽結果時常附 Deck Log 連結</li>
-          <li>選手自己的 X / Discord 貼文</li>
-          <li>攻略社群（ホロカ攻略ギルド、Vanholo 等）整理的大賽結果</li>
-        </ul>
-        <p><b>還沒有 code 的大賽怎麼辦？</b></p>
-        <p>
-          勾選該列的「placeholder」— 就算沒 code 也能先記下 event / 日期 / 名次 / oshi。
-          之後選手公開牌組再回來填 code、取消 placeholder。
-        </p>
-      </div>
-    </details>
   </header>
 
   <main>
@@ -53,7 +33,6 @@
             <th>event</th>
             <th>event_date</th>
             <th>placement</th>
-            <th title="勾選 = 還沒 code 的 placeholder">?</th>
             <th>牌譜</th>
             <th></th>
           </tr>
@@ -101,35 +80,6 @@
         tr.appendChild(td);
       }
 
-      // Placeholder (missing) checkbox — if checked, code can be empty; the entry
-      // becomes a "known tournament result, deck not yet published" marker.
-      const missingTd = document.createElement('td');
-      missingTd.style.textAlign = 'center';
-      const missingCb = document.createElement('input');
-      missingCb.type = 'checkbox';
-      missingCb.dataset.field = 'missing';
-      missingCb.checked = !!entry.missing;
-      missingCb.title = '勾選 = 尚未有 code 的 placeholder（scraper 不會對 Bushiroad 發 API，但前台仍列出 event + placement）';
-      missingCb.addEventListener('change', () => {
-        const codeInput = tr.querySelector('input[data-field="code"]');
-        if (missingCb.checked) {
-          codeInput.placeholder = '（placeholder，不用填）';
-          codeInput.style.background = '#f8f6fd';
-        } else {
-          codeInput.placeholder = '5 碼';
-          codeInput.style.background = '';
-        }
-        _renderDeckCell(tr);
-      });
-      missingTd.appendChild(missingCb);
-      tr.appendChild(missingTd);
-      // Initial state sync
-      if (entry.missing) {
-        const codeInput = tr.querySelector('input[data-field="code"]');
-        codeInput.placeholder = '（placeholder，不用填）';
-        codeInput.style.background = '#f8f6fd';
-      }
-
       // Deck contents cell — shows main/cheer card counts + "view" link
       const deckCell = document.createElement('td');
       deckCell.className = 'deck-cell';
@@ -149,16 +99,10 @@
     function _renderDeckCell(tr) {
       const codeInput = tr.querySelector('input[data-field="code"]');
       const code = (codeInput?.value || '').trim().toUpperCase();
-      const missingCb = tr.querySelector('input[data-field="missing"]');
-      const isMissing = missingCb?.checked;
       const cell = tr.querySelector('.deck-cell');
       if (!cell) return;
-      if (isMissing) {
-        cell.innerHTML = '<span class="deck-cell-placeholder">placeholder（尚未公開）</span>';
-        return;
-      }
       if (!code) {
-        cell.innerHTML = '<span class="deck-cell-muted">需要 code</span>';
+        cell.innerHTML = '<span class="deck-cell-muted">—</span>';
         return;
       }
       const scraped = decklogByCode[code];
@@ -212,17 +156,10 @@
         const obj = {};
         let hasAny = false;
         for (const inp of tr.querySelectorAll('input')) {
-          const f = inp.dataset.field;
-          if (inp.type === 'checkbox') {
-            if (inp.checked) { obj[f] = true; hasAny = true; }
-          } else {
-            const v = inp.value.trim();
-            if (v) hasAny = true;
-            obj[f] = v;
-          }
+          const v = inp.value.trim();
+          if (v) hasAny = true;
+          obj[inp.dataset.field] = v;
         }
-        // Strip empty code field on placeholder rows (cleaner JSON)
-        if (obj.missing && !obj.code) delete obj.code;
         if (hasAny) out.push(obj);
       }
       return out;

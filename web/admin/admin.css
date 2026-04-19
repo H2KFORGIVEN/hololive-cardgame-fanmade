@@ -26,33 +26,6 @@ body {
   font-size: 0.85rem;
   color: #7a74a8;
 }
-.admin-help {
-  margin: 10px 0;
-  background: #f0edf9;
-  border: 1px solid #d4cfe6;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-}
-.admin-help summary {
-  cursor: pointer;
-  color: #4f4982;
-  font-weight: 600;
-  user-select: none;
-  padding: 2px 0;
-}
-.admin-help-body {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid #d4cfe6;
-  color: #4f4982;
-  line-height: 1.6;
-}
-.admin-help-body p { margin: 4px 0; }
-.admin-help-body ul { margin: 4px 0 4px 20px; padding: 0; }
-.admin-help-body code {
-  font-size: 0.85em;
-}
 .admin-crumb {
   margin: 4px 0 10px;
   font-size: 0.85rem;
@@ -259,15 +232,6 @@ button:hover { border-color: #6b5ce7; background: #f4f1fa; }
   border-radius: 4px;
   font-size: 0.75rem;
   margin-right: 6px;
-}
-.deck-cell-placeholder {
-  display: inline-block;
-  background: #ebe6f6;
-  color: #6b5ce7;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-style: italic;
 }
 .deck-cell-muted {
   color: #aaa;
