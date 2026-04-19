@@ -2178,6 +2178,36 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hBD24/hBD24-067_P.png",
+    "name": "夏色まつり",
+    "type": "主推",
+    "product": "PR卡",
+    "color": "黃",
+    "life": 5,
+    "oshiSkill": {
+      "holoPower": -2,
+      "name": "イエローエンハンス",
+      "effect": {
+        "zh-TW": "[每個回合一次]這個回合中，自己的1位黃色成員藝能傷害+20。",
+        "ja": "【ラウンドに1回】そのラウンド中、自分の黄メンバー1人のスキルダメージ+20。",
+        "en": "[Once per round] During this round, one of your yellow members' skill damage +20.",
+        "fr": "[Une fois par tour] Pendant ce tour, les dégâts de compétence d'un de vos membres jaunes +20."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "Birthday Gift ～Yellow～",
+      "effect": {
+        "zh-TW": "[每場比賽一次]從自己的牌組展示1張黃色成員並加入手牌。將牌組重新洗牌。",
+        "ja": "【1ゲームに1回】自分のデッキから黄色のメンバーを1枚公開して手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per game] Reveal 1 yellow member from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par partie] Révélez 1 membre jaune de votre deck et ajoutez-le à votre main. Remaniez le jeu."
+      }
+    },
+    "id": "hBD24-067",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBD24/hBD24-067_P.png"
+  },
+  {
     "image": "cardListImages/hBP01/hBP01-001_OSR.png",
     "name": "天音かなた",
     "type": "主推",
@@ -16350,7 +16380,10 @@
     "name": "森カリオペの鎌",
     "type": "支援・道具",
     "tag": null,
-    "product": "補充包「クインテットスペクトラム (hBP02)」",
+    "product": [
+      "補充包「クインテットスペクトラム (hBP02)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」"
+    ],
     "supportEffect": {
       "zh-TW": "帶有這個道具的成員藝能傷害+10。\n\n◆附加給1st以上的「森カリオペ」有追加效果\n這個道具從手牌附加給成員時，將自己牌組上方的1張牌放到存檔區。\n\n每位成員只能帶有1張道具。",
       "ja": "この小道具を持つメンバーのスキルダメージは+10されます。\n\n◆1段階目以上の「もりかり」に追加効果が追加されます。\nこのアイテムが手札からメンバーに付けられた時、自分のデッキの上から１枚をセーブエリアに置く。\n\n各メンバーはプロップを 1 つだけ持つことができます。",
@@ -48284,6 +48317,98 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hBP07/hBP07-043_P_01.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "PR卡",
+    "color": "紅",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "holoRêve -みこ-",
+      "effect": {
+        "zh-TW": "選擇3或5。這個回合中，因自己的主推「さくらみこ」與自己舞台上的「さくらみこ」的效果擲骰子時，那些骰子的點數視為剛才選擇的數字。",
+        "ja": "３か５を選んでください。このターン中、自分のステージのメインプッシュ『さくらみこ』と『さくらみこ』の効果でダイスを振る時、そのダイスの出目は先ほど選んだ数字として扱われます。",
+        "en": "Choose 3 or 5. During this turn, when you roll dice due to the effects of your main push \"さくらみこ\" and \"さくらみこ\" on your stage, the points on those dice are treated as the numbers you just selected.",
+        "fr": "Choisissez 3 ou 5. Pendant ce tour, lorsque vous lancez des dés en raison des effets de votre poussée principale \"さくらみこ\" et \"さくらみこ\" sur votre scène, les points sur ces dés sont traités comme les nombres que vous venez de sélectionner."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_red.png",
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "桜は花に顕る",
+      "damage": "70+",
+      "specialAttackImage": "icons/tokkou_50_purple.png",
+      "effect": {
+        "zh-TW": "這個成員每帶有1張「35P」，這個藝能傷害+70，並從自己的牌組抽1張牌。",
+        "ja": "このメンバーの所持「35P」ごとに、このスキルの与えるダメージ+70し、自分のデッキからカードを1枚ドローする。",
+        "en": "For each \"35P\" this member has, this skill deals +70 damage and draws 1 card from his or her deck.",
+        "fr": "Pour chaque « 35P » dont dispose ce membre, cette compétence inflige +70 dégâts et pioche 1 carte de son deck."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP07-043",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-043_P_01.png"
+  },
+  {
+    "image": "cardListImages/hBP07/hBP07-043_P_02.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "PR卡",
+    "color": "紅",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "holoRêve -みこ-",
+      "effect": {
+        "zh-TW": "選擇3或5。這個回合中，因自己的主推「さくらみこ」與自己舞台上的「さくらみこ」的效果擲骰子時，那些骰子的點數視為剛才選擇的數字。",
+        "ja": "３か５を選んでください。このターン中、自分のステージのメインプッシュ『さくらみこ』と『さくらみこ』の効果でダイスを振る時、そのダイスの出目は先ほど選んだ数字として扱われます。",
+        "en": "Choose 3 or 5. During this turn, when you roll dice due to the effects of your main push \"さくらみこ\" and \"さくらみこ\" on your stage, the points on those dice are treated as the numbers you just selected.",
+        "fr": "Choisissez 3 ou 5. Pendant ce tour, lorsque vous lancez des dés en raison des effets de votre poussée principale \"さくらみこ\" et \"さくらみこ\" sur votre scène, les points sur ces dés sont traités comme les nombres que vous venez de sélectionner."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_red.png",
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "桜は花に顕る",
+      "damage": "70+",
+      "specialAttackImage": "icons/tokkou_50_purple.png",
+      "effect": {
+        "zh-TW": "這個成員每帶有1張「35P」，這個藝能傷害+70，並從自己的牌組抽1張牌。",
+        "ja": "このメンバーの所持「35P」ごとに、このスキルの与えるダメージ+70し、自分のデッキからカードを1枚ドローする。",
+        "en": "For each \"35P\" this member has, this skill deals +70 damage and draws 1 card from his or her deck.",
+        "fr": "Pour chaque « 35P » dont dispose ce membre, cette compétence inflige +70 dégâts et pioche 1 carte de son deck."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP07-043",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-043_P_02.png"
+  },
+  {
     "image": "cardListImages/hBP07/hBP07-044_R.png",
     "name": "尾丸ポルカ",
     "type": "成員",
@@ -61607,6 +61732,664 @@
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-010_C.png"
   },
   {
+    "image": "cardListImages/hSD18/hSD18-001_OC.png",
+    "name": "森カリオペ",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -2,
+      "name": "ライミング",
+      "effect": {
+        "zh-TW": "[每個回合一次]將自己牌組上方的2張牌放到存檔區。之後，從自己的牌組抽1張牌。",
+        "ja": "【１ターンに１回】君のデッキの上から２枚をセーブエリアに置く。その後、自分はデッキからカードを１枚ドローする。",
+        "en": "[Once per turn] Put the top 2 cards of your deck into the save area. After that, draw 1 card from your deck.",
+        "fr": "[Une fois par tour] Mettez les 2 premières cartes de votre deck dans la zone de sauvegarde. Après cela, piochez 1 carte de votre deck."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "世界を繋げるラップ",
+      "effect": {
+        "zh-TW": "[每場比賽一次]如果自己的存檔區有6張以上的成員，這個回合中，自己舞台上所有的「森カリオペ」藝能傷害+30。",
+        "ja": "【1ゲームに1回】自分のセーブエリアにメンバーが6人以上いる場合、そのラウンド中、自分のステージ上の『森かりん』全てのアーツのダメージを+30する。",
+        "en": "[Once per game] If there are more than 6 members in your save area, during this round, the damage of all \"Mori Karin\" arts on your stage will be +30.",
+        "fr": "[Une fois par partie] S'il y a plus de 6 membres dans votre zone de sauvegarde, pendant ce tour, les dégâts de tous les arts \"Mori Karin\" sur votre scène seront de +30."
+      }
+    },
+    "id": "hSD18-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-002_C.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "Nice to reap you",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-003_C.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 70,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "今日もあなたのそばに -カリオペ-",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-004_C.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 90,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "みーなさんっ",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，將自己牌組上方的1張牌放到存檔區。之後，從自己的牌組抽1張牌。",
+        "ja": "最初のターンに攻撃する場合、自分の山札の上から１枚をセーブエリアに置く。その後、自分はデッキからカードを１枚ドローする。",
+        "en": "If you attack in the first turn, put the top card in your deck into the save area. After that, draw 1 card from your deck.",
+        "fr": "Si vous attaquez au premier tour, placez la carte du dessus de votre deck dans la zone de sauvegarde. Après cela, piochez 1 carte de votre deck."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "あたためて貰えますか…？",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-005_U.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "死神式ストレッチ",
+      "effect": {
+        "zh-TW": "如果自己的成員帶有道具，給予對手的中心成員10點特殊傷害。",
+        "ja": "自分のメンバーがアイテムを持っている場合、相手のセンターメンバーに10ポイントの特殊ダメージを与える。",
+        "en": "If one of your own members has items, inflict 10 points of special damage to the opponent's center member.",
+        "fr": "Si l'un de vos propres membres possède des objets, infligez 10 points de dégâts spéciaux au membre central de l'adversaire."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "一緒に、どう？",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-006_C.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "これから、頑張る。",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "負けない。諦めない。",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD18-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-007_U.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "ちょっとした特別なプレゼント",
+      "effect": {
+        "zh-TW": "對手回合中，這個成員被擊倒時，將自己牌組上方的1張牌放到存檔區。",
+        "ja": "相手のターン中、このメンバーがダウンした時、君のデッキの上から１枚をセーブエリアに置く。",
+        "en": "During the opponent's turn, when this member is knocked down, put the top card of your deck into the save area.",
+        "fr": "Pendant le tour de l'adversaire, lorsque ce membre est renversé, placez la carte du dessus de votre deck dans la zone de sauvegarde."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "手伝ってもらって助かるよ",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果這個成員帶有道具，這個藝能傷害+10。",
+        "ja": "このメンバーが小道具を持っている場合、このスキルのダメージは+10される。",
+        "en": "If this member has props, the damage of this skill is +10.",
+        "fr": "Si ce membre a des accessoires, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-008_R.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ロックンロールリッパー",
+      "effect": {
+        "zh-TW": "將自己牌組上方的1張牌放到存檔區。",
+        "ja": "自分の山札の一番上のカードをセーブエリアに置きます。",
+        "en": "Put the top card of your deck into the save area.",
+        "fr": "Placez la carte du dessus de votre deck dans la zone de sauvegarde."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "OK、もう一曲行こう！",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "[限定中心位置]將自己存檔區的1張道具返回手牌。",
+        "ja": "【中央位置限定】自分のセーブエリアにあるアイテム1枚を手札に戻す。",
+        "en": "[Limited to center position] Return 1 item from your save area to your hand.",
+        "fr": "[Limité à la position centrale] Renvoyez 1 objet de votre zone de sauvegarde dans votre main."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD18/hSD18-009_RR.png",
+    "name": "森カリオペ",
+    "type": "成員",
+    "tag": "#EN / #Myth / #歌",
+    "product": "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」",
+    "color": "紫",
+    "hp": 160,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ペイルライダー",
+      "effect": {
+        "zh-TW": "如果自己的存檔區有6張以上的成員，給予對手的中心成員20點特殊傷害。",
+        "ja": "自分のセーブエリアにメンバーが6人以上いる場合、相手のセンターメンバーに20ポイントの特殊ダメージを与える。",
+        "en": "If there are more than 6 members in your save area, give 20 points of special damage to the opponent's center member.",
+        "fr": "S'il y a plus de 6 membres dans votre zone de sauvegarde, infligez 20 points de dégâts spéciaux au membre central de l'adversaire."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_purple.png"
+      ],
+      "name": "刻むぞ冥界のビート",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_30_green.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD18-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD18/hSD18-009_RR.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-001_OC.png",
+    "name": "大空スバル",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -3,
+      "name": "ごめんｹﾄﾞ",
+      "effect": {
+        "zh-TW": "[每個回合一次]將自己存檔區的1張成員返回手牌。",
+        "ja": "【１ターンに１度】自分のセーブエリアのメンバー１枚を手札に戻す。",
+        "en": "[Once per turn] Return 1 member from your save area to your hand.",
+        "fr": "[Une fois par tour] Renvoyez 1 membre de votre zone de sauvegarde dans votre main."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "おさんぽスバル",
+      "effect": {
+        "zh-TW": "[每場比賽一次]將自己存檔區的吶喊卡發送給自己1~2位「大空スバル」，每人各1張。",
+        "ja": "【1ゲームに1回】自分のセーブエリアにある叫びカードを、1人1枚ずつ自分の「大空経」1～2枚に送る。",
+        "en": "[Once per game] Send the shouting cards in your save area to your 1~2 \"Osora Sutra\", 1 card for each person.",
+        "fr": "[Une fois par partie] Envoyez les cartes criant dans votre zone de sauvegarde à votre 1~2 \"Osora Sutra\", 1 carte pour chaque personne."
+      }
+    },
+    "id": "hSD19-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-002_C.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 90,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "あじまるあじまる～",
+      "damage": 10,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-003_C.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "今日もあなたのそばに -スバル-",
+      "damage": "20+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果自己的生命值在2以下，這個藝能傷害+10。",
+        "ja": "自分のHPが2以下の場合、このスキルのダメージは+10されます。",
+        "en": "If your HP is below 2, the damage of this skill is +10.",
+        "fr": "Si vos PV sont inférieurs à 2, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-004_C.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "大空スマイル",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，從自己的牌組展示1張Debut成員，放到舞台上。將牌組重新洗牌。",
+        "ja": "バックアタックの1ターン目に、デッキからデビューメンバー1枚を公開して舞台に置く。デッキを再シャッフルします。",
+        "en": "If on the first turn of your back attack, reveal 1 Debut member from your deck and put it on the stage. Reshuffle the deck.",
+        "fr": "Si au premier tour de votre attaque arrière, révélez 1 membre Début de votre deck et mettez-le sur scène. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "しゅばぁ",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-005_U.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "ダンスレッスンなんですｹｰﾄﾞ",
+      "effect": {
+        "zh-TW": "對手的中心成員對這個成員造成的傷害-10。",
+        "ja": "相手のセンターメンバーはこのメンバーに-10ダメージを受ける。",
+        "en": "The opponent's center member takes -10 damage to this member.",
+        "fr": "Le membre central de l'adversaire subit -10 dégâts sur ce membre."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いっちにー、ホワッ、ホワッ！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-006_C.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いっぱい頑張る！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "いっぱい楽しむ！",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD19-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-007_U.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "青春エール",
+      "effect": {
+        "zh-TW": "將自己存檔區的1張吶喊卡發送給這個成員。",
+        "ja": "自分のセーブエリアからシャウトカードを1枚このメンバーに送る。",
+        "en": "Send 1 shouting card from your save area to this member.",
+        "fr": "Envoyez 1 carte criante depuis votre zone de sauvegarde à ce membre."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "忘れてなんかやるもんか",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果這個成員有2張以上的吶喊卡，這個藝能傷害+20。",
+        "ja": "このメンバーがシャウトカードを2枚以上持っている場合、このスキルのダメージは+20される。",
+        "en": "If this member has more than 2 shout cards, the damage of this skill is +20.",
+        "fr": "Si ce membre possède plus de 2 cartes cri, les dégâts de cette compétence sont de +20."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-008_R.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "萌え萌えギュン",
+      "damage": "20+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "[限定聯動位置]如果對手的舞台上有2nd成員，這個藝能傷害+20。",
+        "ja": "【限定連動位置】相手ステージに2枚目のメンバーがいる場合、このパフォーマンスのダメージ+20。",
+        "en": "[Limited linkage position] If there is a 2nd member on the opponent's stage, the damage of this performance +20.",
+        "fr": "[Position de liaison limitée] S'il y a un 2ème membre sur la scène adverse, les dégâts de cette performance +20."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-009_RR.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "color": "黃",
+    "hp": 180,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_yellow.png"
+      ],
+      "name": "ダンシング・プレアデス",
+      "damage": "80+",
+      "specialAttackImage": "icons/tokkou_30_white.png",
+      "effect": {
+        "zh-TW": "如果自己的生命值在2以下，這個藝能傷害+10。",
+        "ja": "自分のHPが2以下の場合、このスキルのダメージは+10されます。",
+        "en": "If your HP is below 2, the damage of this skill is +10.",
+        "fr": "Si vos PV sont inférieurs à 2, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD19-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-009_RR.png"
+  },
+  {
+    "image": "cardListImages/hSD19/hSD19-010_C.png",
+    "name": "ごきげんカレー",
+    "type": "支援・活動",
+    "tag": "#食べ物",
+    "product": "起始牌組「ライブスタートデッキ 大空スバル (hSD19)」",
+    "supportEffect": {
+      "zh-TW": "自己的成員HP回復30點。",
+      "ja": "自身のメンバーのHPを30ポイント回復する。",
+      "en": "Restores 30 HP points to your own members.",
+      "fr": "Restaure 30 points HP à vos propres membres."
+    },
+    "id": "hSD19-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hSD19-010_C.png"
+  },
+  {
     "image": "cardListImages/hYS0/hYS01-001_OC.png",
     "name": "七詩ムメイ",
     "type": "主推",
@@ -62539,7 +63322,8 @@
       "補充包「エリートスパーク (hBP03)」",
       "起始牌組「紫 癒月ちょこ (hSD04)」",
       "起始牌組「FLOW GLOW 推し 輪堂千速 (hSD10)」",
-      "起始牌組「推し Advent (hSD12)」"
+      "起始牌組「推し Advent (hSD12)」",
+      "起始牌組「ライブスタートデッキ 森カリオペ (hSD18)」"
     ],
     "color": "紫",
     "yellEffect": {
