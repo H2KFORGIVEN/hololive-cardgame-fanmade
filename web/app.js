@@ -17,8 +17,13 @@ let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
 const _loaded = { cards: false, decklog: false };
 
+// Cache-bust JSON fetches — browsers (and Python's http.server) don't set
+// cache-control, so data/*.json can serve stale copies for hours across deploys.
+// Unique per page load; within a session Electron/browser still dedupes.
+const _BUST = '?v=' + Date.now();
 function _fetchJSON(url) {
-  return fetch(url).then(r => r.ok ? r.json() : null);
+  const sep = url.includes('?') ? '&' : '?';
+  return fetch(url + (url.endsWith('.json') ? _BUST : '')).then(r => r.ok ? r.json() : null);
 }
 
 async function loadCoreData() {
