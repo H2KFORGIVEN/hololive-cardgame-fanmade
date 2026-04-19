@@ -218,6 +218,19 @@ function setupModals() {
       }
     }
 
+    const expandDecksBtn = e.target.closest('.tournament-expand-btn');
+    if (expandDecksBtn) {
+      const grid = expandDecksBtn.previousElementSibling;
+      if (grid && grid.classList.contains('tournament-deck-grid')) {
+        const nowCollapsed = grid.classList.toggle('decks-collapsed');
+        const total = grid.children.length;
+        expandDecksBtn.textContent = nowCollapsed
+          ? t('tournament_expand_decks', { n: Math.max(total - 6, 0) })
+          : t('tournament_collapse_decks');
+      }
+      return;
+    }
+
     const tournamentDeckCard = e.target.closest('.tournament-deck-card');
     if (tournamentDeckCard) {
       const decklogId = tournamentDeckCard.dataset.decklogId;

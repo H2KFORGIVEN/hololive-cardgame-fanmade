@@ -1430,6 +1430,31 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem;
 }
+.tournament-deck-grid.decks-collapsed > .tournament-deck-card:nth-child(n+7) {
+  display: none;
+}
+.tournament-expand-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.7rem 1rem;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  letter-spacing: 0.02em;
+}
+.tournament-expand-btn:hover {
+  border-color: var(--accent-gold);
+  border-style: solid;
+  color: var(--accent-gold);
+  background: rgba(255,215,0,0.04);
+}
 .tournament-deck-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

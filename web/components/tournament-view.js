@@ -84,6 +84,13 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
       usageHtml = _renderUsageChart(usageByEvent[usageKey]);
     }
 
+    const COLLAPSE_THRESHOLD = 6;
+    const isCollapsible = decks.length > COLLAPSE_THRESHOLD;
+    const gridClass = `tournament-deck-grid${isCollapsible ? ' decks-collapsed' : ''}`;
+    const expandBtnHtml = isCollapsible
+      ? `<button type="button" class="tournament-expand-btn">${t('tournament_expand_decks', { n: decks.length - COLLAPSE_THRESHOLD })}</button>`
+      : '';
+
     html += `
       <section class="tournament-event-section${isUpcoming ? ' upcoming-event' : ''}">
         <div class="tournament-event-header">
@@ -95,7 +102,7 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
         </div>
         ${usageHtml}
         ${decks.length
-          ? `<div class="tournament-deck-grid">${decks.map(deck => renderTournamentDeckCard(deck, cardsMap)).join('')}</div>`
+          ? `<div class="${gridClass}">${decks.map(deck => renderTournamentDeckCard(deck, cardsMap)).join('')}</div>${expandBtnHtml}`
           : `<div class="tournament-no-deck-placeholder">${isUpcoming ? t('tournament_upcoming_msg') : t('tournament_no_deck_data')}</div>`
         }
       </section>
