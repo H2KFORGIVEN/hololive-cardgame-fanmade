@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>大賽牌組代碼 · 管理後台</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>大賽牌組代碼</h1>
+    <nav class="admin-crumb"><a href="index.html">← 後台首頁</a></nav>
+    <p class="admin-note">
+      每一列是一個大賽牌組。存檔後下次跑 scraper 會自動從 Bushiroad API 抓牌譜詳細內容。
+    </p>
+  </header>
+
+  <main>
+    <div class="admin-toolbar">
+      <button id="addBtn" class="btn-primary">＋ 新增一列</button>
+      <button id="saveBtn" class="btn-save">💾 存檔</button>
+      <button id="reloadBtn" class="btn-ghost">重新載入</button>
+      <span class="admin-status" id="status"></span>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="table">
+        <thead>
+          <tr>
+            <th>code</th>
+            <th>title</th>
+            <th>oshi</th>
+            <th>source</th>
+            <th>event</th>
+            <th>event_date</th>
+            <th>placement</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <p>存檔後記得在終端機跑 <code>./scripts/push-deploy.sh</code> 推到 GitHub + 部署。</p>
+  </footer>
+
+  <script>
+    const API = '/api/admin/deck-codes';
+    const FIELDS = ['code','title','oshi','source','event','event_date','placement'];
+    const tbody = document.getElementById('tbody');
+    const statusEl = document.getElementById('status');
+
+    function setStatus(msg, tone) {
+      statusEl.textContent = msg;
+      statusEl.className = 'admin-status' + (tone ? ' admin-status-' + tone : '');
+    }
+
+    function makeRow(entry = {}) {
+      const tr = document.createElement('tr');
+      tr.dataset.row = '';
+      for (const f of FIELDS) {
+        const td = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.dataset.field = f;
+        input.value = entry[f] || '';
+        if (f === 'event_date') input.placeholder = 'YYYY-MM-DD';
+        if (f === 'code') input.placeholder = '5 碼 deck code';
+        td.appendChild(input);
+        tr.appendChild(td);
+      }
+      const actions = document.createElement('td');
+      const del = document.createElement('button');
+      del.className = 'btn-del';
+      del.textContent = '刪除';
+      del.onclick = () => tr.remove();
+      actions.appendChild(del);
+      tr.appendChild(actions);
+      return tr;
+    }
+
+    async function load() {
+      setStatus('載入中...', '');
+      try {
+        const r = await fetch(API);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const data = await r.json();
+        tbody.innerHTML = '';
+        for (const entry of data) tbody.appendChild(makeRow(entry));
+        setStatus('已載入 ' + data.length + ' 筆', 'ok');
+      } catch (e) {
+        setStatus('載入失敗: ' + e.message, 'err');
+      }
+    }
+
+    function collect() {
+      const out = [];
+      for (const tr of tbody.querySelectorAll('tr')) {
+        const obj = {};
+        let hasAny = false;
+        for (const inp of tr.querySelectorAll('input')) {
+          const v = inp.value.trim();
+          if (v) hasAny = true;
+          obj[inp.dataset.field] = v;
+        }
+        if (hasAny) out.push(obj);
+      }
+      return out;
+    }
+
+    async function save() {
+      const data = collect();
+      if (!confirm('存檔 ' + data.length + ' 筆 deck codes？這會覆寫 deck_codes.json。')) return;
+      setStatus('寫入中...', '');
+      try {
+        const r = await fetch(API, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data),
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+        setStatus('✓ 已存檔 (' + j.bytes + ' bytes)。記得到終端機跑 push-deploy.sh 部署。', 'ok');
+      } catch (e) {
+        setStatus('存檔失敗: ' + e.message + ' — 從 LAN 開啟無法寫入，請在 Studio 本機 localhost 開啟。', 'err');
+      }
+    }
+
+    document.getElementById('addBtn').onclick = () => tbody.appendChild(makeRow());
+    document.getElementById('saveBtn').onclick = save;
+    document.getElementById('reloadBtn').onclick = load;
+    load();
+  </script>
+</body>
+</html>

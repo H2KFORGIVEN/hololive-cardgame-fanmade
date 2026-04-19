@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>X 貼文清單 · 管理後台</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>X 貼文清單</h1>
+    <nav class="admin-crumb"><a href="index.html">← 後台首頁</a></nav>
+    <p class="admin-note">維護 <code>x_posts.json</code> — 官方帳號的大賽結果、使用率相關 post URL。scrape_x.py 會從這邊讀後抓內容。</p>
+  </header>
+
+  <main>
+    <div class="admin-toolbar">
+      <button id="saveBtn" class="btn-save">💾 存檔</button>
+      <button id="reloadBtn" class="btn-ghost">重新載入</button>
+      <span class="admin-status" id="status"></span>
+    </div>
+
+    <div class="admin-field">
+      <label>account（官方帳號名稱）</label>
+      <input type="text" id="account" placeholder="hololive_OCG">
+    </div>
+
+    <div class="admin-field">
+      <label>tournament_posts（每行一個 URL）</label>
+      <textarea id="tournament_posts" rows="8" placeholder="https://x.com/hololive_OCG/status/..."></textarea>
+    </div>
+
+    <div class="admin-field">
+      <label>usage_rate_posts（每行一個 URL）</label>
+      <textarea id="usage_rate_posts" rows="8" placeholder="https://x.com/hololive_OCG/status/..."></textarea>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <p>存檔後記得跑 <code>./scripts/push-deploy.sh</code>。</p>
+  </footer>
+
+  <script>
+    const API = '/api/admin/x-posts';
+    const statusEl = document.getElementById('status');
+    const setStatus = (m, tone) => { statusEl.textContent = m; statusEl.className = 'admin-status' + (tone ? ' admin-status-' + tone : ''); };
+
+    async function load() {
+      setStatus('載入中...');
+      try {
+        const r = await fetch(API);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const d = await r.json();
+        document.getElementById('account').value = d.account || '';
+        document.getElementById('tournament_posts').value = (d.tournament_posts || []).join('\n');
+        document.getElementById('usage_rate_posts').value = (d.usage_rate_posts || []).join('\n');
+        setStatus('已載入', 'ok');
+      } catch (e) { setStatus('載入失敗: ' + e.message, 'err'); }
+    }
+
+    async function save() {
+      const body = {
+        account: document.getElementById('account').value.trim(),
+        tournament_posts: document.getElementById('tournament_posts').value.split('\n').map(s => s.trim()).filter(Boolean),
+        usage_rate_posts: document.getElementById('usage_rate_posts').value.split('\n').map(s => s.trim()).filter(Boolean),
+      };
+      if (!confirm('存檔 x_posts.json？')) return;
+      try {
+        const r = await fetch(API, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+        setStatus('✓ 已存檔。記得跑 push-deploy.sh。', 'ok');
+      } catch (e) { setStatus('存檔失敗: ' + e.message + ' — 需從 localhost 開啟。', 'err'); }
+    }
+
+    document.getElementById('saveBtn').onclick = save;
+    document.getElementById('reloadBtn').onclick = load;
+    load();
+  </script>
+</body>
+</html>
