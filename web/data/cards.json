@@ -61274,6 +61274,339 @@
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD16/hSD16-009_RR.png"
   },
   {
+    "image": "cardListImages/hSD17/hSD17-001_OC.png",
+    "name": "星街すいせい",
+    "type": "主推",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "life": 4,
+    "stageSkill": null,
+    "oshiSkill": {
+      "holoPower": -3,
+      "name": "張り切ってがんばろーー!!!",
+      "effect": {
+        "zh-TW": "[每個回合一次]將自己吶喊牌組上方的1張牌發送給自己的成員。",
+        "ja": "【１ターンに１度】自分のシャウトデッキの上からカード１枚を自分のメンバーに送る。",
+        "en": "[Once per turn] Send 1 card from the top of your shout deck to your own members.",
+        "fr": "[Une fois par tour] Envoyez 1 carte du haut de votre deck de cris à vos propres membres."
+      }
+    },
+    "spSkill": {
+      "holoPower": -2,
+      "name": "流れ星",
+      "effect": {
+        "zh-TW": "[每場比賽一次]如果自己的中心成員為「星街すいせい」，給予對手的1位後台成員50點特殊傷害。",
+        "ja": "【1ゲームに1回】自分のセンターメンバーが「星ジエ・ホシ」の場合、相手のバックステージメンバー1枚に50ポイントの特殊ダメージを与える。",
+        "en": "[Once per game] If your center member is \"Hoshijie Hoshi\", inflict 50 points of special damage to one of your opponent's backstage members.",
+        "fr": "[Une fois par partie] Si votre membre central est \"Hoshijie Hoshi\", infligez 50 points de dégâts spéciaux à l'un des membres des coulisses de votre adversaire."
+      }
+    },
+    "id": "hSD17-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-001_OC.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-002_C.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "バーチャルアイドル・星街すいせい",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-002",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-002_C.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-003_C.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 70,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png"
+      ],
+      "name": "今日もあなたのそばに -すいせい-",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-003",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-003_C.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-004_C.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ファーストスター",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，給予對手的1位後台成員20點特殊傷害。",
+        "ja": "1ラウンド目に攻撃した場合、相手の裏方メンバー1人に20ポイントの特殊ダメージを与える。",
+        "en": "If you attack in the first round, inflict 20 points of special damage to one of your opponent's backstage members.",
+        "fr": "Si vous attaquez au premier round, infligez 20 points de dégâts spéciaux à l'un des membres des coulisses de votre adversaire."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "私だけの輝き",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-004",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-004_C.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-005_U.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "よーし、レッスン開始だー！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "給予對手的1位後台成員10點特殊傷害。",
+        "ja": "相手の裏方メンバー1人に10ポイントの特殊ダメージを与える。",
+        "en": "Inflict 10 points of special damage to one of the opponent's backstage members.",
+        "fr": "Infligez 10 points de dégâts spéciaux à l'un des membres des coulisses de l'adversaire."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-005_U.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-006_C.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "そろそろ始まるよ！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "みんな準備はできてる？",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD17-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-006_C.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-007_U.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "Message for You -すいせい-",
+      "effect": {
+        "zh-TW": "[限定舞台後方]給予對手的1位後台成員10點特殊傷害。",
+        "ja": "【裏方限定】相手の裏方メンバー1人に10ポイントの特殊ダメージを与える。",
+        "en": "[Limited to the back of the stage] Deal 10 points of special damage to one of the opponent's backstage members.",
+        "fr": "[Limité au fond de la scène] Infligez 10 points de dégâts spéciaux à l'un des membres des coulisses de l'adversaire."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "バレンタイン……か……",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-007_U.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-008_R.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "明日への歌",
+      "effect": {
+        "zh-TW": "對手回合中，這個成員被擊倒時，從自己的牌組抽1張牌。",
+        "ja": "相手ターン中、このメンバーがダウンした時、自分はデッキから１枚ドローする。",
+        "en": "During the opponent's turn, when this member is knocked down, draw 1 card from your deck.",
+        "fr": "Pendant le tour de l'adversaire, lorsque ce membre est renversé, piochez 1 carte de votre deck."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "あなたの一番星",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "給予對手的1位後台成員10點特殊傷害。",
+        "ja": "相手の裏方メンバー1人に10ポイントの特殊ダメージを与える。",
+        "en": "Inflict 10 points of special damage to one of the opponent's backstage members.",
+        "fr": "Infligez 10 points de dégâts spéciaux à l'un des membres des coulisses de l'adversaire."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-008",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-008_R.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-009_RR.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "color": "藍",
+    "hp": 170,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "踊ったもん勝ち！",
+      "effect": {
+        "zh-TW": "這個回合中，這個成員的藝能傷害+20。",
+        "ja": "このラウンド中、このメンバーのスキルダメージ+20。",
+        "en": "During this round, this member's skill damage +20.",
+        "fr": "Pendant ce tour, les dégâts de compétence de ce membre +20."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "キラキラの向こう側へ",
+      "damage": 110,
+      "specialAttackImage": "icons/tokkou_30_purple.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD17-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-009_RR.png"
+  },
+  {
+    "image": "cardListImages/hSD17/hSD17-010_C.png",
+    "name": "ステラ",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
+    "supportEffect": {
+      "zh-TW": "給予對手Debut以外的1位後台成員20點特殊傷害。「ステラ」每個回合只能使用一次。",
+      "ja": "相手のデビュー以外の裏方メンバー1人に20ポイントの特殊ダメージを与える。 「スラ」は１ターンに１回だけ使用できる。",
+      "en": "Inflict 20 points of special damage to 1 backstage member other than Debut of the opponent. \"Surra\" can only be used once per turn.",
+      "fr": "Infliger 20 points de dégâts spéciaux à 1 membre des coulisses autre que Debut de l'adversaire. \"Surra\" ne peut être utilisé qu'une fois par tour."
+    },
+    "id": "hSD17-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD17/hSD17-010_C.png"
+  },
+  {
     "image": "cardListImages/hYS0/hYS01-001_OC.png",
     "name": "七詩ムメイ",
     "type": "主推",
@@ -62019,6 +62352,7 @@
       "起始牌組「青 猫又おかゆ (hSD03)」",
       "起始牌組「FLOW GLOW 推し 虎金妃笑虎 (hSD11)」",
       "起始牌組「推し Advent (hSD12)」",
+      "起始牌組「ライブスタートデッキ 星街すいせい (hSD17)」",
       "スタートエールセット"
     ],
     "color": "藍",
