@@ -52,18 +52,69 @@ export class GameController {
     await initEffects();
     this._warmPixi();
 
-    const { TUTORIAL_DECK_P0, TUTORIAL_DECK_P1 } = await import('./tutorial/tutorial-deck.js');
     const { LESSONS } = await import('./tutorial/TutorialScript.js');
+    this.tutorialLessons = LESSONS;
+
+    // Show the lesson picker first — user chooses which lesson to start at
+    this._showTutorialLessonPicker();
+  }
+
+  _showTutorialLessonPicker() {
+    // Split lessons into basic (1-5) and advanced (6+) groupings for a two-column list
+    const lessons = this.tutorialLessons || [];
+    const basicCount = 5;
+
+    const card = (lesson, idx) => `
+      <button class="tutorial-picker-card" data-lesson-idx="${idx}">
+        <div class="tutorial-picker-num">第 ${idx + 1} 課</div>
+        <div class="tutorial-picker-title">${lesson.title?.replace(/^第.+?課：/, '') || '未命名'}</div>
+        <div class="tutorial-picker-intro">${lesson.intro || ''}</div>
+      </button>
+    `;
+
+    this.container.innerHTML = `
+      <div class="tutorial-picker-screen">
+        <div class="tutorial-picker-header">
+          <button class="tutorial-picker-back">← 返回</button>
+          <h1 class="tutorial-picker-title-main">新手教學</h1>
+          <p class="tutorial-picker-subtitle">選擇要開始的課程。建議從第一課循序漸進，也可以直接跳到想複習的段落。</p>
+        </div>
+        <div class="tutorial-picker-sections">
+          <section class="tutorial-picker-section">
+            <div class="tutorial-picker-section-label">基礎（L1–L5）</div>
+            <div class="tutorial-picker-grid">
+              ${lessons.slice(0, basicCount).map((l, i) => card(l, i)).join('')}
+            </div>
+          </section>
+          <section class="tutorial-picker-section">
+            <div class="tutorial-picker-section-label">進階規則（L6–L${lessons.length}）</div>
+            <div class="tutorial-picker-grid">
+              ${lessons.slice(basicCount).map((l, i) => card(l, i + basicCount)).join('')}
+            </div>
+          </section>
+        </div>
+      </div>
+    `;
+
+    this.container.querySelectorAll('.tutorial-picker-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.lessonIdx, 10);
+        this._startTutorialAtLesson(idx);
+      });
+    });
+    this.container.querySelector('.tutorial-picker-back').addEventListener('click', () => this._exitTutorial());
+  }
+
+  async _startTutorialAtLesson(lessonIndex) {
     const { TutorialAdapter } = await import('./tutorial/TutorialAdapter.js');
     const { TutorialOverlay } = await import('./tutorial/TutorialOverlay.js');
     const { jumpToMainPhase } = await import('./core/GameState.js');
+    const { TUTORIAL_DECK_P0, TUTORIAL_DECK_P1 } = await import('./tutorial/tutorial-deck.js');
 
     this.adapter = new TutorialAdapter();
     this.tutorialOverlay = new TutorialOverlay();
-    this.tutorialLessons = LESSONS;
     this.tutorialJump = jumpToMainPhase;
 
-    // Build base state from tutorial decks, then jump into lesson 1 state
     const baseState = initGameState(TUTORIAL_DECK_P0, TUTORIAL_DECK_P1);
     this.adapter.init(baseState);
     this.adapter.setLocalPlayer(0);
@@ -84,7 +135,7 @@ export class GameController {
       onActionBlocked: ({ hint }) => this.tutorialOverlay.showHint(hint),
     });
 
-    this._loadTutorialLesson(0);
+    this._loadTutorialLesson(lessonIndex);
   }
 
   async _loadTutorialLesson(index) {
