@@ -14,8 +14,13 @@ const deckState = {
   supportFilter: 'all', // all | 工作人員 | 活動 | 道具 | 粉絲 | 吉祥物 | 物品
 };
 
-// Recommended pre-built decks
-const RECOMMENDED_DECKS = [
+// Recommended pre-built decks.
+//
+// loadRecommendedDecks() overwrites this list with the top 1/2/3/6 placements
+// from the most recent tournament in web/data/decklog_decks.json (called by
+// GameController at game start). The hardcoded list below is a fallback for
+// offline / fetch-failure cases — gets replaced as soon as the fetch resolves.
+let RECOMMENDED_DECKS = [
   {
     id: 'hbp07-divafever',
     name: 'オーロ・クロニー単',
@@ -29,47 +34,91 @@ const RECOMMENDED_DECKS = [
     ],
     cheerDeck: [['hY04-001', 20]],
   },
-  {
-    id: 'kanata-wgp',
-    name: 'かなた単（WGP千葉1位）',
-    description: '效果覆蓋 100%',
-    oshi: 'hBP01-001',
-    mainDeck: [
-      ['hBP01-009', 11], ['hBP01-010', 1], ['hBP01-012', 4], ['hBP01-013', 4],
-      ['hBP01-014', 4], ['hBP02-019', 1], ['hBP01-108', 1], ['hBP02-077', 1],
-      ['hBP02-084', 3], ['hSD01-016', 4], ['hSD01-017', 4], ['hBP01-104', 4],
-      ['hBP01-116', 4],
-    ],
-    cheerDeck: [['hY01-001', 20]],
-  },
-  {
-    id: 'kiara-wgp',
-    name: 'キアラ単（WGP東京2位）',
-    description: '效果覆蓋 98%',
-    oshi: 'hBP01-006',
-    mainDeck: [
-      ['hBP01-062', 8], ['hBP01-063', 4], ['hBP01-065', 4], ['hBP01-066', 4],
-      ['hBP01-067', 3], ['hBP03-036', 4], ['hBP02-035', 1], ['hBP02-038', 4],
-      ['hBP02-040', 1], ['hBP01-098', 1], ['hBP02-084', 4], ['hSD01-016', 4],
-      ['hBP01-104', 4], ['hBP01-121', 4],
-    ],
-    cheerDeck: [['hY03-001', 18], ['hY04-001', 2]],
-  },
-  {
-    id: 'ayame-wgp',
-    name: 'あやめ単（WGP愛知1位）',
-    description: '效果覆蓋 96%',
-    oshi: 'hBP06-004',
-    mainDeck: [
-      ['hBP06-034', 4], ['hBP06-035', 4], ['hBP06-037', 4], ['hBP06-038', 4],
-      ['hBP06-039', 4], ['hSD02-002', 2], ['hSD02-004', 1], ['hSD02-006', 2],
-      ['hSD02-007', 3], ['hBP01-108', 1], ['hBP05-080', 3], ['hBP06-090', 1],
-      ['hSD01-016', 4], ['hBP01-104', 4], ['hBP01-107', 1], ['hBP05-074', 1],
-      ['hBP06-098', 1], ['hSD02-013', 2], ['hSD02-014', 4],
-    ],
-    cheerDeck: [['hY03-001', 20]],
-  },
 ];
+
+// Which placements to pull as recommended decks.
+const RECOMMENDED_PLACEMENTS = ['1st', '2nd', '3rd', '6th'];
+
+/**
+ * Fetch tournaments.json + decklog_decks.json, pick the latest event with
+ * enough placements, and rebuild RECOMMENDED_DECKS. Non-fatal — on any error
+ * we keep the hardcoded fallback.
+ */
+export async function loadRecommendedDecks() {
+  try {
+    const [decklogResp, tournamentsResp] = await Promise.all([
+      fetch('../data/decklog_decks.json'),
+      fetch('../data/tournaments.json'),
+    ]);
+    if (!decklogResp.ok || !tournamentsResp.ok) {
+      throw new Error(`HTTP ${decklogResp.status}/${tournamentsResp.status}`);
+    }
+    const [decklog, tournaments] = await Promise.all([
+      decklogResp.json(),
+      tournamentsResp.json(),
+    ]);
+    const built = _buildFromLatestTournament(decklog, tournaments);
+    if (built && built.length) {
+      RECOMMENDED_DECKS = built;
+      console.info(`[DeckSelect] Recommended decks: ${built.map(d => d.name).join(', ')}`);
+    }
+  } catch (e) {
+    console.warn('[DeckSelect] Could not load tournament decks, keeping fallback:', e);
+  }
+}
+
+function _buildFromLatestTournament(decklog, tournaments) {
+  // Sort tournaments by date desc. Take the first one that has all the
+  // required placements — lets us skip "upcoming" events with no decks.
+  const sorted = [...tournaments].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+  for (const t of sorted) {
+    if (!t.event) continue;
+    const eventDecks = decklog.filter(d => d.event === t.event && !d.missing);
+    if (eventDecks.length < RECOMMENDED_PLACEMENTS.length) continue;
+
+    const picks = [];
+    for (const pfx of RECOMMENDED_PLACEMENTS) {
+      const deck = eventDecks.find(d => (d.placement || '').startsWith(pfx));
+      if (!deck) break;
+      const converted = _convertTournamentDeck(deck, t.event);
+      if (!converted) break;
+      picks.push(converted);
+    }
+    if (picks.length === RECOMMENDED_PLACEMENTS.length) return picks;
+  }
+  return null;
+}
+
+function _convertTournamentDeck(deck, eventName) {
+  const oshi = deck.oshi_cards?.[0]?.card_id;
+  if (!oshi) return null;
+
+  // Deck Log API sometimes returns the same card_id in multiple rows
+  // (different "flavors" / upload metadata). Sum counts by id before handing
+  // off to the deck builder (game treats same id as interchangeable).
+  const agg = (list) => {
+    const m = new Map();
+    for (const c of list || []) {
+      if (!c.card_id) continue;
+      m.set(c.card_id, (m.get(c.card_id) || 0) + (c.count || 0));
+    }
+    return [...m.entries()];
+  };
+
+  // Pull the short placement prefix (e.g. "1st(LightningJason)" → "1st").
+  const rank = (deck.placement || '').match(/^(\d+(st|nd|rd|th))/)?.[1] || deck.placement || '?';
+  const idSlug = `${eventName}-${rank}`.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+
+  return {
+    id: `tourn-${idSlug}`,
+    name: `${deck.title || deck.oshi || '?'}（${eventName} ${rank}）`,
+    description: deck.placement || rank,
+    oshi,
+    mainDeck: agg(deck.main_deck),
+    cheerDeck: agg(deck.cheer_deck),
+  };
+}
 
 let _onComplete = null;
 let _onBack = null;

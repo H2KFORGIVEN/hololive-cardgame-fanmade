@@ -5,7 +5,7 @@ import { PHASE, ZONE, ACTION, INITIAL_HAND_SIZE, isMember, isSupport } from './c
 import { resolveEffectChoice } from './core/EffectResolver.js';
 import { initGameState, drawInitialHand, handHasDebut, processMulligan, returnCardsFromHand, placeCenter, finalizeSetup } from './core/SetupManager.js';
 import { LocalAdapter } from './net/LocalAdapter.js';
-import { renderDeckSelect } from './ui/DeckSelectScreen.js';
+import { renderDeckSelect, loadRecommendedDecks } from './ui/DeckSelectScreen.js';
 import { renderGameBoard } from './ui/GameBoard.js';
 import { renderActionPanel } from './ui/ActionPanel.js';
 import { renderCardPreview } from './ui/CardRenderer.js';
@@ -30,6 +30,10 @@ export class GameController {
     const result = await initEffects();
     console.log('Effects system initialized:', result);
     this._warmPixi();
+    // Rebuild recommended decks from latest tournament data (top 1/2/3/6 of
+    // most recent event with enough placements). Small fetch, worth awaiting
+    // so the deck-select sidebar shows the right list on first paint.
+    await loadRecommendedDecks();
     this.showDeckSelect(0);
   }
 
@@ -43,6 +47,7 @@ export class GameController {
     await loadCards('../data/cards.json');
     await initEffects();
     this._warmPixi();
+    await loadRecommendedDecks();
     this.showLobby();
   }
 
