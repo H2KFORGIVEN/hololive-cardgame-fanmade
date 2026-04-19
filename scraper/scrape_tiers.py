@@ -151,22 +151,26 @@ def _extract_tier_table_entries(soup: BeautifulSoup) -> list[tuple[int, str, str
 
 
 def scrape_tiers(output_dir: Path) -> dict:
-    """Tier list scraper — h2 "TierN デッキの解説" sections are authoritative.
+    """Tier list scraper — hybrid: top tier TABLE wins, h2 sections fill gaps.
 
-    Source site behaviour (verified 2026-04-19): the h2 "Tier1 デッキの解説" /
-    "Tier2 デッキの解説" / "Tier3 デッキの解説" groupings reflect the author's
-    CURRENT tier placement. The top icon TABLE is a visual summary and
-    often disagrees with the h2 sections — the TABLE places decks in
-    inconsistent rows (e.g. わため icon landed in T2 despite her h3 being
-    under "Tier3 デッキの解説", and the T1 hakorizu cell uses a broken
-    wp-admin edit link). Trusting the table produces wrong placements.
+    The source page has two disagreeing signals (verified 2026-04-19):
+      - TOP TIER TABLE (icons) — most up-to-date placements. User confirmed
+        わため belongs in T2 and ラプラス in T3, which is what the TABLE shows,
+        NOT what the h2 sections show (those keep legacy groupings).
+      - h2 "TierN デッキの解説" with h3/h4 — includes decks the TABLE dropped
+        or with broken anchors (e.g. hakorizu: table cell's anchor is a
+        wp-admin edit URL; ミオ/あやめ: table cells exist but anchors empty).
+        These must still appear in the tier list because they have working
+        recipe links.
 
-    Logic:
-      1. Walk h2 "TierN デッキの解説" → h3 (vtuber) → h4 (deck block).
-      2. An h4 is considered "currently in TierN" iff it has a same-site
-         recipe link on the "レシピと回し方はこちら" button.
-      3. Decks without a link are skipped — they're legacy content the
-         author hasn't removed yet.
+    Hybrid resolution:
+      1. Walk h2 sections → collect {vtuber: h4_blocks_with_recipe_url}.
+      2. Walk tier TABLE cells → if anchor resolves to a vtuber with active
+         h4 blocks, place those at the TABLE's tier.
+      3. For any h4 block not placed by (2), put it at the tier where its h2
+         lives (fallback for table-missing decks like hakorizu).
+      4. Only h4 blocks with a same-site recipe_url are ever included;
+         legacy decks without a link are dropped.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -191,17 +195,36 @@ def scrape_tiers(output_dir: Path) -> dict:
         if m:
             tier_headings.append((int(m.group(1)), h2))
 
-    tiers_data: dict[int, list[dict]] = {}
+    # Pass 1: walk h2 sections → build {vtuber_name: [(fallback_tier, h4_block), ...]}
+    # and anchor → vtuber map for the table resolution.
+    vtuber_blocks: dict[str, list[tuple[int, dict]]] = {}
+    anchor_to_vtuber: dict[str, str] = {}
     skipped_no_link = 0
 
     for tier_num, h2 in tier_headings:
         next_h2 = h2.find_next_sibling("h2")
         current_h3_name: str | None = None
+        current_h3_ids: set[str] = set()
         el = h2.find_next_sibling()
         while el and el is not next_h2:
             if isinstance(el, Tag):
                 if el.name == "h3":
                     current_h3_name = el.get_text(strip=True)
+                    current_h3_ids = set()
+                    if el.get("id"): current_h3_ids.add(el["id"])
+                    for a in el.find_all("a"):
+                        if a.get("id"): current_h3_ids.add(a["id"])
+                        if a.get("name"): current_h3_ids.add(a["name"])
+                    prev = el.find_previous_sibling()
+                    for _ in range(3):
+                        if not isinstance(prev, Tag):
+                            break
+                        for a in (prev.find_all("a") if prev.name != "a" else [prev]):
+                            if a.get("id"): current_h3_ids.add(a["id"])
+                            if a.get("name"): current_h3_ids.add(a["name"])
+                        prev = prev.find_previous_sibling()
+                    for aid in current_h3_ids:
+                        anchor_to_vtuber[aid] = current_h3_name
                 elif el.name == "h4" and current_h3_name:
                     deck = _parse_deck_block(el)
                     if deck:
@@ -210,8 +233,38 @@ def scrape_tiers(output_dir: Path) -> dict:
                         else:
                             deck["vtuber"] = current_h3_name
                             deck["id"] = _slugify(f"{current_h3_name}-{deck['name']}")
-                            tiers_data.setdefault(tier_num, []).append(deck)
+                            vtuber_blocks.setdefault(current_h3_name, []).append((tier_num, deck))
             el = el.find_next_sibling()
+
+    # Pass 2: walk the tier TABLE. Authoritative placement if cell's anchor
+    # resolves to a vtuber with active blocks. Mark those vtubers as placed.
+    table_entries = _extract_tier_table_entries(soup)
+    tiers_data: dict[int, list[dict]] = {}
+    placed_vtubers: set[str] = set()
+
+    for table_tier, anchor, image_url, alt in table_entries:
+        vtuber = anchor_to_vtuber.get(anchor) if anchor else None
+        if not vtuber and alt:
+            vtuber = alt if alt in vtuber_blocks else None
+        if not vtuber:
+            continue
+        if vtuber in placed_vtubers:
+            continue
+        blocks = vtuber_blocks.get(vtuber, [])
+        if not blocks:
+            continue
+        placed_vtubers.add(vtuber)
+        for _, block in blocks:
+            tiers_data.setdefault(table_tier, []).append(block)
+
+    # Pass 3: fallback — any vtuber not resolved by the TABLE falls back to
+    # their h2 section's tier. Covers decks with broken table anchors
+    # (hakorizu, ミオ, あやめ when their alt/anchor doesn't match).
+    for vtuber, blocks in vtuber_blocks.items():
+        if vtuber in placed_vtubers:
+            continue
+        for fallback_tier, block in blocks:
+            tiers_data.setdefault(fallback_tier, []).append(block)
 
     result = {
         "updated": updated,
@@ -226,9 +279,12 @@ def scrape_tiers(output_dir: Path) -> dict:
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
     total = sum(len(t["decks"]) for t in result["tiers"])
+    placed_by_table = len(placed_vtubers)
+    total_vtubers = len(vtuber_blocks)
     print(
         f"[scrape_tiers] Saved {total} decks across {len(result['tiers'])} tiers "
-        f"(skipped {skipped_no_link} h4 blocks with no recipe link)"
+        f"({placed_by_table}/{total_vtubers} vtubers placed by TABLE, "
+        f"rest by h2 fallback; skipped {skipped_no_link} legacy h4s)"
     )
     return result
 
