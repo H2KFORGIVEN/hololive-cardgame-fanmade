@@ -15,6 +15,7 @@ electron/build/*.map
 
 # Secrets
 .env
+.env.local
 
 # Scraper working directory (raw data before copy)
 /data/

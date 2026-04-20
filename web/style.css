@@ -2693,6 +2693,11 @@ body {
   color: #6b5ce7;
   border-color: rgba(107,92,231,0.3);
 }
+.xfeed-category-badge.xfeed-cat-news {
+  background: rgba(70,150,180,0.14);
+  color: #2b7a8e;
+  border-color: rgba(70,150,180,0.3);
+}
 
 .xfeed-card-body {
   padding: 0.8rem 1rem;

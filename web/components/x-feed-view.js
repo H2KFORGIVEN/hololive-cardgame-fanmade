@@ -1,7 +1,7 @@
 import { t, getLang } from '../i18n.js';
 
 // Category filter chips shown at the top. 'all' = no filter.
-const CATEGORIES = ['all', 'tournament', 'usage_rate'];
+const CATEGORIES = ['all', 'tournament', 'usage_rate', 'news'];
 
 let _filter = 'all';
 
@@ -23,6 +23,7 @@ export function renderNewsView(container, feedData) {
     all: feed.length,
     tournament: feed.filter(f => f.category === 'tournament').length,
     usage_rate: feed.filter(f => f.category === 'usage_rate').length,
+    news: feed.filter(f => f.category === 'news').length,
   };
   const filtered = _filter === 'all' ? feed : feed.filter(f => f.category === _filter);
 

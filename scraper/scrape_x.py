@@ -5,6 +5,7 @@ Supports proactive tweet discovery by crawling:
   - Known aggregator blogs that embed @hololive_OCG tweets
 """
 
+import os
 import re
 import json
 import sys
@@ -128,18 +129,49 @@ def _classify_tweet(tweet: dict) -> str | None:
 def discover_tweets(x_posts_path: Path) -> dict:
     """Proactively discover @hololive_OCG tweet IDs from multiple sources.
 
-    Returns a dict with 'tournament_posts' and 'usage_rate_posts' URL lists,
-    merged with any existing manual entries from x_posts.json.
+    Priority order:
+      1. X API v2 timeline (if X_BEARER_TOKEN is set) — covers everything
+         the account posted recently. ~1 read ≈ $0.001.
+      2. Official hololive-official-cardgame.com news / event pages.
+      3. Aggregator blogs (vanholo, torecataru).
+
+    Returns a dict with 'tournament_posts', 'usage_rate_posts' and
+    'news_posts' URL lists, merged with any existing manual entries.
     """
-    existing: dict = {"account": TARGET_ACCOUNT, "tournament_posts": [], "usage_rate_posts": []}
+    existing: dict = {"account": TARGET_ACCOUNT, "tournament_posts": [], "usage_rate_posts": [], "news_posts": []}
     if x_posts_path.exists():
         existing = json.loads(x_posts_path.read_text(encoding="utf-8"))
+    existing.setdefault("news_posts", [])
 
     known_ids: set[str] = set()
-    for url in existing.get("tournament_posts", []) + existing.get("usage_rate_posts", []):
+    for url in (existing.get("tournament_posts", [])
+                + existing.get("usage_rate_posts", [])
+                + existing.get("news_posts", [])):
         tid = re.search(r"/status/(\d+)", url)
         if tid:
             known_ids.add(tid.group(1))
+
+    # ── X API discovery (preferred path) ───────────────────────────────
+    api_ids: set[str] = set()
+    try:
+        from scraper.x_api import discover_tweet_urls, load_bearer_token
+        if load_bearer_token():
+            # Default window: last 30 days (keeps costs trivial; adjust via env
+            # vars if you need to backfill more aggressively)
+            import datetime as _dt
+            end = _dt.datetime.utcnow()
+            start = end - _dt.timedelta(days=int(os.environ.get("X_DISCOVERY_DAYS", "30")))
+            api_urls = discover_tweet_urls(
+                TARGET_ACCOUNT,
+                since_iso=start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                until_iso=end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            )
+            for u in api_urls:
+                m = re.search(r"/status/(\d+)", u)
+                if m:
+                    api_ids.add(m.group(1))
+    except Exception as e:
+        print(f"  [x_api] discovery failed, will fall back to web crawlers: {e}")
 
     print("  Discovering tweets from official website...")
     client = httpx.Client()
@@ -151,7 +183,7 @@ def discover_tweets(x_posts_path: Path) -> dict:
         agg_ids = _discover_from_aggregators(client)
         print(f"    Found {len(agg_ids)} tweet ID(s) from aggregators")
 
-        new_ids = (official_ids | agg_ids) - known_ids
+        new_ids = (api_ids | official_ids | agg_ids) - known_ids
         if not new_ids:
             print("  No new tweet IDs discovered")
             return existing
@@ -159,11 +191,12 @@ def discover_tweets(x_posts_path: Path) -> dict:
         print(f"  Classifying {len(new_ids)} new tweet(s)...")
         new_tournament = []
         new_usage = []
+        new_news = []
         for tid in sorted(new_ids):
             tweet = _fetch_tweet(tid)
             if not tweet:
                 continue
-            category = _classify_tweet(tweet)
+            category = _classify_tweet(tweet) or "news"
             tweet_url = f"https://x.com/{TARGET_ACCOUNT}/status/{tid}"
             if category == "tournament":
                 new_tournament.append(tweet_url)
@@ -171,15 +204,19 @@ def discover_tweets(x_posts_path: Path) -> dict:
             elif category == "usage_rate":
                 new_usage.append(tweet_url)
                 print(f"    + usage_rate: {tweet_url}")
+            else:
+                new_news.append(tweet_url)
+                print(f"    + news:       {tweet_url}")
             time.sleep(REQUEST_DELAY)
 
-        if new_tournament or new_usage:
+        if new_tournament or new_usage or new_news:
             existing["tournament_posts"] = existing.get("tournament_posts", []) + new_tournament
             existing["usage_rate_posts"] = existing.get("usage_rate_posts", []) + new_usage
+            existing["news_posts"] = existing.get("news_posts", []) + new_news
             x_posts_path.write_text(
                 json.dumps(existing, ensure_ascii=False, indent=2), encoding="utf-8"
             )
-            print(f"  Updated x_posts.json: +{len(new_tournament)} tournament, +{len(new_usage)} usage rate")
+            print(f"  Updated x_posts.json: +{len(new_tournament)} tournament, +{len(new_usage)} usage rate, +{len(new_news)} news")
         return existing
     finally:
         client.close()
@@ -473,6 +510,7 @@ def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
     categories = [
         ("tournament", posts.get("tournament_posts", [])),
         ("usage_rate", posts.get("usage_rate_posts", [])),
+        ("news", posts.get("news_posts", [])),
     ]
 
     # Load previous feed so we can preserve tweets that fail to fetch this run
