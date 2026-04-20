@@ -574,10 +574,10 @@ def build_x_feed(x_posts_path: Path, output_dir: Path, *, refresh_all: bool = Fa
             if tweet:
                 entries.append(_build_feed_entry(tweet, url, category))
                 new_fetches += 1
+                time.sleep(REQUEST_DELAY)  # rate-limit only when we actually fetched
             elif tweet_id in existing_by_id:
                 entries.append(existing_by_id[tweet_id])
                 print(f"    (using cached copy)")
-            time.sleep(REQUEST_DELAY)
 
     # Newest first
     entries.sort(key=lambda e: e.get("created_at", ""), reverse=True)
