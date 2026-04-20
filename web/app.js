@@ -4,6 +4,7 @@ import { renderTournamentView, renderTournamentDeckModal } from './components/to
 import { renderGuidesView } from './components/guides-view.js';
 import { renderTutorialView } from './components/tutorial-view.js';
 import { renderNewsView } from './components/x-feed-view.js';
+import { renderBushinaviView } from './components/bushinavi-view.js';
 import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations, t } from './i18n.js';
 
 let cardsData = [];
@@ -12,13 +13,16 @@ let decksData = [];
 let decklogDecks = [];
 let tournamentsData = [];
 let xFeedData = [];
+let bushinaviEvents = [];
+let bushinaviDecks = {};
 let allGuides = [];
 let officialDecks = [];
 let rulesData = null;
 let currentView = 'home';
+let tournamentSource = 'official';  // 'official' (hololive_OCG) | 'bushinavi'
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
-const _loaded = { cards: false, decklog: false, tournaments: false, xFeed: false };
+const _loaded = { cards: false, decklog: false, tournaments: false, xFeed: false, bushinavi: false };
 
 // Cache-bust JSON fetches — browsers (and Python's http.server) don't set
 // cache-control, so data/*.json can serve stale copies for hours across deploys.
@@ -68,6 +72,17 @@ async function ensureXFeed() {
   xFeedData = (await _fetchJSON('data/x_feed.json')) || [];
 }
 
+async function ensureBushinavi() {
+  if (_loaded.bushinavi) return;
+  _loaded.bushinavi = true;
+  const [events, decks] = await Promise.all([
+    _fetchJSON('data/bushinavi_events.json'),
+    _fetchJSON('data/bushinavi_decks.json'),
+  ]);
+  bushinaviEvents = events || [];
+  bushinaviDecks = decks || {};
+}
+
 async function render() {
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
@@ -111,8 +126,8 @@ async function render() {
     await ensureCards();
     renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks);
   } else if (currentView === 'tournament') {
-    await Promise.all([ensureDecklog(), ensureCards(), ensureTournaments()]);
-    renderTournamentView(tournamentView, decklogDecks, cardsData, tournamentsData);
+    await Promise.all([ensureDecklog(), ensureCards(), ensureTournaments(), ensureBushinavi()]);
+    _renderTournamentWithSourceTabs(tournamentView);
   } else if (currentView === 'news') {
     await ensureXFeed();
     renderNewsView(newsView, xFeedData);
@@ -122,6 +137,69 @@ async function render() {
     await ensureCards();
     renderCardGallery(cardsView, cardsData, filters, rulesData);
   }
+}
+
+function _renderTournamentWithSourceTabs(container) {
+  const officialCount = decklogDecks.length;
+  const bnCount = bushinaviEvents.length;
+  container.innerHTML = `
+    <div class="tn-source-tabs">
+      <button class="tn-source-tab${tournamentSource === 'official' ? ' active' : ''}" data-source="official">
+        hololive OFFICIAL CARD GAME (@hololive_OCG)
+        <span class="tn-source-count">${officialCount}</span>
+      </button>
+      <button class="tn-source-tab${tournamentSource === 'bushinavi' ? ' active' : ''}" data-source="bushinavi">
+        Bushi-Navi
+        <span class="tn-source-count">${bnCount}</span>
+      </button>
+    </div>
+    <div id="tournamentContent"></div>
+  `;
+  container.querySelectorAll('.tn-source-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tournamentSource = btn.dataset.source;
+      _renderTournamentWithSourceTabs(container);
+    });
+  });
+  const content = container.querySelector('#tournamentContent');
+  if (tournamentSource === 'official') {
+    renderTournamentView(content, decklogDecks, cardsData, tournamentsData);
+  } else {
+    renderBushinaviView(content, bushinaviEvents, bushinaviDecks, cardsData, _onBushinaviDeckClick);
+  }
+}
+
+function _onBushinaviDeckClick(deckCode) {
+  const deck = bushinaviDecks[deckCode];
+  if (!deck) {
+    alert(t('bn_deck_not_yet_fetched') || 'Deck not yet scraped — will appear after next cron run.');
+    return;
+  }
+  // Find the event + ranking that contains this deck_code for contextual title
+  let ev = null, rank = null;
+  for (const e of bushinaviEvents) {
+    const r = (e.rankings || []).find(r => r.deck_code === deckCode);
+    if (r) { ev = e; rank = r; break; }
+  }
+  // Construct a synthetic deck object matching renderTournamentDeckModal's expected shape
+  const synthetic = {
+    deck_id: `bn-${deckCode}`,
+    title: rank ? `${rank.player_name || '?'}` : deckCode,
+    oshi: rank?.oshi || '',
+    oshi_cards: deck.oshi_cards || [],
+    main_deck: deck.main_deck || [],
+    cheer_deck: deck.cheer_deck || [],
+    main_deck_count: deck.main_deck_count || 0,
+    cheer_deck_count: deck.cheer_deck_count || 0,
+    url: deck.deck_url || `https://decklog.bushiroad.com/view/${deckCode}`,
+    event: ev?.series_title || ev?.event_title || '',
+    placement: rank ? `#${rank.rank}` : '',
+  };
+  const deckModal = document.getElementById('deckModal');
+  const deckModalBody = document.getElementById('deckModalBody');
+  renderTournamentDeckModal(deckModalBody, synthetic.deck_id, [synthetic], cardsData);
+  deckModal.hidden = false;
+  document.body.style.overflow = 'hidden';
 }
 
 function renderLangSwitcher() {
