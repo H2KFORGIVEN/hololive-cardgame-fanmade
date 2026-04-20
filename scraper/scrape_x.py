@@ -397,10 +397,132 @@ def scrape_x_posts(x_posts_path: Path, deck_codes_path: Path, output_dir: Path) 
     return all_entries
 
 
+# ─── Feed builder (for the "官方 X 消息" news page) ───────────────────────────
+# Different from scrape_x_posts(): that builds deck_codes entries. This builds
+# a viewer-facing snapshot of each tweet (text + media + author + date) so the
+# frontend can render a news feed without calling X at all.
+
+
+def _build_feed_entry(tweet: dict, url: str, category: str) -> dict:
+    """Extract a minimal, renderable snapshot of a tweet for the news feed."""
+    user = tweet.get("user") or {}
+
+    media = []
+    for m in tweet.get("mediaDetails") or []:
+        mtype = m.get("type", "photo")
+        orig = m.get("original_info") or {}
+        entry = {
+            "type": mtype,
+            "url": m.get("media_url_https") or m.get("media_url") or "",
+            "width": orig.get("width"),
+            "height": orig.get("height"),
+        }
+        # Video/gif: prefer the highest-bitrate mp4 variant
+        if mtype in ("video", "animated_gif"):
+            vinfo = m.get("video_info") or {}
+            mp4s = [v for v in (vinfo.get("variants") or []) if v.get("content_type") == "video/mp4"]
+            if mp4s:
+                best = max(mp4s, key=lambda v: v.get("bitrate") or 0)
+                entry["video_url"] = best.get("url", "")
+                entry["poster"] = m.get("media_url_https") or ""
+        media.append(entry)
+
+    entities = tweet.get("entities") or {}
+    hashtags = [h.get("text") for h in (entities.get("hashtags") or []) if h.get("text")]
+
+    external = []
+    for u in entities.get("urls") or []:
+        expanded = u.get("expanded_url") or u.get("url") or ""
+        if not expanded:
+            continue
+        if "x.com" in expanded or "twitter.com" in expanded:
+            continue
+        external.append({
+            "url": expanded,
+            "display": u.get("display_url") or expanded,
+        })
+
+    return {
+        "id": tweet.get("id_str") or str(tweet.get("id") or ""),
+        "url": url,
+        "text": _expand_text(tweet),
+        "created_at": tweet.get("created_at", ""),
+        "author": {
+            "name": user.get("name", ""),
+            "handle": user.get("screen_name", ""),
+            "avatar": user.get("profile_image_url_https", ""),
+        },
+        "media": media,
+        "hashtags": hashtags,
+        "external_urls": external,
+        "category": category,
+        "favorite_count": tweet.get("favorite_count", 0),
+    }
+
+
+def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
+    """Fetch every tweet listed in x_posts.json and save a viewer-friendly feed
+    to output_dir/x_feed.json. Newest first. Skips tweets that 404 / get
+    rate-limited — we keep whatever we can get this run.
+    """
+    if not x_posts_path.exists():
+        print("  [x_feed] x_posts.json not found, skipping")
+        return []
+    posts = json.loads(x_posts_path.read_text(encoding="utf-8"))
+
+    categories = [
+        ("tournament", posts.get("tournament_posts", [])),
+        ("usage_rate", posts.get("usage_rate_posts", [])),
+    ]
+
+    # Load previous feed so we can preserve tweets that fail to fetch this run
+    # (network blip, X hiccup). We only replace entries we successfully refresh.
+    existing_by_id: dict[str, dict] = {}
+    out_path = output_dir / "x_feed.json"
+    if out_path.exists():
+        try:
+            for e in json.loads(out_path.read_text(encoding="utf-8")):
+                if e.get("id"):
+                    existing_by_id[e["id"]] = e
+        except Exception:
+            pass
+
+    seen_ids: set[str] = set()
+    entries: list[dict] = []
+    for category, urls in categories:
+        for url in urls:
+            tweet_id = _extract_tweet_id(url)
+            if not tweet_id or tweet_id in seen_ids:
+                continue
+            seen_ids.add(tweet_id)
+            print(f"  [x_feed:{category}] {tweet_id}")
+            tweet = _fetch_tweet(tweet_id)
+            if tweet:
+                entries.append(_build_feed_entry(tweet, url, category))
+            elif tweet_id in existing_by_id:
+                # fall back to last known snapshot
+                print(f"    (using cached copy)")
+                entries.append(existing_by_id[tweet_id])
+            time.sleep(REQUEST_DELAY)
+
+    # Newest first
+    entries.sort(key=lambda e: e.get("created_at", ""), reverse=True)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  [x_feed] Saved {len(entries)} entries to {out_path}")
+    return entries
+
+
 if __name__ == "__main__":
     base = Path(__file__).resolve().parent.parent
-    scrape_x_posts(
-        base / "x_posts.json",
-        base / "deck_codes.json",
-        base / "data",
-    )
+    # Run `python -m scraper.scrape_x` to rebuild x_feed.json on demand
+    import sys as _sys
+    if len(_sys.argv) > 1 and _sys.argv[1] == "feed":
+        build_x_feed(base / "x_posts.json", base / "data")
+    else:
+        scrape_x_posts(
+            base / "x_posts.json",
+            base / "deck_codes.json",
+            base / "data",
+        )

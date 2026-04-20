@@ -3,6 +3,7 @@ import { renderCardGallery, renderCardDetail } from './components/card-view.js';
 import { renderTournamentView, renderTournamentDeckModal } from './components/tournament-view.js';
 import { renderGuidesView } from './components/guides-view.js';
 import { renderTutorialView } from './components/tutorial-view.js';
+import { renderNewsView } from './components/x-feed-view.js';
 import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations, t } from './i18n.js';
 
 let cardsData = [];
@@ -10,13 +11,14 @@ let tierData = null;
 let decksData = [];
 let decklogDecks = [];
 let tournamentsData = [];
+let xFeedData = [];
 let allGuides = [];
 let officialDecks = [];
 let rulesData = null;
 let currentView = 'home';
 let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
-const _loaded = { cards: false, decklog: false, tournaments: false };
+const _loaded = { cards: false, decklog: false, tournaments: false, xFeed: false };
 
 // Cache-bust JSON fetches — browsers (and Python's http.server) don't set
 // cache-control, so data/*.json can serve stale copies for hours across deploys.
@@ -60,9 +62,16 @@ async function ensureTournaments() {
   tournamentsData = (await _fetchJSON('data/tournaments.json')) || [];
 }
 
+async function ensureXFeed() {
+  if (_loaded.xFeed) return;
+  _loaded.xFeed = true;
+  xFeedData = (await _fetchJSON('data/x_feed.json')) || [];
+}
+
 async function render() {
   const guidesView = document.getElementById('guidesView');
   const tournamentView = document.getElementById('tournamentView');
+  const newsView = document.getElementById('newsView');
   const cardsView = document.getElementById('cardsView');
   const tutorialView = document.getElementById('tutorialView');
   const tierFilterGroup = document.getElementById('tierFilterGroup');
@@ -81,11 +90,12 @@ async function render() {
   if (carousel) carousel.style.display = isHome ? '' : 'none';
   if (mainContent) mainContent.style.display = isHome ? 'none' : '';
 
-  // Filter bar: show for guides/cards/tournament, hide for home/tutorial
-  filterBar.style.display = (isHome || currentView === 'tutorial') ? 'none' : '';
+  // Filter bar: show for guides/cards/tournament, hide for home/tutorial/news
+  filterBar.style.display = (isHome || currentView === 'tutorial' || currentView === 'news') ? 'none' : '';
 
   guidesView.classList.toggle('active', currentView === 'guides');
   tournamentView.classList.toggle('active', currentView === 'tournament');
+  if (newsView) newsView.classList.toggle('active', currentView === 'news');
   cardsView.classList.toggle('active', currentView === 'cards');
   tutorialView.classList.toggle('active', currentView === 'tutorial');
   tierFilterGroup.style.display = currentView === 'guides' ? 'flex' : 'none';
@@ -103,6 +113,9 @@ async function render() {
   } else if (currentView === 'tournament') {
     await Promise.all([ensureDecklog(), ensureCards(), ensureTournaments()]);
     renderTournamentView(tournamentView, decklogDecks, cardsData, tournamentsData);
+  } else if (currentView === 'news') {
+    await ensureXFeed();
+    renderNewsView(newsView, xFeedData);
   } else if (currentView === 'tutorial') {
     renderTutorialView(tutorialView);
   } else if (currentView === 'cards') {

@@ -10,7 +10,7 @@ from scraper.scrape_decks import scrape_all_decks, scrape_all_guides
 from scraper.scrape_decklog import scrape_decklog
 from scraper.scrape_official import scrape_official
 from scraper.scrape_rules import scrape_rules
-from scraper.scrape_x import scrape_x_posts
+from scraper.scrape_x import scrape_x_posts, build_x_feed
 from scraper.translate import translate_all
 
 
@@ -109,6 +109,9 @@ def main():
     print("\n[6/10] Discovering & scraping X posts for tournament results...")
     scrape_x_posts(base / "x_posts.json", base / "deck_codes.json", data_dir)
 
+    print("\n[6b/10] Building X feed snapshot (for the 官方X消息 page)...")
+    build_x_feed(base / "x_posts.json", data_dir)
+
     print("\n[7/10] Fetching Deck Log decks...")
     scrape_decklog(base / "deck_codes.json", data_dir / "cards.json", data_dir)
 
@@ -123,7 +126,7 @@ def main():
 
     print("\n[Copy] Copying data to web/data/ for frontend...")
     web_data_dir.mkdir(parents=True, exist_ok=True)
-    for f in ["cards.json", "tier_list.json", "decks.json", "decklog_decks.json", "all_guides.json", "official_decks.json", "rules.json"]:
+    for f in ["cards.json", "tier_list.json", "decks.json", "decklog_decks.json", "all_guides.json", "official_decks.json", "rules.json", "x_feed.json"]:
         src = data_dir / f
         if src.exists():
             shutil.copy2(src, web_data_dir / f)
