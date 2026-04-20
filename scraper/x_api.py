@@ -282,9 +282,11 @@ def get_user_tweets(
         # end_time not allowed with since_id per X API docs
         params["end_time"] = until_iso
 
-    # Budget check: worst case we pull max_pages × 100 tweets
-    if not _check_budget(max_pages * 100):
-        print(f"  [x_api] aborting timeline fetch to preserve daily budget")
+    # Before the call: just check there's ANY budget remaining. We enforce
+    # the hard cap per-page below (since a since_id query most often returns
+    # 0-5 tweets, a conservative pre-estimate would refuse legitimate runs).
+    if not _check_budget(1):
+        print(f"  [x_api] aborting timeline fetch — daily budget exhausted")
         return []
 
     tweets: list[dict] = []
@@ -312,6 +314,15 @@ def get_user_tweets(
         meta = body.get("meta") or {}
         # Record actual reads (tweets returned in this page)
         _record_reads(len(batch))
+
+        # Per-page budget check: if this page already pushed us over cap,
+        # stop paginating. We keep what we got — no refunds for overshoot.
+        if daily_reads_used() >= _max_reads_per_day():
+            print(
+                f"  [x_api] budget cap reached after page {page+1} "
+                f"({daily_reads_used()}/{_max_reads_per_day()}); stopping pagination"
+            )
+            break
 
         next_token = meta.get("next_token")
         if not next_token:
