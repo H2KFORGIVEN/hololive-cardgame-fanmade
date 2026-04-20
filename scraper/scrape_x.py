@@ -152,20 +152,28 @@ def discover_tweets(x_posts_path: Path) -> dict:
             known_ids.add(tid.group(1))
 
     # ── X API discovery (preferred path) ───────────────────────────────
+    # Incremental by default: x_api.discover_tweet_urls() will read the stored
+    # last_seen_id and fetch only tweets newer than that. First run falls back
+    # to a 30-day window (via since_iso we pass here).
     api_ids: set[str] = set()
     try:
-        from scraper.x_api import discover_tweet_urls, load_bearer_token
+        from scraper.x_api import discover_tweet_urls, load_bearer_token, get_last_seen_id
         if load_bearer_token():
-            # Default window: last 30 days (keeps costs trivial; adjust via env
-            # vars if you need to backfill more aggressively)
-            import datetime as _dt
-            end = _dt.datetime.utcnow()
-            start = end - _dt.timedelta(days=int(os.environ.get("X_DISCOVERY_DAYS", "30")))
-            api_urls = discover_tweet_urls(
-                TARGET_ACCOUNT,
-                since_iso=start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                until_iso=end.strftime("%Y-%m-%dT%H:%M:%SZ"),
-            )
+            has_state = get_last_seen_id(TARGET_ACCOUNT) is not None
+            if has_state:
+                # Incremental: let x_api use its stored since_id
+                api_urls = discover_tweet_urls(TARGET_ACCOUNT)
+            else:
+                # First-time bootstrap: 30-day window (overridable via env)
+                import datetime as _dt
+                end = _dt.datetime.utcnow()
+                start = end - _dt.timedelta(days=int(os.environ.get("X_DISCOVERY_DAYS", "30")))
+                api_urls = discover_tweet_urls(
+                    TARGET_ACCOUNT,
+                    since_iso=start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    until_iso=end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    use_sync_state=False,
+                )
             for u in api_urls:
                 m = re.search(r"/status/(\d+)", u)
                 if m:
@@ -497,15 +505,31 @@ def _build_feed_entry(tweet: dict, url: str, category: str) -> dict:
     }
 
 
-def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
-    """Fetch every tweet listed in x_posts.json and save a viewer-friendly feed
-    to output_dir/x_feed.json. Newest first. Skips tweets that 404 / get
-    rate-limited — we keep whatever we can get this run.
+def build_x_feed(x_posts_path: Path, output_dir: Path, *, refresh_all: bool = False) -> list[dict]:
+    """Incrementally build the viewer feed from x_posts.json.
+
+    Default behavior (refresh_all=False):
+      • Re-use every tweet already in x_feed.json as-is; only the `category`
+        field is refreshed from the x_posts.json categorization.
+      • Only fetch NEW tweet IDs (ones missing from x_feed.json) via the
+        free syndication CDN.
+      • Result: one syndication call per new tweet, zero for unchanged
+        ones — fastest possible run and no wasted bandwidth.
+
+    Pass refresh_all=True (or `os.environ["X_FEED_REFRESH"]="1"`) to force
+    re-fetch every entry — useful if the rendering shape has changed and
+    you need to regenerate media URLs / favorite_counts.
+
+    Tweets that fail to fetch keep their previous snapshot so transient
+    errors don't wipe entries.
     """
     if not x_posts_path.exists():
         print("  [x_feed] x_posts.json not found, skipping")
         return []
     posts = json.loads(x_posts_path.read_text(encoding="utf-8"))
+
+    if os.environ.get("X_FEED_REFRESH") == "1":
+        refresh_all = True
 
     categories = [
         ("tournament", posts.get("tournament_posts", [])),
@@ -513,8 +537,8 @@ def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
         ("news", posts.get("news_posts", [])),
     ]
 
-    # Load previous feed so we can preserve tweets that fail to fetch this run
-    # (network blip, X hiccup). We only replace entries we successfully refresh.
+    # Load previous feed — both to preserve on fetch failure and (in the
+    # incremental path) to skip re-fetching everything.
     existing_by_id: dict[str, dict] = {}
     out_path = output_dir / "x_feed.json"
     if out_path.exists():
@@ -527,20 +551,32 @@ def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
 
     seen_ids: set[str] = set()
     entries: list[dict] = []
+    new_fetches = 0
+    reused = 0
     for category, urls in categories:
         for url in urls:
             tweet_id = _extract_tweet_id(url)
             if not tweet_id or tweet_id in seen_ids:
                 continue
             seen_ids.add(tweet_id)
-            print(f"  [x_feed:{category}] {tweet_id}")
+
+            if not refresh_all and tweet_id in existing_by_id:
+                # Fast path — keep the old snapshot, just refresh the
+                # category in case it was re-classified.
+                existing = dict(existing_by_id[tweet_id])
+                existing["category"] = category
+                entries.append(existing)
+                reused += 1
+                continue
+
+            print(f"  [x_feed:{category}] fetching {tweet_id}")
             tweet = _fetch_tweet(tweet_id)
             if tweet:
                 entries.append(_build_feed_entry(tweet, url, category))
+                new_fetches += 1
             elif tweet_id in existing_by_id:
-                # fall back to last known snapshot
-                print(f"    (using cached copy)")
                 entries.append(existing_by_id[tweet_id])
+                print(f"    (using cached copy)")
             time.sleep(REQUEST_DELAY)
 
     # Newest first
@@ -548,7 +584,7 @@ def build_x_feed(x_posts_path: Path, output_dir: Path) -> list[dict]:
 
     output_dir.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  [x_feed] Saved {len(entries)} entries to {out_path}")
+    print(f"  [x_feed] {len(entries)} entries total ({new_fetches} newly fetched, {reused} reused)")
     return entries
 
 
