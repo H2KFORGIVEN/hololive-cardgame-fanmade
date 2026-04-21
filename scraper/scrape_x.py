@@ -152,28 +152,15 @@ def discover_tweets(x_posts_path: Path) -> dict:
             known_ids.add(tid.group(1))
 
     # ── X API discovery (preferred path) ───────────────────────────────
-    # Incremental by default: x_api.discover_tweet_urls() will read the stored
-    # last_seen_id and fetch only tweets newer than that. First run falls back
-    # to a 30-day window (via since_iso we pass here).
+    # Incremental by default: x_api.discover_tweet_urls() resolves since_id
+    # from state file → x_posts.json → x_feed.json (fallback chain) so we
+    # NEVER re-pull tweets we already have. If all sources are empty and no
+    # X_BOOTSTRAP=1 opt-in, it aborts rather than re-seed.
     api_ids: set[str] = set()
     try:
-        from scraper.x_api import discover_tweet_urls, load_bearer_token, get_last_seen_id
+        from scraper.x_api import discover_tweet_urls, load_bearer_token
         if load_bearer_token():
-            has_state = get_last_seen_id(TARGET_ACCOUNT) is not None
-            if has_state:
-                # Incremental: let x_api use its stored since_id
-                api_urls = discover_tweet_urls(TARGET_ACCOUNT)
-            else:
-                # First-time bootstrap: 30-day window (overridable via env)
-                import datetime as _dt
-                end = _dt.datetime.utcnow()
-                start = end - _dt.timedelta(days=int(os.environ.get("X_DISCOVERY_DAYS", "30")))
-                api_urls = discover_tweet_urls(
-                    TARGET_ACCOUNT,
-                    since_iso=start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    until_iso=end.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    use_sync_state=False,
-                )
+            api_urls = discover_tweet_urls(TARGET_ACCOUNT)
             for u in api_urls:
                 m = re.search(r"/status/(\d+)", u)
                 if m:

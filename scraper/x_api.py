@@ -46,6 +46,8 @@ from __future__ import annotations
 import datetime as _dt
 import json
 import os
+import re
+import sys
 import time
 from pathlib import Path
 
@@ -238,6 +240,85 @@ def get_last_seen_id(username: str) -> str | None:
     return _load_sync_state().get("last_seen_id", {}).get(username)
 
 
+# ─── Resilient since_id fallback chain ────────────────────────────────
+# Prevents the scraper from ever re-fetching all 30 days of tweets when the
+# state file is deleted or corrupted. Falls back to scanning the committed
+# JSON files (x_posts.json, web/data/x_feed.json) for the highest tweet ID
+# we already have. If NO source has any ID, refuse to bootstrap unless
+# X_BOOTSTRAP=1 is explicitly set.
+
+_TWEET_ID_RE = re.compile(r"/status/(\d+)")
+
+
+def _max_id_from_x_posts(username: str) -> int | None:
+    path = REPO_ROOT / "x_posts.json"
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    max_id = 0
+    for key in ("tournament_posts", "usage_rate_posts", "news_posts"):
+        for url in data.get(key, []) or []:
+            if username not in url:
+                continue
+            m = _TWEET_ID_RE.search(url)
+            if m:
+                try:
+                    v = int(m.group(1))
+                    if v > max_id: max_id = v
+                except ValueError:
+                    pass
+    return max_id or None
+
+
+def _max_id_from_x_feed() -> int | None:
+    path = REPO_ROOT / "web" / "data" / "x_feed.json"
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    max_id = 0
+    for entry in data or []:
+        s = entry.get("id", "")
+        if isinstance(s, str) and s.isdigit():
+            v = int(s)
+            if v > max_id: max_id = v
+    return max_id or None
+
+
+def _resolve_since_id_with_fallbacks(username: str) -> tuple[str | None, str]:
+    """Walk all available sources to find the highest-ID tweet we already have.
+    Returns (since_id_string_or_None, source_description).
+    """
+    candidates: list[tuple[str, int]] = []
+
+    # Layer 1: state file (most authoritative, updated every run)
+    sid = _load_sync_state().get("last_seen_id", {}).get(username)
+    if sid and sid.isdigit():
+        candidates.append(("state file", int(sid)))
+
+    # Layer 2: x_posts.json — every URL we've ever discovered
+    sid2 = _max_id_from_x_posts(username)
+    if sid2:
+        candidates.append(("x_posts.json", sid2))
+
+    # Layer 3: x_feed.json — every tweet we've ever snapshotted
+    sid3 = _max_id_from_x_feed()
+    if sid3:
+        candidates.append(("x_feed.json", sid3))
+
+    if not candidates:
+        return None, "none"
+
+    # Take the max across all sources (safer if any one is stale)
+    source, value = max(candidates, key=lambda x: x[1])
+    return str(value), source
+
+
 # ─── Timeline fetch ───────────────────────────────────────────────────
 
 def get_user_tweets(
@@ -364,11 +445,19 @@ def discover_tweet_urls(
         return []
 
     if use_sync_state and not since_id and not since_iso:
-        since_id = get_last_seen_id(username)
+        since_id, source = _resolve_since_id_with_fallbacks(username)
         if since_id:
-            print(f"  [x_api] incremental: fetching tweets after id {since_id}")
+            print(f"  [x_api] incremental: fetching tweets after id {since_id} (source: {source})")
         else:
-            print(f"  [x_api] no prior sync state for @{username} — first-time full pull")
+            # No since_id from any source → bootstrap would re-pull everything.
+            # Refuse unless explicitly opted in via X_BOOTSTRAP=1.
+            if os.environ.get("X_BOOTSTRAP") == "1":
+                print(f"  [x_api] X_BOOTSTRAP=1 set — allowing first-time full pull (expect ~30 days of reads)")
+            else:
+                print(f"  [x_api] ABORT: no since_id found in state file, x_posts.json, or x_feed.json.")
+                print(f"  [x_api] Refusing to bootstrap — would re-pull every recent tweet and cost ~$0.10+.")
+                print(f"  [x_api] If you really want to re-seed: X_BOOTSTRAP=1 <command>")
+                return []
 
     tweets = get_user_tweets(
         token, uid,
