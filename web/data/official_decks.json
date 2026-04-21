@@ -2423,384 +2423,6 @@
     "deck_id": "official-hbp03_006"
   },
   {
-    "title": "Recommended Deck “Tsunomaki Watame”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_007/",
-    "oshi": "Tsunomaki Watame",
-    "oshi_card_id": "hBP03-007",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-007_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-067",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-067_C.png"
-      },
-      {
-        "card_id": "hBP03-068",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-068_U.png"
-      },
-      {
-        "card_id": "hBP03-069",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png"
-      },
-      {
-        "card_id": "hBP03-070",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-070_U.png"
-      },
-      {
-        "card_id": "hBP03-071",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-071_R.png"
-      },
-      {
-        "card_id": "hBP03-072",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-072_RR.png"
-      },
-      {
-        "card_id": "hBP03-112",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
-      },
-      {
-        "card_id": "hSD01-019",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-019_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY06-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, prepare Debut holomem on your stage while using support cards like hSD01-016 Harusaki Nodoka to organize your hand. Once you have 2 holo Power accumulated, use the SP Oshi skill “Watame isn’t at fault, right?” to send 2 cheer to hBP03-069 Tsunomaki Watame or hBP03-070 Tsunomaki Watame, then start activating Arts that require multiple cheer right from the early game.hBP03-072 Tsunomaki Watame truly shines when she has 6 or more cheer -- there is no need to rush until you’re ready to go on the offensive.In the mid-to-late game, take your time accumulating cheer and focus on using Arts from 1st holomem to target your opponent’s holomem for downs. Attaching hBP03-112 Watamates to “Tsunomaki Watame” with multiple cheer is a safe strategy, as it allows you to transfer the attached cheer to another “Tsunomaki Watame” when she is downed. Each hBP03-112 Watamates works independently, so consider attaching 2 or more “Watamates” for maximum effect.When hBP03-072 Tsunomaki Watame has 6 cheer attached and can use Arts, even from the collab position, the deck truly comes into its own.In the late game, activate hBP03-072 Tsunomaki Watame’s Arts “Watame Night Fever!!” and combine with collab holomem to deal massive damage -- aim for a series of downs, if possible. By using hBP01-108 So, That Makes You My Enemy and hBP03-088 Totsumachi, you can overwhelm your opponent by downing holomem in both the center and collab positions.",
-          "ja": "序盤は「デビューホロメム」をステージに用意しつつ、「hSD01-016 春咲のどか」などのサポートカードを使って手札を整えましょう。ホロパワーが2つ溜まったらSP推しスキル「ワタメさんは悪くないですよね？」を使用しましょう。 hBP03-069 角巻わためまたはhBP03-070 角巻わためにチアを2つ送り、序盤から複数のチアが必要なアーツを発動しましょう。hBP03-072 角巻わためはチアが6つ以上あると真価を発揮します。攻撃の準備が整うまで焦る必要はありません。中盤から後半はじっくりとチアを貯めて、1からアーツを集中的に使っていきましょう。ホロメムは相手のホロメムをターゲットにしてダウンを狙います。 hBP03-112 ワタメイトを「角巻わため」に複数のチアを付けておくと、ダウン時に付けた応援を別の「角巻わため」に移すことができるので安全な戦略です。 hBP03-112のわためいとはそれぞれ独立して動作するので、最大の効果を得るには2枚以上の「わためいと」を付けることを検討してください。hBP03-072角巻わためのチアが6個付いていてアーツを使えるようになるとコラボポジションからでもデッキが本領を発揮します。ゲーム終盤ではhBP03-072角巻わためのアーツ「わためナイトフィーバー!!」を発動しましょう。コラボホロメムと組み合わせて大ダメージを与えましょう。可能であれば連続ダウンを狙ってください。 hBP01-108 So, That Makes You My EnemyとhBP03-088 トツマチを使えば、ホロメムをセンターとコラボの両方でダウンさせて相手を圧倒できます。",
-          "zh-TW": "在遊戲早期，在舞台上準備 Debut Holomem，同時使用 hSD01-016 Harusaki Nodoka 等支持卡來組織你的手牌。一旦你累積了 2 個全息能量，就可以使用 SP Oshi 技能「渡目沒有錯，對吧？」向 hBP03-069 渡目津卷或 hBP03-070 渡目角卷發送 2 點歡呼，然後從遊戲初期開始激活需要多次歡呼的藝術。當 hBP03-072 渡目角卷有 6 點或更多歡呼時，她才真正閃耀——在你準備好進攻之前，無需著急。在遊戲中後期，慢慢累積歡呼，並專注於使用從 1 開始的藝術holomem 瞄準對手的 holomem 進行攻擊。將 hBP03-112 Watamates 附加到帶有多個歡呼的“Tsunomaki Watame”是一個安全的策略，因為它允許您在另一個“Tsunomaki Watame”被擊倒時將附加的歡呼轉移到她身上。每個 hBP03-112 Watamates 獨立工作，因此請考慮附加 2 個或更多“Watamates”以獲得最大效果。當 hBP03-072 Tsunomaki Watame 附加 6 個歡呼並且可以使用藝術時，即使在協作位置，該套牌也真正發揮了自己的作用。在遊戲後期，啟動 hBP03-072 Tsunomaki Watame 的藝術“Watame Night Fever!!”並與協作 Holomem 結合起來造成巨大傷害——如果可能的話，瞄準一系列的失敗。透過使用hBP01-108所以，你就是我的敵人和hBP03-088十津町，你可以透過擊倒中心位置和連動位置的holomem來壓倒對手。",
-          "fr": "En début de partie, préparez l'holomem Debut sur votre scène tout en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka pour organiser votre main. Une fois que vous avez accumulé 2 holo Power, utilisez la compétence SP Oshi \"Watame n'est pas en faute, n'est-ce pas ?\" pour envoyer 2 acclamations à hBP03-069 Tsunomaki Watame ou hBP03-070 Tsunomaki Watame, puis commencez à activer les arts qui nécessitent plusieurs acclamations dès le début de la partie. hBP03-072 Tsunomaki Watame brille vraiment lorsqu'elle a 6 acclamations ou plus -- il n'est pas nécessaire de vous précipiter jusqu'à ce que vous soyez prêt à passer à l'offensive. 1er holomem pour cibler le holomem de votre adversaire pour les downs. Attacher hBP03-112 Watamates à « Tsunomaki Watame » avec plusieurs acclamations est une stratégie sûre, car elle vous permet de transférer l'acclamation attachée à un autre « Tsunomaki Watame » lorsqu'elle est abattue. Chaque hBP03-112 Watamates fonctionne indépendamment, alors pensez à attacher 2 « Watamates » ou plus pour un effet maximum. Lorsque le hBP03-072 Tsunomaki Watame a 6 acclamations attachées et peut utiliser les arts, même depuis la position de collaboration, le deck prend vraiment tout son sens. En fin de partie, activez le hBP03-072 Tsunomaki Watame's Arts « Watame Night Fever ! et combinez-le avec un holomem collaboratif pour infliger des dégâts massifs – visez une série de downs, si possible. En utilisant hBP01-108 So, That Makes You My Enemy et hBP03-088 Totsumachi, vous pouvez submerger votre adversaire en abattant un holomem en position centrale et en collaboration."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Tsunomaki Watame【1st】",
-        "card_id": "hBP03-069",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png",
-        "text": {
-          "en": "Even as a 1st holomem, she has HP comparable to a 2nd holomem. By combining the Arts “You'll cheer me on, right?” with the SP Oshi skill “Watame isn’t at fault, right?”, you can activate it as early as turn 2 to deal 90 damage, making it an exceptionally powerful play.",
-          "ja": "1stホロメムながら2ndホロメムに匹敵するHPを持っている。アーツを組み合わせることで「応援してくれるよね？」 SP推しスキル「ワタメは悪くないですよね？」は2ターン目から発動でき、90ダメージを与えることができるので非常に強力です。",
-          "zh-TW": "即使作為第一全像體，她也擁有與第二全像體相當的HP。透過結合藝術“你會為我加油，對吧？”配合SP押技能“渡目沒有錯吧？”，早在第二回合就可以發動，造成90點傷害，威力異常強大。",
-          "fr": "Même en tant que 1er holomem, elle a des PV comparables à ceux d'un 2ème holomem. En combinant les Arts « Tu vas m'encourager, non ? avec la compétence SP Oshi « Watame n'est pas en faute, n'est-ce pas ? », vous pouvez l'activer dès le tour 2 pour infliger 90 dégâts, ce qui en fait un jeu exceptionnellement puissant."
-        }
-      },
-      {
-        "name": "Watamates",
-        "card_id": "hBP03-112",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png",
-        "text": {
-          "en": "Transferring the cheer from a downed “Tsunomaki Watame” to another “Tsunomaki Watame” and ultimately connecting 6 or more cheer onto the 2nd holomem hBP03-072 Tsunomaki Watame is the core strategy of this deck. Make active use of hBP03-112 Watamates to ensure that the cheer on your stage doesn’t decrease.",
-          "ja": "ダウンした「角巻わため」から別の「角巻わため」に応援を移し、最終的に2枚目のホロメムhBP03-072角巻わために6個以上の応援をつなげるのがこのデッキの核となる戦略です。ステージ上の歓声を下げないよう、hBP03-112ワタメイトを積極的に活用してください。",
-          "zh-TW": "將被擊倒的「角捲渡目」的歡呼聲轉移到另一張「角捲綿目」上，並最終將 6 個或更多的歡呼聲連接到第二個全息體 hBP03-072 角卷渡目上，是這套牌的核心策略。積極使用hBP03-112 Watamates，確保舞台上的歡呼聲不會減少。",
-          "fr": "Transférer les acclamations d'un « Tsunomaki Watame » abattu à un autre « Tsunomaki Watame » et finalement connecter 6 acclamations ou plus sur le 2ème holomem hBP03-072 Tsunomaki Watame est la stratégie de base de ce deck. Utilisez activement les hBP03-112 Watamates pour vous assurer que la joie sur votre scène ne diminue pas."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_007"
-  },
-  {
-    "title": "Recommended Deck: “Himemori Luna”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_001/",
-    "oshi": "Himemori Luna",
-    "oshi_card_id": "hBP03-001",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-001_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-009",
-        "count": 10,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-009_C.png"
-      },
-      {
-        "card_id": "hBP03-010",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-010_U.png"
-      },
-      {
-        "card_id": "hBP03-011",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-011_C.png"
-      },
-      {
-        "card_id": "hBP03-012",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-012_U.png"
-      },
-      {
-        "card_id": "hBP03-013",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-013_R.png"
-      },
-      {
-        "card_id": "hBP03-014",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP03-093",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-093_U.png"
-      },
-      {
-        "card_id": "hBP03-105",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY01-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY01-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. The collab with hBP03-010 Himemori Luna, along with increasing your hand size with the collab effect \"Princess of Candy Kingdom\", makes it easier to gather Debut holomem Himemori Luna in the back position. Furthermore, be aggressive and use the SP Oshi skill \"Lu-knights, Assemble\" to attach hBP03-105 Lu-knights to Himemori Luna.In the mid-game, prepare your hand and stage using support cards like hSD01-016 Harusaki Nodoka and hBP03-093 hololive Gen 4. If you don't have any support cards, bring hBP01-104 Normal PC or hBP02-077 Retro PC to your hand using the Oshi skill \"I Know How to Use a Computew!\". When your opponent's holomem uses Arts, strategically archive hBP03-105 Lu-knights to skillfully weather the attack and prevent damage to Himemori Luna.In the late game, aim to bloom your holomem into the 2nd holomem, hBP03-014 Himemori Luna. Use the bloom effect \"Follow Luna~\" to reattach hBP03-105 Lu-knights, which was archived in the mid-game, to Himemori Luna, further reinforcing your defense. Since hBP03-014 Himemori Luna can deal huge damage when hBP03-105 Lu-knights is attached, utilize her aggressively to secure the win.",
-          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 hBP03-010 姫森ルナとのコラボで、コラボ効果「キャンディ王国のプリンセス」で手札が増えるとともに、後陣にデビューホロメム姫森ルナを集めやすくなります。さらにSP推しスキル「Lu-knights、集結」でhBP03-105 Lu-knightsを姫森ルナに付けて積極的に戦いましょう。中盤ではhSD01-016 春咲のどかやhBP03-093 ホロライブ第4世代などのサポートカードを使って手札とステージを整えていきましょう。サポートカードを持っていない場合はhBP01-104 Normal PCか、 hBP02-077 推しスキル「Computewの使い方がわかる！」を使ってレトロPCをあなたの手に。相手のホロメムがアーツを使用した場合は、hBP03-105 Lu-knights を戦略的にアーカイブして攻撃をうまく切り抜け、姫森ルナへのダメージを防ぎます。ゲーム後半では、ホロメムを 2 番目のホロメム、hBP03-014 姫森ルナに開花させることを目指します。ブルーム効果「ルナを追えよ～」で、ゲーム中盤にアーカイブされたhBP03-105 Lu-knightsを姫森ルナに付け直し、さらに防御を強化します。 hBP03-014 姫森ルナ hBP03-105 ルナイツを付けると大ダメージを与えられるので、積極的に活用して勝利を掴み取りましょう。",
-          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與hBP03-010姬森露娜的聯動，以及透過連動效果「糖果王國的公主」增加你的手的大小，使得更容易將出道全息姬守露娜聚集在後面的位置。此外，要積極主動，使用 SP Oshi 技能「Lu-knights，集合」將 hBP03-105 Lu-knights 附加到 Himemori Luna。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hBP03-093 Hololive Gen 4 等支援卡來準備手牌和舞台。如果您沒有任何支援卡，請帶上 hBP01-104 普通 PC 或hBP02-077 使用 Oshi 技能「我知道如何使用電腦！」將復古電腦帶到您的手中。當對手的全像圖使用藝術時，策略性地歸檔hBP03-105魯騎士，巧妙地抵禦攻擊並防止對姬森露娜造成傷害。在遊戲後期，目標是讓你的全息圖綻放為第二個全息圖，hBP03-014姬森露娜。使用綻放效果「跟隨露娜~」將遊戲中期存檔的hBP03-105露騎士重新附加到姬森露娜身上，進一步加強你的防禦。由於hBP03-014姬森露娜在hBP03-105露騎士附著時可以造成巨大傷害，因此積極利用她來確保勝利。",
-          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. La collaboration avec le hBP03-010 Himemori Luna, en plus d'augmenter la taille de votre main avec l'effet de collaboration \"Princess of Candy Kingdom\", facilite la collecte du Debut holomem Himemori Luna en position arrière. De plus, soyez agressif et utilisez la compétence SP Oshi \"Lu-knights, Assemble\" pour attacher les hBP03-105 Lu-knights à Himemori Luna. En milieu de partie, préparez votre main et votre scène en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka et hBP03-093 hololive Gen 4. Si vous n'avez pas de cartes de support, apportez hBP01-104 Normal PC ou hBP02-077. PC rétro à votre main en utilisant la compétence Oshi \"Je sais comment utiliser un ordinateur !\". Lorsque l'holomem de votre adversaire utilise les arts, archivez stratégiquement hBP03-105 Lu-knights pour résister habilement à l'attaque et éviter d'endommager Himemori Luna. En fin de partie, essayez de faire fleurir votre holomem dans le 2ème holomem, hBP03-014 Himemori Luna. Utilisez l'effet de floraison \"Follow Luna~\" pour rattacher hBP03-105 Lu-knights, qui a été archivé en milieu de partie, à Himemori Luna, renforçant ainsi davantage votre défense. Puisque le hBP03-014 Himemori Luna peut infliger d'énormes dégâts lorsque le hBP03-105 Lu-knights est attaché, utilisez-le de manière agressive pour assurer la victoire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Himemori Luna【2nd】",
-        "card_id": "hBP03-014",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-014_RR.png",
-        "text": {
-          "en": "The bloom effect \"Follow Luna~\" allows you to attach hBP03-105 Lu-knights, previously sent to the archive, to Himemori Luna. This means you can use the ability of hBP03-105 Lu-knights freely from the early game. Furthermore, having hBP03-105 Lu-knights attached can potentially result in massive damage.",
-          "ja": "ブルームエフェクト「ルナをフォロー～」により、以前アーカイブに送ったhBP03-105ルーナイツを姫森ルナに付けることができます。これにより、hBP03-105 Lu-knights の能力がゲーム序盤から自由に使用できるようになります。さらに、hBP03-105 Lu-knights を取り付けると、大規模なダメージが発生する可能性があります。",
-          "zh-TW": "綻放效果「跟隨露娜〜」可讓您將先前發送到檔案的hBP03-105魯騎士附加到姬森露娜身上。這意味著你可以在遊戲初期自由使用hBP03-105魯騎士的能力。此外，附帶hBP03-105魯騎士可能會造成巨大的傷害。",
-          "fr": "L'effet bloom \"Follow Luna~\" vous permet d'attacher les hBP03-105 Lu-knights, précédemment envoyés aux archives, à Himemori Luna. Cela signifie que vous pouvez utiliser librement la capacité des hBP03-105 Lu-knights dès le début de la partie. De plus, avoir des chevaliers Lu hBP03-105 attachés peut potentiellement entraîner des dégâts massifs."
-        }
-      },
-      {
-        "name": "Lu-knights",
-        "card_id": "hBP03-105",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-105_U_02.png",
-        "text": {
-          "en": "These fans continuously protect Himemori Luna. They are the core of the deck, enabling switches between offense and defense and seeing action from the early to late game. Even when sent to the archive, the bloom effect of hBP03-014 Himemori Luna allows them to be reattached to her, so be aggressive in using them for defense.",
-          "ja": "姫森ルナを守り続けるファンたち。これらはデッキの中核であり、攻撃と防御の切り替えを可能にし、ゲームの序盤から終盤までのアクションを確認します。 hBP03-014 姫森ルナのブルーム効果により、アーカイブに送った場合でも再度装着することができるので、積極的に防御に利用しましょう。",
-          "zh-TW": "這些粉絲一直在保護姬森露娜。它們是這套牌的核心，可以在進攻和防守之間切換，並從遊戲早期到後期觀察行動。即使發送到檔案館，hBP03-014 姬森露娜的綻放效果也能讓它們重新附著在她身上，所以在使用它們進行防禦時要積極主動。",
-          "fr": "Ces fans protègent continuellement Himemori Luna. Ils constituent le cœur du deck, permettant de basculer entre l'attaque et la défense et de voir l'action du début à la fin de la partie. Même lorsqu'ils sont envoyés aux archives, l'effet de floraison de hBP03-014 Himemori Luna permet de les rattacher à elle, alors soyez agressif lorsque vous les utilisez pour vous défendre."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_001"
-  },
-  {
-    "title": "Recommended Deck: “Shishiro Botan”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_002/",
-    "oshi": "Shishiro Botan",
-    "oshi_card_id": "hBP03-002",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-002_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-016",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-016_C.png"
-      },
-      {
-        "card_id": "hBP03-017",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-017_U.png"
-      },
-      {
-        "card_id": "hBP03-018",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-018_C.png"
-      },
-      {
-        "card_id": "hBP03-019",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-019_U.png"
-      },
-      {
-        "card_id": "hBP03-020",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-020_R.png"
-      },
-      {
-        "card_id": "hBP03-021",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-021_RR.png"
-      },
-      {
-        "card_id": "hSD06-010",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD06/EN_hSD06-010_U.png"
-      },
-      {
-        "card_id": "hBP03-096",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png"
-      },
-      {
-        "card_id": "hBP03-106",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-106_C.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP03-094",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-094_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY02-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY02-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, set Debut holomem on the stage so you can bloom into a 1st holomem next turn. The collab with hBP03-017 Shishiro Botan allows you to archive the top card of the cheer deck with the collab effect. Since archiving cheer enables you to effectively use the bloom effect of the 2nd holomem, hBP03-021 Shishiro Botan, in the late game, utilize this feature as aggressively as possible.In the mid-game, prepare your hand using support cards like hSD01-016 Harusaki Nodoka and hBP03-094 FPS Stream, then proceed to bloom your Debut holomem into 1st holomem. In addition, increase your cheer with hBP03-020 Shishiro Botan, or archive cheer while dealing damage to opponent's holomem with hBP03-019 Shishiro Botan. If hBP03-096 Rifle is attached to a holomem before they bloom, the damage from the bloom effect will be +10. If your opponent has a 1st holomem or higher in the center position, you can also try to down them with the SP Oshi skill \"Sniping\".In the late game, aim to bloom into the 2nd holomem, hBP03-021 Shishiro Botan. If the SP Oshi skill \"Sniping\" has been kept in reserve, aim for a simultaneous down of the center holomem and a collabo holomem by pairing it with hBP01-108 So, That Makes You My Enemy. When using the SP Oshi skill, combining it with hSD06-010 La+ Darknesss allows you to deal 80 damage for only 1 cheer. Time your card usage correctly to more effectively down your opponent's holomem.",
-          "ja": "ゲーム序盤は、デビューホロメムをステージにセットして、次のターンに初ホロメムを開花させましょう。 hBP03-017 獅子城牡丹とのコラボでは、コラボ効果付きのチアデッキの一番上のカードをアーカイブすることができます。アーカイブチアを利用することで、2枚目のホロメム「hBP03-021 獅子城牡丹」の開花効果を有効に活用できるため、ゲーム終盤では積極的に活用していきましょう。中盤以降は「hSD01-016 春咲のどか」や「hBP03-094 FPSストリーム」などのサポートカードで手札を整え、デビューホロメムを1枚目のホロメムに開花させていきましょう。さらに、hBP03-020 獅子城牡丹でチアを増やしたり、hBP03-019 獅子城牡丹で相手のホロメムにダメージを与えながらアーカイブチアをしたりできます。 hBP03-096 ライフルを開花前のホロメムに取り付けると、開花効果によるダメージが+10されます。相手が中央に第1ホロメム以上を持っている場合は、SP推しスキル「スナイピング」でダウンを狙うこともでき、終盤は第2ホロメムhBP03-021 四城牡丹への開花を目指しましょう。 SP推しスキル「スナイピング」を温存している場合は、hBP01-108 So, That Makes You My Enemyと組み合わせてセンターホロメムとコラボホロメムの同時ダウンを狙いましょう。 SP推しスキルを使用する場合、hSD06-010 La+ Darknesssと組み合わせると、1チアだけで80ダメージを与えることができます。カード使用のタイミングを正確に計って、対戦相手のホロメムをより効果的にダウンさせます。",
-          "zh-TW": "在遊戲早期，將首次全息圖放在舞台上，這樣你就可以在下回合綻放出第一個全息圖。與 hBP03-017 Shishiro Botan 的連動可以讓您透過連動效果存檔應援牌組的頂牌。由於歸檔歡呼使您能夠有效地使用第二個全像圖 hBP03-021 Shishiro Botan 的綻放效果，因此在遊戲後期，請盡可能積極地利用此功能。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hBP03-094 FPS Stream 等支援卡準備好手牌，然後繼續將您的首次全息圖綻放為第一個全息圖。此外，還可以使用hBP03-020四四郎牡丹來增加你的歡呼聲，或是使用hBP03-019四四郎牡丹對對手的holomem造成傷害時存檔歡呼聲。如果hBP03-096步槍在全息體綻放之前附著在其上，則綻放效果造成的傷害將為+10。如果你的對手在中位置有第一全息或更高的位置，你也可以嘗試使用SP Oshi技能「狙擊」來擊倒他們。在遊戲後期，目標是綻放第二全全息，hBP03-021 Shishiro Botan。如果SP Oshi技能「狙擊」已被保留，則與hBP01-108配對，以同時降低中心全息圖和協作全息圖為目標，所以，你就是我的敵人了。當使用 SP Oshi 技能時，將其與 hSD06-010 La+ 黑暗結合可以讓你僅 1 點歡呼就能造成 80 點傷害。正確使用卡牌時間可以更有效地打倒對手的全像圖。",
-          "fr": "En début de partie, placez le holomem Debut sur la scène afin de pouvoir devenir un 1er holomem au prochain tour. La collaboration avec le hBP03-017 Shishiro Botan vous permet d'archiver la carte du dessus du cheer deck avec l'effet collab. Étant donné que l'archivage des acclamations vous permet d'utiliser efficacement l'effet de floraison du 2ème holomem, hBP03-021 Shishiro Botan, en fin de partie, utilisez cette fonctionnalité de manière aussi agressive que possible. En milieu de partie, préparez votre main en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka et hBP03-094 FPS Stream, puis procédez à la floraison de votre holomem Debut en 1er holomem. De plus, augmentez votre joie avec le hBP03-020 Shishiro Botan, ou archivez votre joie tout en infligeant des dégâts à l'holomem de l'adversaire avec le hBP03-019 Shishiro Botan. Si le fusil hBP03-096 est attaché à un holomem avant qu'il ne fleurisse, les dégâts de l'effet de floraison seront de +10. Si votre adversaire a un 1er holomem ou plus en position centrale, vous pouvez également essayer de l'abattre avec la compétence SP Oshi \"Sniping\". En fin de partie, visez à fleurir dans le 2ème holomem, hBP03-021 Shishiro Botan. Si la compétence SP Oshi \"Sniping\" a été gardée en réserve, visez une descente simultanée de l'holomem central et d'un holomem collabo en l'associant avec hBP01-108 So, That Makes You My Enemy. Lorsque vous utilisez la compétence SP Oshi, la combiner avec hSD06-010 La+ Darknesss vous permet d'infliger 80 dégâts pour seulement 1 acclamation. Planifiez correctement l'utilisation de votre carte pour réduire plus efficacement l'holomem de votre adversaire."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Shishiro Botan【1st】",
-        "card_id": "hBP03-019",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-019_U.png",
-        "text": {
-          "en": "The bloom effect allows her to deal special damage by archiving 1 cheer. The ideal play is to use this ability to chip away at the opponent's holomem's HP, then aim for the down with the Arts of the 2nd holomem, hBP03-021 Shishiro Botan.",
-          "ja": "ブルーム効果により、1 チアをアーカイブすることで特別なダメージを与えることができます。この能力で相手のホロメムのHPを削り、ホロメム2弾「hBP03-021 獅子城牡丹」のアーツでダウンを狙うのが理想的なプレイ。",
-          "zh-TW": "綻放效果使她能夠透過存檔 1 點歡呼來造成特殊傷害。理想的玩法是利用這種能力削弱對手全像的生命值，然後用第二個全像的藝術 hBP03-021 Shishiro Botan 瞄準目標。",
-          "fr": "L'effet Bloom lui permet d'infliger des dégâts spéciaux en archivant 1 acclamation. Le jeu idéal est d'utiliser cette capacité pour réduire les PV de l'holomem de l'adversaire, puis de viser la mise à terre avec les Arts du 2ème holomem, hBP03-021 Shishiro Botan."
-        }
-      },
-      {
-        "name": "Rifle",
-        "card_id": "hBP03-096",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png",
-        "text": {
-          "en": "Attach this to Shishiro Botan -- your goal should be for her to bloom to the 2nd holomem. Since the Arts of the 2nd holomem, hBP03-021 Shishiro Botan, deals special damage in addition to Arts damage, the total damage dealt will be +20, making this card extremely powerful.",
-          "ja": "これを四城牡丹に付けて、2本目まで開花させるのが目標です。第2弾のホロメム「hBP03-021 獅子城牡丹」のArtsはArtsダメージに加えて特殊ダメージを与えるため、合計与ダメージが+20と非常に強力です。",
-          "zh-TW": "將其附加到 Shishiro Botan - 你的目標應該是讓她綻放到第二個全息圖。由於第二個holomem的Arts，hBP03-021 Shishiro Botan，除了Arts傷害之外還造成特殊傷害，造成的總傷害將+20，使得這張卡非常強大。",
-          "fr": "Attachez ceci à Shishiro Botan - votre objectif devrait être qu'elle fleurisse jusqu'au 2ème holomem. Puisque les Arts du 2ème holomem, hBP03-021 Shishiro Botan, infligent des dégâts spéciaux en plus des dégâts des Arts, le total des dégâts infligés sera de +20, ce qui rend cette carte extrêmement puissante."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_002"
-  },
-  {
     "title": "Recommended Deck: “Sakura Miko”",
     "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_003/",
@@ -3071,6 +2693,127 @@
     "date": "2025-12-29",
     "source": "official",
     "deck_id": "official-hbp03_004"
+  },
+  {
+    "title": "Recommended Deck “Tsunomaki Watame”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_007/",
+    "oshi": "Tsunomaki Watame",
+    "oshi_card_id": "hBP03-007",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-007_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP03-067",
+        "count": 12,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-067_C.png"
+      },
+      {
+        "card_id": "hBP03-068",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-068_U.png"
+      },
+      {
+        "card_id": "hBP03-069",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png"
+      },
+      {
+        "card_id": "hBP03-070",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-070_U.png"
+      },
+      {
+        "card_id": "hBP03-071",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-071_R.png"
+      },
+      {
+        "card_id": "hBP03-072",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-072_RR.png"
+      },
+      {
+        "card_id": "hBP03-112",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP03-088",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
+      },
+      {
+        "card_id": "hSD01-019",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-019_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY06-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, prepare Debut holomem on your stage while using support cards like hSD01-016 Harusaki Nodoka to organize your hand. Once you have 2 holo Power accumulated, use the SP Oshi skill “Watame isn’t at fault, right?” to send 2 cheer to hBP03-069 Tsunomaki Watame or hBP03-070 Tsunomaki Watame, then start activating Arts that require multiple cheer right from the early game.hBP03-072 Tsunomaki Watame truly shines when she has 6 or more cheer -- there is no need to rush until you’re ready to go on the offensive.In the mid-to-late game, take your time accumulating cheer and focus on using Arts from 1st holomem to target your opponent’s holomem for downs. Attaching hBP03-112 Watamates to “Tsunomaki Watame” with multiple cheer is a safe strategy, as it allows you to transfer the attached cheer to another “Tsunomaki Watame” when she is downed. Each hBP03-112 Watamates works independently, so consider attaching 2 or more “Watamates” for maximum effect.When hBP03-072 Tsunomaki Watame has 6 cheer attached and can use Arts, even from the collab position, the deck truly comes into its own.In the late game, activate hBP03-072 Tsunomaki Watame’s Arts “Watame Night Fever!!” and combine with collab holomem to deal massive damage -- aim for a series of downs, if possible. By using hBP01-108 So, That Makes You My Enemy and hBP03-088 Totsumachi, you can overwhelm your opponent by downing holomem in both the center and collab positions.",
+          "ja": "序盤は「デビューホロメム」をステージに用意しつつ、「hSD01-016 春咲のどか」などのサポートカードを使って手札を整えましょう。ホロパワーが2つ溜まったらSP推しスキル「ワタメさんは悪くないですよね？」を使用しましょう。 hBP03-069 角巻わためまたはhBP03-070 角巻わためにチアを2つ送り、序盤から複数のチアが必要なアーツを発動しましょう。hBP03-072 角巻わためはチアが6つ以上あると真価を発揮します。攻撃の準備が整うまで焦る必要はありません。中盤から後半はじっくりとチアを貯めて、1からアーツを集中的に使っていきましょう。ホロメムは相手のホロメムをターゲットにしてダウンを狙います。 hBP03-112 ワタメイトを「角巻わため」に複数のチアを付けておくと、ダウン時に付けた応援を別の「角巻わため」に移すことができるので安全な戦略です。 hBP03-112のわためいとはそれぞれ独立して動作するので、最大の効果を得るには2枚以上の「わためいと」を付けることを検討してください。hBP03-072角巻わためのチアが6個付いていてアーツを使えるようになるとコラボポジションからでもデッキが本領を発揮します。ゲーム終盤ではhBP03-072角巻わためのアーツ「わためナイトフィーバー!!」を発動しましょう。コラボホロメムと組み合わせて大ダメージを与えましょう。可能であれば連続ダウンを狙ってください。 hBP01-108 So, That Makes You My EnemyとhBP03-088 トツマチを使えば、ホロメムをセンターとコラボの両方でダウンさせて相手を圧倒できます。",
+          "zh-TW": "在遊戲早期，在舞台上準備 Debut Holomem，同時使用 hSD01-016 Harusaki Nodoka 等支持卡來組織你的手牌。一旦你累積了 2 個全息能量，就可以使用 SP Oshi 技能「渡目沒有錯，對吧？」向 hBP03-069 渡目津卷或 hBP03-070 渡目角卷發送 2 點歡呼，然後從遊戲初期開始激活需要多次歡呼的藝術。當 hBP03-072 渡目角卷有 6 點或更多歡呼時，她才真正閃耀——在你準備好進攻之前，無需著急。在遊戲中後期，慢慢累積歡呼，並專注於使用從 1 開始的藝術holomem 瞄準對手的 holomem 進行攻擊。將 hBP03-112 Watamates 附加到帶有多個歡呼的“Tsunomaki Watame”是一個安全的策略，因為它允許您在另一個“Tsunomaki Watame”被擊倒時將附加的歡呼轉移到她身上。每個 hBP03-112 Watamates 獨立工作，因此請考慮附加 2 個或更多“Watamates”以獲得最大效果。當 hBP03-072 Tsunomaki Watame 附加 6 個歡呼並且可以使用藝術時，即使在協作位置，該套牌也真正發揮了自己的作用。在遊戲後期，啟動 hBP03-072 Tsunomaki Watame 的藝術“Watame Night Fever!!”並與協作 Holomem 結合起來造成巨大傷害——如果可能的話，瞄準一系列的失敗。透過使用hBP01-108所以，你就是我的敵人和hBP03-088十津町，你可以透過擊倒中心位置和連動位置的holomem來壓倒對手。",
+          "fr": "En début de partie, préparez l'holomem Debut sur votre scène tout en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka pour organiser votre main. Une fois que vous avez accumulé 2 holo Power, utilisez la compétence SP Oshi \"Watame n'est pas en faute, n'est-ce pas ?\" pour envoyer 2 acclamations à hBP03-069 Tsunomaki Watame ou hBP03-070 Tsunomaki Watame, puis commencez à activer les arts qui nécessitent plusieurs acclamations dès le début de la partie. hBP03-072 Tsunomaki Watame brille vraiment lorsqu'elle a 6 acclamations ou plus -- il n'est pas nécessaire de vous précipiter jusqu'à ce que vous soyez prêt à passer à l'offensive. 1er holomem pour cibler le holomem de votre adversaire pour les downs. Attacher hBP03-112 Watamates à « Tsunomaki Watame » avec plusieurs acclamations est une stratégie sûre, car elle vous permet de transférer l'acclamation attachée à un autre « Tsunomaki Watame » lorsqu'elle est abattue. Chaque hBP03-112 Watamates fonctionne indépendamment, alors pensez à attacher 2 « Watamates » ou plus pour un effet maximum. Lorsque le hBP03-072 Tsunomaki Watame a 6 acclamations attachées et peut utiliser les arts, même depuis la position de collaboration, le deck prend vraiment tout son sens. En fin de partie, activez le hBP03-072 Tsunomaki Watame's Arts « Watame Night Fever ! et combinez-le avec un holomem collaboratif pour infliger des dégâts massifs – visez une série de downs, si possible. En utilisant hBP01-108 So, That Makes You My Enemy et hBP03-088 Totsumachi, vous pouvez submerger votre adversaire en abattant un holomem en position centrale et en collaboration."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Tsunomaki Watame【1st】",
+        "card_id": "hBP03-069",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png",
+        "text": {
+          "en": "Even as a 1st holomem, she has HP comparable to a 2nd holomem. By combining the Arts “You'll cheer me on, right?” with the SP Oshi skill “Watame isn’t at fault, right?”, you can activate it as early as turn 2 to deal 90 damage, making it an exceptionally powerful play.",
+          "ja": "1stホロメムながら2ndホロメムに匹敵するHPを持っている。アーツを組み合わせることで「応援してくれるよね？」 SP推しスキル「ワタメは悪くないですよね？」は2ターン目から発動でき、90ダメージを与えることができるので非常に強力です。",
+          "zh-TW": "即使作為第一全像體，她也擁有與第二全像體相當的HP。透過結合藝術“你會為我加油，對吧？”配合SP押技能“渡目沒有錯吧？”，早在第二回合就可以發動，造成90點傷害，威力異常強大。",
+          "fr": "Même en tant que 1er holomem, elle a des PV comparables à ceux d'un 2ème holomem. En combinant les Arts « Tu vas m'encourager, non ? avec la compétence SP Oshi « Watame n'est pas en faute, n'est-ce pas ? », vous pouvez l'activer dès le tour 2 pour infliger 90 dégâts, ce qui en fait un jeu exceptionnellement puissant."
+        }
+      },
+      {
+        "name": "Watamates",
+        "card_id": "hBP03-112",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png",
+        "text": {
+          "en": "Transferring the cheer from a downed “Tsunomaki Watame” to another “Tsunomaki Watame” and ultimately connecting 6 or more cheer onto the 2nd holomem hBP03-072 Tsunomaki Watame is the core strategy of this deck. Make active use of hBP03-112 Watamates to ensure that the cheer on your stage doesn’t decrease.",
+          "ja": "ダウンした「角巻わため」から別の「角巻わため」に応援を移し、最終的に2枚目のホロメムhBP03-072角巻わために6個以上の応援をつなげるのがこのデッキの核となる戦略です。ステージ上の歓声を下げないよう、hBP03-112ワタメイトを積極的に活用してください。",
+          "zh-TW": "將被擊倒的「角捲渡目」的歡呼聲轉移到另一張「角捲綿目」上，並最終將 6 個或更多的歡呼聲連接到第二個全息體 hBP03-072 角卷渡目上，是這套牌的核心策略。積極使用hBP03-112 Watamates，確保舞台上的歡呼聲不會減少。",
+          "fr": "Transférer les acclamations d'un « Tsunomaki Watame » abattu à un autre « Tsunomaki Watame » et finalement connecter 6 acclamations ou plus sur le 2ème holomem hBP03-072 Tsunomaki Watame est la stratégie de base de ce deck. Utilisez activement les hBP03-112 Watamates pour vous assurer que la joie sur votre scène ne diminue pas."
+        }
+      }
+    ],
+    "date": "2025-12-29",
+    "source": "official",
+    "deck_id": "official-hbp03_007"
   },
   {
     "title": "Recommended Deck “Mori Calliope”",

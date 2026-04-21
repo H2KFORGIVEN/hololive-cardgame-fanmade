@@ -119,6 +119,42 @@
       "tier": 2,
       "decks": [
         {
+          "name": "わため単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/3be1c0243b7f9604196ae8d0c6244836-1080x608.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "◎",
+            "stability": "○",
+            "endurance": "○",
+            "pressure": "◎"
+          },
+          "features": {
+            "ja": [
+              "ホロパワーを大量に溜めて、高火力アーツを使っていく",
+              "素の体力が200前後と高めなのも魅力",
+              "2ndで超過した分のダメージを与えて2面取り！"
+            ],
+            "zh-TW": [
+              "收集大量的光能之力並使用高火力的藝術。",
+              "她的自然力量在200左右，這也很有吸引力。",
+              "在第二場造成額外傷害並獲得兩側！"
+            ],
+            "en": [
+              "Collect a large amount of Holo Power and use high-firepower arts.",
+              "Her natural strength is around 200, which is also attractive.",
+              "Deal the excess damage in 2nd and get two sides!"
+            ],
+            "fr": [
+              "Collectez une grande quantité de Holo Power et utilisez des arts à haute puissance de feu.",
+              "Sa force naturelle est d’environ 200, ce qui est également attrayant.",
+              "Infligez les dégâts excédentaires en 2ème et obtenez deux côtés !"
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/watame-white-deck/",
+          "vtuber": "角巻わため",
+          "id": "角巻わため-わため単"
+        },
+        {
           "name": "はあちゃま単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9c8aeab3167ae0ca8efb374eb941e32b-1080x608.png",
           "ratings": {
@@ -155,47 +191,6 @@
           "id": "赤井はあと-はあちゃま単"
         },
         {
-          "name": "わため単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/3be1c0243b7f9604196ae8d0c6244836-1080x608.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "◎",
-            "stability": "○",
-            "endurance": "○",
-            "pressure": "◎"
-          },
-          "features": {
-            "ja": [
-              "ホロパワーを大量に溜めて、高火力アーツを使っていく",
-              "素の体力が200前後と高めなのも魅力",
-              "2ndで超過した分のダメージを与えて2面取り！"
-            ],
-            "zh-TW": [
-              "收集大量的光能之力並使用高火力的藝術。",
-              "她的自然力量在200左右，這也很有吸引力。",
-              "在第二場造成額外傷害並獲得兩側！"
-            ],
-            "en": [
-              "Collect a large amount of Holo Power and use high-firepower arts.",
-              "Her natural strength is around 200, which is also attractive.",
-              "Deal the excess damage in 2nd and get two sides!"
-            ],
-            "fr": [
-              "Collectez une grande quantité de Holo Power et utilisez des arts à haute puissance de feu.",
-              "Sa force naturelle est d’environ 200, ce qui est également attrayant.",
-              "Infligez les dégâts excédentaires en 2ème et obtenez deux côtés !"
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/watame-white-deck/",
-          "vtuber": "角巻わため",
-          "id": "角巻わため-わため単"
-        }
-      ]
-    },
-    {
-      "tier": 3,
-      "decks": [
-        {
           "name": "いろは単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cda595fe216e63e3ececabf6b353004c.png",
           "ratings": {
@@ -230,7 +225,12 @@
           "recipe_url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
           "vtuber": "風真いろは",
           "id": "風真いろは-いろは単"
-        },
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "decks": [
         {
           "name": "ラプ推しラプラス単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2025/06/28dfb1f82803c2b8165d75a3b9120f27-1080x608.png",

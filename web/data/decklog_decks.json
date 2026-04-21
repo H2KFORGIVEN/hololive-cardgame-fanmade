@@ -1427,6 +1427,14 @@
         "type": "支援・粉絲",
         "color": "",
         "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-125_C.png"
+      },
+      {
+        "card_id": "hBP01-126",
+        "count": 4,
+        "name": "座員",
+        "type": "支援・粉絲",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-126_P_02.png"
       }
     ],
     "cheer_deck": [
@@ -1439,7 +1447,7 @@
         "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY03-002_SY.png"
       }
     ],
-    "main_deck_count": 46,
+    "main_deck_count": 50,
     "cheer_deck_count": 20
   },
   {
