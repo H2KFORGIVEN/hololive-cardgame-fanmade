@@ -590,11 +590,24 @@ def build_x_feed(x_posts_path: Path, output_dir: Path, *, refresh_all: bool = Fa
 
 if __name__ == "__main__":
     base = Path(__file__).resolve().parent.parent
-    # Run `python -m scraper.scrape_x` to rebuild x_feed.json on demand
     import sys as _sys
-    if len(_sys.argv) > 1 and _sys.argv[1] == "feed":
+
+    cmd = _sys.argv[1] if len(_sys.argv) > 1 else ""
+
+    if cmd == "feed":
+        # Rebuild feed only. Writes to data/ (for run.py pipeline that copies to web/data/).
         build_x_feed(base / "x_posts.json", base / "data")
+
+    elif cmd == "daily":
+        # Daily cron mode: incremental X API discovery (since_id) + feed rebuild
+        # straight into web/data/. Does NOT re-process tournament URLs for deck
+        # codes — that's scrape_x_posts' job and isn't needed for feed refresh.
+        # In steady state (no new tweets): 0 X API reads, 0 syndication fetches.
+        discover_tweets(base / "x_posts.json")
+        build_x_feed(base / "x_posts.json", base / "web" / "data")
+
     else:
+        # Full path: discover + re-extract deck codes from tournament tweets.
         scrape_x_posts(
             base / "x_posts.json",
             base / "deck_codes.json",
