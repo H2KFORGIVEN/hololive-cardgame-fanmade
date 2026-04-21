@@ -213,24 +213,41 @@ def phase1_list_events(state: dict) -> list[dict]:
 # ─── Phase 2: event details ───────────────────────────────────────────
 
 def _normalize_detail(event_id: int, success: dict) -> dict:
-    """Flatten primary_result (group→team→members) into a rankings list."""
+    """Flatten primary_result / grouped_rankings (group→team→members) into a
+    rankings list.
+
+    The Bushi-Navi API returns ranking data in one of TWO locations depending
+    on the event age/format:
+      - `primary_result` : newer events (2025+)
+      - `grouped_rankings`: older events (~2024)
+    Both use the same inner shape (group_key → team_id → team) so we just
+    walk both when populated.
+    """
     rankings = []
-    for _group_key, teams in (success.get("primary_result") or {}).items():
-        if not isinstance(teams, dict):
+    seen_team_ids = set()  # dedupe in case both sources carry the same team
+    for source_key in ("primary_result", "grouped_rankings"):
+        src = success.get(source_key)
+        if not isinstance(src, dict):
             continue
-        for _team_id, team in teams.items():
-            rank = team.get("rank")
-            for m in (team.get("team_member") or []):
-                code = m.get("deck_recipe_id") or ""
-                rankings.append({
-                    "rank": rank,
-                    "player_name": m.get("player_name", ""),
-                    "friend_code": m.get("friend_code", ""),
-                    "oshi": m.get("deck_param1", ""),
-                    "deck_code": code,
-                    "decklog_url": DECKLOG_PUBLIC_URL.format(code=code) if code else "",
-                    "reward_image_url": m.get("reward_image_url", ""),
-                })
+        for _group_key, teams in src.items():
+            if not isinstance(teams, dict):
+                continue
+            for team_id, team in teams.items():
+                if team_id in seen_team_ids:
+                    continue
+                seen_team_ids.add(team_id)
+                rank = team.get("rank")
+                for m in (team.get("team_member") or []):
+                    code = m.get("deck_recipe_id") or ""
+                    rankings.append({
+                        "rank": rank,
+                        "player_name": m.get("player_name", ""),
+                        "friend_code": m.get("friend_code", ""),
+                        "oshi": m.get("deck_param1", ""),
+                        "deck_code": code,
+                        "decklog_url": DECKLOG_PUBLIC_URL.format(code=code) if code else "",
+                        "reward_image_url": m.get("reward_image_url", ""),
+                    })
     rankings.sort(key=lambda r: (r.get("rank") or 999))
 
     ed = success.get("event_detail") or {}
