@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-19T09:56:41.420965",
+  "updatedAt": "2026-04-23T06:01:05.809181",
   "banners": [
     {
       "url": "https://hololive-official-cardgame.com/products/post/starter-hsd14-19/",
@@ -101,12 +101,21 @@
   ],
   "news": [
     {
+      "url": "https://hololive-official-cardgame.com/news/post/51/",
+      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2024/06/news_kv.png",
+      "date": "2026.04.21",
+      "tag": "Other",
+      "title": "パッケージ誤表記に関するお詫びとお知らせ",
+      "isNew": true,
+      "localImage": "images/news/news_51.png"
+    },
+    {
       "url": "https://hololive-official-cardgame.com/news/post/50/",
       "image": "https://hololive-official-cardgame.com/wp-content/uploads/2026/04/thumb_deck03.jpg",
       "date": "2026.04.17",
       "tag": "Column",
       "title": "イチ推し！デッキ紹介！vol.3 ～ディーヴァフィーバー～",
-      "isNew": true,
+      "isNew": false,
       "localImage": "images/news/news_50.jpg"
     },
     {
@@ -126,15 +135,6 @@
       "title": "イチ推し！デッキ紹介！vol.1 ～ディーヴァフィーバー～",
       "isNew": false,
       "localImage": "images/news/news_47.jpg"
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/news/post/48/",
-      "image": "https://hololive-official-cardgame.com/wp-content/uploads/2024/06/news_kv.png",
-      "date": "2026.03.19",
-      "tag": "Products",
-      "title": "「ブースターパック ディーヴァフィーバー」コンビニでも販売中！",
-      "isNew": false,
-      "localImage": "images/news/news_48.png"
     }
   ]
 }
