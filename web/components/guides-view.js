@@ -1,4 +1,5 @@
 import { t, localized } from '../i18n.js';
+import { escape as _e } from './_escape.js';
 
 const COLOR_ZH_MAP = { '白': '白', '綠': '緑', '紅': '赤', '藍': '青', '紫': '紫', '黃': '黄' };
 
@@ -154,11 +155,11 @@ function renderGuideCard(deck, cardsMap) {
   const isCardArt = !deck.deck_image && !!deck.oshi_image;
   const imgCls = isCardArt ? 'guide-card-img card-art' : 'guide-card-img';
   const imgHtml = thumbSrc
-    ? `<img class="${imgCls}" src="${thumbSrc}" alt="${title}" loading="lazy">`
+    ? `<img class="${imgCls}" src="${_e(thumbSrc)}" alt="${_e(title)}" loading="lazy">`
     : `<div class="guide-card-noimg">🃏</div>`;
 
   const tierBadge = deck.tier
-    ? `<span class="guide-tier-badge" data-tier="${deck.tier}">T${deck.tier}</span>`
+    ? `<span class="guide-tier-badge" data-tier="${_e(deck.tier)}">T${_e(deck.tier)}</span>`
     : '';
 
   const sourceBadge = deck._source === 'official'
@@ -181,19 +182,19 @@ function renderGuideCard(deck, cardsMap) {
   const searchText = [jaTitle, title, descText, deck.deck_id].join(' ').toLowerCase();
 
   return `
-    <div class="guide-card deck-card" data-deck-id="${deck.deck_id}" data-search-text="${searchText.replace(/"/g, '')}">
+    <div class="guide-card deck-card" data-deck-id="${_e(deck.deck_id)}" data-search-text="${_e(searchText)}">
       ${imgHtml}
       <div class="guide-card-body">
         <div class="guide-card-top">
           ${sourceBadge}${tierBadge}
           ${colorDots ? `<span class="guide-color-dots">${colorDots}</span>` : ''}
         </div>
-        <div class="guide-card-title">${title}</div>
-        ${descText ? `<p class="guide-card-desc">${descText.slice(0, 100)}${descText.length > 100 ? '...' : ''}</p>` : ''}
+        <div class="guide-card-title">${_e(title)}</div>
+        ${descText ? `<p class="guide-card-desc">${_e(descText.slice(0, 100))}${descText.length > 100 ? '...' : ''}</p>` : ''}
         <div class="guide-card-meta">
-          ${deck.date ? `<span class="guide-card-date">${deck.date}</span>` : ''}
-          ${cardCount ? `<span>${cardCount} ${t('guides_cards')}</span>` : ''}
-          ${stratCount ? `<span>${stratCount} ${t('guides_strats')}</span>` : ''}
+          ${deck.date ? `<span class="guide-card-date">${_e(deck.date)}</span>` : ''}
+          ${cardCount ? `<span>${Number(cardCount) || 0} ${t('guides_cards')}</span>` : ''}
+          ${stratCount ? `<span>${Number(stratCount) || 0} ${t('guides_strats')}</span>` : ''}
         </div>
       </div>
     </div>

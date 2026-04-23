@@ -1,4 +1,5 @@
 import { t, localized } from '../i18n.js';
+import { escape as _e } from './_escape.js';
 
 const COLOR_MAP = {
   '白': '#e0e0e0',
@@ -91,18 +92,17 @@ function renderPage(container) {
     if (hasErrata) badgesHtml += `<span class="card-rule-badge errata" title="${t('rule_errata_desc')}">${t('rule_errata')}</span>`;
 
     html += `
-      <div class="gallery-card" data-card-id="${card.id}">
+      <div class="gallery-card" data-card-id="${_e(card.id)}">
         <div class="gallery-card-img-wrap">
-          <img class="gallery-card-img" src="${card.imageUrl || ''}" alt="${card.name}" loading="lazy"
-               onerror="this.style.display='none'">
+          <img class="gallery-card-img gallery-card-img-autohide" src="${_e(card.imageUrl || '')}" alt="${_e(card.name)}" loading="lazy">
           ${badgesHtml ? `<div class="card-rule-badges">${badgesHtml}</div>` : ''}
         </div>
         <div class="gallery-card-info">
-          <div class="gallery-card-name" title="${card.name}">${card.name}</div>
+          <div class="gallery-card-name" title="${_e(card.name)}">${_e(card.name)}</div>
           <div class="gallery-card-meta">
             <span class="gallery-card-color" style="background:${color}"></span>
-            <span>${card.type || ''}</span>
-            ${card.bloom ? `<span>· ${card.bloom}</span>` : ''}
+            <span>${_e(card.type || '')}</span>
+            ${card.bloom ? `<span>· ${_e(card.bloom)}</span>` : ''}
           </div>
         </div>
       </div>
@@ -118,6 +118,11 @@ function renderPage(container) {
   }
 
   container.innerHTML = html;
+
+  // Hide broken images without inline onerror (safer + CSP-friendly)
+  container.querySelectorAll('img.gallery-card-img-autohide').forEach(img => {
+    img.addEventListener('error', () => { img.style.display = 'none'; }, { once: true });
+  });
 
   if (hasMore) {
     document.getElementById('loadMoreCards')?.addEventListener('click', () => {
@@ -156,21 +161,21 @@ export function renderCardDetail(container, card, allCards, rulesData) {
   let statsHtml = '';
   if (isOshi) {
     statsHtml = `
-      <div class="stat-label">${t('stat_life')}</div><div class="stat-value">${card.life || '?'}</div>
-      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
+      <div class="stat-label">${t('stat_life')}</div><div class="stat-value">${_e(card.life || '?')}</div>
+      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${_e(card.color || '?')}</div>
     `;
   } else if (isMember) {
-    const batonIcons = (card.batonImage || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
+    const batonIcons = (card.batonImage || []).map(i => `<img class="cost-icon" src="images/${_e(i)}" alt="">`).join('');
     statsHtml = `
-      <div class="stat-label">${t('stat_hp')}</div><div class="stat-value">${card.hp || '?'}</div>
-      <div class="stat-label">${t('stat_bloom')}</div><div class="stat-value">${card.bloom || '?'}</div>
-      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color || '?'}</div>
+      <div class="stat-label">${t('stat_hp')}</div><div class="stat-value">${_e(card.hp || '?')}</div>
+      <div class="stat-label">${t('stat_bloom')}</div><div class="stat-value">${_e(card.bloom || '?')}</div>
+      <div class="stat-label">${t('stat_color')}</div><div class="stat-value">${_e(card.color || '?')}</div>
       ${batonIcons ? `<div class="stat-label">交棒</div><div class="stat-value stat-icons">${batonIcons}</div>` : ''}
     `;
   } else if (isSupport || isCheer) {
     statsHtml = `
-      <div class="stat-label">${t('stat_type')}</div><div class="stat-value">${card.type}</div>
-      ${card.color ? `<div class="stat-label">${t('stat_color')}</div><div class="stat-value">${card.color}</div>` : ''}
+      <div class="stat-label">${t('stat_type')}</div><div class="stat-value">${_e(card.type)}</div>
+      ${card.color ? `<div class="stat-label">${t('stat_color')}</div><div class="stat-value">${_e(card.color)}</div>` : ''}
     `;
   }
 
@@ -178,33 +183,34 @@ export function renderCardDetail(container, card, allCards, rulesData) {
 
   if (isOshi) {
     if (card.oshiSkill) {
-      effectsHtml += renderEffect(t('effect_oshi_skill') + ': ' + card.oshiSkill.name, _effectText(card.oshiSkill), `HP: ${card.oshiSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_oshi_skill') + ': ' + _e(card.oshiSkill.name), _effectText(card.oshiSkill), `HP: ${_e(card.oshiSkill.holoPower)}`);
     }
     if (card.spSkill) {
-      effectsHtml += renderEffect(t('effect_sp') + ': ' + card.spSkill.name, _effectText(card.spSkill), `HP: ${card.spSkill.holoPower}`);
+      effectsHtml += renderEffect(t('effect_sp') + ': ' + _e(card.spSkill.name), _effectText(card.spSkill), `HP: ${_e(card.spSkill.holoPower)}`);
     }
   } else if (isMember) {
     const effectKeys = [['effectC', 'effect_collab'], ['effectB', 'effect_bloom'], ['effectG', 'effect_gift']];
     for (const [key, i18nKey] of effectKeys) {
       const eff = card[key];
-      if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${eff.name}`, _effectText(eff));
+      if (eff) effectsHtml += renderEffect(`${t(i18nKey)}: ${_e(eff.name)}`, _effectText(eff));
     }
     if (card.art1) {
-      const artIcons = (card.art1.image || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
-      const spAtk = card.art1.specialAttackImage ? `<img class="cost-icon cost-sp" src="images/${card.art1.specialAttackImage}" alt="">` : '';
+      const artIcons = (card.art1.image || []).map(i => `<img class="cost-icon" src="images/${_e(i)}" alt="">`).join('');
+      const spAtk = card.art1.specialAttackImage ? ` <img class="cost-icon cost-sp" src="images/${_e(card.art1.specialAttackImage)}" alt="">` : '';
       const artEffect = _effectText(card.art1);
+      // Title carries HTML (icons); text is plain (renderEffect escapes it)
       effectsHtml += renderEffect(
-        `${artIcons} ${t('effect_arts')}: ${card.art1.name}`,
-        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage} ${spAtk}` : '', artEffect].filter(Boolean).join('\n')
+        `${artIcons} ${t('effect_arts')}: ${_e(card.art1.name)}${spAtk}`,
+        [card.art1.damage ? `${t('stat_damage')}: ${card.art1.damage}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.art2) {
-      const artIcons = (card.art2.image || []).map(i => `<img class="cost-icon" src="images/${i}" alt="">`).join('');
-      const spAtk = card.art2.specialAttackImage ? `<img class="cost-icon cost-sp" src="images/${card.art2.specialAttackImage}" alt="">` : '';
+      const artIcons = (card.art2.image || []).map(i => `<img class="cost-icon" src="images/${_e(i)}" alt="">`).join('');
+      const spAtk = card.art2.specialAttackImage ? ` <img class="cost-icon cost-sp" src="images/${_e(card.art2.specialAttackImage)}" alt="">` : '';
       const artEffect = _effectText(card.art2);
       effectsHtml += renderEffect(
-        `${artIcons} ${t('effect_arts2')}: ${card.art2.name}`,
-        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage} ${spAtk}` : '', artEffect].filter(Boolean).join('\n')
+        `${artIcons} ${t('effect_arts2')}: ${_e(card.art2.name)}${spAtk}`,
+        [card.art2.damage ? `${t('stat_damage')}: ${card.art2.damage}` : '', artEffect].filter(Boolean).join('\n')
       );
     }
     if (card.extra) {
@@ -221,7 +227,7 @@ export function renderCardDetail(container, card, allCards, rulesData) {
   }
 
   const tagsHtml = card.tag
-    ? card.tag.split('/').map(tg => `<span class="tag-chip">${tg.trim()}</span>`).join('')
+    ? String(card.tag).split('/').map(tg => `<span class="tag-chip">${_e(tg.trim())}</span>`).join('')
     : '';
 
   const productText = Array.isArray(card.product) ? card.product.join(', ') : (card.product || '');
@@ -243,8 +249,8 @@ export function renderCardDetail(container, card, allCards, rulesData) {
       articlesListHtml = relatedArticles.map(a => {
         const title = typeof a.title === 'object' ? localized(a.title) : a.title;
         return `<li class="rule-article-item">
-          <span class="rule-article-date">${a.date || ''}</span>
-          <a href="${a.url}" target="_blank" rel="noopener" class="rule-article-link">${title}</a>
+          <span class="rule-article-date">${_e(a.date || '')}</span>
+          <a href="${_e(a.url || '')}" target="_blank" rel="noopener" class="rule-article-link">${_e(title)}</a>
         </li>`;
       }).join('');
     }
@@ -269,8 +275,8 @@ export function renderCardDetail(container, card, allCards, rulesData) {
           ${variants.map((v, i) => {
             const suffix = _rarityLabel(v.imageUrl);
             return `<div class="card-variant-thumb${i === 0 ? ' active' : ''}" data-variant-idx="${i}">
-              <img src="${v.imageUrl}" alt="${suffix}" loading="lazy">
-              <span class="card-variant-rarity">${suffix}</span>
+              <img src="${_e(v.imageUrl)}" alt="${_e(suffix)}" loading="lazy">
+              <span class="card-variant-rarity">${_e(suffix)}</span>
             </div>`;
           }).join('')}
         </div>
@@ -279,14 +285,14 @@ export function renderCardDetail(container, card, allCards, rulesData) {
 
   container.innerHTML = `
     <div class="card-detail">
-      <img class="card-detail-img" id="cardDetailMainImg" src="${card.imageUrl || ''}" alt="${card.name}">
+      <img class="card-detail-img" id="cardDetailMainImg" src="${_e(card.imageUrl || '')}" alt="${_e(card.name)}">
       <div class="card-detail-info">
-        <div class="card-detail-name">${card.name}</div>
-        <div class="card-detail-id">${card.id}</div>
+        <div class="card-detail-name">${_e(card.name)}</div>
+        <div class="card-detail-id">${_e(card.id)}</div>
         ${ruleSectionHtml}
         ${tagsHtml ? `<div class="card-detail-tags">${tagsHtml}</div>` : ''}
         <div class="card-detail-stats">${statsHtml}</div>
-        ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">${t('product_label')}: ${productText}</div>` : ''}
+        ${productText ? `<div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.8rem">${t('product_label')}: ${_e(productText)}</div>` : ''}
         ${variantsHtml}
         <div class="card-detail-effects">${effectsHtml}</div>
       </div>
@@ -327,10 +333,13 @@ function _rarityLabel(url) {
 
 function renderEffect(title, text, subtitle) {
   if (!text) return '';
+  // title is pre-composed safe HTML (icons + already-escaped names)
+  // text/subtitle are plain text — escape and convert \n → <br> for display
+  const textHtml = _e(text).replace(/\n/g, '<br>');
   return `
     <div class="effect-block">
-      <div class="effect-name">${title}${subtitle ? ` <span style="color:var(--text-secondary);font-size:0.75rem">(${subtitle})</span>` : ''}</div>
-      <div class="effect-text">${text}</div>
+      <div class="effect-name">${title}${subtitle ? ` <span style="color:var(--text-secondary);font-size:0.75rem">(${_e(subtitle)})</span>` : ''}</div>
+      <div class="effect-text">${textHtml}</div>
     </div>
   `;
 }

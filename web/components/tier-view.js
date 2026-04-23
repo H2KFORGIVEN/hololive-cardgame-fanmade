@@ -1,4 +1,5 @@
 import { t, localized } from '../i18n.js';
+import { escape as _e } from './_escape.js';
 
 const RATING_KEYS = ['firepower', 'ease', 'stability', 'endurance', 'pressure'];
 
@@ -15,7 +16,7 @@ export function renderTierView(container, tierData, decksData) {
     }
   }
 
-  let html = `<div class="tier-updated">${t('updated')}: ${tierData.updated || 'N/A'}</div>`;
+  let html = `<div class="tier-updated">${t('updated')}: ${_e(tierData.updated || 'N/A')}</div>`;
 
   for (const tier of tierData.tiers) {
     const visibleDecks = tier.decks.filter(d => !!decksMap[d.id]);
@@ -24,7 +25,7 @@ export function renderTierView(container, tierData, decksData) {
     html += `
       <section class="tier-section">
         <div class="tier-header">
-          <span class="tier-badge" data-tier="${tier.tier}">TIER ${tier.tier}</span>
+          <span class="tier-badge" data-tier="${_e(tier.tier)}">TIER ${_e(tier.tier)}</span>
           <span class="tier-label">${visibleDecks.length} ${t('decks_count')}</span>
           <span class="tier-criteria">${t(criteriaKey)}</span>
         </div>
@@ -41,29 +42,29 @@ export function renderTierView(container, tierData, decksData) {
 function renderDeckCard(deck, tierNum, decksMap) {
   const hasRecipe = !!decksMap[deck.id];
   const imageHtml = deck.image
-    ? `<img class="deck-card-image" src="${deck.image}" alt="${deck.name}" loading="lazy">`
+    ? `<img class="deck-card-image" src="${_e(deck.image)}" alt="${_e(deck.name)}" loading="lazy">`
     : `<div class="deck-no-image">🃏</div>`;
 
   const ratingsHtml = Object.entries(deck.ratings || {}).map(([key, val]) => `
     <span class="rating-chip">
       <span class="rating-label">${t('rating_' + key)}</span>
-      <span class="rating-value" data-val="${val}">${val}</span>
+      <span class="rating-value" data-val="${_e(val)}">${_e(val)}</span>
     </span>
   `).join('');
 
   const features = localized(deck.features, []);
   const featuresList = Array.isArray(features) ? features : [];
-  const featuresHtml = featuresList.map(f => `<li>${f}</li>`).join('');
+  const featuresHtml = featuresList.map(f => `<li>${_e(f)}</li>`).join('');
 
   return `
-    <div class="deck-card" data-deck-id="${deck.id}" data-tier="${tierNum}">
+    <div class="deck-card" data-deck-id="${_e(deck.id)}" data-tier="${_e(tierNum)}">
       ${imageHtml}
       ${hasRecipe ? '<span class="deck-recipe-badge">RECIPE</span>' : ''}
       <div class="deck-card-body">
         <div class="deck-card-top">
-          <span class="deck-vtuber">${deck.vtuber}</span>
+          <span class="deck-vtuber">${_e(deck.vtuber)}</span>
         </div>
-        <div class="deck-name">${deck.name}</div>
+        <div class="deck-name">${_e(deck.name)}</div>
         ${ratingsHtml ? `<div class="deck-ratings">${ratingsHtml}</div>` : ''}
         ${featuresHtml ? `<ul class="deck-features">${featuresHtml}</ul>` : ''}
       </div>

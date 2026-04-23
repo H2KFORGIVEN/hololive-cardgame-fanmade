@@ -1,8 +1,13 @@
 import { t, getLang } from '../i18n.js';
+import { escape as _e } from './_escape.js';
 
 // Tournament metadata (events + usage rates) is loaded from
 // /data/tournaments.json via the admin UI at /admin/tournaments.html.
 // Callers pass the parsed array in as the `tournamentsData` parameter.
+//
+// All interpolations of scraped / admin-entered strings MUST go through _e()
+// — event names, deck titles, oshi names, scope text, source URLs, etc. can
+// all contain HTML / script tags from their upstream sources.
 
 const USAGE_COLORS = [
   '#9b51e0', '#ff6b9d', '#ffd93d', '#6bcb77',
@@ -41,6 +46,7 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
   }
 
   const _placementOrder = (p) => {
+    p = String(p || '');
     if (!p) return 999;
     if (p.startsWith('1st') || p.startsWith('Trio 1st')) return 1;
     if (p.startsWith('2nd') || p.startsWith('Trio 2nd')) return 2;
@@ -74,7 +80,7 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
       : '';
 
     const locationHtml = location
-      ? `<span class="tournament-event-location">${location}</span>`
+      ? `<span class="tournament-event-location">${_e(location)}</span>`
       : '';
 
     const usageKey = _findUsageKey(event, usageByEvent);
@@ -94,8 +100,8 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
     html += `
       <section class="tournament-event-section${isUpcoming ? ' upcoming-event' : ''}">
         <div class="tournament-event-header">
-          <span class="tournament-event-name">${event}</span>
-          ${date ? `<span class="tournament-event-date">${date}</span>` : ''}
+          <span class="tournament-event-name">${_e(event)}</span>
+          ${date ? `<span class="tournament-event-date">${_e(date)}</span>` : ''}
           ${locationHtml}
           ${statusBadge}
           ${decks.length ? `<span class="tournament-event-count">${decks.length} ${t('decks_count')}</span>` : ''}
@@ -113,26 +119,28 @@ export function renderTournamentView(container, decklogDecks, cardsData, tournam
 }
 
 function _findUsageKey(eventName, usageByEvent) {
+  const en = String(eventName || '');
   for (const key of Object.keys(usageByEvent)) {
-    if (eventName === key || eventName.startsWith(key + ' -')) return key;
+    if (en === key || en.startsWith(key + ' -')) return key;
   }
   return null;
 }
 
 function _renderUsageChart(data) {
   const lang = getLang();
-  const scope = data.scope[lang] || data.scope['en'] || '';
-  const maxPct = Math.max(...data.rates.map(r => r.pct));
+  const scope = (data.scope && (data.scope[lang] || data.scope['en'])) || '';
+  const rates = Array.isArray(data.rates) ? data.rates : [];
+  const maxPct = rates.length ? Math.max(...rates.map(r => r.pct)) : 1;
 
-  const bars = data.rates.map((r, i) => {
+  const bars = rates.map((r, i) => {
     const color = USAGE_COLORS[i % USAGE_COLORS.length];
     const width = Math.max((r.pct / maxPct) * 100, 2);
     return `
       <div class="usage-bar-row">
-        <span class="usage-bar-label">${r.oshi}</span>
+        <span class="usage-bar-label">${_e(r.oshi)}</span>
         <div class="usage-bar-track">
-          <div class="usage-bar-fill" style="width:${width}%;background:${color}">
-            <span class="usage-bar-pct">${r.pct}%</span>
+          <div class="usage-bar-fill" style="width:${Number(width)}%;background:${color}">
+            <span class="usage-bar-pct">${Number(r.pct) || 0}%</span>
           </div>
         </div>
       </div>`;
@@ -140,16 +148,16 @@ function _renderUsageChart(data) {
 
   return `
     <details class="usage-chart-wrapper" open>
-      <summary class="usage-chart-title">${t('tournament_usage_rate')}<span class="usage-chart-scope">${scope}</span></summary>
+      <summary class="usage-chart-title">${t('tournament_usage_rate')}<span class="usage-chart-scope">${_e(scope)}</span></summary>
       <div class="usage-chart-bars">${bars}</div>
-      <div class="usage-chart-source">${t('tournament_source')}: ${data.source}</div>
+      <div class="usage-chart-source">${t('tournament_source')}: ${_e(data.source || '')}</div>
     </details>`;
 }
 
 function renderTournamentDeckCard(deck, cardsMap) {
   if (deck.missing) {
     const placementHtml = deck.placement
-      ? `<span class="tournament-placement">${deck.placement}</span>`
+      ? `<span class="tournament-placement">${_e(deck.placement)}</span>`
       : '';
     return `
       <div class="tournament-deck-card missing-deck">
@@ -172,22 +180,22 @@ function renderTournamentDeckCard(deck, cardsMap) {
   const oshiImage = oshiInfo?.imageUrl || '';
 
   const placementHtml = deck.placement
-    ? `<span class="tournament-placement">${deck.placement}</span>`
+    ? `<span class="tournament-placement">${_e(deck.placement)}</span>`
     : '';
 
   return `
-    <div class="tournament-deck-card" data-decklog-id="${deck.deck_id}">
+    <div class="tournament-deck-card" data-decklog-id="${_e(deck.deck_id)}">
       <div class="tournament-deck-top">
-        ${oshiImage ? `<img class="tournament-oshi-img" src="${oshiImage}" alt="${deck.oshi}" loading="lazy">` : '<div class="tournament-oshi-placeholder"></div>'}
+        ${oshiImage ? `<img class="tournament-oshi-img" src="${_e(oshiImage)}" alt="${_e(deck.oshi)}" loading="lazy">` : '<div class="tournament-oshi-placeholder"></div>'}
         <div class="tournament-deck-info">
-          <div class="tournament-deck-name">${deck.title}</div>
-          <div class="tournament-deck-oshi">${deck.oshi}</div>
+          <div class="tournament-deck-name">${_e(deck.title)}</div>
+          <div class="tournament-deck-oshi">${_e(deck.oshi)}</div>
           ${placementHtml}
         </div>
       </div>
       <div class="tournament-deck-stats">
-        <span>${t('tournament_main_deck')}: ${deck.main_deck_count} ${t('tournament_cards')}</span>
-        <span>${t('tournament_cheer_deck')}: ${deck.cheer_deck_count} ${t('tournament_cards')}</span>
+        <span>${t('tournament_main_deck')}: ${Number(deck.main_deck_count) || 0} ${t('tournament_cards')}</span>
+        <span>${t('tournament_cheer_deck')}: ${Number(deck.cheer_deck_count) || 0} ${t('tournament_cards')}</span>
       </div>
     </div>
   `;
@@ -219,11 +227,11 @@ export function renderTournamentDeckModal(container, decklogId, decklogDecks, ca
 
   container.innerHTML = `
     <div class="modal-deck-header">
-      <div class="modal-deck-title">${deck.title}</div>
+      <div class="modal-deck-title">${_e(deck.title)}</div>
       <div class="modal-deck-meta">
-        <span class="tournament-oshi-badge">${deck.oshi}</span>
-        ${deck.event ? `<span class="tournament-event-badge">${deck.event}</span>` : ''}
-        ${deck.placement ? `<span class="tournament-placement-badge">${deck.placement}</span>` : ''}
+        <span class="tournament-oshi-badge">${_e(deck.oshi)}</span>
+        ${deck.event ? `<span class="tournament-event-badge">${_e(deck.event)}</span>` : ''}
+        ${deck.placement ? `<span class="tournament-placement-badge">${_e(deck.placement)}</span>` : ''}
       </div>
     </div>
     ${oshiHtml}
@@ -231,7 +239,7 @@ export function renderTournamentDeckModal(container, decklogId, decklogDecks, ca
     ${cheerHtml}
     ${deck.url ? `
       <div class="modal-section" style="padding-bottom:2rem">
-        <a class="modal-source-link" href="${deck.url}" target="_blank" rel="noopener">
+        <a class="modal-source-link" href="${_e(deck.url)}" target="_blank" rel="noopener">
           ${t('tournament_view_decklog')}
         </a>
       </div>
@@ -245,12 +253,12 @@ function renderCardSection(title, cards, cardsMap) {
     const imageUrl = info.imageUrl || c.imageUrl || '';
     const name = info.name || c.name || c.card_id;
     return `
-      <div class="dl-card-entry clickable-card" data-card-id="${c.card_id || ''}">
-        ${imageUrl ? `<img class="dl-card-img" src="${imageUrl}" alt="${name}" loading="lazy">` : '<div class="dl-card-placeholder"></div>'}
+      <div class="dl-card-entry clickable-card" data-card-id="${_e(c.card_id || '')}">
+        ${imageUrl ? `<img class="dl-card-img" src="${_e(imageUrl)}" alt="${_e(name)}" loading="lazy">` : '<div class="dl-card-placeholder"></div>'}
         <div class="dl-card-info">
-          <div class="dl-card-name">${name}</div>
-          <div class="dl-card-id">${c.card_id}</div>
-          ${c.count > 1 ? `<div class="dl-card-count">x${c.count}</div>` : ''}
+          <div class="dl-card-name">${_e(name)}</div>
+          <div class="dl-card-id">${_e(c.card_id)}</div>
+          ${c.count > 1 ? `<div class="dl-card-count">x${Number(c.count) || 0}</div>` : ''}
         </div>
       </div>
     `;
@@ -258,7 +266,7 @@ function renderCardSection(title, cards, cardsMap) {
 
   return `
     <div class="modal-section">
-      <div class="modal-section-title">${title}</div>
+      <div class="modal-section-title">${_e(title)}</div>
       <div class="dl-card-grid">
         ${cardsHtml}
       </div>

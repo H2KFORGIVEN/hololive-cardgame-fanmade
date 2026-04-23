@@ -1,4 +1,5 @@
 import { t } from '../i18n.js';
+import { escape as _escape } from './_escape.js';
 
 // State for the Bushi-Navi tab — which event is expanded (to show full ranking)
 const _state = {
@@ -139,8 +140,8 @@ function _renderEventCard(event, decks) {
 function _renderRankRow(rank, decks) {
   const medal = rank.reward_image_local || rank.reward_image_url || '';
   const medalHtml = medal
-    ? `<img class="bn-medal" src="${_escape(medal)}" alt="rank ${rank.rank} badge" loading="lazy">`
-    : `<div class="bn-medal bn-medal-fallback">${rank.rank || '-'}</div>`;
+    ? `<img class="bn-medal" src="${_escape(medal)}" alt="rank ${_escape(rank.rank)} badge" loading="lazy">`
+    : `<div class="bn-medal bn-medal-fallback">${_escape(rank.rank || '-')}</div>`;
 
   const code = rank.deck_code || '';
   const hasDeck = !!code;
@@ -169,7 +170,4 @@ function _renderRankRow(rank, decks) {
   `;
 }
 
-function _escape(s) {
-  return String(s ?? '').replace(/[&<>"']/g, ch =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-}
+// _escape imported from ./_escape.js above — shared helper

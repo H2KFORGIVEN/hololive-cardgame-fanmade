@@ -1,4 +1,5 @@
 import { t, getLang } from '../i18n.js';
+import { escape as _escape } from './_escape.js';
 
 // Category filter chips shown at the top. 'all' = no filter.
 const CATEGORIES = ['all', 'tournament', 'usage_rate', 'news'];
@@ -143,11 +144,7 @@ function renderMediaItem(m) {
 
 // ─── helpers ──────────────────────────────────────────────────────────
 
-function _escape(s) {
-  return String(s ?? '').replace(/[&<>"']/g, ch => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-  }[ch]));
-}
+// _escape imported from ./_escape.js above — shared helper
 
 function _linkify(escapedText) {
   // Very small linkify pass on already-html-escaped text.
