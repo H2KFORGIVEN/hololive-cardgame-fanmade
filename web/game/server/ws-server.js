@@ -8,6 +8,8 @@ import { processAction } from '../core/GameEngine.js';
 import { PHASE, ZONE, ACTION, INITIAL_HAND_SIZE, isMember } from '../core/constants.js';
 import { resolveEffectChoice } from '../core/EffectResolver.js';
 import { initGameState, drawInitialHand, handHasDebut, processMulligan, returnCardsFromHand, placeCenter, finalizeSetup } from '../core/SetupManager.js';
+import { validateDeck } from '../core/DeckBuilder.js';
+import { validateAction } from '../core/ActionValidator.js';
 
 const PORT = parseInt(process.env.PORT || '3000');
 const RECONNECT_TIMEOUT = 30000;
@@ -121,6 +123,24 @@ function handleMessage(ws, data) {
 
 function handleDeckSelect(room, p, deckConfig) {
   if (room.phase !== 'deck_select') return send(room.players[p], { type: 'ERROR', message: '目前不在選牌組階段' });
+
+  // SECURITY: validate client-supplied deck config BEFORE accepting it.
+  // Without this a malicious client could send 50 oshis, 100 copies of a
+  // single card, empty cheer deck, etc. validateDeck enforces:
+  //   - exactly one oshi
+  //   - main deck = 50 cards
+  //   - cheer deck = 20 cards
+  //   - max 4 copies per card (except NO_LIMIT / RESTRICTED overrides)
+  //   - all cards exist in the card DB and have the correct type
+  const validation = validateDeck(deckConfig);
+  if (!validation.valid) {
+    console.warn(`[ws-server] room ${room.code} player ${p}: invalid deck — ${validation.errors.join('; ')}`);
+    return send(room.players[p], {
+      type: 'ERROR',
+      message: '牌組驗證失敗：' + validation.errors.join('；'),
+    });
+  }
+
   room.decks[p] = deckConfig;
   send(room.players[p], { type: 'DECK_CONFIRMED' });
 
@@ -164,7 +184,24 @@ function handleMulligan(room, p, msg) {
   if (msg.keep) {
     // Keep hand — check if need to return cards
     if (msg.returnIndices && msg.returnIndices.length > 0) {
-      returnCardsFromHand(room.state, p, msg.returnIndices);
+      // SECURITY: validate indices — without this a client can send duplicates
+      // / negatives / out-of-range, corrupting hand state via bad splice.
+      const handLen = room.state.players[p].zones[ZONE.HAND].length;
+      const indices = msg.returnIndices;
+      if (!Array.isArray(indices)) {
+        return send(room.players[p], { type: 'ERROR', message: 'returnIndices 必須是陣列' });
+      }
+      const seen = new Set();
+      for (const idx of indices) {
+        if (!Number.isInteger(idx) || idx < 0 || idx >= handLen || seen.has(idx)) {
+          return send(room.players[p], {
+            type: 'ERROR',
+            message: `returnIndices 含非法值（idx=${idx}, hand=${handLen}）`,
+          });
+        }
+        seen.add(idx);
+      }
+      returnCardsFromHand(room.state, p, indices);
     }
     room.mulliganState[p].done = true;
     send(room.players[p], { type: 'MULLIGAN_DONE' });
@@ -209,6 +246,22 @@ function sendSetupPrompt(room, p) {
 function handleSetup(room, p, handIndex) {
   if (room.phase !== 'setup') return;
   if (room.setupDone[p]) return;
+
+  // SECURITY: verify handIndex is in-range AND the card is a Debut/Spot
+  // member — without this a client can center a 2nd-bloom member or support
+  // card, corrupting the game state from turn 1.
+  const hand = room.state.players[p].zones[ZONE.HAND];
+  if (!Number.isInteger(handIndex) || handIndex < 0 || handIndex >= hand.length) {
+    return send(room.players[p], { type: 'ERROR', message: `handIndex out of range (got ${handIndex}, hand=${hand.length})` });
+  }
+  const instance = hand[handIndex];
+  const card = getCard(instance.cardId);
+  if (!card || !isMember(card.type) || !(card.bloom === 'Debut' || card.bloom === 'Spot')) {
+    return send(room.players[p], {
+      type: 'ERROR',
+      message: `中心成員必須是 Debut 或 Spot 類型（收到 ${card?.bloom || '未知'}）`,
+    });
+  }
 
   placeCenter(room.state, p, handIndex);
   room.setupDone[p] = true;

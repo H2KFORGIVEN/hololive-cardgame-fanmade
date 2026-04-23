@@ -7,6 +7,27 @@ export function validateAction(state, action) {
   const player = state.players[p];
   const phase = state.phase;
 
+  // Game-over gate — after a winner is decided, reject further action-
+  // driving input so post-game client spam can't keep pumping the engine.
+  if (state.winner !== null && state.winner !== undefined) {
+    return fail('遊戲已結束');
+  }
+
+  // Pending-effect gate — while the engine is waiting for an EFFECT_RESPONSE
+  // (LIFE_CHEER, SEARCH_SELECT, etc.), reject any action that would mutate
+  // state from underneath the pending prompt. Online cheese: a client could
+  // otherwise skip past opponent's life-cheer assignment by sending
+  // END_PERFORMANCE and have the pending prompt silently leaked.
+  if (state.pendingEffect) {
+    // CHEER_ASSIGN is how LIFE_CHEER is resolved — allowed.
+    // MANUAL_ADJUST is a debug / local tool — allowed to let the user
+    // unstick a broken state locally.
+    const allowedWhilePending = new Set([ACTION.CHEER_ASSIGN, ACTION.MANUAL_ADJUST]);
+    if (!allowedWhilePending.has(action.type)) {
+      return fail(`有未解決效果（${state.pendingEffect.type}），請先處理`);
+    }
+  }
+
   switch (action.type) {
     case ACTION.CHEER_ASSIGN:
       return validateCheerAssign(state, action, player);

@@ -30,8 +30,13 @@ export function processAction(state, action) {
       return { state: processOshiSkill(newState, action) };
     case ACTION.COLLAB:
       return { state: processCollab(newState, action) };
-    case ACTION.BATON_PASS:
-      return { state: processBatonPass(newState, action) };
+    case ACTION.BATON_PASS: {
+      // processBatonPass can return either a mutated state or { error } if
+      // the client-supplied cheerToArchive doesn't actually cover the cost.
+      const result = processBatonPass(newState, action);
+      if (result && result.error) return { state, error: result.error };
+      return { state: result };
+    }
     case ACTION.USE_ART:
       return { state: processUseArt(newState, action) };
     case ACTION.END_MAIN_PHASE:
@@ -348,7 +353,40 @@ function processBatonPass(state, action) {
   const batonCost = parseCost(centerCard?.batonImage);
   const cheerToRemove = action.cheerToArchive || [];
   if (cheerToRemove.length > 0) {
-    // Player manually selected which cheer to discard
+    // SECURITY: client-supplied cheer selection must actually satisfy batonCost.
+    // Without this a malicious online client could send cheerToArchive: [] or a
+    // wrong-color list to pay baton for free.
+    const selectedCheer = cheerToRemove
+      .map(id => center.attachedCheer.find(c => c.instanceId === id))
+      .filter(Boolean);
+    if (selectedCheer.length !== cheerToRemove.length) {
+      return { error: 'BATON_PASS: 選擇的吶喊卡 instanceId 找不到' };
+    }
+    // Verify the selection covers the colored + colorless cost.
+    const colorMap = { white: '白', green: '綠', red: '紅', blue: '藍', purple: '紫', yellow: '黃' };
+    const pool = selectedCheer.map(c => getCard(c.cardId)?.color || '');
+    const used = new Array(pool.length).fill(false);
+    for (const [colorKey, count] of Object.entries(batonCost)) {
+      if (colorKey === 'total' || colorKey === 'colorless') continue;
+      const gameColor = colorMap[colorKey];
+      if (!gameColor) continue;
+      let got = 0;
+      for (let i = 0; i < pool.length && got < count; i++) {
+        if (!used[i] && pool[i] === gameColor) { used[i] = true; got++; }
+      }
+      if (got < count) {
+        return { error: `BATON_PASS: 交棒色${gameColor}需 ${count} 張，只提供 ${got} 張` };
+      }
+    }
+    const colorlessNeeded = batonCost.colorless || 0;
+    let colorlessGot = 0;
+    for (let i = 0; i < pool.length && colorlessGot < colorlessNeeded; i++) {
+      if (!used[i]) { used[i] = true; colorlessGot++; }
+    }
+    if (colorlessGot < colorlessNeeded) {
+      return { error: `BATON_PASS: 交棒無色需 ${colorlessNeeded} 張，只提供 ${colorlessGot} 張` };
+    }
+    // Passed — actually move the cheer
     for (const instanceId of cheerToRemove) {
       const idx = center.attachedCheer.findIndex(c => c.instanceId === instanceId);
       if (idx !== -1) {
@@ -383,6 +421,11 @@ function processBatonPass(state, action) {
   }
 
   // Swap center ↔ backstage. Official rule: outgoing center becomes REST on backstage.
+  if (!Number.isInteger(action.backstageIndex) ||
+      action.backstageIndex < 0 ||
+      action.backstageIndex >= player.zones[ZONE.BACKSTAGE].length) {
+    return { error: `BATON_PASS: backstageIndex 超出範圍 (${action.backstageIndex})` };
+  }
   const backstageMember = player.zones[ZONE.BACKSTAGE].splice(action.backstageIndex, 1)[0];
   center.state = MEMBER_STATE.REST;
   player.zones[ZONE.CENTER] = backstageMember;
