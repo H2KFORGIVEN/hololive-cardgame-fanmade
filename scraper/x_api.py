@@ -98,7 +98,8 @@ def _auth_headers(token: str) -> dict:
 # ─── Read counter (daily budget cap) ──────────────────────────────────
 
 def _today_utc() -> str:
-    return _dt.datetime.utcnow().strftime("%Y-%m-%d")
+    # Timezone-aware UTC (datetime.utcnow() is deprecated in Python 3.12+)
+    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d")
 
 
 def _load_counter() -> dict:
@@ -190,6 +191,13 @@ def get_user_id(token: str, username: str) -> str | None:
         print(f"  [x_api] user lookup failed: {e}")
         return None
 
+    # Hard-fail on auth errors so the cron script exits non-zero and alerts.
+    # Silent token expiry was letting x_feed stall for days before anyone noticed.
+    if r.status_code in (401, 403):
+        raise RuntimeError(
+            f"[x_api] Bearer token rejected (HTTP {r.status_code}). "
+            f"Rotate X_BEARER_TOKEN in .env.local. Response: {r.text[:200]}"
+        )
     if r.status_code != 200:
         print(f"  [x_api] user lookup HTTP {r.status_code}: {r.text[:200]}")
         return None
@@ -230,7 +238,7 @@ def _update_since_id(username: str, tweets: list[dict]) -> None:
     current = int(per_user.get(username, "0") or "0")
     if max_id > current:
         per_user[username] = str(max_id)
-        state["last_sync_utc"] = _dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        state["last_sync_utc"] = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         _save_sync_state(state)
         print(f"  [x_api] since_id for @{username} advanced to {max_id}")
 
@@ -383,6 +391,12 @@ def get_user_tweets(
         if r.status_code == 429:
             print("  [x_api] rate limited (HTTP 429) — stopping pagination")
             break
+        if r.status_code in (401, 403):
+            # Token expired or revoked — raise loud so cron wrapper exits non-zero
+            raise RuntimeError(
+                f"[x_api] Bearer token rejected on timeline (HTTP {r.status_code}). "
+                f"Rotate X_BEARER_TOKEN. Response: {r.text[:200]}"
+            )
         if r.status_code != 200:
             print(f"  [x_api] timeline HTTP {r.status_code}: {r.text[:200]}")
             break
