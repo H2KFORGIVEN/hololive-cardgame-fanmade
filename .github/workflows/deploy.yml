@@ -28,6 +28,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Need full history so `git commit` doesn't produce truncated
+          # merge commits on the shallow clone that checkout@v4 defaults to.
+          fetch-depth: 0
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
@@ -57,11 +61,27 @@ jobs:
       - name: Commit updated data & cache
         if: steps.check.outputs.fresh == 'true'
         run: |
+          set -e
           git config user.name "H2KFORGIVEN"
           git config user.email "22971845+H2KFORGIVEN@users.noreply.github.com"
           git add web/data/ translation_cache.json
-          git diff --cached --quiet || git commit -m "chore: update scraped data & translation cache [skip ci]"
-          git push || true
+          if git diff --cached --quiet; then
+            echo "No data changes; skipping commit."
+            exit 0
+          fi
+          git commit -m "chore: update scraped data & translation cache [skip ci]"
+          # Retry push up to 3× to tolerate races with concurrent human pushes
+          # (previously `git push || true` hid real failures; now we surface them)
+          for i in 1 2 3; do
+            if git pull --rebase origin master && git push origin master; then
+              echo "Push succeeded on attempt $i"
+              exit 0
+            fi
+            echo "Push attempt $i failed; retrying in 15s..."
+            sleep 15
+          done
+          echo "Push failed after 3 attempts"
+          exit 1
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
