@@ -68,8 +68,15 @@ function joinRoom(ws, code) {
     ws._roomCode = code;
     ws._playerIndex = p;
     room.disconnectedPlayer = null;
+    // Clear per-player forfeit timer + disconnect record so the scheduled
+    // forfeit callback sees no match and becomes a no-op.
+    room.disconnectedPlayers?.delete(p);
+    const timer = room.forfeitTimers?.get(p);
+    if (timer) { clearTimeout(timer); room.forfeitTimers.delete(p); }
     send(ws, { type: 'ROOM_JOINED', roomCode: code, playerIndex: p });
-    send(room.players[1 - p], { type: 'OPPONENT_RECONNECTED' });
+    if (room.players[1 - p] && room.players[1 - p].readyState === 1) {
+      send(room.players[1 - p], { type: 'OPPONENT_RECONNECTED' });
+    }
     // Resend current state
     if (room.state) {
       send(ws, { type: 'STATE_UPDATE', state: redactState(room.state, p) });
@@ -394,8 +401,15 @@ function handleDisconnect(ws) {
     return;
   }
 
-  // Mark disconnected, give reconnect window
+  // Track per-player disconnect state. The original code used a single
+  // room.disconnectedPlayer slot, so when P0 disconnected and then P1 also
+  // disconnected before reconnect, P0's timer no longer matched and never
+  // forfeited. Per-player map fixes this.
+  if (!room.disconnectedPlayers) room.disconnectedPlayers = new Map();
+  if (!room.forfeitTimers) room.forfeitTimers = new Map();
+  // Keep the old single-slot for backwards-compat with reconnect logic
   room.disconnectedPlayer = p;
+  room.disconnectedPlayers.set(p, { at: Date.now() });
   room.disconnectedAt = Date.now();
 
   const opp = room.players[1 - p];
@@ -403,19 +417,29 @@ function handleDisconnect(ws) {
     send(opp, { type: 'OPPONENT_DISCONNECTED' });
   }
 
-  // Auto-forfeit after timeout
-  setTimeout(() => {
-    if (room.disconnectedPlayer === p) {
-      room.state && (room.state.winner = 1 - p);
-      room.state && (room.state.phase = PHASE.GAME_OVER);
-      room.phase = 'finished';
-      if (opp && opp.readyState === 1) {
-        send(opp, { type: 'STATE_UPDATE', state: redactState(room.state, 1 - p) });
-      }
-      rooms.delete(code);
-      console.log(`Room ${code}: P${p} forfeit (disconnect timeout)`);
+  // Clear any prior timer for this player (shouldn't happen, defensive)
+  const prior = room.forfeitTimers.get(p);
+  if (prior) clearTimeout(prior);
+
+  // Auto-forfeit after timeout — keyed on the specific player
+  const timer = setTimeout(() => {
+    // Still disconnected? (Reconnect logic deletes the entry)
+    if (!room.disconnectedPlayers?.has(p)) return;
+    // Re-resolve opp in case the room state changed between disconnect and timeout
+    const liveOpp = room.players[1 - p];
+    if (room.state) {
+      room.state.winner = 1 - p;
+      room.state.phase = PHASE.GAME_OVER;
     }
+    room.phase = 'finished';
+    if (liveOpp && liveOpp.readyState === 1) {
+      send(liveOpp, { type: 'STATE_UPDATE', state: redactState(room.state, 1 - p) });
+    }
+    room.forfeitTimers.delete(p);
+    rooms.delete(code);
+    console.log(`Room ${code}: P${p} forfeit (disconnect timeout)`);
   }, RECONNECT_TIMEOUT);
+  room.forfeitTimers.set(p, timer);
 }
 
 // ── Utilities ──

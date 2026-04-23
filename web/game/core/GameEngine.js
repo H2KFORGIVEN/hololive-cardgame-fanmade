@@ -466,23 +466,27 @@ function processUseArt(state, action) {
   // Calculate damage
   const dmgResult = calculateDamage(attacker, action.artIndex, target);
 
-  // Add any turn boosts from effects
+  // Add any turn boosts / reductions from effects
   let bonusDmg = 0;
+  let reduction = 0;
   if (state._turnBoosts) {
     for (const boost of state._turnBoosts) {
-      if (boost.type === 'DAMAGE_BOOST') bonusDmg += boost.amount;
+      if (boost.type === 'DAMAGE_BOOST') bonusDmg += (boost.amount || 0);
+      else if (boost.type === 'DAMAGE_REDUCTION') reduction += (boost.amount || 0);
     }
     state._turnBoosts = [];
   }
-  const totalDmg = dmgResult.total + bonusDmg;
+  const totalDmg = Math.max(0, dmgResult.total + bonusDmg - reduction);
 
   addLog(state, `P${p + 1} ${getCard(attacker.cardId)?.name || ''} 使用 ${dmgResult.artName}！`);
   if (dmgResult.special > 0) addLog(state, `  特攻加成 +${dmgResult.special}！`);
   if (bonusDmg > 0) addLog(state, `  效果加成 +${bonusDmg}！`);
+  if (reduction > 0) addLog(state, `  傷害減免 -${reduction}！`);
 
   // Apply damage to target
   const result = applyDamage(target, totalDmg);
-  addLog(state, `  對 ${getCard(target.cardId)?.name || ''} 造成 ${totalDmg} 傷害 (${result.currentDamage}/${result.maxHp})`);
+  const { currentDamage = 0, maxHp = 0 } = result;
+  addLog(state, `  對 ${getCard(target.cardId)?.name || ''} 造成 ${totalDmg} 傷害 (${currentDamage}/${maxHp})`);
 
   // Mark art as used for this position
   player.performedArts[position] = true;
@@ -507,13 +511,24 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
 
   addLog(state, `  ${targetCard?.name || ''} 被擊倒！${isBuzz ? '(Buzz 生命 -2)' : ''}`);
 
-  // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react (e.g. "return to hand instead")
-  fireEffect(state, HOOK.ON_KNOCKDOWN, {
+  // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react (e.g.
+  // "return to hand instead"). Handlers set ctx.cancelKnockdown = true
+  // to skip the archive + life-loss that normally follows.
+  const knockdownCtx = {
     cardId: target.cardId,
     player: 1 - attackerPlayer,
     memberInst: target,
     attackerPlayer,
-  });
+    cancelKnockdown: false,
+  };
+  fireEffect(state, HOOK.ON_KNOCKDOWN, knockdownCtx);
+
+  if (knockdownCtx.cancelKnockdown) {
+    // Handler already moved the member elsewhere (e.g. to hand) — skip
+    // archiving and life loss. Reset damage on the instance if still on stage.
+    addLog(state, `  擊倒被效果取消 (${targetCard?.name || ''})`);
+    return;
+  }
 
   // Archive the knocked-down member and all attached cards (+ bloom stack)
   archiveMember(opponent, target.instanceId);
@@ -727,18 +742,35 @@ function fireEffect(state, hookType, context) {
   try {
     const result = triggerEffect(state, hookType, context);
     if (result.prompt) {
-      state.pendingEffect = result.prompt;
+      // Queue prompts instead of clobbering. The active prompt lives in
+      // state.pendingEffect; pending queue drains in arrival order once
+      // each is resolved via EFFECT_RESPONSE.
+      if (state.pendingEffect) {
+        if (!state.pendingEffectQueue) state.pendingEffectQueue = [];
+        state.pendingEffectQueue.push(result.prompt);
+      } else {
+        state.pendingEffect = result.prompt;
+      }
     }
     if (result.log) {
       addLog(state, `  [效果] ${result.log}`);
     }
-    if (result.effect?.type === 'DAMAGE_BOOST') {
-      // Store as turn modifier for damage calculation
+    // Store turn-scoped modifiers (boosts and reductions both consumed in processUseArt)
+    if (result.effect && (result.effect.type === 'DAMAGE_BOOST' || result.effect.type === 'DAMAGE_REDUCTION')) {
       if (!state._turnBoosts) state._turnBoosts = [];
       state._turnBoosts.push(result.effect);
     }
   } catch (e) {
     // Effect errors should not crash the game
     console.warn('Effect error:', e);
+  }
+}
+
+// Called when the current pending effect resolves — advances to the next
+// queued prompt if any. Call sites are wherever state.pendingEffect = null.
+export function advancePendingEffect(state) {
+  state.pendingEffect = null;
+  if (state.pendingEffectQueue && state.pendingEffectQueue.length > 0) {
+    state.pendingEffect = state.pendingEffectQueue.shift();
   }
 }

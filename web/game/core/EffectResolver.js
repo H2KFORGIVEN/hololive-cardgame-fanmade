@@ -231,7 +231,11 @@ export function resolveEffectChoice(state, prompt, selected) {
     addLog(state, prompt.player, `選擇了 ${selected.name}`);
   }
 
+  // Advance to queued next prompt (if multiple effects fired back-to-back)
   state.pendingEffect = null;
+  if (state.pendingEffectQueue && state.pendingEffectQueue.length > 0) {
+    state.pendingEffect = state.pendingEffectQueue.shift();
+  }
   return state;
 }
 
