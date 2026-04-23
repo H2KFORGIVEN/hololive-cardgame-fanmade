@@ -48,6 +48,8 @@ from urllib.parse import urlparse
 
 import httpx
 
+from scraper._atomic import atomic_write_json
+
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 API_BASE = "https://api-user.bushi-navi.com"
@@ -107,8 +109,7 @@ def _load_state() -> dict:
 
 
 def _save_state(state: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(STATE_PATH, state)
 
 
 def _load_events() -> list[dict]:
@@ -118,10 +119,9 @@ def _load_events() -> list[dict]:
 
 
 def _save_events(events: list[dict]) -> None:
-    WEB_DATA_DIR.mkdir(parents=True, exist_ok=True)
     # Newest first
     events.sort(key=lambda e: e.get("event_date", ""), reverse=True)
-    EVENTS_OUTPUT.write_text(json.dumps(events, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(EVENTS_OUTPUT, events)
 
 
 def _load_decks() -> dict:
@@ -131,8 +131,7 @@ def _load_decks() -> dict:
 
 
 def _save_decks(decks: dict) -> None:
-    WEB_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    DECKS_OUTPUT.write_text(json.dumps(decks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(DECKS_OUTPUT, decks)
 
 
 # ─── HTTP helpers with backoff ────────────────────────────────────────

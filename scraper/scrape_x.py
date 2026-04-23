@@ -15,6 +15,8 @@ from pathlib import Path
 import httpx
 from bs4 import BeautifulSoup
 
+from scraper._atomic import atomic_write_json
+
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 SYNDICATION_URL = "https://cdn.syndication.twimg.com/tweet-result"
@@ -208,9 +210,7 @@ def discover_tweets(x_posts_path: Path) -> dict:
             existing["tournament_posts"] = existing.get("tournament_posts", []) + new_tournament
             existing["usage_rate_posts"] = existing.get("usage_rate_posts", []) + new_usage
             existing["news_posts"] = existing.get("news_posts", []) + new_news
-            x_posts_path.write_text(
-                json.dumps(existing, ensure_ascii=False, indent=2), encoding="utf-8"
-            )
+            atomic_write_json(x_posts_path, existing)
             print(f"  Updated x_posts.json: +{len(new_tournament)} tournament, +{len(new_usage)} usage rate, +{len(new_news)} news")
         return existing
     finally:
@@ -424,7 +424,7 @@ def scrape_x_posts(x_posts_path: Path, deck_codes_path: Path, output_dir: Path) 
         time.sleep(REQUEST_DELAY)
 
     out_path = output_dir / "x_decks.json"
-    out_path.write_text(json.dumps(all_entries, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(out_path, all_entries)
     print(f"  Saved {len(all_entries)} entries from X posts to {out_path}")
     return all_entries
 
@@ -569,8 +569,7 @@ def build_x_feed(x_posts_path: Path, output_dir: Path, *, refresh_all: bool = Fa
     # Newest first
     entries.sort(key=lambda e: e.get("created_at", ""), reverse=True)
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(out_path, entries)
     print(f"  [x_feed] {len(entries)} entries total ({new_fetches} newly fetched, {reused} reused)")
     return entries
 

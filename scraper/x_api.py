@@ -53,6 +53,8 @@ from pathlib import Path
 
 import httpx
 
+from scraper._atomic import atomic_write_json
+
 
 X_API_BASE = "https://api.x.com/2"
 USER_CACHE: dict[str, str] = {}
@@ -112,8 +114,7 @@ def _load_counter() -> dict:
 
 
 def _save_counter(d: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    READ_COUNTER_PATH.write_text(json.dumps(d, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(READ_COUNTER_PATH, d)
 
 
 def _max_reads_per_day() -> int:
@@ -159,8 +160,7 @@ def _load_user_cache() -> dict:
 
 
 def _save_user_cache(cache: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    USER_CACHE_PATH.write_text(json.dumps(cache, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(USER_CACHE_PATH, cache)
 
 
 def get_user_id(token: str, username: str) -> str | None:
@@ -217,8 +217,7 @@ def _load_sync_state() -> dict:
 
 
 def _save_sync_state(state: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    SYNC_STATE_PATH.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+    atomic_write_json(SYNC_STATE_PATH, state)
 
 
 def _update_since_id(username: str, tweets: list[dict]) -> None:
