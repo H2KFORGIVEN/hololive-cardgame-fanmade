@@ -21,12 +21,12 @@
     "package:dir": "electron-builder --dir --publish never"
   },
   "dependencies": {
-    "ws": "^8.18.0"
+    "ws": "8.20.0"
   },
   "private": true,
   "devDependencies": {
-    "electron": "^41.2.1",
-    "electron-builder": "^26.8.1"
+    "electron": "41.2.1",
+    "electron-builder": "26.8.1"
   },
   "build": {
     "appId": "com.fanmade.hololive-card-practice",
