@@ -3,7 +3,9 @@
 
 import { LocalAdapter } from '../net/LocalAdapter.js';
 import { processAction } from '../core/GameEngine.js';
-import { PHASE, ACTION } from '../core/constants.js';
+import { PHASE, ACTION, ZONE } from '../core/constants.js';
+import { getStageMembers } from '../core/GameState.js';
+import { resolveEffectChoice } from '../core/EffectResolver.js';
 import { matchAction, LESSONS, getLesson } from './TutorialScript.js';
 
 export class TutorialAdapter {
@@ -154,6 +156,14 @@ export class TutorialAdapter {
         const state = this._inner.getState();
         if (!state || state.activePlayer === 0 || state.phase === PHASE.GAME_OVER) break;
 
+        // Handle any pending effect first (e.g., LIFE_CHEER assignment) —
+        // otherwise ActionValidator's pendingEffect gate rejects all actions
+        // and the loop would stall on the safety counter.
+        if (state.pendingEffect && state.pendingEffect.player === 1) {
+          if (!this._resolveOpponentPendingEffect(state)) break;
+          continue;
+        }
+
         if (state.phase === PHASE.MAIN) {
           this._inner.sendAction({ type: ACTION.END_MAIN_PHASE });
           continue;
@@ -162,11 +172,59 @@ export class TutorialAdapter {
           this._inner.sendAction({ type: ACTION.END_PERFORMANCE });
           continue;
         }
-        // RESET / DRAW / CHEER / END: advance
+        if (state.phase === PHASE.CHEER) {
+          // CHEER phase waits for CHEER_ASSIGN — pick a stage member
+          // (center → collab → backstage) and attach the revealed cheer.
+          const opp = state.players[1];
+          if (!opp) { break; }
+          const target = opp.zones[ZONE.CENTER]
+            || opp.zones[ZONE.COLLAB]
+            || (opp.zones[ZONE.BACKSTAGE] || [])[0];
+          if (!target) {
+            // No stage member — shouldn't happen post-setup, bail safely
+            break;
+          }
+          this._inner.sendAction({
+            type: ACTION.CHEER_ASSIGN,
+            targetInstanceId: target.instanceId,
+          });
+          continue;
+        }
+        // RESET / DRAW / END: advance
         this._inner.sendAction({ type: ACTION.ADVANCE_PHASE });
       }
     } finally {
       this._allowAnyAction = false;
     }
+  }
+
+  // Resolve an opponent-side pending effect (e.g. LIFE_CHEER after the
+  // tutorial player knocks out an opponent member) using a simple default
+  // selection so the turn loop doesn't stall. Returns true if handled.
+  _resolveOpponentPendingEffect(state) {
+    const prompt = state.pendingEffect;
+    const opp = state.players[1];
+    if (!prompt || !opp) return false;
+
+    if (prompt.type === 'LIFE_CHEER') {
+      // Default: attach life cheer to center (or first available member)
+      const member = opp.zones[ZONE.CENTER]
+        || opp.zones[ZONE.COLLAB]
+        || getStageMembers(opp)[0];
+      if (!member) return false;
+      const newState = resolveEffectChoice(this._inner.getState(), prompt, {
+        instanceId: member.instanceId,
+      });
+      this._inner.init(newState);
+      this._inner._onStateUpdate?.(newState);
+      return true;
+    }
+
+    // Unknown pending effect — skip to avoid infinite loop. Tutorial's
+    // scripted deck is designed to avoid complex prompts on the AI side.
+    console.warn('[tutorial] opponent AI skipping unknown pendingEffect:', prompt.type);
+    state.pendingEffect = null;
+    this._inner.init(state);
+    return true;
   }
 }
