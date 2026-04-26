@@ -6285,6 +6285,201 @@
     "cheer_deck_count": 20
   },
   {
+    "deck_id": "decklog-3K9T7",
+    "deck_code": "3K9T7",
+    "title": "ミオ推しハコリズ",
+    "oshi": "大神ミオ",
+    "source": "decklog",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "2nd(Bagataro)",
+    "url": "https://decklog-en.bushiroad.com/ja/view/3K9T7",
+    "oshi_cards": [
+      {
+        "card_id": "hBP07-003",
+        "count": 1,
+        "name": "大神ミオ",
+        "type": "主推",
+        "color": "綠",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-003_SEC.png"
+      }
+    ],
+    "main_deck": [
+      {
+        "card_id": "hBP07-045",
+        "count": 3,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-045_SR.png"
+      },
+      {
+        "card_id": "hBP07-045",
+        "count": 1,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-045_SR.png"
+      },
+      {
+        "card_id": "hBP07-048",
+        "count": 4,
+        "name": "エリザベス・ローズ・ブラッドフレイム",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-048_SR.png"
+      },
+      {
+        "card_id": "hBP01-072",
+        "count": 2,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP01-072_02_C.png"
+      },
+      {
+        "card_id": "hBP01-072",
+        "count": 2,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP01-072_02_C.png"
+      },
+      {
+        "card_id": "hBP01-074",
+        "count": 1,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-074_U.png"
+      },
+      {
+        "card_id": "hBP06-040",
+        "count": 4,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-040_C.png"
+      },
+      {
+        "card_id": "hBP06-041",
+        "count": 4,
+        "name": "ハコス・ベールズ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-041_U.png"
+      },
+      {
+        "card_id": "hBP07-046",
+        "count": 3,
+        "name": "エリザベス・ローズ・ブラッドフレイム",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-046_C.png"
+      },
+      {
+        "card_id": "hBP07-046",
+        "count": 1,
+        "name": "エリザベス・ローズ・ブラッドフレイム",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-046_C.png"
+      },
+      {
+        "card_id": "hSD13-003",
+        "count": 4,
+        "name": "エリザベス・ローズ・ブラッドフレイム",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD13/hSD13-003_C.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 1,
+        "name": "じゃあ敵だね",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-108_P.png"
+      },
+      {
+        "card_id": "hBP03-088",
+        "count": 1,
+        "name": "凸待ち",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-088_P_3.png"
+      },
+      {
+        "card_id": "hBP05-080",
+        "count": 2,
+        "name": "SorAZセレブレーション",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP05/hBP05-080_P.png"
+      },
+      {
+        "card_id": "hBP06-085",
+        "count": 4,
+        "name": "フェイバリットパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-085_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 3,
+        "name": "春先のどか",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-016_02_C.png"
+      },
+      {
+        "card_id": "hBP01-106",
+        "count": 1,
+        "name": "あとは任せた！",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-106_U.png"
+      },
+      {
+        "card_id": "hBP03-090",
+        "count": 4,
+        "name": "ホロライブ言えるかな？",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-090_U.png"
+      },
+      {
+        "card_id": "hBP06-097",
+        "count": 1,
+        "name": "カワイイスタジャン",
+        "type": "支援・道具",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-097_C.png"
+      },
+      {
+        "card_id": "hBP07-101",
+        "count": 4,
+        "name": "ASMRマイク",
+        "type": "支援・道具",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-101_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY03-001",
+        "count": 20,
+        "name": "赤エール",
+        "type": "吶喊",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY03-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20
+  },
+  {
     "deck_id": "decklog-5UNSD",
     "deck_code": "5UNSD",
     "title": "クロニー単",
