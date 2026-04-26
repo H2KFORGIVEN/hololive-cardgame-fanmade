@@ -676,8 +676,21 @@ export function registerTop50() {
   });
 
   // 37. hBP07-045 ハコス・ベールズ effectG + art1
+  // effectG: 「[Center/Collab limited] When YOU use SP main skill, put deck-top 1 → holo power」
+  // ON_PASSIVE_GLOBAL fires from firePassiveModifiers (per-art) AND from
+  // processOshiSkill with triggerEvent='sp_skill_used'. Only react to the latter,
+  // and only if this hakos is in CENTER or COLLAB position.
   reg('hBP07-045', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
-    return { state, resolved: true, log: '使用 SP 主推技能時牌組頂 1 張到 holo 能量' };
+    if (ctx.triggerEvent !== 'sp_skill_used') return { state, resolved: true };
+    const player = state.players[ctx.player];
+    const inCenterOrCollab = player.zones[ZONE.CENTER]?.instanceId === ctx.memberInst?.instanceId
+                          || player.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst?.instanceId;
+    if (!inCenterOrCollab) return { state, resolved: true };
+    const deckTop = player.zones[ZONE.DECK].shift();
+    if (!deckTop) return { state, resolved: true, log: 'ハコス effectG: 牌組空' };
+    deckTop.faceDown = true;
+    player.zones[ZONE.HOLO_POWER].unshift(deckTop);
+    return { state, resolved: true, log: 'ハコス effectG: SP 後 +1 ホロパワー' };
   });
   reg('hBP07-045', HOOK.ON_ART_DECLARE, (state, ctx) => {
     const player = state.players[ctx.player];

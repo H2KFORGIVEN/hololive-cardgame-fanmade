@@ -62,7 +62,9 @@ export function registerPassthrough(effectsData) {
     if (hasHandler(e.id, hook)) continue;
 
     const cardName = card.name || e.id;
-    registerEffect(e.id, hook, createPassthroughHandler(e.text, cardName));
+    const handler = createPassthroughHandler(e.text, cardName);
+    handler._passthrough = true;  // marker so coverage audits can distinguish real vs fallback
+    registerEffect(e.id, hook, handler);
     registered++;
   }
   return registered;

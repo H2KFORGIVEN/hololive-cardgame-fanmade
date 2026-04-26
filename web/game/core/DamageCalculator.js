@@ -1,5 +1,6 @@
 import { getCard } from './CardDatabase.js';
 import { ICON_TO_COLOR } from './constants.js';
+import { getExtraHp } from './AttachedSupportEffects.js';
 
 export function calculateDamage(attackerInstance, artIndex, targetInstance) {
   const attackerCard = getCard(attackerInstance.cardId);
@@ -39,25 +40,28 @@ export function calculateDamage(attackerInstance, artIndex, targetInstance) {
   };
 }
 
-// Apply damage to a member instance, return whether it's knocked down
+// Apply damage to a member instance, return whether it's knocked down.
+// HP is augmented by any equipment effects (e.g. カワイイスタジャン Buzz +30).
 export function applyDamage(memberInstance, amount) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return { knockedDown: false };
 
+  const effectiveHp = card.hp + getExtraHp(memberInstance);
+
   memberInstance.damage += amount;
 
-  const knockedDown = memberInstance.damage >= card.hp;
+  const knockedDown = memberInstance.damage >= effectiveHp;
   return {
     knockedDown,
     currentDamage: memberInstance.damage,
-    maxHp: card.hp,
-    overkill: knockedDown ? memberInstance.damage - card.hp : 0,
+    maxHp: effectiveHp,
+    overkill: knockedDown ? memberInstance.damage - effectiveHp : 0,
   };
 }
 
-// Check if a member is knocked down
+// Check if a member is knocked down (also respects equipment HP boosts)
 export function isKnockedDown(memberInstance) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return false;
-  return memberInstance.damage >= card.hp;
+  return memberInstance.damage >= card.hp + getExtraHp(memberInstance);
 }

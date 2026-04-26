@@ -201,6 +201,16 @@ export function resolveEffectChoice(state, prompt, selected) {
     }
     if (!prompt.noShuffle) shuffleArr(player.zones['deck']);
 
+  } else if (action === 'HAND_TO_ARCHIVE') {
+    // Move selected hand card to archive (used by クロニー oshi: "save 1 hand card")
+    const hand = player.zones['hand'];
+    const idx = hand.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx >= 0) {
+      const card = hand.splice(idx, 1)[0];
+      player.zones['archive'].push(card);
+      addLog(state, prompt.player, `將 ${selected.name || getCard(card.cardId)?.name || ''} 從手牌存檔`);
+    }
+
   } else if (action === 'ORDER_TO_BOTTOM') {
     // selected is { orderedIds: [...] }
     const ids = selected.orderedIds || [];

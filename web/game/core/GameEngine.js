@@ -317,6 +317,23 @@ function processOshiSkill(state, action) {
   }
 
   fireEffect(state, HOOK.ON_OSHI_SKILL, { cardId: player.oshi.cardId, player: p, skillType });
+
+  // Fire effectG (passive while on stage) for "after-SP" reactive effects.
+  // E.g. hBP07-045 ハコス・ベールズ Buzz: after self uses SP skill, +1 holopower.
+  // The handler reads ctx.triggerEvent + ctx.player to decide if it applies.
+  if (skillType === 'sp') {
+    const stageMembers = [
+      player.zones[ZONE.CENTER],
+      player.zones[ZONE.COLLAB],
+      ...(player.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    for (const m of stageMembers) {
+      fireEffect(state, HOOK.ON_PASSIVE_GLOBAL, {
+        cardId: m.cardId, player: p, memberInst: m, triggerEvent: 'sp_skill_used',
+      });
+    }
+  }
+
   return state;
 }
 

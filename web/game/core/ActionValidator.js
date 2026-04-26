@@ -1,6 +1,7 @@
 import { PHASE, ZONE, ACTION, BLOOM_ORDER, MAX_STAGE_MEMBERS, MEMBER_STATE, parseCost, isSupport, isMember } from './constants.js';
 import { getCard, getCardsByName } from './CardDatabase.js';
 import { getStageCount, findInstance } from './GameState.js';
+import { getColorlessReduction } from './AttachedSupportEffects.js';
 
 export function validateAction(state, action) {
   const p = state.activePlayer;
@@ -256,8 +257,14 @@ function validateUseArt(state, action, player, playerIdx) {
 
 // Check if attached cheer can satisfy art cost
 function canPayArtCost(memberInstance, cost) {
-  if (cost.total === 0) return true;
-  if (memberInstance.attachedCheer.length < cost.total) return false;
+  // Equipment items (e.g. ASMRマイク) can reduce required colorless cheer.
+  // Apply reduction up-front so the rest of the function works on adjusted cost.
+  const colorlessReduction = getColorlessReduction(memberInstance);
+  const adjustedColorless = Math.max(0, (cost.colorless || 0) - colorlessReduction);
+  const adjustedTotal = Math.max(0, cost.total - colorlessReduction);
+
+  if (adjustedTotal === 0) return true;
+  if (memberInstance.attachedCheer.length < adjustedTotal) return false;
 
   // Greedy: assign colored costs first, then colorless
   const available = memberInstance.attachedCheer.map(c => {
@@ -282,15 +289,14 @@ function canPayArtCost(memberInstance, cost) {
   }
 
   // Assign colorless requirements (any unused cheer)
-  const colorlessNeeded = cost.colorless || 0;
   let assigned = 0;
-  for (let i = 0; i < available.length && assigned < colorlessNeeded; i++) {
+  for (let i = 0; i < available.length && assigned < adjustedColorless; i++) {
     if (!used.has(i)) {
       used.add(i);
       assigned++;
     }
   }
-  return assigned >= colorlessNeeded;
+  return assigned >= adjustedColorless;
 }
 
 export { canPayArtCost };

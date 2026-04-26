@@ -1483,6 +1483,51 @@ export function registerPhaseB() {
     return { state, resolved: true, log: '看頂 2 取 1' };
   });
 
+  // 153b. hBP07-005 オーロ・クロニー oshi
+  // oshiSkill: 【1/turn】 Draw 2 from BOTTOM of deck, then send 1 hand card to archive (= save area).
+  // sp:        【1/game】 If center is 2nd オーロ・クロニー, take an extra turn after this round. (Round B)
+  reg('hBP07-005', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const player = state.players[ctx.player];
+
+    if (ctx.skillType === 'sp') {
+      // SP — placeholder until Round B implements the extra-turn logic
+      return { state, resolved: true, log: 'SP（Round B 待實作：條件式追加回合）' };
+    }
+
+    // Draw 2 from BOTTOM (top of deck = front of array per processCheerAssign convention)
+    const deck = player.zones[ZONE.DECK];
+    const drawn = [];
+    for (let i = 0; i < 2 && deck.length > 0; i++) {
+      const c = deck.pop();  // pop = bottom
+      c.faceDown = false;
+      drawn.push(c);
+      player.zones[ZONE.HAND].push(c);
+    }
+
+    if (player.zones[ZONE.HAND].length === 0) {
+      return { state, resolved: true, log: `從牌底抽 ${drawn.length} 張，手牌空無法存檔` };
+    }
+
+    // Prompt the player to choose 1 hand card to send to archive (save area)
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張手牌放到存檔區',
+        cards: player.zones[ZONE.HAND].map(c => ({
+          instanceId: c.instanceId,
+          cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'HAND_TO_ARCHIVE',
+      },
+      log: `從牌底抽 ${drawn.length} 張`,
+    };
+  });
+
   // 154. hBP01-074 ハコス・ベールズ effectB
   reg('hBP01-074', HOOK.ON_BLOOM, (state, ctx) => {
     const player = state.players[ctx.player];
