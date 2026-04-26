@@ -14,9 +14,9 @@
 import { getCard } from './CardDatabase.js';
 
 // Per-card effect declarations.
-// Each maps cardId → { extraHp(member, card), colorlessReduction(member, card) }
-// Functions get the EQUIPPED MEMBER (not the support), and return a number.
-// `card` is the cached lookup of the member's card data, passed in to avoid re-resolving.
+// Each maps cardId → { extraHp, colorlessReduction, artDamageBoost }
+// Functions take (equippedMember, card) and return a number. `card` is the
+// equipped member's card data (cached so we don't resolve it twice).
 const REGISTRY = {
   // hBP06-097 カワイイスタジャン: ◆Buzz members: HP +30
   'hBP06-097': {
@@ -25,6 +25,10 @@ const REGISTRY = {
   // hBP07-101 ASMRマイク: ◆Buzz members: arts colorless cheer cost -1
   'hBP07-101': {
     colorlessReduction: (memberInst, card) => (card?.bloom?.includes('Buzz') ? 1 : 0),
+  },
+  // hBP06-099 ゆび: equipped member's art damage +10. (Universal — no member-type gate.)
+  'hBP06-099': {
+    artDamageBoost: () => 10,
   },
 };
 
@@ -53,4 +57,9 @@ export function getExtraHp(memberInst) {
 /** Sum of colorless-cheer cost reductions from equipped items. */
 export function getColorlessReduction(memberInst) {
   return _eachAttachedEffect(memberInst, 'colorlessReduction');
+}
+
+/** Sum of art-damage boosts from equipped items (e.g. ゆび: +10). */
+export function getArtDamageBoost(memberInst) {
+  return _eachAttachedEffect(memberInst, 'artDamageBoost');
 }

@@ -159,18 +159,45 @@ export function registerPhaseB() {
     return { state, resolved: true };
   });
 
-  // 54. hBP06-099 ゆび tool: +10 dmg, return 戌神 from archive on attach
+  // 54. hBP06-099 ゆび tool:
+  //   • +10 art damage to equipped member — handled by AttachedSupportEffects
+  //     registry (read by processUseArt); this handler is only for the
+  //     on-attach archive trigger.
+  //   • Spec: "attached from hand to 戌神ころね → may return 1 戌神ころね from
+  //     archive to hand". Only fires when the attached-to target is a
+  //     戌神ころね. Locate the equipped member by walking own stage and
+  //     finding the just-attached ゆび.
   reg('hBP06-099', HOOK.ON_PLAY, (state, ctx) => {
     const player = state.players[ctx.player];
-    const prompt = makeArchivePrompt(player, ctx.player, c => getCard(c.cardId)?.name === '戌神ころね', '選擇存檔區的戌神ころね回手牌');
-    if (prompt) return { state, resolved: false, prompt, log: '存檔區戌神ころね回手牌' };
-    return { state, resolved: true, log: '存檔區無戌神ころね' };
+    // Find which stage member just received this ゆび (cardId match — there
+    // can be at most one new attach per ON_PLAY event since processPlaySupport
+    // handles one support at a time).
+    let attachedTo = null;
+    const stage = [
+      player.zones[ZONE.CENTER],
+      player.zones[ZONE.COLLAB],
+      ...(player.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    for (const m of stage) {
+      if ((m.attachedSupport || []).some(s => s.cardId === ctx.cardId)) {
+        attachedTo = m; break;
+      }
+    }
+    if (!attachedTo) {
+      return { state, resolved: true, log: 'ゆび: 未附加成員' };
+    }
+    const targetName = getCard(attachedTo.cardId)?.name;
+    if (targetName !== '戌神ころね') {
+      return { state, resolved: true, log: `ゆび 附加給 ${targetName}（非戌神ころね，無觸發）` };
+    }
+    const prompt = makeArchivePrompt(
+      player, ctx.player,
+      c => getCard(c.cardId)?.name === '戌神ころね',
+      '附加給戌神ころね觸發：選擇存檔區的戌神ころね回手牌'
+    );
+    if (prompt) return { state, resolved: false, prompt, log: 'ゆび → 戌神ころね 觸發' };
+    return { state, resolved: true, log: 'ゆび → 戌神ころね 觸發（存檔無戌神）' };
   });
-  reg('hBP06-099', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '道具 +10',
-  }));
 
   // 55. hBP02-029 宝鐘マリン effectC: 20 special dmg to opponent collab
   reg('hBP02-029', HOOK.ON_COLLAB, (state, ctx) => {

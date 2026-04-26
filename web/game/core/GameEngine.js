@@ -6,7 +6,7 @@ import { calculateDamage, applyDamage } from './DamageCalculator.js';
 import { parseCost } from './constants.js';
 import { triggerEffect } from '../effects/EffectEngine.js';
 import { HOOK } from '../effects/EffectRegistry.js';
-import { getExtraHp } from './AttachedSupportEffects.js';
+import { getExtraHp, getArtDamageBoost } from './AttachedSupportEffects.js';
 
 export function processAction(state, action) {
   const validation = validateAction(state, action);
@@ -494,11 +494,18 @@ function processUseArt(state, action) {
     }
     state._turnBoosts = [];
   }
+  // Equipment-based art damage boost (e.g. hBP06-099 ゆび: +10) — pulled
+  // from the AttachedSupportEffects registry, same path as HP+30 / cost−1.
+  // Applied in addition to handler-pushed _turnBoosts, since that's how
+  // equipment effects model "while equipped" on this member.
+  const equipBoost = getArtDamageBoost(attacker);
+  bonusDmg += equipBoost;
   const totalDmg = Math.max(0, dmgResult.total + bonusDmg - reduction);
 
   addLog(state, `P${p + 1} ${getCard(attacker.cardId)?.name || ''} 使用 ${dmgResult.artName}！`);
   if (dmgResult.special > 0) addLog(state, `  特攻加成 +${dmgResult.special}！`);
-  if (bonusDmg > 0) addLog(state, `  效果加成 +${bonusDmg}！`);
+  if (equipBoost > 0) addLog(state, `  道具加成 +${equipBoost}！`);
+  if (bonusDmg - equipBoost > 0) addLog(state, `  效果加成 +${bonusDmg - equipBoost}！`);
   if (reduction > 0) addLog(state, `  傷害減免 -${reduction}！`);
 
   // Apply damage to target

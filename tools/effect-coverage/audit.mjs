@@ -227,6 +227,10 @@ function classifyBehavior(handler, cardId, hook) {
 
 // IDs whose effect is handled via AttachedSupportEffects.js registry rather
 // than a hook handler (kept in sync with REGISTRY in that file).
+// Note: hBP06-099 ゆび ALSO has a real ON_PLAY handler (the on-attach
+// archive-return trigger) — it's not pure-passive — so we don't add it
+// here. Its damage boost is registry-driven but the audit will still see
+// the on-attach handler as REAL.
 const PASSIVE_EQUIP_IDS = new Set(['hBP06-097', 'hBP07-101']);
 
 const STATUS = {

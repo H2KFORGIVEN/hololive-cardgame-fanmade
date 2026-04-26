@@ -1,5 +1,5 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-26T19:05:53.835Z
+Generated: 2026-04-26T19:13:20.423Z
 
 ## Headline
 
@@ -68,7 +68,7 @@ Usage = total copies across 52 tournament decks.
 | # | ID | Name | Hook | Status | Usage | Effect (truncated) |
 |---|---|---|---|---|---|---|
 | 1 | hBP01-009 | 天音かなた | art1 | LOG_ONLY | 57 | This skill can only target the opponent's central member. |
-| 2 | hBP07-048 | エリザベス・ローズ・ブラッドフレイム | effectG | LOG_ONLY | 28 | This member can use all the arts of all members marked #EN on their stage (there must be a |
+| 2 | hBP07-048 | エリザベス・ローズ・ブラッドフレイム | effectG | LOG_ONLY | 32 | This member can use all the arts of all members marked #EN on their stage (there must be a |
 | 3 | hBP01-014 | 天音かなた | art1 | LOG_ONLY | 20 | When using this skill to knock down an opponent's member, if the damage exceeds the member |
 | 4 | hBP06-070 | 戌神ころね | effectG | LOG_ONLY | 20 | [Limited to the center position] [Once per round] You can put 1 "Yuび" on your stage back t |
 | 5 | hBP06-099 | ゆび | support | LOG_ONLY | 19 | Members with this prop have +10 skill damage.  When this item is attached to "戌神ころね" from  |
