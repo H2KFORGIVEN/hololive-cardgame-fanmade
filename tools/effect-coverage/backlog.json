@@ -21,7 +21,7 @@
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
-    "usage": 32
+    "usage": 28
   },
   {
     "id": "hBP01-014",
@@ -82,18 +82,6 @@
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
     "usage": 16
-  },
-  {
-    "id": "hBP01-076",
-    "name": "星街すいせい",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "Inflict 10 points of special damage to one of the opponent's backstage members (even if the opponent's member is knocked down, the opponent's health will not be reduced).",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 14
   },
   {
     "id": "hBP06-069",
@@ -162,18 +150,6 @@
     "type": "成員",
     "expansion": "hBP01",
     "text": "Send the top card of your shout deck to the member with #ID other than your \"アイラニ・イオフィフティーン\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 8
-  },
-  {
-    "id": "hBP01-079",
-    "name": "星街すいせい",
-    "hook": "effectB",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "Give 1 opponent's backstage member 20 points of special damage (even if the opponent's member is knocked down, the opponent's health will not be reduced).",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

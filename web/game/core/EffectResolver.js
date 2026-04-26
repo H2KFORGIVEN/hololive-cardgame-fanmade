@@ -3,6 +3,7 @@
 
 import { getCard } from './CardDatabase.js';
 import { createCardInstance } from './GameState.js';
+import { sweepEffectKnockouts } from './GameEngine.js';
 
 // Convert bloomStack entry (string | {cardId} | full instance) to a fresh card instance.
 // The stack only records cardIds, not full state — any revert/archive path creates new instances.
@@ -243,6 +244,22 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
     addLog(state, prompt.player, `${ids.length} 張牌放回牌組下方`);
+
+  } else if (action === 'OPP_MEMBER_DAMAGE') {
+    // Player picked one of opponent's stage members to receive special damage.
+    // amount carried on prompt.damageAmount. Triggers post-damage sweep so
+    // a knock-out gets archived; per game rules, special damage doesn't cost
+    // life on the opponent unless the prompt explicitly opts in via
+    // prompt.causeLifeLoss === true (no current cards do).
+    const opp = state.players[1 - prompt.player];
+    const allOpp = getAllMembers(opp);
+    const target = allOpp.find(m => m.instanceId === selected.instanceId);
+    const amount = prompt.damageAmount || 0;
+    if (target && amount > 0) {
+      target.damage = (target.damage || 0) + amount;
+      addLog(state, prompt.player, `${selected.name || getCard(target.cardId)?.name || ''} 受到 ${amount} 特殊傷害`);
+      sweepEffectKnockouts(state);
+    }
 
   } else if (action === 'LIFE_CHEER') {
     // Defender chooses which of their own members receives the revealed life cheer.

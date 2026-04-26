@@ -6,6 +6,7 @@ import { calculateDamage, applyDamage } from './DamageCalculator.js';
 import { parseCost } from './constants.js';
 import { triggerEffect } from '../effects/EffectEngine.js';
 import { HOOK } from '../effects/EffectRegistry.js';
+import { getExtraHp } from './AttachedSupportEffects.js';
 
 export function processAction(state, action) {
   const validation = validateAction(state, action);
@@ -804,6 +805,51 @@ function fireEffect(state, hookType, context) {
   } catch (e) {
     // Effect errors should not crash the game
     console.warn('Effect error:', e);
+  }
+  // After every effect, sweep stage members whose damage now exceeds HP and
+  // archive them. Effect-driven (special) damage doesn't go through the
+  // art-attack knockdown path that costs life — per game rules, special
+  // damage explicitly does not reduce the opponent's life value, even when
+  // it knocks out a member. Ignored when the EffectResolver itself is
+  // drained mid-prompt — those calls don't carry pending damage.
+  sweepEffectKnockouts(state);
+}
+
+// Archive any stage member whose damage now exceeds their effective HP
+// (base HP + equipment buffs). This handles non-art knockouts (effects with
+// "deal N special damage to X"). NO life loss — that only happens when
+// processKnockdown fires from the art-attack path. Stage-empty win check
+// runs at the end so multiple knockouts in one effect don't crash the loop.
+//
+// Exported so EffectResolver can call it after a player-picked damage
+// resolution (e.g. SELECT_TARGET → OPP_MEMBER_DAMAGE).
+export function sweepEffectKnockouts(state) {
+  // Don't sweep mid-game-over.
+  if (state.winner != null || state.phase === PHASE.GAME_OVER) return;
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    const stage = [pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB], ...(pl.zones[ZONE.BACKSTAGE] || [])].filter(Boolean);
+    for (const m of stage) {
+      const card = getCard(m.cardId);
+      if (!card?.hp) continue;
+      const effectiveHp = card.hp + getExtraHp(m);
+      if (m.damage >= effectiveHp) {
+        addLog(state, `  ${card.name} 因效果傷害被擊倒（不扣生命）`);
+        archiveMember(pl, m.instanceId);
+      }
+    }
+  }
+  // Stage-empty win check (any side that lost their entire stage to effect dmg).
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    if (getStageCount(pl) === 0 && state.phase !== PHASE.SETUP && state.phase !== PHASE.MULLIGAN) {
+      state.winner = 1 - idx;
+      state.phase = PHASE.GAME_OVER;
+      addLog(state, `P${(2-idx)} 獲勝！對手舞台無成員！`);
+      return;
+    }
   }
 }
 

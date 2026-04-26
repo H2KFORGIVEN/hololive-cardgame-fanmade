@@ -342,13 +342,29 @@ export function registerTop50() {
     return { state, resolved: true };
   });
 
-  // 17. hBP01-076 星街すいせい art1: 10 special dmg to opponent backstage
+  // 17. hBP01-076 星街すいせい art1: 10 special dmg to 1 chosen opponent backstage
   reg('hBP01-076', HOOK.ON_ART_RESOLVE, (state, ctx) => {
     const opp = state.players[1 - ctx.player];
-    if (opp.zones[ZONE.BACKSTAGE].length > 0) {
-      applyDamageToMember(opp.zones[ZONE.BACKSTAGE][0], 10);
-    }
-    return { state, resolved: true, log: '對對手 1 位後台 10 特殊傷害（不扣生命）' };
+    const back = opp.zones[ZONE.BACKSTAGE] || [];
+    if (back.length === 0) return { state, resolved: true, log: '對手無後台成員' };
+    const cards = back.map(m => ({
+      instanceId: m.instanceId,
+      cardId: m.cardId,
+      name: getCard(m.cardId)?.name || '',
+      image: getCardImage(m.cardId),
+    }));
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET',
+        player: ctx.player,
+        message: '選擇對手 1 位後台成員，造成 10 點特殊傷害（不扣生命）',
+        cards, maxSelect: 1,
+        afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 10,
+      },
+      log: '選擇後台目標',
+    };
   });
 
   // 18. hBP03-088 凸待ち: opponent moves backstage to collab if no collab
@@ -802,13 +818,29 @@ export function registerTop50() {
     return { state, resolved: true, log: '頂 3 張無成員，全部進存檔' };
   });
 
-  // 41. hBP01-079 星街すいせい effectB: 20 special damage to opponent backstage
+  // 41. hBP01-079 星街すいせい effectB: 20 special damage to 1 chosen opponent backstage
   reg('hBP01-079', HOOK.ON_BLOOM, (state, ctx) => {
     const opp = state.players[1 - ctx.player];
-    if (opp.zones[ZONE.BACKSTAGE].length > 0) {
-      applyDamageToMember(opp.zones[ZONE.BACKSTAGE][0], 20);
-    }
-    return { state, resolved: true, log: '對對手 1 位後台 20 特殊傷害' };
+    const back = opp.zones[ZONE.BACKSTAGE] || [];
+    if (back.length === 0) return { state, resolved: true, log: '對手無後台成員' };
+    const cards = back.map(m => ({
+      instanceId: m.instanceId,
+      cardId: m.cardId,
+      name: getCard(m.cardId)?.name || '',
+      image: getCardImage(m.cardId),
+    }));
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET',
+        player: ctx.player,
+        message: '選擇對手 1 位後台成員，造成 20 點特殊傷害（不扣生命）',
+        cards, maxSelect: 1,
+        afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 20,
+      },
+      log: '選擇後台目標',
+    };
   });
 
   // 42. hBP06-023 風真いろは effectC: if 2nd player turn 1, search Buzz 風真
