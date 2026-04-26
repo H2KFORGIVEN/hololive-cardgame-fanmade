@@ -245,6 +245,54 @@ export function resolveEffectChoice(state, prompt, selected) {
     }
     addLog(state, prompt.player, `${ids.length} 張牌放回牌組下方`);
 
+  } else if (action === 'CHEER_FROM_ARCHIVE_TO_MEMBER') {
+    // Player picked an own member to receive 1 cheer from the archive.
+    // prompt.cheerColors (array of '白'/'綠'/...) optionally constrains
+    // which color to pick — null/empty = any. Multi-pick uses the same
+    // re-emit mechanism as SEARCH_SELECT below: maxSelect>1 → re-prompt
+    // with the picked member removed and counter decremented.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    const colors = Array.isArray(prompt.cheerColors) && prompt.cheerColors.length > 0 ? prompt.cheerColors : null;
+    const archive = player.zones['archive'];
+    let cheerIdx = -1;
+    for (let i = 0; i < archive.length; i++) {
+      const cd = getCard(archive[i].cardId);
+      if (cd?.type !== '吶喊') continue;
+      if (colors && !colors.includes(cd.color)) continue;
+      cheerIdx = i; break;
+    }
+    if (target && cheerIdx >= 0) {
+      const cheer = archive.splice(cheerIdx, 1)[0];
+      cheer.faceDown = false;
+      if (!target.attachedCheer) target.attachedCheer = [];
+      target.attachedCheer.push(cheer);
+      addLog(state, prompt.player, `存檔吶喊 → ${selected.name || getCard(target.cardId)?.name || ''}`);
+    }
+    // Multi-pick chain: re-emit the prompt with the picked member removed
+    // and maxSelect decremented (same mechanism as SEARCH_SELECT above).
+    if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+      const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+      // Need archive to still have matching cheer to continue
+      const stillHasCheer = archive.some(c => {
+        const cd = getCard(c.cardId);
+        if (cd?.type !== '吶喊') return false;
+        if (colors && !colors.includes(cd.color)) return false;
+        return true;
+      });
+      if (newCards.length > 0 && stillHasCheer) {
+        const baseMsg = prompt.baseMessage || prompt.message || '';
+        const remaining = prompt.maxSelect - 1;
+        state.pendingEffect = {
+          ...prompt,
+          cards: newCards,
+          maxSelect: remaining,
+          message: `${baseMsg}（還可選 ${remaining} 位，可跳過）`,
+          baseMessage: baseMsg,
+        };
+        return state;
+      }
+    }
+
   } else if (action === 'OPP_MEMBER_DAMAGE') {
     // Player picked one of opponent's stage members to receive special damage.
     // amount carried on prompt.damageAmount. Triggers post-damage sweep so

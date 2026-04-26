@@ -622,14 +622,34 @@ export function registerPhaseB() {
   });
 
   // 87. hBP01-055 アイラニ effectC + art1
+  // effectC: distribute 1-3 archive cheer to 1-3 #ID members (one each).
+  // Player picks 1-3 #ID members; for each pick, the next archive cheer
+  // (any color) attaches. Uses CHEER_FROM_ARCHIVE_TO_MEMBER multi-pick chain.
   reg('hBP01-055', HOOK.ON_COLLAB, (state, ctx) => {
     const player = state.players[ctx.player];
-    const idMembers = getStageMembers(player).filter(m => hasTag(m.inst, '#ID')).slice(0, 3);
-    let sent = 0;
-    for (const m of idMembers) {
-      if (sendCheerFromArchiveToMember(player, m.inst)) sent++;
-    }
-    return { state, resolved: true, log: `存檔吶喊送給 ${sent} 位 #ID 成員` };
+    const archiveCheer = player.zones[ZONE.ARCHIVE].filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (archiveCheer.length === 0) return { state, resolved: true, log: '存檔區無吶喊' };
+    const idMembers = getStageMembers(player).filter(m => hasTag(m.inst, '#ID'));
+    if (idMembers.length === 0) return { state, resolved: true, log: '無 #ID 成員' };
+    const max = Math.min(3, idMembers.length, archiveCheer.length);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER',
+        player: ctx.player,
+        message: `選擇 1-${max} 位 #ID 成員接收吶喊（每人各 1 張，可跳過）`,
+        cards: idMembers.map(m => ({
+          instanceId: m.inst.instanceId,
+          cardId: m.inst.cardId,
+          name: getCard(m.inst.cardId)?.name || '',
+          image: getCardImage(m.inst.cardId),
+        })),
+        maxSelect: max,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_MEMBER',
+        cheerColors: null,
+      },
+      log: '存檔吶喊分配給 #ID 成員',
+    };
   });
   reg('hBP01-055', HOOK.ON_ART_DECLARE, (state, ctx) => {
     const player = state.players[ctx.player];
@@ -647,14 +667,31 @@ export function registerPhaseB() {
     return { state, resolved: true };
   });
 
-  // 88. hBP02-019 パヴォリア・レイネ effectC: send archive cheer to member
+  // 88. hBP02-019 パヴォリア・レイネ effectC: send 1 archive cheer to a chosen own member
   reg('hBP02-019', HOOK.ON_COLLAB, (state, ctx) => {
     const player = state.players[ctx.player];
-    const member = ctx.memberInst || player.zones[ZONE.CENTER];
-    if (member && sendCheerFromArchiveToMember(player, member)) {
-      return { state, resolved: true, log: '存檔吶喊送回成員' };
-    }
-    return { state, resolved: true };
+    const archiveCheer = player.zones[ZONE.ARCHIVE].filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (archiveCheer.length === 0) return { state, resolved: true, log: '存檔區無吶喊' };
+    const stage = getStageMembers(player);
+    if (stage.length === 0) return { state, resolved: true, log: '舞台無成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER',
+        player: ctx.player,
+        message: '選擇接收 1 張存檔吶喊的己方成員',
+        cards: stage.map(m => ({
+          instanceId: m.inst.instanceId,
+          cardId: m.inst.cardId,
+          name: getCard(m.inst.cardId)?.name || '',
+          image: getCardImage(m.inst.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_MEMBER',
+        cheerColors: null,
+      },
+      log: '選擇成員接收存檔吶喊',
+    };
   });
 
   // 89. hBP01-010 天音かなた effectC: center +10, +20 if #4期生
@@ -1244,9 +1281,37 @@ export function registerPhaseB() {
   // 134. hBP06-097 カワイイスタジャン: HP +30 (passive)
   reg('hBP06-097', HOOK.ON_PLAY, (state, ctx) => ({ state, resolved: true, log: 'Buzz HP +30' }));
 
-  // 135. hBP01-046 AZKi effectB: redistribute 1-3 cheer on stage
+  // 135. hBP01-046 AZKi effectB: redistribute 1-3 cheer on stage to own members.
+  // The full spec is "1-3 cheer", but a single CHEER_MOVE prompt only handles
+  // ONE move. We surface ONE interactive cheer-move (auto-source = first
+  // member with attached cheer; player picks target). Additional 1-2 moves
+  // remain available via Manual Adjust — the log nudges the player.
   reg('hBP01-046', HOOK.ON_BLOOM, (state, ctx) => {
-    return { state, resolved: true, log: '可重新分配 1-3 張吶喊（手動）' };
+    const player = state.players[ctx.player];
+    const stage = getStageMembers(player);
+    const src = stage.find(m => (m.inst.attachedCheer || []).length > 0);
+    if (!src) return { state, resolved: true, log: '舞台無吶喊可重新分配' };
+    const targets = stage.filter(m => m.inst.instanceId !== src.inst.instanceId);
+    if (targets.length === 0) return { state, resolved: true, log: '無其他成員可接收' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'CHEER_MOVE',
+        player: ctx.player,
+        message: `從「${getCard(src.inst.cardId)?.name || ''}」取 1 張吶喊轉給其他成員`,
+        cards: targets.map(m => ({
+          instanceId: m.inst.instanceId,
+          cardId: m.inst.cardId,
+          name: getCard(m.inst.cardId)?.name || '',
+          image: getCardImage(m.inst.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_MOVE',
+        sourceInstanceId: src.inst.instanceId,
+        cheerPredicate: 'any',
+      },
+      log: '可重新分配 1 張吶喊（剩餘 1-2 張可手動調整）',
+    };
   });
 
   // 136. hSD01-009 AZKi effectC: dice ≤4 → send cheer to backstage

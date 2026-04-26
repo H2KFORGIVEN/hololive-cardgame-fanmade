@@ -252,18 +252,6 @@
     "usage": 7
   },
   {
-    "id": "hBP01-046",
-    "name": "AZKi",
-    "hook": "effectB",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "You can assign 1 to 3 shout cards on your stage to your members.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 6
-  },
-  {
     "id": "hBP02-040",
     "name": "沙花叉クロヱ",
     "hook": "effectG",
@@ -342,30 +330,6 @@
     "type": "成員",
     "expansion": "hBP01",
     "text": "Send the 1 card at the top of your shouting deck to the members marked with #secret societyholoX other than your \"Faze Shin いろは\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 5
-  },
-  {
-    "id": "hBP01-055",
-    "name": "アイラニ・イオフィフティーン",
-    "hook": "effectC",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "You can send the shouting cards in your archive area to 1 to 3 members marked with #ID, one for each person.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 5
-  },
-  {
-    "id": "hBP02-019",
-    "name": "パヴォリア・レイネ",
-    "hook": "effectC",
-    "type": "成員",
-    "expansion": "hBP02",
-    "text": "You can send 1 shouting card in your save area to your own members.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
