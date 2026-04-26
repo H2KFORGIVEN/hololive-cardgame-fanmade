@@ -209,7 +209,15 @@ function render() {
         </div>
 
         <aside class="deck-recommended">
-          <h4>推薦牌組</h4>
+          <h4>從 DeckLog 代碼匯入</h4>
+          <div class="dl-code-import">
+            <input type="text" id="deckLogCodeInput" class="dl-code-input"
+                   placeholder="例: 20HL9" maxlength="6" autocomplete="off">
+            <button type="button" class="action-btn dl-code-btn" id="deckLogLoadBtn">匯入</button>
+            <div class="dl-code-status" id="deckLogStatus"></div>
+            <div class="dl-code-hint">貼上 Bushiroad DeckLog 5 碼牌組代碼（例：<code>20HL9</code>）</div>
+          </div>
+          <h4 class="rec-deck-h4">推薦牌組</h4>
           ${RECOMMENDED_DECKS.map(d => `
             <div class="recommended-deck-item" data-rec-id="${d.id}">
               <div class="rec-deck-name">${d.name}</div>
@@ -305,6 +313,23 @@ function bindEvents(container) {
     });
   });
 
+  // DeckLog code import
+  const dlInput = document.getElementById('deckLogCodeInput');
+  const dlBtn = document.getElementById('deckLogLoadBtn');
+  const dlStatus = document.getElementById('deckLogStatus');
+  if (dlBtn && dlInput && dlStatus) {
+    const trigger = () => _loadFromDeckLogCode(dlInput.value, dlStatus);
+    dlBtn.addEventListener('click', trigger);
+    dlInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); trigger(); }
+    });
+    // Auto-uppercase as user types — DeckLog codes are case-insensitive but
+    // canonicalized uppercase in our data (matches Bushi-Navi conventions)
+    dlInput.addEventListener('input', () => {
+      dlInput.value = dlInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    });
+  }
+
   bindCardEvents();
 
   // Confirm
@@ -316,6 +341,111 @@ function bindEvents(container) {
       cheerDeck: [...deckState.cheerDeck.entries()].map(([cardId, count]) => ({ cardId, count })),
     });
   });
+}
+
+// ─── DeckLog 5-char code import ───────────────────────────────────────
+// Pastes a Bushiroad DeckLog code (e.g. "20HL9"), looks it up via the
+// public hocg-deck-convert-api proxy, and populates deckState. Same proxy
+// our scrapers use server-side; CORS allows browser access.
+//
+// Cache strategy: skipped intentionally. Our local decklog_decks.json (52
+// entries) and bushinavi_decks.json (~6500) cover only the codes we've
+// scraped. The proxy is fast (~1-2s) and supports any valid code, so we
+// just always go to it and avoid pulling 4MB of JSON into the page.
+
+const DECKLOG_PROXY_URL = 'https://hocg-deck-convert-api.onrender.com/view-deck';
+// Try game_title_id 9 first (current hololive OCG card pool); fall back to
+// 108 (older / different region). Mirrors scraper/scrape_decklog.py logic.
+const DECKLOG_GAME_IDS = [9, 108];
+
+async function _loadFromDeckLogCode(rawCode, statusEl) {
+  const code = (rawCode || '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!/^[A-Z0-9]{4,6}$/.test(code)) {
+    statusEl.textContent = '⚠️ 格式錯誤：應為 4-6 碼英數字';
+    statusEl.className = 'dl-code-status err';
+    return;
+  }
+
+  statusEl.textContent = '⏳ 從 DeckLog 抓取中...';
+  statusEl.className = 'dl-code-status loading';
+
+  let raw = null;
+  let lastErr = '';
+  for (const gid of DECKLOG_GAME_IDS) {
+    try {
+      const resp = await fetch(DECKLOG_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ game_title_id: gid, code: code.toLowerCase() }),
+      });
+      if (resp.ok) {
+        raw = await resp.json();
+        break;
+      }
+      // 400 + body "code does not exist" → try next gid
+      lastErr = await resp.text().catch(() => `HTTP ${resp.status}`);
+    } catch (e) {
+      lastErr = e.message || String(e);
+    }
+  }
+
+  if (!raw) {
+    statusEl.textContent = `❌ 找不到牌組代碼「${code}」（${lastErr.slice(0, 80)}）`;
+    statusEl.className = 'dl-code-status err';
+    return;
+  }
+
+  // The proxy sometimes returns split entries for the same card_id (different
+  // upload metadata). Aggregate to a {cardId: count} Map.
+  const aggregate = (list) => {
+    const m = new Map();
+    for (const c of list || []) {
+      const id = c.card_number;
+      const n = Number(c.num) || 0;
+      if (!id || !n) continue;
+      m.set(id, (m.get(id) || 0) + n);
+    }
+    return m;
+  };
+
+  const oshiMap = aggregate(raw.p_list);
+  const mainMap = aggregate(raw.list);
+  const cheerMap = aggregate(raw.sub_list);
+
+  if (oshiMap.size === 0) {
+    statusEl.textContent = `❌ 此牌組沒有推し卡，無法載入`;
+    statusEl.className = 'dl-code-status err';
+    return;
+  }
+
+  // Take the first oshi (single-oshi decks are the rule; if 2+, user can fix manually)
+  const oshiId = [...oshiMap.keys()][0];
+
+  // Validate every cardId exists in our DB; collect any unknowns to warn the user
+  const unknowns = [];
+  for (const id of [oshiId, ...mainMap.keys(), ...cheerMap.keys()]) {
+    if (!getCard(id)) unknowns.push(id);
+  }
+
+  // Populate deckState (same shape as recommended-deck loading)
+  deckState.oshi = oshiId;
+  deckState.mainDeck = mainMap;
+  deckState.cheerDeck = cheerMap;
+  deckState.tab = 'current';
+
+  const mainTotal = [...mainMap.values()].reduce((s, c) => s + c, 0);
+  const cheerTotal = [...cheerMap.values()].reduce((s, c) => s + c, 0);
+  const title = raw.title || code;
+
+  if (unknowns.length) {
+    statusEl.textContent = `⚠️ ${title}：${mainTotal}+${cheerTotal} 張，有 ${unknowns.length} 張卡 ID 在卡庫找不到（${unknowns.slice(0, 2).join(', ')}…）`;
+    statusEl.className = 'dl-code-status warn';
+  } else {
+    statusEl.textContent = `✅ ${title}：主 ${mainTotal} / 應援 ${cheerTotal}`;
+    statusEl.className = 'dl-code-status ok';
+  }
+
+  render();
 }
 
 function bindCardEvents() {
