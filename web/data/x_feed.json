@@ -1932,7 +1932,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1556
+    "favorite_count": 1557
   },
   {
     "id": "2043267883992531384",
@@ -3949,7 +3949,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 705
+    "favorite_count": 706
   },
   {
     "id": "2037469849837015526",
@@ -4471,33 +4471,6 @@
     ],
     "category": "tournament",
     "favorite_count": 258
-  },
-  {
-    "id": "1919186189237838054",
-    "url": "https://x.com/hololive_OCG/status/1919186189237838054",
-    "text": "🎉#ホロカ ワールドグランプリ2025大会本戦（個人戦） Bブロック 大会結果速報🎉\n\n🏆優勝　ギリャー選手🏆\n推しホロメン：AZKi⚒️\nデッキログ：https://decklog.bushiroad.com/view/3GXGQ\n\n🏆準優勝　RasK選手🏆\n推しホロメン：宝鐘マリン🏴‍☠️\nデッキログ：https://decklog.bushiroad.com/view/4F9GY\n\n🏆ベスト4　とりかた選手🏆",
-    "created_at": "2025-05-05T00:23:38.000Z",
-    "author": {
-      "name": "hololive OFFICIAL CARD GAME【公式】",
-      "handle": "hololive_OCG",
-      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
-    },
-    "media": [],
-    "hashtags": [
-      "ホロカ"
-    ],
-    "external_urls": [
-      {
-        "url": "https://decklog.bushiroad.com/view/3GXGQ",
-        "display": "decklog.bushiroad.com/view/3GXGQ"
-      },
-      {
-        "url": "https://decklog.bushiroad.com/view/4F9GY",
-        "display": "decklog.bushiroad.com/view/4F9GY"
-      }
-    ],
-    "category": "tournament",
-    "favorite_count": 263
   },
   {
     "id": "1919184798439878690",
