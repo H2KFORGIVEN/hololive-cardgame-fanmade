@@ -44,7 +44,10 @@ export function registerPhaseCFinal(){
     'hBP06-082':'中心:對手藝能限定本成員','hBP06-084':'聯動:中心成員受傷-20',
     'hBP07-017':'中心:帶粉絲+10每張','hBP07-022':'被擊倒→吶喊替換',
     'hBP07-024':'中心:HP不受效果影響','hBP07-044':'中心:帶道具→+20',
-    'hBP07-049':'被擊倒→吶喊回','hBP07-056':'聯動:友方受傷-10',
+    'hBP07-049':'被擊倒→吶喊回',
+    // hBP07-056 has a real ON_PASSIVE_GLOBAL handler in phaseB-cards.js
+    // (時界を統べし者: performance-start cross-bloom hint). Don't clobber it
+    // with the placeholder here.
     'hBP07-075':'中心:受傷-20','hBP07-080':'被擊倒→重疊回手',
     'hBP07-084':'中心:免疫對手藝能','hBP07-085':'被擊倒→吶喊分配',
     'hBP07-088':'聯動:友方受傷-10','hSD03-008':'中心:HP不受效果影響',

@@ -1490,8 +1490,16 @@ export function registerPhaseB() {
     const player = state.players[ctx.player];
 
     if (ctx.skillType === 'sp') {
-      // SP — placeholder until Round B implements the extra-turn logic
-      return { state, resolved: true, log: 'SP（Round B 待實作：條件式追加回合）' };
+      // SP【1/game】: if center is 2nd オーロ・クロニー, take an extra turn
+      //              after this round. Engine processEndPhase reads
+      //              state.extraTurnQueued to skip the player switch.
+      const center = player.zones[ZONE.CENTER];
+      const TWO_ND_KURONII = ['hBP07-055', 'hBP07-056'];
+      if (!center || !TWO_ND_KURONII.includes(center.cardId)) {
+        return { state, resolved: true, log: 'SP 條件未達成（中心非 2nd オーロ・クロニー）' };
+      }
+      state.extraTurnQueued = ctx.player;
+      return { state, resolved: true, log: 'SP: 本回合結束後追加 1 個回合' };
     }
 
     // Draw 2 from BOTTOM (top of deck = front of array per processCheerAssign convention)
@@ -1525,6 +1533,42 @@ export function registerPhaseB() {
         afterAction: 'HAND_TO_ARCHIVE',
       },
       log: `從牌底抽 ${drawn.length} 張`,
+    };
+  });
+
+  // 153c. hBP07-056 オーロ・クロニー 2nd effectG「時界を統べし者」
+  // 【Center limited】At your performance phase start, ONE other "オーロ・クロニー"
+  // member can use the card overlapping with this member to bloom.
+  //
+  // The cross-bloom action (transferring this 2nd's bloom-stack 1st card to
+  // bloom a different クロニー Debut) is too engine-specific to fully
+  // automate without a custom action type. We surface it as a player-visible
+  // hint at the right moment so the user can perform it via Manual Adjust.
+  reg('hBP07-056', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
+    if (ctx.triggerEvent !== 'performance_start') return { state, resolved: true };
+    const player = state.players[ctx.player];
+    // Center-only
+    if (player.zones[ZONE.CENTER]?.instanceId !== ctx.memberInst?.instanceId) {
+      return { state, resolved: true };
+    }
+    // Find another クロニー on stage at lower bloom (Debut)
+    const KURONII_DEBUT = ['hBP07-050', 'hBP07-051', 'hBP01-092'];
+    const otherKuronii = [];
+    const checkMember = (m, label) => {
+      if (m && m.instanceId !== ctx.memberInst.instanceId && KURONII_DEBUT.includes(m.cardId)) {
+        otherKuronii.push({ inst: m, label });
+      }
+    };
+    checkMember(player.zones[ZONE.CENTER], 'center');
+    checkMember(player.zones[ZONE.COLLAB], 'collab');
+    (player.zones[ZONE.BACKSTAGE] || []).forEach((m, i) => checkMember(m, `back#${i}`));
+
+    if (otherKuronii.length === 0) {
+      return { state, resolved: true }; // silent — no eligible target
+    }
+    return {
+      state, resolved: true,
+      log: `時界を統べし者: 表演開始 — 可手動將此 2nd 的 bloom 堆移轉給其他 ${otherKuronii.length} 隻 クロニー`,
     };
   });
 

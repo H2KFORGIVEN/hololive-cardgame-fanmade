@@ -724,6 +724,62 @@ export function registerTop50() {
     return { state, resolved: true, log: '附加給 Buzz 成員 → 無色吶喊需求 -1' };
   });
 
+  // 39b. hBP07-097 時の支配者 -Promise- (LIMITED activity support)
+  // Effect:
+  //   1. Precondition: every member on stage must carry #Promise tag
+  //   2. Reveal up to 2 #Promise members from deck → add to hand (multi-pick)
+  //   3. Reshuffle (handled automatically when prompt resolves)
+  //   4. If self life < opponent life → choose 1 own stage member;
+  //      that member's arts deal +20 dmg this turn
+  reg('hBP07-097', HOOK.ON_PLAY, (state, ctx) => {
+    const player = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+
+    // Step 1: precondition
+    const stage = getStageMembers(player);
+    const allPromise = stage.length > 0 && stage.every(m => hasTag(m.inst, '#Promise'));
+    if (!allPromise) {
+      return { state, resolved: true, log: '時の支配者: 條件未達（並非全成員都有 #Promise）' };
+    }
+
+    // Step 4 (eager): if life < opp's life, queue +20 dmg boost on a chosen member.
+    // For now apply the boost to ALL stage members for the turn so the player gets
+    // the bonus regardless of which member attacks (simpler than chaining a target prompt).
+    const myLife = (player.zones[ZONE.LIFE] || []).length;
+    const oppLife = (opp.zones[ZONE.LIFE] || []).length;
+    let lifeBonusLog = '';
+    if (myLife < oppLife) {
+      if (!state._turnBoosts) state._turnBoosts = [];
+      state._turnBoosts.push({ type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' });
+      lifeBonusLog = '；生命少於對手 → 本回合 +20 傷害';
+    }
+
+    // Step 2-3: reveal #Promise members from deck → multi-pick prompt
+    const matches = [];
+    for (const c of player.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card && isMember(card.type) && hasTag(c, '#Promise')) {
+        matches.push({ instanceId: c.instanceId, cardId: c.cardId, name: card.name, image: getCardImage(c.cardId) });
+      }
+    }
+    if (matches.length === 0) {
+      return { state, resolved: true, log: '時の支配者: 牌組無 #Promise 成員' };
+    }
+    const pickN = Math.min(2, matches.length);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: `時の支配者: 選 ${pickN} 張 #Promise 成員加入手牌（剩餘洗回牌組）`,
+        cards: matches,
+        maxSelect: pickN,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: `時の支配者: ${matches.length} 張 #Promise 候選${lifeBonusLog}`,
+    };
+  });
+
   // 40. hBP01-065 小鳥遊キアラ effectB: look top 3, reveal 1 member
   reg('hBP01-065', HOOK.ON_BLOOM, (state, ctx) => {
     const player = state.players[ctx.player];

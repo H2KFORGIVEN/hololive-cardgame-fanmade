@@ -604,6 +604,20 @@ function endMainPhase(state) {
   }
   state.phase = PHASE.PERFORMANCE;
   addLog(state, `P${p + 1} 進入表演階段`);
+
+  // Fire effectG for "performance phase start" trigger — e.g. hBP07-056
+  // クロニー 2nd: "let another クロニー bloom from this card's stack"
+  const stage = [
+    state.players[p].zones[ZONE.CENTER],
+    state.players[p].zones[ZONE.COLLAB],
+    ...(state.players[p].zones[ZONE.BACKSTAGE] || []),
+  ].filter(Boolean);
+  for (const m of stage) {
+    fireEffect(state, HOOK.ON_PASSIVE_GLOBAL, {
+      cardId: m.cardId, player: p, memberInst: m, triggerEvent: 'performance_start',
+    });
+  }
+
   return state;
 }
 
@@ -656,6 +670,16 @@ function processEndPhase(state) {
   }
 
   addLog(state, `--- P${p + 1} 回合結束 ---`);
+
+  // Extra-turn check (e.g. クロニー SP "take another turn after this round").
+  // The skill handler set state.extraTurnQueued to its player index.
+  if (state.extraTurnQueued === p) {
+    state.extraTurnQueued = null;
+    state.turnNumber++;
+    state.phase = PHASE.RESET;
+    addLog(state, `--- P${p + 1} 額外回合開始（クロニー SP）---`);
+    return state;
+  }
 
   // Switch to opponent
   state.activePlayer = 1 - p;

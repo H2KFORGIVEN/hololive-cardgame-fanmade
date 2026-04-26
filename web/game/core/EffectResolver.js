@@ -186,6 +186,27 @@ export function resolveEffectChoice(state, prompt, selected) {
       player.zones['hand'].push(card);
       addLog(state, prompt.player, `展示 ${selected.name} 加入手牌`);
     }
+
+    // Multi-select continuation: if maxSelect > 1, re-emit the same prompt
+    // with the picked card removed and maxSelect decremented. Player can stop
+    // early via the modal's skip button. This makes maxSelect>1 actually work
+    // (previously it was set in handlers but UI only allowed 1 pick total).
+    if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+      const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+      if (newCards.length > 0) {
+        const baseMsg = prompt.baseMessage || prompt.message || '';
+        const remainingPicks = prompt.maxSelect - 1;
+        state.pendingEffect = {
+          ...prompt,
+          cards: newCards,
+          maxSelect: remainingPicks,
+          message: `${baseMsg}（還可選 ${remainingPicks} 張，可跳過）`,
+          baseMessage: baseMsg,
+        };
+        return state;
+      }
+    }
+
     // Chain: if remaining cards need to be ordered to bottom
     if (prompt.remainingCards) {
       const remaining = prompt.remainingCards.filter(c => c.instanceId !== selected.instanceId);
