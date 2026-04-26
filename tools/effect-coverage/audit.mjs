@@ -180,9 +180,10 @@ function tryInvoke(handler, cardId, hook, ctxOverride = {}) {
 // state-mutating code.
 const MUTATING_PATTERNS = [
   /\bprompt\s*:/, /\beffect\s*:/,
-  /\bdrawCards\s*\(/, /\bdamageOpp\s*\(/, /\barchiveHand\s*\(/,
+  /\bdrawCards\s*\(/, /\bdamageOpp\w*\s*\(/, /\barchiveHand\s*\(/,
   /\bsendCheerDeck\s*\(/, /\bsendCheerArchive\s*\(/, /\breturnArchive\s*\(/,
-  /\bapplyDamage\s*\(/,
+  /\bsendCheerFromArchiveToMember\s*\(/, /\bsendCheerFromDeckToMember\s*\(/,
+  /\bapplyDamage\w*\s*\(/,
   /\bboost\s*\(/, /\bboostTurn\s*\(/, /\bPB\s*\(/,
   /\bshuffleArr\s*\(/,
   /\.zones\s*\[[^\]]+\]\.push\s*\(/,
@@ -194,6 +195,7 @@ const MUTATING_PATTERNS = [
   /\bmemberInst\.\w+\s*=/, /\bmemberInst\.damage\s*[=+-]/,
   /\bmemberInst\.attachedCheer/, /\bmemberInst\.attachedSupport/, /\bmemberInst\.bloomStack/,
   /\bdamage\s*=\s*Math\.max/, /\bplayer\.usedSp/,
+  /\barchive\.push\s*\(/, /\bArchive\b.*\.push/,
 ];
 
 function staticLooksMutating(handler) {
