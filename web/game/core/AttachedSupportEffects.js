@@ -58,6 +58,9 @@ const REGISTRY = {
   },
   // hBP07-103 ギラファノコギリクワガタ: ねね art +20 (only when on ねね)
   'hBP07-103': { artDamageBoost: (m, c) => (c?.name === '桃鈴ねね' ? 20 : 0) },
+  // hBP04-097 緑の試験管: art +10; conditional 1st+ こより rest→active is
+  // engine-complex (manual via UI), skipped. The +10 boost is universal.
+  'hBP04-097': { artDamageBoost: () => 10 },
   // hBP03-095 ホロキャップ: ◆Debut/Spot: HP +30
   'hBP03-095': {
     extraHp: (m, c) => (c?.bloom === 'Debut' || c?.bloom === 'Spot' ? 30 : 0),
@@ -89,6 +92,8 @@ const REGISTRY = {
   // hBP03-110 ろぼさー: art damage −10 (ロボ子さん-only; "counts as purple cheer"
   // for art cost is engine-complex, skipped — DamageCalculator.applyDamage path handles −10).
   'hBP03-110': { artDamageBoost: () => -10 },
+  // hBP03-111 ころねすきー: baton-pass colorless cheer cost −1 (戌神ころね-only).
+  'hBP03-111': { batonColorlessReduction: () => 1 },
 };
 
 function _eachAttachedEffect(memberInst, fnName) {
@@ -130,4 +135,14 @@ export function getArtDamageBoost(memberInst) {
  */
 export function getDamageReceivedModifier(memberInst) {
   return _eachAttachedEffect(memberInst, 'damageReceivedModifier');
+}
+
+/**
+ * Sum of baton-pass colorless cheer cost reductions from equipped items
+ * (e.g. hBP03-111 ころねすきー: -1). Consumed by ActionValidator
+ * .validateBatonPass and GameEngine.processBatonPass to clamp the
+ * effective baton cost.
+ */
+export function getBatonColorlessReduction(memberInst) {
+  return _eachAttachedEffect(memberInst, 'batonColorlessReduction');
 }

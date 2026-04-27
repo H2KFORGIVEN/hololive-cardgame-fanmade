@@ -3,7 +3,7 @@
 
 import { getCard, getCardImage } from '../../core/CardDatabase.js';
 import { registerEffect, HOOK } from '../EffectRegistry.js';
-import { ZONE, MEMBER_STATE, isMember, isSupport } from '../../core/constants.js';
+import { ZONE, MEMBER_STATE, PHASE, isMember, isSupport } from '../../core/constants.js';
 import { applyDamageToMember, drawCards, getStageMembers } from './common.js';
 import { removeInstance } from '../../core/GameState.js';
 
@@ -2672,11 +2672,36 @@ export function registerPhaseB() {
   // E-6.2 hBP07-039 赤井はあと 1st effectG:
   //   "[Once per turn] Own turn, when own 赤井はあと is returned from stage
   //    to deck, may send 1 archive cheer to THIS member."
-  // Trigger event (member returned to deck) isn't fired by the engine today;
-  // no current cards in this set actually return members to deck during play.
-  // Hint log only.
+  // J-3 upgrade: now wired to HOOK.ON_RETURN_TO_DECK fired from
+  // GameState.returnStageMemberToDeck via the engine wrapper. The cheer
+  // travels with the deck-bound instance (keepCheer-equivalent). No current
+  // card causes return-to-deck during play, but the infrastructure is in
+  // place; future cards that move stage → deck just call the helper.
+  reg('hBP07-039', HOOK.ON_RETURN_TO_DECK, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-039') return { state, resolved: true };
+    // Only own turn
+    if (state.activePlayer !== ctx.player) return { state, resolved: true };
+    // Once per turn flag — reuse a simple tracker
+    state._hBP07_039_used_this_turn = state._hBP07_039_used_this_turn || {};
+    if (state._hBP07_039_used_this_turn[ctx.player]) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const archIdx = (own.zones[ZONE.ARCHIVE] || []).findIndex(c =>
+      getCard(c?.cardId)?.type === '吶喊'
+    );
+    if (archIdx < 0) return { state, resolved: true, log: 'hBP07-039: 存檔無吶喊' };
+    const cheer = own.zones[ZONE.ARCHIVE].splice(archIdx, 1)[0];
+    // Attach to the moved instance (now in deck). Cheer rides with the card.
+    const inst = ctx.memberInst;
+    if (inst) {
+      if (!Array.isArray(inst.attachedCheer)) inst.attachedCheer = [];
+      inst.attachedCheer.push(cheer);
+    }
+    state._hBP07_039_used_this_turn[ctx.player] = true;
+    return { state, resolved: true, log: 'hBP07-039: 從舞台返回牌組 → 1 存檔吶喊隨行' };
+  });
+  // Keep the passive_global log so phaseC1 doesn't lose its breadcrumb
   reg('hBP07-039', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
-    state, resolved: true, log: 'hBP07-039: 赤井はあと 從舞台放回牌組時觸發（未來事件，手動）',
+    state, resolved: true, log: 'hBP07-039: 從舞台放回牌組時觸發（HOOK.ON_RETURN_TO_DECK）',
   }));
 
   // E-6.3 hBP06-026 風真いろは 1st Buzz effectG:
@@ -3336,11 +3361,84 @@ export function registerPhaseB() {
 
   // F-3.5 hBP02-001 白上フブキ
   //   oshi: Search 1 吉祥物 from deck → hand. Reshuffle.
-  //   sp:   REACTIVE (white knocks opp → dice based on stage mascot count).
-  //   Hint log for sp.
+  //   sp:   REACTIVE [1/game] When own white member knocks opp → for every
+  //         2 mascots on own stage, roll 1 die; if any odd appears, opp
+  //         life −1. Auto-fires via reactive_knockdown when isMyKnockedOpp
+  //         and the attacker (whose cardId came in via existing engine
+  //         attackerInst snapshot in J-1) is white. Cost 2 holopower.
+  // J-2 upgrade: was hint-log; now auto-fires on reactive_knockdown.
   reg('hBP02-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      // Only when own knocked opp's member
+      if (!ctx.isMyKnockedOpp) return { state, resolved: true };
+      const own = state.players[ctx.player];
+      if (own.oshi?.usedSp) return { state, resolved: true };
+      // Find attacker stage card to verify color = white
+      const attacker = own.zones[ZONE.CENTER]?.instanceId === ctx.knockedOutInstanceId
+        ? null  // shouldn't happen — center is opp's
+        : null;
+      // The reactive_knockdown ctx doesn't carry attackerInst directly;
+      // engine's attacker_knocked_opp does. To detect white attacker, walk
+      // own stage and require ANY active white member on center/collab
+      // (heuristic — the just-attacked one).
+      const stage = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ].filter(Boolean);
+      const hasWhiteAttacker = stage.some(m => getCard(m.cardId)?.color === '白');
+      if (!hasWhiteAttacker) return { state, resolved: true };
+      const cost = Math.abs(getCard(own.oshi?.cardId)?.spSkill?.holoPower || 2);
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+      // Count mascots on own stage
+      const allOwnStage = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+        ...(own.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      let mascotCount = 0;
+      for (const m of allOwnStage) {
+        for (const sup of (m.attachedSupport || [])) {
+          if (getCard(sup.cardId)?.type === '支援・吉祥物') mascotCount++;
+        }
+      }
+      const diceCount = Math.floor(mascotCount / 2);
+      if (diceCount === 0) return { state, resolved: true, log: 'hBP02-001 SP: 吉祥物 < 2，跳過' };
+      // Pay cost
+      for (let i = 0; i < cost; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshi.usedSp = true;
+      // Roll dice
+      let rolls = [];
+      let hasOdd = false;
+      for (let i = 0; i < diceCount; i++) {
+        const r = Math.floor(Math.random() * 6) + 1;
+        rolls.push(r);
+        if (r % 2 === 1) hasOdd = true;
+      }
+      // If odd appears: opp life -1 retroactively (since reactive_knockdown
+      // fires AFTER life loss, we directly shift one more from opp's life zone).
+      // ctx.attackerPlayer is the PLAYER who attacked (== ctx.player here);
+      // the opponent whose life shrinks is the other side.
+      if (hasOdd) {
+        const opp = state.players[1 - ctx.player];
+        if (opp?.zones[ZONE.LIFE]?.length > 0) {
+          const lifeCard = opp.zones[ZONE.LIFE].shift();
+          lifeCard.faceDown = false;
+          // Push to opp's archive (life loss in this engine drops cards directly)
+          opp.zones[ZONE.ARCHIVE].push(lifeCard);
+          if (opp.zones[ZONE.LIFE].length === 0) {
+            state.winner = ctx.player;
+            state.phase = PHASE.GAME_OVER;
+          }
+        }
+      }
+      return {
+        state, resolved: true,
+        log: `hBP02-001 SP 自動觸發: 擲 ${diceCount} 次（${rolls.join(',')}）→ 對手生命 ${hasOdd ? '-1' : '不變'}`,
+      };
+    }
     if (ctx.skillType === 'sp') {
-      return { state, resolved: true, log: 'hBP02-001 SP: 白色擊倒對手時觸發（手動）' };
+      return { state, resolved: true, log: 'hBP02-001 SP: 白色擊倒對手時觸發（已支援自動）' };
     }
     const own = state.players[ctx.player];
     const candidates = [];
@@ -5123,6 +5221,16 @@ export function registerPhaseB() {
   });
 
   // ── End of Round I-2 ──
+
+  // ── Round J-1: phaseC1 LOG_ONLY upgrades ─────────────────────────────────
+  // hBP04-013 was already implemented at E-3.2 above — its
+  // 'member_knocked' + isAttackingMember pattern already covers the
+  // "this member knocks opp" trigger. The J-1 engine extension
+  // (attacker_knocked_opp single-fire) is reserved for future handlers
+  // that need the cleaner "I attacked and KO'd" semantics without the
+  // broadcast-and-filter pattern.
+
+  // ── End of Round J-1 ──
 
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if

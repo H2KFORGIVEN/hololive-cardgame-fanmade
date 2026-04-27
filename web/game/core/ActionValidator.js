@@ -2,7 +2,7 @@ import { PHASE, ZONE, ACTION, BLOOM_ORDER, MAX_STAGE_MEMBERS, MEMBER_STATE, pars
 import { isBloomLevelOverridden } from './BloomRuleOverrides.js';
 import { getCard, getCardsByName } from './CardDatabase.js';
 import { getStageCount, findInstance } from './GameState.js';
-import { getColorlessReduction } from './AttachedSupportEffects.js';
+import { getColorlessReduction, getBatonColorlessReduction } from './AttachedSupportEffects.js';
 
 export function validateAction(state, action) {
   const p = state.activePlayer;
@@ -213,10 +213,18 @@ function validateBatonPass(state, action, player) {
   if (idx < 0 || idx >= backstage.length) return fail('後台位置無效');
   if (backstage[idx].state !== MEMBER_STATE.ACTIVE) return fail('後台成員為休息狀態');
 
-  // Check baton cost (same color matching as art cost)
+  // Check baton cost (same color matching as art cost). Reduce colorless
+  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1).
   const centerCard = getCard(center.cardId);
   const batonCost = parseCost(centerCard?.batonImage);
-  if (!canPayArtCost(center, batonCost)) {
+  const batonReduction = getBatonColorlessReduction(center);
+  if (batonReduction > 0) {
+    const before = batonCost.colorless || 0;
+    const after = Math.max(0, before - batonReduction);
+    batonCost.colorless = after;
+    batonCost.total = Math.max(0, (batonCost.total || 0) - (before - after));
+  }
+  if (batonCost.total > 0 && !canPayArtCost(center, batonCost)) {
     return fail(`吶喊卡不足以支付交棒費用（需要 ${batonCost.total} 張）`);
   }
 

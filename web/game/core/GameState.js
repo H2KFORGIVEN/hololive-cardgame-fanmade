@@ -106,6 +106,42 @@ export function removeInstance(playerState, instanceId) {
   return null;
 }
 
+// Send a stage member back to the player's deck. By default the attached
+// cheer / support / bloom-stack go to archive (standard rule: only the base
+// card returns; everything attached gets archived). Returns the moved
+// instance (for caller post-processing) or null if not found. The caller
+// is responsible for firing HOOK.ON_RETURN_TO_DECK afterwards (engine
+// helper does this) so handlers like hBP07-039 赤井はあと can react.
+//
+// options: { keepCheer?: boolean, faceDown?: boolean = true,
+//            placement?: 'top'|'bottom' = 'bottom' }
+export function returnStageMemberToDeck(playerState, instanceId, options = {}) {
+  const inst = removeInstance(playerState, instanceId);
+  if (!inst) return null;
+  const archive = playerState.zones[ZONE.ARCHIVE];
+  if (!options.keepCheer) {
+    for (const c of (inst.attachedCheer || [])) archive.push(c);
+    inst.attachedCheer = [];
+  }
+  for (const s of (inst.attachedSupport || [])) archive.push(s);
+  inst.attachedSupport = [];
+  if (Array.isArray(inst.bloomStack)) {
+    for (const entry of inst.bloomStack) {
+      const cardId = typeof entry === 'string' ? entry : entry?.cardId;
+      if (cardId) archive.push(createCardInstance(cardId));
+    }
+  }
+  inst.bloomStack = [];
+  inst.damage = 0;
+  inst.faceDown = options.faceDown !== false;
+  if (options.placement === 'top') {
+    playerState.zones[ZONE.DECK].unshift(inst);
+  } else {
+    playerState.zones[ZONE.DECK].push(inst);
+  }
+  return inst;
+}
+
 // Jump an initialized state directly to Main phase with cards pre-placed.
 // Used by tutorial mode to skip mulligan/setup and start from a known state.
 //

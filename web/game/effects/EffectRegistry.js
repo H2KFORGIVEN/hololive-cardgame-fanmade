@@ -33,4 +33,5 @@ export const HOOK = {
   ON_STAGE_SKILL: 'ON_STAGE_SKILL',       // stageSkill (oshi alt skill)
   ON_CHEER_ATTACH: 'ON_CHEER_ATTACH',     // yellEffect on cheer cards
   ON_PLACE: 'ON_PLACE',                   // when placed from hand to stage
+  ON_RETURN_TO_DECK: 'ON_RETURN_TO_DECK', // when stage member returns to deck
 };

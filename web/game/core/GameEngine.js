@@ -1,12 +1,12 @@
 import { PHASE, ZONE, ACTION, MEMBER_STATE } from './constants.js';
 import { getCard } from './CardDatabase.js';
-import { cloneState, getStageCount, findInstance, removeInstance, archiveMember } from './GameState.js';
+import { cloneState, getStageCount, findInstance, removeInstance, archiveMember, returnStageMemberToDeck as _returnStageMemberToDeck } from './GameState.js';
 import { validateAction } from './ActionValidator.js';
 import { calculateDamage, applyDamage } from './DamageCalculator.js';
 import { parseCost } from './constants.js';
 import { triggerEffect } from '../effects/EffectEngine.js';
 import { HOOK } from '../effects/EffectRegistry.js';
-import { getExtraHp, getArtDamageBoost } from './AttachedSupportEffects.js';
+import { getExtraHp, getArtDamageBoost, getBatonColorlessReduction } from './AttachedSupportEffects.js';
 import { getMemberSelfExtraHp } from './MemberSelfEffects.js';
 
 export function processAction(state, action) {
@@ -398,8 +398,16 @@ function processBatonPass(state, action) {
   const center = player.zones[ZONE.CENTER];
   const centerCard = getCard(center.cardId);
 
-  // Pay baton cost — smart auto-select matching colors
+  // Pay baton cost — smart auto-select matching colors. Reduce colorless
+  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1).
   const batonCost = parseCost(centerCard?.batonImage);
+  const batonReduction = getBatonColorlessReduction(center);
+  if (batonReduction > 0) {
+    const before = batonCost.colorless || 0;
+    const after = Math.max(0, before - batonReduction);
+    batonCost.colorless = after;
+    batonCost.total = Math.max(0, (batonCost.total || 0) - (before - after));
+  }
   const cheerToRemove = action.cheerToArchive || [];
   if (cheerToRemove.length > 0) {
     // SECURITY: client-supplied cheer selection must actually satisfy batonCost.
@@ -641,15 +649,17 @@ function processUseArt(state, action) {
 
   // Check knockdown — runs AFTER hooks so handler-side state changes (e.g.
   // a healing effect via ON_DAMAGE_TAKEN) can be observed before the
-  // member is finally processed.
+  // member is finally processed. Pass the attacker through so handlers
+  // (e.g. hBP04-013 こより effectG: when this member knocks opp → deck-top
+  // to holopower + reveal 1) can react to who delivered the KO.
   if (result.knockedDown) {
-    processKnockdown(state, p, target, opponent);
+    processKnockdown(state, p, target, opponent, attacker);
   }
 
   return state;
 }
 
-function processKnockdown(state, attackerPlayer, target, opponent) {
+function processKnockdown(state, attackerPlayer, target, opponent, attackerInst = null) {
   const targetCard = getCard(target.cardId);
   const isBuzz = targetCard?.bloom === '1st Buzz';
   const baseLifeCost = isBuzz ? 2 : 1;
@@ -684,6 +694,7 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     player: 1 - attackerPlayer,
     memberInst: target,
     attackerPlayer,
+    attackerInst,
     cancelKnockdown: false,
     lifeLossDelta: 0,
     knockedOutZone,
@@ -692,6 +703,25 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     knockedOutCheerSnapshot,
   };
   fireEffect(state, HOOK.ON_KNOCKDOWN, knockdownCtx);
+
+  // Also fire ON_KNOCKDOWN single-fire for the attacker's cardId so handlers
+  // like hBP04-013 こより can react to "this member knocked opp". Skipped if
+  // attacker info missing (e.g. effect-driven knockouts via sweepEffectKnockouts).
+  // Differentiated from the killed-member fire by triggerEvent='attacker_knocked_opp'.
+  if (attackerInst?.cardId) {
+    fireEffect(state, HOOK.ON_KNOCKDOWN, {
+      cardId: attackerInst.cardId,
+      player: attackerPlayer,
+      memberInst: attackerInst,
+      attackerInst,
+      attackerPlayer,
+      triggerEvent: 'attacker_knocked_opp',
+      knockedOutCardId: target.cardId,
+      knockedOutInstanceId: target.instanceId,
+      knockedOutPlayer: 1 - attackerPlayer,
+      knockedOutZone,
+    });
+  }
 
   // Fire ON_KNOCKDOWN for each attached support card so support handlers
   // (e.g. hBP01-124 開拓者, hBP03-109 Ruffians, hBP03-112 わためいと) can
@@ -1087,6 +1117,25 @@ function fireEffect(state, hookType, context) {
 // processKnockdown fires from the art-attack path. Stage-empty win check
 // runs at the end so multiple knockouts in one effect don't crash the loop.
 //
+// Exported wrapper: send a stage member back to deck and fire
+// HOOK.ON_RETURN_TO_DECK so reactive handlers (e.g. hBP07-039 赤井はあと:
+// archive-cheer rides with the returning card) can react. Future effects
+// that move members from stage to deck should call this instead of
+// hand-rolling removeInstance + deck.push.
+export function returnStageMemberToDeck(state, playerIdx, instanceId, options = {}) {
+  const player = state.players[playerIdx];
+  if (!player) return null;
+  const inst = _returnStageMemberToDeck(player, instanceId, options);
+  if (!inst) return null;
+  fireEffect(state, HOOK.ON_RETURN_TO_DECK, {
+    cardId: inst.cardId,
+    player: playerIdx,
+    memberInst: inst,
+    placement: options.placement || 'bottom',
+  });
+  return inst;
+}
+
 // Exported so EffectResolver can call it after a player-picked damage
 // resolution (e.g. SELECT_TARGET → OPP_MEMBER_DAMAGE).
 export function sweepEffectKnockouts(state) {
