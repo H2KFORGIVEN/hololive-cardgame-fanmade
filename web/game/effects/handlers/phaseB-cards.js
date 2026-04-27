@@ -3821,6 +3821,185 @@ export function registerPhaseB() {
 
   // ── End of Round G-2 ──
 
+  // ── Round G-3: art1 boosts + cheer-move + search-attach (5 cards) ───────
+
+  // G-3.1 hBP07-021 ベスティア・ゼータ 2nd art1:
+  //   "If #ID3期生 Buzz member on own stage → +40."
+  reg('hBP07-021', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-021') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const hasIdBuzz = stage.some(m => {
+      const card = getCard(m.cardId);
+      if (!card?.bloom?.includes('Buzz')) return false;
+      const tag = card.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID3期生');
+    });
+    if (!hasIdBuzz) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 40, target: 'self', duration: 'instant' },
+      log: 'hBP07-021 art1: 舞台有 #ID3期生 Buzz → +40',
+    };
+  });
+
+  // G-3.2 hBP01-052 アイラニ・イオフィフティーン Debut art1:
+  //   "May move 1 cheer of self to another own #ID member."
+  reg('hBP01-052', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP01-052') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hBP01-052 art1: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const targets = stage.filter(m => {
+      if (m.instanceId === me.instanceId) return false;
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID');
+    });
+    if (targets.length === 0) return { state, resolved: true, log: 'hBP01-052 art1: 無其他 #ID 成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'CHEER_MOVE',
+        player: ctx.player,
+        message: 'アイラニ art1: 將 1 張自身吶喊轉給其他 #ID 成員',
+        cards: targets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_MOVE',
+        sourceInstanceId: me.instanceId,
+        cheerPredicate: 'any',
+      },
+      log: 'hBP01-052 art1: 選 #ID 成員接收吶喊',
+    };
+  });
+
+  // G-3.3 hBP02-024 大神ミオ Debut art1:
+  //   "May move 1 cheer of self to another own #JP member."
+  reg('hBP02-024', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP02-024') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hBP02-024 art1: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const targets = stage.filter(m => {
+      if (m.instanceId === me.instanceId) return false;
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#JP');
+    });
+    if (targets.length === 0) return { state, resolved: true, log: 'hBP02-024 art1: 無其他 #JP 成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'CHEER_MOVE',
+        player: ctx.player,
+        message: 'ミオ art1: 將 1 張自身吶喊轉給其他 #JP 成員',
+        cards: targets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_MOVE',
+        sourceInstanceId: me.instanceId,
+        cheerPredicate: 'any',
+      },
+      log: 'hBP02-024 art1: 選 #JP 成員接收吶喊',
+    };
+  });
+
+  // G-3.4 hBP06-033 儒烏風亭らでん 1st art1:
+  //   "May send 1 archive cheer to own #ReGLOSS member."
+  // Uses CHEER_FROM_ARCHIVE_TO_MEMBER prompt (added in C-3).
+  reg('hBP06-033', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP06-033') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const archiveCheer = (own.zones[ZONE.ARCHIVE] || []).filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (archiveCheer.length === 0) return { state, resolved: true, log: 'hBP06-033 art1: 存檔無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const targets = stage.filter(m => {
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ReGLOSS');
+    });
+    if (targets.length === 0) return { state, resolved: true, log: 'hBP06-033 art1: 無 #ReGLOSS 成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER',
+        player: ctx.player,
+        message: 'らでん art1: 選 1 位 #ReGLOSS 成員接收存檔吶喊',
+        cards: targets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_MEMBER',
+        cheerColors: null,
+      },
+      log: 'hBP06-033 art1: 選 #ReGLOSS 接收存檔吶喊',
+    };
+  });
+
+  // G-3.5 hBP07-079 桃鈴ねね 1st art1:
+  //   "Search 1 やめなー from deck → attach to own member. Reshuffle."
+  reg('hBP07-079', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP07-079') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === 'やめなー') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP07-079 art1: 牌組無「やめなー」' };
+    }
+    // Auto-target this member
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「やめなー」附加給成員',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ATTACH_SUPPORT',
+        targetInstanceId: ctx.memberInst?.instanceId,
+      },
+      log: 'hBP07-079 art1: 搜尋「やめなー」',
+    };
+  });
+
+  // ── End of Round G-3 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

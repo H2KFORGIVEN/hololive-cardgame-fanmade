@@ -492,18 +492,6 @@
     "usage": 1
   },
   {
-    "id": "hBP07-079",
-    "name": "桃鈴ねね",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "Reveal 1 \"やめなー\" from your deck and attach it to your member. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
     "id": "hBP07-080",
     "name": "桃鈴ねね",
     "hook": "effectG",
@@ -1704,18 +1692,6 @@
     "usage": 0
   },
   {
-    "id": "hBP06-033",
-    "name": "儒烏風亭らでん",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "You can send a shouting card from your save area to the member you marked #ReGLOSS.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-036",
     "name": "百鬼あやめ",
     "hook": "effectC",
@@ -2010,18 +1986,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "Reveal 1 \"BAZO\" or \"Zecretary\" from your deck, and add it to your \"ベスティア・ゼータ\". Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-021",
-    "name": "ベスティア・ゼータ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "If a Buzz member labeled #ID3 is on his stage, this skill will deal +40 damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

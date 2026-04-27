@@ -1,16 +1,16 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T06:24:30.583Z
+Generated: 2026-04-27T06:27:53.536Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 999 (77%)
+- **REAL (mutates state / queues prompt or boost)**: 1002 (77%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 230 (18%)
+- **LOG_ONLY (placeholder logs only)**: 227 (17%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1074 (82%)
+- **Effective coverage (REAL + PASSIVE)**: 1077 (83%)
 
 ## By hook type
 
@@ -18,7 +18,7 @@ Generated: 2026-04-27T06:24:30.583Z
 |---|---|---|---|---|---|---|---|---|
 | oshiSkill | 138 | 133 | 0 | 5 | 0 | 0 | 0 | 96% |
 | spSkill | 135 | 130 | 0 | 5 | 0 | 0 | 0 | 96% |
-| art1 | 297 | 242 | 0 | 55 | 0 | 0 | 0 | 81% |
+| art1 | 297 | 245 | 0 | 52 | 0 | 0 | 0 | 82% |
 | art2 | 55 | 53 | 0 | 2 | 0 | 0 | 0 | 96% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
 | effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
@@ -37,8 +37,8 @@ Generated: 2026-04-27T06:24:30.583Z
 | hBP03 | 123 | 95 | 1 | 27 | 0 | 0 | 0 | 78% |
 | hBP04 | 114 | 93 | 0 | 21 | 0 | 0 | 0 | 82% |
 | hBP05 | 132 | 110 | 1 | 21 | 0 | 0 | 0 | 84% |
-| hBP06 | 145 | 108 | 1 | 36 | 0 | 0 | 0 | 75% |
-| hBP07 | 166 | 113 | 2 | 51 | 0 | 0 | 0 | 69% |
+| hBP06 | 145 | 109 | 1 | 35 | 0 | 0 | 0 | 76% |
+| hBP07 | 166 | 115 | 2 | 49 | 0 | 0 | 0 | 70% |
 | hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
 | hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD02 | 13 | 11 | 2 | 0 | 0 | 0 | 0 | 100% |
@@ -108,25 +108,25 @@ Usage = total copies across 52 tournament decks.
 | 39 | hBP06-104 | スバ友 | support | LOG_ONLY | 2 | During your opponent's turn, when the member with this fan is knocked down, you can send t |
 | 40 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
 | 41 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
-| 42 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
-| 43 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
-| 44 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
-| 45 | hBP01-004 | 兎田ぺこら | oshiSkill | LOG_ONLY | 0 | [Once per round] During the opponent's turn, when one of your own members is knocked down, |
-| 46 | hBP01-004 | 兎田ぺこら | spSkill | LOG_ONLY | 0 | [Once per game] During this round, the number of your own dice is treated as 6. |
-| 47 | hBP01-005 | 鷹嶺ルイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use it when you put cards in your hand into the save area due to t |
-| 48 | hBP01-005 | 鷹嶺ルイ | spSkill | LOG_ONLY | 0 | [Once per game] During the opponent's next turn, the opponent's center member and linkage  |
-| 49 | hBP01-019 | 七詩ムメイ | effectB | LOG_ONLY | 0 | When blooming from Debut, reveal 1 Debut member or 1st member marked #Promise other than B |
-| 50 | hBP01-023 | ときのそら | art1 | LOG_ONLY | 0 | You can roll the dice once: if the number is odd, use this skill again on the same member  |
-| 51 | hBP01-026 | ベスティア・ゼータ | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member or 1st member marked #ID3 except Buzz from your d |
-| 52 | hBP01-052 | アイラニ・イオフィフティーン | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked with #ID. |
-| 53 | hBP01-059 | 鷹嶺ルイ | art2 | LOG_ONLY | 0 | You can put 1 card from your hand into the save area: Reveal 1 1st member other than Buzz  |
-| 54 | hBP01-090 | ムーナ・ホシノヴァ | effectB | LOG_ONLY | 0 | Reveal 1 green shout card or blue shout card from your shout deck and send it to your memb |
-| 55 | hBP01-100 | 森カリオペ | effectC | LOG_ONLY | 0 | You can return 1 to 3 Scream cards in your save area to the Scream deck. Reshuffle the Scr |
-| 56 | hBP01-103 | ゲーミングパソコン | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 Debut member |
-| 57 | hBP01-105 | ペンライト | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 shout card o |
-| 58 | hBP02-011 | 白上フブキ | effectB | LOG_ONLY | 0 | Reveal 1 card marked #白上'sキャラクター from your deck and add it to your hand. Reshuffle the dec |
-| 59 | hBP02-013 | 白上フブキ | effectG | LOG_ONLY | 0 | This member can have 2 mascots with different card names. |
-| 60 | hBP02-016 | 白銀ノエル | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member, 1st member, or Spot member marked #3 from your d |
+| 42 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
+| 43 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
+| 44 | hBP01-004 | 兎田ぺこら | oshiSkill | LOG_ONLY | 0 | [Once per round] During the opponent's turn, when one of your own members is knocked down, |
+| 45 | hBP01-004 | 兎田ぺこら | spSkill | LOG_ONLY | 0 | [Once per game] During this round, the number of your own dice is treated as 6. |
+| 46 | hBP01-005 | 鷹嶺ルイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use it when you put cards in your hand into the save area due to t |
+| 47 | hBP01-005 | 鷹嶺ルイ | spSkill | LOG_ONLY | 0 | [Once per game] During the opponent's next turn, the opponent's center member and linkage  |
+| 48 | hBP01-019 | 七詩ムメイ | effectB | LOG_ONLY | 0 | When blooming from Debut, reveal 1 Debut member or 1st member marked #Promise other than B |
+| 49 | hBP01-023 | ときのそら | art1 | LOG_ONLY | 0 | You can roll the dice once: if the number is odd, use this skill again on the same member  |
+| 50 | hBP01-026 | ベスティア・ゼータ | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member or 1st member marked #ID3 except Buzz from your d |
+| 51 | hBP01-052 | アイラニ・イオフィフティーン | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked with #ID. |
+| 52 | hBP01-059 | 鷹嶺ルイ | art2 | LOG_ONLY | 0 | You can put 1 card from your hand into the save area: Reveal 1 1st member other than Buzz  |
+| 53 | hBP01-090 | ムーナ・ホシノヴァ | effectB | LOG_ONLY | 0 | Reveal 1 green shout card or blue shout card from your shout deck and send it to your memb |
+| 54 | hBP01-100 | 森カリオペ | effectC | LOG_ONLY | 0 | You can return 1 to 3 Scream cards in your save area to the Scream deck. Reshuffle the Scr |
+| 55 | hBP01-103 | ゲーミングパソコン | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 Debut member |
+| 56 | hBP01-105 | ペンライト | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 shout card o |
+| 57 | hBP02-011 | 白上フブキ | effectB | LOG_ONLY | 0 | Reveal 1 card marked #白上'sキャラクター from your deck and add it to your hand. Reshuffle the dec |
+| 58 | hBP02-013 | 白上フブキ | effectG | LOG_ONLY | 0 | This member can have 2 mascots with different card names. |
+| 59 | hBP02-016 | 白銀ノエル | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member, 1st member, or Spot member marked #3 from your d |
+| 60 | hBP02-024 | 大神ミオ | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked #JP. |
 
 ## Tournament-deck coverage (52 community decks)
 
@@ -135,7 +135,7 @@ Sorted ascending by REAL %. Each card counted once.
 | Deck | Placement | REAL | LOG | PASS | MISS | Total | REAL % |
 |---|---|---|---|---|---|---|---|
 | 未公開 | Trio 1st A Block (グランメゾン大阪) | 0 | 0 | 0 | 0 | 0 | 0% |
-| ねね単 | 6th(Bombaxus) | 11 | 9 | 0 | 0 | 20 | 55% |
+| ねね単 | 6th(Bombaxus) | 12 | 8 | 0 | 0 | 20 | 60% |
 | すいせいクロヱ | 1st D Block (めるか) | 9 | 3 | 0 | 0 | 12 | 75% |
 | ルーナ単 | Trio 1st A Block (LGW) | 16 | 5 | 0 | 0 | 21 | 76% |
 | クロニー単 | 3rd(Natskii) | 16 | 5 | 0 | 0 | 21 | 76% |
