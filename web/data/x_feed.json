@@ -24,7 +24,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1205
+    "favorite_count": 1207
   },
   {
     "id": "2048235629314785554",
@@ -56,7 +56,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2026
+    "favorite_count": 2029
   },
   {
     "id": "2047978931228426381",
@@ -83,7 +83,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4399
+    "favorite_count": 4400
   },
   {
     "id": "2047880780064624980",
@@ -167,7 +167,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1074
+    "favorite_count": 1075
   },
   {
     "id": "2047692041644072989",
@@ -194,7 +194,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 2481
+    "favorite_count": 2482
   },
   {
     "id": "2047649878030139515",
@@ -1471,7 +1471,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4508
+    "favorite_count": 4509
   },
   {
     "id": "2045442219545415996",
@@ -1900,7 +1900,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1526
+    "favorite_count": 1527
   },
   {
     "id": "2043705779279241276",
@@ -2080,6 +2080,38 @@
     ],
     "category": "news",
     "favorite_count": 2331
+  },
+  {
+    "id": "2043162195022795205",
+    "url": "https://x.com/hololive_OCG/status/2043162195022795205",
+    "text": "【 #ホロカ カード紹介】\n6月19日(金)発売の『ブースターパック バウンサーバウンド』に収録するカードをご紹介！\n\n今回は推しホロメンの〈セシリア・イマーグリーン〉です！🍵\n\n🔽商品ページ\nhttp://hololive-official-cardgame.com/products/post/bouncer-bound/\n\n#ホロライブ #セシリア・イマーグリーン https://t.co/WPYOFjc8Jx",
+    "created_at": "2026-04-12T03:00:02.000Z",
+    "author": {
+      "name": "hololive OFFICIAL CARD GAME【公式】",
+      "handle": "hololive_OCG",
+      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
+    },
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HFXcNy4a8AIQbh1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "hashtags": [
+      "ホロカ",
+      "ホロライブ",
+      "セシリア・イマーグリーン"
+    ],
+    "external_urls": [
+      {
+        "url": "http://hololive-official-cardgame.com/products/post/bouncer-bound/",
+        "display": "hololive-official-cardgame.com/products/post/…"
+      }
+    ],
+    "category": "news",
+    "favorite_count": 2526
   },
   {
     "id": "2042935706188734802",
