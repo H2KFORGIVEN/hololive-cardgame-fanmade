@@ -194,8 +194,16 @@ const MUTATING_PATTERNS = [
   /\bstate\.pendingEffect\s*=/, /\bstate\.extraTurnQueued\s*=/,
   /\bmemberInst\.\w+\s*=/, /\bmemberInst\.damage\s*[=+-]/,
   /\bmemberInst\.attachedCheer/, /\bmemberInst\.attachedSupport/, /\bmemberInst\.bloomStack/,
+  // Cover handlers that use local variable names (me / target / src / etc.)
+  // for member instances — common pattern in Round E-* handlers.
+  /\.attachedCheer\s*\.\s*(push|shift|splice|pop)\s*\(/,
+  /\.attachedSupport\s*\.\s*(push|shift|splice|pop)\s*\(/,
+  /\.bloomStack\s*\.\s*(push|shift|splice|pop)\s*\(/,
   /\bdamage\s*=\s*Math\.max/, /\bplayer\.usedSp/,
   /\barchive\.push\s*\(/, /\bArchive\b.*\.push/,
+  /\bremoveInstance\s*\(/, /\barchiveMember\s*\(/,
+  /\bcancelKnockdown\s*=/, /\blifeLossDelta\s*=/,
+  /\breturnSelfToHand\s*\(/,
 ];
 
 function staticLooksMutating(handler) {

@@ -372,18 +372,6 @@
     "usage": 4
   },
   {
-    "id": "hBP03-044",
-    "name": "星街すいせい",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "When your main player is \"Hoshijie Hoshi\", you can replace this member's 1 blue shout card with your own backstage member \"Hoshijie Hoshi\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 4
-  },
-  {
     "id": "hBP04-085",
     "name": "桃鈴ねね",
     "hook": "effectB",
@@ -522,18 +510,6 @@
     "type": "支援・活動",
     "expansion": "hBP07",
     "text": "Draw 2 cards from your deck. After that, if one of your own members was knocked down in the previous opponent's turn, choose 1 member on your own stage. During this round, the member's skill damage +20. If the member that was knocked down during the opponent's last turn was \"ラプラス・ダークネス\", draw 2 cards from your deck.\n\nLIMITED: Only one can be used per turn.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
-    "id": "hSD09-007",
-    "name": "不知火フレア",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD09",
-    "text": "[Limited linkage position] During the opponent's turn, when this member is knocked down, if your health is less than your opponent's, you will suffer -1 health damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2868,18 +2844,6 @@
     "usage": 0
   },
   {
-    "id": "hBP03-072",
-    "name": "角巻わため",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "When this member is knocked down, you can replace 1 of this member's shout cards with your other \"Kakusaki Kasumi\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP03-076",
     "name": "アユンダ・リス",
     "hook": "effectB",
@@ -3168,18 +3132,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-023",
-    "name": "儒烏風亭らでん",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "During the opponent's turn, when this member is knocked down, you can replace this member's shout card with another member marked #ReGLOSS.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-024",
     "name": "儒烏風亭らでん",
     "hook": "effectG",
@@ -3264,36 +3216,12 @@
     "usage": 0
   },
   {
-    "id": "hBP04-077",
-    "name": "アーニャ・メルフィッサ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "During the opponent's turn, when this member is knocked down, select 1 card from this member and all overlapping members and return it to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-078",
     "name": "アーニャ・メルフィッサ",
     "hook": "effectG",
     "type": "成員",
     "expansion": "hBP04",
     "text": "[Limited to the center position or linkage position] The number of yellow shouting cards required for the skill of the center member \"アーニャ・メルフィッサ\" with \"ancient weapon\" is -1.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP04-079",
-    "name": "夏色まつり",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "During the opponent's turn, when this member is knocked down, you can replace 1 of this member's shout cards with another of your own members.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -4734,18 +4662,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "You can put 1 card from your holo energy zone into the archive area: this skill's damage is +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-084",
-    "name": "夏色まつり",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "During the opponent's turn, when this member is knocked down, you can put 1 support card marked LIMITED in your save area back to the bottom of the deck. If the card is returned to the deck, return the member to the hand.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

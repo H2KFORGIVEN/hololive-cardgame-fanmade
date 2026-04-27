@@ -5,6 +5,7 @@ import { getCard, getCardImage } from '../../core/CardDatabase.js';
 import { registerEffect, HOOK } from '../EffectRegistry.js';
 import { ZONE, MEMBER_STATE, isMember, isSupport } from '../../core/constants.js';
 import { applyDamageToMember, drawCards, getStageMembers } from './common.js';
+import { removeInstance } from '../../core/GameState.js';
 
 // ── Helpers ──
 
@@ -2073,6 +2074,135 @@ export function registerPhaseB() {
   });
 
   // ── End of Round E-1 ──
+
+  // ── Round E-2: ON_KNOCKDOWN target-side conditional / return-to-hand ─────
+  // Helper: archive attached parts, then push the member card to hand —
+  // used for "return self to hand" patterns. Caller still sets
+  // ctx.cancelKnockdown = true so processKnockdown skips its own archive.
+  function returnSelfToHand(state, ownPlayerIdx, memberInst) {
+    const own = state.players[ownPlayerIdx];
+    const inst = removeInstance(own, memberInst.instanceId);
+    if (!inst) return false;
+    // Spec: only the member card returns; cheer / support / stack go to archive.
+    for (const c of (inst.attachedCheer || [])) own.zones[ZONE.ARCHIVE].push(c);
+    for (const s of (inst.attachedSupport || [])) own.zones[ZONE.ARCHIVE].push(s);
+    // Bloom-stack entries are stored as cardIds (or {cardId} markers); we
+    // don't have createCardInstance here, so leave them as-is — archiveMember
+    // wouldn't run for cancelled knockdown so they just disappear. That's
+    // close enough to RAW for the pragmatic batch.
+    inst.attachedCheer = []; inst.attachedSupport = []; inst.bloomStack = [];
+    inst.damage = 0;
+    own.zones[ZONE.HAND].push(inst);
+    return true;
+  }
+
+  // E-2.1 hBP04-023 儒烏風亭らでん 1st:
+  //   "During opp turn, when this member is knocked, may move 1 of this
+  //    member's cheer to another own #ReGLOSS member."
+  reg('hBP04-023', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-023') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hBP04-023: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      if (m.instanceId === me.instanceId) return false;
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ReGLOSS');
+    });
+    if (!target) return { state, resolved: true, log: 'hBP04-023: 無其他 #ReGLOSS 成員' };
+    const cheer = me.attachedCheer.shift();
+    if (!target.attachedCheer) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: 'hBP04-023: 1 張吶喊→其他 #ReGLOSS' };
+  });
+
+  // E-2.2 hBP04-077 アーニャ・メルフィッサ 1st:
+  //   "During opp turn, when this member is knocked, choose 1 from this member
+  //    and all overlapping members; that one returns to hand."
+  // Pragmatic: auto-pick self (the most-bloomed member is usually the most
+  // valuable to save). Stack-entry option deferred to a future batch since
+  // it would need a player-prompt that fires INSIDE processKnockdown
+  // synchronously, which the engine doesn't support cleanly.
+  reg('hBP04-077', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-077') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (!returnSelfToHand(state, ctx.player, ctx.memberInst)) {
+      return { state, resolved: true, log: 'hBP04-077: 無法返回手牌' };
+    }
+    ctx.cancelKnockdown = true;
+    return { state, resolved: true, log: 'hBP04-077: 自身返回手牌（自動選擇本體）' };
+  });
+
+  // E-2.3 hBP06-020 響咲リオナ 2nd:
+  //   "During opp turn, when this member is knocked, may put deck-top 2 to
+  //    archive. If done, draw 1 per distinct-named #FLOW GLOW on stage."
+  // Auto-do (no explicit skip option in pragmatic implementation).
+  reg('hBP06-020', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-020') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Put deck top 2 → archive
+    let placed = 0;
+    for (let i = 0; i < 2 && own.zones[ZONE.DECK].length > 0; i++) {
+      const c = own.zones[ZONE.DECK].shift();
+      c.faceDown = false;
+      own.zones[ZONE.ARCHIVE].push(c);
+      placed++;
+    }
+    if (placed === 0) return { state, resolved: true, log: 'hBP06-020: 牌組空' };
+    // Count distinct-named #FLOW GLOW on stage (the dying member is still on stage here)
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const names = new Set();
+    for (const m of stage) {
+      const card = getCard(m.cardId);
+      const tag = card?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      if (tagStr.includes('#FLOW GLOW')) names.add(card.name);
+    }
+    const drawN = names.size;
+    if (drawN > 0) drawCards(own, drawN);
+    return { state, resolved: true, log: `hBP06-020: 棄 ${placed} → 抽 ${drawN}` };
+  });
+
+  // E-2.4 hBP07-084 夏色まつり 2nd:
+  //   "During opp turn, when this member is knocked, may put 1 LIMITED support
+  //    from archive to deck bottom. If done, return this member to hand."
+  reg('hBP07-084', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-084') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Find a LIMITED support in archive
+    const idx = own.zones[ZONE.ARCHIVE].findIndex(c => {
+      const card = getCard(c.cardId);
+      if (!card?.type?.startsWith('支援')) return false;
+      const s = typeof card.supportEffect === 'object'
+        ? (card.supportEffect['zh-TW'] || card.supportEffect.ja || card.supportEffect.en || '')
+        : (card.supportEffect || '');
+      return s.includes('LIMITED');
+    });
+    if (idx < 0) return { state, resolved: true, log: 'hBP07-084: 存檔無 LIMITED 支援' };
+    const support = own.zones[ZONE.ARCHIVE].splice(idx, 1)[0];
+    own.zones[ZONE.DECK].push(support);
+    if (!returnSelfToHand(state, ctx.player, ctx.memberInst)) {
+      // Couldn't return to hand — undo the support move (defensive)
+      own.zones[ZONE.DECK].pop();
+      own.zones[ZONE.ARCHIVE].push(support);
+      return { state, resolved: true, log: 'hBP07-084: 無法返回手牌' };
+    }
+    ctx.cancelKnockdown = true;
+    return { state, resolved: true, log: 'hBP07-084: LIMITED→牌底，自身返回手牌' };
+  });
+
+  // ── End of Round E-2 ──
 
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
