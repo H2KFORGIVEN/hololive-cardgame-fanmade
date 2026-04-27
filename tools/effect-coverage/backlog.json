@@ -12,18 +12,6 @@
     "usage": 57
   },
   {
-    "id": "hBP07-048",
-    "name": "エリザベス・ローズ・ブラッドフレイム",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "This member can use all the arts of all members marked #EN on their stage (there must be a shout card that uses the arts).",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 32
-  },
-  {
     "id": "hBP01-014",
     "name": "天音かなた",
     "hook": "art1",
@@ -192,36 +180,12 @@
     "usage": 7
   },
   {
-    "id": "hBP02-040",
-    "name": "沙花叉クロヱ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP02",
-    "text": "[Once per turn] When this member's skill \"ホロックスロット\" displays a card, if the 3 cards displayed are members of the same bloom level, the opponent's life points -1.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 6
-  },
-  {
     "id": "hBP02-077",
     "name": "レトロパソコン",
     "hook": "support",
     "type": "支援・物品",
     "expansion": "hBP02",
     "text": "You can only use it if your HP is below 3.\n\nReturn 1 member from your save area to your hand.\n\nLIMITED: Only one can be used per turn.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 6
-  },
-  {
-    "id": "hBP03-065",
-    "name": "戌神ころね",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "[Limited linkage position] During the opponent's main phase, the HP of your center member \"戌神ころね\" will not be reduced or changed by the opponent's effects.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -238,18 +202,6 @@
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
     "usage": 6
-  },
-  {
-    "id": "hBP01-050",
-    "name": "風真いろは",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "[Limited linkage position] The opponent's member's performance can only target his/her own linkage members (except for special damage).",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 5
   },
   {
     "id": "hBP03-006",
@@ -408,18 +360,6 @@
     "usage": 4
   },
   {
-    "id": "hBP07-039",
-    "name": "赤井はあと",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "[Once per turn] During your turn, when your \"Akai Tatsuki\" is returned to the deck from the stage, you can send 1 shout card from your save area to this member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 4
-  },
-  {
     "id": "hBP07-077",
     "name": "桃鈴ねね",
     "hook": "effectC",
@@ -516,18 +456,6 @@
     "usage": 3
   },
   {
-    "id": "hSD13-007",
-    "name": "エリザベス・ローズ・ブラッドフレイム",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD13",
-    "text": "For each shout card this member has, this member's HP +10.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
     "id": "hBP01-007",
     "name": "星街すいせい",
     "hook": "oshiSkill",
@@ -594,18 +522,6 @@
     "type": "主推",
     "expansion": "hBP02",
     "text": "[Once per game] Can be used when your center member is \"Mori Kari\": During this round, after one of your \"Mori Kari\" uses an art, use the same art again.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
-    "id": "hBP02-039",
-    "name": "沙花叉クロヱ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP02",
-    "text": "[Once per turn] When this member's skill \"Horrotech\" reveals a card, add the revealed support card to the hand.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2592,18 +2508,6 @@
     "usage": 0
   },
   {
-    "id": "hBP02-041",
-    "name": "猫又おかゆ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP02",
-    "text": "[Limited to the center position] All \"Nekomata\" on your stage inflict special damage of +20 to the opponent's center member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP02-043",
     "name": "紫咲シオン",
     "hook": "effectC",
@@ -2742,18 +2646,6 @@
     "type": "成員",
     "expansion": "hBP03",
     "text": "When the member with \"ルーナイト\" is not on his stage, reveal 1 \"ルーナイト\" from his deck and attach it to his member. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP03-022",
-    "name": "アキ・ローゼンタール",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "[Limited to center position or linkage position] Can be used at the beginning of the opponent's performance phase: During this round, your health will not be reduced by the opponent's effects.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3120,18 +3012,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-024",
-    "name": "儒烏風亭らでん",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "[Limited to center position] During the opponent's main phase, this member's HP will not be reduced or changed by the opponent's effects.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-030",
     "name": "セシリア・イマーグリーン",
     "hook": "effectB",
@@ -3180,18 +3060,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-062",
-    "name": "森カリオペ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "[Limited to the center position or linkage position] When this member has \"Morori Kaname\" or \"Death-sensei\", the center member marked #Myth will have +30 skill damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-074",
     "name": "アーニャ・メルフィッサ",
     "hook": "effectG",
@@ -3234,18 +3102,6 @@
     "type": "成員",
     "expansion": "hBP04",
     "text": "For each shout card this member has, the damage of this skill is +20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP04-087",
-    "name": "エリザベス・ローズ・ブラッドフレイム",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "[Limited linkage position] Debut members in their center position receive -20 damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3456,30 +3312,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-013",
-    "name": "ときのそら",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to center position or linkage position] All members marked #0 on their own stage will receive +30 arts damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-016",
-    "name": "兎田ぺこら",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "When this member uses a skill, if the sum of the dice rolled for that skill is an odd number, draw 1 card from his or her deck. If it is an even number, draw 2 cards from your deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-018",
     "name": "ベスティア・ゼータ",
     "hook": "art1",
@@ -3528,18 +3360,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-028",
-    "name": "獅白ぼたん",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to center position] [Once per turn] When your main \"Lion White\" or \"Lion White\" on your stage inflicts 30 or more points of special damage to an opponent's member, draw 1 card from your deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-031",
     "name": "尾丸ポルカ",
     "hook": "art1",
@@ -3558,18 +3378,6 @@
     "type": "成員",
     "expansion": "hBP05",
     "text": "If your main recommendation is \"Omaru Rika\", for every 10 cards in your save area, the damage of this skill will be +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-035",
-    "name": "さくらみこ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to the center position or linkage position] During the opponent's turn, when your own \"さくらみこ\" is knocked down, you can use: Reveal 1 \"みA shame\" from your deck and add it to your hand. Reshuffle the deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3612,30 +3420,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-043",
-    "name": "猫又おかゆ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited linkage position] When your center member is marked with #ゲーマーズ, the opponent's skill can only target your own linkage member, excluding special damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-045",
-    "name": "猫又おかゆ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to the center position] Your main \"Nekomata Nana\" and all \"Nekomata Nana\" on your stage will inflict special damage of +20 to the opponent's center member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-046",
     "name": "雪花ラミィ",
     "hook": "effectB",
@@ -3666,18 +3450,6 @@
     "type": "成員",
     "expansion": "hBP05",
     "text": "If your \"モココ・アビスガード\" has used an art this turn, the damage of this art is +40. If you have used your main skill \"モコちゃん!\" this round, the damage of this skill will be +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-055",
-    "name": "癒月ちょこ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to the center position] At the end of the opponent's performance phase, if this member's HP has not been reduced, you can send the top card of your shout deck to your own \"Yoshizuki Miyako\".",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3726,54 +3498,6 @@
     "type": "成員",
     "expansion": "hBP05",
     "text": "If on the first turn of your back attack, reveal 2 Debut members with different card names from your deck and add them to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-065",
-    "name": "不知火フレア",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited linkage position] [Once per round] When a member other than this member is damaged by the opponent, you can roll a dice once: if it is an odd number, the damage received by that member is -40. If it is an even number, the damage taken by that member is -20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-066",
-    "name": "不知火フレア",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited linkage position] When the center member marked #3 is using an art, you can put 1 card in your hand into the archive area: draw 1 card from your deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-067",
-    "name": "不知火フレア",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "When this member uses a talent, he can send this member's 2 shout cards to one of his backstage members. After that, return a 1st member with the same card name as the backstage member you just selected from your save area to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-069",
-    "name": "白上フブキ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to the back of the stage] This member cannot be harmed by the opponent.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3924,18 +3648,6 @@
     "usage": 0
   },
   {
-    "id": "hBP06-014",
-    "name": "ラオーラ・パンテーラ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "When this member uses artistic skills, check his or her holo energy zone. Reveal one of the cards and add it to your hand. If you add a card to your hand, put 1 card from your hand into the holo energy zone. Reshuffle the holo energy zone.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-016",
     "name": "響咲リオナ",
     "hook": "effectC",
@@ -4020,18 +3732,6 @@
     "usage": 0
   },
   {
-    "id": "hBP06-046",
-    "name": "鷹嶺ルイ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If you have used your SP main skill \"ホークアイ\" in this game, this member's skill damage will be +20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-049",
     "name": "ムーナ・ホシノヴァ",
     "hook": "effectC",
@@ -4080,48 +3780,12 @@
     "usage": 0
   },
   {
-    "id": "hBP06-056",
-    "name": "沙花叉クロヱ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If anyone has used their SP main skill \"Life Ryuden\" in this game, the number of colorless shout cards required for this member's skill \"Shahuasha Youth しよ?\" -1.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-062",
     "name": "ロボ子さん",
     "hook": "effectC",
     "type": "成員",
     "expansion": "hBP06",
     "text": "If you attack in the first turn, reveal 2 \"ろぼさー\" cards from your deck and add them to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-065",
-    "name": "ロボ子さん",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "When this member blooming from the 1st member uses a skill, it inflicts 50 points of special damage to the opponent's center member or linkage member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-066",
-    "name": "ロボ子さん",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited to center position] When the linkage member marked #0 is using an art, reveal 1 card from your deck and put it in the save area. Reshuffle the deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -4194,18 +3858,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "You can put a shout card of this member into the archive area: reveal a Debut member with the same card name as your main card from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-082",
-    "name": "アーニャ・メルフィッサ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited linkage position] If your main player is \"アーニャ・メルフィッサ\", your center member and linkage member with \"Ancient Weapon\" will receive -30 skill damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -4356,18 +4008,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-017",
-    "name": "ベスティア・ゼータ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "[Limited to center position] When a Buzz member labeled #ID3 is linked, select one member on his stage. During this round, the member's skill damage is +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-018",
     "name": "ベスティア・ゼータ",
     "hook": "art1",
@@ -4428,18 +4068,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-024",
-    "name": "大神ミオ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "[Once per turn] When this member has \"Milfura\" attached to it, draw 1 card from his or her deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-025",
     "name": "大神ミオ",
     "hook": "art1",
@@ -4458,18 +4086,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "Reveal 1 \"Hydrotech\" or \"Military\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-029",
-    "name": "大神ミオ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "[Once per turn] When this member receives damage during the opponent's turn, if this member has a support card, this member's HP will be restored by 50 points.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -4506,18 +4122,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "For each \"35P\" this member has, this skill deals +70 damage and draws 1 card from his or her deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-044",
-    "name": "尾丸ポルカ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "[Limited to the center position or linkage position] During the opponent's turn, when the Buzz member with a fan is knocked down, if your main push is \"Omaru Haruka\", you will receive -1 HP damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -4992,36 +4596,12 @@
     "usage": 0
   },
   {
-    "id": "hSD08-004",
-    "name": "天音かなた",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD08",
-    "text": "[Limited to the center position] The Debut member whose linked position is marked #4 will receive +40 damage from his skill.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD08-005",
     "name": "姫森ルーナ",
     "hook": "effectG",
     "type": "成員",
     "expansion": "hSD08",
     "text": "[Limited linkage position] During the opponent's turn, when one of your own members is knocked down, if your HP is less than your opponent's, you can return 1 item in your save area with \"パソコン\" in its card name to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD10-004",
-    "name": "輪堂千速",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD10",
-    "text": "If your main push is \"Rundo Sensu\" and there is a 1st member on the opponent's stage, the member that bloomed this round can be bloomed again using the 2nd member in your hand.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -5238,18 +4818,6 @@
     "type": "成員",
     "expansion": "hSD13",
     "text": "If there are 0 members overlapping this member, the damage of this skill is +90.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD13-014",
-    "name": "セシリア・イマーグリーン",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD13",
-    "text": "[Limited to center position or linkage position] [Once per turn] When your Debut member or Spot member marked #Justice is placed on the stage, draw 1 card from your deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

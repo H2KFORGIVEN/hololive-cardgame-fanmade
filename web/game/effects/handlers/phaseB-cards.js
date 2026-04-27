@@ -2347,6 +2347,146 @@ export function registerPhaseB() {
 
   // ── End of Round E-3 ──
 
+  // ── Round E-4: art-use triggers ──────────────────────────────────────────
+  // Five effectG cards that fire on "this member used art" or "ally used art".
+  // The attacker case uses the existing ON_ART_RESOLVE single-fire. The
+  // observer case uses the new ctx.triggerEvent === 'member_used_art' broadcast
+  // fan-out (see processUseArt).
+
+  // E-4.1 hBP05-016 兎田ぺこら 2nd:
+  //   Effect chain split across hooks:
+  //     • art1 ON_ART_DECLARE: roll N=bloomStack.length dice, sum, +10 dmg
+  //       per pip; stash sum on state._lastArtDiceSum so effectG can read it.
+  //     • effectG ON_ART_RESOLVE (target-side single-fire on attacker):
+  //       check stashed sum's parity → odd: draw 1, even: draw 2.
+  reg('hBP05-016', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art1') return { state, resolved: true };
+    const n = (ctx.memberInst?.bloomStack || []).length || 1;
+    let sum = 0;
+    for (let i = 0; i < n; i++) sum += Math.floor(Math.random() * 6) + 1;
+    state._lastArtDiceSum = sum;
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: sum * 10, target: 'self', duration: 'instant' },
+      log: `hBP05-016 art1: 擲 ${n} 顆骰子總和 ${sum} → +${sum * 10}`,
+    };
+  });
+  reg('hBP05-016', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    // Only react to legacy single-fire (the attacker is THIS member)
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP05-016') return { state, resolved: true };
+    const sum = state._lastArtDiceSum;
+    state._lastArtDiceSum = undefined; // consume
+    if (typeof sum !== 'number') return { state, resolved: true };
+    const draws = (sum % 2 === 0) ? 2 : 1;
+    drawCards(state.players[ctx.player], draws);
+    return { state, resolved: true, log: `hBP05-016: 骰和 ${sum} → 抽 ${draws}` };
+  });
+
+  // E-4.2 hBP06-014 ラオーラ・パンテーラ 2nd:
+  //   "When this used art → look at holopower, reveal 1 to hand. If added to
+  //    hand, put 1 hand card to holopower. Reshuffle holopower."
+  reg('hBP06-014', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP06-014') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const hp = own.zones[ZONE.HOLO_POWER];
+    if (hp.length === 0) return { state, resolved: true, log: 'hBP06-014: holo 能量區空' };
+    // Auto-pick first card to hand
+    const picked = hp.shift();
+    picked.faceDown = false;
+    own.zones[ZONE.HAND].push(picked);
+    // Replacement: 1 hand card → holopower (if hand has any)
+    if (own.zones[ZONE.HAND].length > 1) {
+      const handCard = own.zones[ZONE.HAND].shift(); // first (oldest) hand card
+      handCard.faceDown = true;
+      hp.push(handCard);
+    }
+    // Shuffle holopower
+    for (let i = hp.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [hp[i], hp[j]] = [hp[j], hp[i]];
+    }
+    return { state, resolved: true, log: 'hBP06-014: holo 能量區交換 1 張' };
+  });
+
+  // E-4.3 hBP05-066 不知火フレア 1st:
+  //   "[Limited collab] When own #3期生 center uses art → may archive 1 hand,
+  //    then draw 1."
+  // Broadcast observer pattern: fires on triggerEvent='member_used_art' when
+  // attacker is on own side, in own center, and has #3期生 tag.
+  reg('hBP05-066', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent !== 'member_used_art') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (own?.zones[ZONE.COLLAB]?.instanceId !== me?.instanceId) return { state, resolved: true };
+    // Attacker must be own center with #3期生
+    if (own.zones[ZONE.CENTER]?.instanceId !== ctx.attacker?.instanceId) return { state, resolved: true };
+    const atkCard = getCard(ctx.attacker.cardId);
+    const tag = atkCard?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#3期生')) {
+      return { state, resolved: true };
+    }
+    // Auto-do: discard 1 hand → draw 1
+    if (own.zones[ZONE.HAND].length === 0) return { state, resolved: true, log: 'hBP05-066: 手牌空' };
+    const discarded = own.zones[ZONE.HAND].shift();
+    own.zones[ZONE.ARCHIVE].push(discarded);
+    drawCards(own, 1);
+    return { state, resolved: true, log: 'hBP05-066: 棄 1 → 抽 1' };
+  });
+
+  // E-4.4 hBP06-065 ロボ子さん 1st Buzz:
+  //   "When THIS member (bloomed from 1st) uses art → 50 special damage to
+  //    opp center or collab (player choice)."
+  // Pragmatic: auto-pick opp center; fall back to collab if no center.
+  reg('hBP06-065', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP06-065') return { state, resolved: true };
+    // "從1st成員綻放" — bloomStack contains an entry that's a 1st-bloom member
+    const stack = ctx.memberInst?.bloomStack || [];
+    const bloomedFrom1st = stack.some(entry => {
+      const cardId = typeof entry === 'string' ? entry : entry?.cardId;
+      const card = getCard(cardId);
+      return card?.bloom === '1st';
+    });
+    if (!bloomedFrom1st) return { state, resolved: true, log: 'hBP06-065: 非從 1st 綻放' };
+    const opp = state.players[1 - ctx.player];
+    const target = opp.zones[ZONE.CENTER] || opp.zones[ZONE.COLLAB];
+    if (!target) return { state, resolved: true, log: 'hBP06-065: 對手無中心/聯動' };
+    applyDamageToMember(target, 50);
+    return { state, resolved: true, log: 'hBP06-065: 50 特殊傷害 → 對手' };
+  });
+
+  // E-4.5 hBP06-066 ロボ子さん 2nd:
+  //   "[Limited center] When own #0期生 collab uses art → reveal 1 deck top
+  //    to archive, reshuffle deck."
+  // Broadcast observer: fires when attacker is own collab + has #0期生.
+  reg('hBP06-066', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent !== 'member_used_art') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (own?.zones[ZONE.CENTER]?.instanceId !== me?.instanceId) return { state, resolved: true };
+    if (own.zones[ZONE.COLLAB]?.instanceId !== ctx.attacker?.instanceId) return { state, resolved: true };
+    const atkCard = getCard(ctx.attacker.cardId);
+    const tag = atkCard?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#0期生')) {
+      return { state, resolved: true };
+    }
+    if (own.zones[ZONE.DECK].length === 0) return { state, resolved: true, log: 'hBP06-066: 牌組空' };
+    const top = own.zones[ZONE.DECK].shift();
+    top.faceDown = false;
+    own.zones[ZONE.ARCHIVE].push(top);
+    // Reshuffle deck
+    const deck = own.zones[ZONE.DECK];
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    return { state, resolved: true, log: 'hBP06-066: 牌頂 1 張 → 存檔，洗牌組' };
+  });
+
+  // ── End of Round E-4 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

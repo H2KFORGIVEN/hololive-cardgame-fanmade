@@ -533,6 +533,30 @@ function processUseArt(state, action) {
   fireEffect(state, HOOK.ON_DAMAGE_DEALT, { cardId: attacker.cardId, player: p, memberInst: attacker, target, amount: totalDmg });
   fireEffect(state, HOOK.ON_DAMAGE_TAKEN, { cardId: target.cardId, player: 1 - p, memberInst: target, attacker, amount: totalDmg });
   fireEffect(state, HOOK.ON_ART_RESOLVE, { cardId: attacker.cardId, player: p, memberInst: attacker, target, artKey });
+
+  // Broadcast: fire ON_ART_RESOLVE with triggerEvent='member_used_art' to
+  // OTHER attacker-side stage members so passive observers (e.g. "when an
+  // ally uses an art" — hBP05-066, hBP06-066) can react. The attacker
+  // already received the legacy single-fire above so we skip it here.
+  // Defender-side broadcast not currently needed by any registered handler.
+  const attackerStage = [
+    state.players[p].zones[ZONE.CENTER],
+    state.players[p].zones[ZONE.COLLAB],
+    ...(state.players[p].zones[ZONE.BACKSTAGE] || []),
+  ].filter(Boolean);
+  for (const m of attackerStage) {
+    if (m.instanceId === attacker.instanceId) continue;
+    fireEffect(state, HOOK.ON_ART_RESOLVE, {
+      cardId: m.cardId,
+      player: p,
+      memberInst: m,
+      triggerEvent: 'member_used_art',
+      attacker,
+      target,
+      artKey,
+    });
+  }
+
   state._artTargetInFlight = null;
 
   // Check knockdown — runs AFTER hooks so handler-side state changes (e.g.
