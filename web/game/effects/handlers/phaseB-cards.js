@@ -2794,14 +2794,39 @@ export function registerPhaseB() {
   //   sp:   [1/game] When own yellow member is knocked, may use:
   //         replace 1 cheer of that member to another own member, choose
   //         1 from that member + bloomStack to return to hand.
+  // Reactive auto-fire (G-final): when a member is knocked, the broadcast
+  // fires this handler with triggerEvent='reactive_knockdown'. Auto-spends
+  // SP-cost holopower if available + own.oshi.usedSp is false + the killed
+  // member matches the trigger (own yellow). Skip otherwise.
   reg('hBP03-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      // Conditions: own yellow member knocked, SP not used, holopower ≥ 3
+      if (!ctx.isMyMemberKnocked) return { state, resolved: true };
+      if (own.oshi?.usedSp) return { state, resolved: true };
+      const killedColor = getCard(ctx.knockedOutCardId)?.color;
+      if (killedColor !== '黃') return { state, resolved: true };
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < 3) return { state, resolved: true };
+      // Auto-pay 3 holopower → archive, mark usedSp
+      for (let i = 0; i < 3; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshi.usedSp = true;
+      // Pragmatic effect: archive's killed-member instance comes back to hand
+      // (the "return 1 from member+stack to hand" choice — auto-pick the
+      // killed member itself since stack auto-pick is ambiguous).
+      const archive = own.zones[ZONE.ARCHIVE];
+      const killedIdx = archive.findIndex(c => c.instanceId === ctx.knockedOutInstanceId);
+      if (killedIdx >= 0) {
+        own.zones[ZONE.HAND].push(archive.splice(killedIdx, 1)[0]);
+      }
+      return { state, resolved: true, log: 'hBP03-006 SP 自動觸發: 黃色被擊倒 → 自身回手牌' };
+    }
     if (ctx.skillType === 'sp') {
-      // Reactive trigger — engine doesn't support reactive oshi activation
-      // mid-knockdown yet. Hint log for Manual Adjust resolution.
-      return { state, resolved: true, log: 'hBP03-006 SP: 黃色成員被擊倒時觸發（手動調整）' };
+      return { state, resolved: true, log: 'hBP03-006 SP: 黃色成員被擊倒時觸發（已支援自動）' };
     }
     // Find a resting 戌神ころね on stage and set to ACTIVE
-    const own = state.players[ctx.player];
     const stage = [
       own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
       ...(own.zones[ZONE.BACKSTAGE] || []),
@@ -2818,9 +2843,45 @@ export function registerPhaseB() {
   //   oshi: [1/turn] Return 1 member from archive to hand.
   //   sp:   [1/game] When own red member knocked during opp turn, may use:
   //         life loss -1 + that member + stack returns to hand.
+  // Reactive auto-fire (G-final): same shape as hBP03-006 — auto-spends
+  // 2 holopower if conditions met (own red knocked, opp turn, usedSp false,
+  // holopower available). Recovers 1 life cheer from archive + returns
+  // killed member + stack to hand.
   reg('hBP01-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      if (!ctx.isMyMemberKnocked) return { state, resolved: true };
+      const own = state.players[ctx.player];
+      if (own.oshi?.usedSp) return { state, resolved: true };
+      if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+      if (getCard(ctx.knockedOutCardId)?.color !== '紅') return { state, resolved: true };
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < 2) return { state, resolved: true };
+      // Pay 2 holopower
+      for (let i = 0; i < 2; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshi.usedSp = true;
+      const archive = own.zones[ZONE.ARCHIVE];
+      // Recover 1 life: pull a cheer from archive → life zone
+      const cheerIdx = archive.findIndex(c => getCard(c.cardId)?.type === '吶喊');
+      if (cheerIdx >= 0) {
+        const cheer = archive.splice(cheerIdx, 1)[0];
+        cheer.faceDown = true;
+        own.zones[ZONE.LIFE].push(cheer);
+      }
+      // Return killed member + stack to hand
+      const memberIdx = archive.findIndex(c => c.instanceId === ctx.knockedOutInstanceId);
+      if (memberIdx >= 0) {
+        const member = archive.splice(memberIdx, 1)[0];
+        own.zones[ZONE.HAND].push(member);
+        const stackCount = (ctx.knockedOutStackIds || []).length;
+        const stackEntries = archive.splice(archive.length - stackCount, stackCount);
+        for (const e of stackEntries) own.zones[ZONE.HAND].push(e);
+      }
+      return { state, resolved: true, log: 'hBP01-006 SP 自動觸發: 紅色被擊倒 → 生命+1, 自身回手牌' };
+    }
     if (ctx.skillType === 'sp') {
-      return { state, resolved: true, log: 'hBP01-006 SP: 紅色成員被擊倒時觸發（手動調整）' };
+      return { state, resolved: true, log: 'hBP01-006 SP: 紅色成員被擊倒時觸發（已支援自動）' };
     }
     // Active: archive → hand prompt for a member
     const own = state.players[ctx.player];
@@ -3306,8 +3367,43 @@ export function registerPhaseB() {
   //         then sweepEffectKnockouts auto-fires via fireEffect chain.
   //   sp:   REACTIVE (when own 莉々華 knocked → search). Hint log.
   reg('hBP04-003', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    // Reactive auto-fire (G-final): when own 莉々華 knocked during opp turn,
+    // auto-spend SP cost + search 莉々華 + 限界飯 from deck → hand.
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      if (!ctx.isMyMemberKnocked) return { state, resolved: true };
+      const own = state.players[ctx.player];
+      if (own.oshi?.usedSp) return { state, resolved: true };
+      if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+      if (getCard(ctx.knockedOutCardId)?.name !== '一条莉々華') return { state, resolved: true };
+      // SP cost (cards have spSkill.holoPower; default 2)
+      const cost = Math.abs(getCard(own.oshi.cardId)?.spSkill?.holoPower || 2);
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+      for (let i = 0; i < cost; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshi.usedSp = true;
+      // Search deck for 1 莉々華 + 1 限界飯, both → hand. Auto-pick first match each.
+      let found = 0;
+      for (const targetName of ['一条莉々華', '限界飯']) {
+        const idx = own.zones[ZONE.DECK].findIndex(c => getCard(c.cardId)?.name === targetName);
+        if (idx >= 0) {
+          const card = own.zones[ZONE.DECK].splice(idx, 1)[0];
+          card.faceDown = false;
+          own.zones[ZONE.HAND].push(card);
+          found++;
+        }
+      }
+      // Reshuffle deck
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: `hBP04-003 SP 自動觸發: 莉々華被擊倒 → 取回 ${found} 張` };
+    }
     if (ctx.skillType === 'sp') {
-      return { state, resolved: true, log: 'hBP04-003 SP: 莉々華 被擊倒時觸發（手動）' };
+      return { state, resolved: true, log: 'hBP04-003 SP: 莉々華 被擊倒時觸發（已支援自動）' };
     }
     const own = state.players[ctx.player];
     const center = own.zones[ZONE.CENTER];
@@ -3389,10 +3485,74 @@ export function registerPhaseB() {
   //   sp:   REACTIVE (when own #3期生 knocked → life -1 + Buzz/2nd → draw 2).
   // Both reactive — engine doesn't support reactive oshi activation. Hints.
   reg('hBP05-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
-    if (ctx.skillType === 'sp') {
-      return { state, resolved: true, log: 'hBP05-001 SP: 3期生被擊倒時觸發（手動）' };
+    // Reactive auto-fire (G-final):
+    //   • SP-mode: when own #3期生 knocked during opp turn → life-1 +
+    //     (if killed was Buzz/2nd) draw 2.
+    //   • oshi-mode: when own member knocks opp → search #3期生 to hand.
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      const own = state.players[ctx.player];
+      // SP path: my member was knocked
+      if (ctx.isMyMemberKnocked && !own.oshi?.usedSp && state.activePlayer === ctx.attackerPlayer) {
+        const killedTag = getCard(ctx.knockedOutCardId)?.tag || '';
+        const tagStr = typeof killedTag === 'string' ? killedTag : JSON.stringify(killedTag);
+        if (!tagStr.includes('#3期生')) return { state, resolved: true };
+        const cost = Math.abs(getCard(own.oshi.cardId)?.spSkill?.holoPower || 2);
+        if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+        for (let i = 0; i < cost; i++) {
+          const c = own.zones[ZONE.HOLO_POWER].shift();
+          if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+        }
+        own.oshi.usedSp = true;
+        // Life recovery (auto-pick a cheer from archive → life)
+        const archive = own.zones[ZONE.ARCHIVE];
+        const cheerIdx = archive.findIndex(c => getCard(c.cardId)?.type === '吶喊');
+        if (cheerIdx >= 0) {
+          const cheer = archive.splice(cheerIdx, 1)[0];
+          cheer.faceDown = true;
+          own.zones[ZONE.LIFE].push(cheer);
+        }
+        // If killed was Buzz/2nd → draw 2
+        const killedBloom = getCard(ctx.knockedOutCardId)?.bloom;
+        if (killedBloom === '2nd' || killedBloom?.includes('Buzz')) {
+          drawCards(own, 2);
+        }
+        return { state, resolved: true, log: 'hBP05-001 SP 自動觸發: 3期生被擊倒 → 生命+1' + (killedBloom?.includes('Buzz') || killedBloom === '2nd' ? ' + 抽 2' : '') };
+      }
+      // oshi-skill path: I knocked opp's member
+      if (ctx.isMyKnockedOpp && !own.oshiSkillUsedThisTurn) {
+        const cost = Math.abs(getCard(own.oshi.cardId)?.oshiSkill?.holoPower || 1);
+        if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+        // Find #3期生 member in deck
+        const idx = own.zones[ZONE.DECK].findIndex(c => {
+          const card = getCard(c.cardId);
+          if (!isMember(card?.type)) return false;
+          const tag = card.tag || '';
+          return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#3期生');
+        });
+        if (idx < 0) return { state, resolved: true };
+        // Pay cost
+        for (let i = 0; i < cost; i++) {
+          const c = own.zones[ZONE.HOLO_POWER].shift();
+          if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+        }
+        own.oshiSkillUsedThisTurn = true;
+        const card = own.zones[ZONE.DECK].splice(idx, 1)[0];
+        card.faceDown = false;
+        own.zones[ZONE.HAND].push(card);
+        // Reshuffle
+        const deck = own.zones[ZONE.DECK];
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+        return { state, resolved: true, log: 'hBP05-001 oshi 自動觸發: 擊倒對手 → 搜尋 #3期生' };
+      }
+      return { state, resolved: true };
     }
-    return { state, resolved: true, log: 'hBP05-001 oshi: 擊倒對手時觸發 #3期生 搜尋（手動）' };
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP05-001 SP: 3期生被擊倒時觸發（已支援自動）' };
+    }
+    return { state, resolved: true, log: 'hBP05-001 oshi: 擊倒對手時觸發 #3期生 搜尋（已支援自動）' };
   });
 
   // ── End of Round F-4 ──

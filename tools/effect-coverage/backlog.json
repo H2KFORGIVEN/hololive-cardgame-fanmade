@@ -192,30 +192,6 @@
     "usage": 6
   },
   {
-    "id": "hBP03-006",
-    "name": "戌神ころね",
-    "hook": "oshiSkill",
-    "type": "主推",
-    "expansion": "hBP03",
-    "text": "[Once per turn] Change one of your rested \"戌神ころね\" to active status.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 5
-  },
-  {
-    "id": "hBP03-006",
-    "name": "戌神ころね",
-    "hook": "spSkill",
-    "type": "主推",
-    "expansion": "hBP03",
-    "text": "[Once per game] When your yellow member is knocked down, you can use: Replace the member's 1 shout card with another member of your own, and select 1 card from this member and all overlapping members to return to the hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 5
-  },
-  {
     "id": "hBP06-083",
     "name": "ラムダック",
     "hook": "art1",
@@ -1362,30 +1338,6 @@
     "type": "支援・粉絲",
     "expansion": "hBP04",
     "text": "Members with this fan give +10 to the special damage dealt by the opponent's center member.\n\nThis fan can only be attached to \"Snowflake Rimi\", and each member can have any number of fans.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-001",
-    "name": "白銀ノエル",
-    "hook": "oshiSkill",
-    "type": "主推",
-    "expansion": "hBP05",
-    "text": "[Once per turn] You can use this when one of your own members knocks out an opponent's member: Reveal a member marked #3 from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-001",
-    "name": "白銀ノエル",
-    "hook": "spSkill",
-    "type": "主推",
-    "expansion": "hBP05",
-    "text": "[Once per game] During the opponent's turn, when the member marked #3 is knocked down, you can use: The health damage you received -1. After that, if the member is a Buzz member or a 2nd member, draw 2 cards from his or her deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

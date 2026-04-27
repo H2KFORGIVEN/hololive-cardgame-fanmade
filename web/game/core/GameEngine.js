@@ -745,6 +745,34 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
       currentIndex: 0,
     };
   }
+
+  // Reactive oshi activation: fire ON_OSHI_SKILL with
+  // triggerEvent='reactive_knockdown' for both players' oshi cards so they
+  // can auto-activate SP/oshi skills triggered by the just-completed KO.
+  // Each handler decides whether conditions match and whether to spend
+  // holopower; the engine doesn't enforce activation rules here. Skip if
+  // game is already over (winner set above).
+  if (state.winner == null) {
+    for (let idx = 0; idx < 2; idx++) {
+      const pl = state.players[idx];
+      if (!pl?.oshi?.cardId) continue;
+      fireEffect(state, HOOK.ON_OSHI_SKILL, {
+        cardId: pl.oshi.cardId,
+        player: idx,
+        skillType: 'reactive',
+        triggerEvent: 'reactive_knockdown',
+        knockedOutCardId: target.cardId,
+        knockedOutInstanceId: target.instanceId,
+        knockedOutPlayer: opponentIdx,
+        knockedOutZone,
+        knockedOutStackIds,
+        knockedOutSupportCardIds,
+        attackerPlayer,
+        isMyMemberKnocked: idx === opponentIdx,
+        isMyKnockedOpp: idx === attackerPlayer,
+      });
+    }
+  }
 }
 
 // ── End Phase ──
