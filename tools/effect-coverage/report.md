@@ -1,16 +1,16 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T16:51:46.370Z
+Generated: 2026-04-27T16:54:50.706Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 1032 (79%)
+- **REAL (mutates state / queues prompt or boost)**: 1037 (80%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 197 (15%)
+- **LOG_ONLY (placeholder logs only)**: 192 (15%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1107 (85%)
+- **Effective coverage (REAL + PASSIVE)**: 1112 (85%)
 
 ## By hook type
 
@@ -18,7 +18,7 @@ Generated: 2026-04-27T16:51:46.370Z
 |---|---|---|---|---|---|---|---|---|
 | oshiSkill | 138 | 135 | 0 | 3 | 0 | 0 | 0 | 98% |
 | spSkill | 135 | 132 | 0 | 3 | 0 | 0 | 0 | 98% |
-| art1 | 297 | 270 | 0 | 27 | 0 | 0 | 0 | 91% |
+| art1 | 297 | 275 | 0 | 22 | 0 | 0 | 0 | 93% |
 | art2 | 55 | 53 | 0 | 2 | 0 | 0 | 0 | 96% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
 | effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
@@ -34,16 +34,16 @@ Generated: 2026-04-27T16:51:46.370Z
 | hBD24 | 132 | 132 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hBP01 | 126 | 95 | 3 | 28 | 0 | 0 | 0 | 78% |
 | hBP02 | 105 | 83 | 7 | 15 | 0 | 0 | 0 | 86% |
-| hBP03 | 123 | 97 | 1 | 25 | 0 | 0 | 0 | 80% |
-| hBP04 | 114 | 93 | 0 | 21 | 0 | 0 | 0 | 82% |
+| hBP03 | 123 | 99 | 1 | 23 | 0 | 0 | 0 | 81% |
+| hBP04 | 114 | 94 | 0 | 20 | 0 | 0 | 0 | 82% |
 | hBP05 | 132 | 113 | 1 | 18 | 0 | 0 | 0 | 86% |
 | hBP06 | 145 | 114 | 1 | 30 | 0 | 0 | 0 | 79% |
-| hBP07 | 166 | 125 | 2 | 39 | 0 | 0 | 0 | 77% |
+| hBP07 | 166 | 126 | 2 | 38 | 0 | 0 | 0 | 77% |
 | hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
 | hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD02 | 13 | 11 | 2 | 0 | 0 | 0 | 0 | 100% |
 | hSD03 | 13 | 9 | 0 | 4 | 0 | 0 | 0 | 69% |
-| hSD04 | 14 | 11 | 0 | 3 | 0 | 0 | 0 | 79% |
+| hSD04 | 14 | 12 | 0 | 2 | 0 | 0 | 0 | 86% |
 | hSD05 | 13 | 13 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD06 | 13 | 12 | 0 | 1 | 0 | 0 | 0 | 92% |
 | hSD07 | 16 | 13 | 0 | 3 | 0 | 0 | 0 | 81% |

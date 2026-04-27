@@ -816,18 +816,6 @@
     "usage": 0
   },
   {
-    "id": "hBP03-009",
-    "name": "姫森ルーナ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "When the member with \"ルーナイト\" is not on his stage, reveal 1 \"ルーナイト\" from his deck and attach it to his member. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP03-037",
     "name": "モココ・アビスガード",
     "hook": "art1",
@@ -882,18 +870,6 @@
     "type": "成員",
     "expansion": "hBP03",
     "text": "Display 1 shout card of the same color as the center member marked #ReGLOSS from your own shouting deck and send it to the member marked #ReGLOSS. Reshuffle the Scream deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP03-050",
-    "name": "FUWAMOCO",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "Reveal 1 red shouting card or blue shouting card from your shouting deck and send it to the member you marked #Advent. Reshuffle the Scream deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1122,18 +1098,6 @@
     "type": "成員",
     "expansion": "hBP04",
     "text": "You can return 1~2 cards marked #白上'sキャラクター in your save area to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP04-016",
-    "name": "ラオーラ・パンテーラ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "When there are less than 5 members on your stage, you can reveal 1 Spot member marked #Justice from your deck and put it on the stage. Reshuffle the deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1980,18 +1944,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-084",
-    "name": "夏色まつり",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "Send 1 shouting card in your save area to your members.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-085",
     "name": "不知火フレア",
     "hook": "effectG",
@@ -2178,18 +2130,6 @@
     "type": "成員",
     "expansion": "hSD04",
     "text": "You can put 1 card from your hand into the archive area: reveal 1 card with the activity label #foodべ物 from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD04-007",
-    "name": "癒月ちょこ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD04",
-    "text": "The HP of one of your backstage members is restored by 20 points.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

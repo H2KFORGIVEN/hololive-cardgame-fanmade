@@ -4647,6 +4647,203 @@ export function registerPhaseB() {
 
   // ── End of Round H-3 ──
 
+  // ── Round H-4: art1 search / move / heal (5 cards) ──────────────────────
+
+  // H-4.1 hBP04-016 ラオーラ・パンテーラ Debut art1:
+  //   "If own stage members ≤5, may search 1 #Justice Spot member from
+  //    deck → place on stage. Reshuffle."
+  reg('hBP04-016', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP04-016') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stageCount = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean).length;
+    if (stageCount > 5) return { state, resolved: true, log: 'hBP04-016 art1: 舞台 >5' };
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.bloom !== 'Spot') continue;
+      const tag = card?.tag || '';
+      if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#Justice')) continue;
+      candidates.push({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: card.name, image: getCardImage(c.cardId),
+      });
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP04-016 art1: 牌組無 #Justice Spot' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT_PLACE',
+        player: ctx.player,
+        message: '選 1 張 #Justice Spot 成員放到舞台',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'PLACE_AND_SHUFFLE',
+      },
+      log: 'hBP04-016 art1: 搜尋 #Justice Spot 上場',
+    };
+  });
+
+  // H-4.2 hBP03-009 姫森ルーナ Debut art1:
+  //   "If no member with ルーナイト on own stage → search 1 ルーナイト
+  //    from deck → attach to a stage member. Reshuffle."
+  reg('hBP03-009', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP03-009') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const hasKnight = stage.some(m =>
+      (m.attachedSupport || []).some(s => getCard(s.cardId)?.name === 'ルーナイト')
+    );
+    if (hasKnight) return { state, resolved: true, log: 'hBP03-009 art1: 已有 ルーナイト' };
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === 'ルーナイト') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP03-009 art1: 牌組無 ルーナイト' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「ルーナイト」附加給成員',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ATTACH_SUPPORT',
+        targetInstanceId: ctx.memberInst?.instanceId,
+      },
+      log: 'hBP03-009 art1: 搜尋 ルーナイト',
+    };
+  });
+
+  // H-4.3 hBP03-050 FUWAMOCO 1st art1:
+  //   "Reveal 1 red or blue cheer from cheer deck → send to own #Advent
+  //    member. Reshuffle cheer deck."
+  reg('hBP03-050', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP03-050') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const cheerDeck = own.zones[ZONE.CHEER_DECK] || [];
+    if (cheerDeck.length === 0) return { state, resolved: true, log: 'hBP03-050 art1: 吶喊牌組空' };
+    // Find first red or blue cheer
+    const idx = cheerDeck.findIndex(c => {
+      const col = getCard(c.cardId)?.color;
+      return col === '紅' || col === '藍';
+    });
+    if (idx < 0) {
+      // Shuffle anyway per spec
+      for (let i = cheerDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cheerDeck[i], cheerDeck[j]] = [cheerDeck[j], cheerDeck[i]];
+      }
+      return { state, resolved: true, log: 'hBP03-050 art1: 吶喊牌組無紅/藍' };
+    }
+    const cheer = cheerDeck.splice(idx, 1)[0];
+    cheer.faceDown = false;
+    // Find #Advent target
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#Advent');
+    });
+    if (!target) {
+      // No target — return cheer to deck and shuffle
+      cheer.faceDown = true;
+      cheerDeck.push(cheer);
+      for (let i = cheerDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cheerDeck[i], cheerDeck[j]] = [cheerDeck[j], cheerDeck[i]];
+      }
+      return { state, resolved: true, log: 'hBP03-050 art1: 無 #Advent 成員' };
+    }
+    if (!target.attachedCheer) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    // Shuffle remaining cheer deck
+    for (let i = cheerDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cheerDeck[i], cheerDeck[j]] = [cheerDeck[j], cheerDeck[i]];
+    }
+    return { state, resolved: true, log: 'hBP03-050 art1: 紅/藍吶喊→#Advent 成員' };
+  });
+
+  // H-4.4 hBP07-084 夏色まつり 2nd art1:
+  //   "Send 1 archive cheer to own member."
+  reg('hBP07-084', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP07-084') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const archiveCheer = (own.zones[ZONE.ARCHIVE] || []).filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (archiveCheer.length === 0) return { state, resolved: true, log: 'hBP07-084 art1: 存檔無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    if (stage.length === 0) return { state, resolved: true };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER',
+        player: ctx.player,
+        message: 'まつり art1: 選 1 位成員接收存檔吶喊',
+        cards: stage.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '', image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_MEMBER',
+        cheerColors: null,
+      },
+      log: 'hBP07-084 art1: 選成員接收存檔吶喊',
+    };
+  });
+
+  // H-4.5 hSD04-007 癒月ちょこ 1st art1:
+  //   "Heal 20 HP on 1 own backstage member."
+  reg('hSD04-007', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hSD04-007') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const back = (own.zones[ZONE.BACKSTAGE] || []).filter(Boolean);
+    if (back.length === 0) return { state, resolved: true, log: 'hSD04-007 art1: 無後台成員' };
+    // Auto-pick the most-damaged backstage member
+    const target = back.reduce((best, m) => (m.damage > (best?.damage || 0) ? m : best), back[0]);
+    if (!target || target.damage === 0) {
+      return { state, resolved: true, log: 'hSD04-007 art1: 後台無傷' };
+    }
+    const before = target.damage;
+    target.damage = Math.max(0, target.damage - 20);
+    return { state, resolved: true, log: `hSD04-007 art1: ${getCard(target.cardId)?.name} HP +20 (${before} → ${target.damage})` };
+  });
+
+  // ── End of Round H-4 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
