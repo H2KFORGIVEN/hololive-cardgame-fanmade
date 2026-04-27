@@ -1,23 +1,23 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T03:13:24.378Z
+Generated: 2026-04-27T03:16:37.961Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 980 (75%)
+- **REAL (mutates state / queues prompt or boost)**: 988 (76%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 249 (19%)
+- **LOG_ONLY (placeholder logs only)**: 241 (18%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1055 (81%)
+- **Effective coverage (REAL + PASSIVE)**: 1063 (82%)
 
 ## By hook type
 
 | Hook | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
-| oshiSkill | 138 | 129 | 0 | 9 | 0 | 0 | 0 | 93% |
-| spSkill | 135 | 126 | 0 | 9 | 0 | 0 | 0 | 93% |
+| oshiSkill | 138 | 133 | 0 | 5 | 0 | 0 | 0 | 96% |
+| spSkill | 135 | 130 | 0 | 5 | 0 | 0 | 0 | 96% |
 | art1 | 297 | 232 | 0 | 65 | 0 | 0 | 0 | 78% |
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
@@ -36,8 +36,8 @@ Generated: 2026-04-27T03:13:24.378Z
 | hBP02 | 105 | 83 | 7 | 15 | 0 | 0 | 0 | 86% |
 | hBP03 | 123 | 95 | 1 | 27 | 0 | 0 | 0 | 78% |
 | hBP04 | 114 | 92 | 0 | 22 | 0 | 0 | 0 | 81% |
-| hBP05 | 132 | 103 | 1 | 28 | 0 | 0 | 0 | 79% |
-| hBP06 | 145 | 99 | 1 | 45 | 0 | 0 | 0 | 69% |
+| hBP05 | 132 | 105 | 1 | 26 | 0 | 0 | 0 | 80% |
+| hBP06 | 145 | 103 | 1 | 41 | 0 | 0 | 0 | 72% |
 | hBP07 | 166 | 113 | 2 | 51 | 0 | 0 | 0 | 69% |
 | hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
 | hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
@@ -52,7 +52,7 @@ Generated: 2026-04-27T03:13:24.378Z
 | hSD10 | 16 | 12 | 0 | 4 | 0 | 0 | 0 | 75% |
 | hSD11 | 13 | 10 | 0 | 3 | 0 | 0 | 0 | 77% |
 | hSD12 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
-| hSD13 | 22 | 15 | 0 | 7 | 0 | 0 | 0 | 68% |
+| hSD13 | 22 | 17 | 0 | 5 | 0 | 0 | 0 | 77% |
 | hY01 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 100% |
 | hY02 | 9 | 0 | 9 | 0 | 0 | 0 | 0 | 100% |
 | hY03 | 13 | 0 | 13 | 0 | 0 | 0 | 0 | 100% |

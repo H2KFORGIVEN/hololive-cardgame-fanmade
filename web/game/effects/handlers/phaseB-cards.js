@@ -3397,6 +3397,222 @@ export function registerPhaseB() {
 
   // ── End of Round F-4 ──
 
+  // ── Round F-5: final 4 unique-logic oshi cards ──────────────────────────
+
+  // F-5.1 hBP05-002 アイラニ・イオフィフティーン
+  //   oshi: REACTIVE (own #ID1期生 takes damage). Hint log.
+  //   sp:   Archive 2 stage cheer (any) + search 2 #ID1期生 from deck.
+  reg('hBP05-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType !== 'sp') {
+      return { state, resolved: true, log: 'hBP05-002 oshi: 被傷害時觸發吶喊替換（手動）' };
+    }
+    const own = state.players[ctx.player];
+    // Pull 2 cheer from any stage member (auto-pick: walk stage, take first 2)
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    let archived = 0;
+    for (const m of stage) {
+      while (m.attachedCheer.length > 0 && archived < 2) {
+        const c = m.attachedCheer.shift();
+        own.zones[ZONE.ARCHIVE].push(c);
+        archived++;
+      }
+      if (archived >= 2) break;
+    }
+    if (archived < 2) {
+      return { state, resolved: true, log: `hBP05-002 SP: 舞台吶喊不足（${archived}/2）` };
+    }
+    // Search 2 #ID1期生 members from deck
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (!isMember(card?.type)) continue;
+      const tag = card.tag || '';
+      if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID1期生')) continue;
+      candidates.push({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: card.name, image: getCardImage(c.cardId),
+      });
+    }
+    if (candidates.length === 0) {
+      return { state, resolved: true, log: 'hBP05-002 SP: 棄 2 吶喊，但牌組無 #ID1期生' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: `アイラニ SP: 棄 2 吶喊，選 ${Math.min(2, candidates.length)} 張 #ID1期生 成員加入手牌`,
+        cards: candidates,
+        maxSelect: Math.min(2, candidates.length),
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP05-002 SP: 已棄 2 舞台吶喊，搜尋 #ID1期生',
+    };
+  });
+
+  // F-5.2 hBP06-001 ラオーラ・パンテーラ
+  //   oshi: [center=ラオーラ] Search a member with the same name as your
+  //         collab → hand. Reshuffle.
+  //   sp:   This game, all own ラオーラ skip the reset-to-rest step.
+  //         Sets a state flag; full enforcement needs reset-phase
+  //         integration (TODO).
+  reg('hBP06-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.skillType === 'sp') {
+      state._raouraNoRestForOwner = ctx.player;
+      return { state, resolved: true, log: 'hBP06-001 SP: 本場 ラオーラ 重置階段不休息（手動）' };
+    }
+    if (getCard(own.zones[ZONE.CENTER]?.cardId)?.name !== 'ラオーラ・パンテーラ') {
+      return { state, resolved: true, log: 'hBP06-001 oshi: 中心非ラオーラ' };
+    }
+    const collabName = getCard(own.zones[ZONE.COLLAB]?.cardId)?.name;
+    if (!collabName) {
+      return { state, resolved: true, log: 'hBP06-001 oshi: 無聯動成員' };
+    }
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === collabName && isMember(card?.type)) {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: `hBP06-001 oshi: 牌組無 ${collabName}` };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: `ラオーラ oshi: 選 1 張「${collabName}」加入手牌`,
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: `hBP06-001 oshi: 搜尋同聯動名「${collabName}」`,
+    };
+  });
+
+  // F-5.3 hBP06-006 ムーナ・ホシノヴァ
+  //   oshi: REACTIVE (after own special damage → 20 special damage to opp
+  //         center+collab). Hint log.
+  //   sp:   Total cheer on both stages ≥ 6 → distribute 1-3 cheer-deck
+  //         cards to own #ID1期生 members.
+  reg('hBP06-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType !== 'sp') {
+      return { state, resolved: true, log: 'hBP06-006 oshi: 給予特殊傷害後觸發（手動）' };
+    }
+    // Count cheer on both stages
+    const countCheer = (p) => {
+      const stage = [
+        p?.zones[ZONE.CENTER], p?.zones[ZONE.COLLAB],
+        ...(p?.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      let n = 0;
+      for (const m of stage) n += (m.attachedCheer || []).length;
+      return n;
+    };
+    const totalCheer = countCheer(state.players[0]) + countCheer(state.players[1]);
+    if (totalCheer < 6) {
+      return { state, resolved: true, log: `hBP06-006 SP: 雙方吶喊總和 ${totalCheer} < 6` };
+    }
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const targets = stage.filter(m => {
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID1期生');
+    });
+    if (targets.length === 0) {
+      return { state, resolved: true, log: 'hBP06-006 SP: 無 #ID1期生 成員' };
+    }
+    // Auto-distribute: take 1-3 cheer-deck top cards, attach 1 to each target
+    let sent = 0;
+    for (const t of targets.slice(0, 3)) {
+      if (own.zones[ZONE.CHEER_DECK].length === 0) break;
+      const cheer = own.zones[ZONE.CHEER_DECK].shift();
+      cheer.faceDown = false;
+      if (!t.attachedCheer) t.attachedCheer = [];
+      t.attachedCheer.push(cheer);
+      sent++;
+    }
+    return { state, resolved: true, log: `hBP06-006 SP: 吶喊牌組 ${sent} 張→#ID1期生` };
+  });
+
+  // F-5.4 hSD13-002 ジジ・ムリン
+  //   oshi: Swap opp's center and collab positions.
+  //   sp:   Search 2 2nd-bloom ジジ from deck → place on stage. Reshuffle.
+  //         Then send archive cheer to all own members (1 each).
+  reg('hSD13-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+    if (ctx.skillType === 'sp') {
+      // Search 2 2nd ジジ → SEARCH_SELECT_PLACE
+      const candidates = [];
+      for (const c of own.zones[ZONE.DECK]) {
+        const card = getCard(c.cardId);
+        if (card?.name === 'ジジ・ムリン' && card?.bloom === '2nd') {
+          candidates.push({
+            instanceId: c.instanceId, cardId: c.cardId,
+            name: card.name, image: getCardImage(c.cardId),
+          });
+        }
+      }
+      // Distribute cheer to all members (auto, after place — pragmatic: do
+      // it now since the spec says "afterwards"). 1 each.
+      const stage = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+        ...(own.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      let dist = 0;
+      for (const m of stage) {
+        if (sendCheerFromArchiveToMember(own, m)) dist++;
+      }
+      if (candidates.length === 0) {
+        const deck = own.zones[ZONE.DECK];
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+        return { state, resolved: true, log: `hSD13-002 SP: 牌組無 2nd ジジ；發吶喊×${dist}` };
+      }
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SEARCH_SELECT_PLACE',
+          player: ctx.player,
+          message: `ジジ SP: 選 1-${Math.min(2, candidates.length)} 張 2nd ジジ放到舞台（已發 ${dist} 張吶喊）`,
+          cards: candidates, maxSelect: Math.min(2, candidates.length),
+          afterAction: 'PLACE_AND_SHUFFLE',
+        },
+        log: 'hSD13-002 SP: 搜尋 2nd ジジ + 已發吶喊',
+      };
+    }
+    // oshi: swap opp center ↔ collab
+    const oppCenter = opp.zones[ZONE.CENTER];
+    const oppCollab = opp.zones[ZONE.COLLAB];
+    if (!oppCenter || !oppCollab) {
+      return { state, resolved: true, log: 'hSD13-002 oshi: 對手中心或聯動為空' };
+    }
+    opp.zones[ZONE.CENTER] = oppCollab;
+    opp.zones[ZONE.COLLAB] = oppCenter;
+    return { state, resolved: true, log: 'hSD13-002 oshi: 對手中心↔聯動交換' };
+  });
+
+  // ── End of Round F-5 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
