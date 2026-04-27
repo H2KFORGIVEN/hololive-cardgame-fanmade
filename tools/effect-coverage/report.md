@@ -1,23 +1,23 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T02:54:02.425Z
+Generated: 2026-04-27T03:02:32.125Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 829 (64%)
+- **REAL (mutates state / queues prompt or boost)**: 834 (64%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 400 (31%)
+- **LOG_ONLY (placeholder logs only)**: 395 (30%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 904 (69%)
+- **Effective coverage (REAL + PASSIVE)**: 909 (70%)
 
 ## By hook type
 
 | Hook | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
-| oshiSkill | 138 | 54 | 0 | 84 | 0 | 0 | 0 | 39% |
-| spSkill | 135 | 50 | 0 | 85 | 0 | 0 | 0 | 37% |
+| oshiSkill | 138 | 56 | 0 | 82 | 0 | 0 | 0 | 41% |
+| spSkill | 135 | 53 | 0 | 82 | 0 | 0 | 0 | 39% |
 | art1 | 297 | 232 | 0 | 65 | 0 | 0 | 0 | 78% |
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
@@ -32,13 +32,13 @@ Generated: 2026-04-27T02:54:02.425Z
 | Set | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
 | hBD24 | 132 | 0 | 0 | 132 | 0 | 0 | 0 | 0% |
-| hBP01 | 126 | 89 | 3 | 34 | 0 | 0 | 0 | 73% |
-| hBP02 | 105 | 78 | 7 | 20 | 0 | 0 | 0 | 81% |
+| hBP01 | 126 | 91 | 3 | 32 | 0 | 0 | 0 | 75% |
+| hBP02 | 105 | 79 | 7 | 19 | 0 | 0 | 0 | 82% |
 | hBP03 | 123 | 93 | 1 | 29 | 0 | 0 | 0 | 76% |
 | hBP04 | 114 | 88 | 0 | 26 | 0 | 0 | 0 | 77% |
 | hBP05 | 132 | 103 | 1 | 28 | 0 | 0 | 0 | 79% |
 | hBP06 | 145 | 99 | 1 | 45 | 0 | 0 | 0 | 69% |
-| hBP07 | 166 | 111 | 2 | 53 | 0 | 0 | 0 | 68% |
+| hBP07 | 166 | 113 | 2 | 51 | 0 | 0 | 0 | 69% |
 | hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
 | hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD02 | 13 | 11 | 2 | 0 | 0 | 0 | 0 | 100% |
@@ -99,34 +99,34 @@ Usage = total copies across 52 tournament decks.
 | 30 | hBP06-080 | 大空スバル | art1 | LOG_ONLY | 4 | Each time this member has 1 "Suba Friends", the damage of this skill is +20. |
 | 31 | hBP07-077 | 桃鈴ねね | effectC | LOG_ONLY | 4 | If on the first turn of your back attack, reveal a 2nd member marked #5 from your deck and |
 | 32 | hBP07-110 | ねっ子 | support | LOG_ONLY | 4 | [Once per turn] When the bloom level of a member with this fan increases, draw 1 card from |
-| 33 | hBP01-006 | 小鳥遊キアラ | oshiSkill | LOG_ONLY | 3 | [Once per turn] Return 1 member from your save area to your hand. |
-| 34 | hBP01-006 | 小鳥遊キアラ | spSkill | LOG_ONLY | 3 | [Once per game] During the opponent's turn, when your red member is knocked down, you can  |
-| 35 | hBP01-095 | オーロ・クロニー | art1 | LOG_ONLY | 3 | The 1 Debut background member you placed this round can bloom from your hand into a 1st me |
-| 36 | hBP07-081 | 桃鈴ねね | art1 | LOG_ONLY | 3 | If this member has "ギラファノコギリクワガタ", this skill will inflict skill damage to the opponent's  |
-| 37 | hBP07-082 | 桃鈴ねね | effectC | LOG_ONLY | 3 | Reveal 1 2nd member labeled #5 from your deck and add it to your hand. Reshuffle the deck. |
-| 38 | hBP07-099 | ブヒー！ | support | LOG_ONLY | 3 | Draw 2 cards from your deck. After that, if one of your own members was knocked down in th |
-| 39 | hBP01-007 | 星街すいせい | oshiSkill | LOG_ONLY | 2 | [Once per round] You can use it when this leader or your own blue member inflicts damage t |
-| 40 | hBP01-007 | 星街すいせい | spSkill | LOG_ONLY | 2 | [Once per game] You can use it when your blue member inflicts damage to the opponent's cen |
-| 41 | hBP03-034 | 赤井はあと | effectB | LOG_ONLY | 2 | You can return 1 1st member or 2nd member marked #1st member other than Buzz in your save  |
-| 42 | hBP06-089 | ドローイングストリーム | support | LOG_ONLY | 2 | Reveal 1 Scream card from your Scream deck and send it to the member you marked #絵. Reshuf |
-| 43 | hBP06-104 | スバ友 | support | LOG_ONLY | 2 | During your opponent's turn, when the member with this fan is knocked down, you can send t |
-| 44 | hBP02-007 | 森カリオペ | spSkill | LOG_ONLY | 1 | [Once per game] Can be used when your center member is "Mori Kari": During this round, aft |
-| 45 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
-| 46 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
-| 47 | hBP07-007 | 桃鈴ねね | oshiSkill | LOG_ONLY | 1 | [Once per round] Send the shouting cards in your save area to all 2nd members marked #5, 1 |
-| 48 | hBP07-007 | 桃鈴ねね | spSkill | LOG_ONLY | 1 | [Once per game] Reveal 1~4 Debut member "Momo Suzuko" from your deck and put them on the s |
-| 49 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
-| 50 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
-| 51 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
-| 52 | hBD24-001 | パヴォリア・レイネ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your green members' skill damage +20. |
-| 53 | hBD24-001 | パヴォリア・レイネ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 green member from your deck and add it to your hand. Reshuffle th |
-| 54 | hBD24-002 | 獅白ぼたん | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your green members' skill damage +20. |
-| 55 | hBD24-002 | 獅白ぼたん | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 green member from your deck and add it to your hand. Reshuffle th |
-| 56 | hBD24-003 | 戌神ころね | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your yellow members' skill damage +20. |
-| 57 | hBD24-003 | 戌神ころね | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 yellow member from your deck and add it to your hand. Reshuffle t |
-| 58 | hBD24-004 | 白上フブキ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your white members' skill damage +20. |
-| 59 | hBD24-004 | 白上フブキ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 white member from your deck and add it to your hand. Reshuffle th |
-| 60 | hBD24-005 | 姫森ルーナ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your white members' skill damage +20. |
+| 33 | hBP01-095 | オーロ・クロニー | art1 | LOG_ONLY | 3 | The 1 Debut background member you placed this round can bloom from your hand into a 1st me |
+| 34 | hBP07-081 | 桃鈴ねね | art1 | LOG_ONLY | 3 | If this member has "ギラファノコギリクワガタ", this skill will inflict skill damage to the opponent's  |
+| 35 | hBP07-082 | 桃鈴ねね | effectC | LOG_ONLY | 3 | Reveal 1 2nd member labeled #5 from your deck and add it to your hand. Reshuffle the deck. |
+| 36 | hBP07-099 | ブヒー！ | support | LOG_ONLY | 3 | Draw 2 cards from your deck. After that, if one of your own members was knocked down in th |
+| 37 | hBP01-007 | 星街すいせい | oshiSkill | LOG_ONLY | 2 | [Once per round] You can use it when this leader or your own blue member inflicts damage t |
+| 38 | hBP01-007 | 星街すいせい | spSkill | LOG_ONLY | 2 | [Once per game] You can use it when your blue member inflicts damage to the opponent's cen |
+| 39 | hBP03-034 | 赤井はあと | effectB | LOG_ONLY | 2 | You can return 1 1st member or 2nd member marked #1st member other than Buzz in your save  |
+| 40 | hBP06-089 | ドローイングストリーム | support | LOG_ONLY | 2 | Reveal 1 Scream card from your Scream deck and send it to the member you marked #絵. Reshuf |
+| 41 | hBP06-104 | スバ友 | support | LOG_ONLY | 2 | During your opponent's turn, when the member with this fan is knocked down, you can send t |
+| 42 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
+| 43 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
+| 44 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
+| 45 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
+| 46 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
+| 47 | hBD24-001 | パヴォリア・レイネ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your green members' skill damage +20. |
+| 48 | hBD24-001 | パヴォリア・レイネ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 green member from your deck and add it to your hand. Reshuffle th |
+| 49 | hBD24-002 | 獅白ぼたん | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your green members' skill damage +20. |
+| 50 | hBD24-002 | 獅白ぼたん | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 green member from your deck and add it to your hand. Reshuffle th |
+| 51 | hBD24-003 | 戌神ころね | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your yellow members' skill damage +20. |
+| 52 | hBD24-003 | 戌神ころね | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 yellow member from your deck and add it to your hand. Reshuffle t |
+| 53 | hBD24-004 | 白上フブキ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your white members' skill damage +20. |
+| 54 | hBD24-004 | 白上フブキ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 white member from your deck and add it to your hand. Reshuffle th |
+| 55 | hBD24-005 | 姫森ルーナ | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your white members' skill damage +20. |
+| 56 | hBD24-005 | 姫森ルーナ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 white member from your deck and add it to your hand. Reshuffle th |
+| 57 | hBD24-006 | クレイジー・オリー | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your purple members' skill damage +20. |
+| 58 | hBD24-006 | クレイジー・オリー | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 purple member from your deck and add it to your hand. Reshuffle t |
+| 59 | hBD24-007 | ジジ・ムリン | oshiSkill | LOG_ONLY | 0 | [Once per round] During this round, one of your yellow members' skill damage +20. |
+| 60 | hBD24-007 | ジジ・ムリン | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 yellow member from your deck and add it to your hand. Reshuffle t |
 
 ## Tournament-deck coverage (52 community decks)
 
@@ -135,8 +135,7 @@ Sorted ascending by REAL %. Each card counted once.
 | Deck | Placement | REAL | LOG | PASS | MISS | Total | REAL % |
 |---|---|---|---|---|---|---|---|
 | 未公開 | Trio 1st A Block (グランメゾン大阪) | 0 | 0 | 0 | 0 | 0 | 0% |
-| ねね単 | 6th(Bombaxus) | 10 | 10 | 0 | 0 | 20 | 50% |
-| ポルカ単 | 1st C Block (ころね) | 9 | 4 | 0 | 0 | 13 | 69% |
+| ねね単 | 6th(Bombaxus) | 11 | 9 | 0 | 0 | 20 | 55% |
 | ゲーマーズ | 1st D Block (大赦の店主) | 11 | 4 | 0 | 0 | 15 | 73% |
 | ころね単 | 1st F Block (おばけ) | 11 | 4 | 0 | 0 | 15 | 73% |
 | すいせいクロヱ | 1st D Block (めるか) | 9 | 3 | 0 | 0 | 12 | 75% |
@@ -146,6 +145,7 @@ Sorted ascending by REAL %. Each card counted once.
 | ルーナ単 | Trio 1st A Block (LGW) | 16 | 5 | 0 | 0 | 21 | 76% |
 | クロニー単 | 3rd(Natskii) | 16 | 5 | 0 | 0 | 21 | 76% |
 | すいせい単 | Trio 1st (おりがみ) | 10 | 3 | 0 | 0 | 13 | 77% |
+| ポルカ単 | 1st C Block (ころね) | 10 | 3 | 0 | 0 | 13 | 77% |
 | AZKi単 | 2nd (oKIWIo) | 7 | 2 | 0 | 0 | 9 | 78% |
 | クロニー単 | 13th(Jo) | 14 | 4 | 0 | 0 | 18 | 78% |
 | かなた単 | 1st B Block (タナカ) | 11 | 3 | 0 | 0 | 14 | 79% |

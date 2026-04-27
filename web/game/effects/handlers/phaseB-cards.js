@@ -2782,6 +2782,191 @@ export function registerPhaseB() {
 
   // ── End of Round E-6 ──
 
+  // ── Round F-1: tournament-played oshi skills (5 cards) ───────────────────
+  // Five oshi cards that show tournament play. Each has both an oshiSkill
+  // (regular, ≥1/turn) and a spSkill (1/game). Reactive sp skills (those
+  // triggered by an event mid-game like "when own member knocked") require
+  // engine support that doesn't exist yet — handled as hint-logs. Active
+  // oshi skills (player-triggered via USE_OSHI_SKILL) get full handlers.
+
+  // F-1.1 hBP03-006 戌神ころね oshi
+  //   oshi: [1/turn] Change 1 own resting 戌神ころね to active state.
+  //   sp:   [1/game] When own yellow member is knocked, may use:
+  //         replace 1 cheer of that member to another own member, choose
+  //         1 from that member + bloomStack to return to hand.
+  reg('hBP03-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      // Reactive trigger — engine doesn't support reactive oshi activation
+      // mid-knockdown yet. Hint log for Manual Adjust resolution.
+      return { state, resolved: true, log: 'hBP03-006 SP: 黃色成員被擊倒時觸發（手動調整）' };
+    }
+    // Find a resting 戌神ころね on stage and set to ACTIVE
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m =>
+      getCard(m.cardId)?.name === '戌神ころね' && m.state === MEMBER_STATE.REST
+    );
+    if (!target) return { state, resolved: true, log: 'hBP03-006 oshi: 無休息中的戌神ころね' };
+    target.state = MEMBER_STATE.ACTIVE;
+    return { state, resolved: true, log: `hBP03-006 oshi: ${getCard(target.cardId)?.name} 改為活動狀態` };
+  });
+
+  // F-1.2 hBP01-006 小鳥遊キアラ oshi
+  //   oshi: [1/turn] Return 1 member from archive to hand.
+  //   sp:   [1/game] When own red member knocked during opp turn, may use:
+  //         life loss -1 + that member + stack returns to hand.
+  reg('hBP01-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP01-006 SP: 紅色成員被擊倒時觸發（手動調整）' };
+    }
+    // Active: archive → hand prompt for a member
+    const own = state.players[ctx.player];
+    const candidates = own.zones[ZONE.ARCHIVE]
+      .filter(c => isMember(getCard(c.cardId)?.type))
+      .map(c => ({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: getCard(c.cardId)?.name || '',
+        image: getCardImage(c.cardId),
+      }));
+    if (candidates.length === 0) return { state, resolved: true, log: 'hBP01-006 oshi: 存檔無成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_ARCHIVE',
+        player: ctx.player,
+        message: 'キアラ oshi: 選擇 1 張存檔成員返回手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'RETURN_FROM_ARCHIVE',
+      },
+      log: 'hBP01-006 oshi: 存檔成員回手牌',
+    };
+  });
+
+  // F-1.3 hBP01-007 星街すいせい oshi
+  //   oshi: [1/turn] When this oshi or own blue member dealt damage to opp
+  //         backstage, may use: 50 special dmg to that backstage member.
+  //   sp:   [1/game] When own blue member dealt damage to opp center/collab,
+  //         may use: same-amount special dmg to opp 1 backstage member.
+  // Both are reactive (post-damage activation) — hint logs only.
+  reg('hBP01-007', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP01-007 SP: 藍色成員給中心/聯動傷害時觸發（手動）' };
+    }
+    return { state, resolved: true, log: 'hBP01-007 oshi: 對後台造成傷害時觸發 50 特殊傷害（手動）' };
+  });
+
+  // F-1.4 hBP02-007 森カリオペ oshi
+  //   oshi: [1/turn] Archive 2 hand cards, then return 2 #EN members from
+  //         archive to hand.
+  //   sp:   [1/game] If own center is カリオペ, may use: this turn, own
+  //         カリオペ that used art uses same art again.
+  reg('hBP02-007', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP02-007 SP: 中心カリオペ → 藝能再次使用（手動）' };
+    }
+    // Archive 2 hand cards (player choice — auto-pick first 2 for pragmatic)
+    const own = state.players[ctx.player];
+    if (own.zones[ZONE.HAND].length < 2) {
+      return { state, resolved: true, log: 'hBP02-007 oshi: 手牌不足 2 張' };
+    }
+    own.zones[ZONE.ARCHIVE].push(own.zones[ZONE.HAND].shift());
+    own.zones[ZONE.ARCHIVE].push(own.zones[ZONE.HAND].shift());
+    // Search archive for #EN members → prompt to pick up to 2
+    const candidates = own.zones[ZONE.ARCHIVE]
+      .filter(c => {
+        const card = getCard(c.cardId);
+        if (!isMember(card?.type)) return false;
+        const tag = card.tag || '';
+        return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#EN');
+      })
+      .map(c => ({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: getCard(c.cardId)?.name || '',
+        image: getCardImage(c.cardId),
+      }));
+    if (candidates.length === 0) {
+      return { state, resolved: true, log: 'hBP02-007 oshi: 存檔無 #EN 成員' };
+    }
+    const max = Math.min(2, candidates.length);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_ARCHIVE',
+        player: ctx.player,
+        message: `カリオペ oshi: 選擇 1-${max} 張 #EN 成員返回手牌（已棄 2）`,
+        cards: candidates, maxSelect: max,
+        afterAction: 'RETURN_FROM_ARCHIVE',
+      },
+      log: 'hBP02-007 oshi: 棄 2 → 取回 #EN 成員',
+    };
+  });
+
+  // F-1.5 hBP07-007 桃鈴ねね oshi
+  //   oshi: [1/turn] Send archive cheer to all own #5期生 2nd members,
+  //         1 each.
+  //   sp:   [1/game] Reveal 1-4 Debut 桃鈴ねね from deck and place on stage.
+  //         Reshuffle deck.
+  reg('hBP07-007', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.skillType === 'sp') {
+      // Search deck for Debut 桃鈴ねね → prompt to place
+      const candidates = [];
+      for (const c of own.zones[ZONE.DECK]) {
+        const card = getCard(c.cardId);
+        if (card?.name === '桃鈴ねね' && card.bloom === 'Debut') {
+          candidates.push({
+            instanceId: c.instanceId, cardId: c.cardId,
+            name: card.name, image: getCardImage(c.cardId),
+          });
+        }
+      }
+      if (candidates.length === 0) {
+        // Shuffle deck even on miss
+        const deck = own.zones[ZONE.DECK];
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+        return { state, resolved: true, log: 'hBP07-007 SP: 牌組無 Debut 桃鈴ねね' };
+      }
+      const max = Math.min(4, candidates.length);
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SEARCH_SELECT_PLACE',
+          player: ctx.player,
+          message: `ねね SP: 選 1-${max} 張 Debut 桃鈴ねね 放到舞台`,
+          cards: candidates, maxSelect: max,
+          afterAction: 'PLACE_AND_SHUFFLE',
+        },
+        log: 'hBP07-007 SP: Debut 桃鈴ねね 上場',
+      };
+    }
+    // oshi (regular): distribute archive cheer to all own #5期生 2nd members
+    const targets = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean).filter(m => {
+      const card = getCard(m.cardId);
+      if (card?.bloom !== '2nd') return false;
+      const tag = card.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#5期生');
+    });
+    if (targets.length === 0) {
+      return { state, resolved: true, log: 'hBP07-007 oshi: 無 #5期生 2nd 成員' };
+    }
+    let sent = 0;
+    for (const t of targets) {
+      if (sendCheerFromArchiveToMember(own, t)) sent++;
+    }
+    return { state, resolved: true, log: `hBP07-007 oshi: 存檔吶喊→${sent} 位 #5期生 2nd` };
+  });
+
+  // ── End of Round F-1 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

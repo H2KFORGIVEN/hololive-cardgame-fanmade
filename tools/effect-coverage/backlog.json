@@ -384,30 +384,6 @@
     "usage": 4
   },
   {
-    "id": "hBP01-006",
-    "name": "小鳥遊キアラ",
-    "hook": "oshiSkill",
-    "type": "主推",
-    "expansion": "hBP01",
-    "text": "[Once per turn] Return 1 member from your save area to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
-    "id": "hBP01-006",
-    "name": "小鳥遊キアラ",
-    "hook": "spSkill",
-    "type": "主推",
-    "expansion": "hBP01",
-    "text": "[Once per game] During the opponent's turn, when your red member is knocked down, you can use: The health damage you receive -1. Select the one person who was knocked down, and return that member and all overlapping members to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
     "id": "hBP01-095",
     "name": "オーロ・クロニー",
     "hook": "art1",
@@ -516,18 +492,6 @@
     "usage": 2
   },
   {
-    "id": "hBP02-007",
-    "name": "森カリオペ",
-    "hook": "spSkill",
-    "type": "主推",
-    "expansion": "hBP02",
-    "text": "[Once per game] Can be used when your center member is \"Mori Kari\": During this round, after one of your \"Mori Kari\" uses an art, use the same art again.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
     "id": "hBP07-001",
     "name": "角巻わため",
     "hook": "stageSkill",
@@ -546,30 +510,6 @@
     "type": "主推",
     "expansion": "hBP07",
     "text": "[每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
-    "id": "hBP07-007",
-    "name": "桃鈴ねね",
-    "hook": "oshiSkill",
-    "type": "主推",
-    "expansion": "hBP07",
-    "text": "[Once per round] Send the shouting cards in your save area to all 2nd members marked #5, 1 card for each person.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
-    "id": "hBP07-007",
-    "name": "桃鈴ねね",
-    "hook": "spSkill",
-    "type": "主推",
-    "expansion": "hBP07",
-    "text": "[Once per game] Reveal 1~4 Debut member \"Momo Suzuko\" from your deck and put them on the stage. Reshuffle the deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
