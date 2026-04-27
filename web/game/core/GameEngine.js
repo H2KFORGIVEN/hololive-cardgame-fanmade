@@ -153,6 +153,7 @@ function resetTurnFlags(player) {
   // Per-turn counters consumed by art-side conditional boosts
   player._limitedSupportsThisTurn = 0;
   player._activitiesPlayedThisTurn = 0;
+  player._namesUsedArtThisTurn = [];
 
   // Clear per-turn flags on all stage members
   const allZones = [ZONE.CENTER, ZONE.COLLAB, ZONE.BACKSTAGE];
@@ -563,6 +564,14 @@ function processUseArt(state, action) {
 
   // Mark art as used for this position
   player.performedArts[position] = true;
+  // Track member names that used art this turn (for "if own X used art" boosts)
+  const attackerName = getCard(attacker.cardId)?.name;
+  if (attackerName) {
+    if (!player._namesUsedArtThisTurn) player._namesUsedArtThisTurn = [];
+    if (!player._namesUsedArtThisTurn.includes(attackerName)) {
+      player._namesUsedArtThisTurn.push(attackerName);
+    }
+  }
 
   // Mark this target as the "in-flight art knockdown" so the sweep below
   // doesn't archive it inside ON_DAMAGE_DEALT / ON_DAMAGE_TAKEN hooks before

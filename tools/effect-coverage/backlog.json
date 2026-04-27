@@ -1500,18 +1500,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-050",
-    "name": "フワワ・アビスガード",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "If your \"モココ・アビスガード\" has used an art this turn, the damage of this art is +40. If you have used your main skill \"モコちゃん!\" this round, the damage of this skill will be +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-060",
     "name": "ネリッサ・レイヴンクロフト",
     "hook": "effectB",
@@ -1674,18 +1662,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "Reveal 1 \"Ashura & Rakshasa\", \"Kishen Sword \"Ashura\"\", or \"Yuyu\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-042",
-    "name": "ハコス・ベールズ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "You can put 2 cards in your hand into the save area: the damage of this skill is +20.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1992,48 +1968,12 @@
     "usage": 0
   },
   {
-    "id": "hBP07-043",
-    "name": "さくらみこ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "For each \"35P\" this member has, this skill deals +70 damage and draws 1 card from his or her deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-049",
     "name": "エリザベス・ローズ・ブラッドフレイム",
     "hook": "effectG",
     "type": "成員",
     "expansion": "hBP07",
     "text": "[Limited to center position or linkage position] When one of your own members knocks down an opponent's member, select one of your own members. During this round, the number of colorless shout cards required for this member's performance is -2.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-049",
-    "name": "エリザベス・ローズ・ブラッドフレイム",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "If your HP is below 4, the damage of this skill is +30. If your HP is below 2, the damage of this skill is +60.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-052",
-    "name": "オーロ・クロニー",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "Except for \"オーロ・クロニー\", if a member marked with #Promise is on his or her own stage, this skill's damage will be +10.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

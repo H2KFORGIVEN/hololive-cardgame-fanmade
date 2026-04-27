@@ -4111,6 +4111,109 @@ export function registerPhaseB() {
 
   // ── End of Round G-4 ──
 
+  // ── Round G-5: art1 conditionals (5 cards) ──────────────────────────────
+
+  // G-5.1 hBP07-043 さくらみこ 2nd art1:
+  //   "Per attached 35P → +70 art damage AND draw 1 from deck."
+  reg('hBP07-043', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-043') return { state, resolved: true };
+    const fanCount = (ctx.memberInst?.attachedSupport || []).filter(s =>
+      getCard(s.cardId)?.name === '35P'
+    ).length;
+    if (fanCount === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: fanCount * 70, target: 'self', duration: 'instant' },
+      log: `hBP07-043 art1: ${fanCount} 35P → +${fanCount * 70}`,
+    };
+  });
+  reg('hBP07-043', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP07-043') return { state, resolved: true };
+    const fanCount = (ctx.memberInst?.attachedSupport || []).filter(s =>
+      getCard(s.cardId)?.name === '35P'
+    ).length;
+    if (fanCount === 0) return { state, resolved: true };
+    drawCards(state.players[ctx.player], fanCount);
+    return { state, resolved: true, log: `hBP07-043 art1: ${fanCount} 35P → 抽 ${fanCount}` };
+  });
+
+  // G-5.2 hBP07-049 エリザベス 2nd art1:
+  //   "If own life ≤4 → +30. If own life ≤2 → +60 (instead)."
+  reg('hBP07-049', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-049') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const life = (own.zones[ZONE.LIFE] || []).length;
+    let amount = 0;
+    if (life <= 2) amount = 60;
+    else if (life <= 4) amount = 30;
+    if (amount === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount, target: 'self', duration: 'instant' },
+      log: `hBP07-049 art1: 生命 ${life} → +${amount}`,
+    };
+  });
+
+  // G-5.3 hBP07-052 オーロ・クロニー 1st art1:
+  //   "If a #Promise member OTHER than this is on own stage → +10."
+  reg('hBP07-052', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-052') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const hasOtherPromise = stage.some(m => {
+      if (m.instanceId === ctx.memberInst?.instanceId) return false;
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#Promise');
+    });
+    if (!hasOtherPromise) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
+      log: 'hBP07-052 art1: 其他 #Promise 在場 → +10',
+    };
+  });
+
+  // G-5.4 hBP05-050 フワワ・アビスガード 1st Buzz art1:
+  //   "If own モココ used art this turn → +40. If own oshi skill used → +30."
+  reg('hBP05-050', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-050') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    let bonus = 0;
+    const usedNames = own._namesUsedArtThisTurn || [];
+    if (usedNames.includes('モココ・アビスガード')) bonus += 40;
+    if (own.oshiSkillUsedThisTurn) bonus += 30;
+    if (bonus === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: bonus, target: 'self', duration: 'instant' },
+      log: `hBP05-050 art1: モココ藝能/主推技能 → +${bonus}`,
+    };
+  });
+
+  // G-5.5 hBP06-042 ハコス・ベールズ 1st art1:
+  //   "May archive 2 hand cards → +20 art damage."
+  reg('hBP06-042', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-042') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if ((own.zones[ZONE.HAND] || []).length < 2) {
+      return { state, resolved: true, log: 'hBP06-042 art1: 手牌不足 2 張' };
+    }
+    // Auto-discard first 2 hand cards (the spec is opt-in but auto for pragmatic)
+    own.zones[ZONE.ARCHIVE].push(own.zones[ZONE.HAND].shift());
+    own.zones[ZONE.ARCHIVE].push(own.zones[ZONE.HAND].shift());
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' },
+      log: 'hBP06-042 art1: 棄 2 手牌 → +20',
+    };
+  });
+
+  // ── End of Round G-5 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
