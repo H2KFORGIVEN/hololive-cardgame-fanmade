@@ -4596,18 +4596,6 @@
     "usage": 0
   },
   {
-    "id": "hSD08-005",
-    "name": "姫森ルーナ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD08",
-    "text": "[Limited linkage position] During the opponent's turn, when one of your own members is knocked down, if your HP is less than your opponent's, you can return 1 item in your save area with \"パソコン\" in its card name to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD10-005",
     "name": "輪堂千速",
     "hook": "art1",
@@ -4746,18 +4734,6 @@
     "type": "主推",
     "expansion": "hSD13",
     "text": "[Once per game] Reveal 2 cards of the 2nd member \"ジジ・ムリン\" from your deck and put them on the stage. Reshuffle the deck. After that, send the shouting cards in your archive area to all your members, 1 to each person.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD13-005",
-    "name": "エリザベス・ローズ・ブラッドフレイム",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD13",
-    "text": "During the opponent's turn, when your member marked #Justice is knocked down, send the top card of your shout deck to this member. \"For Justice! -ERB-\" can only be used once per round.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

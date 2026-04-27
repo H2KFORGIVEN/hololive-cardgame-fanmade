@@ -1,16 +1,16 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T02:42:54.420Z
+Generated: 2026-04-27T02:49:12.709Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 827 (63%)
+- **REAL (mutates state / queues prompt or boost)**: 829 (64%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 402 (31%)
+- **LOG_ONLY (placeholder logs only)**: 400 (31%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 902 (69%)
+- **Effective coverage (REAL + PASSIVE)**: 904 (69%)
 
 ## By hook type
 
@@ -22,7 +22,7 @@ Generated: 2026-04-27T02:42:54.420Z
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
 | effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
-| effectG | 94 | 59 | 0 | 35 | 0 | 0 | 0 | 63% |
+| effectG | 94 | 61 | 0 | 33 | 0 | 0 | 0 | 65% |
 | support | 184 | 106 | 17 | 61 | 0 | 0 | 0 | 67% |
 | stageSkill | 3 | 0 | 0 | 3 | 0 | 0 | 0 | 0% |
 | cheer | 58 | 0 | 58 | 0 | 0 | 0 | 0 | 100% |
@@ -47,12 +47,12 @@ Generated: 2026-04-27T02:42:54.420Z
 | hSD05 | 13 | 12 | 0 | 1 | 0 | 0 | 0 | 92% |
 | hSD06 | 13 | 11 | 0 | 2 | 0 | 0 | 0 | 85% |
 | hSD07 | 16 | 11 | 0 | 5 | 0 | 0 | 0 | 69% |
-| hSD08 | 10 | 9 | 0 | 1 | 0 | 0 | 0 | 90% |
+| hSD08 | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD09 | 9 | 9 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD10 | 16 | 12 | 0 | 4 | 0 | 0 | 0 | 75% |
 | hSD11 | 13 | 10 | 0 | 3 | 0 | 0 | 0 | 77% |
 | hSD12 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
-| hSD13 | 22 | 14 | 0 | 8 | 0 | 0 | 0 | 64% |
+| hSD13 | 22 | 15 | 0 | 7 | 0 | 0 | 0 | 68% |
 | hY01 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 100% |
 | hY02 | 9 | 0 | 9 | 0 | 0 | 0 | 0 | 100% |
 | hY03 | 13 | 0 | 13 | 0 | 0 | 0 | 0 | 100% |

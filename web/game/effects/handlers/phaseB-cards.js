@@ -2487,6 +2487,171 @@ export function registerPhaseB() {
 
   // ── End of Round E-4 ──
 
+  // ── Round E-5: own ally knocked broadcast (5 cards) ──────────────────────
+  // Helper: pop the most recently archived member-card off the archive (the
+  // killed member from the just-completed processKnockdown). archiveMember
+  // pushes member last after attached cheer/support/stack, so archive[len-1]
+  // is the killed member; the N entries before it are the new stack instances.
+  // Reverses for the "return killed + stack to hand" pattern.
+  function returnKilledAndStackToHand(state, ownerIdx, knockedOutInstanceId, stackCount) {
+    const own = state.players[ownerIdx];
+    const archive = own.zones[ZONE.ARCHIVE];
+    // Find the killed member by instanceId
+    const memberIdx = archive.findIndex(c => c.instanceId === knockedOutInstanceId);
+    if (memberIdx < 0) return false;
+    const member = archive.splice(memberIdx, 1)[0];
+    own.zones[ZONE.HAND].push(member);
+    // The N stack instances were pushed immediately before the member, in
+    // bloomStack order. After splicing the member, they're now at the end.
+    const stackEntries = archive.splice(archive.length - (stackCount || 0), stackCount || 0);
+    for (const e of stackEntries) own.zones[ZONE.HAND].push(e);
+    return true;
+  }
+
+  // E-5.1 hBP07-022 白銀ノエル 2nd:
+  //   "[Limited collab] During opp turn, when own #3期生 center is knocked,
+  //    return that center + all overlapping members to hand."
+  reg('hBP07-022', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-022') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.player !== ctx.knockedOutPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // I must be in own collab
+    if (own?.zones[ZONE.COLLAB]?.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    // Killed must have been in own center
+    if (ctx.knockedOutZone !== 'center') return { state, resolved: true };
+    // Killed must have #3期生 tag
+    const killedCard = getCard(ctx.knockedOutCardId);
+    const tag = killedCard?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#3期生')) {
+      return { state, resolved: true };
+    }
+    const stackCount = (ctx.knockedOutStackIds || []).length;
+    if (returnKilledAndStackToHand(state, ctx.player, ctx.knockedOutInstanceId, stackCount)) {
+      return { state, resolved: true, log: 'hBP07-022: 中心 + 重疊成員返回手牌' };
+    }
+    return { state, resolved: true, log: 'hBP07-022: 找不到擊倒成員' };
+  });
+
+  // E-5.2 hBP05-035 さくらみこ 2nd:
+  //   "[Limited center/collab] During opp turn, when own さくらみこ is knocked,
+  //    may use: search deck for "み俺恥" → hand. Reshuffle deck."
+  reg('hBP05-035', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-035') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.player !== ctx.knockedOutPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const isCenterOrCollab =
+      own?.zones[ZONE.CENTER]?.instanceId === ctx.memberInst?.instanceId
+      || own?.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst?.instanceId;
+    if (!isCenterOrCollab) return { state, resolved: true };
+    // Killed must be a さくらみこ
+    if (getCard(ctx.knockedOutCardId)?.name !== 'さくらみこ') return { state, resolved: true };
+    // Search deck for み俺恥 by name
+    const idx = own.zones[ZONE.DECK].findIndex(c => getCard(c.cardId)?.name === 'み俺恥');
+    if (idx < 0) {
+      // Shuffle deck even on miss (per "將牌組重新洗牌")
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP05-035: 牌組無「み俺恥」' };
+    }
+    const card = own.zones[ZONE.DECK].splice(idx, 1)[0];
+    card.faceDown = false;
+    own.zones[ZONE.HAND].push(card);
+    // Shuffle remaining deck
+    const deck = own.zones[ZONE.DECK];
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    return { state, resolved: true, log: 'hBP05-035: 搜尋「み俺恥」加入手牌' };
+  });
+
+  // E-5.3 hBP07-044 尾丸ポルカ 2nd:
+  //   "[Limited center/collab] During opp turn, when own Buzz member with a
+  //    fan is knocked, if own oshi is 尾丸ポルカ → life loss -1."
+  // Sets ctx.lifeLossDelta = -1 when conditions met. The broadcast accumulator
+  // in processKnockdown picks this up before computing the final life cost.
+  reg('hBP07-044', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-044') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.player !== ctx.knockedOutPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const isCenterOrCollab =
+      own?.zones[ZONE.CENTER]?.instanceId === ctx.memberInst?.instanceId
+      || own?.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst?.instanceId;
+    if (!isCenterOrCollab) return { state, resolved: true };
+    // oshi must be 尾丸ポルカ
+    if (getCard(own.oshi?.cardId)?.name !== '尾丸ポルカ') return { state, resolved: true };
+    // Killed must be Buzz with at least 1 fan (粉絲) attached at time of knockdown
+    if (!getCard(ctx.knockedOutCardId)?.bloom?.includes('Buzz')) return { state, resolved: true };
+    const hadFan = (ctx.knockedOutSupportCardIds || []).some(supId =>
+      getCard(supId)?.type === '支援・粉絲'
+    );
+    if (!hadFan) return { state, resolved: true };
+    ctx.lifeLossDelta = (ctx.lifeLossDelta || 0) - 1;
+    return { state, resolved: true, log: 'hBP07-044: Buzz+粉絲 被擊倒 → 生命損失 -1' };
+  });
+
+  // E-5.4 hSD08-005 姫森ルーナ Debut:
+  //   "[Limited collab] During opp turn, when own member is knocked, if own
+  //    life < opp life, may return 1 archive card whose name contains
+  //    パソコン (computer) to hand."
+  reg('hSD08-005', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hSD08-005') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.player !== ctx.knockedOutPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own?.zones[ZONE.COLLAB]?.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    const opp = state.players[ctx.attackerPlayer];
+    const myLife = own.zones[ZONE.LIFE]?.length || 0;
+    const oppLife = opp?.zones[ZONE.LIFE]?.length || 0;
+    if (myLife >= oppLife) return { state, resolved: true };
+    // Find first archive item with name containing パソコン
+    const idx = own.zones[ZONE.ARCHIVE].findIndex(c => {
+      const name = getCard(c.cardId)?.name || '';
+      return name.includes('パソコン');
+    });
+    if (idx < 0) return { state, resolved: true, log: 'hSD08-005: 存檔無パソコン' };
+    const item = own.zones[ZONE.ARCHIVE].splice(idx, 1)[0];
+    own.zones[ZONE.HAND].push(item);
+    return { state, resolved: true, log: 'hSD08-005: パソコン 從存檔回手牌' };
+  });
+
+  // E-5.5 hSD13-005 エリザベス・ローズ・ブラッドフレイム 1st:
+  //   "During opp turn, when own #Justice member is knocked, send 1 cheer
+  //    deck top to THIS member. Once per turn."
+  // The "once per turn" cap isn't enforced server-side yet (no per-turn
+  // ability tracking for effectG broadcast); broadcast naturally limits to
+  // per-knockdown. The action attaches cheer to the SURVIVING ERB
+  // instance — i.e. the effectG owner (ctx.memberInst), NOT the killed one.
+  reg('hSD13-005', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hSD13-005') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.player !== ctx.knockedOutPlayer) return { state, resolved: true };
+    // Killed must have #Justice tag
+    const killedCard = getCard(ctx.knockedOutCardId);
+    const tag = killedCard?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#Justice')) {
+      return { state, resolved: true };
+    }
+    const own = state.players[ctx.player];
+    if (sendCheerFromDeckToMember(own, ctx.memberInst)) {
+      return { state, resolved: true, log: 'hSD13-005: 吶喊牌組頂 → 此成員' };
+    }
+    return { state, resolved: true, log: 'hSD13-005: 吶喊牌組空' };
+  });
+
+  // ── End of Round E-5 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

@@ -576,6 +576,19 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
 
   addLog(state, `  ${targetCard?.name || ''} 被擊倒！${isBuzz ? '(Buzz 生命 -2)' : ''}`);
 
+  // Snapshot the killed member's pre-archive context so post-archive
+  // broadcast handlers can read where it was, what was attached, and how
+  // big its bloom stack was (for "return member + stack to hand" effects).
+  let knockedOutZone = null;
+  if (opponent.zones[ZONE.CENTER]?.instanceId === target.instanceId) knockedOutZone = 'center';
+  else if (opponent.zones[ZONE.COLLAB]?.instanceId === target.instanceId) knockedOutZone = 'collab';
+  else if ((opponent.zones[ZONE.BACKSTAGE] || []).some(m => m.instanceId === target.instanceId)) knockedOutZone = 'backstage';
+
+  const knockedOutStackIds = (target.bloomStack || []).map(e =>
+    typeof e === 'string' ? e : e?.cardId
+  ).filter(Boolean);
+  const knockedOutSupportCardIds = (target.attachedSupport || []).map(s => s.cardId);
+
   // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react. Handlers can:
   //   • set ctx.cancelKnockdown = true     → skip archive + life loss
   //   • set ctx.lifeLossDelta = -N / +N    → adjust life cost (clamped to 0)
@@ -587,6 +600,9 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     attackerPlayer,
     cancelKnockdown: false,
     lifeLossDelta: 0,
+    knockedOutZone,
+    knockedOutStackIds,
+    knockedOutSupportCardIds,
   };
   fireEffect(state, HOOK.ON_KNOCKDOWN, knockdownCtx);
 
@@ -600,8 +616,44 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
   // Archive the knocked-down member and all attached cards (+ bloom stack)
   archiveMember(opponent, target.instanceId);
 
-  // Life loss (handler-adjusted, clamped to 0)
-  const lifeCost = Math.max(0, baseLifeCost + (knockdownCtx.lifeLossDelta || 0));
+  // Broadcast: fire ON_KNOCKDOWN with triggerEvent='member_knocked' to all
+  // OTHER stage members on both sides BEFORE life loss is applied — so
+  // observer handlers can also adjust ctx.lifeLossDelta (e.g. hBP07-044
+  // 尾丸ポルカ: own Buzz with fan knocked + oshi is ポルカ → −1 life).
+  // We accumulate deltas from all firings into a single broadcastDelta.
+  const opponentIdx = 1 - attackerPlayer;
+  let broadcastDelta = 0;
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    const stageMembers = [
+      pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB],
+      ...(pl.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    for (const m of stageMembers) {
+      if (m.instanceId === target.instanceId) continue; // killed member already archived
+      const broadcastCtx = {
+        cardId: m.cardId,
+        player: idx,
+        memberInst: m,
+        triggerEvent: 'member_knocked',
+        knockedOutCardId: target.cardId,
+        knockedOutInstanceId: target.instanceId,
+        knockedOutPlayer: opponentIdx,
+        attackerPlayer,
+        knockedOutZone,
+        knockedOutStackIds,
+        knockedOutSupportCardIds,
+        lifeLossDelta: 0,
+      };
+      fireEffect(state, HOOK.ON_KNOCKDOWN, broadcastCtx);
+      broadcastDelta += (broadcastCtx.lifeLossDelta || 0);
+    }
+  }
+
+  // Life loss (handler-adjusted from BOTH single-fire AND broadcast, clamped to 0)
+  const totalDelta = (knockdownCtx.lifeLossDelta || 0) + broadcastDelta;
+  const lifeCost = Math.max(0, baseLifeCost + totalDelta);
   if (lifeCost !== baseLifeCost) {
     addLog(state, `  生命損失調整 ${baseLifeCost} → ${lifeCost}`);
   }
@@ -614,7 +666,6 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     }
   }
 
-  const opponentIdx = 1 - attackerPlayer;
   addLog(state, `  P${opponentIdx + 1} 生命值 -${lifeCost}（剩餘 ${opponent.zones[ZONE.LIFE].length}）`);
 
   // Check win: life = 0
@@ -633,7 +684,10 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     return;
   }
 
-  // Queue life cheer assignment for the opponent to choose
+  // Queue life cheer assignment for the opponent to choose.
+  // (Note: broadcast already ran earlier — before life loss — so observer
+  // handlers can influence lifeLossDelta and run their own state mutations
+  // pre-life. See the broadcast loop above.)
   if (lifeCheerToAssign.length > 0) {
     state.pendingEffect = {
       type: 'LIFE_CHEER',
@@ -641,35 +695,6 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
       cheerInstances: lifeCheerToAssign,
       currentIndex: 0,
     };
-  }
-
-  // ── Broadcast: fire ON_KNOCKDOWN with triggerEvent='member_knocked' to all
-  // stage members on both sides so handlers like "this member knocks opp →
-  // draw 2" / "any own member knocks opp → boost" can react. The killed
-  // member's own effectG already fired earlier as the legacy single-fire
-  // (no triggerEvent), so we don't re-fire for it. Handlers that gate on
-  // triggerEvent === 'member_knocked' won't accidentally trigger from the
-  // legacy single-fire path.
-  for (let idx = 0; idx < 2; idx++) {
-    const pl = state.players[idx];
-    if (!pl) continue;
-    const stageMembers = [
-      pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB],
-      ...(pl.zones[ZONE.BACKSTAGE] || []),
-    ].filter(Boolean);
-    for (const m of stageMembers) {
-      if (m.instanceId === target.instanceId) continue; // killed member already archived
-      fireEffect(state, HOOK.ON_KNOCKDOWN, {
-        cardId: m.cardId,
-        player: idx,
-        memberInst: m,
-        triggerEvent: 'member_knocked',
-        knockedOutCardId: target.cardId,
-        knockedOutInstanceId: target.instanceId,
-        knockedOutPlayer: opponentIdx,
-        attackerPlayer,
-      });
-    }
   }
 }
 
