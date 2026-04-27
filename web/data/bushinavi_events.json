@@ -1,5 +1,1580 @@
 [
   {
+    "event_id": 1556661,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ『ディーヴァフィーバー』in カードショップ楓",
+    "event_date": "2026-04-26",
+    "place": "高知市帯屋町2-1-24 3F",
+    "game_format": "スタンダード",
+    "joined_player_count": 14,
+    "max_join_count": 24,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1556661",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "Swallow",
+        "friend_code": "CDOYN",
+        "oshi": "AZKi",
+        "deck_code": "2001Z",
+        "decklog_url": "https://decklog.bushiroad.com/view/2001Z",
+        "reward_image_url": ""
+      },
+      {
+        "rank": 2,
+        "player_name": "シン",
+        "friend_code": "GFZSI",
+        "oshi": "シオリ・ノヴェラ",
+        "deck_code": "32L9Z",
+        "decklog_url": "https://decklog.bushiroad.com/view/32L9Z",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1815/042_hOCG_gold_Calliope.png",
+        "reward_image_local": "/images/rewards/aaafbb76b3_042_hOCG_gold_Calliope.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "あいりす",
+        "friend_code": "IWLGM",
+        "oshi": "AZKi",
+        "deck_code": "6XXDM",
+        "decklog_url": "https://decklog.bushiroad.com/view/6XXDM",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2185/hOCG_entrycup_shougou_2604_AZKi_72.png",
+        "reward_image_local": "/images/rewards/7e99da732d_hOCG_entrycup_shougou_2604_AZKi_72.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "Arcana",
+        "friend_code": "KJNTO",
+        "oshi": "AZKi",
+        "deck_code": "2BB07",
+        "decklog_url": "https://decklog.bushiroad.com/view/2BB07",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1936/hOCG_entrycup10_shougou_72_poru.png",
+        "reward_image_local": "/images/rewards/b78756418b_hOCG_entrycup10_shougou_72_poru.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "◆リンちゃん@ロボさー",
+        "friend_code": "ZEEDP",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "17UEP",
+        "decklog_url": "https://decklog.bushiroad.com/view/17UEP",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1776/002_hOCG_gold_Robocosan.png",
+        "reward_image_local": "/images/rewards/b871b7ac3d_002_hOCG_gold_Robocosan.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "yuu",
+        "friend_code": "AFWHO",
+        "oshi": "AZKi",
+        "deck_code": "41D8F",
+        "decklog_url": "https://decklog.bushiroad.com/view/41D8F",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ラビファ",
+        "friend_code": "FGPSS",
+        "oshi": "角巻わため",
+        "deck_code": "5JW3V",
+        "decklog_url": "https://decklog.bushiroad.com/view/5JW3V",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "仗助",
+        "friend_code": "AGDOJ",
+        "oshi": "AZKi",
+        "deck_code": "10XKZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/10XKZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1955/hOCG_EX2025final_shougou_competitor.png",
+        "reward_image_local": "/images/rewards/6e0199949e_hOCG_EX2025final_shougou_competitor.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1545869,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードショップ彩々鹿児島店",
+    "event_date": "2026-04-26",
+    "place": "鹿児島市下荒田2-7-14　久木留ビル2F",
+    "game_format": "スタンダード",
+    "joined_player_count": 27,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1545869",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "39c",
+        "friend_code": "OGZAG",
+        "oshi": "風真いろは",
+        "deck_code": "5UPLK",
+        "decklog_url": "https://decklog.bushiroad.com/view/5UPLK",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "UPP/AHL/GAV",
+        "friend_code": "VUBYJ",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2RMP1",
+        "decklog_url": "https://decklog.bushiroad.com/view/2RMP1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "ルスワール@fwmc",
+        "friend_code": "AMHNT",
+        "oshi": "AZKi",
+        "deck_code": "54B2P",
+        "decklog_url": "https://decklog.bushiroad.com/view/54B2P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1824/052_hOCG_gold_Fuwawa.png",
+        "reward_image_local": "/images/rewards/44206dc3a7_052_hOCG_gold_Fuwawa.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "もやしやし",
+        "friend_code": "UWVJT",
+        "oshi": "角巻わため",
+        "deck_code": "267VH",
+        "decklog_url": "https://decklog.bushiroad.com/view/267VH",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1831/059_hOCG_gold_Kanade.png",
+        "reward_image_local": "/images/rewards/f10f4abe3c_059_hOCG_gold_Kanade.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "raypit",
+        "friend_code": "JRVNI",
+        "oshi": "AZKi",
+        "deck_code": "3UZ9R",
+        "decklog_url": "https://decklog.bushiroad.com/view/3UZ9R",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1666/022_hOCG_bronze_Towa.png",
+        "reward_image_local": "/images/rewards/8c72654444_022_hOCG_bronze_Towa.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "ナツ",
+        "friend_code": "NNWEW",
+        "oshi": "AZKi",
+        "deck_code": "6W7SX",
+        "decklog_url": "https://decklog.bushiroad.com/view/6W7SX",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1327/100_bushinavi_%E5%9F%BA%E6%9C%AC%E7%A7%B0%E5%8F%B7-%E5%A4%A7%E4%BC%9A%E5%87%BA%E5%A0%B4100%E5%9B%9E%E9%81%94%E6%88%90.png",
+        "reward_image_local": "/images/rewards/cd6364860b_100_bushinavi_%E5%9F%BA%E6%9C%AC%E7%A7%B.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "朱里",
+        "friend_code": "VHXSA",
+        "oshi": "AZKi",
+        "deck_code": "7A0QB",
+        "decklog_url": "https://decklog.bushiroad.com/view/7A0QB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2185/hOCG_entrycup_shougou_2604_AZKi_72.png",
+        "reward_image_local": "/images/rewards/7e99da732d_hOCG_entrycup_shougou_2604_AZKi_72.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "アニキ",
+        "friend_code": "BWWUX",
+        "oshi": "AZKi",
+        "deck_code": "1QGPD",
+        "decklog_url": "https://decklog.bushiroad.com/view/1QGPD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1718/009_hOCG_silver_Subaru.png",
+        "reward_image_local": "/images/rewards/af8b6a442c_009_hOCG_silver_Subaru.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1550882,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_date": "2026-04-26",
+    "place": "横浜市鶴見区矢向6-12-11　青馬堂ビル",
+    "game_format": "スタンダード",
+    "joined_player_count": 27,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1550882",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "minato",
+        "friend_code": "YTPIR",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "5WRUH",
+        "decklog_url": "https://decklog.bushiroad.com/view/5WRUH",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1795/021_hOCG_gold_Watame.png",
+        "reward_image_local": "/images/rewards/fe8514fe02_021_hOCG_gold_Watame.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "@naconda",
+        "friend_code": "GBYGP",
+        "oshi": "AZKi",
+        "deck_code": "6VP2V",
+        "decklog_url": "https://decklog.bushiroad.com/view/6VP2V",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1782/008_hOCG_gold_Choco.png",
+        "reward_image_local": "/images/rewards/433abfda26_008_hOCG_gold_Choco.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "開拓者の多（た）",
+        "friend_code": "VLZSX",
+        "oshi": "AZKi",
+        "deck_code": "5XP0X",
+        "decklog_url": "https://decklog.bushiroad.com/view/5XP0X",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1784/010_hOCG_gold_AZKi.png",
+        "reward_image_local": "/images/rewards/43dc542dc0_010_hOCG_gold_AZKi.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "勝次",
+        "friend_code": "SSGND",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "3JY5R",
+        "decklog_url": "https://decklog.bushiroad.com/view/3JY5R",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1232/hOCG_mikodanye_shougou_miko.png",
+        "reward_image_local": "/images/rewards/ae906d6869_hOCG_mikodanye_shougou_miko.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "MIKE",
+        "friend_code": "HKJXK",
+        "oshi": "風真いろは",
+        "deck_code": "58MW7",
+        "decklog_url": "https://decklog.bushiroad.com/view/58MW7",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1649/005_hOCG_bronze_Fubuki.png",
+        "reward_image_local": "/images/rewards/4911856972_005_hOCG_bronze_Fubuki.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "onemu",
+        "friend_code": "BUVAB",
+        "oshi": "尾丸ポルカ",
+        "deck_code": "6KKUX",
+        "decklog_url": "https://decklog.bushiroad.com/view/6KKUX",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1954/hOCG_shougou_kanade_B.png",
+        "reward_image_local": "/images/rewards/8b2a2a5b1c_hOCG_shougou_kanade_B.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ステラ自爆おばさん",
+        "friend_code": "WDJHA",
+        "oshi": "AZKi",
+        "deck_code": "2Q5PM",
+        "decklog_url": "https://decklog.bushiroad.com/view/2Q5PM",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1803/029_hOCG_gold_Lui.png",
+        "reward_image_local": "/images/rewards/e7319775a3_029_hOCG_gold_Lui.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "tokaiの鑑",
+        "friend_code": "SAZCI",
+        "oshi": "AZKi",
+        "deck_code": "2W2NX",
+        "decklog_url": "https://decklog.bushiroad.com/view/2W2NX",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1726/017_hOCG_silver_Flare.png",
+        "reward_image_local": "/images/rewards/ba9571bc33_017_hOCG_silver_Flare.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1556846,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードラボ名古屋大須店",
+    "event_date": "2026-04-26",
+    "place": "名古屋市中区大須3-30-40　万松寺ビル1Ｆ",
+    "game_format": "スタンダード",
+    "joined_player_count": 32,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1556846",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "lulu",
+        "friend_code": "NIFPY",
+        "oshi": "AZKi",
+        "deck_code": "6QAQP",
+        "decklog_url": "https://decklog.bushiroad.com/view/6QAQP",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "シュネー",
+        "friend_code": "TDHIU",
+        "oshi": "AZKi",
+        "deck_code": "3J30B",
+        "decklog_url": "https://decklog.bushiroad.com/view/3J30B",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2154/hOCG_egosacup_shougou_B_72.png",
+        "reward_image_local": "/images/rewards/940aaba974_hOCG_egosacup_shougou_B_72.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "トモ+",
+        "friend_code": "IZRXZ",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "6XNBF",
+        "decklog_url": "https://decklog.bushiroad.com/view/6XNBF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1964/hOCG_entrycup_shougou_ayame_72.png",
+        "reward_image_local": "/images/rewards/3f323e4689_hOCG_entrycup_shougou_ayame_72.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "ハルミヤ",
+        "friend_code": "UZXHR",
+        "oshi": "角巻わため",
+        "deck_code": "530HD",
+        "decklog_url": "https://decklog.bushiroad.com/view/530HD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1232/hOCG_mikodanye_shougou_miko.png",
+        "reward_image_local": "/images/rewards/ae906d6869_hOCG_mikodanye_shougou_miko.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "れり",
+        "friend_code": "BOLII",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "3LM6P",
+        "decklog_url": "https://decklog.bushiroad.com/view/3LM6P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1703/061_hOCG_bronze_Raden.png",
+        "reward_image_local": "/images/rewards/493599ed91_061_hOCG_bronze_Raden.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "がな",
+        "friend_code": "BDKUY",
+        "oshi": "角巻わため",
+        "deck_code": "2MHJB",
+        "decklog_url": "https://decklog.bushiroad.com/view/2MHJB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1814/041_hOCG_gold_Kobo.png",
+        "reward_image_local": "/images/rewards/1846e50f9b_041_hOCG_gold_Kobo.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ジャッキー",
+        "friend_code": "IRLSX",
+        "oshi": "AZKi",
+        "deck_code": "5WG6B",
+        "decklog_url": "https://decklog.bushiroad.com/view/5WG6B",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2184/hOCG_entrycup_shougou_2604_watame_72.png",
+        "reward_image_local": "/images/rewards/901d320f21_hOCG_entrycup_shougou_2604_watame_72.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "竹",
+        "friend_code": "RCCSX",
+        "oshi": "桃鈴ねね",
+        "deck_code": "5FX8P",
+        "decklog_url": "https://decklog.bushiroad.com/view/5FX8P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2154/hOCG_egosacup_shougou_B_72.png",
+        "reward_image_local": "/images/rewards/940aaba974_hOCG_egosacup_shougou_B_72.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1556777,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "Japan TCG Center那覇沖映通り店",
+    "event_date": "2026-04-26",
+    "place": "那覇市牧志1-19-29　B1",
+    "game_format": "スタンダード",
+    "joined_player_count": 30,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1556777",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ぼぎー",
+        "friend_code": "CLEXT",
+        "oshi": "AZKi",
+        "deck_code": "2PZD5",
+        "decklog_url": "https://decklog.bushiroad.com/view/2PZD5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "PPTニキ",
+        "friend_code": "GVWNO",
+        "oshi": "AZKi",
+        "deck_code": "4QAHZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/4QAHZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1794/020_hOCG_gold_Kanata.png",
+        "reward_image_local": "/images/rewards/aed7b54eb4_020_hOCG_gold_Kanata.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "ざんげ",
+        "friend_code": "HWMRE",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "5CUKV",
+        "decklog_url": "https://decklog.bushiroad.com/view/5CUKV",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1768/061_hOCG_silver_Raden.png",
+        "reward_image_local": "/images/rewards/f116d33129_061_hOCG_silver_Raden.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "ナカタ",
+        "friend_code": "ECQQP",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "3Y2Z9",
+        "decklog_url": "https://decklog.bushiroad.com/view/3Y2Z9",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "すこん部イネ",
+        "friend_code": "WDJUS",
+        "oshi": "角巻わため",
+        "deck_code": "47Q07",
+        "decklog_url": "https://decklog.bushiroad.com/view/47Q07",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1779/005_hOCG_gold_Fubuki.png",
+        "reward_image_local": "/images/rewards/b07e3fed03_005_hOCG_gold_Fubuki.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "Ta-ta",
+        "friend_code": "JNZWK",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "47BU7",
+        "decklog_url": "https://decklog.bushiroad.com/view/47BU7",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1234/hOCG_mikodanye_shougou_ningen.png",
+        "reward_image_local": "/images/rewards/38881d2ca0_hOCG_mikodanye_shougou_ningen.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "吹雪",
+        "friend_code": "CBPCP",
+        "oshi": "AZKi",
+        "deck_code": "7Y9KD",
+        "decklog_url": "https://decklog.bushiroad.com/view/7Y9KD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ゼナ",
+        "friend_code": "SCJEG",
+        "oshi": "赤井はあと",
+        "deck_code": "1HVTH",
+        "decklog_url": "https://decklog.bushiroad.com/view/1HVTH",
+        "reward_image_url": ""
+      }
+    ]
+  },
+  {
+    "event_id": 1543374,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "シーガル嶋北店",
+    "event_date": "2026-04-26",
+    "place": "山形市嶋北2-22-20",
+    "game_format": "スタンダード",
+    "joined_player_count": 31,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1543374",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "RIN",
+        "friend_code": "ZQILL",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2XNFZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/2XNFZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1832/060_hOCG_gold_Ririka.png",
+        "reward_image_local": "/images/rewards/053944fe9a_060_hOCG_gold_Ririka.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "凜祢",
+        "friend_code": "HJNFC",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4DPB1",
+        "decklog_url": "https://decklog.bushiroad.com/view/4DPB1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1965/hOCG_entrycup_shougou_iroha_72.png",
+        "reward_image_local": "/images/rewards/563f4b00a8_hOCG_entrycup_shougou_iroha_72.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "くま",
+        "friend_code": "RHGFS",
+        "oshi": "角巻わため",
+        "deck_code": "2WYKD",
+        "decklog_url": "https://decklog.bushiroad.com/view/2WYKD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "KEI",
+        "friend_code": "IMIOW",
+        "oshi": "AZKi",
+        "deck_code": "65DV5",
+        "decklog_url": "https://decklog.bushiroad.com/view/65DV5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1631/hOCG_bloomcup_shougou_fubuki.png",
+        "reward_image_local": "/images/rewards/e88fb8e665_hOCG_bloomcup_shougou_fubuki.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "ひょうてんちゃん",
+        "friend_code": "OCSQU",
+        "oshi": "AZKi",
+        "deck_code": "61J2T",
+        "decklog_url": "https://decklog.bushiroad.com/view/61J2T",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1775/001_hOCG_gold_Sora.png",
+        "reward_image_local": "/images/rewards/0562cd814c_001_hOCG_gold_Sora.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "ノブ",
+        "friend_code": "RGNDE",
+        "oshi": "ジジ・ムリン",
+        "deck_code": "3HZWT",
+        "decklog_url": "https://decklog.bushiroad.com/view/3HZWT",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1607/hOCG_oshiholo_shougou_9_soraaz.png",
+        "reward_image_local": "/images/rewards/b70c7125c6_hOCG_oshiholo_shougou_9_soraaz.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "Atu/猫",
+        "friend_code": "CTBQS",
+        "oshi": "AZKi",
+        "deck_code": "15RW3",
+        "decklog_url": "https://decklog.bushiroad.com/view/15RW3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1837/065_hOCG_gold_Su.png",
+        "reward_image_local": "/images/rewards/6bfb505e45_065_hOCG_gold_Su.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "あれす",
+        "friend_code": "TMPAU",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "32QZ1",
+        "decklog_url": "https://decklog.bushiroad.com/view/32QZ1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1776/002_hOCG_gold_Robocosan.png",
+        "reward_image_local": "/images/rewards/b871b7ac3d_002_hOCG_gold_Robocosan.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1534131,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "ビデオ100徳島藍住店",
+    "event_date": "2026-04-25",
+    "place": "板野郡藍住町東中富朏傍示51-5",
+    "game_format": "スタンダード",
+    "joined_player_count": 23,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1534131",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "椛",
+        "friend_code": "PWKGX",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4WR3D",
+        "decklog_url": "https://decklog.bushiroad.com/view/4WR3D",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1600/hOCG_oshiholo_shougou_2_az.png",
+        "reward_image_local": "/images/rewards/fb798348a3_hOCG_oshiholo_shougou_2_az.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "ささみ",
+        "friend_code": "HODKA",
+        "oshi": "角巻わため",
+        "deck_code": "20WTV",
+        "decklog_url": "https://decklog.bushiroad.com/view/20WTV",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2184/hOCG_entrycup_shougou_2604_watame_72.png",
+        "reward_image_local": "/images/rewards/901d320f21_hOCG_entrycup_shougou_2604_watame_72.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "エイリアン",
+        "friend_code": "KPIUH",
+        "oshi": "桃鈴ねね",
+        "deck_code": "6R7LF",
+        "decklog_url": "https://decklog.bushiroad.com/view/6R7LF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1733/024_hOCG_silver_Lamy.png",
+        "reward_image_local": "/images/rewards/19aada5602_024_hOCG_silver_Lamy.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "みかん",
+        "friend_code": "ZGBVY",
+        "oshi": "風真いろは",
+        "deck_code": "4VR7Z",
+        "decklog_url": "https://decklog.bushiroad.com/view/4VR7Z",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1812/039_hOCG_gold_Vestia.png",
+        "reward_image_local": "/images/rewards/a3d404c64a_039_hOCG_gold_Vestia.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "isaya",
+        "friend_code": "ZLHRQ",
+        "oshi": "桃鈴ねね",
+        "deck_code": "1QZJF",
+        "decklog_url": "https://decklog.bushiroad.com/view/1QZJF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "そら",
+        "friend_code": "OTUDB",
+        "oshi": "AZKi",
+        "deck_code": "3WXJF",
+        "decklog_url": "https://decklog.bushiroad.com/view/3WXJF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1775/001_hOCG_gold_Sora.png",
+        "reward_image_local": "/images/rewards/0562cd814c_001_hOCG_gold_Sora.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "椎葉タカ",
+        "friend_code": "YYPIX",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4PSHR",
+        "decklog_url": "https://decklog.bushiroad.com/view/4PSHR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "東雲桃花",
+        "friend_code": "YCNBP",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "39Q0X",
+        "decklog_url": "https://decklog.bushiroad.com/view/39Q0X",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2164/hOCG_WGPaichibaosaka_shougou_72_%E6%84%9B%E7%9F%A5A-3.png",
+        "reward_image_local": "/images/rewards/85eaeeaf94_hOCG_WGPaichibaosaka_shougou_72_%E6%84%9.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1549172,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_date": "2026-04-25",
+    "place": "立川市曙町2-11-2 フロム中武5F",
+    "game_format": "スタンダード",
+    "joined_player_count": 27,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1549172",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "にあ",
+        "friend_code": "EFSDL",
+        "oshi": "AZKi",
+        "deck_code": "4R487",
+        "decklog_url": "https://decklog.bushiroad.com/view/4R487",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1954/hOCG_shougou_kanade_B.png",
+        "reward_image_local": "/images/rewards/8b2a2a5b1c_hOCG_shougou_kanade_B.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "ゆよ",
+        "friend_code": "FIYPD",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4SL7M",
+        "decklog_url": "https://decklog.bushiroad.com/view/4SL7M",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1626/hOCG_entry_shougouban_koyori.png",
+        "reward_image_local": "/images/rewards/fe544efd0d_hOCG_entry_shougouban_koyori.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "カワウソ",
+        "friend_code": "GHNNK",
+        "oshi": "風真いろは",
+        "deck_code": "5FR3H",
+        "decklog_url": "https://decklog.bushiroad.com/view/5FR3H",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1695/053_hOCG_bronze_Mococo.png",
+        "reward_image_local": "/images/rewards/3fe22cb7a5_053_hOCG_bronze_Mococo.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "38号",
+        "friend_code": "SYRRM",
+        "oshi": "AZKi",
+        "deck_code": "2A5V1",
+        "decklog_url": "https://decklog.bushiroad.com/view/2A5V1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "りょー太",
+        "friend_code": "SCEIW",
+        "oshi": "桃鈴ねね",
+        "deck_code": "2ZKWP",
+        "decklog_url": "https://decklog.bushiroad.com/view/2ZKWP",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1964/hOCG_entrycup_shougou_ayame_72.png",
+        "reward_image_local": "/images/rewards/3f323e4689_hOCG_entrycup_shougou_ayame_72.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "結月レリヴァ",
+        "friend_code": "VEKRB",
+        "oshi": "角巻わため",
+        "deck_code": "359YT",
+        "decklog_url": "https://decklog.bushiroad.com/view/359YT",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1674/030_hOCG_bronze_Koyori.png",
+        "reward_image_local": "/images/rewards/016f9a0d34_030_hOCG_bronze_Koyori.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "わしわし",
+        "friend_code": "BBKSZ",
+        "oshi": "角巻わため",
+        "deck_code": "7V79K",
+        "decklog_url": "https://decklog.bushiroad.com/view/7V79K",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1808/035_hOCG_gold_Airani.png",
+        "reward_image_local": "/images/rewards/fb7d3d97cd_035_hOCG_gold_Airani.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ユニ",
+        "friend_code": "OJHVI",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "59F2T",
+        "decklog_url": "https://decklog.bushiroad.com/view/59F2T",
+        "reward_image_url": ""
+      }
+    ]
+  },
+  {
+    "event_id": 1532108,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードラボなんば店",
+    "event_date": "2026-04-25",
+    "place": "大阪市浪速区日本橋3-8-16　安田ビル1F",
+    "game_format": "スタンダード",
+    "joined_player_count": 27,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1532108",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "シンシア",
+        "friend_code": "HXQJF",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "33GBR",
+        "decklog_url": "https://decklog.bushiroad.com/view/33GBR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "春冬",
+        "friend_code": "OHLRA",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "W921",
+        "decklog_url": "https://decklog.bushiroad.com/view/W921",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "ヒスイ",
+        "friend_code": "KRIUI",
+        "oshi": "AZKi",
+        "deck_code": "3KEF1",
+        "decklog_url": "https://decklog.bushiroad.com/view/3KEF1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2185/hOCG_entrycup_shougou_2604_AZKi_72.png",
+        "reward_image_local": "/images/rewards/7e99da732d_hOCG_entrycup_shougou_2604_AZKi_72.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "アクロレイン",
+        "friend_code": "KGNOX",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "1MD55",
+        "decklog_url": "https://decklog.bushiroad.com/view/1MD55",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1787/013_hOCG_gold_Okayu.png",
+        "reward_image_local": "/images/rewards/993f64e7bc_013_hOCG_gold_Okayu.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "レジアイス",
+        "friend_code": "OFNCZ",
+        "oshi": "シオリ・ノヴェラ",
+        "deck_code": "15AGK",
+        "decklog_url": "https://decklog.bushiroad.com/view/15AGK",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1936/hOCG_entrycup10_shougou_72_poru.png",
+        "reward_image_local": "/images/rewards/b78756418b_hOCG_entrycup10_shougou_72_poru.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "葵",
+        "friend_code": "IYVWT",
+        "oshi": "角巻わため",
+        "deck_code": "2KK9M",
+        "decklog_url": "https://decklog.bushiroad.com/view/2KK9M",
+        "reward_image_url": ""
+      },
+      {
+        "rank": 7,
+        "player_name": "ぱぴぃ",
+        "friend_code": "KVDRX",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "3VGA3",
+        "decklog_url": "https://decklog.bushiroad.com/view/3VGA3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2156/hOCG_WGPaichibaosaka_shougou_72_%E6%84%9B%E7%9F%A5%E3%83%88%E3%83%AA%E3%82%AA_1A.png",
+        "reward_image_local": "/images/rewards/9b3f72ce5a_hOCG_WGPaichibaosaka_shougou_72_%E6%84%9.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "たぴ",
+        "friend_code": "DHYIZ",
+        "oshi": "角巻わため",
+        "deck_code": "2EYX1",
+        "decklog_url": "https://decklog.bushiroad.com/view/2EYX1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1731/022_hOCG_silver_Towa.png",
+        "reward_image_local": "/images/rewards/f58bbe2c36_022_hOCG_silver_Towa.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1529410,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ「ディーヴァフィーバー」inカードラボ池袋店",
+    "event_date": "2026-04-25",
+    "place": "豊島区東池袋1-20-6　プラザイン池袋 4F",
+    "game_format": "スタンダード",
+    "joined_player_count": 32,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1529410",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ナリ",
+        "friend_code": "UREUN",
+        "oshi": "風真いろは",
+        "deck_code": "6UDBV",
+        "decklog_url": "https://decklog.bushiroad.com/view/6UDBV",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1805/032_hOCG_gold_Iroha.png",
+        "reward_image_local": "/images/rewards/7ce3808ba9_032_hOCG_gold_Iroha.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "ゅゅゅ",
+        "friend_code": "JEZAL",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "19UBD",
+        "decklog_url": "https://decklog.bushiroad.com/view/19UBD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1834/062_hOCG_gold_Hajime.png",
+        "reward_image_local": "/images/rewards/a010309145_062_hOCG_gold_Hajime.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "ハヤテ",
+        "friend_code": "KAYXK",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4LRDZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/4LRDZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2184/hOCG_entrycup_shougou_2604_watame_72.png",
+        "reward_image_local": "/images/rewards/901d320f21_hOCG_entrycup_shougou_2604_watame_72.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "meta",
+        "friend_code": "YPHFE",
+        "oshi": "赤井はあと",
+        "deck_code": "7X9M1",
+        "decklog_url": "https://decklog.bushiroad.com/view/7X9M1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1627/hOCG_entry_shougouban_laplus.png",
+        "reward_image_local": "/images/rewards/99484dac4b_hOCG_entry_shougouban_laplus.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "やし",
+        "friend_code": "QUHHN",
+        "oshi": "角巻わため",
+        "deck_code": "50FEP",
+        "decklog_url": "https://decklog.bushiroad.com/view/50FEP",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1656/012_hOCG_bronze_Miko.png",
+        "reward_image_local": "/images/rewards/106b213a9d_012_hOCG_bronze_Miko.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "nemo",
+        "friend_code": "DFFIJ",
+        "oshi": "AZKi",
+        "deck_code": "3V8DZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/3V8DZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1264/hOCG_WGPtokyo_shougou_%E5%90%8D%E5%8F%A4%E5%B1%8BD_TOP8.png",
+        "reward_image_local": "/images/rewards/5c27ce743e_hOCG_WGPtokyo_shougou_%E5%90%8D%E5%8F%A4.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ポツカズ",
+        "friend_code": "VPIYA",
+        "oshi": "AZKi",
+        "deck_code": "1KABR",
+        "decklog_url": "https://decklog.bushiroad.com/view/1KABR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1654/010_hOCG_bronze_AZKi.png",
+        "reward_image_local": "/images/rewards/c3b886185a_010_hOCG_bronze_AZKi.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "さいきょう",
+        "friend_code": "BNVEO",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2U6RR",
+        "decklog_url": "https://decklog.bushiroad.com/view/2U6RR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1557164,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ「アヤカシヴァーミリオン」（2026）",
+    "event_date": "2026-04-25",
+    "place": "新潟市中央区女池2-3-18　六角木１FB室",
+    "game_format": "スタンダード",
+    "joined_player_count": 24,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1557164",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ザイフリート",
+        "friend_code": "ZSYIV",
+        "oshi": "AZKi",
+        "deck_code": "54Q15",
+        "decklog_url": "https://decklog.bushiroad.com/view/54Q15",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1954/hOCG_shougou_kanade_B.png",
+        "reward_image_local": "/images/rewards/8b2a2a5b1c_hOCG_shougou_kanade_B.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "たじゃひろ",
+        "friend_code": "MZFAJ",
+        "oshi": "風真いろは",
+        "deck_code": "5FEAP",
+        "decklog_url": "https://decklog.bushiroad.com/view/5FEAP",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "Nemigi",
+        "friend_code": "GZNJP",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2NUW3",
+        "decklog_url": "https://decklog.bushiroad.com/view/2NUW3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1789/015_hOCG_gold_Suisei.png",
+        "reward_image_local": "/images/rewards/9370c22ed8_015_hOCG_gold_Suisei.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "WKT",
+        "friend_code": "ELBRG",
+        "oshi": "風真いろは",
+        "deck_code": "6C4FR",
+        "decklog_url": "https://decklog.bushiroad.com/view/6C4FR",
+        "reward_image_url": ""
+      },
+      {
+        "rank": 5,
+        "player_name": "フィロスト",
+        "friend_code": "RRTIP",
+        "oshi": "AZKi",
+        "deck_code": "3144P",
+        "decklog_url": "https://decklog.bushiroad.com/view/3144P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1781/007_hOCG_gold_Ayame.png",
+        "reward_image_local": "/images/rewards/81f57ce3ab_007_hOCG_gold_Ayame.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "バナクリ",
+        "friend_code": "MHPXK",
+        "oshi": "ラプラス・ダークネス",
+        "deck_code": "4W195",
+        "decklog_url": "https://decklog.bushiroad.com/view/4W195",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1803/028_hOCG_gold_La%2B.png",
+        "reward_image_local": "/images/rewards/4091c84fb0_028_hOCG_gold_La%2B.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ささ",
+        "friend_code": "XZMPI",
+        "oshi": "AZKi",
+        "deck_code": "60GNB",
+        "decklog_url": "https://decklog.bushiroad.com/view/60GNB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1744/036_hOCG_silver_Kureiji.png",
+        "reward_image_local": "/images/rewards/60e6c54995_036_hOCG_silver_Kureiji.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ミネラル",
+        "friend_code": "ZSUFD",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2HP9H",
+        "decklog_url": "https://decklog.bushiroad.com/view/2HP9H",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1783/009_hOCG_gold_Subaru.png",
+        "reward_image_local": "/images/rewards/cd0adbfdc5_009_hOCG_gold_Subaru.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1530685,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "",
+    "event_date": "2026-04-25",
+    "place": "大阪市浪速区日本橋4-16-1",
+    "game_format": "スタンダード",
+    "joined_player_count": 32,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1530685",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ライデン",
+        "friend_code": "GHZFT",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "24T3Z",
+        "decklog_url": "https://decklog.bushiroad.com/view/24T3Z",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1669/025_hOCG_bronze_Nene.png",
+        "reward_image_local": "/images/rewards/d999057e23_025_hOCG_bronze_Nene.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "GEGE",
+        "friend_code": "NBTPI",
+        "oshi": "AZKi",
+        "deck_code": "5Z1EX",
+        "decklog_url": "https://decklog.bushiroad.com/view/5Z1EX",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1832/060_hOCG_gold_Ririka.png",
+        "reward_image_local": "/images/rewards/053944fe9a_060_hOCG_gold_Ririka.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "ゆうゆう",
+        "friend_code": "UWFKC",
+        "oshi": "赤井はあと",
+        "deck_code": "34ZXM",
+        "decklog_url": "https://decklog.bushiroad.com/view/34ZXM",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2158/hOCG_WGPaichibaosaka_shougou_72_%E6%84%9B%E7%9F%A5%E3%83%88%E3%83%AA%E3%82%AA_3A.png",
+        "reward_image_local": "/images/rewards/b0753b08de_hOCG_WGPaichibaosaka_shougou_72_%E6%84%9.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "つよぴーん",
+        "friend_code": "LUXCO",
+        "oshi": "AZKi",
+        "deck_code": "5H4Y3",
+        "decklog_url": "https://decklog.bushiroad.com/view/5H4Y3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/923/%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99.png",
+        "reward_image_local": "/images/rewards/bd14bbed74_%E7%A7%B0%E5%8F%B7%E2%91%A0_%E3%82%88%E3.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "しらぬい",
+        "friend_code": "DHDAU",
+        "oshi": "赤井はあと",
+        "deck_code": "4CGGF",
+        "decklog_url": "https://decklog.bushiroad.com/view/4CGGF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1778/004_hOCG_gold_Haato.png",
+        "reward_image_local": "/images/rewards/44d32326f5_004_hOCG_gold_Haato.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "あろえす",
+        "friend_code": "MCQYN",
+        "oshi": "AZKi",
+        "deck_code": "4454F",
+        "decklog_url": "https://decklog.bushiroad.com/view/4454F",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "ニューヨーク11",
+        "friend_code": "YMWVP",
+        "oshi": "AZKi",
+        "deck_code": "7T17P",
+        "decklog_url": "https://decklog.bushiroad.com/view/7T17P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1783/009_hOCG_gold_Subaru.png",
+        "reward_image_local": "/images/rewards/cd0adbfdc5_009_hOCG_gold_Subaru.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ducks",
+        "friend_code": "BBJOF",
+        "oshi": "AZKi",
+        "deck_code": "5XG7M",
+        "decklog_url": "https://decklog.bushiroad.com/view/5XG7M",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1784/010_hOCG_gold_AZKi.png",
+        "reward_image_local": "/images/rewards/43dc542dc0_010_hOCG_gold_AZKi.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1543640,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードショップ裁龍",
+    "event_date": "2026-04-25",
+    "place": "古河市雷電町1-18",
+    "game_format": "スタンダード",
+    "joined_player_count": 22,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1543640",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "イソギン",
+        "friend_code": "JJQHC",
+        "oshi": "AZKi",
+        "deck_code": "425DM",
+        "decklog_url": "https://decklog.bushiroad.com/view/425DM",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1789/015_hOCG_gold_Suisei.png",
+        "reward_image_local": "/images/rewards/9370c22ed8_015_hOCG_gold_Suisei.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "しょこら",
+        "friend_code": "DYORL",
+        "oshi": "風真いろは",
+        "deck_code": "6CJ87",
+        "decklog_url": "https://decklog.bushiroad.com/view/6CJ87",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1740/032_hOCG_silver_Sora.png",
+        "reward_image_local": "/images/rewards/a240cf8763_032_hOCG_silver_Sora.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "アトリ",
+        "friend_code": "AUYUU",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2WLVB",
+        "decklog_url": "https://decklog.bushiroad.com/view/2WLVB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1838/066_hOCG_gold_Chihaya.png",
+        "reward_image_local": "/images/rewards/277b52eace_066_hOCG_gold_Chihaya.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "森林",
+        "friend_code": "YCAAC",
+        "oshi": "AZKi",
+        "deck_code": "28J79",
+        "decklog_url": "https://decklog.bushiroad.com/view/28J79",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1231/hOCG_mikodanye_shougou_ikenie.png",
+        "reward_image_local": "/images/rewards/2ab34a939b_hOCG_mikodanye_shougou_ikenie.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "ハム",
+        "friend_code": "FMCUC",
+        "oshi": "角巻わため",
+        "deck_code": "6D527",
+        "decklog_url": "https://decklog.bushiroad.com/view/6D527",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1665/021_hOCG_bronze_Watame.png",
+        "reward_image_local": "/images/rewards/548b86da3f_021_hOCG_bronze_Watame.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "ミント",
+        "friend_code": "RUPMW",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2H5PD",
+        "decklog_url": "https://decklog.bushiroad.com/view/2H5PD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1936/hOCG_entrycup10_shougou_72_poru.png",
+        "reward_image_local": "/images/rewards/b78756418b_hOCG_entrycup10_shougou_72_poru.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "山羊執事",
+        "friend_code": "MRXVW",
+        "oshi": "角巻わため",
+        "deck_code": "6KF2X",
+        "decklog_url": "https://decklog.bushiroad.com/view/6KF2X",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1730/021_hOCG_silver_Watame.png",
+        "reward_image_local": "/images/rewards/1ccca5a001_021_hOCG_silver_Watame.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "YANASAW",
+        "friend_code": "IYHDE",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "3GCEB",
+        "decklog_url": "https://decklog.bushiroad.com/view/3GCEB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1659/015_hOCG_bronze_Suisei.png",
+        "reward_image_local": "/images/rewards/6b755f3464_015_hOCG_bronze_Suisei.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1555100,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードショップさくら",
+    "event_date": "2026-04-25",
+    "place": "土浦市川口1-3-110 モール505 B101",
+    "game_format": "スタンダード",
+    "joined_player_count": 20,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1555100",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ゆうチャリ",
+        "friend_code": "OODGN",
+        "oshi": "赤井はあと",
+        "deck_code": "1HGP5",
+        "decklog_url": "https://decklog.bushiroad.com/view/1HGP5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "あき",
+        "friend_code": "YLMGD",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "1WYSB",
+        "decklog_url": "https://decklog.bushiroad.com/view/1WYSB",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1601/hOCG_oshiholo_shougou_3_sui.png",
+        "reward_image_local": "/images/rewards/638ca358a1_hOCG_oshiholo_shougou_3_sui.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "いのり",
+        "friend_code": "HOOSA",
+        "oshi": "AZKi",
+        "deck_code": "59NRH",
+        "decklog_url": "https://decklog.bushiroad.com/view/59NRH",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1798/024_hOCG_gold_Lamy.png",
+        "reward_image_local": "/images/rewards/93af5b352b_024_hOCG_gold_Lamy.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "木ノ芽",
+        "friend_code": "VOIXH",
+        "oshi": "AZKi",
+        "deck_code": "50Y6T",
+        "decklog_url": "https://decklog.bushiroad.com/view/50Y6T",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1792/018_hOCG_gold_Noel.png",
+        "reward_image_local": "/images/rewards/9c558570b1_018_hOCG_gold_Noel.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "ザイン",
+        "friend_code": "EUSDQ",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "1TTRZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/1TTRZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1786/012_hOCG_gold_Miko.png",
+        "reward_image_local": "/images/rewards/a610dd6691_012_hOCG_gold_Miko.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "おでこ",
+        "friend_code": "XQTUC",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "2NGKR",
+        "decklog_url": "https://decklog.bushiroad.com/view/2NGKR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1708/066_hOCG_bronze_Chihaya.png",
+        "reward_image_local": "/images/rewards/0db234a802_066_hOCG_bronze_Chihaya.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "K-ゲッセン",
+        "friend_code": "SNMZF",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "31JVH",
+        "decklog_url": "https://decklog.bushiroad.com/view/31JVH",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1770/063_hOCG_silver_Riona.png",
+        "reward_image_local": "/images/rewards/390b66e0ae_063_hOCG_silver_Riona.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "人の２倍食べる男",
+        "friend_code": "FZOYZ",
+        "oshi": "AZKi",
+        "deck_code": "69D7V",
+        "decklog_url": "https://decklog.bushiroad.com/view/69D7V",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1327/100_bushinavi_%E5%9F%BA%E6%9C%AC%E7%A7%B0%E5%8F%B7-%E5%A4%A7%E4%BC%9A%E5%87%BA%E5%A0%B4100%E5%9B%9E%E9%81%94%E6%88%90.png",
+        "reward_image_local": "/images/rewards/cd6364860b_100_bushinavi_%E5%9F%BA%E6%9C%AC%E7%A7%B.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1540026,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "マナソース和歌山駅前店",
+    "event_date": "2026-04-25",
+    "place": "和歌山市太田1-14-11　オオトヨビル6F",
+    "game_format": "スタンダード",
+    "joined_player_count": 26,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1540026",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "シュヴァる/AHL",
+        "friend_code": "ZYLKK",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "506ZD",
+        "decklog_url": "https://decklog.bushiroad.com/view/506ZD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1740/032_hOCG_silver_Sora.png",
+        "reward_image_local": "/images/rewards/a240cf8763_032_hOCG_silver_Sora.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "甘党ゆずき",
+        "friend_code": "QYQWT",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "27VX5",
+        "decklog_url": "https://decklog.bushiroad.com/view/27VX5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1722/013_hOCG_silver_Okayu.png",
+        "reward_image_local": "/images/rewards/9c5d18ced5_013_hOCG_silver_Okayu.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "rish",
+        "friend_code": "LJRHN",
+        "oshi": "シオリ・ノヴェラ",
+        "deck_code": "5MCWF",
+        "decklog_url": "https://decklog.bushiroad.com/view/5MCWF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1767/060_hOCG_silver_Ririka.png",
+        "reward_image_local": "/images/rewards/614492f258_060_hOCG_silver_Ririka.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "キツネ",
+        "friend_code": "ZKXIR",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "6TGG3",
+        "decklog_url": "https://decklog.bushiroad.com/view/6TGG3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1789/015_hOCG_gold_Suisei.png",
+        "reward_image_local": "/images/rewards/9370c22ed8_015_hOCG_gold_Suisei.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "ゆうや",
+        "friend_code": "QADPE",
+        "oshi": "風真いろは",
+        "deck_code": "5P2NF",
+        "decklog_url": "https://decklog.bushiroad.com/view/5P2NF",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1735/026_hOCG_silver_Botan.png",
+        "reward_image_local": "/images/rewards/72e3b4d992_026_hOCG_silver_Botan.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "ぽんこつ",
+        "friend_code": "XFZHB",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "1HSMZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/1HSMZ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1794/020_hOCG_gold_Kanata.png",
+        "reward_image_local": "/images/rewards/aed7b54eb4_020_hOCG_gold_Kanata.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "パタパタ",
+        "friend_code": "PGSBW",
+        "oshi": "赤井はあと",
+        "deck_code": "31YMZ",
+        "decklog_url": "https://decklog.bushiroad.com/view/31YMZ",
+        "reward_image_url": ""
+      },
+      {
+        "rank": 8,
+        "player_name": "え",
+        "friend_code": "ADATU",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "4LFJ3",
+        "decklog_url": "https://decklog.bushiroad.com/view/4LFJ3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1797/023_hOCG_gold_Luna.png",
+        "reward_image_local": "/images/rewards/a60538a9b7_023_hOCG_gold_Luna.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1556687,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "エントリーカップ「ディーヴァフィーバー」",
+    "event_date": "2026-04-23",
+    "place": "京都市下京区七条通烏丸東入真苧屋町214　京都駅前第5ﾋﾞﾙ3階",
+    "game_format": "スタンダード",
+    "joined_player_count": 21,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1556687",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "綾芽",
+        "friend_code": "WEWYE",
+        "oshi": "AZKi",
+        "deck_code": "2UXXM",
+        "decklog_url": "https://decklog.bushiroad.com/view/2UXXM",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2185/hOCG_entrycup_shougou_2604_AZKi_72.png",
+        "reward_image_local": "/images/rewards/7e99da732d_hOCG_entrycup_shougou_2604_AZKi_72.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "ねじろ",
+        "friend_code": "MKJPW",
+        "oshi": "赤井はあと",
+        "deck_code": "1Q4A3",
+        "decklog_url": "https://decklog.bushiroad.com/view/1Q4A3",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/925/%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5%BF%83%E8%80%85%E3%81%A7%E3%81%99.png",
+        "reward_image_local": "/images/rewards/7c8ed51262_%E7%A7%B0%E5%8F%B7%E2%91%A2_%E5%88%9D%E5.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "先攻のハチウェイ",
+        "friend_code": "MLDAY",
+        "oshi": "風真いろは",
+        "deck_code": "6FA47",
+        "decklog_url": "https://decklog.bushiroad.com/view/6FA47",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1965/hOCG_entrycup_shougou_iroha_72.png",
+        "reward_image_local": "/images/rewards/563f4b00a8_hOCG_entrycup_shougou_iroha_72.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "KG",
+        "friend_code": "EDIOQ",
+        "oshi": "AZKi",
+        "deck_code": "6SVK5",
+        "decklog_url": "https://decklog.bushiroad.com/view/6SVK5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1783/009_hOCG_gold_Subaru.png",
+        "reward_image_local": "/images/rewards/cd0adbfdc5_009_hOCG_gold_Subaru.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "ヒスイ",
+        "friend_code": "KRIUI",
+        "oshi": "AZKi",
+        "deck_code": "4DEVR",
+        "decklog_url": "https://decklog.bushiroad.com/view/4DEVR",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/2185/hOCG_entrycup_shougou_2604_AZKi_72.png",
+        "reward_image_local": "/images/rewards/7e99da732d_hOCG_entrycup_shougou_2604_AZKi_72.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "甘党ゆずき",
+        "friend_code": "QYQWT",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "27VX5",
+        "decklog_url": "https://decklog.bushiroad.com/view/27VX5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1722/013_hOCG_silver_Okayu.png",
+        "reward_image_local": "/images/rewards/9c5d18ced5_013_hOCG_silver_Okayu.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "開拓者621",
+        "friend_code": "XGZAP",
+        "oshi": "AZKi",
+        "deck_code": "2H10B",
+        "decklog_url": "https://decklog.bushiroad.com/view/2H10B",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1654/010_hOCG_bronze_AZKi.png",
+        "reward_image_local": "/images/rewards/c3b886185a_010_hOCG_bronze_AZKi.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ルゥ",
+        "friend_code": "MQNDG",
+        "oshi": "赤井はあと",
+        "deck_code": "6BDR5",
+        "decklog_url": "https://decklog.bushiroad.com/view/6BDR5",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      }
+    ]
+  },
+  {
+    "event_id": 1529976,
+    "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
+    "event_title": "カードラボ水戸店",
+    "event_date": "2026-04-22",
+    "place": "水戸市宮町1-2-4　マイムビル1F",
+    "game_format": "スタンダード",
+    "joined_player_count": 26,
+    "max_join_count": 32,
+    "source_url": "https://www.bushi-navi.com/event/result/detail/1529976",
+    "rankings": [
+      {
+        "rank": 1,
+        "player_name": "ける",
+        "friend_code": "ZKDLY",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "36U2F",
+        "decklog_url": "https://decklog.bushiroad.com/view/36U2F",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1955/hOCG_EX2025final_shougou_competitor.png",
+        "reward_image_local": "/images/rewards/6e0199949e_hOCG_EX2025final_shougou_competitor.png"
+      },
+      {
+        "rank": 2,
+        "player_name": "パップル",
+        "friend_code": "KUUNW",
+        "oshi": "風真いろは",
+        "deck_code": "53DCX",
+        "decklog_url": "https://decklog.bushiroad.com/view/53DCX",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1953/hOCG_shougou_kanade_A.png",
+        "reward_image_local": "/images/rewards/079e487d1f_hOCG_shougou_kanade_A.png"
+      },
+      {
+        "rank": 3,
+        "player_name": "holoXライブ全落した禪院直哉",
+        "friend_code": "CDTCI",
+        "oshi": "AZKi",
+        "deck_code": "5F48X",
+        "decklog_url": "https://decklog.bushiroad.com/view/5F48X",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1626/hOCG_entry_shougouban_koyori.png",
+        "reward_image_local": "/images/rewards/fe544efd0d_hOCG_entry_shougouban_koyori.png"
+      },
+      {
+        "rank": 4,
+        "player_name": "でっかいの",
+        "friend_code": "AVKEK",
+        "oshi": "角巻わため",
+        "deck_code": "2YLPD",
+        "decklog_url": "https://decklog.bushiroad.com/view/2YLPD",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1653/009_hOCG_bronze_Subaru.png",
+        "reward_image_local": "/images/rewards/0c052f383f_009_hOCG_bronze_Subaru.png"
+      },
+      {
+        "rank": 5,
+        "player_name": "でみ",
+        "friend_code": "LRFER",
+        "oshi": "オーロ・クロニー",
+        "deck_code": "5LC2P",
+        "decklog_url": "https://decklog.bushiroad.com/view/5LC2P",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1810/037_hOCG_gold_Anya.png",
+        "reward_image_local": "/images/rewards/2aa3ed3743_037_hOCG_gold_Anya.png"
+      },
+      {
+        "rank": 6,
+        "player_name": "上野",
+        "friend_code": "MBGPQ",
+        "oshi": "風真いろは",
+        "deck_code": "7FFZQ",
+        "decklog_url": "https://decklog.bushiroad.com/view/7FFZQ",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1789/015_hOCG_gold_Suisei.png",
+        "reward_image_local": "/images/rewards/9370c22ed8_015_hOCG_gold_Suisei.png"
+      },
+      {
+        "rank": 7,
+        "player_name": "NOBu",
+        "friend_code": "SQKME",
+        "oshi": "AZKi",
+        "deck_code": "51NM1",
+        "decklog_url": "https://decklog.bushiroad.com/view/51NM1",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/h_1789/015_hOCG_gold_Suisei.png",
+        "reward_image_local": "/images/rewards/9370c22ed8_015_hOCG_gold_Suisei.png"
+      },
+      {
+        "rank": 8,
+        "player_name": "ネオス",
+        "friend_code": "EXQHN",
+        "oshi": "ラプラス・ダークネス",
+        "deck_code": "6B9XH",
+        "decklog_url": "https://decklog.bushiroad.com/view/6B9XH",
+        "reward_image_url": "https://files.bushi-navi.com/rewards/1803/028_hOCG_gold_La%2B.png",
+        "reward_image_local": "/images/rewards/4091c84fb0_028_hOCG_gold_La%2B.png"
+      }
+    ]
+  },
+  {
     "event_id": 1539932,
     "series_title": "エントリーカップ「ディーヴァフィーバー」（2026）",
     "event_title": "in スミレヤ",
