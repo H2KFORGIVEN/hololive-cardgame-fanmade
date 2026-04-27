@@ -1,23 +1,23 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T03:05:58.784Z
+Generated: 2026-04-27T03:10:02.734Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 966 (74%)
+- **REAL (mutates state / queues prompt or boost)**: 972 (75%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 263 (20%)
+- **LOG_ONLY (placeholder logs only)**: 257 (20%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1041 (80%)
+- **Effective coverage (REAL + PASSIVE)**: 1047 (80%)
 
 ## By hook type
 
 | Hook | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
-| oshiSkill | 138 | 122 | 0 | 16 | 0 | 0 | 0 | 88% |
-| spSkill | 135 | 119 | 0 | 16 | 0 | 0 | 0 | 88% |
+| oshiSkill | 138 | 125 | 0 | 13 | 0 | 0 | 0 | 91% |
+| spSkill | 135 | 122 | 0 | 13 | 0 | 0 | 0 | 90% |
 | art1 | 297 | 232 | 0 | 65 | 0 | 0 | 0 | 78% |
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
@@ -32,8 +32,8 @@ Generated: 2026-04-27T03:05:58.784Z
 | Set | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
 | hBD24 | 132 | 132 | 0 | 0 | 0 | 0 | 0 | 100% |
-| hBP01 | 126 | 91 | 3 | 32 | 0 | 0 | 0 | 75% |
-| hBP02 | 105 | 79 | 7 | 19 | 0 | 0 | 0 | 82% |
+| hBP01 | 126 | 95 | 3 | 28 | 0 | 0 | 0 | 78% |
+| hBP02 | 105 | 81 | 7 | 17 | 0 | 0 | 0 | 84% |
 | hBP03 | 123 | 93 | 1 | 29 | 0 | 0 | 0 | 76% |
 | hBP04 | 114 | 88 | 0 | 26 | 0 | 0 | 0 | 77% |
 | hBP05 | 132 | 103 | 1 | 28 | 0 | 0 | 0 | 79% |
@@ -113,20 +113,20 @@ Usage = total copies across 52 tournament decks.
 | 44 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
 | 45 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
 | 46 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
-| 47 | hBP01-002 | 七詩ムメイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] During the opponent's turn, when the member marked #Promise by yourself is |
-| 48 | hBP01-002 | 七詩ムメイ | spSkill | LOG_ONLY | 0 | [Once per game] Reveal 1 activity card from your deck and add it to your hand. Reshuffle t |
-| 49 | hBP01-003 | アキ・ローゼンタール | oshiSkill | LOG_ONLY | 0 | [Once per turn] Reveal 1 "Stone Ax" from your deck and attach it to your green member. Res |
-| 50 | hBP01-003 | アキ・ローゼンタール | spSkill | LOG_ONLY | 0 | [Once per game] The HP of your green center member is fully restored. |
-| 51 | hBP01-004 | 兎田ぺこら | oshiSkill | LOG_ONLY | 0 | [Once per round] During the opponent's turn, when one of your own members is knocked down, |
-| 52 | hBP01-004 | 兎田ぺこら | spSkill | LOG_ONLY | 0 | [Once per game] During this round, the number of your own dice is treated as 6. |
-| 53 | hBP01-005 | 鷹嶺ルイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use it when you put cards in your hand into the save area due to t |
-| 54 | hBP01-005 | 鷹嶺ルイ | spSkill | LOG_ONLY | 0 | [Once per game] During the opponent's next turn, the opponent's center member and linkage  |
-| 55 | hBP01-019 | 七詩ムメイ | effectB | LOG_ONLY | 0 | When blooming from Debut, reveal 1 Debut member or 1st member marked #Promise other than B |
-| 56 | hBP01-023 | ときのそら | art1 | LOG_ONLY | 0 | You can roll the dice once: if the number is odd, use this skill again on the same member  |
-| 57 | hBP01-026 | ベスティア・ゼータ | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member or 1st member marked #ID3 except Buzz from your d |
-| 58 | hBP01-052 | アイラニ・イオフィフティーン | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked with #ID. |
-| 59 | hBP01-059 | 鷹嶺ルイ | art2 | LOG_ONLY | 0 | You can put 1 card from your hand into the save area: Reveal 1 1st member other than Buzz  |
-| 60 | hBP01-090 | ムーナ・ホシノヴァ | effectB | LOG_ONLY | 0 | Reveal 1 green shout card or blue shout card from your shout deck and send it to your memb |
+| 47 | hBP01-004 | 兎田ぺこら | oshiSkill | LOG_ONLY | 0 | [Once per round] During the opponent's turn, when one of your own members is knocked down, |
+| 48 | hBP01-004 | 兎田ぺこら | spSkill | LOG_ONLY | 0 | [Once per game] During this round, the number of your own dice is treated as 6. |
+| 49 | hBP01-005 | 鷹嶺ルイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use it when you put cards in your hand into the save area due to t |
+| 50 | hBP01-005 | 鷹嶺ルイ | spSkill | LOG_ONLY | 0 | [Once per game] During the opponent's next turn, the opponent's center member and linkage  |
+| 51 | hBP01-019 | 七詩ムメイ | effectB | LOG_ONLY | 0 | When blooming from Debut, reveal 1 Debut member or 1st member marked #Promise other than B |
+| 52 | hBP01-023 | ときのそら | art1 | LOG_ONLY | 0 | You can roll the dice once: if the number is odd, use this skill again on the same member  |
+| 53 | hBP01-026 | ベスティア・ゼータ | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member or 1st member marked #ID3 except Buzz from your d |
+| 54 | hBP01-052 | アイラニ・イオフィフティーン | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked with #ID. |
+| 55 | hBP01-059 | 鷹嶺ルイ | art2 | LOG_ONLY | 0 | You can put 1 card from your hand into the save area: Reveal 1 1st member other than Buzz  |
+| 56 | hBP01-090 | ムーナ・ホシノヴァ | effectB | LOG_ONLY | 0 | Reveal 1 green shout card or blue shout card from your shout deck and send it to your memb |
+| 57 | hBP01-100 | 森カリオペ | effectC | LOG_ONLY | 0 | You can return 1 to 3 Scream cards in your save area to the Scream deck. Reshuffle the Scr |
+| 58 | hBP01-103 | ゲーミングパソコン | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 Debut member |
+| 59 | hBP01-105 | ペンライト | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 shout card o |
+| 60 | hBP02-004 | 沙花叉クロヱ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use this when your center member is "Shahuasha Koro": Look at the  |
 
 ## Tournament-deck coverage (52 community decks)
 

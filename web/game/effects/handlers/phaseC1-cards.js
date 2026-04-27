@@ -36,16 +36,10 @@ export function registerPhaseC1(){
   let count=0;
   const reg=(id,hook,fn)=>{registerEffect(id,hook,fn);count++};
 
-  // hBP01-004 兎田ぺこら oshi
-  reg('hBP01-004',HOOK.ON_OSHI_SKILL,(s,c)=>{
-    if(c.skillType==='sp')return{state:s,resolved:true,log:'SP:骰子視為6'};
-    return{state:s,resolved:true,log:'被擊倒時綠吶喊分配'};
-  });
-  // hBP01-005 鷹嶺ルイ oshi
-  reg('hBP01-005',HOOK.ON_OSHI_SKILL,(s,c)=>{
-    if(c.skillType==='sp')return{state:s,resolved:true,log:'SP:下回合對手不能交棒/移動/替換'};
-    return{state:s,resolved:true,log:'紅色效果棄牌→可用holo能量代替'};
-  });
+  // hBP01-004 兎田ぺこら oshi — real handler in phaseB-cards.js Round F-3
+  // hBP01-005 鷹嶺ルイ oshi — real handler in phaseB-cards.js Round F-3
+  // (Removed log-only placeholders that were clobbering the F-3 handlers
+  // because phaseC1 registers AFTER phaseB.)
   // hBP01-015 七詩ムメイ art1: used support → +20
   reg('hBP01-015',HOOK.ON_ART_DECLARE,(s,c)=>{
     const p=s.players[c.player];

@@ -3043,6 +3043,171 @@ export function registerPhaseB() {
 
   // ── End of Round F-2 ──
 
+  // ── Round F-3: 5 unique-logic oshi cards ────────────────────────────────
+
+  // F-3.1 hBP01-002 七詩ムメイ
+  //   oshi: REACTIVE (own #Promise dmg -50). Hint log.
+  //   sp:   Search 1 活動 from deck → hand. Reshuffle.
+  reg('hBP01-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType !== 'sp') {
+      return { state, resolved: true, log: 'hBP01-002 oshi: 反應觸發（手動）' };
+    }
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.type === '支援・活動') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name || '', image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP01-002 SP: 牌組無活動卡' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: 'ムメイ SP: 選 1 張活動卡加入手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP01-002 SP: 搜尋活動卡',
+    };
+  });
+
+  // F-3.2 hBP01-003 アキ・ローゼンタール
+  //   oshi: Search 石の斧 from deck, attach to own 綠 member. Reshuffle.
+  //   sp:   Own 綠 center fully heals (damage=0).
+  reg('hBP01-003', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.skillType === 'sp') {
+      const center = own.zones[ZONE.CENTER];
+      if (!center) return { state, resolved: true, log: 'hBP01-003 SP: 中心無成員' };
+      if (getCard(center.cardId)?.color !== '綠') {
+        return { state, resolved: true, log: 'hBP01-003 SP: 中心非綠色' };
+      }
+      const before = center.damage;
+      center.damage = 0;
+      return { state, resolved: true, log: `hBP01-003 SP: 中心 HP 完全回復（${before} → 0）` };
+    }
+    // Search 石の斧 (any matching name) → attach to a 綠 member
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === '石の斧') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP01-003 oshi: 牌組無「石の斧」' };
+    }
+    // Find first 綠 member to attach to
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => getCard(m.cardId)?.color === '綠');
+    if (!target) return { state, resolved: true, log: 'hBP01-003 oshi: 無綠色成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「石の斧」附加給綠色成員',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ATTACH_SUPPORT',
+        targetInstanceId: target.instanceId,
+      },
+      log: 'hBP01-003 oshi: 搜尋「石の斧」',
+    };
+  });
+
+  // F-3.3 hBP01-004 兎田ぺこら
+  //   oshi: REACTIVE (own knocked → redistribute green cheer). Hint log.
+  //   sp:   This turn, own dice rolls all count as 6.
+  // Engine doesn't have a centralized rollDie that consults overrides yet,
+  // so the dice-override is hint-only for now. State flag is set so a
+  // future centralizer can pick it up.
+  reg('hBP01-004', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      state._diceOverride = 6;
+      return { state, resolved: true, log: 'hBP01-004 SP: 本回合擲骰視為 6（手動）' };
+    }
+    return { state, resolved: true, log: 'hBP01-004 oshi: 反應觸發（手動）' };
+  });
+
+  // F-3.4 hBP01-005 鷹嶺ルイ
+  //   oshi: REACTIVE (red member effect archives hand → use holopower instead).
+  //   sp:   Next opp turn, opp center & collab can't baton/move/replace.
+  // Both require engine plumbing (cost-redirect for archive ops, position-
+  // lock during opp turn). Hint logs only; SP sets a state flag.
+  reg('hBP01-005', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      state._oppPositionLockedNextTurn = true;
+      return { state, resolved: true, log: 'hBP01-005 SP: 對手下回合中心/聯動鎖定（手動）' };
+    }
+    return { state, resolved: true, log: 'hBP01-005 oshi: 反應觸發（手動）' };
+  });
+
+  // F-3.5 hBP02-001 白上フブキ
+  //   oshi: Search 1 吉祥物 from deck → hand. Reshuffle.
+  //   sp:   REACTIVE (white knocks opp → dice based on stage mascot count).
+  //   Hint log for sp.
+  reg('hBP02-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP02-001 SP: 白色擊倒對手時觸發（手動）' };
+    }
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.type === '支援・吉祥物') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name || '', image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP02-001 oshi: 牌組無吉祥物' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: 'フブキ oshi: 選 1 張吉祥物加入手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP02-001 oshi: 搜尋吉祥物',
+    };
+  });
+
+  // ── End of Round F-3 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
