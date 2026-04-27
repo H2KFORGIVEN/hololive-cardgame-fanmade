@@ -1956,18 +1956,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-073",
-    "name": "ラプラス・ダークネス",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "Reveal 1 \"ラプラス・ダークネス\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-075",
     "name": "古石ビジュー",
     "hook": "effectG",
@@ -1992,18 +1980,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-076",
-    "name": "ネリッサ・レイヴンクロフト",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "You can put 1 card from your holo energy zone into the archive area: this skill's damage is +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-084",
     "name": "夏色まつり",
     "hook": "art1",
@@ -2022,18 +1998,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "During their own turn, when this member moves to the linkage position, look at the three cards above his deck. Reveal 1 \"Shiranui Fura\" and add it to your hand. Put the rest in the archive area.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-086",
-    "name": "ジジ・ムリン",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "If this skill is used on a member whose HP has been reduced, the damage of this skill will be +30.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2244,18 +2208,6 @@
     "usage": 0
   },
   {
-    "id": "hSD05-009",
-    "name": "轟はじめ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD05",
-    "text": "When a member other than \"Todoroki\" marked with #ReGLOSS is on his own stage, this skill deals +30 damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD06-012",
     "name": "ぽこべぇ",
     "hook": "support",
@@ -2334,18 +2286,6 @@
     "type": "成員",
     "expansion": "hSD11",
     "text": "At the beginning of your own performance phase, you can put 1 member of your hand marked #FLOW GLOW into the save area: send 1 yellow shouting card in your save area to your \"Tiger Golden Concubine Smiling Tiger\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD11-006",
-    "name": "虎金妃笑虎",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD11",
-    "text": "You can put any number of shout cards of this member into the save area: for every shout card placed in the save area, the damage of this skill is +40.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

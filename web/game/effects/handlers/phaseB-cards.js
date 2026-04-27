@@ -4530,6 +4530,123 @@ export function registerPhaseB() {
 
   // ── End of Round H-2 ──
 
+  // ── Round H-3: art1 mixed boosts and self-pay actions (5 cards) ─────────
+
+  // H-3.1 hSD05-009 轟はじめ 2nd art1:
+  //   "Other (not this) #ReGLOSS member on own stage → +30."
+  reg('hSD05-009', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD05-009') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const has = stage.some(m => {
+      if (m.instanceId === ctx.memberInst?.instanceId) return false;
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ReGLOSS');
+    });
+    if (!has) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: 'hSD05-009 art1: 其他 #ReGLOSS 在場 → +30',
+    };
+  });
+
+  // H-3.2 hBP07-086 ジジ・ムリン 2nd art1:
+  //   "If target HP has been reduced (target.damage > 0) → +30."
+  reg('hBP07-086', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-086') return { state, resolved: true };
+    if (!ctx.target || (ctx.target.damage || 0) === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: 'hBP07-086 art1: 對受傷成員 → +30',
+    };
+  });
+
+  // H-3.3 hBP07-076 ネリッサ・レイヴンクロフト 1st Buzz art1:
+  //   "May archive 1 holopower card → +30 art damage."
+  // Pragmatic: auto-archive 1 holopower card if available (the spec is opt-in
+  // but auto-do for batch). Falls back to no boost if no holopower.
+  reg('hBP07-076', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-076') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if ((own.zones[ZONE.HOLO_POWER] || []).length === 0) {
+      return { state, resolved: true, log: 'hBP07-076 art1: holo 能量區空' };
+    }
+    const c = own.zones[ZONE.HOLO_POWER].shift();
+    c.faceDown = false;
+    own.zones[ZONE.ARCHIVE].push(c);
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: 'hBP07-076 art1: 棄 1 holo 能量 → +30',
+    };
+  });
+
+  // H-3.4 hSD11-006 虎金妃笑虎 2nd art1:
+  //   "May archive any number of self cheer → +40 per cheer archived."
+  // Pragmatic: auto-archive ALL of self's attached cheer (spec is opt-in
+  // for any count). Player can leave cheer if they don't want this batch.
+  // To keep the cheer attached, the engine would need a multi-pick prompt.
+  reg('hSD11-006', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD11-006') return { state, resolved: true };
+    const me = ctx.memberInst;
+    const cheerCount = (me?.attachedCheer || []).length;
+    if (cheerCount === 0) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    while (me.attachedCheer.length > 0) {
+      const c = me.attachedCheer.shift();
+      own.zones[ZONE.ARCHIVE].push(c);
+    }
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: cheerCount * 40, target: 'self', duration: 'instant' },
+      log: `hSD11-006 art1: 棄 ${cheerCount} 吶喊 → +${cheerCount * 40}`,
+    };
+  });
+
+  // H-3.5 hBP07-073 ラプラス・ダークネス 1st art1:
+  //   "Search 1 ラプラス・ダークネス from deck → hand. Reshuffle."
+  reg('hBP07-073', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP07-073') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === 'ラプラス・ダークネス') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP07-073 art1: 牌組無 ラプラス・ダークネス' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「ラプラス・ダークネス」加入手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP07-073 art1: 搜尋 ラプラス・ダークネス',
+    };
+  });
+
+  // ── End of Round H-3 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
