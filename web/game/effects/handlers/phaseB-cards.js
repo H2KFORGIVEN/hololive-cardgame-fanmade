@@ -3340,8 +3340,11 @@ export function registerPhaseB() {
       return { state, resolved: true, log: `hBP01-004 oshi 自動觸發: 綠吶喊 ${distributed} 張分配` };
     }
     if (ctx.skillType === 'sp') {
+      // K-2: state._diceOverride is now consumed by common.rollDieFor — any
+      // dice handler that passes state via the rollDie shim will see 6.
+      // Cleared at end of turn (see GameEngine.endPhase reset).
       state._diceOverride = 6;
-      return { state, resolved: true, log: 'hBP01-004 SP: 本回合擲骰視為 6（手動）' };
+      return { state, resolved: true, log: 'hBP01-004 SP: 本回合擲骰視為 6（已支援自動）' };
     }
     return { state, resolved: true, log: 'hBP01-004 oshi: 反應觸發（已支援自動）' };
   });
@@ -3353,8 +3356,14 @@ export function registerPhaseB() {
   // lock during opp turn). Hint logs only; SP sets a state flag.
   reg('hBP01-005', HOOK.ON_OSHI_SKILL, (state, ctx) => {
     if (ctx.skillType === 'sp') {
-      state._oppPositionLockedNextTurn = true;
-      return { state, resolved: true, log: 'hBP01-005 SP: 對手下回合中心/聯動鎖定（手動）' };
+      // K-6: state._oppPositionLockedFor[oppIdx] = turn# the lock applies to.
+      // ActionValidator consults this flag to reject BATON_PASS/move/replace
+      // on opp's center/collab during that next turn. Cleared by processEndPhase.
+      const oppIdx = 1 - ctx.player;
+      const targetTurn = state.turnNumber + 1;
+      if (!state._oppPositionLockedFor) state._oppPositionLockedFor = {};
+      state._oppPositionLockedFor[oppIdx] = targetTurn;
+      return { state, resolved: true, log: `hBP01-005 SP: 對手下回合中心/聯動鎖定（已支援自動，T${targetTurn}）` };
     }
     return { state, resolved: true, log: 'hBP01-005 oshi: 反應觸發（手動）' };
   });
@@ -3860,8 +3869,12 @@ export function registerPhaseB() {
   reg('hBP06-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
     const own = state.players[ctx.player];
     if (ctx.skillType === 'sp') {
-      state._raouraNoRestForOwner = ctx.player;
-      return { state, resolved: true, log: 'hBP06-001 SP: 本場 ラオーラ 重置階段不休息（手動）' };
+      // K-6: state._raouraNoRestForOwner[idx] = true sticks for the rest of
+      // the game. processResetPhase consults this flag and skips the
+      // collab→backstage REST step for ラオーラ named members on that side.
+      if (!state._raouraNoRestForOwner) state._raouraNoRestForOwner = {};
+      state._raouraNoRestForOwner[ctx.player] = true;
+      return { state, resolved: true, log: 'hBP06-001 SP: 本場 ラオーラ 重置階段不休息（已支援自動）' };
     }
     if (getCard(own.zones[ZONE.CENTER]?.cardId)?.name !== 'ラオーラ・パンテーラ') {
       return { state, resolved: true, log: 'hBP06-001 oshi: 中心非ラオーラ' };
@@ -5221,6 +5234,48 @@ export function registerPhaseB() {
   });
 
   // ── End of Round I-2 ──
+
+  // ── Round K-5: ON_PHASE_START / ON_PHASE_END handlers ─────────────────────
+
+  // K-5.1 hBP03-022 アキ・ローゼンタール effectG
+  //   "[限定中心位置或聯動位置] 對手表演階段開始時 → 本回合自家生命不受對手效果影響而減少"
+  // Sets state._lifeImmuneFromOppEffects[ownIdx] = state.turnNumber when
+  // conditions match. Consumers should check this flag before applying
+  // opp-effect-driven life reductions (rare; processKnockdown's life loss
+  // is NOT considered "effect" — it's the natural cost of the KO).
+  reg('hBP03-022', HOOK.ON_PHASE_START, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-022') return { state, resolved: true };
+    if (ctx.phase !== PHASE.PERFORMANCE) return { state, resolved: true };
+    if (!ctx.isOpp) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const inCenter = own?.zones[ZONE.CENTER]?.instanceId === ctx.memberInst?.instanceId;
+    const inCollab = own?.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst?.instanceId;
+    if (!inCenter && !inCollab) return { state, resolved: true };
+    if (!state._lifeImmuneFromOppEffects) state._lifeImmuneFromOppEffects = {};
+    state._lifeImmuneFromOppEffects[ctx.player] = state.turnNumber;
+    return { state, resolved: true, log: 'hBP03-022 アキ effectG: 本回合生命不受對手效果影響' };
+  });
+
+  // K-5.2 hBP03-083 音乃瀬奏 effectG
+  //   "對手表演結束時，如果該表演階段中自己的生命有減少 → 可以將自己存檔區的1張
+  //    吶喊卡發送給這個成員"
+  reg('hBP03-083', HOOK.ON_PHASE_END, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-083') return { state, resolved: true };
+    if (ctx.phase !== PHASE.PERFORMANCE) return { state, resolved: true };
+    if (!ctx.isOpp) return { state, resolved: true };
+    if ((ctx.lifeDelta || 0) >= 0) return { state, resolved: true };  // life unchanged or up
+    const own = state.players[ctx.player];
+    const archIdx = (own.zones[ZONE.ARCHIVE] || []).findIndex(c =>
+      getCard(c?.cardId)?.type === '吶喊'
+    );
+    if (archIdx < 0) return { state, resolved: true, log: 'hBP03-083: 存檔無吶喊' };
+    const cheer = own.zones[ZONE.ARCHIVE].splice(archIdx, 1)[0];
+    if (!Array.isArray(ctx.memberInst.attachedCheer)) ctx.memberInst.attachedCheer = [];
+    ctx.memberInst.attachedCheer.push(cheer);
+    return { state, resolved: true, log: `hBP03-083 奏: 對手表演造成生命 -${-ctx.lifeDelta} → 存檔吶喊隨行` };
+  });
+
+  // ── End of Round K-5 ──
 
   // ── Round J-1: phaseC1 LOG_ONLY upgrades ─────────────────────────────────
   // hBP04-013 was already implemented at E-3.2 above — its

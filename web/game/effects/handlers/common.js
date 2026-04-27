@@ -112,3 +112,44 @@ export function parseColor(text) {
   }
   return null;
 }
+
+// ── Centralized dice rolling ────────────────────────────────────────────────
+// All dice rolls SHOULD go through rollDieFor(state, ctx) so engine-level
+// overrides (e.g. hBP01-004 SP "本回合擲骰=6") and per-roll rerolls
+// (hBP03-108 はあとん, hBP01-123 野うさぎ同盟) can be applied uniformly.
+//
+// state — current game state (reads/writes _diceOverride and reroll flags)
+// ctx   — { player?, member?, source? } describing who's rolling, used by
+//         reroll handlers to decide eligibility. May be null.
+//
+// Behavior:
+//   1. If state._diceOverride is a number → return it (overrides EVERYTHING).
+//   2. Otherwise roll 1-6 via Math.random.
+//   3. Reroll hook: if a member has hBP03-108 はあとん attached AND
+//      state._allowDiceReroll != false, the support is auto-archived
+//      and the die is rolled again (once). Same for hBP01-123 野うさぎ同盟.
+//   4. Returns the final die value.
+export function rollDieFor(state, ctx = null) {
+  if (state && typeof state._diceOverride === 'number') {
+    return state._diceOverride;
+  }
+  let result = Math.floor(Math.random() * 6) + 1;
+  // Per-member reroll: walk attached supports for known reroll fans.
+  // hBP03-108 はあとん: archive self → reroll (ignore previous result entirely)
+  // hBP01-123 野うさぎ同盟: archive self → reroll (same logic)
+  // Only one reroll per call (first match wins).
+  const member = ctx?.member;
+  const player = ctx?.player != null ? state?.players?.[ctx.player] : null;
+  if (member && Array.isArray(member.attachedSupport) && state?._allowDiceReroll !== false) {
+    const REROLL_SUPPORTS = new Set(['hBP03-108', 'hBP01-123']);
+    const idx = member.attachedSupport.findIndex(s => REROLL_SUPPORTS.has(s.cardId));
+    if (idx >= 0 && state?._diceRerollUsedThisRoll !== true) {
+      const support = member.attachedSupport.splice(idx, 1)[0];
+      if (player) player.zones[ZONE.ARCHIVE].push(support);
+      state._diceRerollUsedThisRoll = true;
+      result = Math.floor(Math.random() * 6) + 1;
+      state._diceRerollUsedThisRoll = false;  // reset for next call
+    }
+  }
+  return result;
+}

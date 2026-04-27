@@ -2,12 +2,19 @@
 import { getCard, getCardImage } from '../../core/CardDatabase.js';
 import { registerEffect, HOOK } from '../EffectRegistry.js';
 import { ZONE, MEMBER_STATE, isMember, isSupport } from '../../core/constants.js';
-import { applyDamageToMember, drawCards, getStageMembers } from './common.js';
+import { applyDamageToMember, drawCards, getStageMembers, rollDieFor as _rollDieFor } from './common.js';
 
 function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function searchDeck(p,pred,n=1){const r=[];for(let i=0;i<p.zones[ZONE.DECK].length&&r.length<n;i++){if(pred(p.zones[ZONE.DECK][i]))r.push(i)}return r}
 function pullFromDeck(p,idx){const s=[...idx].sort((a,b)=>b-a);return s.map(i=>p.zones[ZONE.DECK].splice(i,1)[0])}
-function rollDie(){return Math.floor(Math.random()*6)+1}
+// rollDie: shim that delegates to centralized common.rollDieFor for state-level
+// override (hBP01-004 SP) and per-member reroll (hBP03-108, hBP01-123) support.
+// Pass state and ctx (rolling member) when available; falls back to plain
+// Math.random when called bare (legacy call sites).
+function rollDie(state, ctx){
+  if (state) return _rollDieFor(state, ctx);
+  return Math.floor(Math.random()*6)+1;
+}
 function hasTag(c,t){return getCard(c.cardId)?.tag?.includes(t)}
 function makeSearchPrompt(p,pIdx,pred,msg,action='ADD_TO_HAND',max=1){const m=[];for(const c of p.zones[ZONE.DECK]){if(pred(c)){const d=getCard(c.cardId);m.push({instanceId:c.instanceId,cardId:c.cardId,name:d?.name||'',image:getCardImage(c.cardId)})}}if(!m.length)return null;return{type:action==='PLACE_AND_SHUFFLE'?'SEARCH_SELECT_PLACE':'SEARCH_SELECT',player:pIdx,message:msg,cards:m,maxSelect:max,afterAction:action}}
 function isMemberOfName(c,n){const d=getCard(c.cardId);return d&&isMember(d.type)&&d.name===n}
@@ -62,7 +69,7 @@ export function registerPhaseC1(){
   // hBP01-023 ときのそら effectC+art1
   reg('hBP01-023',HOOK.ON_COLLAB,(s,c)=>{drawCards(s.players[c.player],2);return{state:s,resolved:true,log:'抽2張'}});
   reg('hBP01-023',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const roll=rollDie();
+    const roll=rollDie(s, { player: c.player, member: c.memberInst });
     if(roll%2===1)return{state:s,resolved:true,log:`骰${roll}:再次使用同藝能`};
     return{state:s,resolved:true,log:`骰${roll}`};
   });
@@ -104,12 +111,12 @@ export function registerPhaseC1(){
   // hBP01-042 兎田ぺこら art2: dice per point +10
   reg('hBP01-042',HOOK.ON_ART_DECLARE,(s,c)=>{
     if(c.artKey!=='art2')return{state:s,resolved:true};
-    const r=rollDie();return{state:s,resolved:true,effect:boost(r*10),log:`骰${r}→+${r*10}`};
+    const r=rollDie(s, { player: c.player, member: c.memberInst });return{state:s,resolved:true,effect:boost(r*10),log:`骰${r}→+${r*10}`};
   });
   // hBP01-043 兎田ぺこら effectB+art1
   reg('hBP01-043',HOOK.ON_BLOOM,(s,c)=>{if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-50);return{state:s,resolved:true,log:'HP回50'}});
   reg('hBP01-043',HOOK.ON_ART_DECLARE,(s,c)=>{
-    let t=0;for(let i=0;i<3;i++)t+=rollDie();
+    let t=0;for(let i=0;i<3;i++)t+=rollDie(s, { player: c.player, member: c.memberInst });
     return{state:s,resolved:true,effect:boost(t*10),log:`骰3次=${t}→+${t*10}`};
   });
   // hBP01-052 アイラニ art1: move cheer to #ID member
@@ -163,7 +170,7 @@ export function registerPhaseC1(){
   });
   // hBP01-110 鈍器
   reg('hBP01-110',HOOK.ON_PLAY,(s,c)=>{
-    const roll=rollDie();const opp=s.players[1-c.player];
+    const roll=rollDie(s, { player: c.player, member: c.memberInst });const opp=s.players[1-c.player];
     if(roll<=3){const t=opp.zones[ZONE.CENTER]||opp.zones[ZONE.COLLAB];
       if(t&&t.attachedCheer.length)opp.zones[ZONE.ARCHIVE].push(t.attachedCheer.shift())}
     return{state:s,resolved:true,log:`骰${roll}:${roll<=3?'對手吶喊→存檔':'無效'}`};
@@ -260,7 +267,7 @@ export function registerPhaseC1(){
     return{state:s,resolved:true,log:'棄1，存檔無#魔法'};
   });
   reg('hBP02-046',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const r=rollDie();if(r>=5)return{state:s,resolved:true,log:`骰${r}:對手吶喊替換`};
+    const r=rollDie(s, { player: c.player, member: c.memberInst });if(r>=5)return{state:s,resolved:true,log:`骰${r}:對手吶喊替換`};
     return{state:s,resolved:true,log:`骰${r}`};
   });
   // hBP02-049 クレイジー effectC
@@ -451,7 +458,7 @@ export function registerPhaseC1(){
   });
   // hBP03-023 兎田ぺこら effectC+art1
   reg('hBP03-023',HOOK.ON_COLLAB,(s,c)=>{
-    const r=rollDie();if(r%2===0){const p=s.players[c.player];
+    const r=rollDie(s, { player: c.player, member: c.memberInst });if(r%2===0){const p=s.players[c.player];
       const prompt=makeSearchPrompt(p,c.player,x=>getCard(x.cardId)?.type==='支援・粉絲','搜尋粉絲卡加入手牌');
       if(prompt)return{state:s,resolved:false,prompt,log:`骰${r}:搜尋粉絲`};
       shuffleArr(p.zones[ZONE.DECK])}
@@ -485,7 +492,7 @@ export function registerPhaseC1(){
   // hBP03-030 さくらみこ effectG+art1
   reg('hBP03-030',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>{
     const m=c.memberInst;if(!m?.attachedSupport?.some(x=>getCard(x.cardId)?.name==='35P'))return{state:s,resolved:true};
-    const r=rollDie();return(r===3||r===5)?{state:s,resolved:true,effect:boostTurn(50),log:`骰${r}→本回合+50`}:{state:s,resolved:true,log:`骰${r}`};
+    const r=rollDie(s, { player: c.player, member: c.memberInst });return(r===3||r===5)?{state:s,resolved:true,effect:boostTurn(50),log:`骰${r}→本回合+50`}:{state:s,resolved:true,log:`骰${r}`};
   });
   reg('hBP03-030',HOOK.ON_ART_DECLARE,(s,c)=>{
     const n=(c.memberInst?.attachedSupport||[]).filter(x=>getCard(x.cardId)?.name==='35P').length;
@@ -773,7 +780,7 @@ export function registerPhaseC1(){
   });
   // hBP04-055 ラプラス effectC+art1
   reg('hBP04-055',HOOK.ON_COLLAB,(s,c)=>{
-    const r=rollDie();if(r>=3){const opp=s.players[1-c.player];
+    const r=rollDie(s, { player: c.player, member: c.memberInst });if(r>=3){const opp=s.players[1-c.player];
       const back=opp.zones[ZONE.BACKSTAGE].find(m=>m.state===MEMBER_STATE.ACTIVE);
       if(back)back.state=MEMBER_STATE.REST}
     return{state:s,resolved:true,log:`骰${r}:${r>=3?'對手後台→休息':'無'}`};

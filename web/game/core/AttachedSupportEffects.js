@@ -81,6 +81,14 @@ const REGISTRY = {
   'hSD02-014': { extraHp: () => 20 },
   // hBP03-100 ペロ: HP +20 (フワワ/モココ all-art-color → no-color override is engine-complex, skipped)
   'hBP03-100': { extraHp: () => 20 },
+  // hBP04-100 ココロ: HP +20 (こより collab art +10 conditional skipped — needs ON_COLLAB observer)
+  'hBP04-100': { extraHp: () => 20 },
+  // hBP04-101 だいふく: art +10 (ラミィ HP +20 conditional skipped)
+  'hBP04-101': { artDamageBoost: () => 10 },
+  // hBP04-102 やめなー: art +10 (1st+ #5期生 backstage immunity skipped — engine-complex)
+  'hBP04-102': { artDamageBoost: () => 10 },
+  // hBP04-103 カラス: art +10 (ラプラス collab dice → backstage skipped)
+  'hBP04-103': { artDamageBoost: () => 10 },
 
   // ── 粉絲 (fans) ─────────────────────────────────────────────────────────
   // hBP02-099 すこん部: HP +10 (フブキ-only fan)

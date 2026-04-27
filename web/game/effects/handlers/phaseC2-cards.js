@@ -2,12 +2,17 @@
 import { getCard, getCardImage } from '../../core/CardDatabase.js';
 import { registerEffect, HOOK } from '../EffectRegistry.js';
 import { ZONE, MEMBER_STATE, isMember, isSupport } from '../../core/constants.js';
-import { applyDamageToMember, drawCards, getStageMembers } from './common.js';
+import { applyDamageToMember, drawCards, getStageMembers, rollDieFor as _rollDieFor } from './common.js';
 
 function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function searchDeck(p,pred,n=1){const r=[];for(let i=0;i<p.zones[ZONE.DECK].length&&r.length<n;i++){if(pred(p.zones[ZONE.DECK][i]))r.push(i)}return r}
 function pullFromDeck(p,idx){const s=[...idx].sort((a,b)=>b-a);return s.map(i=>p.zones[ZONE.DECK].splice(i,1)[0])}
-function rollDie(){return Math.floor(Math.random()*6)+1}
+// rollDie: shim for centralized rolling (see common.rollDieFor). Pass state
+// and ctx { member } when known; bare call falls back to plain random.
+function rollDie(state, ctx){
+  if (state) return _rollDieFor(state, ctx);
+  return Math.floor(Math.random()*6)+1;
+}
 function hasTag(c,t){return getCard(c.cardId)?.tag?.includes(t)}
 function makeSearchPrompt(p,pIdx,pred,msg,action='ADD_TO_HAND',max=1){const m=[];for(const c of p.zones[ZONE.DECK]){if(pred(c)){const d=getCard(c.cardId);m.push({instanceId:c.instanceId,cardId:c.cardId,name:d?.name||'',image:getCardImage(c.cardId)})}}if(!m.length)return null;return{type:action==='PLACE_AND_SHUFFLE'?'SEARCH_SELECT_PLACE':'SEARCH_SELECT',player:pIdx,message:msg,cards:m,maxSelect:max,afterAction:action}}
 function damageOpp(s,p,amt,pos='center'){const o=s.players[1-p];const t=o.zones[pos==='collab'?ZONE.COLLAB:ZONE.CENTER];if(t)applyDamageToMember(t,amt)}
@@ -92,20 +97,20 @@ export function registerPhaseC2(){
     return PL(s,'存檔#魔法回手');
   });
   reg('hBP04-085',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const r=rollDie();return r>=5?PL(s,`骰${r}:對手吶喊替換`):PL(s,`骰${r}`);
+    const r=rollDie(s, { player: c.player, member: c.memberInst });return r>=5?PL(s,`骰${r}:對手吶喊替換`):PL(s,`骰${r}`);
   });
 
   // hBP04-086 紫咲シオン effectG+art1
   reg('hBP04-086',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'#魔法活動效果2倍'));
   reg('hBP04-086',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const r=rollDie();if(r>=3){damageOpp(s,c.player,20)}
+    const r=rollDie(s, { player: c.player, member: c.memberInst });if(r>=3){damageOpp(s,c.player,20)}
     return PL(s,`骰${r}:${r>=3?'20特殊傷害':'無'}`);
   });
 
   // hBP04-087 紫咲シオン art2: dice→reveal from deck
   reg('hBP04-087',HOOK.ON_ART_DECLARE,(s,c)=>{
     if(c.artKey!=='art2')return P(s);
-    const r=rollDie();const p=s.players[c.player];
+    const r=rollDie(s, { player: c.player, member: c.memberInst });const p=s.players[c.player];
     const top=p.zones[ZONE.DECK].slice(0,r);
     let found=0;
     for(let i=top.length-1;i>=0;i--){

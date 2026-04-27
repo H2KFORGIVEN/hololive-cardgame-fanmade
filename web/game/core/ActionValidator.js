@@ -203,6 +203,11 @@ function validateCollab(state, action, player) {
 function validateBatonPass(state, action, player) {
   if (state.phase !== PHASE.MAIN) return fail('不在主要階段');
   if (player.usedBaton) return fail('本回合已交棒過');
+  // K-6 hBP01-005 SP: opp's center/collab cannot baton/move/replace this turn.
+  // The lock is keyed to the active player at the time it triggers (state.turnNumber).
+  if (state._oppPositionLockedFor?.[state.activePlayer] === state.turnNumber) {
+    return fail('對手 SP 鎖定，本回合中心/聯動禁止交棒');
+  }
 
   const center = player.zones[ZONE.CENTER];
   if (!center) return fail('沒有中心成員');

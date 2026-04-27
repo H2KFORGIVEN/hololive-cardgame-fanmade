@@ -2,7 +2,7 @@ import { PHASE, ZONE, ACTION, MEMBER_STATE } from './constants.js';
 import { getCard } from './CardDatabase.js';
 import { cloneState, getStageCount, findInstance, removeInstance, archiveMember, returnStageMemberToDeck as _returnStageMemberToDeck } from './GameState.js';
 import { validateAction } from './ActionValidator.js';
-import { calculateDamage, applyDamage } from './DamageCalculator.js';
+import { calculateDamage, applyDamage, getOutgoingDamageBoost } from './DamageCalculator.js';
 import { parseCost } from './constants.js';
 import { triggerEffect } from '../effects/EffectEngine.js';
 import { HOOK } from '../effects/EffectRegistry.js';
@@ -119,12 +119,22 @@ function processResetPhase(state) {
 
   // Step 2: Move collab member to backstage in REST state
   // (This member stays rested — gets activated in NEXT turn's reset)
+  // K-6 hBP06-001 SP: own ラオーラ collab skips the rest-to-backstage step
+  // when state._raouraNoRestForOwner[p] is set (whole-game effect).
   const collab = player.zones[ZONE.COLLAB];
   if (collab) {
-    collab.state = MEMBER_STATE.REST;
-    player.zones[ZONE.BACKSTAGE].push(collab);
-    player.zones[ZONE.COLLAB] = null;
-    addLog(state, `P${p + 1} 聯動成員 ${getCard(collab.cardId)?.name || ''} 回到後台（休息）`);
+    const collabName = getCard(collab.cardId)?.name || '';
+    const noRest = state._raouraNoRestForOwner?.[p] && collabName === 'ラオーラ・パンテーラ';
+    if (noRest) {
+      // Stay in collab, stay active
+      collab.state = MEMBER_STATE.ACTIVE;
+      addLog(state, `P${p + 1} 聯動成員 ${collabName} 留在聯動位置（hBP06-001 SP）`);
+    } else {
+      collab.state = MEMBER_STATE.REST;
+      player.zones[ZONE.BACKSTAGE].push(collab);
+      player.zones[ZONE.COLLAB] = null;
+      addLog(state, `P${p + 1} 聯動成員 ${collabName} 回到後台（休息）`);
+    }
   }
 
   // Step 3: If no center member, move from backstage
@@ -154,6 +164,10 @@ function resetTurnFlags(player) {
   player._limitedSupportsThisTurn = 0;
   player._activitiesPlayedThisTurn = 0;
   player._namesUsedArtThisTurn = [];
+  // K-2 / K-3 per-turn flags cleared on the player's reset phase
+  state._diceOverride = null;
+  state._diceRerollUsedThisRoll = false;
+  if (state._hBP07_039_used_this_turn) state._hBP07_039_used_this_turn = {};
 
   // Clear per-turn flags on all stage members
   const allZones = [ZONE.CENTER, ZONE.COLLAB, ZONE.BACKSTAGE];
@@ -274,18 +288,43 @@ function processPlaySupport(state, action) {
   const type = card?.type || '';
 
   // Attachment types: mascot (1 per member), tool (1 per member), fan (unlimited)
+  // Per-member overrides: hBP02-013 白上フブキ effectG allows up to 2
+  // different-name mascots on this specific wearer.
+  const MULTI_MASCOT_WEARERS = new Set(['hBP02-013']);
   const attachTypes = ['支援・吉祥物', '支援・道具', '支援・粉絲'];
   if (attachTypes.includes(type) && action.targetInstanceId) {
     const target = findInstance(player, action.targetInstanceId);
     if (target) {
-      // Check tool/mascot limit: 1 per member
+      // Check tool/mascot limit: 1 per member by default
       if (type === '支援・道具' || type === '支援・吉祥物') {
-        const existing = target.card.attachedSupport.find(s => getCard(s.cardId)?.type === type);
-        if (existing) {
-          // Replace: archive old one
-          const idx = target.card.attachedSupport.indexOf(existing);
+        const existing = target.card.attachedSupport.filter(
+          s => getCard(s.cardId)?.type === type
+        );
+        // hBP02-013 effectG: this wearer can hold up to 2 different-name mascots.
+        // For mascots only — tools still cap at 1.
+        const isMultiMascot =
+          type === '支援・吉祥物' && MULTI_MASCOT_WEARERS.has(target.card.cardId);
+        const limit = isMultiMascot ? 2 : 1;
+        // Different-name rule for hBP02-013: the new attach must NOT match an
+        // existing attached cardId (different カード = different名). Reject
+        // duplicate-name attach by archiving the new one (no slot consumed).
+        if (isMultiMascot) {
+          const sameId = existing.some(s => s.cardId === supportInstance.cardId);
+          if (sameId) {
+            // Skip attach — same-name duplicate not allowed under this rule.
+            // Caller-archive path handles the failed attach.
+            player.zones[ZONE.ARCHIVE].push(supportInstance);
+            addLog(state, `P${p + 1} ${cardName} 同名吉祥物已附加，無法疊加（hBP02-013 規則）`);
+            fireEffect(state, HOOK.ON_PLAY, { cardId: supportInstance.cardId, player: p });
+            return state;
+          }
+        }
+        if (existing.length >= limit) {
+          // Over the limit: replace the oldest (FIFO) — archive it.
+          const oldest = existing[0];
+          const idx = target.card.attachedSupport.indexOf(oldest);
           target.card.attachedSupport.splice(idx, 1);
-          player.zones[ZONE.ARCHIVE].push(existing);
+          player.zones[ZONE.ARCHIVE].push(oldest);
         }
       }
       target.card.attachedSupport.push(supportInstance);
@@ -556,17 +595,25 @@ function processUseArt(state, action) {
   // equipment effects model "while equipped" on this member.
   const equipBoost = getArtDamageBoost(attacker);
   bonusDmg += equipBoost;
+  // K-4: cross-member outgoing damage observer chain (e.g. hBP04-062 鎌 →
+  // own #Myth center +30; hBP02-041 おかゆ center → 自家おかゆ對 OPP 中心 +20).
+  const outgoingBoost = getOutgoingDamageBoost(state, attacker, target, p);
+  bonusDmg += outgoingBoost;
   const totalDmg = cancelled ? 0 : Math.max(0, dmgResult.total + bonusDmg - reduction);
 
   addLog(state, `P${p + 1} ${getCard(attacker.cardId)?.name || ''} 使用 ${dmgResult.artName}！`);
   if (dmgResult.special > 0) addLog(state, `  特攻加成 +${dmgResult.special}！`);
   if (equipBoost > 0) addLog(state, `  道具加成 +${equipBoost}！`);
-  if (bonusDmg - equipBoost > 0) addLog(state, `  效果加成 +${bonusDmg - equipBoost}！`);
+  if (outgoingBoost > 0) addLog(state, `  友方加成 +${outgoingBoost}！`);
+  if (bonusDmg - equipBoost - outgoingBoost > 0) addLog(state, `  效果加成 +${bonusDmg - equipBoost - outgoingBoost}！`);
   if (reduction > 0) addLog(state, `  傷害減免 -${reduction}！`);
   if (cancelled) addLog(state, `  傷害無效化${cancelReason ? ` (${cancelReason})` : ''}！`);
 
-  // Apply damage to target
-  const result = applyDamage(target, totalDmg);
+  // Apply damage to target. Passing state + target's player idx lets the
+  // K-3 passive observer chain query both sides' stages for incoming-damage
+  // modifiers (hBP04-074 アーニャ self+collab −10, hBP04-087 エリザベス
+  // collab → own Debut center −20, etc.).
+  const result = applyDamage(target, totalDmg, state, 1 - p);
   const { currentDamage = 0, maxHp = 0 } = result;
   addLog(state, `  對 ${getCard(target.cardId)?.name || ''} 造成 ${totalDmg} 傷害 (${currentDamage}/${maxHp})`);
 
@@ -888,6 +935,33 @@ function endMainPhase(state) {
   state.phase = PHASE.PERFORMANCE;
   addLog(state, `P${p + 1} 進入表演階段`);
 
+  // K-5: snapshot opp's life so ON_PHASE_END handlers can detect life loss
+  // during this performance phase (hBP03-083 奏: opp perf end + own life
+  // dropped → archive cheer rides).
+  state._lifeAtPerformanceStart = [
+    state.players[0].zones[ZONE.LIFE].length,
+    state.players[1].zones[ZONE.LIFE].length,
+  ];
+
+  // K-5: fire ON_PHASE_START on both sides' stages so passives can react
+  // (hBP03-022 アキ: opp perf start + this in center/collab → life immune).
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    const stagePl = [
+      pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB],
+      ...(pl.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    for (const m of stagePl) {
+      fireEffect(state, HOOK.ON_PHASE_START, {
+        cardId: m.cardId, player: idx, memberInst: m,
+        phase: PHASE.PERFORMANCE,
+        activePlayer: p,
+        isOpp: idx !== p,
+      });
+    }
+  }
+
   // Fire effectG for "performance phase start" trigger — e.g. hBP07-056
   // クロニー 2nd: "let another クロニー bloom from this card's stack"
   const stage = [
@@ -905,6 +979,33 @@ function endMainPhase(state) {
 }
 
 function endPerformance(state) {
+  // K-5: fire ON_PHASE_END for performance phase BEFORE turn-end cleanup so
+  // observer handlers (hBP03-083 奏: opp perf end + own life dropped → archive
+  // cheer) see the actual life delta. Snapshot taken at performance start
+  // lives in state._lifeAtPerformanceStart.
+  const p = state.activePlayer;
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    const stagePl = [
+      pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB],
+      ...(pl.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const lifeAtStart = state._lifeAtPerformanceStart?.[idx] ?? pl.zones[ZONE.LIFE].length;
+    const lifeNow = pl.zones[ZONE.LIFE].length;
+    const lifeDelta = lifeNow - lifeAtStart;  // negative = lost life
+    for (const m of stagePl) {
+      fireEffect(state, HOOK.ON_PHASE_END, {
+        cardId: m.cardId, player: idx, memberInst: m,
+        phase: PHASE.PERFORMANCE,
+        activePlayer: p,
+        isOpp: idx !== p,
+        lifeDelta,
+        lifeAtStart,
+        lifeNow,
+      });
+    }
+  }
   state.phase = PHASE.END;
   return processEndPhase(state);
 }
@@ -916,6 +1017,26 @@ function processEndPhase(state) {
   // 1. "Until end of turn" effects expire — clear any queued turn boosts/modifiers
   state._turnBoosts = [];
   state._turnModifiers = [];
+  // K-2: dice override (hBP01-004 SP "本回合擲骰=6") expires at end of turn
+  state._diceOverride = null;
+  state._diceRerollUsedThisRoll = false;
+  // K-6: opp position lock (hBP01-005 SP) expires after the locked turn ends.
+  // The flag value is the turn# it applies to; when that turn ends, drop it.
+  if (state._oppPositionLockedFor) {
+    for (const idx of Object.keys(state._oppPositionLockedFor)) {
+      if (state._oppPositionLockedFor[idx] <= state.turnNumber) {
+        delete state._oppPositionLockedFor[idx];
+      }
+    }
+  }
+  // K-5: life-immune flag (hBP03-022) is keyed to turn#; drop it after this turn
+  if (state._lifeImmuneFromOppEffects) {
+    for (const idx of Object.keys(state._lifeImmuneFromOppEffects)) {
+      if (state._lifeImmuneFromOppEffects[idx] <= state.turnNumber) {
+        delete state._lifeImmuneFromOppEffects[idx];
+      }
+    }
+  }
 
   // Fire ON_TURN_END hook so passive handlers can react (cleanup, draws, etc.)
   fireEffect(state, HOOK.ON_TURN_END, { player: p });

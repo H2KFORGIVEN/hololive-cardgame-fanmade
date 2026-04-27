@@ -34,4 +34,6 @@ export const HOOK = {
   ON_CHEER_ATTACH: 'ON_CHEER_ATTACH',     // yellEffect on cheer cards
   ON_PLACE: 'ON_PLACE',                   // when placed from hand to stage
   ON_RETURN_TO_DECK: 'ON_RETURN_TO_DECK', // when stage member returns to deck
+  ON_PHASE_START: 'ON_PHASE_START',       // K-5: any phase begin (own/opp)
+  ON_PHASE_END: 'ON_PHASE_END',           // K-5: any phase end (own/opp)
 };
