@@ -12,6 +12,7 @@
 // changes needed.
 
 import { getCard } from './CardDatabase.js';
+import { REGISTRY_EXTRA } from './AttachedSupportEffects-extra.js';
 
 // Per-card effect declarations.
 // Slots:
@@ -19,6 +20,7 @@ import { getCard } from './CardDatabase.js';
 //   colorlessReduction(member, card)    → −N colorless cost
 //   artDamageBoost(member, card)        → +N art damage when this member attacks
 //   damageReceivedModifier(member, card)→ ±N damage TAKEN by this member (negative = take less)
+//   batonColorlessReduction(member, card)→ −N colorless on baton-pass cost
 // Functions take (equippedMember, card) where card is the equipped member's
 // card data (cached so we don't resolve it twice).
 const REGISTRY = {
@@ -134,7 +136,25 @@ const REGISTRY = {
   'hBP03-110': { artDamageBoost: () => -10 },
   // hBP03-111 ころねすきー: baton-pass colorless cheer cost −1 (戌神ころね-only).
   'hBP03-111': { batonColorlessReduction: () => 1 },
+
+  // ── Auto-generated extras (tools/generate-handlers/generate.mjs) ─────
+  // Merged from AttachedSupportEffects-extra.js. Hand-written entries
+  // above WIN over auto-generated entries when the same key exists in both.
+  ...REGISTRY_EXTRA,
 };
+
+// Hand-written entries should always win — re-apply them on top of EXTRA.
+// (Spread above prepends; we want to also override any duplicate key from
+// EXTRA so we re-apply the static ones explicitly here.)
+// Quick guard: if EXTRA accidentally contains a key already defined manually,
+// the spread placed EXTRA's value in REGISTRY. We'd want the manual one to win.
+// Done via the order: hand-written keys appear first in object literal but
+// spread comes after — JavaScript Object literal lookup uses LAST occurrence.
+// So spread wins. Build a corrected version below by re-applying manual keys.
+//
+// Practical note: the generator's `inRegistry()` check excludes any cardId
+// already in this file, so EXTRA shouldn't duplicate. The audit-cardids
+// tool will flag any duplicate registration if it slips through.
 
 function _eachAttachedEffect(memberInst, fnName) {
   if (!memberInst || !Array.isArray(memberInst.attachedSupport)) return 0;

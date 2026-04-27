@@ -40,6 +40,7 @@ const HANDLER_FILES = [
   'web/game/effects/handlers/phaseC1-cards.js',
   'web/game/effects/handlers/phaseC2-cards.js',
   'web/game/effects/handlers/phaseC-final.js',
+  'web/game/effects/handlers/phaseD-generated.js',
 ];
 
 const MEMBER_ONLY_HOOKS = new Set([

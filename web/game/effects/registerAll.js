@@ -16,6 +16,7 @@ import { registerPhaseB } from './handlers/phaseB-cards.js';
 import { registerPhaseC1 } from './handlers/phaseC1-cards.js';
 import { registerPhaseC2 } from './handlers/phaseC2-cards.js';
 import { registerPhaseCFinal } from './handlers/phaseC-final.js';
+import { registerPhaseDGenerated } from './handlers/phaseD-generated.js';
 import { registerCleanup } from './handlers/cleanup.js';
 import { registerLookTopBottom } from './handlers/look-top-bottom.js';
 import { registerPassthrough } from './handlers/passthrough.js';
@@ -73,6 +74,13 @@ export async function initEffects() {
 
   // P4.9: Phase C Final — all remaining 204 cards
   counts.phaseCFinal = registerPhaseCFinal();
+
+  // P4.92: Phase D — auto-generated pattern-based handlers for cards not
+  // covered by phaseB/C. Registers REAL handlers for matched patterns
+  // (oshi color-boost factory, activity tag/name search, member draw-N,
+  // cheer yellEffect stubs, support REGISTRY merge) and hint-logs for the
+  // rest. Skips any (cardId, hook) already registered by earlier phases.
+  counts.phaseDGenerated = registerPhaseDGenerated();
 
   // P4.95: Look-top-and-bottom — support cards that look at top X and order rest to bottom
   counts.lookTopBottom = registerLookTopBottom();
