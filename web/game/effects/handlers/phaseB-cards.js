@@ -1254,10 +1254,25 @@ export function registerPhaseB() {
     return { state, resolved: true, log: '中心 ↔ 活動後台交換' };
   });
 
-  // 132. hBP04-068 大空スバル effectG: 1st 對此成員傷害 -20
-  reg('hBP04-068', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
-    state, resolved: true, log: '對手 1st 傷害 -20',
-  }));
+  // 132. hBP04-068 大空スバル Debut effectG:
+  //   [Limited center/collab] Damage from opponent 1st-bloom members to THIS
+  //   member is −20.
+  // Pushes DAMAGE_REDUCTION 20 when:
+  //   • This passive owner is the target of the current attack
+  //   • The attacker is opp side
+  //   • The attacker's bloom is '1st' (NOT '1st Buzz', NOT '2nd')
+  reg('hBP04-068', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
+    if (!ctx.target || !ctx.attacker) return { state, resolved: true };
+    if (ctx.target.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    if (ctx.player === ctx.attackerPlayer) return { state, resolved: true };
+    const atkCard = getCard(ctx.attacker.cardId);
+    if (atkCard?.bloom !== '1st') return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_REDUCTION', amount: 20, target: 'self', duration: 'instant' },
+      log: 'スバル passive: 對手 1st 傷害 -20',
+    };
+  });
 
   // 133. hBP04-072 大空スバル effectB + art1
   reg('hBP04-072', HOOK.ON_BLOOM, (state, ctx) => {
@@ -1952,6 +1967,32 @@ export function registerPhaseB() {
     const player = state.players[ctx.player];
     if (ctx.memberInst) sendCheerFromDeckToMember(player, ctx.memberInst);
     return { state, resolved: true, log: '擊倒後送吶喊' };
+  });
+
+  // 173. hSD09-007 不知火フレア Debut effectG:
+  //   [Limited collab] During opp turn, when this member is knocked out, if
+  //   own life < opp life, life loss is reduced by 1.
+  // ON_KNOCKDOWN ctx.lifeLossDelta = -1 (the engine clamps to ≥0).
+  reg('hSD09-007', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    // Only when THIS knocked-down member is the hSD09-007 instance
+    if (ctx.cardId !== 'hSD09-007') return { state, resolved: true };
+    // Position requirement: was in collab. After damage but before archive,
+    // the member is still in the zones — check own collab.
+    const own = state.players[ctx.player];
+    if (own?.zones[ZONE.COLLAB]?.instanceId !== ctx.memberInst?.instanceId) {
+      return { state, resolved: true };
+    }
+    // Opp turn requirement: attacker is the active player (i.e. it's their turn)
+    if (state.activePlayer !== ctx.attackerPlayer) {
+      return { state, resolved: true };
+    }
+    // Life condition: own life < opp life
+    const opp = state.players[ctx.attackerPlayer];
+    const myLife = own.zones[ZONE.LIFE]?.length || 0;
+    const oppLife = opp?.zones[ZONE.LIFE]?.length || 0;
+    if (myLife >= oppLife) return { state, resolved: true };
+    ctx.lifeLossDelta = (ctx.lifeLossDelta || 0) - 1;
+    return { state, resolved: true, log: 'フレア passive: 生命劣勢 → 生命損失 -1' };
   });
 
   return count;

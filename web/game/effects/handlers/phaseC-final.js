@@ -52,7 +52,10 @@ export function registerPhaseCFinal(){
     'hBP07-084':'中心:免疫對手藝能','hBP07-085':'被擊倒→吶喊分配',
     'hBP07-088':'聯動:友方受傷-10','hSD03-008':'中心:HP不受效果影響',
     'hSD07-009':'被擊倒→吶喊替換','hSD08-004':'中心:帶道具→+10',
-    'hSD08-005':'被擊倒→吶喊分配','hSD09-007':'中心:受傷-20',
+    'hSD08-005':'被擊倒→吶喊分配',
+    // hSD09-007 has a real ON_KNOCKDOWN handler in phaseB-cards.js
+    // (life-loss-1 when own life < opp life on knockout from collab).
+    // Don't clobber it with the placeholder here.
     'hSD10-004':'中心:友方受傷-10','hSD11-006':'被擊倒→吶喊替換',
     'hSD12-007':'中心:HP不受效果影響','hSD13-005':'被擊倒→吶喊回',
     'hSD13-012':'中心:受傷-20','hSD13-013':'帶粉絲→HP+10',

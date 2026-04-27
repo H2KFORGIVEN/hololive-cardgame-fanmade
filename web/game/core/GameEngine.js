@@ -488,10 +488,16 @@ function processUseArt(state, action) {
   // Add any turn boosts / reductions from effects
   let bonusDmg = 0;
   let reduction = 0;
+  let cancelled = false;
+  let cancelReason = '';
   if (state._turnBoosts) {
     for (const boost of state._turnBoosts) {
       if (boost.type === 'DAMAGE_BOOST') bonusDmg += (boost.amount || 0);
       else if (boost.type === 'DAMAGE_REDUCTION') reduction += (boost.amount || 0);
+      else if (boost.type === 'DAMAGE_CANCEL') {
+        cancelled = true;
+        if (boost.reason) cancelReason = boost.reason;
+      }
     }
     state._turnBoosts = [];
   }
@@ -501,13 +507,14 @@ function processUseArt(state, action) {
   // equipment effects model "while equipped" on this member.
   const equipBoost = getArtDamageBoost(attacker);
   bonusDmg += equipBoost;
-  const totalDmg = Math.max(0, dmgResult.total + bonusDmg - reduction);
+  const totalDmg = cancelled ? 0 : Math.max(0, dmgResult.total + bonusDmg - reduction);
 
   addLog(state, `P${p + 1} ${getCard(attacker.cardId)?.name || ''} 使用 ${dmgResult.artName}！`);
   if (dmgResult.special > 0) addLog(state, `  特攻加成 +${dmgResult.special}！`);
   if (equipBoost > 0) addLog(state, `  道具加成 +${equipBoost}！`);
   if (bonusDmg - equipBoost > 0) addLog(state, `  效果加成 +${bonusDmg - equipBoost}！`);
   if (reduction > 0) addLog(state, `  傷害減免 -${reduction}！`);
+  if (cancelled) addLog(state, `  傷害無效化${cancelReason ? ` (${cancelReason})` : ''}！`);
 
   // Apply damage to target
   const result = applyDamage(target, totalDmg);
@@ -517,12 +524,20 @@ function processUseArt(state, action) {
   // Mark art as used for this position
   player.performedArts[position] = true;
 
+  // Mark this target as the "in-flight art knockdown" so the sweep below
+  // doesn't archive it inside ON_DAMAGE_DEALT / ON_DAMAGE_TAKEN hooks before
+  // processKnockdown gets a chance to run ON_KNOCKDOWN handlers (e.g.
+  // hSD09-007's life-loss reduction). The sweep skips this instanceId only.
+  state._artTargetInFlight = target.instanceId;
   // Trigger damage hooks and ON_ART_RESOLVE (after damage applied)
   fireEffect(state, HOOK.ON_DAMAGE_DEALT, { cardId: attacker.cardId, player: p, memberInst: attacker, target, amount: totalDmg });
   fireEffect(state, HOOK.ON_DAMAGE_TAKEN, { cardId: target.cardId, player: 1 - p, memberInst: target, attacker, amount: totalDmg });
   fireEffect(state, HOOK.ON_ART_RESOLVE, { cardId: attacker.cardId, player: p, memberInst: attacker, target, artKey });
+  state._artTargetInFlight = null;
 
-  // Check knockdown
+  // Check knockdown — runs AFTER hooks so handler-side state changes (e.g.
+  // a healing effect via ON_DAMAGE_TAKEN) can be observed before the
+  // member is finally processed.
   if (result.knockedDown) {
     processKnockdown(state, p, target, opponent);
   }
@@ -533,19 +548,21 @@ function processUseArt(state, action) {
 function processKnockdown(state, attackerPlayer, target, opponent) {
   const targetCard = getCard(target.cardId);
   const isBuzz = targetCard?.bloom === '1st Buzz';
-  const lifeCost = isBuzz ? 2 : 1;
+  const baseLifeCost = isBuzz ? 2 : 1;
 
   addLog(state, `  ${targetCard?.name || ''} 被擊倒！${isBuzz ? '(Buzz 生命 -2)' : ''}`);
 
-  // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react (e.g.
-  // "return to hand instead"). Handlers set ctx.cancelKnockdown = true
-  // to skip the archive + life-loss that normally follows.
+  // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react. Handlers can:
+  //   • set ctx.cancelKnockdown = true     → skip archive + life loss
+  //   • set ctx.lifeLossDelta = -N / +N    → adjust life cost (clamped to 0)
+  // (e.g. hSD09-007 不知火フレア: opp turn + own life < opp life → -1)
   const knockdownCtx = {
     cardId: target.cardId,
     player: 1 - attackerPlayer,
     memberInst: target,
     attackerPlayer,
     cancelKnockdown: false,
+    lifeLossDelta: 0,
   };
   fireEffect(state, HOOK.ON_KNOCKDOWN, knockdownCtx);
 
@@ -559,7 +576,11 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
   // Archive the knocked-down member and all attached cards (+ bloom stack)
   archiveMember(opponent, target.instanceId);
 
-  // Life loss
+  // Life loss (handler-adjusted, clamped to 0)
+  const lifeCost = Math.max(0, baseLifeCost + (knockdownCtx.lifeLossDelta || 0));
+  if (lifeCost !== baseLifeCost) {
+    addLog(state, `  生命損失調整 ${baseLifeCost} → ${lifeCost}`);
+  }
   const lifeCheerToAssign = [];
   for (let i = 0; i < lifeCost; i++) {
     if (opponent.zones[ZONE.LIFE].length > 0) {
@@ -805,8 +826,12 @@ function fireEffect(state, hookType, context) {
     if (result.log) {
       addLog(state, `  [效果] ${result.log}`);
     }
-    // Store turn-scoped modifiers (boosts and reductions both consumed in processUseArt)
-    if (result.effect && (result.effect.type === 'DAMAGE_BOOST' || result.effect.type === 'DAMAGE_REDUCTION')) {
+    // Store turn-scoped modifiers (boosts/reductions/cancel all consumed in processUseArt)
+    if (result.effect && (
+      result.effect.type === 'DAMAGE_BOOST' ||
+      result.effect.type === 'DAMAGE_REDUCTION' ||
+      result.effect.type === 'DAMAGE_CANCEL'
+    )) {
       if (!state._turnBoosts) state._turnBoosts = [];
       state._turnBoosts.push(result.effect);
     }
@@ -839,6 +864,11 @@ export function sweepEffectKnockouts(state) {
     if (!pl) continue;
     const stage = [pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB], ...(pl.zones[ZONE.BACKSTAGE] || [])].filter(Boolean);
     for (const m of stage) {
+      // Skip the member that's currently the art-attack target — its
+      // knockdown is handled by processKnockdown so ON_KNOCKDOWN handlers
+      // can observe the member still on stage (e.g. for life-loss reduction
+      // and cancelKnockdown decisions).
+      if (state._artTargetInFlight && m.instanceId === state._artTargetInFlight) continue;
       const card = getCard(m.cardId);
       if (!card?.hp) continue;
       const effectiveHp = card.hp + getExtraHp(m) + getMemberSelfExtraHp(m);

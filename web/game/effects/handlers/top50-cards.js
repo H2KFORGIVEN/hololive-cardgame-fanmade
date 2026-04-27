@@ -651,9 +651,28 @@ export function registerTop50() {
     return { state, resolved: true };
   });
 
-  // 34. hBP06-039 百鬼あやめ effectG + art1
+  // 34. hBP06-039 百鬼あやめ 2nd effectG:
+  //   [Limited center] If own collab exists AND opp has no collab → all own
+  //   members are immune to opp art damage.
+  // Pushes DAMAGE_CANCEL when:
+  //   • This passive owner is in own center
+  //   • Own player has a collab member, opp has none
+  //   • The attack is from opp to any of our members (current art is targeting us)
   reg('hBP06-039', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
-    return { state, resolved: true, log: '中心位置且雙方聯動條件 → 免疫對手藝能傷害' };
+    if (!ctx.attacker || !ctx.target) return { state, resolved: true };
+    if (ctx.player === ctx.attackerPlayer) return { state, resolved: true };
+    const me = ctx.memberInst;
+    const myPlayer = state.players[ctx.player];
+    if (myPlayer?.zones[ZONE.CENTER]?.instanceId !== me?.instanceId) return { state, resolved: true };
+    // Conditions: I have collab, opp has no collab
+    if (!myPlayer.zones[ZONE.COLLAB]) return { state, resolved: true };
+    const opp = state.players[ctx.attackerPlayer];
+    if (opp?.zones[ZONE.COLLAB]) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_CANCEL', target: 'self', duration: 'instant', reason: 'あやめ passive' },
+      log: 'あやめ passive: 雙方聯動條件 → 對手藝能傷害無效',
+    };
   });
   reg('hBP06-039', HOOK.ON_ART_DECLARE, (state, ctx) => {
     const player = state.players[ctx.player];

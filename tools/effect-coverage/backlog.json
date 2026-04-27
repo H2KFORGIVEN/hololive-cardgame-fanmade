@@ -144,18 +144,6 @@
     "usage": 8
   },
   {
-    "id": "hBP06-039",
-    "name": "百鬼あやめ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited to center position] If you have linkage members and your opponent has no linkage members, all your members will not be harmed by the opponent's skills.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 8
-  },
-  {
     "id": "hBP07-006",
     "name": "AZKi",
     "hook": "stageSkill",
@@ -498,18 +486,6 @@
     "type": "成員",
     "expansion": "hBP01",
     "text": "The 1 Debut background member you placed this round can bloom from your hand into a 1st member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
-    "id": "hBP04-068",
-    "name": "大空スバル",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "[Limited to center position or linkage position] The damage caused by the opponent's 1st member to this member is -20.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2802,18 +2778,6 @@
     "type": "成員",
     "expansion": "hBP03",
     "text": "When the member with \"ルーナイト\" is not on his stage, reveal 1 \"ルーナイト\" from his deck and attach it to his member. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP03-015",
-    "name": "轟はじめ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "[Limited to center position] Linked members marked with #ReGLOSS take -20 damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

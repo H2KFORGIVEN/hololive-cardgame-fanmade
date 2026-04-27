@@ -413,8 +413,25 @@ export function registerPhaseC1(){
     const has=c.memberInst?.attachedSupport?.some(x=>getCard(x.cardId)?.name==='ルーナイト');
     return has?{state:s,resolved:true,effect:boost(50),log:'有ルーナイト→+50'}:{state:s,resolved:true};
   });
-  // hBP03-015 轟はじめ effectG+art1
-  reg('hBP03-015',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>({state:s,resolved:true,log:'中心位置:#ReGLOSS聯動受傷-20'}));
+  // hBP03-015 轟はじめ 2nd effectG:
+  //   [Limited center] Own #ReGLOSS collab members take −20 damage.
+  // Pushes DAMAGE_REDUCTION 20 when:
+  //   • This passive owner (轟はじめ) is in own center
+  //   • The attack target is own collab AND has #ReGLOSS tag
+  reg('hBP03-015',HOOK.ON_PASSIVE_GLOBAL,(state,ctx)=>{
+    if(!ctx.target||!ctx.attacker)return{state,resolved:true};
+    if(ctx.player===ctx.attackerPlayer)return{state,resolved:true};
+    const me=ctx.memberInst;
+    const myPlayer=state.players[ctx.player];
+    if(myPlayer?.zones[ZONE.CENTER]?.instanceId!==me?.instanceId)return{state,resolved:true};
+    if(myPlayer.zones[ZONE.COLLAB]?.instanceId!==ctx.target.instanceId)return{state,resolved:true};
+    if(!hasTag(ctx.target,'#ReGLOSS'))return{state,resolved:true};
+    return{
+      state,resolved:true,
+      effect:{type:'DAMAGE_REDUCTION',amount:20,target:'self',duration:'instant'},
+      log:'はじめ passive: #ReGLOSS 聯動受傷 -20',
+    };
+  });
   reg('hBP03-015',HOOK.ON_ART_DECLARE,(s,c)=>{
     const n=s.players[c.player].zones[ZONE.BACKSTAGE].filter(m=>hasTag(m,'#ReGLOSS')).length;
     return n>=4?{state:s,resolved:true,effect:boost(40),log:`${n}#ReGLOSS後台→+40`}:{state:s,resolved:true};
