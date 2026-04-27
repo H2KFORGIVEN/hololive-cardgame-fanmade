@@ -618,6 +618,35 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
       currentIndex: 0,
     };
   }
+
+  // ── Broadcast: fire ON_KNOCKDOWN with triggerEvent='member_knocked' to all
+  // stage members on both sides so handlers like "this member knocks opp →
+  // draw 2" / "any own member knocks opp → boost" can react. The killed
+  // member's own effectG already fired earlier as the legacy single-fire
+  // (no triggerEvent), so we don't re-fire for it. Handlers that gate on
+  // triggerEvent === 'member_knocked' won't accidentally trigger from the
+  // legacy single-fire path.
+  for (let idx = 0; idx < 2; idx++) {
+    const pl = state.players[idx];
+    if (!pl) continue;
+    const stageMembers = [
+      pl.zones[ZONE.CENTER], pl.zones[ZONE.COLLAB],
+      ...(pl.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    for (const m of stageMembers) {
+      if (m.instanceId === target.instanceId) continue; // killed member already archived
+      fireEffect(state, HOOK.ON_KNOCKDOWN, {
+        cardId: m.cardId,
+        player: idx,
+        memberInst: m,
+        triggerEvent: 'member_knocked',
+        knockedOutCardId: target.cardId,
+        knockedOutInstanceId: target.instanceId,
+        knockedOutPlayer: opponentIdx,
+        attackerPlayer,
+      });
+    }
+  }
 }
 
 // ── End Phase ──

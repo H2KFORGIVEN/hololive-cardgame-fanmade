@@ -3096,18 +3096,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-013",
-    "name": "博衣こより",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "When this member knocks down the opponent's member, he puts the top card of his deck into the holo energy zone. After that, check your holo energy zone. Reveal one of the cards and add it to your hand. Reshuffle the holo energy zone.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-014",
     "name": "白上フブキ",
     "hook": "effectB",
@@ -3510,18 +3498,6 @@
     "type": "成員",
     "expansion": "hBP05",
     "text": "When using this skill to knock down an opponent's member, reveal a 1st member marked #ID3 from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-023",
-    "name": "アイラニ・イオフィフティーン",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "When this member knocks down an opponent's member, he can send a shout card from his save area to his member marked #ID1.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -5142,18 +5118,6 @@
     "type": "成員",
     "expansion": "hSD12",
     "text": "You can put 1 support card from your hand into the save area: Reveal 1 Debut member or 1st member marked #Advent from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD12-007",
-    "name": "シオリ・ノヴェラ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hSD12",
-    "text": "[Once per round] When this member knocks down an opponent's member, return 1 support card in his save area that is not marked LIMITED to his hand.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

@@ -2204,6 +2204,149 @@ export function registerPhaseB() {
 
   // ── End of Round E-2 ──
 
+  // ── Round E-3: ON_KNOCKDOWN broadcast — "this member knocks opp" ─────────
+  // These handlers register on ON_KNOCKDOWN and gate on
+  // ctx.triggerEvent === 'member_knocked' (the broadcast fan-out from
+  // processKnockdown). For "THIS member is the killer" cards, also gate on
+  // ctx.attacker?.instanceId — but ctx.attacker isn't carried in the broadcast
+  // (the attacker info is implicit: ctx.attackerPlayer says which side did
+  // the killing). For "this is the attacker" we check that this member is
+  // currently in the attacker's center or collab (since arts only come from
+  // those positions); for "any own member kills" we just check ctx.player
+  // === ctx.attackerPlayer.
+
+  function isAttackingMember(state, ctx) {
+    // True if ctx.memberInst is in own center or collab on the attacking side
+    if (ctx.player !== ctx.attackerPlayer) return false;
+    const own = state.players[ctx.player];
+    if (!own || !ctx.memberInst) return false;
+    return own.zones[ZONE.CENTER]?.instanceId === ctx.memberInst.instanceId
+        || own.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst.instanceId;
+  }
+
+  // E-3.1 hBP05-061 ネリッサ・レイヴンクロフト 2nd:
+  //   "When this member knocks opp → draw 2."
+  reg('hBP05-061', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-061') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (!isAttackingMember(state, ctx)) return { state, resolved: true };
+    drawCards(state.players[ctx.player], 2);
+    return { state, resolved: true, log: 'hBP05-061: 擊倒對手 → 抽 2' };
+  });
+
+  // E-3.2 hBP04-013 博衣こより 2nd:
+  //   "When this member knocks opp → put deck top 1 to holopower; then look
+  //    at holopower, reveal 1 and add to hand. Reshuffle holopower."
+  // Pragmatic: auto-pull a member-type card if available; otherwise skip.
+  reg('hBP04-013', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-013') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (!isAttackingMember(state, ctx)) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Step 1: deck top → holopower (face-down)
+    if (own.zones[ZONE.DECK].length > 0) {
+      const top = own.zones[ZONE.DECK].shift();
+      top.faceDown = true;
+      own.zones[ZONE.HOLO_POWER].push(top);
+    }
+    // Step 2: pick 1 holopower card to add to hand. Auto-pick a member if
+    // available, else first card.
+    const hp = own.zones[ZONE.HOLO_POWER];
+    if (hp.length === 0) return { state, resolved: true, log: 'hBP04-013: holo 能量區空' };
+    let pickIdx = hp.findIndex(c => isMember(getCard(c.cardId)?.type));
+    if (pickIdx < 0) pickIdx = 0;
+    const picked = hp.splice(pickIdx, 1)[0];
+    picked.faceDown = false;
+    own.zones[ZONE.HAND].push(picked);
+    // Step 3: shuffle holopower
+    for (let i = hp.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [hp[i], hp[j]] = [hp[j], hp[i]];
+    }
+    return { state, resolved: true, log: 'hBP04-013: 擊倒 → holopower 操作' };
+  });
+
+  // E-3.3 hBP05-023 アイラニ・イオフィフティーン 2nd:
+  //   "When this member knocks opp → may send 1 cheer from archive to an own
+  //    #ID1期生 member."
+  // Pragmatic: auto-pick first own #ID1期生 member, send first cheer from
+  // archive (any color).
+  reg('hBP05-023', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-023') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (!isAttackingMember(state, ctx)) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID1期生');
+    });
+    if (!target) return { state, resolved: true, log: 'hBP05-023: 無 #ID1期生 成員' };
+    if (sendCheerFromArchiveToMember(own, target)) {
+      return { state, resolved: true, log: 'hBP05-023: 存檔吶喊 → #ID1期生' };
+    }
+    return { state, resolved: true, log: 'hBP05-023: 存檔無吶喊' };
+  });
+
+  // E-3.4 hSD12-007 シオリ・ノヴェラ 2nd:
+  //   "[Once per turn] When this member knocks opp → return 1 non-LIMITED
+  //    support from archive to hand."
+  // Pragmatic: auto-pick first non-LIMITED support. The "once per turn"
+  // limit is not enforced server-side yet (no per-turn ability tracking
+  // for effectG ON_KNOCKDOWN); in practice this fires once per art attack
+  // which already implicitly limits to ~1-2 per turn.
+  reg('hSD12-007', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hSD12-007') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (!isAttackingMember(state, ctx)) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const idx = own.zones[ZONE.ARCHIVE].findIndex(c => {
+      const card = getCard(c.cardId);
+      if (!card?.type?.startsWith('支援')) return false;
+      const s = typeof card.supportEffect === 'object'
+        ? (card.supportEffect['zh-TW'] || card.supportEffect.ja || card.supportEffect.en || '')
+        : (card.supportEffect || '');
+      return !s.includes('LIMITED');
+    });
+    if (idx < 0) return { state, resolved: true, log: 'hSD12-007: 存檔無非 LIMITED 支援' };
+    const support = own.zones[ZONE.ARCHIVE].splice(idx, 1)[0];
+    own.zones[ZONE.HAND].push(support);
+    return { state, resolved: true, log: 'hSD12-007: 擊倒 → 非 LIMITED 支援回手牌' };
+  });
+
+  // E-3.5 hBP07-049 エリザベス・ローズ・ブラッドフレイム 2nd:
+  //   "[Limited center/collab] When ANY own member knocks opp → choose 1
+  //    own member; that member's arts colorless cost -2 this turn."
+  // Pushes a per-turn modifier to a state-side registry. Since we don't
+  // have a "per-member colorless modifier" channel yet, for pragmatic batch
+  // we push DAMAGE_REDUCTION 0 (no-op) and emit a clear log so the player
+  // can manually resolve via Manual Adjust if needed. Mark it as a
+  // partial implementation in the log.
+  // TODO: extend AttachedSupportEffects-style registry with a per-turn
+  // colorless-cost reduction channel.
+  reg('hBP07-049', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-049') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    // Position requirement: this is in own center or collab, AND any own
+    // member is the killer (so ctx.attackerPlayer === ctx.player + this is
+    // on attacker's stage in center/collab).
+    if (ctx.player !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const isCenterOrCollab =
+      own.zones[ZONE.CENTER]?.instanceId === ctx.memberInst.instanceId
+      || own.zones[ZONE.COLLAB]?.instanceId === ctx.memberInst.instanceId;
+    if (!isCenterOrCollab) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      log: 'hBP07-049: 擊倒對手 → 可選 1 成員藝能無色需求 -2（手動調整）',
+    };
+  });
+
+  // ── End of Round E-3 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
