@@ -4000,6 +4000,117 @@ export function registerPhaseB() {
 
   // ── End of Round G-3 ──
 
+  // ── Round G-4: art1 boosts using per-turn counters + more search/move ───
+
+  // G-4.1 hBP07-018 ベスティア・ゼータ 1st art1:
+  //   "If used 活動 (activity) this turn → +30."
+  reg('hBP07-018', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-018') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if ((own._activitiesPlayedThisTurn || 0) === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: 'hBP07-018 art1: 用過活動 → +30',
+    };
+  });
+
+  // G-4.2 hBP06-077 夏色まつり 2nd art1:
+  //   "Per LIMITED support played this turn → +30."
+  reg('hBP06-077', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-077') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const n = own._limitedSupportsThisTurn || 0;
+    if (n === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: n * 30, target: 'self', duration: 'instant' },
+      log: `hBP06-077 art1: ${n} LIMITED 支援 → +${n * 30}`,
+    };
+  });
+
+  // G-4.3 hBP06-076 夏色まつり 1st Buzz art1:
+  //   "If target is 2nd member AND own used a LIMITED activity this turn → +70."
+  reg('hBP06-076', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-076') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (!own.usedLimited) return { state, resolved: true };
+    if ((own._activitiesPlayedThisTurn || 0) === 0) return { state, resolved: true };
+    const target = ctx.target;
+    if (getCard(target?.cardId)?.bloom !== '2nd') return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 70, target: 'self', duration: 'instant' },
+      log: 'hBP06-076 art1: 對 2nd + LIMITED 活動 → +70',
+    };
+  });
+
+  // G-4.4 hBP06-030 姫森ルーナ 1st art1:
+  //   "May attach 1 ルーナイト from archive to own ルーナ."
+  reg('hBP06-030', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP06-030') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Find ルーナイト in archive
+    const idx = own.zones[ZONE.ARCHIVE].findIndex(c => getCard(c.cardId)?.name === 'ルーナイト');
+    if (idx < 0) return { state, resolved: true, log: 'hBP06-030 art1: 存檔無ルーナイト' };
+    // Find an own 姫森ルーナ to attach to
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => getCard(m.cardId)?.name === '姫森ルーナ');
+    if (!target) return { state, resolved: true, log: 'hBP06-030 art1: 無姫森ルーナ' };
+    // Replace any existing tool on target (per game rules — auto-replace)
+    const existingIdx = (target.attachedSupport || []).findIndex(s => getCard(s.cardId)?.type === '支援・道具');
+    if (existingIdx >= 0) {
+      const old = target.attachedSupport.splice(existingIdx, 1)[0];
+      own.zones[ZONE.ARCHIVE].push(old);
+    }
+    const knight = own.zones[ZONE.ARCHIVE].splice(idx, 1)[0];
+    if (!target.attachedSupport) target.attachedSupport = [];
+    target.attachedSupport.push(knight);
+    return { state, resolved: true, log: 'hBP06-030 art1: 存檔ルーナイト→姫森ルーナ' };
+  });
+
+  // G-4.5 hBP07-025 大神ミオ 1st art1:
+  //   "May send 1 archive cheer to own #ゲーマーズ member."
+  reg('hBP07-025', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP07-025') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const archiveCheer = (own.zones[ZONE.ARCHIVE] || []).filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (archiveCheer.length === 0) return { state, resolved: true, log: 'hBP07-025 art1: 存檔無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const targets = stage.filter(m => {
+      const tag = getCard(m.cardId)?.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ゲーマーズ');
+    });
+    if (targets.length === 0) return { state, resolved: true, log: 'hBP07-025 art1: 無 #ゲーマーズ 成員' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER',
+        player: ctx.player,
+        message: 'ミオ art1: 選 1 位 #ゲーマーズ 成員接收存檔吶喊',
+        cards: targets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_MEMBER',
+        cheerColors: null,
+      },
+      log: 'hBP07-025 art1: 選 #ゲーマーズ 接收存檔吶喊',
+    };
+  });
+
+  // ── End of Round G-4 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

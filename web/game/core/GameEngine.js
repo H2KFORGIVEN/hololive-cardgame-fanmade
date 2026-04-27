@@ -150,6 +150,9 @@ function resetTurnFlags(player) {
   player.usedLimited = false;
   player.performedArts = { center: false, collab: false };
   player.oshiSkillUsedThisTurn = false;
+  // Per-turn counters consumed by art-side conditional boosts
+  player._limitedSupportsThisTurn = 0;
+  player._activitiesPlayedThisTurn = 0;
 
   // Clear per-turn flags on all stage members
   const allZones = [ZONE.CENTER, ZONE.COLLAB, ZONE.BACKSTAGE];
@@ -258,6 +261,12 @@ function processPlaySupport(state, action) {
 
   if (effectText.includes('LIMITED')) {
     player.usedLimited = true;
+    player._limitedSupportsThisTurn = (player._limitedSupportsThisTurn || 0) + 1;
+  }
+  // Track activity-card plays this turn for "if used activity → boost" art
+  // conditions (e.g. hBP07-018, hBP06-076). Reset at end-of-turn.
+  if (card?.type === '支援・活動') {
+    player._activitiesPlayedThisTurn = (player._activitiesPlayedThisTurn || 0) + 1;
   }
 
   const cardName = card?.name || '';

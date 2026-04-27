@@ -1668,30 +1668,6 @@
     "usage": 0
   },
   {
-    "id": "hBP06-030",
-    "name": "姫森ルーナ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited linkage position] During your opponent's turn, when you put the \"ルーナイト\" attached to your center member into the save area, you can replace it with your backstage member \"Hemomori Rita\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-030",
-    "name": "姫森ルーナ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "You can add 1 \"Himemori Lano\" from your save area to your own \"Hemimori Lano\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-036",
     "name": "百鬼あやめ",
     "hook": "effectC",
@@ -1782,30 +1758,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "Reveal 1 \"えびふらいおん\" or \"まつりす\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-076",
-    "name": "夏色まつり",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If you use this skill on a 2nd member, and you have used an activity marked LIMITED this round, the damage of this skill will be +70.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-077",
-    "name": "夏色まつり",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "Each time you use a support card marked LIMITED this round, the damage of this skill is +30.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1968,18 +1920,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-018",
-    "name": "ベスティア・ゼータ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "If you have used an activity this round, the damage of this skill will be +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-019",
     "name": "ベスティア・ゼータ",
     "hook": "effectB",
@@ -2010,18 +1950,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "Choose your 1 member marked #3. During this round, the number of colorless Scream cards required for this member's performance is reduced by 1. If the member is the 2nd member \"Shirogane Noru\", the number of colorless shout cards required for the member's performance is -2.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-025",
-    "name": "大神ミオ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "Send a shouting card from your save area to the member you marked #ゲーマーズ.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
