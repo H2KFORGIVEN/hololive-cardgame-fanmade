@@ -2316,48 +2316,12 @@
     "usage": 0
   },
   {
-    "id": "hSD10-009",
-    "name": "綺々羅々ヴィヴィ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD10",
-    "text": "For every card in the opponent's hand, this skill's damage is +10.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD10-010",
-    "name": "響咲リオナ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD10",
-    "text": "If #FLOW GLOW is marked and a 2nd or above member is on his stage, this skill will do +30 damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD10-011",
     "name": "WHAT'S UP!!!!! KEEEEEP GROWING!!!!!",
     "hook": "support",
     "type": "支援・活動",
     "expansion": "hSD10",
     "text": "All members on your stage must tag #FLOW GLOW to use it.\n\nSelect 3 shouting cards in your archive area and assign them to your central members and linkage members. Maximum 2 tickets per person.\n\nLIMITED: Only one can be used per turn.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD11-005",
-    "name": "虎金妃笑虎",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD11",
-    "text": "If there are more than 5 shout cards on your stage, the damage of this performance +20.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2436,18 +2400,6 @@
     "usage": 0
   },
   {
-    "id": "hSD13-011",
-    "name": "ジジ・ムリン",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD13",
-    "text": "If there are 0 members overlapping this member, the damage of this skill is +20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD13-012",
     "name": "ジジ・ムリン",
     "hook": "effectG",
@@ -2466,18 +2418,6 @@
     "type": "成員",
     "expansion": "hSD13",
     "text": "[Once per turn] During your main phase, you can put a member that overlaps your \"ジジ・ムリン\" into the save area: send the top card of your shout deck to this member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD13-013",
-    "name": "ジジ・ムリン",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD13",
-    "text": "If there are 0 members overlapping this member, the damage of this skill is +90.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

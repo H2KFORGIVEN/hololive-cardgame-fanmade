@@ -4449,6 +4449,87 @@ export function registerPhaseB() {
 
   // ── End of Round H-1 ──
 
+  // ── Round H-2: art1 condition boosts (5 cards) ──────────────────────────
+
+  // H-2.1 hSD11-005 虎金妃笑虎 1st art1: stage cheer ≥5 → +20
+  reg('hSD11-005', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD11-005') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    let total = 0;
+    for (const m of stage) total += (m.attachedCheer || []).length;
+    if (total < 5) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' },
+      log: `hSD11-005 art1: 舞台吶喊 ${total} ≥5 → +20`,
+    };
+  });
+
+  // H-2.2 hSD13-011 ジジ・ムリン 1st art1: bloomStack=0 → +20
+  reg('hSD13-011', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD13-011') return { state, resolved: true };
+    const stack = (ctx.memberInst?.bloomStack || []).length;
+    if (stack !== 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' },
+      log: 'hSD13-011 art1: 重疊=0 → +20',
+    };
+  });
+
+  // H-2.3 hSD13-013 ジジ・ムリン 2nd art1: bloomStack=0 → +90
+  reg('hSD13-013', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD13-013') return { state, resolved: true };
+    const stack = (ctx.memberInst?.bloomStack || []).length;
+    if (stack !== 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 90, target: 'self', duration: 'instant' },
+      log: 'hSD13-013 art1: 重疊=0 → +90',
+    };
+  });
+
+  // H-2.4 hSD10-009 綺々羅々ヴィヴィ 2nd art1: per opp hand card → +10
+  reg('hSD10-009', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD10-009') return { state, resolved: true };
+    const opp = state.players[1 - ctx.player];
+    const n = (opp?.zones[ZONE.HAND] || []).length;
+    if (n === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: n * 10, target: 'self', duration: 'instant' },
+      log: `hSD10-009 art1: 對手 ${n} 手牌 → +${n * 10}`,
+    };
+  });
+
+  // H-2.5 hSD10-010 響咲リオナ Spot art1: 2nd+ #FLOW GLOW on stage → +30
+  reg('hSD10-010', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD10-010') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const has = stage.some(m => {
+      const card = getCard(m.cardId);
+      const tag = card?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      return tagStr.includes('#FLOW GLOW') && (card?.bloom === '2nd' || card?.bloom?.includes('Buzz'));
+    });
+    if (!has) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: 'hSD10-010 art1: 2nd+ #FLOW GLOW 在場 → +30',
+    };
+  });
+
+  // ── End of Round H-2 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

@@ -1,16 +1,16 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T16:47:46.414Z
+Generated: 2026-04-27T16:49:40.682Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 1022 (78%)
+- **REAL (mutates state / queues prompt or boost)**: 1027 (79%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 207 (16%)
+- **LOG_ONLY (placeholder logs only)**: 202 (15%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1097 (84%)
+- **Effective coverage (REAL + PASSIVE)**: 1102 (85%)
 
 ## By hook type
 
@@ -18,7 +18,7 @@ Generated: 2026-04-27T16:47:46.414Z
 |---|---|---|---|---|---|---|---|---|
 | oshiSkill | 138 | 135 | 0 | 3 | 0 | 0 | 0 | 98% |
 | spSkill | 135 | 132 | 0 | 3 | 0 | 0 | 0 | 98% |
-| art1 | 297 | 260 | 0 | 37 | 0 | 0 | 0 | 88% |
+| art1 | 297 | 265 | 0 | 32 | 0 | 0 | 0 | 89% |
 | art2 | 55 | 53 | 0 | 2 | 0 | 0 | 0 | 96% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
 | effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
@@ -49,10 +49,10 @@ Generated: 2026-04-27T16:47:46.414Z
 | hSD07 | 16 | 13 | 0 | 3 | 0 | 0 | 0 | 81% |
 | hSD08 | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hSD09 | 9 | 9 | 0 | 0 | 0 | 0 | 0 | 100% |
-| hSD10 | 16 | 12 | 0 | 4 | 0 | 0 | 0 | 75% |
-| hSD11 | 13 | 10 | 0 | 3 | 0 | 0 | 0 | 77% |
+| hSD10 | 16 | 14 | 0 | 2 | 0 | 0 | 0 | 88% |
+| hSD11 | 13 | 11 | 0 | 2 | 0 | 0 | 0 | 85% |
 | hSD12 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
-| hSD13 | 22 | 17 | 0 | 5 | 0 | 0 | 0 | 77% |
+| hSD13 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
 | hY01 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 100% |
 | hY02 | 9 | 0 | 9 | 0 | 0 | 0 | 0 | 100% |
 | hY03 | 13 | 0 | 13 | 0 | 0 | 0 | 0 | 100% |
