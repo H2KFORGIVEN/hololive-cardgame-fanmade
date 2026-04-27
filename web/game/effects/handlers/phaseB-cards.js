@@ -2911,12 +2911,52 @@ export function registerPhaseB() {
   //         backstage, may use: 50 special dmg to that backstage member.
   //   sp:   [1/game] When own blue member dealt damage to opp center/collab,
   //         may use: same-amount special dmg to opp 1 backstage member.
-  // Both are reactive (post-damage activation) — hint logs only.
+  // H-5 reactive auto-fire: triggerEvent='reactive_damage_dealt' fires
+  // for both oshi & sp paths. Conditions auto-checked, holopower auto-spent.
   reg('hBP01-007', HOOK.ON_OSHI_SKILL, (state, ctx) => {
-    if (ctx.skillType === 'sp') {
-      return { state, resolved: true, log: 'hBP01-007 SP: 藍色成員給中心/聯動傷害時觸發（手動）' };
+    const own = state.players[ctx.player];
+    if (ctx.triggerEvent === 'reactive_damage_dealt') {
+      const attackerColor = getCard(ctx.attacker?.cardId)?.color;
+      // oshi path: own blue (or this oshi) damaged opp backstage
+      if (ctx.targetPosition === 'backstage' && (attackerColor === '藍' || ctx.attacker?.cardId === 'hBP01-007')) {
+        if (own.oshiSkillUsedThisTurn) return { state, resolved: true };
+        const cost = Math.abs(getCard(own.oshi?.cardId)?.oshiSkill?.holoPower || 2);
+        if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+        for (let i = 0; i < cost; i++) {
+          const c = own.zones[ZONE.HOLO_POWER].shift();
+          if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+        }
+        own.oshiSkillUsedThisTurn = true;
+        // 50 special dmg to that same backstage member
+        if (ctx.target) {
+          ctx.target.damage = (ctx.target.damage || 0) + 50;
+        }
+        return { state, resolved: true, log: 'hBP01-007 oshi 自動觸發: 後台 +50 特殊傷害' };
+      }
+      // sp path: own blue damaged opp center/collab → same dmg to opp 1 backstage
+      if ((ctx.targetPosition === 'center' || ctx.targetPosition === 'collab') && attackerColor === '藍') {
+        if (own.oshi?.usedSp) return { state, resolved: true };
+        const cost = Math.abs(getCard(own.oshi?.cardId)?.spSkill?.holoPower || 2);
+        if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+        const opp = state.players[1 - ctx.player];
+        const back = (opp?.zones[ZONE.BACKSTAGE] || []).filter(Boolean);
+        if (back.length === 0) return { state, resolved: true };
+        for (let i = 0; i < cost; i++) {
+          const c = own.zones[ZONE.HOLO_POWER].shift();
+          if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+        }
+        own.oshi.usedSp = true;
+        // Auto-pick first backstage as target
+        const tgt = back[0];
+        tgt.damage = (tgt.damage || 0) + (ctx.amount || 0);
+        return { state, resolved: true, log: `hBP01-007 SP 自動觸發: 對手後台 +${ctx.amount} 特殊傷害` };
+      }
+      return { state, resolved: true };
     }
-    return { state, resolved: true, log: 'hBP01-007 oshi: 對後台造成傷害時觸發 50 特殊傷害（手動）' };
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP01-007 SP: 藍色成員給中心/聯動傷害時觸發（已支援自動）' };
+    }
+    return { state, resolved: true, log: 'hBP01-007 oshi: 對後台造成傷害時觸發 50 特殊傷害（已支援自動）' };
   });
 
   // F-1.4 hBP02-007 森カリオペ oshi
@@ -3107,11 +3147,32 @@ export function registerPhaseB() {
   // ── Round F-3: 5 unique-logic oshi cards ────────────────────────────────
 
   // F-3.1 hBP01-002 七詩ムメイ
-  //   oshi: REACTIVE (own #Promise dmg -50). Hint log.
+  //   oshi: REACTIVE (own #Promise dmg -50). Auto-fire on
+  //         reactive_damage_taken when target has #Promise tag.
   //   sp:   Search 1 活動 from deck → hand. Reshuffle.
   reg('hBP01-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_damage_taken') {
+      // During opp turn, when own #Promise takes damage → -50 (retroactive heal)
+      const own = state.players[ctx.player];
+      if (own.oshiSkillUsedThisTurn) return { state, resolved: true };
+      // Opp turn check (defender's turn = activePlayer is the attacker)
+      if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+      const target = ctx.target;
+      const tag = getCard(target?.cardId)?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      if (!tagStr.includes('#Promise')) return { state, resolved: true };
+      const cost = Math.abs(getCard(own.oshi?.cardId)?.oshiSkill?.holoPower || 2);
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+      for (let i = 0; i < cost; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshiSkillUsedThisTurn = true;
+      target.damage = Math.max(0, (target.damage || 0) - 50);
+      return { state, resolved: true, log: 'hBP01-002 oshi 自動觸發: #Promise 受傷 -50' };
+    }
     if (ctx.skillType !== 'sp') {
-      return { state, resolved: true, log: 'hBP01-002 oshi: 反應觸發（手動）' };
+      return { state, resolved: true, log: 'hBP01-002 oshi: 反應觸發（已支援自動）' };
     }
     const own = state.players[ctx.player];
     const candidates = [];
@@ -3560,11 +3621,44 @@ export function registerPhaseB() {
   // ── Round F-5: final 4 unique-logic oshi cards ──────────────────────────
 
   // F-5.1 hBP05-002 アイラニ・イオフィフティーン
-  //   oshi: REACTIVE (own #ID1期生 takes damage). Hint log.
+  //   oshi: REACTIVE (own #ID1期生 takes damage → cheer-replace to other
+  //         #ID1期生). Auto-fire on reactive_damage_taken.
   //   sp:   Archive 2 stage cheer (any) + search 2 #ID1期生 from deck.
   reg('hBP05-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_damage_taken') {
+      const own = state.players[ctx.player];
+      if (own.oshiSkillUsedThisTurn) return { state, resolved: true };
+      if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+      const target = ctx.target;
+      const tag = getCard(target?.cardId)?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      if (!tagStr.includes('#ID1期生')) return { state, resolved: true };
+      // Need: target has cheer + another #ID1期生 on stage
+      if (!target?.attachedCheer?.length) return { state, resolved: true };
+      const stage = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+        ...(own.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      const otherId1 = stage.find(m => {
+        if (m.instanceId === target.instanceId) return false;
+        const t = getCard(m.cardId)?.tag || '';
+        return (typeof t === 'string' ? t : JSON.stringify(t)).includes('#ID1期生');
+      });
+      if (!otherId1) return { state, resolved: true };
+      const cost = Math.abs(getCard(own.oshi?.cardId)?.oshiSkill?.holoPower || 2);
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+      for (let i = 0; i < cost; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshiSkillUsedThisTurn = true;
+      const cheer = target.attachedCheer.shift();
+      if (!otherId1.attachedCheer) otherId1.attachedCheer = [];
+      otherId1.attachedCheer.push(cheer);
+      return { state, resolved: true, log: 'hBP05-002 oshi 自動觸發: 吶喊替換給其他 #ID1期生' };
+    }
     if (ctx.skillType !== 'sp') {
-      return { state, resolved: true, log: 'hBP05-002 oshi: 被傷害時觸發吶喊替換（手動）' };
+      return { state, resolved: true, log: 'hBP05-002 oshi: 被傷害時觸發吶喊替換（已支援自動）' };
     }
     const own = state.players[ctx.player];
     // Pull 2 cheer from any stage member (auto-pick: walk stage, take first 2)
@@ -3665,10 +3759,22 @@ export function registerPhaseB() {
 
   // F-5.3 hBP06-006 ムーナ・ホシノヴァ
   //   oshi: REACTIVE (after own special damage → 20 special damage to opp
-  //         center+collab). Hint log.
+  //         center+collab). NOTE: trigger is specifically "special damage"
+  //         (not regular art damage), and the engine doesn't currently
+  //         distinguish those at the broadcast level — special damage is
+  //         dealt directly via target.damage += N in handler code without a
+  //         centralized hook. Left as hint log; players can manually invoke
+  //         via UI when triggered. Auto-fire would require either invasive
+  //         per-handler instrumentation or a trailing-edge state._lastSpecialDamageBy
+  //         flag set by every special-damage-dealing handler.
   //   sp:   Total cheer on both stages ≥ 6 → distribute 1-3 cheer-deck
   //         cards to own #ID1期生 members.
   reg('hBP06-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_damage_dealt') {
+      // Manual: special-damage detection not in engine, so reactive path is
+      // a no-op. Player invokes via UI when conditions match.
+      return { state, resolved: true };
+    }
     if (ctx.skillType !== 'sp') {
       return { state, resolved: true, log: 'hBP06-006 oshi: 給予特殊傷害後觸發（手動）' };
     }

@@ -583,6 +583,37 @@ function processUseArt(state, action) {
   fireEffect(state, HOOK.ON_DAMAGE_TAKEN, { cardId: target.cardId, player: 1 - p, memberInst: target, attacker, amount: totalDmg });
   fireEffect(state, HOOK.ON_ART_RESOLVE, { cardId: attacker.cardId, player: p, memberInst: attacker, target, artKey });
 
+  // Reactive oshi broadcast for damage events: fire ON_OSHI_SKILL with
+  // triggerEvent='reactive_damage_dealt' for the attacker's oshi and
+  // 'reactive_damage_taken' for the defender's oshi. Each handler decides
+  // whether to auto-fire (pay holopower, mark usedSp/oshiSkillUsedThisTurn)
+  // based on damage amount, target zone, attacker color, etc. Skipped if
+  // the game is already over.
+  if (state.winner == null && totalDmg > 0) {
+    const attackerOshi = state.players[p]?.oshi?.cardId;
+    if (attackerOshi) {
+      fireEffect(state, HOOK.ON_OSHI_SKILL, {
+        cardId: attackerOshi,
+        player: p,
+        skillType: 'reactive',
+        triggerEvent: 'reactive_damage_dealt',
+        attacker, target, amount: totalDmg, artKey,
+        targetPosition: action.targetPosition, // 'center' / 'collab'
+      });
+    }
+    const defenderOshi = state.players[1 - p]?.oshi?.cardId;
+    if (defenderOshi) {
+      fireEffect(state, HOOK.ON_OSHI_SKILL, {
+        cardId: defenderOshi,
+        player: 1 - p,
+        skillType: 'reactive',
+        triggerEvent: 'reactive_damage_taken',
+        attacker, target, amount: totalDmg, artKey,
+        attackerPlayer: p,
+      });
+    }
+  }
+
   // Broadcast: fire ON_ART_RESOLVE with triggerEvent='member_used_art' to
   // OTHER attacker-side stage members so passive observers (e.g. "when an
   // ally uses an art" — hBP05-066, hBP06-066) can react. The attacker
@@ -981,8 +1012,18 @@ function fireEffect(state, hookType, context) {
     if (result.log) {
       addLog(state, `  [效果] ${result.log}`);
     }
-    // Store turn-scoped modifiers (boosts/reductions/cancel all consumed in processUseArt)
-    if (result.effect && (
+    // Store turn-scoped modifiers (boosts/reductions/cancel all consumed in
+    // processUseArt). Skip when this is a reactive broadcast — those handlers
+    // mutate state directly (e.g. target.damage += 50) rather than returning
+    // turn-scoped boosts. Otherwise oshi handlers that don't gate on
+    // triggerEvent (e.g. hBD24-* color factory) would inadvertently re-push
+    // their DAMAGE_BOOST every time the engine fires reactive_damage_dealt,
+    // polluting _turnBoosts.
+    const isReactiveBroadcast =
+      context && (context.skillType === 'reactive' ||
+                  (typeof context.triggerEvent === 'string' &&
+                   context.triggerEvent.startsWith('reactive_')));
+    if (!isReactiveBroadcast && result.effect && (
       result.effect.type === 'DAMAGE_BOOST' ||
       result.effect.type === 'DAMAGE_REDUCTION' ||
       result.effect.type === 'DAMAGE_CANCEL'
