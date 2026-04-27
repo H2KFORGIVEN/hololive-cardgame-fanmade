@@ -1968,18 +1968,6 @@
     "usage": 0
   },
   {
-    "id": "hBP07-074",
-    "name": "ラプラス・ダークネス",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "If the color of your center member is purple, the damage of this skill is +40.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP07-075",
     "name": "古石ビジュー",
     "hook": "effectG",
@@ -2070,18 +2058,6 @@
     "type": "成員",
     "expansion": "hBP07",
     "text": "If the shout card on your stage is put into the save area this round, the damage of this performance +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP07-090",
-    "name": "虎金妃笑虎",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP07",
-    "text": "For each shout card this member has, the damage of this skill is +20.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2280,18 +2256,6 @@
     "usage": 0
   },
   {
-    "id": "hSD06-007",
-    "name": "風真いろは",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD06",
-    "text": "When there are more than 5 shout cards on your stage, the damage of this performance +50.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD06-012",
     "name": "ぽこべぇ",
     "hook": "support",
@@ -2316,36 +2280,12 @@
     "usage": 0
   },
   {
-    "id": "hSD07-006",
-    "name": "不知火フレア",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD07",
-    "text": "When your HP is below 3, the damage of this skill is +30.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hSD07-009",
     "name": "不知火フレア",
     "hook": "effectG",
     "type": "成員",
     "expansion": "hSD07",
     "text": "[Limited to center position] This member takes -10 damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hSD07-009",
-    "name": "不知火フレア",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hSD07",
-    "text": "When your HP is below 3, the damage of this skill is +70.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

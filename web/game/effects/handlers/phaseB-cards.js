@@ -4374,6 +4374,81 @@ export function registerPhaseB() {
 
   // ── End of Round G-5 ──
 
+  // ── Round H-1: art1 simple condition boosts (5 cards) ───────────────────
+
+  // H-1.1 hBP07-074 ラプラス・ダークネス 2nd art1:
+  //   "If own center is purple → +40."
+  reg('hBP07-074', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-074') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (getCard(own?.zones[ZONE.CENTER]?.cardId)?.color !== '紫') return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 40, target: 'self', duration: 'instant' },
+      log: 'hBP07-074 art1: 中心紫 → +40',
+    };
+  });
+
+  // H-1.2 hBP07-090 虎金妃笑虎 2nd art1:
+  //   "Per attached cheer → +20."
+  reg('hBP07-090', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-090') return { state, resolved: true };
+    const n = (ctx.memberInst?.attachedCheer || []).length;
+    if (n === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: n * 20, target: 'self', duration: 'instant' },
+      log: `hBP07-090 art1: ${n} 吶喊 → +${n * 20}`,
+    };
+  });
+
+  // H-1.3 hSD06-007 風真いろは 2nd art1:
+  //   "If own stage cheer total ≥5 → +50."
+  reg('hSD06-007', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD06-007') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    let total = 0;
+    for (const m of stage) total += (m.attachedCheer || []).length;
+    if (total < 5) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 50, target: 'self', duration: 'instant' },
+      log: `hSD06-007 art1: 舞台吶喊 ${total} ≥5 → +50`,
+    };
+  });
+
+  // H-1.4 hSD07-006 不知火フレア 1st art1:
+  //   "If own life ≤3 → +30."
+  reg('hSD07-006', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD07-006') return { state, resolved: true };
+    const life = (state.players[ctx.player].zones[ZONE.LIFE] || []).length;
+    if (life > 3) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: `hSD07-006 art1: 生命 ${life} ≤3 → +30`,
+    };
+  });
+
+  // H-1.5 hSD07-009 不知火フレア 2nd art1:
+  //   "If own life ≤3 → +70."
+  reg('hSD07-009', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hSD07-009') return { state, resolved: true };
+    const life = (state.players[ctx.player].zones[ZONE.LIFE] || []).length;
+    if (life > 3) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 70, target: 'self', duration: 'instant' },
+      log: `hSD07-009 art1: 生命 ${life} ≤3 → +70`,
+    };
+  });
+
+  // ── End of Round H-1 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
