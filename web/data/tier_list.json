@@ -7,7 +7,7 @@
       "decks": [
         {
           "name": "クロニー単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/816edede419ef54297bdd7bca3f6844c-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/565347cfef083be9075c52436c58c682-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
@@ -43,7 +43,7 @@
         },
         {
           "name": "AZKi単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/f1bf415c0add6572740384accb17646d-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/15299a805e4886b30bb7fe06b8a4a1d4-1080x608.png",
           "ratings": {
             "firepower": "○",
             "ease": "◎",
@@ -155,42 +155,6 @@
           "id": "角巻わため-わため単"
         },
         {
-          "name": "はあちゃま単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9c8aeab3167ae0ca8efb374eb941e32b-1080x608.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "○",
-            "stability": "◎",
-            "endurance": "◎",
-            "pressure": "○"
-          },
-          "features": {
-            "ja": [
-              "大量のDebutとステージスキルのドローで高い安定感",
-              "AZKi環境に刺さる紫特攻が優秀！",
-              "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
-            ],
-            "zh-TW": [
-              "出道及舞台技能抽取量大，穩定感高",
-              "AZKi環境に刺さる紫特攻が優秀！",
-              "將首秀返回卡組底部以獲得強大的附加效果和高火力"
-            ],
-            "en": [
-              "High sense of stability with a large amount of Debut and stage skill draws",
-              "The purple special attack that sticks in the AZKi environment is excellent!",
-              "Return Debut to the bottom of the deck to gain powerful additional effects and high firepower"
-            ],
-            "fr": [
-              "Sensation élevée de stabilité avec une grande quantité de compétences de début et de scène",
-              "L'attaque spéciale violette qui colle à l'environnement AZKi est excellente !",
-              "Remettez Debut au bas du deck pour obtenir de puissants effets supplémentaires et une puissance de feu élevée."
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
-          "vtuber": "赤井はあと",
-          "id": "赤井はあと-はあちゃま単"
-        },
-        {
           "name": "いろは単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cda595fe216e63e3ececabf6b353004c.png",
           "ratings": {
@@ -225,6 +189,42 @@
           "recipe_url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
           "vtuber": "風真いろは",
           "id": "風真いろは-いろは単"
+        },
+        {
+          "name": "はあちゃま単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9c8aeab3167ae0ca8efb374eb941e32b-1080x608.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "○",
+            "stability": "◎",
+            "endurance": "◎",
+            "pressure": "○"
+          },
+          "features": {
+            "ja": [
+              "大量のDebutとステージスキルのドローで高い安定感",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
+            ],
+            "zh-TW": [
+              "出道及舞台技能抽取量大，穩定感高",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "將首秀返回卡組底部以獲得強大的附加效果和高火力"
+            ],
+            "en": [
+              "High sense of stability with a large amount of Debut and stage skill draws",
+              "The purple special attack that sticks in the AZKi environment is excellent!",
+              "Return Debut to the bottom of the deck to gain powerful additional effects and high firepower"
+            ],
+            "fr": [
+              "Sensation élevée de stabilité avec une grande quantité de compétences de début et de scène",
+              "L'attaque spéciale violette qui colle à l'environnement AZKi est excellente !",
+              "Remettez Debut au bas du deck pour obtenir de puissants effets supplémentaires et une puissance de feu élevée."
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
+          "vtuber": "赤井はあと",
+          "id": "赤井はあと-はあちゃま単"
         }
       ]
     },
@@ -268,46 +268,10 @@
           "id": "ラプラス-ダークネス-ラプ推しラプラス単"
         },
         {
-          "name": "ころね単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/ee1d19b4421b3282815b0a07401c3e0d.png",
+          "name": "ねね単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/ad7049df8f443808ed2491da180c0f67-1080x608.png",
           "ratings": {
             "firepower": "◎",
-            "ease": "○",
-            "stability": "○",
-            "endurance": "◎",
-            "pressure": "◎"
-          },
-          "features": {
-            "ja": [
-              "高火力と高耐久を持ち合わせるライフ６",
-              "専用ツール「ゆび」でアーカイブから回収が可能",
-              "盤面のエールを増やして2面取りも狙える"
-            ],
-            "zh-TW": [
-              "Life 6 高火力、高耐久",
-              "可以使用專用工具「Yubi」從檔案中檢索",
-              "您可以增加棋盤上的歡呼聲並瞄準兩側。"
-            ],
-            "en": [
-              "Life 6 with high firepower and high durability",
-              "Can be retrieved from the archive using the special tool \"Yubi\"",
-              "You can increase the cheer on the board and aim for two sides."
-            ],
-            "fr": [
-              "Life 6 avec une puissance de feu élevée et une durabilité élevée",
-              "Peut être récupéré de l'archive à l'aide de l'outil spécial \"Yubi\"",
-              "Vous pouvez augmenter la joie sur le plateau et viser deux côtés."
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/korone-deck/",
-          "vtuber": "戌神ころね",
-          "id": "戌神ころね-ころね単"
-        },
-        {
-          "name": "ミオ単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/e8dada94296dde4ce52f854e3d9fc203-1080x608.png",
-          "ratings": {
-            "firepower": "○",
             "ease": "○",
             "stability": "○",
             "endurance": "◎",
@@ -335,45 +299,45 @@
               "Visons un règlement le plus tôt possible !"
             ]
           },
-          "recipe_url": "https://www.holocardstrategy.jp/miotan_deck/",
-          "vtuber": "大神ミオ",
-          "id": "大神ミオ-ミオ単"
+          "recipe_url": "https://www.holocardstrategy.jp/nenechi_deck/",
+          "vtuber": "桃鈴ねね",
+          "id": "桃鈴ねね-ねね単"
         },
         {
-          "name": "あやめ単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/8a54a8cb42792e5cd0dcd8bce1a96e12-1080x608.png",
+          "name": "カリオペいろは",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cbd81d2235d2ada9216d2b999eb3452e-1080x608.png",
           "ratings": {
-            "firepower": "○",
+            "firepower": "◎",
             "ease": "○",
-            "stability": "◎",
-            "endurance": "◎",
+            "stability": "○",
+            "endurance": "○",
             "pressure": "○"
           },
           "features": {
             "ja": [
-              "エールデッキを削って追加効果を得たり、SPのダメージを上げていく",
-              "B2ndのギフトで相手にコラボを強要させ、2面取りを狙う",
-              "マスコット「ぽよ余」のドロー効果で高い安定感を誇る"
+              "4エール220点の高火力をいろはで守りながら使う",
+              "SPでアーツを2回使用し、強引に2面取りができる",
+              "赤特攻も優秀で、ハコスデッキに対して一気にライフを4枚取ることも！"
             ],
             "zh-TW": [
-              "強化喊叫牌組以獲得額外效果並增加 SP 傷害。",
-              "使用 B2nd 禮物迫使對方合作並達成雙邊協議。",
-              "吉祥物「Poyoyo」的吸引效果，帶來高度的穩定感"
+              "4エール220点の高火力をいろはで守りながら使う",
+              "你可以用 SP 兩次藝術來強制雙方。",
+              "紅色特攻也很出色，對抗Hacos牌組甚至可以一次拿下4張生命卡！"
             ],
             "en": [
-              "Sharpen the Yell deck to obtain additional effects and increase SP damage.",
-              "Use B2nd gifts to force the other party to collaborate and aim for a two-sided deal.",
-              "Boasts a high sense of stability due to the draw effect of the mascot \"Poyoyo\""
+              "4 Ale Use high firepower of 220 points while protecting with Iroha",
+              "You can use arts twice with SP to force two sides.",
+              "Red special attack is also excellent, and can even take 4 life cards at once against the Hacos deck!"
             ],
             "fr": [
-              "Aiguisez le deck Yell pour obtenir des effets supplémentaires et augmenter les dégâts SP.",
-              "Utilisez les cadeaux B2nd pour forcer l’autre partie à collaborer et viser un accord bilatéral.",
-              "Possède un grand sentiment de stabilité grâce à l'effet de tirage de la mascotte \"Poyoyo\""
+              "4 Ale Utilisez une puissance de feu élevée de 220 points tout en vous protégeant avec Iroha",
+              "Vous pouvez utiliser les arts deux fois avec SP pour forcer deux côtés.",
+              "L'attaque spéciale rouge est également excellente, et peut même prendre 4 cartes de vie à la fois contre le deck Hacos !"
             ]
           },
-          "recipe_url": "https://www.holocardstrategy.jp/ayame-deck/",
-          "vtuber": "百鬼あやめ",
-          "id": "百鬼あやめ-あやめ単"
+          "recipe_url": "https://www.holocardstrategy.jp/kariopedeck-kaisetu/",
+          "vtuber": "森カリオペ",
+          "id": "森カリオペ-カリオペいろは"
         }
       ]
     }
