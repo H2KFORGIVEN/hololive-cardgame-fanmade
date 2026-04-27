@@ -148,13 +148,13 @@ function processResetPhase(state) {
     addLog(state, `P${p + 1} ${getCard(member.cardId)?.name || ''} 移動到中心位置`);
   }
 
-  resetTurnFlags(player);
+  resetTurnFlags(player, state);
   // Fire ON_TURN_START so passive effects can kick in (e.g. "at the start of your turn…")
   fireEffect(state, HOOK.ON_TURN_START, { player: p });
   addLog(state, `P${p + 1} 重置階段完成`);
 }
 
-function resetTurnFlags(player) {
+function resetTurnFlags(player, state = null) {
   player.usedCollab = false;
   player.usedBaton = false;
   player.usedLimited = false;
@@ -164,10 +164,15 @@ function resetTurnFlags(player) {
   player._limitedSupportsThisTurn = 0;
   player._activitiesPlayedThisTurn = 0;
   player._namesUsedArtThisTurn = [];
-  // K-2 / K-3 per-turn flags cleared on the player's reset phase
-  state._diceOverride = null;
-  state._diceRerollUsedThisRoll = false;
-  if (state._hBP07_039_used_this_turn) state._hBP07_039_used_this_turn = {};
+  // K-2 / K-3 per-turn state-level flags cleared on the player's reset phase.
+  // Only when state is passed (full processResetPhase path); the bare
+  // `resetTurnFlags(player)` call from advancePhase's first-turn skip just
+  // wipes player flags.
+  if (state) {
+    state._diceOverride = null;
+    state._diceRerollUsedThisRoll = false;
+    if (state._hBP07_039_used_this_turn) state._hBP07_039_used_this_turn = {};
+  }
 
   // Clear per-turn flags on all stage members
   const allZones = [ZONE.CENTER, ZONE.COLLAB, ZONE.BACKSTAGE];

@@ -106,18 +106,28 @@ function validateBloom(state, action, player) {
   // Must be same character name
   if (bloomCard.name !== targetCard.name) return fail('綻放必須是同名角色');
 
-  // Check bloom level progression
+  // Check bloom level progression. "1st" and "1st Buzz" both represent
+  // level 1 — Buzz is a Buzz-tag subtype of 1st, not a separate tier.
+  // Use a numeric level mapping so that 1st → 2nd (or 1st Buzz → 2nd)
+  // is +1, not +2.
+  const bloomLevelOf = (b) => {
+    if (b === 'Debut') return 0;
+    if (b === '1st' || b === '1st Buzz') return 1;
+    if (b === '2nd') return 2;
+    return -1;
+  };
   const currentLevel = targetCard.bloom;
   const newLevel = bloomCard.bloom;
-  const currentIdx = BLOOM_ORDER.indexOf(currentLevel);
-  const newIdx = BLOOM_ORDER.indexOf(newLevel);
+  const currentLv = bloomLevelOf(currentLevel);
+  const newLv = bloomLevelOf(newLevel);
 
-  if (currentIdx === -1 || newIdx === -1) return fail('無效的綻放等級');
-  if (newIdx <= currentIdx) return fail('綻放等級不能下降');
+  if (currentLv === -1 || newLv === -1) return fail('無效的綻放等級');
+  if (newLv < currentLv) return fail('綻放等級不能下降');
+  if (newLv === currentLv && currentLevel === newLevel) return fail('綻放等級不能下降');
   // Standard rule: bloom must be exactly one level above current. Special
   // cards (e.g. hBP01-045 AZKi: life ≤ 3 → may bloom Debut → 2nd) opt in
   // via BloomRuleOverrides registry; for everyone else, enforce strict +1.
-  if (newIdx > currentIdx + 1 && !isBloomLevelOverridden(bloomCard, target.card, player)) {
+  if (newLv > currentLv + 1 && !isBloomLevelOverridden(bloomCard, target.card, player)) {
     return fail('綻放只能升 1 個等級（特殊規則例外）');
   }
 

@@ -518,6 +518,10 @@ export function registerPhaseB() {
 
   // 79. hBP01-001 天音かなた oshi: HP→50; SP: +50 dmg, +50 if white
   reg('hBP01-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    // Reactive guard: engine fires reactive_* events on every art damage;
+    // this handler is not reactive-aware and would otherwise zap opp center
+    // HP=50 on every attack. Early-return on reactive broadcasts.
+    if (ctx.skillType === 'reactive') return { state, resolved: true };
     if (ctx.skillType === 'sp') {
       return {
         state, resolved: true,
@@ -1171,6 +1175,7 @@ export function registerPhaseB() {
 
   // 127. hBP02-003 宝鐘マリン oshi
   reg('hBP02-003', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'reactive') return { state, resolved: true };
     if (ctx.skillType === 'sp') {
       const player = state.players[ctx.player];
       const center = player.zones[ZONE.CENTER];
@@ -1478,6 +1483,7 @@ export function registerPhaseB() {
 
   // 147. hBP06-004 百鬼あやめ oshi
   reg('hBP06-004', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'reactive') return { state, resolved: true };
     const player = state.players[ctx.player];
     if (ctx.skillType === 'sp') {
       const redCount = player.zones[ZONE.ARCHIVE].filter(c => {
@@ -3191,6 +3197,7 @@ export function registerPhaseB() {
   //   oshi: Search 石の斧 from deck, attach to own 綠 member. Reshuffle.
   //   sp:   Own 綠 center fully heals (damage=0).
   reg('hBP01-003', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'reactive') return { state, resolved: true };
     const own = state.players[ctx.player];
     if (ctx.skillType === 'sp') {
       const center = own.zones[ZONE.CENTER];

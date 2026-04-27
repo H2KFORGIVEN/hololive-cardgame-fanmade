@@ -358,10 +358,12 @@ export function registerPhaseDGenerated() {
 
 `;
 
-// 1. Oshi color boost + SP factory
+// 1. Oshi color boost + SP factory. Reactive guard at the top so the
+// engine's reactive_* broadcasts don't trigger the regular oshi boost.
 out += `  // ── Generated: oshi color-boost + SP color-search ─────────────────────\n`;
 for (const e of generated.oshiBoostFactory) {
   out += `  reg('${e.id}', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'reactive') return { state, resolved: true };
     const own = state.players[ctx.player];
     if (ctx.skillType === 'sp') {${e.spBody}
     }${e.oshiBody}
@@ -399,12 +401,18 @@ for (const e of generated.yellStubs) {
 }
 out += '\n';
 
-// 6. Hint logs (everything else — every card has at least a registration)
+// 6. Hint logs (everything else — every card has at least a registration).
+// Each hint log skips reactive broadcasts to avoid log-spam (engine fires
+// reactive_* events on every art damage and ON_OSHI_SKILL handlers without
+// a guard would log "待實作" repeatedly).
 out += `  // ── Generated: hint-log fallbacks (effect text shown, manual op) ──────\n`;
 for (const e of generated.hintLogs) {
-  // Escape backticks and quotes
-  const safeLabel = e.label.replace(/[`'"]/g, ' ').replace(/\n/g, ' ').substring(0, 100);
-  out += `  reg('${e.id}', HOOK.${e.hook}, (state, ctx) => ({ state, resolved: true, log: '${safeLabel}' }));\n`;
+  const safeLabel = e.label.replace(/[\`'"]/g, ' ').replace(/\n/g, ' ').substring(0, 100);
+  if (e.hook === 'ON_OSHI_SKILL') {
+    out += `  reg('${e.id}', HOOK.${e.hook}, (state, ctx) => { if (ctx.skillType === 'reactive') return { state, resolved: true }; return { state, resolved: true, log: '${safeLabel}' }; });\n`;
+  } else {
+    out += `  reg('${e.id}', HOOK.${e.hook}, (state, ctx) => ({ state, resolved: true, log: '${safeLabel}' }));\n`;
+  }
 }
 
 out += `\n  return count;

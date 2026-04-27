@@ -210,6 +210,7 @@ export function registerPhaseCFinal(){
   });
   // hSD01-001 ときのそら oshi
   reg('hSD01-001',HOOK.ON_OSHI_SKILL,(s,c)=>{
+    if(c.skillType==='reactive') return {state:s,resolved:true};
     if(c.skillType==='sp'){
       const opp=s.players[1-c.player];const center=opp.zones[ZONE.CENTER];
       if(center&&opp.zones[ZONE.BACKSTAGE].length){const b=opp.zones[ZONE.BACKSTAGE].shift();opp.zones[ZONE.BACKSTAGE].push(center);opp.zones[ZONE.CENTER]=b;b.state=MEMBER_STATE.ACTIVE}
