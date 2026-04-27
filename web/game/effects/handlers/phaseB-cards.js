@@ -1771,10 +1771,33 @@ export function registerPhaseB() {
     };
   });
 
-  // 161. hBP06-025 風真いろは effectG
-  reg('hBP06-025', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
-    state, resolved: true, log: '中心/聯動位置：其他 #holoX +20 dmg',
-  }));
+  // 161. hBP06-025 風真いろは 1st effectG:
+  //   [Limited center/collab] All other own #秘密結社holoX members +20 art damage.
+  // Fires per art declaration through firePassiveModifiers. We're a real
+  // boost push when:
+  //   • This passive owner is in own center or collab
+  //   • The attacker is also own (same player) and not this member
+  //   • The attacker has the #秘密結社holoX tag
+  reg('hBP06-025', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
+    if (!ctx.attacker) return { state, resolved: true };
+    if (ctx.player !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.attacker.instanceId === ctx.memberInst?.instanceId) return { state, resolved: true };
+    const me = ctx.memberInst;
+    const myPlayer = state.players[ctx.player];
+    const myZone = myPlayer?.zones[ZONE.CENTER]?.instanceId === me?.instanceId ? 'center'
+                 : myPlayer?.zones[ZONE.COLLAB]?.instanceId === me?.instanceId ? 'collab'
+                 : null;
+    if (!myZone) return { state, resolved: true };
+    const atkCard = getCard(ctx.attacker.cardId);
+    const atkTag = (atkCard?.tag || '');
+    const tagStr = typeof atkTag === 'string' ? atkTag : JSON.stringify(atkTag);
+    if (!tagStr.includes('#秘密結社holoX')) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' },
+      log: 'いろは passive: holoX 友方 +20',
+    };
+  });
 
   // 162. hBP03-066 戌神ころね effectG + art1
   reg('hBP03-066', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({

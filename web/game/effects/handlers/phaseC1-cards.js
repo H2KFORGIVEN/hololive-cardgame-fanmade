@@ -183,8 +183,30 @@ export function registerPhaseC1(){
     if(m)m.inst.damage=Math.max(0,m.inst.damage-10);
     return{state:s,resolved:true,log:'1位成員HP回10'};
   });
-  // hBP02-009 白上フブキ effectG
-  reg('hBP02-009',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>({state:s,resolved:true,log:'聯動位置:帶吉祥物成員+10'}));
+  // hBP02-009 白上フブキ Debut effectG:
+  //   [Limited collab] All own members carrying a 吉祥物 (mascot) +10 art damage.
+  // Fires per art declaration via firePassiveModifiers. Pushes +10 when this
+  // フブキ is in collab AND the attacker is own AND the attacker has at least
+  // one 吉祥物 attached.
+  reg('hBP02-009',HOOK.ON_PASSIVE_GLOBAL,(state,ctx)=>{
+    if(!ctx.attacker)return{state,resolved:true};
+    if(ctx.player!==ctx.attackerPlayer)return{state,resolved:true};
+    const me=ctx.memberInst;
+    const myPlayer=state.players[ctx.player];
+    if(myPlayer?.zones[ZONE.COLLAB]?.instanceId!==me?.instanceId){
+      return{state,resolved:true};
+    }
+    const hasMascot=(ctx.attacker.attachedSupport||[]).some(s=>{
+      const d=getCard(s.cardId);
+      return d?.type==='支援・吉祥物';
+    });
+    if(!hasMascot)return{state,resolved:true};
+    return{
+      state,resolved:true,
+      effect:{type:'DAMAGE_BOOST',amount:10,target:'self',duration:'instant'},
+      log:'フブキ passive: 帶吉祥物成員 +10',
+    };
+  });
   // hBP02-012 白上フブキ effectB+art1
   reg('hBP02-012',HOOK.ON_BLOOM,(s,c)=>{
     const p=s.players[c.player];
@@ -346,7 +368,34 @@ export function registerPhaseC1(){
   // hBP02-100 白銀聖騎士団 fan dmg-10
   reg('hBP02-100',HOOK.ON_PLAY,(s,c)=>({state:s,resolved:true,log:'粉絲受傷-10'}));
   // hBP03-013 姫森ルーナ effectG+art1
-  reg('hBP03-013',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>({state:s,resolved:true,log:'聯動:帶粉絲中心ルーナ+20'}));
+  // effectG: [Limited collab] If own center 姫森ルーナ has a 粉絲 attached,
+  // that center +20 art damage. We're a real boost push when:
+  //   • This passive owner (this ルーナ) is in own collab
+  //   • Attacker is the own center 姫森ルーナ with at least 1 attached 粉絲
+  reg('hBP03-013',HOOK.ON_PASSIVE_GLOBAL,(state,ctx)=>{
+    if(!ctx.attacker)return{state,resolved:true};
+    if(ctx.player!==ctx.attackerPlayer)return{state,resolved:true};
+    const me=ctx.memberInst;
+    const myPlayer=state.players[ctx.player];
+    if(myPlayer?.zones[ZONE.COLLAB]?.instanceId!==me?.instanceId){
+      return{state,resolved:true};
+    }
+    if(myPlayer.zones[ZONE.CENTER]?.instanceId!==ctx.attacker.instanceId){
+      return{state,resolved:true};
+    }
+    const atkCard=getCard(ctx.attacker.cardId);
+    if(atkCard?.name!=='姫森ルーナ')return{state,resolved:true};
+    const hasFan=(ctx.attacker.attachedSupport||[]).some(s=>{
+      const d=getCard(s.cardId);
+      return d?.type==='支援・粉絲';
+    });
+    if(!hasFan)return{state,resolved:true};
+    return{
+      state,resolved:true,
+      effect:{type:'DAMAGE_BOOST',amount:20,target:'self',duration:'instant'},
+      log:'ルーナ passive: 帶粉絲中心ルーナ +20',
+    };
+  });
   reg('hBP03-013',HOOK.ON_ART_RESOLVE,(s,c)=>{
     const p=s.players[c.player];const t=getStageMembers(p).find(m=>getCard(m.inst.cardId)?.name==='姫森ルーナ');
     if(t){const i=p.zones[ZONE.ARCHIVE].findIndex(x=>getCard(x.cardId)?.name==='ルーナイト');

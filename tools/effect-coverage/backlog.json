@@ -120,6 +120,30 @@
     "usage": 9
   },
   {
+    "id": "hBP06-026",
+    "name": "風真いろは",
+    "hook": "effectG",
+    "type": "成員",
+    "expansion": "hBP06",
+    "text": "[Limited to center position] When your own members link up, if you have more than 5 cards in your hand, you can send 1 card from the top of your shout deck to your linking member.",
+    "status": "LOG_ONLY",
+    "behaviorKind": "LOG_ONLY",
+    "behaviorErr": null,
+    "usage": 8
+  },
+  {
+    "id": "hBP06-027",
+    "name": "風真いろは",
+    "hook": "effectG",
+    "type": "成員",
+    "expansion": "hBP06",
+    "text": "When this member knocks down the opponent's center member, one of the \"Fengzhen Yuki\" that you bloomed this round can bloom again using the members in your hand.",
+    "status": "LOG_ONLY",
+    "behaviorKind": "LOG_ONLY",
+    "behaviorErr": null,
+    "usage": 8
+  },
+  {
     "id": "hBP06-039",
     "name": "百鬼あやめ",
     "hook": "effectG",
@@ -226,6 +250,18 @@
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
     "usage": 6
+  },
+  {
+    "id": "hBP01-050",
+    "name": "風真いろは",
+    "hook": "effectG",
+    "type": "成員",
+    "expansion": "hBP01",
+    "text": "[Limited linkage position] The opponent's member's performance can only target his/her own linkage members (except for special damage).",
+    "status": "LOG_ONLY",
+    "behaviorKind": "LOG_ONLY",
+    "behaviorErr": null,
+    "usage": 5
   },
   {
     "id": "hBP03-006",
@@ -372,30 +408,6 @@
     "usage": 4
   },
   {
-    "id": "hBP06-026",
-    "name": "風真いろは",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited to center position] When your own members link up, if you have more than 5 cards in your hand, you can send 1 card from the top of your shout deck to your linking member.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 4
-  },
-  {
-    "id": "hBP06-027",
-    "name": "風真いろは",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "When this member knocks down the opponent's center member, one of the \"Fengzhen Yuki\" that you bloomed this round can bloom again using the members in your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 4
-  },
-  {
     "id": "hBP06-080",
     "name": "大空スバル",
     "hook": "effectB",
@@ -474,18 +486,6 @@
     "type": "主推",
     "expansion": "hBP01",
     "text": "[Once per game] During the opponent's turn, when your red member is knocked down, you can use: The health damage you receive -1. Select the one person who was knocked down, and return that member and all overlapping members to your hand.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 3
-  },
-  {
-    "id": "hBP01-050",
-    "name": "風真いろは",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP01",
-    "text": "[Limited linkage position] The opponent's member's performance can only target his/her own linkage members (except for special damage).",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -666,18 +666,6 @@
     "type": "成員",
     "expansion": "hBP03",
     "text": "When this member is knocked down, send the top card of his shout deck to his \"戌神ころね\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
-    "id": "hBP06-025",
-    "name": "風真いろは",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "[Limited to center position or linkage position] Except for this member, all members marked #Secret Society holoX on their own stage will receive +20 performance damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -2604,18 +2592,6 @@
     "usage": 0
   },
   {
-    "id": "hBP02-009",
-    "name": "白上フブキ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP02",
-    "text": "[Limited linkage position] All members with mascots have +10 arts damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP02-011",
     "name": "白上フブキ",
     "hook": "effectB",
@@ -2826,18 +2802,6 @@
     "type": "成員",
     "expansion": "hBP03",
     "text": "When the member with \"ルーナイト\" is not on his stage, reveal 1 \"ルーナイト\" from his deck and attach it to his member. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP03-013",
-    "name": "姫森ルーナ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "[Limited linkage position] The core member \"Himemori Rana\" who has fans has +20 skill damage.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

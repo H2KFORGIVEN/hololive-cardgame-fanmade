@@ -1,6 +1,7 @@
 import { getCard } from './CardDatabase.js';
 import { ICON_TO_COLOR } from './constants.js';
 import { getExtraHp, getDamageReceivedModifier } from './AttachedSupportEffects.js';
+import { getMemberSelfExtraHp } from './MemberSelfEffects.js';
 
 export function calculateDamage(attackerInstance, artIndex, targetInstance) {
   const attackerCard = getCard(attackerInstance.cardId);
@@ -48,7 +49,7 @@ export function applyDamage(memberInstance, amount) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return { knockedDown: false };
 
-  const effectiveHp = card.hp + getExtraHp(memberInstance);
+  const effectiveHp = card.hp + getExtraHp(memberInstance) + getMemberSelfExtraHp(memberInstance);
   const received = Math.max(0, amount + getDamageReceivedModifier(memberInstance));
 
   memberInstance.damage += received;
@@ -62,9 +63,10 @@ export function applyDamage(memberInstance, amount) {
   };
 }
 
-// Check if a member is knocked down (also respects equipment HP boosts)
+// Check if a member is knocked down (also respects equipment HP boosts and
+// member-self HP passives like hBP07-014's "+10 per overlap").
 export function isKnockedDown(memberInstance) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return false;
-  return memberInstance.damage >= card.hp + getExtraHp(memberInstance);
+  return memberInstance.damage >= card.hp + getExtraHp(memberInstance) + getMemberSelfExtraHp(memberInstance);
 }

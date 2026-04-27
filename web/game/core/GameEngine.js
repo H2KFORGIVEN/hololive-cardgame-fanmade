@@ -7,6 +7,7 @@ import { parseCost } from './constants.js';
 import { triggerEffect } from '../effects/EffectEngine.js';
 import { HOOK } from '../effects/EffectRegistry.js';
 import { getExtraHp, getArtDamageBoost } from './AttachedSupportEffects.js';
+import { getMemberSelfExtraHp } from './MemberSelfEffects.js';
 
 export function processAction(state, action) {
   const validation = validateAction(state, action);
@@ -840,7 +841,7 @@ export function sweepEffectKnockouts(state) {
     for (const m of stage) {
       const card = getCard(m.cardId);
       if (!card?.hp) continue;
-      const effectiveHp = card.hp + getExtraHp(m);
+      const effectiveHp = card.hp + getExtraHp(m) + getMemberSelfExtraHp(m);
       if (m.damage >= effectiveHp) {
         addLog(state, `  ${card.name} 因效果傷害被擊倒（不扣生命）`);
         archiveMember(pl, m.instanceId);
