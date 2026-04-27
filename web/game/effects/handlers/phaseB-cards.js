@@ -3710,6 +3710,117 @@ export function registerPhaseB() {
 
   // ── End of Round G-1 ──
 
+  // ── Round G-2: art1 conditional effects (5 cards) ───────────────────────
+
+  // G-2.1 hBP06-031 姫森ルーナ 2nd art1: ≥2 ルーナイト attached → +50.
+  reg('hBP06-031', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-031') return { state, resolved: true };
+    const knightCount = (ctx.memberInst?.attachedSupport || []).filter(s =>
+      getCard(s.cardId)?.name === 'ルーナイト'
+    ).length;
+    if (knightCount < 2) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 50, target: 'self', duration: 'instant' },
+      log: `hBP06-031 art1: ${knightCount} ルーナイト → +50`,
+    };
+  });
+
+  // G-2.2 hBP06-052 ムーナ・ホシノヴァ 1st Buzz art1:
+  //   "If oshi is ムーナ AND this member has ≥4 cheer → +60."
+  reg('hBP06-052', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-052') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (getCard(own?.oshi?.cardId)?.name !== 'ムーナ・ホシノヴァ') return { state, resolved: true };
+    const cheerCount = (ctx.memberInst?.attachedCheer || []).length;
+    if (cheerCount < 4) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 60, target: 'self', duration: 'instant' },
+      log: `hBP06-052 art1: ${cheerCount} 吶喊 + 主推ムーナ → +60`,
+    };
+  });
+
+  // G-2.3 hBP06-054 雪花ラミィ 2nd art1:
+  //   "Per attached 雪民 fan → +10."
+  reg('hBP06-054', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-054') return { state, resolved: true };
+    const fanCount = (ctx.memberInst?.attachedSupport || []).filter(s =>
+      getCard(s.cardId)?.name === '雪民'
+    ).length;
+    if (fanCount === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: fanCount * 10, target: 'self', duration: 'instant' },
+      log: `hBP06-054 art1: ${fanCount} 雪民 → +${fanCount * 10}`,
+    };
+  });
+
+  // G-2.4 hBP05-018 ベスティア・ゼータ 2nd art1:
+  //   "If #ID3期生 Buzz member on own stage → draw 1." (Side effect, not boost.)
+  reg('hBP05-018', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP05-018') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const hasIdBuzz = stage.some(m => {
+      const card = getCard(m.cardId);
+      if (!card?.bloom?.includes('Buzz')) return false;
+      const tag = card.tag || '';
+      return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID3期生');
+    });
+    if (!hasIdBuzz) return { state, resolved: true, log: 'hBP05-018 art1: 舞台無 #ID3期生 Buzz' };
+    drawCards(own, 1);
+    return { state, resolved: true, log: 'hBP05-018 art1: #ID3期生 Buzz 在場 → 抽 1' };
+  });
+
+  // G-2.5 hBP05-031 尾丸ポルカ Debut art1:
+  //   "If on own back-attack 1st turn, search 座員 from deck → hand. Reshuffle."
+  // Trigger: ON_ART_RESOLVE with first-back-attack condition.
+  reg('hBP05-031', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP05-031') return { state, resolved: true };
+    // Back-attack 1st turn: own player isn't firstPlayer + own.firstTurn[player] === true
+    if (!state.firstTurn[ctx.player] || ctx.player === state.firstPlayer) {
+      return { state, resolved: true, log: 'hBP05-031 art1: 非後攻第一回合' };
+    }
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === '座員') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP05-031 art1: 牌組無「座員」' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「座員」加入手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP05-031 art1: 後攻第一回合 → 搜尋座員',
+    };
+  });
+
+  // ── End of Round G-2 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

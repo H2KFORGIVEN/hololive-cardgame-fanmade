@@ -1440,48 +1440,12 @@
     "usage": 0
   },
   {
-    "id": "hBP05-018",
-    "name": "ベスティア・ゼータ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "If the Buzz member labeled #ID3 is on his stage, draw 1 card from his deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-018",
-    "name": "ベスティア・ゼータ",
-    "hook": "art2",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "When using this skill to knock down an opponent's member, reveal a 1st member marked #ID3 from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-027",
     "name": "アキ・ローゼンタール",
     "hook": "effectB",
     "type": "成員",
     "expansion": "hBP05",
     "text": "You can put 1 prop of this member into the save area: Reveal 1 member or prop from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-031",
-    "name": "尾丸ポルカ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "If on the first turn of your back attack, reveal 1 \"Seatman\" from your deck and add it to your hand. Reshuffle the deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1740,18 +1704,6 @@
     "usage": 0
   },
   {
-    "id": "hBP06-031",
-    "name": "姫森ルーナ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If this member has 2 or more \"ルーナイト\", the damage of this skill is +50.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP06-033",
     "name": "儒烏風亭らでん",
     "hook": "art1",
@@ -1806,30 +1758,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "Can be used when this member inflicts skill damage to an opponent's member: Give the opponent special damage equal to the amount of damage the member received.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-052",
-    "name": "ムーナ・ホシノヴァ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If your main recommendation is \"ムーナ・ホシノヴァ\" and this member has 4 or more shout cards, the damage of this skill will be +60.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-054",
-    "name": "雪花ラミィ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "For each \"Snow Folk\" this member has, the damage of this skill is +10.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
