@@ -1969,6 +1969,111 @@ export function registerPhaseB() {
     return { state, resolved: true, log: '擊倒後送吶喊' };
   });
 
+  // ── Round E-1: ON_KNOCKDOWN target-side reactive ─────────────────────────
+  // For each card the trigger condition is "this member is the one being
+  // knocked out": ctx.cardId === <my id> AND ctx.memberInst is the dying
+  // instance. The handler runs BEFORE archiveMember, so target.attachedCheer
+  // and own.zones still hold the live state. Mutating ctx.memberInst.
+  // attachedCheer here is fine — archiveMember will then push only the
+  // REMAINING cheer to archive.
+
+  // E-1.1 hBP03-066 戌神ころね 2nd:
+  //   "When this member is knocked, send 1 from cheer deck top to your 戌神ころね."
+  reg('hBP03-066', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-066') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Find another own 戌神ころね on stage (not self)
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m =>
+      m.instanceId !== ctx.memberInst?.instanceId &&
+      getCard(m.cardId)?.name === '戌神ころね'
+    );
+    if (!target) return { state, resolved: true, log: 'hBP03-066: 無其他戌神ころね' };
+    if (sendCheerFromDeckToMember(own, target)) {
+      return { state, resolved: true, log: 'hBP03-066: 吶喊牌組頂送給戌神ころね' };
+    }
+    return { state, resolved: true, log: 'hBP03-066: 吶喊牌組空' };
+  });
+
+  // E-1.2 hBP03-072 角巻わため 2nd:
+  //   "When this member is knocked, may move 1 of this member's cheer to
+  //    another of your 角巻わため."
+  reg('hBP03-072', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-072') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hBP03-072: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m =>
+      m.instanceId !== me.instanceId &&
+      getCard(m.cardId)?.name === '角巻わため'
+    );
+    if (!target) return { state, resolved: true, log: 'hBP03-072: 無其他角巻わため' };
+    const cheer = me.attachedCheer.shift();
+    if (!target.attachedCheer) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: 'hBP03-072: 1 張吶喊→其他わため' };
+  });
+
+  // E-1.3 hBP04-063 古石ビジュー Debut:
+  //   "During opp turn, when this member is knocked, draw 1."
+  reg('hBP04-063', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-063') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    drawCards(own, 1);
+    return { state, resolved: true, log: 'hBP04-063: 抽 1' };
+  });
+
+  // E-1.4 hBP04-079 夏色まつり Debut:
+  //   "During opp turn, when this member is knocked, may move 1 cheer
+  //    of this member to another of your members."
+  reg('hBP04-079', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-079') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hBP04-079: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => m.instanceId !== me.instanceId);
+    if (!target) return { state, resolved: true, log: 'hBP04-079: 無其他成員' };
+    const cheer = me.attachedCheer.shift();
+    if (!target.attachedCheer) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: 'hBP04-079: 1 張吶喊→其他成員' };
+  });
+
+  // E-1.5 hBP04-088 ジジ・ムリン Spot:
+  //   "During opp turn, when this member is knocked, send cheer-deck top
+  //    to one of your members."
+  reg('hBP04-088', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-088') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => m.instanceId !== me?.instanceId);
+    if (!target) return { state, resolved: true, log: 'hBP04-088: 無其他成員' };
+    if (sendCheerFromDeckToMember(own, target)) {
+      return { state, resolved: true, log: 'hBP04-088: 吶喊牌組頂→成員' };
+    }
+    return { state, resolved: true, log: 'hBP04-088: 吶喊牌組空' };
+  });
+
+  // ── End of Round E-1 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

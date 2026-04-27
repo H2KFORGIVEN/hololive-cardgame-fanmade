@@ -636,18 +636,6 @@
     "usage": 1
   },
   {
-    "id": "hBP03-066",
-    "name": "戌神ころね",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP03",
-    "text": "When this member is knocked down, send the top card of his shout deck to his \"戌神ころね\".",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 1
-  },
-  {
     "id": "hBP07-001",
     "name": "角巻わため",
     "hook": "stageSkill",
@@ -3264,18 +3252,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-063",
-    "name": "古石ビジュー",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "During the opponent's turn, when this member is knocked down, draw 1 card from your deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-074",
     "name": "アーニャ・メルフィッサ",
     "hook": "effectG",
@@ -3354,18 +3330,6 @@
     "type": "成員",
     "expansion": "hBP04",
     "text": "[Limited linkage position] Debut members in their center position receive -20 damage.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP04-088",
-    "name": "ジジ・ムリン",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "During the opponent's turn, when this member is knocked down, send 1 card from the top of your shout deck to your own member.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -3828,18 +3792,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-061",
-    "name": "ネリッサ・レイヴンクロフト",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "When this member knocks down an opponent's member, he draws 2 cards from his deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-062",
     "name": "常闇トワ",
     "hook": "effectB",
@@ -4086,18 +4038,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "If on the first turn of your back attack, reveal a member marked #FLOW GLOW with a linkage effect from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP06-020",
-    "name": "響咲リオナ",
-    "hook": "effectG",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "During the opponent's turn, when this member is knocked down, he can put the 2 cards at the top of his deck into the archive area. If you put the card in the save area, for each member with a different card name marked #FLOW GLOW on your stage, draw 1 card from your deck.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

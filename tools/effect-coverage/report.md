@@ -1,16 +1,16 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T01:32:27.505Z
+Generated: 2026-04-27T02:23:50.380Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 776 (60%)
+- **REAL (mutates state / queues prompt or boost)**: 781 (60%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 453 (35%)
+- **LOG_ONLY (placeholder logs only)**: 448 (34%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 851 (65%)
+- **Effective coverage (REAL + PASSIVE)**: 856 (66%)
 
 ## By hook type
 
@@ -22,7 +22,7 @@ Generated: 2026-04-27T01:32:27.505Z
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
 | effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
-| effectG | 94 | 9 | 0 | 85 | 0 | 0 | 0 | 10% |
+| effectG | 94 | 14 | 0 | 80 | 0 | 0 | 0 | 15% |
 | support | 184 | 106 | 17 | 61 | 0 | 0 | 0 | 67% |
 | stageSkill | 3 | 0 | 0 | 3 | 0 | 0 | 0 | 0% |
 | cheer | 58 | 0 | 58 | 0 | 0 | 0 | 0 | 100% |
@@ -34,10 +34,10 @@ Generated: 2026-04-27T01:32:27.505Z
 | hBD24 | 132 | 0 | 0 | 132 | 0 | 0 | 0 | 0% |
 | hBP01 | 126 | 88 | 3 | 35 | 0 | 0 | 0 | 72% |
 | hBP02 | 105 | 75 | 7 | 23 | 0 | 0 | 0 | 78% |
-| hBP03 | 123 | 88 | 1 | 34 | 0 | 0 | 0 | 72% |
-| hBP04 | 114 | 79 | 0 | 35 | 0 | 0 | 0 | 69% |
-| hBP05 | 132 | 90 | 1 | 41 | 0 | 0 | 0 | 69% |
-| hBP06 | 145 | 92 | 1 | 52 | 0 | 0 | 0 | 64% |
+| hBP03 | 123 | 89 | 1 | 33 | 0 | 0 | 0 | 73% |
+| hBP04 | 114 | 81 | 0 | 33 | 0 | 0 | 0 | 71% |
+| hBP05 | 132 | 91 | 1 | 40 | 0 | 0 | 0 | 70% |
+| hBP06 | 145 | 93 | 1 | 51 | 0 | 0 | 0 | 65% |
 | hBP07 | 166 | 104 | 2 | 60 | 0 | 0 | 0 | 64% |
 | hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
 | hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
@@ -120,13 +120,13 @@ Usage = total copies across 52 tournament decks.
 | 51 | hBP06-104 | スバ友 | support | LOG_ONLY | 2 | During your opponent's turn, when the member with this fan is knocked down, you can send t |
 | 52 | hBP02-007 | 森カリオペ | spSkill | LOG_ONLY | 1 | [Once per game] Can be used when your center member is "Mori Kari": During this round, aft |
 | 53 | hBP02-039 | 沙花叉クロヱ | effectG | LOG_ONLY | 1 | [Once per turn] When this member's skill "Horrotech" reveals a card, add the revealed supp |
-| 54 | hBP03-066 | 戌神ころね | effectG | LOG_ONLY | 1 | When this member is knocked down, send the top card of his shout deck to his "戌神ころね". |
-| 55 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
-| 56 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
-| 57 | hBP07-007 | 桃鈴ねね | oshiSkill | LOG_ONLY | 1 | [Once per round] Send the shouting cards in your save area to all 2nd members marked #5, 1 |
-| 58 | hBP07-007 | 桃鈴ねね | spSkill | LOG_ONLY | 1 | [Once per game] Reveal 1~4 Debut member "Momo Suzuko" from your deck and put them on the s |
-| 59 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
-| 60 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
+| 54 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
+| 55 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
+| 56 | hBP07-007 | 桃鈴ねね | oshiSkill | LOG_ONLY | 1 | [Once per round] Send the shouting cards in your save area to all 2nd members marked #5, 1 |
+| 57 | hBP07-007 | 桃鈴ねね | spSkill | LOG_ONLY | 1 | [Once per game] Reveal 1~4 Debut member "Momo Suzuko" from your deck and put them on the s |
+| 58 | hBP07-079 | 桃鈴ねね | art1 | LOG_ONLY | 1 | Reveal 1 "やめなー" from your deck and attach it to your member. Reshuffle the deck. |
+| 59 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
+| 60 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
 
 ## Tournament-deck coverage (52 community decks)
 
@@ -141,10 +141,10 @@ Sorted ascending by REAL %. Each card counted once.
 | ころね単 | 1st F Block (おばけ) | 10 | 5 | 0 | 0 | 15 | 67% |
 | すいせい単 | Trio 1st (おりがみ) | 9 | 4 | 0 | 0 | 13 | 69% |
 | ポルカ単 | 1st C Block (ころね) | 9 | 4 | 0 | 0 | 13 | 69% |
-| ころね単 | 1st C Block (スマデキン) | 11 | 5 | 0 | 0 | 16 | 69% |
 | ころね単 | 1st E Block (たき@Mush pros) | 11 | 5 | 0 | 0 | 16 | 69% |
 | 名古屋 | Trio 1st A Block (グランメゾン大阪) | 12 | 5 | 0 | 0 | 17 | 71% |
 | すいせいクロヱ | 1st D Block (めるか) | 9 | 3 | 0 | 0 | 12 | 75% |
+| ころね単 | 1st C Block (スマデキン) | 12 | 4 | 0 | 0 | 16 | 75% |
 | いろは単 | 1st A Block (藍色) | 13 | 4 | 0 | 0 | 17 | 76% |
 | ルーナ単 | Trio 1st A Block (LGW) | 16 | 5 | 0 | 0 | 21 | 76% |
 | クロニー単 | 3rd(Natskii) | 16 | 5 | 0 | 0 | 21 | 76% |

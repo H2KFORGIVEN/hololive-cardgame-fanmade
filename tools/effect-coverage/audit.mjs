@@ -256,6 +256,12 @@ for (const e of analysis.effects) {
   if (e.hook === 'art1' || e.hook === 'art2') {
     altHandler = getHandler(e.id, HOOK.ON_ART_DECLARE);
   }
+  // For effectG cards, also consult ON_KNOCKDOWN — many "this member knocked"
+  // / "knocks opp" passives live there even though they're declared as effectG
+  // in the analysis JSON.
+  if (e.hook === 'effectG') {
+    altHandler = altHandler || getHandler(e.id, HOOK.ON_KNOCKDOWN);
+  }
   let status, behaviorKind = null, behaviorErr = null;
 
   if (!handler && !altHandler) status = STATUS.MISSING;
