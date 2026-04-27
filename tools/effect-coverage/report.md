@@ -1,23 +1,23 @@
 # Card Library Effect Coverage Audit
-Generated: 2026-04-27T03:10:02.734Z
+Generated: 2026-04-27T03:13:24.378Z
 
 ## Headline
 
 - **Total unique (cardId, hook) entries**: 1304
-- **REAL (mutates state / queues prompt or boost)**: 972 (75%)
+- **REAL (mutates state / queues prompt or boost)**: 980 (75%)
 - **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
-- **LOG_ONLY (placeholder logs only)**: 257 (20%)
+- **LOG_ONLY (placeholder logs only)**: 249 (19%)
 - **PASSTHROUGH fallback**: 0 (0%)
 - **BROKEN (handler threw on synthetic context)**: 0 (0%)
 - **MISSING (no handler at all)**: 0 (0%)
-- **Effective coverage (REAL + PASSIVE)**: 1047 (80%)
+- **Effective coverage (REAL + PASSIVE)**: 1055 (81%)
 
 ## By hook type
 
 | Hook | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
 |---|---|---|---|---|---|---|---|---|
-| oshiSkill | 138 | 125 | 0 | 13 | 0 | 0 | 0 | 91% |
-| spSkill | 135 | 122 | 0 | 13 | 0 | 0 | 0 | 90% |
+| oshiSkill | 138 | 129 | 0 | 9 | 0 | 0 | 0 | 93% |
+| spSkill | 135 | 126 | 0 | 9 | 0 | 0 | 0 | 93% |
 | art1 | 297 | 232 | 0 | 65 | 0 | 0 | 0 | 78% |
 | art2 | 55 | 52 | 0 | 3 | 0 | 0 | 0 | 95% |
 | effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
@@ -33,9 +33,9 @@ Generated: 2026-04-27T03:10:02.734Z
 |---|---|---|---|---|---|---|---|---|
 | hBD24 | 132 | 132 | 0 | 0 | 0 | 0 | 0 | 100% |
 | hBP01 | 126 | 95 | 3 | 28 | 0 | 0 | 0 | 78% |
-| hBP02 | 105 | 81 | 7 | 17 | 0 | 0 | 0 | 84% |
-| hBP03 | 123 | 93 | 1 | 29 | 0 | 0 | 0 | 76% |
-| hBP04 | 114 | 88 | 0 | 26 | 0 | 0 | 0 | 77% |
+| hBP02 | 105 | 83 | 7 | 15 | 0 | 0 | 0 | 86% |
+| hBP03 | 123 | 95 | 1 | 27 | 0 | 0 | 0 | 78% |
+| hBP04 | 114 | 92 | 0 | 22 | 0 | 0 | 0 | 81% |
 | hBP05 | 132 | 103 | 1 | 28 | 0 | 0 | 0 | 79% |
 | hBP06 | 145 | 99 | 1 | 45 | 0 | 0 | 0 | 69% |
 | hBP07 | 166 | 113 | 2 | 51 | 0 | 0 | 0 | 69% |
@@ -126,7 +126,7 @@ Usage = total copies across 52 tournament decks.
 | 57 | hBP01-100 | 森カリオペ | effectC | LOG_ONLY | 0 | You can return 1 to 3 Scream cards in your save area to the Scream deck. Reshuffle the Scr |
 | 58 | hBP01-103 | ゲーミングパソコン | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 Debut member |
 | 59 | hBP01-105 | ペンライト | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 shout card o |
-| 60 | hBP02-004 | 沙花叉クロヱ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use this when your center member is "Shahuasha Koro": Look at the  |
+| 60 | hBP02-011 | 白上フブキ | effectB | LOG_ONLY | 0 | Reveal 1 card marked #白上'sキャラクター from your deck and add it to your hand. Reshuffle the dec |
 
 ## Tournament-deck coverage (52 community decks)
 

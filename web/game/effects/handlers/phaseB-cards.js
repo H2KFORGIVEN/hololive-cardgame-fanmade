@@ -3208,6 +3208,195 @@ export function registerPhaseB() {
 
   // ── End of Round F-3 ──
 
+  // ── Round F-4: 5 unique-logic oshi cards ────────────────────────────────
+
+  // F-4.1 hBP02-004 沙花叉クロヱ
+  //   oshi: [1/turn, center=クロヱ] Look at deck top 3; archive them OR
+  //         reorder to deck top.
+  //         Pragmatic: auto-archive all 3 (the order-back-to-top variant
+  //         needs a multi-step prompt; surfaced as a log hint).
+  //   sp:   [1/game] Count own hand size N; return hand + all archive
+  //         members to deck, reshuffle, draw N from deck.
+  reg('hBP02-004', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.skillType === 'sp') {
+      const n = own.zones[ZONE.HAND].length;
+      // Move all hand to deck
+      while (own.zones[ZONE.HAND].length > 0) {
+        own.zones[ZONE.DECK].push(own.zones[ZONE.HAND].shift());
+      }
+      // Move archive members to deck (members only, not cheer/support)
+      const remainingArchive = [];
+      for (const c of own.zones[ZONE.ARCHIVE]) {
+        if (isMember(getCard(c.cardId)?.type)) {
+          own.zones[ZONE.DECK].push(c);
+        } else {
+          remainingArchive.push(c);
+        }
+      }
+      own.zones[ZONE.ARCHIVE] = remainingArchive;
+      // Shuffle deck
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      // Draw N
+      drawCards(own, n);
+      return { state, resolved: true, log: `hBP02-004 SP: 手牌+存檔成員洗回，抽 ${n}` };
+    }
+    // oshi: must be center=クロヱ
+    if (getCard(own.zones[ZONE.CENTER]?.cardId)?.name !== '沙花叉クロヱ') {
+      return { state, resolved: true, log: 'hBP02-004 oshi: 中心非クロヱ' };
+    }
+    // Pragmatic: archive top 3
+    let archived = 0;
+    for (let i = 0; i < 3 && own.zones[ZONE.DECK].length > 0; i++) {
+      const c = own.zones[ZONE.DECK].shift();
+      c.faceDown = false;
+      own.zones[ZONE.ARCHIVE].push(c);
+      archived++;
+    }
+    return { state, resolved: true, log: `hBP02-004 oshi: 牌頂 ${archived} 張進存檔（如需保留可手動）` };
+  });
+
+  // F-4.2 hBP03-001 姫森ルーナ
+  //   oshi: Search a "パソコン" item from deck → hand. Reshuffle.
+  //   sp:   REACTIVE-ish (center=ルーナ + multi-distribute ルーナイト).
+  //         Hint log.
+  reg('hBP03-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP03-001 SP: 1-4 ルーナイト 分配給成員（手動）' };
+    }
+    const own = state.players[ctx.player];
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if ((card?.name || '').includes('パソコン')) {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP03-001 oshi: 牌組無パソコン' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: 'ルーナ oshi: 選 1 張パソコン 加入手牌',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ADD_TO_HAND',
+      },
+      log: 'hBP03-001 oshi: 搜尋 パソコン',
+    };
+  });
+
+  // F-4.3 hBP04-003 一条莉々華
+  //   oshi: [1/turn, when own center has #ReGLOSS] 50 special damage to
+  //         opp collab member. Real handler — uses applyDamageToMember
+  //         then sweepEffectKnockouts auto-fires via fireEffect chain.
+  //   sp:   REACTIVE (when own 莉々華 knocked → search). Hint log.
+  reg('hBP04-003', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP04-003 SP: 莉々華 被擊倒時觸發（手動）' };
+    }
+    const own = state.players[ctx.player];
+    const center = own.zones[ZONE.CENTER];
+    const tag = getCard(center?.cardId)?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ReGLOSS')) {
+      return { state, resolved: true, log: 'hBP04-003 oshi: 中心非 #ReGLOSS' };
+    }
+    const opp = state.players[1 - ctx.player];
+    const collab = opp.zones[ZONE.COLLAB];
+    if (!collab) return { state, resolved: true, log: 'hBP04-003 oshi: 對手無聯動' };
+    applyDamageToMember(collab, 50);
+    return { state, resolved: true, log: 'hBP04-003 oshi: 對手聯動 50 特殊傷害' };
+  });
+
+  // F-4.4 hBP04-007 アーニャ・メルフィッサ
+  //   oshi: Search 古代武器 from deck → attach to own member. Reshuffle.
+  //   sp:   Distribute archive cheer to all members with 古代武器 attached
+  //         (1 each).
+  reg('hBP04-007', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    if (ctx.skillType === 'sp') {
+      const stage = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+        ...(own.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      const targets = stage.filter(m =>
+        (m.attachedSupport || []).some(s => getCard(s.cardId)?.name === '古代武器')
+      );
+      if (targets.length === 0) {
+        return { state, resolved: true, log: 'hBP04-007 SP: 無持有古代武器的成員' };
+      }
+      let sent = 0;
+      for (const t of targets) {
+        if (sendCheerFromArchiveToMember(own, t)) sent++;
+      }
+      return { state, resolved: true, log: `hBP04-007 SP: 存檔吶喊→${sent} 位古代武器持有者` };
+    }
+    // oshi: search 古代武器 → attach
+    const candidates = [];
+    for (const c of own.zones[ZONE.DECK]) {
+      const card = getCard(c.cardId);
+      if (card?.name === '古代武器') {
+        candidates.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: card.name, image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (candidates.length === 0) {
+      const deck = own.zones[ZONE.DECK];
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return { state, resolved: true, log: 'hBP04-007 oshi: 牌組無古代武器' };
+    }
+    // Auto-target first own member
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    if (stage.length === 0) return { state, resolved: true, log: 'hBP04-007 oshi: 無成員可附加' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT',
+        player: ctx.player,
+        message: '選 1 張「古代武器」附加給成員',
+        cards: candidates, maxSelect: 1,
+        afterAction: 'ATTACH_SUPPORT',
+        targetInstanceId: stage[0].instanceId,
+      },
+      log: 'hBP04-007 oshi: 搜尋古代武器',
+    };
+  });
+
+  // F-4.5 hBP05-001 白銀ノエル
+  //   oshi: REACTIVE (when own knocks opp → search #3期生).
+  //   sp:   REACTIVE (when own #3期生 knocked → life -1 + Buzz/2nd → draw 2).
+  // Both reactive — engine doesn't support reactive oshi activation. Hints.
+  reg('hBP05-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      return { state, resolved: true, log: 'hBP05-001 SP: 3期生被擊倒時觸發（手動）' };
+    }
+    return { state, resolved: true, log: 'hBP05-001 oshi: 擊倒對手時觸發 #3期生 搜尋（手動）' };
+  });
+
+  // ── End of Round F-4 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
