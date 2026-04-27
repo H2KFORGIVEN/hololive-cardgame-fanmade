@@ -72,18 +72,6 @@
     "usage": 16
   },
   {
-    "id": "hBP06-069",
-    "name": "戌神ころね",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "If this member becomes active this round due to his main skill \"Infinite Stamina\", the damage of this skill will be +50.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 14
-  },
-  {
     "id": "hBP01-092",
     "name": "オーロ・クロニー",
     "hook": "art1",
@@ -342,18 +330,6 @@
     "type": "成員",
     "expansion": "hBP06",
     "text": "Reveal 1 \"スバルドダック\" or \"スバFriend\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 4
-  },
-  {
-    "id": "hBP06-080",
-    "name": "大空スバル",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP06",
-    "text": "Each time this member has 1 \"Suba Friends\", the damage of this skill is +20.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,
@@ -1284,18 +1260,6 @@
     "usage": 0
   },
   {
-    "id": "hBP04-082",
-    "name": "夏色まつり",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP04",
-    "text": "For each shout card this member has, the damage of this skill is +20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP04-089",
     "name": "ツートンカラーパソコン",
     "hook": "support",
@@ -1500,18 +1464,6 @@
     "usage": 0
   },
   {
-    "id": "hBP05-023",
-    "name": "アイラニ・イオフィフティーン",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "[Limited to the center position] If your main push is \"アイラニ・イオフィフティーン\", for every 3 shout cards on your stage, the damage of this skill will be +20.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
     "id": "hBP05-027",
     "name": "アキ・ローゼンタール",
     "hook": "effectB",
@@ -1530,18 +1482,6 @@
     "type": "成員",
     "expansion": "hBP05",
     "text": "If on the first turn of your back attack, reveal 1 \"Seatman\" from your deck and add it to your hand. Reshuffle the deck.",
-    "status": "LOG_ONLY",
-    "behaviorKind": "LOG_ONLY",
-    "behaviorErr": null,
-    "usage": 0
-  },
-  {
-    "id": "hBP05-034",
-    "name": "尾丸ポルカ",
-    "hook": "art1",
-    "type": "成員",
-    "expansion": "hBP05",
-    "text": "If your main recommendation is \"Omaru Rika\", for every 10 cards in your save area, the damage of this skill will be +30.",
     "status": "LOG_ONLY",
     "behaviorKind": "LOG_ONLY",
     "behaviorErr": null,

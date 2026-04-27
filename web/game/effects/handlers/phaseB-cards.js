@@ -3613,6 +3613,103 @@ export function registerPhaseB() {
 
   // ── End of Round F-5 ──
 
+  // ── Round G-1: art1 conditional damage boosts (5 cards) ─────────────────
+  // All 5 cards use ON_ART_DECLARE to push a conditional DAMAGE_BOOST when
+  // the art is being declared. Conditions vary by card (turn-state flag,
+  // attached support count, attached cheer count, oshi name + state count).
+
+  // G-1.1 hBP06-069 戌神ころね 1st art1:
+  //   "If this member became active this turn via own oshi skill 無限の体力,
+  //    art damage +50."
+  // The oshi skill (hBP03-006 戌神 oshi) sets state.activePlayer's
+  // oshiSkillUsedThisTurn = true. We also need to track WHICH member was
+  // activated. For pragmatic batch, gate on:
+  //   - own oshi is hBP03-006 (戌神 oshi)
+  //   - own oshiSkillUsedThisTurn === true
+  //   - this attacker is 戌神ころね
+  reg('hBP06-069', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-069') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own?.oshi?.cardId !== 'hBP03-006') return { state, resolved: true };
+    if (!own?.oshiSkillUsedThisTurn) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 50, target: 'self', duration: 'instant' },
+      log: 'hBP06-069 art1: 主推技能無限の体力 → +50',
+    };
+  });
+
+  // G-1.2 hBP06-080 大空スバル 1st art1:
+  //   "Per attached スバ友 (Suba Friends) → +20 art damage."
+  reg('hBP06-080', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-080') return { state, resolved: true };
+    const me = ctx.memberInst;
+    const friendCount = (me?.attachedSupport || []).filter(s =>
+      getCard(s.cardId)?.name === 'スバ友'
+    ).length;
+    if (friendCount === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: friendCount * 20, target: 'self', duration: 'instant' },
+      log: `hBP06-080 art1: ${friendCount} 張スバ友 → +${friendCount * 20}`,
+    };
+  });
+
+  // G-1.3 hBP04-082 夏色まつり 2nd art1:
+  //   "Per attached cheer → +20 art damage."
+  reg('hBP04-082', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP04-082') return { state, resolved: true };
+    const cheerCount = (ctx.memberInst?.attachedCheer || []).length;
+    if (cheerCount === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: cheerCount * 20, target: 'self', duration: 'instant' },
+      log: `hBP04-082 art1: ${cheerCount} 張吶喊 → +${cheerCount * 20}`,
+    };
+  });
+
+  // G-1.4 hBP05-023 アイラニ 2nd art1:
+  //   "[Limited center] If oshi is アイラニ, per 3 stage cheer cards → +20."
+  reg('hBP05-023', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-023') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Position requirement: must be center
+    if (own?.zones[ZONE.CENTER]?.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    // Oshi must be アイラニ (any variant)
+    if (getCard(own.oshi?.cardId)?.name !== 'アイラニ・イオフィフティーン') return { state, resolved: true };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    let cheerTotal = 0;
+    for (const m of stage) cheerTotal += (m.attachedCheer || []).length;
+    const groups = Math.floor(cheerTotal / 3);
+    if (groups === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: groups * 20, target: 'self', duration: 'instant' },
+      log: `hBP05-023 art1: ${cheerTotal} 吶喊 (${groups} 組) → +${groups * 20}`,
+    };
+  });
+
+  // G-1.5 hBP05-034 尾丸ポルカ 2nd art1:
+  //   "If oshi is ポルカ, per 10 archive cards → +30."
+  reg('hBP05-034', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.cardId !== 'hBP05-034') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (getCard(own?.oshi?.cardId)?.name !== '尾丸ポルカ') return { state, resolved: true };
+    const archiveCount = (own.zones[ZONE.ARCHIVE] || []).length;
+    const groups = Math.floor(archiveCount / 10);
+    if (groups === 0) return { state, resolved: true };
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: groups * 30, target: 'self', duration: 'instant' },
+      log: `hBP05-034 art1: ${archiveCount} 存檔 (${groups} 組) → +${groups * 30}`,
+    };
+  });
+
+  // ── End of Round G-1 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
