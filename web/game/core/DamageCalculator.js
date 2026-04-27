@@ -1,6 +1,6 @@
 import { getCard } from './CardDatabase.js';
 import { ICON_TO_COLOR } from './constants.js';
-import { getExtraHp } from './AttachedSupportEffects.js';
+import { getExtraHp, getDamageReceivedModifier } from './AttachedSupportEffects.js';
 
 export function calculateDamage(attackerInstance, artIndex, targetInstance) {
   const attackerCard = getCard(attackerInstance.cardId);
@@ -42,13 +42,16 @@ export function calculateDamage(attackerInstance, artIndex, targetInstance) {
 
 // Apply damage to a member instance, return whether it's knocked down.
 // HP is augmented by any equipment effects (e.g. カワイイスタジャン Buzz +30).
+// Incoming damage is also adjusted by equipment damageReceivedModifier
+// (e.g. 白銀聖騎士団 fan: −10 damage taken).
 export function applyDamage(memberInstance, amount) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return { knockedDown: false };
 
   const effectiveHp = card.hp + getExtraHp(memberInstance);
+  const received = Math.max(0, amount + getDamageReceivedModifier(memberInstance));
 
-  memberInstance.damage += amount;
+  memberInstance.damage += received;
 
   const knockedDown = memberInstance.damage >= effectiveHp;
   return {

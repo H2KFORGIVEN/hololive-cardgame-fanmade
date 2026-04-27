@@ -2,6 +2,7 @@
 import { getCard, getCardImage, localized } from '../../core/CardDatabase.js';
 import { ZONE, MEMBER_STATE } from '../../core/constants.js';
 import { findInstance, cloneState } from '../../core/GameState.js';
+import { getDamageReceivedModifier } from '../../core/AttachedSupportEffects.js';
 
 // Get all stage members for a player
 export function getStageMembers(player) {
@@ -36,10 +37,13 @@ export function filterByTag(members, tag) {
   });
 }
 
-// Apply damage to a member instance, check knockdown
+// Apply damage to a member instance, check knockdown.
+// Incoming damage is adjusted by equipment damageReceivedModifier so
+// effect-driven special damage uniformly respects fan/prop modifiers.
 export function applyDamageToMember(memberInst, amount) {
   const card = getCard(memberInst.cardId);
-  memberInst.damage += amount;
+  const received = Math.max(0, amount + getDamageReceivedModifier(memberInst));
+  memberInst.damage += received;
   return {
     knockedDown: card?.hp ? memberInst.damage >= card.hp : false,
     damage: memberInst.damage,

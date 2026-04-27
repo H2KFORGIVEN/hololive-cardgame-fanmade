@@ -229,11 +229,18 @@ function classifyBehavior(handler, cardId, hook) {
 
 // IDs whose effect is handled via AttachedSupportEffects.js registry rather
 // than a hook handler (kept in sync with REGISTRY in that file).
-// Note: hBP06-099 ゆび ALSO has a real ON_PLAY handler (the on-attach
-// archive-return trigger) — it's not pure-passive — so we don't add it
-// here. Its damage boost is registry-driven but the audit will still see
-// the on-attach handler as REAL.
-const PASSIVE_EQUIP_IDS = new Set(['hBP06-097', 'hBP07-101']);
+// Note: a card belongs here only if its EFFECT TEXT is fully covered by the
+// registry. If it also has an on-attach trigger, on-knockout reactive, etc.
+// that lives in a hook handler, leave it out of this set so the audit reads
+// the hook-side handler as REAL via the normal classification path.
+const PASSIVE_EQUIP_IDS = new Set([
+  // Pure HP / damage / cost — entire support text covered by the registry
+  'hBP06-097', 'hBP07-101',
+  'hBP01-118', 'hBP01-119', 'hBP02-090', 'hBP02-093', 'hBP02-098', 'hBP02-099',
+  'hBP02-100', 'hBP01-126', 'hSD02-014',
+  'hBP02-086', 'hBP02-087', 'hBP05-082', 'hSD02-013', 'hBP07-103', 'hBP03-095',
+  // hBP06-099 ゆび NOT here — its on-attach archive trigger lives in a hook
+]);
 
 const STATUS = {
   REAL: 'REAL', LOG_ONLY: 'LOG_ONLY', PASSTHROUGH: 'PASSTHROUGH',
