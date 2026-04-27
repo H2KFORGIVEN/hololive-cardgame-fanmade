@@ -505,13 +505,24 @@ function processUseArt(state, action) {
   // Calculate damage
   const dmgResult = calculateDamage(attacker, action.artIndex, target);
 
-  // Add any turn boosts / reductions from effects
+  // Add any turn boosts / reductions from effects.
+  // Conditional boosts (e.g. boost.colorRequired = '綠' for "1 green member's
+  // art +20" from hBD24 oshi cards) consume only when the attacker matches;
+  // unmatched ones are kept in _turnBoosts for later attacks in the same turn.
   let bonusDmg = 0;
   let reduction = 0;
   let cancelled = false;
   let cancelReason = '';
+  const attackerColor = getCard(attacker.cardId)?.color;
   if (state._turnBoosts) {
+    const remaining = [];
     for (const boost of state._turnBoosts) {
+      // Color filter: keep boost in queue if it requires a specific color
+      // and this attacker doesn't match.
+      if (boost.colorRequired && attackerColor !== boost.colorRequired) {
+        remaining.push(boost);
+        continue;
+      }
       if (boost.type === 'DAMAGE_BOOST') bonusDmg += (boost.amount || 0);
       else if (boost.type === 'DAMAGE_REDUCTION') reduction += (boost.amount || 0);
       else if (boost.type === 'DAMAGE_CANCEL') {
@@ -519,7 +530,7 @@ function processUseArt(state, action) {
         if (boost.reason) cancelReason = boost.reason;
       }
     }
-    state._turnBoosts = [];
+    state._turnBoosts = remaining;
   }
   // Equipment-based art damage boost (e.g. hBP06-099 ゆび: +10) — pulled
   // from the AttachedSupportEffects registry, same path as HP+30 / cost−1.

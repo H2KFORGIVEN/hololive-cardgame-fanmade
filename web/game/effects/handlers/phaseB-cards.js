@@ -2967,6 +2967,82 @@ export function registerPhaseB() {
 
   // ── End of Round F-1 ──
 
+  // ── Round F-2: hBD24 birthday-deck oshi (67 cards) ───────────────────────
+  // All hBD24 oshi follow the exact same template, parameterized by color:
+  //   • oshi (cost 2, 1/turn): "[1/turn] This turn, 1 own X-color member's
+  //     arts +20 damage." → push DAMAGE_BOOST {amount:20, colorRequired:X,
+  //     duration:'turn'}. Engine consumes only on a same-color attack and
+  //     keeps the boost in _turnBoosts otherwise.
+  //   • sp (cost 2, 1/game): "[1/game] Reveal 1 X-color member from deck and
+  //     add to hand. Reshuffle." → SEARCH_SELECT prompt with color filter.
+  //
+  // Implementation: walk the card DB at registration time, iterate every
+  // hBD24-* oshi card, and register one factory-built handler per card with
+  // its declared color baked in. ~67 entries flipped from LOG_ONLY → REAL
+  // in one shot.
+  const hbd24Oshi = [];
+  // Iterate _cards via getCard? No — getCard only knows IDs we pass.
+  // Pull from the analysis JSON which listed hBD24 oshi entries, OR walk
+  // a known prefix range. Simpler: hard-code the 67 IDs from the audit.
+  for (let i = 1; i <= 67; i++) {
+    hbd24Oshi.push(`hBD24-${String(i).padStart(3, '0')}`);
+  }
+  for (const oshiId of hbd24Oshi) {
+    const oshiCard = getCard(oshiId);
+    if (!oshiCard || oshiCard.type !== '主推') continue;
+    const oshiColor = oshiCard.color; // e.g. '綠', '黃', '白', '紅', '藍', '紫'
+    if (!oshiColor) continue;
+
+    reg(oshiId, HOOK.ON_OSHI_SKILL, (state, ctx) => {
+      const own = state.players[ctx.player];
+      if (ctx.skillType === 'sp') {
+        // SP — search deck for any member of `oshiColor`
+        const candidates = [];
+        for (const c of own.zones[ZONE.DECK]) {
+          const card = getCard(c.cardId);
+          if (card && isMember(card.type) && card.color === oshiColor) {
+            candidates.push({
+              instanceId: c.instanceId, cardId: c.cardId,
+              name: card.name || '', image: getCardImage(c.cardId),
+            });
+          }
+        }
+        if (candidates.length === 0) {
+          // Shuffle deck regardless
+          const deck = own.zones[ZONE.DECK];
+          for (let i = deck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [deck[i], deck[j]] = [deck[j], deck[i]];
+          }
+          return { state, resolved: true, log: `${oshiId} SP: 牌組無 ${oshiColor} 成員` };
+        }
+        return {
+          state, resolved: false,
+          prompt: {
+            type: 'SEARCH_SELECT',
+            player: ctx.player,
+            message: `Birthday Gift: 選 1 張 ${oshiColor} 成員加入手牌`,
+            cards: candidates, maxSelect: 1,
+            afterAction: 'ADD_TO_HAND',
+          },
+          log: `${oshiId} SP: 搜尋 ${oshiColor} 成員`,
+        };
+      }
+      // oshi (regular): push color-conditional +20 boost for the turn
+      return {
+        state, resolved: true,
+        effect: {
+          type: 'DAMAGE_BOOST', amount: 20,
+          target: 'self', duration: 'turn',
+          colorRequired: oshiColor,
+        },
+        log: `${oshiId} oshi: 1 位 ${oshiColor} 成員 +20 藝能傷害（本回合）`,
+      };
+    });
+  }
+
+  // ── End of Round F-2 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.
