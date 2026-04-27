@@ -1,4 +1,5 @@
 import { PHASE, ZONE, ACTION, BLOOM_ORDER, MAX_STAGE_MEMBERS, MEMBER_STATE, parseCost, isSupport, isMember } from './constants.js';
+import { isBloomLevelOverridden } from './BloomRuleOverrides.js';
 import { getCard, getCardsByName } from './CardDatabase.js';
 import { getStageCount, findInstance } from './GameState.js';
 import { getColorlessReduction } from './AttachedSupportEffects.js';
@@ -113,7 +114,12 @@ function validateBloom(state, action, player) {
 
   if (currentIdx === -1 || newIdx === -1) return fail('無效的綻放等級');
   if (newIdx <= currentIdx) return fail('綻放等級不能下降');
-  // Allow skipping levels (Debut → 2nd is valid if the card exists)
+  // Standard rule: bloom must be exactly one level above current. Special
+  // cards (e.g. hBP01-045 AZKi: life ≤ 3 → may bloom Debut → 2nd) opt in
+  // via BloomRuleOverrides registry; for everyone else, enforce strict +1.
+  if (newIdx > currentIdx + 1 && !isBloomLevelOverridden(bloomCard, target.card, player)) {
+    return fail('綻放只能升 1 個等級（特殊規則例外）');
+  }
 
   // Cannot bloom if placed this turn
   if (target.card.placedThisTurn && !target.card.canBloomThisTurn) return fail('本回合放置的成員不能綻放');

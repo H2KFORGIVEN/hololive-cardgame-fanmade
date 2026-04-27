@@ -2652,6 +2652,136 @@ export function registerPhaseB() {
 
   // ── End of Round E-5 ──
 
+  // ── Round E-6: special triggers (6 cards) ───────────────────────────────
+
+  // E-6.1 hBP01-045 AZKi Debut effectG:
+  //   "When own life ≤ 3, this can bloom from hand directly to a 2nd member,
+  //    bypassing the 1st step."
+  // Implementation: rule lives in BloomRuleOverrides.js (consulted by
+  // ActionValidator.validateBloom). The handler here is informational —
+  // a hint log so the player knows the override is in effect.
+  reg('hBP01-045', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
+    const own = state.players[ctx.player];
+    const life = own?.zones?.[ZONE.LIFE]?.length || 0;
+    if (life <= 3) {
+      return { state, resolved: true, log: 'hBP01-045: 生命≤3 → 可從手牌直接綻放為 2nd（已啟用）' };
+    }
+    return { state, resolved: true, log: 'hBP01-045: 生命>3 → 一般綻放規則' };
+  });
+
+  // E-6.2 hBP07-039 赤井はあと 1st effectG:
+  //   "[Once per turn] Own turn, when own 赤井はあと is returned from stage
+  //    to deck, may send 1 archive cheer to THIS member."
+  // Trigger event (member returned to deck) isn't fired by the engine today;
+  // no current cards in this set actually return members to deck during play.
+  // Hint log only.
+  reg('hBP07-039', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
+    state, resolved: true, log: 'hBP07-039: 赤井はあと 從舞台放回牌組時觸發（未來事件，手動）',
+  }));
+
+  // E-6.3 hBP06-026 風真いろは 1st Buzz effectG:
+  //   "[Limited center] When own member collabs and own hand ≥ 5, may send
+  //    cheer-deck top to the collab member."
+  // Uses ON_COLLAB broadcast (added in this batch).
+  reg('hBP06-026', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-026') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_collabed') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // I must be in own center
+    if (own?.zones[ZONE.CENTER]?.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    // Own hand ≥ 5
+    if ((own.zones[ZONE.HAND] || []).length < 5) return { state, resolved: true, log: 'hBP06-026: 手牌 <5' };
+    // Send cheer-deck top to the collab member
+    const collab = ctx.collabingMember;
+    if (!collab) return { state, resolved: true };
+    if (sendCheerFromDeckToMember(own, collab)) {
+      return { state, resolved: true, log: 'hBP06-026: 吶喊牌組頂 → 聯動成員' };
+    }
+    return { state, resolved: true, log: 'hBP06-026: 吶喊牌組空' };
+  });
+
+  // E-6.4 hBP07-017 ベスティア・ゼータ 1st effectG:
+  //   "[Limited center] When own #ID3期生 Buzz member collabs → choose 1
+  //    own member; that member's arts +30 damage this turn."
+  // Pragmatic: auto-pick the collabing member as the recipient (most likely
+  // intended target since it's the one collabing). +30 boost queued via
+  // _turnBoosts; consumed by the next art declaration.
+  reg('hBP07-017', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-017') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_collabed') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own?.zones[ZONE.CENTER]?.instanceId !== ctx.memberInst?.instanceId) return { state, resolved: true };
+    // The collabing member must be #ID3期生 Buzz
+    const collab = ctx.collabingMember;
+    if (!collab) return { state, resolved: true };
+    const cCard = getCard(collab.cardId);
+    if (!cCard?.bloom?.includes('Buzz')) return { state, resolved: true };
+    const tag = cCard?.tag || '';
+    if (!(typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#ID3期生')) {
+      return { state, resolved: true };
+    }
+    // Push a turn-scoped +30 damage boost (auto-targets the next art use)
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'turn' },
+      log: 'hBP07-017: #ID3期生 Buzz 聯動 → 1 成員 +30 藝能傷害（本回合）',
+    };
+  });
+
+  // E-6.5 hBP05-067 不知火フレア 2nd effectG:
+  //   "When this used art → may send 2 of this's cheer to 1 own backstage
+  //    member; then return 1 1st member with same name from archive to hand."
+  // Uses ON_ART_RESOLVE single-fire (this is the attacker).
+  reg('hBP05-067', HOOK.ON_ART_RESOLVE, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_used_art') return { state, resolved: true };
+    if (ctx.cardId !== 'hBP05-067') return { state, resolved: true };
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer || me.attachedCheer.length < 2) {
+      return { state, resolved: true, log: 'hBP05-067: 自身吶喊不足 2 張' };
+    }
+    const own = state.players[ctx.player];
+    const back = (own.zones[ZONE.BACKSTAGE] || []).filter(Boolean);
+    if (back.length === 0) return { state, resolved: true, log: 'hBP05-067: 後台無成員' };
+    // Auto-pick first backstage member
+    const target = back[0];
+    if (!target.attachedCheer) target.attachedCheer = [];
+    // Move 2 cheer
+    target.attachedCheer.push(me.attachedCheer.shift());
+    target.attachedCheer.push(me.attachedCheer.shift());
+    // Return 1st with same name from archive to hand
+    const targetName = getCard(target.cardId)?.name;
+    if (!targetName) return { state, resolved: true, log: 'hBP05-067: 移動 2 吶喊' };
+    const idx = own.zones[ZONE.ARCHIVE].findIndex(c => {
+      const card = getCard(c.cardId);
+      return card?.name === targetName && card?.bloom === '1st' && isMember(card.type);
+    });
+    if (idx < 0) {
+      return { state, resolved: true, log: `hBP05-067: 吶喊→${targetName}（存檔無同名 1st）` };
+    }
+    const recovered = own.zones[ZONE.ARCHIVE].splice(idx, 1)[0];
+    own.zones[ZONE.HAND].push(recovered);
+    return { state, resolved: true, log: `hBP05-067: 吶喊→${targetName}，存檔同名 1st 回手牌` };
+  });
+
+  // E-6.6 hBP06-027 風真いろは 2nd effectG:
+  //   "When this knocks opp center → another own 風真いろは (already bloomed
+  //    this turn) may use a member from hand to bloom again."
+  // The "re-bloom from hand" rule override is engine-complex (would need a
+  // new BLOOM action variant or per-turn bloom-count tracking). Hint log
+  // only — player can resolve via Manual Adjust.
+  reg('hBP06-027', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-027') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'member_knocked') return { state, resolved: true };
+    if (ctx.player !== ctx.attackerPlayer) return { state, resolved: true };
+    if (ctx.knockedOutZone !== 'center') return { state, resolved: true };
+    return {
+      state, resolved: true,
+      log: 'hBP06-027: 擊倒對手中心 → 已綻放的另一隻風真可再次綻放（手動）',
+    };
+  });
+
+  // ── End of Round E-6 ──
+
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
   //   own life < opp life, life loss is reduced by 1.

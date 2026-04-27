@@ -359,6 +359,26 @@ function processCollab(state, action) {
   }
 
   fireEffect(state, HOOK.ON_COLLAB, { cardId: member.cardId, player: p, memberInst: member });
+
+  // Broadcast: fire ON_COLLAB to other own-side stage members so observer
+  // handlers like "[Limited center] when own member collabs → ..." can react.
+  // The collabing member's own ON_COLLAB already fired above as the legacy
+  // single-fire. Broadcast carries triggerEvent='member_collabed' so handlers
+  // can distinguish "I just collabed" vs "an ally just collabed".
+  const ownStage = [
+    player.zones[ZONE.CENTER], player.zones[ZONE.COLLAB],
+    ...(player.zones[ZONE.BACKSTAGE] || []),
+  ].filter(Boolean);
+  for (const m of ownStage) {
+    if (m.instanceId === member.instanceId) continue;
+    fireEffect(state, HOOK.ON_COLLAB, {
+      cardId: m.cardId,
+      player: p,
+      memberInst: m,
+      triggerEvent: 'member_collabed',
+      collabingMember: member,
+    });
+  }
   return state;
 }
 
