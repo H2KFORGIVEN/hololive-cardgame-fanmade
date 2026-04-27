@@ -76,6 +76,8 @@ const REGISTRY = {
   'hBP02-098': { extraHp: () => 20 },
   // hSD02-014 ぽよ余: HP +20 (bloom-draw trigger for あやめ skipped)
   'hSD02-014': { extraHp: () => 20 },
+  // hBP03-100 ペロ: HP +20 (フワワ/モココ all-art-color → no-color override is engine-complex, skipped)
+  'hBP03-100': { extraHp: () => 20 },
 
   // ── 粉絲 (fans) ─────────────────────────────────────────────────────────
   // hBP02-099 すこん部: HP +10 (フブキ-only fan)
@@ -84,6 +86,9 @@ const REGISTRY = {
   'hBP02-100': { damageReceivedModifier: () => -10 },
   // hBP01-126 座員: damage taken +10 (ポルカ-only fan; "counts as red cheer" rule skipped)
   'hBP01-126': { damageReceivedModifier: () => 10 },
+  // hBP03-110 ろぼさー: art damage −10 (ロボ子さん-only; "counts as purple cheer"
+  // for art cost is engine-complex, skipped — DamageCalculator.applyDamage path handles −10).
+  'hBP03-110': { artDamageBoost: () => -10 },
 };
 
 function _eachAttachedEffect(memberInst, fnName) {

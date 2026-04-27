@@ -668,6 +668,12 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     typeof e === 'string' ? e : e?.cardId
   ).filter(Boolean);
   const knockedOutSupportCardIds = (target.attachedSupport || []).map(s => s.cardId);
+  // Snapshot the cheer instances so reactive handlers (e.g. hBP03-072 わため
+  // KO → cheer transfer) can locate the originals in archive after
+  // archiveMember runs and pull them back out.
+  const knockedOutCheerSnapshot = (target.attachedCheer || []).map(c => ({
+    instanceId: c.instanceId, cardId: c.cardId,
+  }));
 
   // Fire ON_KNOCKDOWN BEFORE archiving so handlers can react. Handlers can:
   //   • set ctx.cancelKnockdown = true     → skip archive + life loss
@@ -683,8 +689,37 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
     knockedOutZone,
     knockedOutStackIds,
     knockedOutSupportCardIds,
+    knockedOutCheerSnapshot,
   };
   fireEffect(state, HOOK.ON_KNOCKDOWN, knockdownCtx);
+
+  // Fire ON_KNOCKDOWN for each attached support card so support handlers
+  // (e.g. hBP01-124 開拓者, hBP03-109 Ruffians, hBP03-112 わためいと) can
+  // react to their wearer being knocked. Same ctx with triggerEvent set
+  // so support handlers can distinguish from the wearer's own KO. Fires
+  // BEFORE archive so handlers can still mutate target.attachedCheer.
+  // Skipped if cancelKnockdown was set above.
+  if (!knockdownCtx.cancelKnockdown) {
+    const seenSupports = new Set();
+    for (const supId of knockedOutSupportCardIds || []) {
+      if (!supId || seenSupports.has(supId)) continue;
+      seenSupports.add(supId);
+      fireEffect(state, HOOK.ON_KNOCKDOWN, {
+        cardId: supId,
+        player: 1 - attackerPlayer,
+        memberInst: target,
+        wearer: target,
+        attackerPlayer,
+        triggerEvent: 'attached_support_wearer_knocked',
+        knockedOutCardId: target.cardId,
+        knockedOutInstanceId: target.instanceId,
+        knockedOutZone,
+        knockedOutSupportCardIds,
+        knockedOutCheerSnapshot,
+        lifeLossDelta: 0,
+      });
+    }
+  }
 
   if (knockdownCtx.cancelKnockdown) {
     // Handler already moved the member elsewhere (e.g. to hand) — skip
@@ -724,6 +759,7 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
         knockedOutZone,
         knockedOutStackIds,
         knockedOutSupportCardIds,
+        knockedOutCheerSnapshot,
         lifeLossDelta: 0,
       };
       fireEffect(state, HOOK.ON_KNOCKDOWN, broadcastCtx);
@@ -798,6 +834,7 @@ function processKnockdown(state, attackerPlayer, target, opponent) {
         knockedOutZone,
         knockedOutStackIds,
         knockedOutSupportCardIds,
+        knockedOutCheerSnapshot,
         attackerPlayer,
         isMyMemberKnocked: idx === opponentIdx,
         isMyKnockedOpp: idx === attackerPlayer,

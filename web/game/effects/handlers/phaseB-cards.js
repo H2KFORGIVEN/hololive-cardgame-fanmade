@@ -3262,17 +3262,63 @@ export function registerPhaseB() {
   });
 
   // F-3.3 hBP01-004 兎田ぺこら
-  //   oshi: REACTIVE (own knocked → redistribute green cheer). Hint log.
+  //   oshi: REACTIVE [1/turn, opp turn, own KO → distribute KO'd member's
+  //         green cheer to other own members]. Cost 2 holopower. Now
+  //         auto-fires via reactive_knockdown using engine's
+  //         knockedOutCheerSnapshot (added in I-2). Walks the snapshot,
+  //         filters green cheer, distributes one each to other own stage
+  //         members starting from center → collab → backstage[].
   //   sp:   This turn, own dice rolls all count as 6.
   // Engine doesn't have a centralized rollDie that consults overrides yet,
   // so the dice-override is hint-only for now. State flag is set so a
   // future centralizer can pick it up.
   reg('hBP01-004', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.triggerEvent === 'reactive_knockdown') {
+      // Auto-fire: only when own member was knocked during opp turn
+      if (!ctx.isMyMemberKnocked) return { state, resolved: true };
+      if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+      const own = state.players[ctx.player];
+      if (own.oshiSkillUsedThisTurn) return { state, resolved: true };
+      const cost = Math.abs(getCard(own.oshi?.cardId)?.oshiSkill?.holoPower || 2);
+      if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) return { state, resolved: true };
+      // Find green cheer in archive (just moved there by archiveMember).
+      const snap = ctx.knockedOutCheerSnapshot || [];
+      const greenIds = snap
+        .filter(c => getCard(c.cardId)?.color === '綠')
+        .map(c => c.instanceId);
+      if (greenIds.length === 0) return { state, resolved: true };
+      // Eligible recipients: own stage members (any).
+      const recipients = [
+        own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+        ...(own.zones[ZONE.BACKSTAGE] || []),
+      ].filter(Boolean);
+      if (recipients.length === 0) return { state, resolved: true };
+      // Pay cost
+      for (let i = 0; i < cost; i++) {
+        const c = own.zones[ZONE.HOLO_POWER].shift();
+        if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+      }
+      own.oshiSkillUsedThisTurn = true;
+      // Pull green cheer from archive and distribute round-robin
+      let distributed = 0;
+      let ridx = 0;
+      for (const greenId of greenIds) {
+        const archIdx = own.zones[ZONE.ARCHIVE].findIndex(c => c?.instanceId === greenId);
+        if (archIdx < 0) continue;
+        const cheer = own.zones[ZONE.ARCHIVE].splice(archIdx, 1)[0];
+        const target = recipients[ridx % recipients.length];
+        if (!Array.isArray(target.attachedCheer)) target.attachedCheer = [];
+        target.attachedCheer.push(cheer);
+        ridx++;
+        distributed++;
+      }
+      return { state, resolved: true, log: `hBP01-004 oshi 自動觸發: 綠吶喊 ${distributed} 張分配` };
+    }
     if (ctx.skillType === 'sp') {
       state._diceOverride = 6;
       return { state, resolved: true, log: 'hBP01-004 SP: 本回合擲骰視為 6（手動）' };
     }
-    return { state, resolved: true, log: 'hBP01-004 oshi: 反應觸發（手動）' };
+    return { state, resolved: true, log: 'hBP01-004 oshi: 反應觸發（已支援自動）' };
   });
 
   // F-3.4 hBP01-005 鷹嶺ルイ
@@ -4949,6 +4995,134 @@ export function registerPhaseB() {
   });
 
   // ── End of Round H-4 ──
+
+  // ── Round I-2: support-card KO triggers (cheer transfer to themed ally) ──
+  // Engine extension (in this round): processKnockdown now fires ON_KNOCKDOWN
+  // with triggerEvent='attached_support_wearer_knocked' once for each unique
+  // support cardId attached to the killed member. Handlers register on the
+  // SUPPORT card's id (not the wearer's) and run while the wearer is still
+  // on stage (before archive), so they can mutate wearer.attachedCheer
+  // directly.
+  //
+  // Each card's spec restricts the eligible wearer (e.g. AZKi-only for 開拓者),
+  // but we don't re-check that here: ActionValidator already enforces wearer
+  // restrictions at attach time, so by the time we get here the wearer is
+  // guaranteed to satisfy the restriction.
+
+  // I-2.1 hBP01-124 開拓者 (粉絲, AZKi-only)
+  //   "During opp turn, when wearer is knocked, may transfer 1 of wearer's
+  //    cheer to another own member."
+  reg('hBP01-124', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP01-124') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'attached_support_wearer_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const wearer = ctx.wearer;
+    if (!wearer?.attachedCheer?.length) return { state, resolved: true, log: 'hBP01-124: 無吶喊可轉' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const ally = stage.find(m => m.instanceId !== wearer.instanceId);
+    if (!ally) return { state, resolved: true, log: 'hBP01-124: 無其他成員' };
+    const cheer = wearer.attachedCheer.shift();
+    if (!Array.isArray(ally.attachedCheer)) ally.attachedCheer = [];
+    ally.attachedCheer.push(cheer);
+    return { state, resolved: true, log: `hBP01-124: 開拓者 → 1 吶喊轉到 ${getCard(ally.cardId)?.name}` };
+  });
+
+  // I-2.2 hBP03-109 Ruffians (粉絲, フワワ/モココ-only)
+  //   "During opp turn, when wearer is knocked, may send 1 blue cheer from
+  //    own archive to own フワワ・アビスガード."
+  reg('hBP03-109', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-109') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'attached_support_wearer_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    // Find first 藍 cheer in archive
+    const archiveIdx = (own.zones[ZONE.ARCHIVE] || []).findIndex(c => {
+      const card = getCard(c.cardId);
+      return card?.type === '吶喊' && card?.color === '藍';
+    });
+    if (archiveIdx < 0) return { state, resolved: true, log: 'hBP03-109: 存檔無藍色吶喊' };
+    // Find own フワワ・アビスガード on stage (excluding wearer)
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      if (m.instanceId === ctx.wearer?.instanceId) return false;
+      return getCard(m.cardId)?.name === 'フワワ・アビスガード';
+    });
+    if (!target) return { state, resolved: true, log: 'hBP03-109: 無 フワワ' };
+    const cheer = own.zones[ZONE.ARCHIVE].splice(archiveIdx, 1)[0];
+    if (!Array.isArray(target.attachedCheer)) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: 'hBP03-109: Ruffians → 存檔藍吶喊送 フワワ' };
+  });
+
+  // I-2.3 hBP03-112 わためいと (粉絲, わため-only)
+  //   "During opp turn, when wearer is knocked, may transfer 1-2 of wearer's
+  //    yellow cheer to 1 own 角巻わため."
+  reg('hBP03-112', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP03-112') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'attached_support_wearer_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const wearer = ctx.wearer;
+    if (!wearer?.attachedCheer?.length) return { state, resolved: true, log: 'hBP03-112: 無吶喊可轉' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      if (m.instanceId === wearer.instanceId) return false;
+      return getCard(m.cardId)?.name === '角巻わため';
+    });
+    if (!target) return { state, resolved: true, log: 'hBP03-112: 無其他 わため' };
+    // Pull up to 2 yellow cheer from wearer
+    let moved = 0;
+    for (let i = wearer.attachedCheer.length - 1; i >= 0 && moved < 2; i--) {
+      const cheer = wearer.attachedCheer[i];
+      if (getCard(cheer.cardId)?.color === '黃') {
+        wearer.attachedCheer.splice(i, 1);
+        if (!Array.isArray(target.attachedCheer)) target.attachedCheer = [];
+        target.attachedCheer.push(cheer);
+        moved++;
+      }
+    }
+    if (moved === 0) return { state, resolved: true, log: 'hBP03-112: 無黃色吶喊' };
+    return { state, resolved: true, log: `hBP03-112: わためいと → ${moved} 黃吶喊轉到 ${getCard(target.cardId)?.name}` };
+  });
+
+  // I-2.4 hBP06-104 スバ友 (粉絲, スバル-only)
+  //   "During opp turn, when wearer is knocked, may send cheer-deck top to
+  //    own 大空スバル."
+  reg('hBP06-104', HOOK.ON_KNOCKDOWN, (state, ctx) => {
+    if (ctx.cardId !== 'hBP06-104') return { state, resolved: true };
+    if (ctx.triggerEvent !== 'attached_support_wearer_knocked') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (!own?.zones[ZONE.CHEER_DECK]?.length) {
+      return { state, resolved: true, log: 'hBP06-104: 吶喊牌組空' };
+    }
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => {
+      if (m.instanceId === ctx.wearer?.instanceId) return false;
+      return getCard(m.cardId)?.name === '大空スバル';
+    });
+    if (!target) return { state, resolved: true, log: 'hBP06-104: 無 スバル' };
+    const cheer = own.zones[ZONE.CHEER_DECK].shift();
+    cheer.faceDown = false;
+    if (!Array.isArray(target.attachedCheer)) target.attachedCheer = [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: 'hBP06-104: スバ友 → 吶喊牌組頂送 スバル' };
+  });
+
+  // ── End of Round I-2 ──
 
   // 173. hSD09-007 不知火フレア Debut effectG:
   //   [Limited collab] During opp turn, when this member is knocked out, if
