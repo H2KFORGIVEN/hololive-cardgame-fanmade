@@ -62,213 +62,52 @@ export function registerPhaseC2(){
   // hBP04-078 アーニャ effectG: has 古代武器→yellow cost -1
   reg('hBP04-078',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'帶古代武器→黃吶喊需求-1'));
 
-  // hBP04-079 アーニャ art1+art2
-  reg('hBP04-079',HOOK.ON_ART_DECLARE,(s,c)=>{
-    if(c.artKey==='art2'){
-      const has=c.memberInst?.attachedSupport?.some(x=>getCard(x.cardId)?.name==='古代武器');
-      return has?PB(s,50,'有古代武器→+50'):P(s);
-    }
-    return P(s);
-  });
+  // ════════════════════════════════════════════════════════════════════════
+  //  REMOVED: hBP04-079 / hBP04-080 / hBP04-082 phaseC2 entries (drift)
+  // ════════════════════════════════════════════════════════════════════════
+  // Comments said アーニャ/ラプラス but actual cards are 夏色まつり Debut/1st/
+  // 2nd. The wrong handlers added bogus art damage (+50, +10×opp-backstage,
+  // 抽1棄1) that ACTIVELY MISBEHAVED on まつり when she attacks/blooms.
+  //
+  // Correct effects:
+  //   hBP04-079 まつり Debut effectG (KO cheer transfer) → phaseB E-1.4
+  //   hBP04-080 まつり 1st           → no art effect; nothing to register
+  //   hBP04-082 まつり 2nd effectB+art1 → phaseB G-1.3 covers art1 (cheer
+  //             count +20 each); effectB dice→cheer left unimplemented
+  // ════════════════════════════════════════════════════════════════════════
 
-  // hBP04-080 ラプラス art1: opponent backstage count→+10 each
-  reg('hBP04-080',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=s.players[1-c.player].zones[ZONE.BACKSTAGE].length;
-    return PB(s,n*10,`對手${n}後台→+${n*10}`);
-  });
-
-  // hBP04-082 ラプラス effectB
-  reg('hBP04-082',HOOK.ON_BLOOM,(s,c)=>{
-    const p=s.players[c.player];drawCards(p,1);archiveHand(p,1);
-    return PL(s,'抽1棄1');
-  });
-
-  // hBP04-083 ラプラス effectG+art1
-  reg('hBP04-083',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'聯動位置:對手主要階段HP不受效果影響'));
-  reg('hBP04-083',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const opp=s.players[1-c.player];const rest=opp.zones[ZONE.BACKSTAGE].filter(m=>m.state===MEMBER_STATE.REST).length;
-    return rest>=2?PB(s,50,`對手${rest}休息→+50`):P(s);
-  });
-
-  // hBP04-085 紫咲シオン effectB+art1
-  reg('hBP04-085',HOOK.ON_BLOOM,(s,c)=>{
-    const p=s.players[c.player];const prompt=makeArchivePrompt(p,c.player,x=>hasTag(x,'#魔法'),'選擇存檔區的 #魔法 卡回手牌');
-    if(prompt)return{state:s,resolved:false,prompt,log:'存檔#魔法回手牌'};
-    return PL(s,'存檔#魔法回手');
-  });
-  reg('hBP04-085',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const r=rollDie(s, { player: c.player, member: c.memberInst });return r>=5?PL(s,`骰${r}:對手吶喊替換`):PL(s,`骰${r}`);
-  });
-
-  // hBP04-086 紫咲シオン effectG+art1
-  reg('hBP04-086',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'#魔法活動效果2倍'));
-  reg('hBP04-086',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const r=rollDie(s, { player: c.player, member: c.memberInst });if(r>=3){damageOpp(s,c.player,20)}
-    return PL(s,`骰${r}:${r>=3?'20特殊傷害':'無'}`);
-  });
-
-  // hBP04-087 紫咲シオン art2: dice→reveal from deck
-  reg('hBP04-087',HOOK.ON_ART_DECLARE,(s,c)=>{
-    if(c.artKey!=='art2')return P(s);
-    const r=rollDie(s, { player: c.player, member: c.memberInst });const p=s.players[c.player];
-    const top=p.zones[ZONE.DECK].slice(0,r);
-    let found=0;
-    for(let i=top.length-1;i>=0;i--){
-      if(hasTag(top[i],'#魔法')){const[card]=pullFromDeck(p,[i]);card.faceDown=false;p.zones[ZONE.HAND].push(card);found++;break}
-    }
-    return PL(s,`骰${r}:看${r}張${found?'→取#魔法':'→無'}`);
-  });
-
-  // hBP04-088 ネリッサ art1: cheer count→+10 each (max 5)
-  reg('hBP04-088',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=Math.min(5,c.memberInst?.attachedCheer?.length||0);
-    return PB(s,n*10,`${n}吶喊→+${n*10}`);
-  });
-
-  // hBP04-089 ネリッサ effectC: +30 to #歌 center/collab
-  reg('hBP04-089',HOOK.ON_COLLAB,(s,c)=>({state:s,resolved:true,effect:boostTurn(30,'tag:#歌'),log:'#歌中心聯動+30'}));
-
-  // hBP04-090 ネリッサ effectG+art1
-  reg('hBP04-090',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'#歌成員受傷-20'));
-  reg('hBP04-090',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const p=s.players[c.player];const oshiName=getCard(p.oshi?.cardId)?.name;
-    if(oshiName==='ネリッサ・レイヴンクロフト'){
-      const n=getStageMembers(p).filter(m=>hasTag(m.inst,'#歌')).length;
-      return PB(s,n*20,`${n}#歌→+${n*20}`);
-    }
-    return P(s);
-  });
-
-  // hBP04-091 一伊那尓栖 art1
-  reg('hBP04-091',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=s.players[c.player].zones[ZONE.ARCHIVE].filter(x=>isMember(getCard(x.cardId)?.type)&&hasTag(x,'#Myth')).length;
-    return n>=5?PB(s,20,`${n}#Myth存檔→+20`):P(s);
-  });
-
-  // hBP04-092 一伊那尓栖 effectG+art1
-  reg('hBP04-092',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'中心:存檔#Myth≥5→HP不受效果影響'));
-  reg('hBP04-092',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=s.players[c.player].zones[ZONE.ARCHIVE].filter(x=>isMember(getCard(x.cardId)?.type)&&hasTag(x,'#Myth')).length;
-    let b=0;if(n>=5)b+=30;if(n>=10)b+=30;
-    return b?PB(s,b,`${n}#Myth→+${b}`):P(s);
-  });
-
-  // hBP04-093 セシリア effectG+art1+art2
-  reg('hBP04-093',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'帶有聯動吶喊→this成員+聯動成員+20'));
-  reg('hBP04-093',HOOK.ON_ART_DECLARE,(s,c)=>{
-    if(c.artKey==='art2'){
-      const n=getStageMembers(s.players[c.player]).filter(m=>hasTag(m.inst,'#語学')).length;
-      return PB(s,n*20,`${n}#語学→+${n*20}`);
-    }
-    return P(s);
-  });
-
-  // hBP04-094 クレイジー effectC+art1
-  reg('hBP04-094',HOOK.ON_COLLAB,(s,c)=>{
-    const p=s.players[c.player];drawCards(p,1);archiveHand(p,1);return PL(s,'抽1棄1');
-  });
-  reg('hBP04-094',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=s.players[c.player].zones[ZONE.ARCHIVE].filter(x=>isMember(getCard(x.cardId)?.type)).length;
-    return n>=5?PB(s,30,`存檔${n}成員≥5→+30`):P(s);
-  });
-
-  // hBP04-095 クレイジー effectB+art1
-  reg('hBP04-095',HOOK.ON_BLOOM,(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')});
-  reg('hBP04-095',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const p=s.players[c.player];const n=getStageMembers(p).filter(m=>{const d=getCard(m.inst.cardId);return d?.bloom==='2nd'&&hasTag(m.inst,'#ID')}).length;
-    return n>=2?PB(s,40,`${n}個2nd #ID→+40`):P(s);
-  });
-
-  // hBP04-096 森カリオペ effectG+art1
-  reg('hBP04-096',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'有鎌→#Myth中心+30'));
-  reg('hBP04-096',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const p=s.players[c.player];const n=p.zones[ZONE.ARCHIVE].filter(x=>isMember(getCard(x.cardId)?.type)&&hasTag(x,'#Myth')).length;
-    let b=0;if(n>=4)b+=30;if(n>=8)b+=30;
-    return b?PB(s,b,`${n}#Myth存檔→+${b}`):P(s);
-  });
-
-  // hBP04-097 古石ビジュー effectG+art1
-  reg('hBP04-097',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'被擊倒→抽1'));
-  reg('hBP04-097',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const has=s.players[c.player].zones[ZONE.ARCHIVE].some(x=>{const d=getCard(x.cardId);return d?.type==='吶喊'&&d?.color==='紅'});
-    return has?PB(s,30,'存檔紅吶喊→+30'):P(s);
-  });
-
-  // hBP04-098 博衣こより effectC+art1
-  reg('hBP04-098',HOOK.ON_COLLAB,(s,c)=>{
-    const p=s.players[c.player];const i=searchDeck(p,x=>hasTag(x,'#こよラボ')&&isSupport(getCard(x.cardId)?.type),1);
-    if(i.length){const[card]=pullFromDeck(p,i);p.zones[ZONE.HAND].push(card)}
-    shuffleArr(p.zones[ZONE.DECK]);return PL(s,'搜尋#こよラボ支援');
-  });
-  reg('hBP04-098',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=(c.memberInst?.attachedSupport||[]).filter(x=>hasTag(x,'#こよラボ')).length;
-    return n?PB(s,n*20,`${n}#こよラボ→+${n*20}`):P(s);
-  });
-
-  // hBP04-099 博衣こより effectB+art1
-  reg('hBP04-099',HOOK.ON_BLOOM,(s,c)=>{
-    const p=s.players[c.player];const i=searchDeck(p,x=>getCard(x.cardId)?.name==='博衣こより',1);
-    if(i.length){const[card]=pullFromDeck(p,i);p.zones[ZONE.HAND].push(card)}
-    shuffleArr(p.zones[ZONE.DECK]);return PL(s,'搜尋博衣こより');
-  });
-  reg('hBP04-099',HOOK.ON_ART_DECLARE,(s,c)=>{
-    const n=Math.min(3,(c.memberInst?.attachedSupport||[]).filter(x=>hasTag(x,'#こよラボ')).length);
-    return n?PB(s,n*20,`${n}#こよラボ→+${n*20}`):P(s);
-  });
-
-  // hBP04-100 こよりの助手くん fan: +10 dmg
-  reg('hBP04-100',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'助手くん+10'));
-  reg('hBP04-100',HOOK.ON_PLAY,(s,c)=>PL(s,'助手くん附加'));
-
-  // hBP04-101 古代武器 tool: +10 for アーニャ
-  reg('hBP04-101',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'古代武器+10'));
-  reg('hBP04-101',HOOK.ON_PLAY,(s,c)=>PL(s,'古代武器附加'));
-
-  // hBP04-102 ブルーローズ tool
-  reg('hBP04-102',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'道具+10'));
-  reg('hBP04-102',HOOK.ON_PLAY,(s,c)=>PL(s,'ブルーローズ附加'));
-
-  // hBP04-103 森カリオペの鎌 tool
-  reg('hBP04-103',HOOK.ON_ART_DECLARE,(s,c)=>{
-    let b=10;const d=getCard(c.memberInst?.cardId);
-    if(d?.name==='森カリオペ'&&d?.bloom==='2nd')b+=20;
-    return PB(s,b,`鎌+${b}`);
-  });
-  reg('hBP04-103',HOOK.ON_PLAY,(s,c)=>PL(s,'鎌附加'));
-
-  // hBP04-105 こよりの試験管 tool
-  reg('hBP04-105',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'試験管+10'));
-  reg('hBP04-105',HOOK.ON_PLAY,(s,c)=>PL(s,'試験管附加'));
-
-  // hBP04-106 ラプラスの王冠 tool
-  reg('hBP04-106',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'王冠+10'));
-  reg('hBP04-106',HOOK.ON_PLAY,(s,c)=>PL(s,'王冠附加'));
-
-  // hBP04-107 アイドルマイク tool +10
-  reg('hBP04-107',HOOK.ON_ART_DECLARE,(s,c)=>PB(s,10,'マイク+10'));
-
-  // hBP04-108 ネリッサのギター tool
-  reg('hBP04-108',HOOK.ON_ART_DECLARE,(s,c)=>{
-    let b=10;if(getCard(c.memberInst?.cardId)?.name==='ネリッサ・レイヴンクロフト')b+=10;
-    return PB(s,b,`ギター+${b}`);
-  });
-
-  // hBP04-109 ぺこミコの絆 mascot HP+20
-  reg('hBP04-109',HOOK.ON_PLAY,(s,c)=>PL(s,'吉祥物HP+20'));
-
-  // hBP04-110 IRySの翼 mascot HP+20
-  reg('hBP04-110',HOOK.ON_PLAY,(s,c)=>PL(s,'吉祥物HP+20'));
-
-  // hBP04-111 こよりの試薬 mascot
-  reg('hBP04-111',HOOK.ON_PLAY,(s,c)=>PL(s,'吉祥物HP+20'));
-  reg('hBP04-111',HOOK.ON_ART_RESOLVE,(s,c)=>{
-    const p=s.players[c.player];if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-10);
-    return PL(s,'使用藝能→回10HP');
-  });
-
-  // hBP04-112 儒烏風亭らでんの帽子 mascot
-  reg('hBP04-112',HOOK.ON_PLAY,(s,c)=>PL(s,'吉祥物HP+20'));
-  reg('hBP04-112',HOOK.ON_BLOOM,(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'綻放→抽1')});
+  // ════════════════════════════════════════════════════════════════════════
+  //  REMOVED: phaseC2 hBP04-083..hBP04-112 entries (drift cleanup, 2026-04-28)
+  // ════════════════════════════════════════════════════════════════════════
+  // The original phaseC2 author worked against an outdated card database
+  // where these IDs mapped to ラプラス/シオン/ネリッサ/一伊那尓栖/セシリア/
+  // クレイジー/カリオペ/古石ビジュー/アーニャ/etc. variants. In the current
+  // (2026) DB, the same IDs map to:
+  //
+  //   hBP04-083~086  桃鈴ねね         (was ラプラス/シオン)
+  //   hBP04-087      エリザベス Spot   (was シオン art2)
+  //   hBP04-088      ジジ Spot         (was ネリッサ art1)
+  //   hBP04-089      ツートンカラー    (support, not ネリッサ effectC)
+  //   hBP04-090      作業用パソコン    (支援・物品, not ネリッサ effectG)
+  //   hBP04-091~092  限界飯/ねぽらぼ   (支援・活動, not 一伊那尓栖)
+  //   hBP04-093~096  ホロライブ2期生.. (支援・活動, not セシリア/クレイジー/
+  //                                     カリオペ)
+  //   hBP04-097~099  緑の試験管/鍛冶ハンマー/古代武器 (支援・道具)
+  //   hBP04-100~106  ココロ/だいふく/やめなー/カラス/スバルドダック/
+  //                  こよりの助手くん/雪民 (支援卡)
+  //   hBP04-107~112  do not exist in current DB
+  //
+  // All handlers in this region were dead code (registered on support
+  // cardIds for member-only hooks like ON_BLOOM/ON_COLLAB/ON_ART_DECLARE
+  // that never fire for support cards) AND were attempting effects that
+  // don't match the actual cards anyway. They have been removed.
+  //
+  // Correct effects for hBP04-088 (ジジ KO trigger), hBP04-085~086 (桃鈴ねね
+  // bloom/art), and the support cards (hBP04-100~106) are now in:
+  //   - phaseB-cards.js E-1 (ON_KNOCKDOWN handlers)
+  //   - AttachedSupportEffects.js REGISTRY (support-card boosts)
+  // See K-round commit logs for migration details.
+  // ════════════════════════════════════════════════════════════════════════
 
   // Remaining cards with simpler patterns — batch process
   // effectG passives (just log)

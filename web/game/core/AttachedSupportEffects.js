@@ -61,6 +61,38 @@ const REGISTRY = {
   // hBP04-097 緑の試験管: art +10; conditional 1st+ こより rest→active is
   // engine-complex (manual via UI), skipped. The +10 boost is universal.
   'hBP04-097': { artDamageBoost: () => 10 },
+  // hBP02-094 Tatang: art +10 (universal); +30 HP on パヴォリア・レイネ.
+  'hBP02-094': {
+    artDamageBoost: () => 10,
+    extraHp: (m, c) => (c?.name === 'パヴォリア・レイネ' ? 30 : 0),
+  },
+  // hBP02-095 ドクロくん: art +10 (universal). Bloom-draw on マリン skipped.
+  'hBP02-095': { artDamageBoost: () => 10 },
+  // hSD06-011 ﾁｬｷ丸: art +10 (universal). 1st+ いろは reactive special skipped.
+  'hSD06-011': { artDamageBoost: () => 10 },
+  // hBP06-098 鬼神刀「阿修羅」: art +10 (universal). あやめ collab opp-move skipped.
+  'hBP06-098': { artDamageBoost: () => 10 },
+  // hBP04-104 スバルドダック: HP +20 (universal). スバル + cheer ≥10 → +20 conditional skipped.
+  'hBP04-104': { extraHp: () => 20 },
+  // hBP07-104 Thorn: only on エリザベス, art +20. 2nd エリザベス damaged → +20 skipped.
+  'hBP07-104': {
+    artDamageBoost: (m, c) => (c?.name === 'エリザベス・ローズ・ブラッドフレイム' ? 20 : 0),
+  },
+  // hBP07-102 角巻わためのハンマー: only on わため, art +20. 2nd-center +30 conditional + dice skipped.
+  'hBP07-102': {
+    artDamageBoost: (m, c) => (c?.name === '角巻わため' ? 20 : 0),
+  },
+  // hBP01-116 うぱお: art +10. かなた reactive special skipped.
+  'hBP01-116': { artDamageBoost: () => 10 },
+  // hBP01-121 Kotori: center/collab dmg taken −10. Position-aware so handled
+  // by DamageCalculator._SUPPORT_PASSIVE_DAMAGE_RECEIVED, not the static
+  // damageReceivedModifier (which doesn't know about wearer position).
+  // キアラ bloom-draw skipped.
+  // 'hBP01-121' — see DamageCalculator passive observer.
+  // hBP03-102 フトイヌ: art +10 (universal). ころね collab cheer skipped.
+  'hBP03-102': { artDamageBoost: () => 10 },
+  // hBP03-097 リコーダー: art +10 (universal). 奏 KO-draw skipped.
+  'hBP03-097': { artDamageBoost: () => 10 },
   // hBP03-095 ホロキャップ: ◆Debut/Spot: HP +30
   'hBP03-095': {
     extraHp: (m, c) => (c?.bloom === 'Debut' || c?.bloom === 'Spot' ? 30 : 0),

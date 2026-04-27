@@ -101,6 +101,20 @@ const _STAGE_PASSIVE_DAMAGE_RECEIVED = {
   },
 };
 
+// Position-aware passive observers driven by ATTACHED SUPPORT cards. Keyed
+// by support cardId; called with the wearer (and the attack target) so the
+// handler can check wearer position and whether `target` is the wearer.
+const _SUPPORT_PASSIVE_DAMAGE_RECEIVED = {
+  // hBP01-121 Kotori: wearer in own center/collab → wearer takes −10.
+  'hBP01-121': (state, wearer, target, ownIdx) => {
+    if (target.instanceId !== wearer.instanceId) return 0;
+    const own = state.players[ownIdx];
+    if (own.zones.center?.instanceId !== wearer.instanceId &&
+        own.zones.collab?.instanceId !== wearer.instanceId) return 0;
+    return -10;
+  },
+};
+
 function _getStagePassiveDamageReceivedModifier(state, target, ownIdx) {
   const own = state.players[ownIdx];
   if (!own) return 0;
@@ -110,9 +124,17 @@ function _getStagePassiveDamageReceivedModifier(state, target, ownIdx) {
     ...(own.zones.backstage || []),
   ].filter(Boolean);
   for (const observer of stage) {
+    // Member-driven passives (e.g. hBP04-074 アーニャ effectG)
     const fn = _STAGE_PASSIVE_DAMAGE_RECEIVED[observer.cardId];
     if (typeof fn === 'function') {
       total += fn(state, observer, target, ownIdx) || 0;
+    }
+    // Support-driven passives needing position context (e.g. hBP01-121 Kotori)
+    for (const sup of (observer.attachedSupport || [])) {
+      const supFn = _SUPPORT_PASSIVE_DAMAGE_RECEIVED[sup.cardId];
+      if (typeof supFn === 'function') {
+        total += supFn(state, observer, target, ownIdx) || 0;
+      }
     }
   }
   return total;

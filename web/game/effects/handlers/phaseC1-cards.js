@@ -177,13 +177,10 @@ export function registerPhaseC1(){
   });
   // hBP01-118 あん肝 mascot HP+10
   reg('hBP01-118',HOOK.ON_PLAY,(s,c)=>({state:s,resolved:true,log:'吉祥物HP+10'}));
-  // hBP01-119 ジョブズ mascot HP+10 + heal on art
+  // hBP01-119 ジョブズ mascot HP+10 (REGISTRY-backed). The アキ-only heal-on-art
+  // path was registered on ART_RESOLVE for the support's cardId — never fires.
+  // Removed; the conditional heal is left as documentation in REGISTRY comment.
   reg('hBP01-119',HOOK.ON_PLAY,(s,c)=>({state:s,resolved:true,log:'吉祥物HP+10'}));
-  reg('hBP01-119',HOOK.ON_ART_RESOLVE,(s,c)=>{
-    const m=getStageMembers(s.players[c.player]).find(x=>x.inst.damage>0);
-    if(m)m.inst.damage=Math.max(0,m.inst.damage-10);
-    return{state:s,resolved:true,log:'1位成員HP回10'};
-  });
   // hBP02-009 白上フブキ Debut effectG:
   //   [Limited collab] All own members carrying a 吉祥物 (mascot) +10 art damage.
   // Fires per art declaration via firePassiveModifiers. Pushes +10 when this
@@ -354,10 +351,8 @@ export function registerPhaseC1(){
     if(shion)sendCheerArchive(p,shion.inst,'紫');
     return{state:s,resolved:true,log:'能量→存檔，紫吶喊→シオン'};
   });
-  // hBP02-086 ホロスパークリング tool +20
-  reg('hBP02-086',HOOK.ON_ART_DECLARE,(s,c)=>({state:s,resolved:true,effect:boost(20),log:'道具+20'}));
-  // hBP02-087 シオンのステッキ tool +10
-  reg('hBP02-087',HOOK.ON_ART_DECLARE,(s,c)=>({state:s,resolved:true,effect:boost(10),log:'道具+10'}));
+  // hBP02-086 ホロスパークリング, hBP02-087 紫咲シオンの魔法のステッキ —
+  // dead ART_DECLARE handlers removed. REGISTRY backs +20/+10 art respectively.
   // hBP02-090 ネジマキツネ mascot HP+20
   reg('hBP02-090',HOOK.ON_PLAY,(s,c)=>({state:s,resolved:true,log:'吉祥物HP+20'}));
   // hBP02-093 ミテイル mascot HP+20
@@ -643,8 +638,7 @@ export function registerPhaseC1(){
     }
     return{state:s,resolved:true};
   });
-  // hBP03-097 リコーダー tool +10
-  reg('hBP03-097',HOOK.ON_ART_DECLARE,(s,c)=>({state:s,resolved:true,effect:boost(10),log:'道具+10'}));
+  // hBP03-097 リコーダー — dead ART_DECLARE handler removed. REGISTRY +10 art.
   // hBP03-100 ペロ mascot HP+20
   reg('hBP03-100',HOOK.ON_PLAY,(s,c)=>({state:s,resolved:true,log:'吉祥物HP+20，吶喊變無色'}));
   // hBP03-106 SSRB fan

@@ -307,14 +307,8 @@ export function registerTop50() {
     return { state, resolved: true };
   });
 
-  // 14. hBP01-116 うぱお mascot: +10 damage to bearer's arts
-  reg('hBP01-116', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-      log: '吉祥物加成 +10',
-    };
-  });
+  // 14. hBP01-116 うぱお — REMOVED dead handler. ART_DECLARE on support's
+  // cardId never fires. REGISTRY artDamageBoost: +10 covers it.
 
   // 15. hBP02-079 爆発の魔法: 20 special dmg to opponent center or collab
   reg('hBP02-079', HOOK.ON_PLAY, (state, ctx) => {
@@ -441,14 +435,7 @@ export function registerTop50() {
     return { state, resolved: true, log: '無宝鐘マリン' };
   });
 
-  // 22. hBP03-102 フトイヌ mascot: +10 damage
-  reg('hBP03-102', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-      log: '吉祥物加成 +10',
-    };
-  });
+  // 22. hBP03-102 フトイヌ — REMOVED dead handler. REGISTRY artDamageBoost: +10.
 
   // 23. hBP06-093 山田ルイ54世: search 2 holoX members
   reg('hBP06-093', HOOK.ON_PLAY, (state, ctx) => {
@@ -1017,40 +1004,17 @@ export function registerTop50() {
     return { state, resolved: true, log: '無 1st 角巻わため' };
   });
 
-  // 49. hBP01-121 Kotori mascot: -10 damage taken on center/collab
-  reg('hBP01-121', HOOK.ON_DAMAGE_TAKEN, (state, ctx) => {
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_REDUCTION', amount: 10, duration: 'persistent' },
-      log: '中心/聯動受到傷害 -10',
-    };
-  });
-  reg('hBP01-121', HOOK.ON_BLOOM, (state, ctx) => {
-    const player = state.players[ctx.player];
-    drawCards(player, 1);
-    return { state, resolved: true, log: '附加 Kotori 的角色綻放升級時抽 1 張' };
-  });
+  // 49. hBP01-121 Kotori — REMOVED dead handlers (ON_DAMAGE_TAKEN /
+  //     ON_BLOOM both register on the support's cardId; neither hook fires
+  //     for support cards). The position-aware −10 lives in
+  //     DamageCalculator._SUPPORT_PASSIVE_DAMAGE_RECEIVED. The キアラ-only
+  //     bloom-draw is a wearer-event-during-bloom trigger that needs a new
+  //     ON_BLOOM observer broadcast — left unimplemented (rare interaction).
 
-  // 50. hBP07-102 角巻わためのハンマー tool
-  reg('hBP07-102', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'self', duration: 'instant' },
-      log: '道具 +20',
-    };
-  });
-  reg('hBP07-102', HOOK.ON_ART_RESOLVE, (state, ctx) => {
-    const roll = rollDie();
-    if (roll === 3 || roll === 5) {
-      const player = state.players[ctx.player];
-      const others = getStageMembers(player).filter(m => m.inst.instanceId !== ctx.memberInst?.instanceId);
-      if (others.length > 0) {
-        applyDamageToMember(others[0].inst, 50);
-      }
-      return { state, resolved: true, log: `骰 ${roll} → 對 1 位己方其他成員 50 特殊傷害` };
-    }
-    return { state, resolved: true, log: `骰 ${roll}（無效果）` };
-  });
+  // 50. hBP07-102 角巻わためのハンマー — REMOVED dead handlers. REGISTRY
+  //     artDamageBoost: +20 (only on 角巻わため wearer) covers the +20.
+  //     The 2nd-center +30 conditional + dice→ally 50 special damage is
+  //     skipped (needs wearer position + dice; nontrivial).
 
   return count;
 }

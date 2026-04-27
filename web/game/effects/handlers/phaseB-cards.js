@@ -471,12 +471,10 @@ export function registerPhaseB() {
     return { state, resolved: true };
   });
 
-  // 75. hBP02-094 Tatang mascot: +10 dmg
-  reg('hBP02-094', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: 'Tatang +10',
-  }));
+  // 75. hBP02-094 Tatang mascot — REMOVED dead handler (was registered on
+  // ON_ART_DECLARE for the support's cardId, which never fires; ART_DECLARE
+  // fires on the attacker's cardId). Real boost lives in
+  // AttachedSupportEffects REGISTRY (artDamageBoost +10 / +30 HP on レイネ).
 
   // 76. hBP02-040 沙花叉クロヱ art1: reveal top 3, +20 per member, archive
   reg('hBP02-040', HOOK.ON_ART_DECLARE, (state, ctx) => {
@@ -515,12 +513,8 @@ export function registerPhaseB() {
     return { state, resolved: false, prompt: { type: 'ORDER_TO_BOTTOM', player: ctx.player, message: '頂 4 張無 #3期生，選擇放回牌底的順序', cards: allCards } };
   });
 
-  // 78. hBP02-095 ドクロくん mascot: +10
-  reg('hBP02-095', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '吉祥物 +10',
-  }));
+  // 78. hBP02-095 ドクロくん — REMOVED dead handler. Real +10 art boost
+  // lives in AttachedSupportEffects REGISTRY.
 
   // 79. hBP01-001 天音かなた oshi: HP→50; SP: +50 dmg, +50 if white
   reg('hBP01-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
@@ -1009,19 +1003,8 @@ export function registerPhaseB() {
     };
   });
 
-  // 114. hSD06-011 ﾁｬｷ丸 tool: +10
-  reg('hSD06-011', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '道具 +10',
-  }));
-
-  // 115. hSD02-013 阿修羅＆羅刹 tool: +10
-  reg('hSD02-013', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '道具 +10',
-  }));
+  // 114. hSD06-011 ﾁｬｷ丸 — REMOVED dead handler. REGISTRY backs the +10.
+  // 115. hSD02-013 阿修羅＆羅刹 — REMOVED dead handler. REGISTRY backs the +10.
 
   // 116. hBP04-070 大空スバル effectC: +10 dmg per cheer (max 3)
   reg('hBP04-070', HOOK.ON_COLLAB, (state, ctx) => {
@@ -1543,26 +1526,12 @@ export function registerPhaseB() {
     return { state, resolved: true, log: `${returned} 吶喊回吶喊牌組` };
   });
 
-  // 150. hBP06-098 鬼神刀「阿修羅」 tool
-  reg('hBP06-098', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '道具 +10',
-  }));
+  // 150. hBP06-098 鬼神刀「阿修羅」 — REMOVED dead handler. REGISTRY +10 backs it.
 
-  // 151. hBP04-104 スバルドダック mascot
-  reg('hBP04-104', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    let total = 0;
-    for (const p of state.players) {
-      for (const m of getStageMembers(p)) total += m.inst.attachedCheer.length;
-    }
-    const bonus = total >= 10 ? 20 : 0;
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: bonus, target: 'self', duration: 'instant' },
-      log: bonus ? `總吶喊 ≥10 → +20` : 'HP +20',
-    };
-  });
+  // 151. hBP04-104 スバルドダック — REMOVED dead handler. ART_DECLARE on a
+  // support cardId never fires (only attackers fire ART_DECLARE). REGISTRY
+  // backs +20 HP. The conditional スバル + total cheer ≥10 → +20 art is
+  // skipped — needs cross-side cheer counting at calculate time.
 
   // 152. hBP06-104 スバ友 fan
   reg('hBP06-104', HOOK.ON_PLAY, (state, ctx) => ({ state, resolved: true, log: '粉絲附加' }));
@@ -1700,12 +1669,8 @@ export function registerPhaseB() {
   // 155. hBP01-124 開拓者 fan
   reg('hBP01-124', HOOK.ON_PLAY, (state, ctx) => ({ state, resolved: true, log: '開拓者附加' }));
 
-  // 156. hBP05-082 アキ・ローゼンタールの斧 tool
-  reg('hBP05-082', HOOK.ON_ART_DECLARE, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-    log: '斧 +10',
-  }));
+  // 156. hBP05-082 アキ・ローゼンタールの斧 — REMOVED dead handler. REGISTRY
+  // (artDamageBoost: +10, +40 more on 1st+ アキ) covers it.
 
   // 157. hSD01-002 AZKi oshi
   reg('hSD01-002', HOOK.ON_OSHI_SKILL, (state, ctx) => {
@@ -1870,19 +1835,10 @@ export function registerPhaseB() {
     return { state, resolved: true, log: 'SP: 森カリオペ可雙重藝能' };
   });
 
-  // 166. hBP07-104 Thorn tool
-  reg('hBP07-104', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    let bonus = 20;
-    if (ctx.memberInst?.damage > 0) {
-      const card = getCard(ctx.memberInst.cardId);
-      if (card?.bloom === '2nd') bonus += 20;
-    }
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: bonus, target: 'self', duration: 'instant' },
-      log: `Thorn +${bonus}`,
-    };
-  });
+  // 166. hBP07-104 Thorn — REMOVED dead handler. REGISTRY artDamageBoost
+  // covers the +20 base for エリザベス wearer. Conditional 2nd エリザベス
+  // damaged → +20 extra is skipped (would need access to wearer instance
+  // damage state from REGISTRY context).
 
   // 167. hBP07-001 角巻わため oshi
   reg('hBP07-001', HOOK.ON_OSHI_SKILL, (state, ctx) => ({
