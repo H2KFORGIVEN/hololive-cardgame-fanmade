@@ -2707,6 +2707,137 @@
     "cheer_deck_count": 20
   },
   {
+    "deck_id": "decklog-35W6M",
+    "deck_code": "35W6M",
+    "title": "AZKi単",
+    "oshi": "AZKi",
+    "source": "decklog",
+    "event": "WGP25-26 Taipei",
+    "event_date": "2026-03-14",
+    "placement": "2nd (oKIWIo)",
+    "url": "https://decklog-en.bushiroad.com/ja/view/35W6M",
+    "oshi_cards": [
+      {
+        "card_id": "hBP07-006",
+        "count": 1,
+        "name": "AZKi",
+        "type": "主推",
+        "color": "紫",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-006_SEC.png"
+      }
+    ],
+    "main_deck": [
+      {
+        "card_id": "hBP01-056",
+        "count": 1,
+        "name": "鷹嶺ルイ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-056_C.png"
+      },
+      {
+        "card_id": "hBP01-056",
+        "count": 10,
+        "name": "鷹嶺ルイ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-056_C.png"
+      },
+      {
+        "card_id": "hBP01-060",
+        "count": 2,
+        "name": "鷹嶺ルイ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-060_U.png"
+      },
+      {
+        "card_id": "hBP01-061",
+        "count": 4,
+        "name": "鷹嶺ルイ",
+        "type": "成員",
+        "color": "紅",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-061_P.png"
+      },
+      {
+        "card_id": "hBP02-035",
+        "count": 18,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-035_C.png"
+      },
+      {
+        "card_id": "hBP02-035",
+        "count": 1,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-035_C.png"
+      },
+      {
+        "card_id": "hBP02-036",
+        "count": 3,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-036_U.png"
+      },
+      {
+        "card_id": "hBP02-038",
+        "count": 3,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-038_U.png"
+      },
+      {
+        "card_id": "hBP02-039",
+        "count": 1,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-039_SR.png"
+      },
+      {
+        "card_id": "hBP02-040",
+        "count": 2,
+        "name": "沙花叉クロヱ",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP02/hBP02-040_UR.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 1,
+        "name": "じゃあ敵だね",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-108_P.png"
+      },
+      {
+        "card_id": "hBP06-093",
+        "count": 4,
+        "name": "山田ルイ54世",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-093_U.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY04-001",
+        "count": 20,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20
+  },
+  {
     "deck_id": "decklog-1CUGQ",
     "deck_code": "1CUGQ",
     "title": "いろは単",
