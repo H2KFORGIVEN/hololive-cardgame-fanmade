@@ -1959,3 +1959,166 @@ body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.8);
   letter-spacing: 0.02em;
 }
+
+
+/* ============================================================ */
+/* ===== Session 1 VFX polish (Shadowverse-inspired) ===== */
+/* ============================================================ */
+
+/*
+ * Goal: bring the table-side feel closer to Shadowverse without changing
+ * any DOM structure. All hooks are CSS classes / data-attributes added by
+ * GameBoard / CardRenderer at render time.
+ *
+ * Conventions:
+ *   .vfx-idle          — subtle breathing on stage members (auto-applied
+ *                        to .zone-card-slot .game-card and .backstage-slot
+ *                        .game-card via :not(.card-rest))
+ *   .vfx-active        — golden pulse (member can attack / oshi can use)
+ *   .vfx-just-placed   — short flash + scale when a card lands on stage
+ *   .vfx-just-drew     — brief glow on hand cards drawn this draw step
+ *   .vfx-effect-toast  — floating handler-result text (small, near origin)
+ *   #vfx-attack-arrow  — single SVG element follows cursor when targeting
+ */
+
+/* Idle breathing: only stage members, not rested, not currently animating */
+@keyframes vfx-breath {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50%      { transform: scale(1.012); filter: brightness(1.03); }
+}
+.zone-card-slot .game-card:not(.card-rest):not(.card-bloom-anim):not(.vfx-just-placed),
+.backstage-slot .game-card:not(.card-rest):not(.card-bloom-anim):not(.vfx-just-placed) {
+  animation: vfx-breath 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Active golden pulse: cards that can act this turn (attack / collab / oshi) */
+@keyframes vfx-active-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,200,80,0.6), 0 0 0 0 rgba(255,200,80,0.2); }
+  50%      { box-shadow: 0 0 0 4px rgba(255,200,80,0.45), 0 0 14px 6px rgba(255,200,80,0.4); }
+}
+.game-card.vfx-active {
+  animation: vfx-active-pulse 1.6s ease-in-out infinite, vfx-breath 4s ease-in-out infinite;
+  border-color: rgba(255,200,80,0.7);
+}
+
+/* Just-placed: card drops in with brief scale + flash overlay */
+@keyframes vfx-place-flash {
+  0%   { transform: scale(0.7) translateY(-20px); opacity: 0; filter: brightness(2); }
+  40%  { transform: scale(1.12) translateY(0);    opacity: 1; filter: brightness(1.5); }
+  70%  { transform: scale(0.96);                  filter: brightness(1.1); }
+  100% { transform: scale(1);                     filter: brightness(1); }
+}
+.game-card.vfx-just-placed {
+  animation: vfx-place-flash 0.55s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+/* Just-drew: hand card has a brief golden border-glow as it lands in hand */
+@keyframes vfx-draw-glow {
+  0%   { box-shadow: 0 0 0 0 rgba(255,210,90,0); }
+  20%  { box-shadow: 0 0 0 3px rgba(255,210,90,0.7), 0 0 20px 8px rgba(255,210,90,0.5); }
+  100% { box-shadow: 0 0 0 0 rgba(255,210,90,0); }
+}
+.game-card.vfx-just-drew {
+  animation: vfx-draw-glow 0.9s ease-out forwards;
+}
+
+/* Hand-card hover lift: rises and scales; CSS :has() pushes neighbours aside */
+.hand-area .card-with-attachments,
+.hand-area .game-card {
+  transition: transform 0.22s cubic-bezier(.2,.8,.2,1),
+              box-shadow 0.22s,
+              z-index 0s 0.22s;  /* z-index resets after lift ends */
+}
+.hand-area .card-with-attachments:hover,
+.hand-area .card-with-attachments:focus-within,
+.hand-area .game-card:hover {
+  transform: translateY(-22px) scale(1.18);
+  z-index: 50;
+  transition: transform 0.22s cubic-bezier(.2,.8,.2,1),
+              box-shadow 0.22s,
+              z-index 0s;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35), 0 0 0 2px rgba(255,210,90,0.5);
+}
+/* Sibling slide: when one hand-card is hovered, neighbours move slightly aside.
+   Uses :has() — supported in all modern browsers (Chrome 105+, Safari 15.4+). */
+.hand-area:has(.game-card:hover, .card-with-attachments:hover) > * {
+  transition: transform 0.2s ease;
+}
+.hand-area:has(> .card-with-attachments:hover) > .card-with-attachments:not(:hover) {
+  transform: scale(0.98);
+}
+
+/* Effect toast (handler-result tip) — small float text near origin */
+@keyframes vfx-effect-toast-float {
+  0%   { opacity: 0; transform: translate(-50%, 0) scale(0.85); }
+  15%  { opacity: 1; transform: translate(-50%, -8px) scale(1); }
+  80%  { opacity: 1; transform: translate(-50%, -32px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -42px) scale(0.95); }
+}
+.vfx-effect-toast {
+  position: fixed;
+  z-index: 320;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(79,73,130,0.95) 0%, rgba(36,32,80,0.95) 100%);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  white-space: nowrap;
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: translate(-50%, 0);
+  animation: vfx-effect-toast-float 1.6s cubic-bezier(.2,.8,.4,1) forwards;
+}
+.vfx-effect-toast.tone-damage {
+  background: linear-gradient(135deg, rgba(220,40,60,0.95) 0%, rgba(150,20,30,0.95) 100%);
+}
+.vfx-effect-toast.tone-heal {
+  background: linear-gradient(135deg, rgba(60,200,140,0.95) 0%, rgba(20,140,90,0.95) 100%);
+}
+.vfx-effect-toast.tone-buff {
+  background: linear-gradient(135deg, rgba(255,180,40,0.95) 0%, rgba(200,120,20,0.95) 100%);
+}
+
+/* Attack-target arrow (single shared SVG follows cursor when targeting) */
+#vfx-attack-arrow {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 290;
+  pointer-events: none;
+  display: none;  /* JS toggles via .visible class */
+}
+#vfx-attack-arrow.visible { display: block; }
+#vfx-attack-arrow .vfx-arrow-path {
+  fill: none;
+  stroke: url(#vfx-arrow-grad);
+  stroke-width: 6;
+  stroke-linecap: round;
+  filter: drop-shadow(0 2px 6px rgba(255,80,40,0.6));
+  animation: vfx-arrow-flow 0.6s linear infinite;
+}
+#vfx-attack-arrow .vfx-arrow-head {
+  fill: #ff6b3a;
+  filter: drop-shadow(0 2px 6px rgba(255,80,40,0.6));
+}
+@keyframes vfx-arrow-flow {
+  0%   { stroke-dasharray: 0 14 8; stroke-dashoffset: 0; }
+  100% { stroke-dasharray: 0 14 8; stroke-dashoffset: -22; }
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .game-card.vfx-active,
+  .zone-card-slot .game-card,
+  .backstage-slot .game-card {
+    animation: none !important;
+  }
+  .vfx-effect-toast { animation-duration: 0.4s; }
+}

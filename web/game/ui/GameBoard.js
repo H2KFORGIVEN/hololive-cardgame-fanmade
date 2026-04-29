@@ -1,4 +1,4 @@
-import { ZONE, PHASE } from '../core/constants.js';
+import { ZONE, PHASE, MEMBER_STATE } from '../core/constants.js';
 import { getCard, getCardImage, localized } from '../core/CardDatabase.js';
 import { renderCard, renderCardPreview } from './CardRenderer.js';
 import { renderPhaseBar } from './PhaseBar.js';
@@ -61,6 +61,17 @@ function renderPlayerField(state, playerIdx, localPlayer, isOpponent) {
   const isActive = state.activePlayer === playerIdx;
   const selectable = isActive && !isOpponent;
   const targetable = isActive && isOpponent && state.phase === PHASE.PERFORMANCE;
+  // Session 1: golden pulse for cards that can act this turn (own side only,
+  // performance phase, member is ACTIVE state, hasn't yet performed in that
+  // position). Lets the player see at a glance which cards still have an art.
+  const canAttackThisTurn = (m, position) => {
+    if (!m || isOpponent) return false;
+    if (!isActive) return false;
+    if (state.phase !== PHASE.PERFORMANCE) return false;
+    if (m.state !== MEMBER_STATE.ACTIVE) return false;
+    if (player.performedArts?.[position]) return false;
+    return true;
+  };
 
   return `
     <div class="playsheet-field ${isOpponent ? 'field-mirrored' : ''}">
@@ -73,12 +84,12 @@ function renderPlayerField(state, playerIdx, localPlayer, isOpponent) {
 
       <!-- 3: Collab -->
       <div class="zone-pos zone-collab">
-        ${renderSingleCardZone(player.zones[ZONE.COLLAB], 'Collab', selectable && state.phase === PHASE.MAIN, targetable)}
+        ${renderSingleCardZone(player.zones[ZONE.COLLAB], 'Collab', selectable && state.phase === PHASE.MAIN, targetable, canAttackThisTurn(player.zones[ZONE.COLLAB], 'collab'))}
       </div>
 
       <!-- 2: Center -->
       <div class="zone-pos zone-center">
-        ${renderSingleCardZone(player.zones[ZONE.CENTER], 'Center', selectable && state.phase === PHASE.MAIN, targetable)}
+        ${renderSingleCardZone(player.zones[ZONE.CENTER], 'Center', selectable && state.phase === PHASE.MAIN, targetable, canAttackThisTurn(player.zones[ZONE.CENTER], 'center'))}
       </div>
 
       <!-- 1: Oshi -->
@@ -114,12 +125,12 @@ function renderPlayerField(state, playerIdx, localPlayer, isOpponent) {
   `;
 }
 
-function renderSingleCardZone(card, label, selectable, targetable) {
+function renderSingleCardZone(card, label, selectable, targetable, active = false) {
   if (!card) {
     return `<div class="zone-card-slot empty-slot"></div>`;
   }
   return `<div class="zone-card-slot">
-    ${renderCard(card, 'field', { selectable, targetable })}
+    ${renderCard(card, 'field', { selectable, targetable, active })}
   </div>`;
 }
 

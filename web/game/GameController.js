@@ -11,6 +11,7 @@ import { renderActionPanel } from './ui/ActionPanel.js';
 import { renderCardPreview } from './ui/CardRenderer.js';
 import { initEffects } from './effects/registerAll.js';
 import { showManualAdjustModal, showEffectPromptModal } from './ui/ManualAdjustModal.js';
+import { showAttackArrow, hideAttackArrow, showEffectToast, inferTone } from './fx/vfx-helpers.js';
 
 export class GameController {
   constructor(container) {
@@ -825,6 +826,12 @@ export class GameController {
 
   renderBoard() {
     const state = this.adapter.getState();
+    // Hide the attack arrow on every render unless we're still in target-pick.
+    // The arrow's listener references DOM nodes that are about to be replaced,
+    // so cleaning up here avoids stale handlers + dangling rendering.
+    try {
+      if (this.interactionMode !== 'select_art_target') hideAttackArrow();
+    } catch (_e) { /* defensive */ }
     // Online: localPlayer is fixed (0 or 1), set by server
     // Local: localPlayer follows activePlayer (same screen, switch perspective)
     const localPlayer = this.mode === 'online'
@@ -858,6 +865,35 @@ export class GameController {
         this.showDiceRoll(parseInt(diceMatch[1]), entry.msg);
         break;
       }
+    }
+
+    // Session 1 VFX: surface fresh "[效果]" handler results as floating toasts
+    // near the active player's center so the player sees what just fired
+    // without scanning the log.
+    const toastNow = Date.now();
+    if (!this._toastSeenIds) this._toastSeenIds = new Set();
+    for (const entry of recentLogs) {
+      const msg = entry.msg || '';
+      if (!msg.startsWith('  [效果] ')) continue;
+      // Stable id from ts + msg so we toast once per logged effect
+      const eid = `${entry.ts}|${msg}`;
+      if (this._toastSeenIds.has(eid)) continue;
+      if ((toastNow - entry.ts) > 2000) continue;
+      this._toastSeenIds.add(eid);
+      const text = msg.replace('  [效果] ', '').slice(0, 80);
+      // Anchor: prefer active player's center card, fall back to top of screen
+      const activeP = state.activePlayer;
+      const ownerSel = activeP === localPlayer ? '.player-self' : '.player-opp';
+      const anchor =
+        this.container.querySelector(`${ownerSel} .center-slot .game-card`) ||
+        this.container.querySelector(`${ownerSel} .collab-slot .game-card`) ||
+        this.container;
+      try { showEffectToast(text, anchor, inferTone(text)); }
+      catch (_e) { /* defensive — never break render on toast failure */ }
+    }
+    // Trim seen-set so it doesn't grow unbounded
+    if (this._toastSeenIds.size > 200) {
+      this._toastSeenIds = new Set([...this._toastSeenIds].slice(-100));
     }
 
     // Check for attack / damage / knockdown in recent logs — trigger cinematic animations
@@ -1196,6 +1232,13 @@ export class GameController {
           this.pendingAction = { type: ACTION.USE_ART, position, artIndex };
           this.interactionMode = 'select_art_target';
           this.showHint('選擇對手的中心或聯動成員作為目標');
+          // Show attack arrow from attacker → cursor
+          try {
+            const attackerEl =
+              this.container.querySelector(`.player-self .${position}-slot .game-card`) ||
+              this.container.querySelector(`.${position}-slot .game-card`);
+            if (attackerEl) showAttackArrow(attackerEl);
+          } catch (_e) { /* defensive */ }
         }
         break;
       }
@@ -1347,6 +1390,7 @@ export class GameController {
       if (opponent.zones[ZONE.COLLAB]?.instanceId === instanceId) targetPosition = 'collab';
 
       if (targetPosition) {
+        try { hideAttackArrow(); } catch (_e) {}
         this.adapter.sendAction({ ...this.pendingAction, targetPosition });
         this.pendingAction = null;
         this.interactionMode = null;

@@ -9,6 +9,14 @@ export function renderCard(instance, size = 'field', options = {}) {
   const isRest = instance.state === MEMBER_STATE.REST;
   const isFaceDown = instance.faceDown;
 
+  // Session 1 VFX hooks:
+  //   .vfx-just-placed — first frame after placedThisTurn flips
+  //   .vfx-just-drew   — first frame after _drawnAt timestamp set
+  //   .vfx-active      — caller (GameController) sets options.active when this
+  //                      member can act (attack / collab / use oshi). Pulses
+  //                      a golden border so the player sees what's available.
+  const justDrewWindow = instance._drawnAt && (Date.now() - instance._drawnAt) < 900;
+  const justPlacedWindow = instance.placedThisTurn && !instance._animShown;
   const classes = [
     'game-card',
     `card-${size}`,
@@ -17,8 +25,10 @@ export function renderCard(instance, size = 'field', options = {}) {
     options.selectable ? 'card-selectable' : '',
     options.targetable ? 'card-targetable' : '',
     options.selected ? 'card-selected' : '',
-    instance.placedThisTurn && !instance._animShown ? 'card-place-anim' : '',
+    options.active ? 'vfx-active' : '',
+    justPlacedWindow ? 'card-place-anim vfx-just-placed' : '',
     instance.bloomedThisTurn && !instance._bloomAnimShown ? 'card-bloom-anim' : '',
+    !isFaceDown && justDrewWindow ? 'vfx-just-drew' : '',
   ].filter(Boolean).join(' ');
 
   const damageHtml = (!isFaceDown && instance.damage > 0)
