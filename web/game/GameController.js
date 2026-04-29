@@ -1052,9 +1052,36 @@ export class GameController {
         this.handleHandCardClick(idx);
       });
 
-      // Drag-and-drop: make hand cards draggable during Main phase
+      // Drag-and-drop: make hand cards draggable during Main phase.
+      //
+      // 2026-04-29: Activity/item support cards are now played by dragging
+      // UP from the hand by ≥ DRAG_PLAY_THRESHOLD pixels. No special play
+      // zone needed — the upward distance itself is the play gesture. If
+      // the user drops onto a member/zone, attach/place still works as
+      // before.
       if (state.phase === PHASE.MAIN && state.activePlayer === p) {
         el.setAttribute('draggable', 'true');
+        // Per-handler tracking: drag start coords + whether the
+        // distance threshold has been reached (for visual feedback).
+        let _dragStartY = 0;
+        let _dragHandIndex = -1;
+        let _dragIsPlayable = false;  // true for activity/item support
+        let _dragOverThreshold = false;
+        const DRAG_PLAY_THRESHOLD = 110;  // px upward from hand-card start
+
+        // Global pointer tracker (browsers don't put coords on `dragend`
+        // reliably across vendors). We attach a `dragover` on document that
+        // updates a class on the dragged card based on cursor offset.
+        const _onDocDragOver = (ev) => {
+          if (!_dragIsPlayable || _dragHandIndex < 0) return;
+          const dy = _dragStartY - ev.clientY;
+          const past = dy >= DRAG_PLAY_THRESHOLD;
+          if (past !== _dragOverThreshold) {
+            _dragOverThreshold = past;
+            el.classList.toggle('drag-play-armed', past);
+          }
+        };
+
         el.addEventListener('dragstart', (e) => {
           const idx = parseInt(el.dataset.handIndex);
           const inst = state.players[p].zones[ZONE.HAND][idx];
@@ -1062,31 +1089,72 @@ export class GameController {
           e.dataTransfer.setData('text/plain', JSON.stringify({ handIndex: idx }));
           e.dataTransfer.effectAllowed = 'move';
           el.classList.add('dragging');
-          // Highlight valid drop zones
-          this.container.querySelectorAll('.zone-backstage, .zone-center, .zone-collab').forEach(z => z.classList.add('drop-hint'));
-          // For activity/item support: show play zone above hand
-          if (cd && isSupport(cd.type) && cd.type !== '支援・吉祥物' && cd.type !== '支援・道具' && cd.type !== '支援・粉絲') {
-            this._showPlayZone();
+
+          _dragStartY = e.clientY;
+          _dragHandIndex = idx;
+          _dragOverThreshold = false;
+          _dragIsPlayable = !!(cd && isSupport(cd.type)
+            && cd.type !== '支援・吉祥物'
+            && cd.type !== '支援・道具'
+            && cd.type !== '支援・粉絲');
+
+          // Highlight valid drop zones (still useful for attachable supports
+          // and member placement).
+          this.container.querySelectorAll('.zone-backstage, .zone-center, .zone-collab')
+            .forEach(z => z.classList.add('drop-hint'));
+
+          // If activity/item support, attach the global cursor tracker so we
+          // can visually indicate when the threshold is crossed.
+          if (_dragIsPlayable) {
+            document.addEventListener('dragover', _onDocDragOver);
           }
         });
-        el.addEventListener('dragend', () => {
-          el.classList.remove('dragging');
-          this.container.querySelectorAll('.drop-hint, .drop-hover').forEach(z => z.classList.remove('drop-hint', 'drop-hover'));
-          this._removePlayZone();
+
+        el.addEventListener('dragend', (e) => {
+          el.classList.remove('dragging', 'drag-play-armed');
+          this.container.querySelectorAll('.drop-hint, .drop-hover')
+            .forEach(z => z.classList.remove('drop-hint', 'drop-hover'));
+          document.removeEventListener('dragover', _onDocDragOver);
+
+          // If this was a playable support and we ended sufficiently above
+          // the start point, fire PLAY_SUPPORT. Use the LAST tracked dy
+          // since `e.clientY` on dragend can be 0 in some browsers.
+          if (_dragIsPlayable && _dragHandIndex >= 0) {
+            // Prefer the live event's clientY if non-zero, else trust the
+            // last threshold flag set by _onDocDragOver.
+            const finalY = e.clientY || 0;
+            const liveDy = finalY ? (_dragStartY - finalY) : 0;
+            const passed = (finalY > 0)
+              ? (liveDy >= DRAG_PLAY_THRESHOLD)
+              : _dragOverThreshold;
+            if (passed) {
+              this.adapter.sendAction({ type: ACTION.PLAY_SUPPORT, handIndex: _dragHandIndex });
+              this.interactionMode = null;
+              this.renderBoard();
+            }
+          }
+
+          _dragHandIndex = -1;
+          _dragIsPlayable = false;
+          _dragOverThreshold = false;
         });
 
-        // Swipe-up gesture for touch: play support card by swiping up
+        // Touch swipe-up (mobile): same threshold so the gesture parity
+        // matches desktop drag-up.
         let touchStartY = 0;
         el.addEventListener('touchstart', (e) => {
           touchStartY = e.touches[0].clientY;
         }, { passive: true });
         el.addEventListener('touchend', (e) => {
           const dy = touchStartY - e.changedTouches[0].clientY;
-          if (dy > 60) { // swipe up > 60px
+          if (dy > DRAG_PLAY_THRESHOLD) {
             const idx = parseInt(el.dataset.handIndex);
             const inst = state.players[p].zones[ZONE.HAND][idx];
             const cd = inst ? getCard(inst.cardId) : null;
-            if (cd && isSupport(cd.type) && cd.type !== '支援・吉祥物' && cd.type !== '支援・道具' && cd.type !== '支援・粉絲') {
+            if (cd && isSupport(cd.type)
+                && cd.type !== '支援・吉祥物'
+                && cd.type !== '支援・道具'
+                && cd.type !== '支援・粉絲') {
               this.adapter.sendAction({ type: ACTION.PLAY_SUPPORT, handIndex: idx });
               this.interactionMode = null;
               this.renderBoard();
@@ -1843,29 +1911,10 @@ export class GameController {
     this.renderBoard();
   }
 
-  _showPlayZone() {
-    this._removePlayZone();
-    const zone = document.createElement('div');
-    zone.className = 'play-zone-overlay';
-    zone.innerHTML = '<div class="play-zone-text">拖到這裡使用支援卡</div>';
-    zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('play-zone-active'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('play-zone-active'));
-    zone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      try {
-        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
-        this.adapter.sendAction({ type: ACTION.PLAY_SUPPORT, handIndex: data.handIndex });
-        this.interactionMode = null;
-        this._removePlayZone();
-        this.renderBoard();
-      } catch (err) {}
-    });
-    this.container.appendChild(zone);
-  }
-
-  _removePlayZone() {
-    this.container.querySelectorAll('.play-zone-overlay').forEach(el => el.remove());
-  }
+  // Removed 2026-04-29: _showPlayZone / _removePlayZone (special "drop here
+  // to use support" overlay). Replaced by drag-up-distance detection in
+  // bindBoardEvents — activity/item supports now activate by dragging the
+  // hand card upward by ≥ 110 px. See `_dragHandIndex` / `_dragOverThreshold`.
 
   _showActionToast(msg) {
     if (!msg) return;

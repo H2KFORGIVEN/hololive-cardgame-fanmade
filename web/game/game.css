@@ -965,6 +965,7 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
 .hand-card-wrap {
   flex-shrink: 0;
   transition: transform .15s;
+  position: relative;  /* anchor for .drag-play-armed::after hint */
 }
 .hand-card-wrap .game-card,
 .hand-card-wrap .card-with-attachments {
@@ -1302,27 +1303,9 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
 .order-remaining { cursor: pointer; transition: transform .15s; }
 .order-remaining:hover { transform: scale(1.08); outline: 2px solid #4fc3f7; border-radius: 6px; }
 
-/* Play zone overlay for dragging support cards */
-.play-zone-overlay {
-  position: absolute;
-  bottom: 120px; left: 10%; right: 10%; height: 60px;
-  border: 2px dashed rgba(255,215,0,0.6);
-  border-radius: 12px;
-  background: rgba(255,215,0,0.08);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 100;
-  pointer-events: all;
-  transition: all .2s;
-}
-.play-zone-text {
-  color: rgba(255,215,0,0.8); font-weight: 700; font-size: 0.9rem;
-}
-.play-zone-active {
-  border-color: rgba(255,215,0,1);
-  background: rgba(255,215,0,0.2);
-  box-shadow: 0 0 20px rgba(255,215,0,0.3);
-}
-.play-zone-active .play-zone-text { color: #ffd700; }
+/* Removed 2026-04-29: .play-zone-overlay & friends.
+ * Activity/item supports are now played by dragging the hand card upward
+ * by ≥ 110 px. See `.drag-play-armed` rules at end of file. */
 
 /* Cost icons on buttons */
 .cost-icon-sm { width: 16px; height: 16px; vertical-align: middle; margin: 0 1px; }
@@ -2160,3 +2143,57 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
 }
 .audio-mute-btn:hover { transform: scale(1.08); background: #fff; }
 .audio-mute-btn.muted { opacity: 0.55; }
+
+
+/* ============================================================ */
+/* ===== Drag-up support play (Session 2 hand-gesture) ===== */
+/* ============================================================ */
+
+/*
+ * Activity/item support cards (支援・物品 / 支援・活動 / 支援・工作人員)
+ * are played by dragging the hand card upward by ≥ 110 px. No special
+ * play zone is shown — the gesture itself is the affordance. While
+ * dragging:
+ *   .dragging          — opacity 0.4 + slight scale (existing)
+ *   .drag-play-armed   — added when cursor is past the threshold; pulses
+ *                        a green border + scale to signal "release to play"
+ */
+
+@keyframes drag-play-armed-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(80,220,140,0.0),
+                0 0 0 0 rgba(80,220,140,0.0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(80,220,140,0.65),
+                0 0 22px 8px rgba(80,220,140,0.55);
+  }
+}
+
+.hand-card-wrap.drag-play-armed,
+.hand-card-wrap.drag-play-armed .game-card,
+.hand-card-wrap.drag-play-armed .card-with-attachments {
+  animation: drag-play-armed-pulse 0.7s ease-in-out infinite;
+  border-color: rgba(80,220,140,0.85) !important;
+  filter: brightness(1.12) saturate(1.15);
+}
+
+/* Tiny "↑ 釋放使用" hint that floats above the dragged card while armed. */
+.hand-card-wrap.drag-play-armed::after {
+  content: '↑ 釋放使用';
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 140, 80, 0.95);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  pointer-events: none;
+  animation: drag-play-armed-pulse 0.7s ease-in-out infinite;
+}
