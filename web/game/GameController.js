@@ -1682,10 +1682,16 @@ export class GameController {
       ids: items.map(c => c.instanceId).sort(),
       remaining: (prompt.remainingCards || []).map(c => c.instanceId).sort(),
     });
+    // Belt-and-suspenders: stash the key on the overlay's dataset so even if
+    // `_currentPromptKey` gets cleared unexpectedly, we still detect a
+    // matching live modal and skip recreation.
     const existing = document.querySelector('.target-select-overlay');
-    if (existing && this._currentPromptKey === promptKey) {
+    if (existing && (existing.dataset.promptKey === promptKey || this._currentPromptKey === promptKey)) {
+      this._currentPromptKey = promptKey;
+      if (window.__hocgDebugModal) console.log('[modal] skip — same key', promptKey.slice(0, 60));
       return; // already showing this exact prompt — leave the modal alone
     }
+    if (window.__hocgDebugModal) console.log('[modal] (re)create', { had: !!existing, oldKey: existing?.dataset.promptKey?.slice(0,60), newKey: promptKey.slice(0, 60) });
     this._currentPromptKey = promptKey;
 
     // Remove any existing overlay to prevent duplicates
@@ -1693,6 +1699,7 @@ export class GameController {
 
     const overlay = document.createElement('div');
     overlay.className = 'target-select-overlay';
+    overlay.dataset.promptKey = promptKey;
     overlay.innerHTML = `
       <div class="search-select-modal">
         <div class="search-select-title">${prompt.message || '選擇一張卡片'}</div>
@@ -1870,15 +1877,19 @@ export class GameController {
       player: prompt.player,
       ids: cards.map(c => c.instanceId).sort(),
     });
-    const existingOrder = document.querySelector('.target-select-overlay.has-order-modal, .target-select-overlay');
-    if (existingOrder && this._currentPromptKey === promptKey) {
+    const existingOrder = document.querySelector('.target-select-overlay');
+    if (existingOrder && (existingOrder.dataset.promptKey === promptKey || this._currentPromptKey === promptKey)) {
+      this._currentPromptKey = promptKey;
+      if (window.__hocgDebugModal) console.log('[modal] skip ORDER — same key', promptKey.slice(0, 60));
       return;
     }
+    if (window.__hocgDebugModal) console.log('[modal] (re)create ORDER', { had: !!existingOrder, oldKey: existingOrder?.dataset.promptKey?.slice(0,60), newKey: promptKey.slice(0, 60) });
     this._currentPromptKey = promptKey;
 
     document.querySelectorAll('.target-select-overlay').forEach(el => el.remove());
     const overlay = document.createElement('div');
     overlay.className = 'target-select-overlay has-order-modal';
+    overlay.dataset.promptKey = promptKey;
     const ordered = [];
 
     const renderCards = () => {
