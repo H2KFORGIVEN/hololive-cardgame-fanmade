@@ -187,3 +187,31 @@ export async function flash(x, y, { color = 0xffffff, radius = 300, duration = 3
     g.destroy();
   });
 }
+
+// ── Session 2: ON_PLAY entrance puff ──
+// Quick gold-white sparkle ring + small bright flash + shockwave halo.
+// Used when a member is placed onto stage. Lighter than impact() so it
+// doesn't compete with combat VFX.
+export async function entrancePuff(x, y, { color = 0xfff2c0, intense = false } = {}) {
+  await impact(x, y, { color, size: intense ? 90 : 70, lineCount: 12 });
+  await flash(x, y, { color: 0xffffff, radius: 110, duration: 280 });
+  await shockwave(x, y, { color, maxRadius: 130, duration: 450 });
+  await sparkle(x, y, { count: intense ? 18 : 12, color, spread: 70, rise: 90, duration: 900 });
+}
+
+// ── Session 2: per-color attack tint helper ──
+// Maps a hololive card color (Chinese char) to a tinted attack profile:
+// returns { beamColor, trailColor, embertColor, impactColor }.
+// Used by GameController._animateArtAttack / _animateHitShake to theme
+// the existing fx pipeline based on the attacker's color.
+export function attackPaletteFor(color) {
+  const palettes = {
+    '紅': { beam: 0xffaa66, trail: 0xff3322, ember: 0xff5533, impact: 0xffcc88 }, // fire
+    '藍': { beam: 0x99ddff, trail: 0x3366ee, ember: 0x4499ff, impact: 0xaaeeff }, // water
+    '綠': { beam: 0xc8ff99, trail: 0x44aa44, ember: 0x66cc66, impact: 0xddffcc }, // earth
+    '紫': { beam: 0xffaaff, trail: 0x9933cc, ember: 0xcc66ff, impact: 0xffccff }, // arcane
+    '黃': { beam: 0xfff099, trail: 0xffcc22, ember: 0xffdd44, impact: 0xfff5cc }, // light
+    '白': { beam: 0xffffff, trail: 0xeeeeff, ember: 0xffffff, impact: 0xffffff }, // pure
+  };
+  return palettes[color] || { beam: 0xffeeaa, trail: 0xff7733, ember: 0xffcc66, impact: 0xffeeaa };
+}

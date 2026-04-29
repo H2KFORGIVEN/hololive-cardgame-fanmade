@@ -12,6 +12,9 @@ import { renderCardPreview } from './ui/CardRenderer.js';
 import { initEffects } from './effects/registerAll.js';
 import { showManualAdjustModal, showEffectPromptModal } from './ui/ManualAdjustModal.js';
 import { showAttackArrow, hideAttackArrow, showEffectToast, inferTone } from './fx/vfx-helpers.js';
+import { initSounds, playSound, isMuted, setMuted } from './fx/sounds.js';
+// Wire global audio unlock (browsers require user gesture for first sound).
+initSounds();
 
 export class GameController {
   constructor(container) {
@@ -841,11 +844,43 @@ export class GameController {
 
     this.container.innerHTML = renderGameBoard(state, localPlayer);
     this.bindBoardEvents();
+    this._ensureMuteButton();
 
-    // Mark placement/bloom animations as shown so they don't replay
+    // Session 2: detect freshly drawn hand cards (within 900ms window) and
+    // fire a single 'draw' sound for the batch. Track seen instance ids so
+    // multiple renders during the draw window don't re-play.
+    const nowDraw = Date.now();
+    if (!this._drawSeenIds) this._drawSeenIds = new Set();
+    let firedDrawSfx = false;
+    for (const pl of state.players) {
+      for (const c of (pl.zones[ZONE.HAND] || [])) {
+        if (!c?._drawnAt) continue;
+        if ((nowDraw - c._drawnAt) > 900) continue;
+        if (this._drawSeenIds.has(c.instanceId)) continue;
+        this._drawSeenIds.add(c.instanceId);
+        if (!firedDrawSfx) {
+          try { playSound('draw'); } catch (_e) {}
+          firedDrawSfx = true;
+        }
+      }
+    }
+    if (this._drawSeenIds.size > 200) {
+      this._drawSeenIds = new Set([...this._drawSeenIds].slice(-100));
+    }
+
+    // Mark placement/bloom animations as shown so they don't replay,
+    // and fire Session 2 entrance puff for fresh placements.
     for (const p of state.players) {
       const members = [p.zones['center'], p.zones['collab'], ...(p.zones['backstage'] || [])].filter(Boolean);
       for (const m of members) {
+        if (m.placedThisTurn && !m._animShown) {
+          // Wait one frame so the card DOM exists, then puff at it
+          requestAnimationFrame(() => {
+            const memberEl = this.container.querySelector(`[data-instance-id="${m.instanceId}"]`);
+            this._animateEntrancePuff(memberEl);
+          });
+          try { playSound('place'); } catch (_e) {}
+        }
         if (m.placedThisTurn) m._animShown = true;
         if (m.bloomedThisTurn) m._bloomAnimShown = true;
       }
@@ -897,10 +932,14 @@ export class GameController {
     }
 
     // Check for attack / damage / knockdown in recent logs — trigger cinematic animations
+    // Session 2: also fire matching sound effects via Web Audio synth.
+    if (!this._sfxSeenIds) this._sfxSeenIds = new Set();
     for (const entry of recentLogs) {
+      const sid = `${entry.ts}|${entry.msg?.slice(0, 40)}`;
       if (entry.msg?.includes('使用') && entry.msg?.match(/使用 (.+?)！/) && (Date.now() - entry.ts) < 1500) {
         const artName = entry.msg.match(/使用 (.+?)！/)?.[1];
         this._animateArtAttack(artName);
+        if (!this._sfxSeenIds.has(sid)) { this._sfxSeenIds.add(sid); playSound('attack'); }
       }
       const dmgMatch = entry.msg?.match(/造成 (\d+) 傷害/);
       if (dmgMatch && (Date.now() - entry.ts) < 2000) {
@@ -909,24 +948,36 @@ export class GameController {
         const targetName = knockMatch?.[1] || '';
         this._showFloatingDamage(amount, targetName, localPlayer);
         this._animateHitShake(targetName);
+        if (!this._sfxSeenIds.has(sid)) {
+          this._sfxSeenIds.add(sid);
+          playSound(amount >= 80 ? 'crit' : 'click');
+        }
         break;
       }
       if (entry.msg?.includes('被擊倒') && (Date.now() - entry.ts) < 2000) {
         this._showKnockdownFlash();
         const koMatch = entry.msg.match(/(.+?) 被擊倒/);
         this._animateKnockdown(koMatch?.[1] || '');
+        if (!this._sfxSeenIds.has(sid)) { this._sfxSeenIds.add(sid); playSound('knockdown'); }
         break;
       }
       if (entry.msg?.includes('推し技能') && (Date.now() - entry.ts) < 1500) {
         this._animateOshiBurst();
+        if (!this._sfxSeenIds.has(sid)) { this._sfxSeenIds.add(sid); playSound('oshi'); }
       }
       if (entry.msg?.includes('聯動') && !entry.msg?.includes('聯動位置') && (Date.now() - entry.ts) < 1500) {
         this._animateCollab();
+        if (!this._sfxSeenIds.has(sid)) { this._sfxSeenIds.add(sid); playSound('collab'); }
       }
       const bloomMatch = entry.msg?.match(/綻放為 (.+?) \(/);
       if (bloomMatch && (Date.now() - entry.ts) < 1500) {
         this._animateBloom(bloomMatch[1]);
+        if (!this._sfxSeenIds.has(sid)) { this._sfxSeenIds.add(sid); playSound('bloom'); }
       }
+    }
+    // Trim sfx-seen to keep memory bounded
+    if (this._sfxSeenIds.size > 200) {
+      this._sfxSeenIds = new Set([...this._sfxSeenIds].slice(-100));
     }
 
     // Check for pending effect prompts after every render
@@ -1044,22 +1095,21 @@ export class GameController {
         }, { passive: true });
       }
 
-      // Hover preview
-      el.addEventListener('mouseenter', () => {
+      // Hover preview (Session 2: 0.4s delay + cursor-anchored position)
+      el.addEventListener('mouseenter', (e) => {
         const instanceId = parseInt(el.dataset.instanceId);
         const hand = state.players[p].zones[ZONE.HAND];
         const inst = hand.find(c => c.instanceId === instanceId);
-        if (inst) {
-          const preview = document.getElementById('cardPreview');
-          if (preview) {
-            preview.innerHTML = renderCardPreview(inst.cardId);
-            preview.hidden = false;
-          }
-        }
+        if (!inst) return;
+        if (this._previewTimer) clearTimeout(this._previewTimer);
+        const startX = e.clientX, startY = e.clientY;
+        this._previewTimer = setTimeout(() => {
+          this._showCardPreview(inst.cardId, startX, startY);
+        }, 400);
       });
       el.addEventListener('mouseleave', () => {
-        const preview = document.getElementById('cardPreview');
-        if (preview) preview.hidden = true;
+        if (this._previewTimer) { clearTimeout(this._previewTimer); this._previewTimer = null; }
+        this._hideCardPreview();
       });
     });
 
@@ -1129,21 +1179,48 @@ export class GameController {
       });
     }
 
-    // Board card hover preview (members + oshi)
+    // Board card hover preview (Session 2: same delay + cursor-anchor as hand)
     this.container.querySelectorAll('.game-card[data-card-id], .oshi-pos-card[data-card-id], .attached-support-card[data-card-id], .attached-cheer-card[data-card-id]').forEach(el => {
-      el.addEventListener('mouseenter', () => {
+      el.addEventListener('mouseenter', (e) => {
         const cardId = el.dataset.cardId;
-        const preview = document.getElementById('cardPreview');
-        if (preview && cardId) {
-          preview.innerHTML = renderCardPreview(cardId);
-          preview.hidden = false;
-        }
+        if (!cardId) return;
+        if (this._previewTimer) clearTimeout(this._previewTimer);
+        const startX = e.clientX, startY = e.clientY;
+        this._previewTimer = setTimeout(() => {
+          this._showCardPreview(cardId, startX, startY);
+        }, 400);
       });
       el.addEventListener('mouseleave', () => {
-        const preview = document.getElementById('cardPreview');
-        if (preview) preview.hidden = true;
+        if (this._previewTimer) { clearTimeout(this._previewTimer); this._previewTimer = null; }
+        this._hideCardPreview();
       });
     });
+  }
+
+  // Session 2: cursor-anchored hover preview helpers
+  _showCardPreview(cardId, x, y) {
+    const preview = document.getElementById('cardPreview');
+    if (!preview || !cardId) return;
+    preview.innerHTML = renderCardPreview(cardId);
+    preview.hidden = false;
+    // Position: prefer right of cursor; flip to left if would overflow viewport
+    const rect = preview.getBoundingClientRect();
+    const margin = 16;
+    let left = x + 24;
+    let top = y - rect.height / 2;
+    if (left + rect.width > window.innerWidth - margin) {
+      left = x - rect.width - 24;
+    }
+    if (top < margin) top = margin;
+    if (top + rect.height > window.innerHeight - margin) {
+      top = window.innerHeight - rect.height - margin;
+    }
+    preview.style.left = `${Math.max(margin, left)}px`;
+    preview.style.top = `${top}px`;
+  }
+  _hideCardPreview() {
+    const preview = document.getElementById('cardPreview');
+    if (preview) preview.hidden = true;
   }
 
   handleActionButton(actionType, dataset) {
@@ -1815,6 +1892,38 @@ export class GameController {
     return this._fx;
   }
 
+  // Session 2: floating audio mute toggle. Renders once into <body> so it
+  // survives renderBoard re-renders. Click flips the localStorage flag.
+  _ensureMuteButton() {
+    if (document.querySelector('.audio-mute-btn')) return;
+    const btn = document.createElement('button');
+    btn.className = 'audio-mute-btn';
+    const refresh = () => {
+      const muted = isMuted();
+      btn.textContent = muted ? '🔇' : '🔊';
+      btn.classList.toggle('muted', muted);
+      btn.title = muted ? '聲音：關閉（點擊開啟）' : '聲音：開啟（點擊關閉）';
+    };
+    btn.addEventListener('click', () => {
+      setMuted(!isMuted());
+      refresh();
+      if (!isMuted()) playSound('click');
+    });
+    refresh();
+    document.body.appendChild(btn);
+  }
+
+  // Session 2: derive attacker color so per-color palette tints the VFX.
+  _attackerColor() {
+    const state = this.adapter.getState();
+    const me = state.players[state.activePlayer];
+    const ctr = me?.zones[ZONE.CENTER];
+    const cb = me?.zones[ZONE.COLLAB];
+    // Prefer whichever is currently animating; default to center
+    const card = (ctr && getCard(ctr.cardId)) || (cb && getCard(cb.cardId));
+    return card?.color || null;
+  }
+
   _animateArtAttack(artName) {
     // Find the attacker (local player's active center or collab using an art)
     const attackers = this.container.querySelectorAll('.local-field .zone-center .game-card, .local-field .zone-collab .game-card');
@@ -1824,11 +1933,14 @@ export class GameController {
         setTimeout(() => el.classList.remove('card-art-attack'), 600);
       }
     });
-    // Pixi: ember charge-up at attacker
+    // Pixi: ember charge-up at attacker, tinted by attacker color
+    const myColor = this._attackerColor();
     this._getFx().then(fx => {
+      const palette = fx.attackPaletteFor ? fx.attackPaletteFor(myColor) : null;
+      const emberColor = palette?.ember || 0xffcc66;
       for (const el of attackers) {
         const r = el.getBoundingClientRect();
-        fx.ember(r.left + r.width / 2, r.top + r.height / 2, { count: 10, color: 0xffcc66, spread: 40, rise: 50 });
+        fx.ember(r.left + r.width / 2, r.top + r.height / 2, { count: 10, color: emberColor, spread: 40, rise: 50 });
       }
     }).catch(() => {});
   }
@@ -1841,17 +1953,29 @@ export class GameController {
     el.classList.add('card-hit-shake');
     setTimeout(() => el.classList.remove('card-hit-shake'), 550);
 
-    // Pixi: attack beam from local attacker → target, then impact + shockwave
+    // Pixi: attack beam from local attacker → target, tinted per attacker color
+    const myColor = this._attackerColor();
     this._getFx().then(fx => {
+      const palette = fx.attackPaletteFor ? fx.attackPaletteFor(myColor) : { beam: 0xffeeaa, trail: 0xff7733, impact: 0xffeeaa };
       const attackerEl = this.container.querySelector('.local-field .zone-center .game-card, .local-field .zone-collab .game-card');
       if (attackerEl) {
-        fx.attackBeam(attackerEl, el, { color: 0xffeeaa, trailColor: 0xff7733, duration: 380 });
+        fx.attackBeam(attackerEl, el, { color: palette.beam, trailColor: palette.trail, duration: 380 });
       } else {
         // Fallback: just impact at target
         const r = el.getBoundingClientRect();
-        fx.impact(r.left + r.width / 2, r.top + r.height / 2, { color: 0xffeeaa, size: 120 });
-        fx.shockwave(r.left + r.width / 2, r.top + r.height / 2, { color: 0xff7733, maxRadius: 180 });
+        fx.impact(r.left + r.width / 2, r.top + r.height / 2, { color: palette.impact, size: 120 });
+        fx.shockwave(r.left + r.width / 2, r.top + r.height / 2, { color: palette.trail, maxRadius: 180 });
       }
+    }).catch(() => {});
+  }
+
+  // Session 2: ON_PLAY entrance puff — fired when a member is freshly placed
+  // (placedThisTurn flips). Uses entrancePuff at the new member's center.
+  _animateEntrancePuff(memberEl) {
+    if (!memberEl) return;
+    this._getFx().then(fx => {
+      const r = memberEl.getBoundingClientRect();
+      fx.entrancePuff(r.left + r.width / 2, r.top + r.height / 2);
     }).catch(() => {});
   }
 
