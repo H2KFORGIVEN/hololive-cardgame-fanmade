@@ -1006,6 +1006,14 @@ export class GameController {
       } else {
         this._handleSearchSelectPlace(state.pendingEffect);
       }
+    } else {
+      // No pending effect: clean up any stray modal + reset idempotency key.
+      // Without this, a race between sendAction and a follow-up renderBoard
+      // could leave the modal on screen briefly.
+      if (this._currentPromptKey != null) {
+        this._currentPromptKey = null;
+        document.querySelectorAll('.target-select-overlay').forEach(el => el.remove());
+      }
     }
   }
 
@@ -1662,6 +1670,24 @@ export class GameController {
       return { instanceId: id, cardId: inst?.cardId, name: card?.name || '', image: inst ? getCardImage(inst.cardId) : '' };
     });
 
+    // Idempotency guard: skip re-rendering the modal when the prompt hasn't
+    // actually changed. renderBoard() runs multiple times per state update
+    // (state callback + explicit post-action calls + animation triggers),
+    // and recreating the DOM each call causes visible flicker.
+    const promptKey = JSON.stringify({
+      type: prompt.type,
+      after: prompt.afterAction || null,
+      msg: prompt.message || '',
+      player: prompt.player,
+      ids: items.map(c => c.instanceId).sort(),
+      remaining: (prompt.remainingCards || []).map(c => c.instanceId).sort(),
+    });
+    const existing = document.querySelector('.target-select-overlay');
+    if (existing && this._currentPromptKey === promptKey) {
+      return; // already showing this exact prompt — leave the modal alone
+    }
+    this._currentPromptKey = promptKey;
+
     // Remove any existing overlay to prevent duplicates
     document.querySelectorAll('.target-select-overlay').forEach(el => el.remove());
 
@@ -1701,6 +1727,7 @@ export class GameController {
         // Short delay for visual feedback, then resolve
         setTimeout(() => {
           overlay.remove();
+          this._currentPromptKey = null;
           this._resolveSearchSelect(prompt, selected);
         }, 150);
       });
@@ -1708,6 +1735,7 @@ export class GameController {
 
     const closeModal = () => {
       overlay.remove();
+      this._currentPromptKey = null;
       // If there are remaining cards to order to bottom, chain to that instead of clearing
       if (prompt.remainingCards && prompt.remainingCards.length > 0) {
         const s = this.adapter.getState();
@@ -1728,6 +1756,7 @@ export class GameController {
   }
 
   _resolveSearchSelect(prompt, selected) {
+    this._currentPromptKey = null;
     if (this.mode === 'online') {
       // Send selection to server; server will resolve and send STATE_UPDATE
       this.adapter.sendEffectResponse(selected);
@@ -1834,9 +1863,22 @@ export class GameController {
       return;
     }
 
+    // Idempotency guard — same rationale as _handleSearchSelectPlace.
+    const promptKey = JSON.stringify({
+      type: 'ORDER_TO_BOTTOM',
+      msg: prompt.message || '',
+      player: prompt.player,
+      ids: cards.map(c => c.instanceId).sort(),
+    });
+    const existingOrder = document.querySelector('.target-select-overlay.has-order-modal, .target-select-overlay');
+    if (existingOrder && this._currentPromptKey === promptKey) {
+      return;
+    }
+    this._currentPromptKey = promptKey;
+
     document.querySelectorAll('.target-select-overlay').forEach(el => el.remove());
     const overlay = document.createElement('div');
-    overlay.className = 'target-select-overlay';
+    overlay.className = 'target-select-overlay has-order-modal';
     const ordered = [];
 
     const renderCards = () => {
@@ -1872,6 +1914,7 @@ export class GameController {
           ordered.push(parseInt(el.dataset.id));
           if (ordered.length === cards.length) {
             overlay.remove();
+            this._currentPromptKey = null;
             this._resolveOrderToBottom(prompt, ordered);
           } else {
             renderCards();
@@ -1891,6 +1934,7 @@ export class GameController {
   }
 
   _resolveOrderToBottom(prompt, orderedIds) {
+    this._currentPromptKey = null;
     if (this.mode === 'online') {
       this.adapter.sendEffectResponse({ orderedIds });
       return;
@@ -2152,6 +2196,7 @@ export class GameController {
     } catch (_e) { /* defensive */ }
     if (playerIdx != null) this._shuffleDeck(s.players[playerIdx]);
     s.pendingEffect = null;
+    this._currentPromptKey = null;
     this.adapter.init(s);
     this.renderBoard();
   }
