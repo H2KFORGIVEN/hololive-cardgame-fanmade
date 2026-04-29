@@ -1337,6 +1337,19 @@ export class GameController {
     if (!card) return;
     const cardData = getCard(card.cardId);
 
+    // Session 2 UX: if no interaction mode set yet, infer from card type.
+    // Click a support card → auto-enter PLAY_SUPPORT flow; click a Debut/Spot
+    // member with empty stage slots → auto-enter PLACE_MEMBER. Lets the user
+    // play cards without going through the action panel button first.
+    if (!this.interactionMode && state.phase === PHASE.MAIN && state.activePlayer === this.adapter.getLocalPlayer()) {
+      if (cardData && isSupport(cardData.type)) {
+        this.interactionMode = 'select_hand_support';
+      } else if (cardData && isMember(cardData.type) &&
+                 (cardData.bloom === 'Debut' || cardData.bloom === 'Spot')) {
+        this.interactionMode = 'select_hand_member';
+      }
+    }
+
     if (this.interactionMode === 'select_hand_member') {
       if (cardData && isMember(cardData.type) && (cardData.bloom === 'Debut' || cardData.bloom === 'Spot')) {
         this.adapter.sendAction({ type: ACTION.PLACE_MEMBER, handIndex });
@@ -1745,6 +1758,10 @@ export class GameController {
     }
     // If only 1 card, auto-place it
     if (cards.length === 1) {
+      try {
+        const anchor = this.container.querySelector('.player-self .zone-center .game-card') || this.container;
+        showEffectToast(`1 張牌已放回牌組底部`, anchor, 'neutral');
+      } catch (_e) {}
       this._resolveOrderToBottom(prompt, cards.map(c => c.instanceId));
       return;
     }
@@ -2073,6 +2090,17 @@ export class GameController {
 
   _clearPendingAndShuffle(playerIdx) {
     const s = this.adapter.getState();
+    // Session 2 UX: surface a toast so silent auto-resolutions (e.g. hSD01-018
+    // sub-PC with no LIMITED card in top 5, or 0/1 cards remaining) give the
+    // player visible feedback instead of "nothing happened".
+    try {
+      const lastLog = s.log[s.log.length - 1];
+      const txt = lastLog?.msg || '';
+      const anchor = this.container.querySelector('.player-self .center-slot .game-card')
+                  || this.container.querySelector('.player-self .zone-center .game-card')
+                  || this.container;
+      showEffectToast('效果結算（牌組已重新洗牌）', anchor, 'neutral');
+    } catch (_e) { /* defensive */ }
     if (playerIdx != null) this._shuffleDeck(s.players[playerIdx]);
     s.pendingEffect = null;
     this.adapter.init(s);
