@@ -25,6 +25,8 @@ export class GameController {
     this.selectingPlayer = 0;
     this.interactionMode = null;
     this.pendingAction = null;
+    // Debug hook: lets devtools / preview drivers reach the running controller.
+    if (typeof window !== 'undefined') window.__hocgGame = this;
   }
 
   async start() {
@@ -1670,10 +1672,14 @@ export class GameController {
       return { instanceId: id, cardId: inst?.cardId, name: card?.name || '', image: inst ? getCardImage(inst.cardId) : '' };
     });
 
-    // Idempotency guard: skip re-rendering the modal when the prompt hasn't
-    // actually changed. renderBoard() runs multiple times per state update
-    // (state callback + explicit post-action calls + animation triggers),
-    // and recreating the DOM each call causes visible flicker.
+    // Two identity keys per prompt:
+    //   promptKey  — exact match (type+msg+ids+remaining+afterAction)
+    //   sessionKey — same multi-select session (type+baseMessage+player+afterAction)
+    // For maxSelect > 1, the engine re-emits a fresh prompt after each pick
+    // with one less card and decremented maxSelect. Without grouping these,
+    // each pick destroys + recreates the modal — visually that's the
+    // "popup keeps popping" the user reported.
+    const baseMessage = prompt.baseMessage || prompt.message || '';
     const promptKey = JSON.stringify({
       type: prompt.type,
       after: prompt.afterAction || null,
@@ -1682,7 +1688,13 @@ export class GameController {
       ids: items.map(c => c.instanceId).sort(),
       remaining: (prompt.remainingCards || []).map(c => c.instanceId).sort(),
     });
-    // Belt-and-suspenders: stash the key on the overlay's dataset so even if
+    const sessionKey = JSON.stringify({
+      type: prompt.type,
+      after: prompt.afterAction || null,
+      base: baseMessage,
+      player: prompt.player,
+    });
+    // Belt-and-suspenders: stash the keys on the overlay's dataset so even if
     // `_currentPromptKey` gets cleared unexpectedly, we still detect a
     // matching live modal and skip recreation.
     const existing = document.querySelector('.target-select-overlay');
@@ -1690,6 +1702,33 @@ export class GameController {
       this._currentPromptKey = promptKey;
       if (window.__hocgDebugModal) console.log('[modal] skip — same key', promptKey.slice(0, 60));
       return; // already showing this exact prompt — leave the modal alone
+    }
+    // Multi-select continuation: same session, different prompt → update DOM
+    // in place (drop picked cards, refresh title) instead of recreating.
+    if (existing && existing.dataset.sessionKey === sessionKey && existing.dataset.promptKey !== promptKey) {
+      if (window.__hocgDebugModal) console.log('[modal] update in-place (multi-select continuation)');
+      const titleEl = existing.querySelector('.search-select-title');
+      if (titleEl) titleEl.textContent = prompt.message || baseMessage || '選擇一張卡片';
+      const wantedIds = new Set(items.map(c => String(c.instanceId)));
+      // Synchronously drop cards no longer in items; reset visual state on
+      // the survivors. (We can't animate a fade-out cleanly here because
+      // _bindSearchSelectClicks does a clone+replace pass right after, which
+      // would orphan our delayed .remove() reference.)
+      existing.querySelectorAll('.search-select-card').forEach(cardEl => {
+        const id = cardEl.dataset.instanceId;
+        if (!wantedIds.has(id)) {
+          cardEl.remove();
+        } else {
+          cardEl.style.pointerEvents = '';
+          cardEl.style.opacity = '';
+          cardEl.style.outline = '';
+        }
+      });
+      existing.dataset.promptKey = promptKey;
+      this._currentPromptKey = promptKey;
+      // Re-arm click handlers on the surviving cards
+      this._bindSearchSelectClicks(existing, prompt, items);
+      return;
     }
     if (window.__hocgDebugModal) console.log('[modal] (re)create', { had: !!existing, oldKey: existing?.dataset.promptKey?.slice(0,60), newKey: promptKey.slice(0, 60) });
     this._currentPromptKey = promptKey;
@@ -1700,12 +1739,13 @@ export class GameController {
     const overlay = document.createElement('div');
     overlay.className = 'target-select-overlay';
     overlay.dataset.promptKey = promptKey;
+    overlay.dataset.sessionKey = sessionKey;
     overlay.innerHTML = `
       <div class="search-select-modal">
         <div class="search-select-title">${prompt.message || '選擇一張卡片'}</div>
         <div class="search-select-cards">
           ${items.map((c, i) => `
-            <div class="search-select-card" data-idx="${i}">
+            <div class="search-select-card" data-idx="${i}" data-instance-id="${c.instanceId}">
               <img src="${c.image || getCardImage(c.cardId)}" alt="${c.name || ''}">
               <div class="search-select-name">${c.name || c.cardId || ''}</div>
             </div>
@@ -1716,29 +1756,7 @@ export class GameController {
     `;
     document.body.appendChild(overlay);
 
-    let resolved = false;
-    overlay.querySelectorAll('.search-select-card').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (resolved) return;
-        resolved = true;
-        // Immediately disable all cards visually and functionally
-        overlay.querySelectorAll('.search-select-card').forEach(c => {
-          c.style.pointerEvents = 'none';
-          c.style.opacity = '0.5';
-        });
-        el.style.opacity = '1';
-        el.style.outline = '3px solid #4fc3f7';
-        const idx = parseInt(el.dataset.idx);
-        const selected = items[idx];
-        // Short delay for visual feedback, then resolve
-        setTimeout(() => {
-          overlay.remove();
-          this._currentPromptKey = null;
-          this._resolveSearchSelect(prompt, selected);
-        }, 150);
-      });
-    });
+    this._bindSearchSelectClicks(overlay, prompt, items);
 
     const closeModal = () => {
       overlay.remove();
@@ -1760,6 +1778,49 @@ export class GameController {
     };
     overlay.querySelector('.target-select-cancel').addEventListener('click', closeModal);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  }
+
+  // Bind click handlers on every .search-select-card inside the overlay.
+  // Extracted so multi-select continuations can re-arm clicks against the
+  // updated `prompt` / `items` after in-place DOM updates.
+  _bindSearchSelectClicks(overlay, prompt, items) {
+    const isMultiSelect = (prompt.maxSelect || 0) > 1;
+    // Build instanceId → item lookup so we can resolve the selected card
+    // even if DOM order/index drifts (it does after in-place updates).
+    const itemById = new Map(items.map(c => [String(c.instanceId), c]));
+    overlay.__resolved = false;
+    overlay.querySelectorAll('.search-select-card').forEach(el => {
+      // Replace by cloning to drop any prior listeners
+      const clone = el.cloneNode(true);
+      el.replaceWith(clone);
+    });
+    overlay.querySelectorAll('.search-select-card').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (overlay.__resolved) return;
+        overlay.__resolved = true;
+        // Visually highlight the picked card
+        overlay.querySelectorAll('.search-select-card').forEach(c => {
+          c.style.pointerEvents = 'none';
+          if (c !== el) c.style.opacity = '0.5';
+        });
+        el.style.opacity = '1';
+        el.style.outline = '3px solid #4fc3f7';
+        const id = el.dataset.instanceId;
+        const selected = itemById.get(id) || items[parseInt(el.dataset.idx) || 0];
+        // Multi-select continuation: keep overlay alive — the next prompt
+        // will update it in place via the sessionKey path.
+        // Single-select: remove overlay before resolving, otherwise the
+        // cleanup-when-no-pendingEffect branch will tear it down.
+        setTimeout(() => {
+          if (!isMultiSelect) {
+            overlay.remove();
+            this._currentPromptKey = null;
+          }
+          this._resolveSearchSelect(prompt, selected);
+        }, 150);
+      });
+    });
   }
 
   _resolveSearchSelect(prompt, selected) {
