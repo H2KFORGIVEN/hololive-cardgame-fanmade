@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>黑金主題 — 視覺預覽 (BlackGold Theme Preview)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: #0a0707;
+    color: #e8d394;
+    padding: 32px 24px;
+    line-height: 1.6;
+  }
+  .header {
+    max-width: 1400px; margin: 0 auto 32px;
+    border-bottom: 1px solid rgba(212,175,55,.3);
+    padding-bottom: 24px;
+  }
+  h1 {
+    font-size: 28px; font-weight: 700;
+    background: linear-gradient(135deg, #d4af37 0%, #f3d27a 50%, #b8860b 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle { color: #a89368; font-size: 14px; }
+  .palette {
+    display: flex; gap: 8px; margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid rgba(212,175,55,.3);
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: "SF Mono", Monaco, monospace;
+  }
+  .swatch-color {
+    width: 18px; height: 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  section {
+    max-width: 1400px; margin: 0 auto 48px;
+  }
+  h2 {
+    color: #f3d27a; font-size: 20px; font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .section-desc { color: #a89368; font-size: 13px; margin-bottom: 16px; }
+
+  .compare {
+    display: grid; gap: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 800px) { .compare { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #1a1410;
+    border: 1px solid rgba(212,175,55,.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .card.gold { border-color: rgba(212,175,55,.45); box-shadow: 0 0 24px rgba(212,175,55,.1); }
+  .card-label {
+    padding: 10px 14px;
+    font-size: 13px; font-weight: 600;
+    background: rgba(0,0,0,.4);
+    border-bottom: 1px solid rgba(212,175,55,.15);
+    color: #a89368;
+  }
+  .card.gold .card-label { color: #f3d27a; }
+  .card-body {
+    padding: 24px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 180px;
+  }
+  /* Light bg for original variants so you can actually see the purple/white art */
+  .card.original .card-body { background: #f0eef5; }
+  .card.gold .card-body { background: #0f0a05; }
+
+  .card-body img,
+  .card-body object {
+    max-width: 100%; max-height: 360px;
+    height: auto; display: block;
+  }
+  .triple {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 1100px) { .triple { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px)  { .triple { grid-template-columns: 1fr; } }
+
+  /* Live UI mock — to feel the real combination */
+  .ui-mock {
+    background:
+      url('bg_logo.svg') no-repeat center center / 400px,
+      url('bg_pre-pc-v2-candidate-1.png') no-repeat top center / cover,
+      url('bg-pc-v2-candidate-2.jpg') no-repeat top center / cover,
+      #0a0707;
+    border-radius: 12px;
+    padding: 48px 32px;
+    margin-top: 12px;
+    min-height: 320px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 20px;
+    border: 1px solid rgba(212,175,55,.25);
+  }
+  .ui-mock img.logo { height: 64px; filter: drop-shadow(0 4px 12px rgba(212,175,55,.4)); }
+  .ui-mock h3 {
+    color: #f3d27a; font-size: 22px; font-weight: 700;
+    text-shadow: 0 2px 12px rgba(212,175,55,.3);
+  }
+  .ui-mock .btns { display: flex; gap: 12px; }
+  .ui-mock button {
+    background: linear-gradient(180deg, #1a1410 0%, #0a0707 100%);
+    color: #f3d27a;
+    border: 1px solid #d4af37;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-family: inherit; font-weight: 600; font-size: 14px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .ui-mock button:hover {
+    background: linear-gradient(180deg, #d4af37 0%, #b8860b 100%);
+    color: #0a0707;
+    box-shadow: 0 4px 16px rgba(212,175,55,.4);
+  }
+
+  .candidate-note {
+    background: rgba(212,175,55,.08);
+    border-left: 3px solid #d4af37;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px; color: #c9a849;
+    border-radius: 4px;
+  }
+
+  /* Pending placeholder when AI image not ready */
+  .pending {
+    background: repeating-linear-gradient(45deg,
+      rgba(212,175,55,.08) 0 12px,
+      rgba(212,175,55,.04) 12px 24px);
+    color: #a89368;
+    font-size: 13px;
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>黑金主題 — 視覺預覽</h1>
+  <p class="subtitle">BlackGold Theme · Pre-deployment Preview · 所有素材都在 <code>web/images/brand-blackgold/</code>，原檔未動</p>
+
+  <div class="palette">
+    <div class="swatch"><span class="swatch-color" style="background:#0a0707"></span>#0a0707 深黑底</div>
+    <div class="swatch"><span class="swatch-color" style="background:#1a1410"></span>#1a1410 卡牌底</div>
+    <div class="swatch"><span class="swatch-color" style="background:#d4af37"></span>#d4af37 主金</div>
+    <div class="swatch"><span class="swatch-color" style="background:#f3d27a"></span>#f3d27a 亮金</div>
+    <div class="swatch"><span class="swatch-color" style="background:#b8860b"></span>#b8860b 深金</div>
+    <div class="swatch"><span class="swatch-color" style="background:#a89368"></span>#a89368 銅金（次要文字）</div>
+    <div class="swatch"><span class="swatch-color" style="background:#debc3d"></span>#debc3d NEW 標籤金</div>
+  </div>
+</div>
+
+<!-- ============== SVG 對照（已完成、可立即看） ============== -->
+
+<section>
+  <h2>1. 主 Logo（logo.svg）</h2>
+  <p class="section-desc">最常用、最重要。淺色背景下原版/金版都易看清。</p>
+  <div class="compare">
+    <div class="card original">
+      <div class="card-label">原版（紫 #534b88）</div>
+      <div class="card-body"><img src="../brand/logo.svg" alt="logo original"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">黑金版（金 #d4af37）</div>
+      <div class="card-body"><img src="logo.svg" alt="logo blackgold"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2. 首頁徽章（intro_emblem.svg）</h2>
+  <div class="compare">
+    <div class="card original">
+      <div class="card-label">原版</div>
+      <div class="card-body"><img src="../brand/intro_emblem.svg" alt="emblem original"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">黑金版</div>
+      <div class="card-body"><img src="intro_emblem.svg" alt="emblem blackgold"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3. Logo 文字版（intro_logotxt01 / 02.svg）</h2>
+  <div class="compare">
+    <div class="card original">
+      <div class="card-label">原版 01</div>
+      <div class="card-body"><img src="../brand/intro_logotxt01.svg" alt=""></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">黑金版 01</div>
+      <div class="card-body"><img src="intro_logotxt01.svg" alt=""></div>
+    </div>
+    <div class="card original">
+      <div class="card-label">原版 02</div>
+      <div class="card-body"><img src="../brand/intro_logotxt02.svg" alt=""></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">黑金版 02</div>
+      <div class="card-body"><img src="intro_logotxt02.svg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>4. 背景浮水印 Logo（bg_logo.svg）</h2>
+  <p class="section-desc">頁面中央大型浮水印 (400px)。原本白色 14 處 + 紫色點綴 → 黑金後變主金 + 深金點綴。</p>
+  <div class="compare">
+    <div class="card original">
+      <div class="card-label">原版（白為主）</div>
+      <div class="card-body" style="background:#7a8fb5"><img src="../brand/bg_logo.svg" alt=""></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">黑金版（金為主）</div>
+      <div class="card-body"><img src="bg_logo.svg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>5. 裝飾元素（waku_deco · new · slide_arrow_gold）</h2>
+  <div class="compare">
+    <div class="card original">
+      <div class="card-label">waku_deco 原版（白星）</div>
+      <div class="card-body" style="background:#7a8fb5"><img src="../brand/waku_deco.svg" alt="" style="width:48px"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">waku_deco 黑金版（金星）</div>
+      <div class="card-body"><img src="waku_deco.svg" alt="" style="width:48px"></div>
+    </div>
+    <div class="card original">
+      <div class="card-label">new 原版（金底白字）</div>
+      <div class="card-body"><img src="../brand/new.svg" alt="" style="width:64px"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">new 黑金版（金底黑字）</div>
+      <div class="card-body"><img src="new.svg" alt="" style="width:64px"></div>
+    </div>
+    <div class="card original">
+      <div class="card-label">slide_arrow（已是金色，保留）</div>
+      <div class="card-body" style="background:#1a1410"><img src="../brand/slide_arrow_gold.svg" alt="" style="width:32px"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">slide_arrow（同上）</div>
+      <div class="card-body"><img src="slide_arrow_gold.svg" alt="" style="width:32px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AI 生成圖（背景） ============== -->
+
+<section>
+  <h2>6. 頁面大背景 bg-pc.jpg <span style="color:#a89368; font-size:14px">（已 resize 至原始 2094×1234）</span></h2>
+  <p class="section-desc">原本是淡藍/淡紫 watercolor 漸層（光從頂部往下散）。新版用 <strong>gpt-image-2 high quality</strong> 重生成，3 張候選都是水彩漬風格、頂部金色暈染往下淡化 — 比第一輪的「聚光」效果更接近原圖的漸層方向。</p>
+  <div class="card original" style="margin-bottom:16px">
+    <div class="card-label">原版（淡紫/藍 watercolor）</div>
+    <div class="card-body" style="padding:0; min-height:auto"><img src="../brand/bg-pc.jpg" alt="" style="width:100%; max-height:280px; object-fit:cover"></div>
+  </div>
+  <h3 style="color:#f3d27a; font-size:16px; margin:24px 0 8px">v2 候選（gpt-image-2，建議用這版）</h3>
+  <div class="triple">
+    <div class="card gold">
+      <div class="card-label">v2 候選 1（金光集中頂端）</div>
+      <div class="card-body" style="padding:0"><img src="bg-pc-v2-candidate-1.jpg" alt="" loading="lazy"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">v2 候選 2（金色擴散更廣）</div>
+      <div class="card-body" style="padding:0"><img src="bg-pc-v2-candidate-2.jpg" alt="" loading="lazy"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">v2 候選 3（金色最濃郁）</div>
+      <div class="card-body" style="padding:0"><img src="bg-pc-v2-candidate-3.jpg" alt="" loading="lazy"></div>
+    </div>
+  </div>
+  <details style="margin-top:24px; color:#a89368; font-size:13px">
+    <summary style="cursor:pointer">v1 舊候選（聚光halo風格，已淘汰，留作參考）</summary>
+    <div class="triple" style="margin-top:12px">
+      <div class="card gold"><div class="card-label">v1-1</div><div class="card-body" style="padding:0"><img src="bg-pc-candidate-1.jpg" alt="" loading="lazy"></div></div>
+      <div class="card gold"><div class="card-label">v1-2</div><div class="card-body" style="padding:0"><img src="bg-pc-candidate-2.jpg" alt="" loading="lazy"></div></div>
+      <div class="card gold"><div class="card-label">v1-3</div><div class="card-body" style="padding:0"><img src="bg-pc-candidate-3.jpg" alt="" loading="lazy"></div></div>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2>7. 預載背景 bg_pre-pc.png <span style="color:#a89368; font-size:14px">（已 resize 至原始 2487×2090）</span></h2>
+  <p class="section-desc">原本是淡藍紫三角形馬賽克。你已選定 v1 候選 1 的方向（稀疏金色點綴），這裡是 <strong>gpt-image-2 高解析度版</strong>同方向 ×2 候選。</p>
+  <div class="card original" style="margin-bottom:16px">
+    <div class="card-label">原版（淡藍紫馬賽克）</div>
+    <div class="card-body" style="padding:0; min-height:auto"><img src="../brand/bg_pre-pc.png" alt="" style="width:100%; max-height:240px; object-fit:cover"></div>
+  </div>
+  <h3 style="color:#f3d27a; font-size:16px; margin:24px 0 8px">v2 候選（gpt-image-2 高解析度，建議用這版）</h3>
+  <div class="compare">
+    <div class="card gold">
+      <div class="card-label">v2 候選 1（稀疏金，與原版 v1-1 同方向）</div>
+      <div class="card-body" style="padding:0"><img src="bg_pre-pc-v2-candidate-1.png" alt="" loading="lazy"></div>
+    </div>
+    <div class="card gold">
+      <div class="card-label">v2 候選 2（密度較高）</div>
+      <div class="card-body" style="padding:0"><img src="bg_pre-pc-v2-candidate-2.png" alt="" loading="lazy"></div>
+    </div>
+  </div>
+  <details style="margin-top:24px; color:#a89368; font-size:13px">
+    <summary style="cursor:pointer">v1 舊候選（解析度較低，留作參考）</summary>
+    <div class="compare" style="margin-top:12px">
+      <div class="card gold"><div class="card-label">v1-1（你選的方向）</div><div class="card-body" style="padding:0"><img src="bg_pre-pc-candidate-1.png" alt="" loading="lazy"></div></div>
+      <div class="card gold"><div class="card-label">v1-2</div><div class="card-body" style="padding:0"><img src="bg_pre-pc-candidate-2.png" alt="" loading="lazy"></div></div>
+    </div>
+  </details>
+</section>
+
+<!-- ============== 模擬畫面 ============== -->
+
+<section>
+  <h2>8. 模擬實際使用畫面</h2>
+  <p class="section-desc">把 logo + 背景 + 按鈕風格組合在一起。這裡用 <strong>v2 bg-pc 候選 2 + v2 bg_pre-pc 候選 1</strong> 當示範組合。</p>
+  <div class="ui-mock">
+    <img src="logo.svg" alt="logo" class="logo">
+    <h3>hololive Card Meta</h3>
+    <div class="btns">
+      <button>本地對戰</button>
+      <button>線上對戰</button>
+      <button>新手教學</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📋 決定後的下一步</h2>
+  <div class="card gold">
+    <div class="card-body" style="display:block; padding:24px 32px; min-height:auto">
+      <p style="color:#e8d394">如果你看完滿意這套黑金方向：</p>
+      <ol style="margin:12px 0 12px 24px; color:#a89368">
+        <li>選定 bg-pc 候選編號 + bg_pre-pc 候選編號</li>
+        <li>我把選中的版本複製為正式檔名（覆蓋 <code style="color:#f3d27a">web/images/brand/</code> 下原檔，原檔備份到 <code style="color:#f3d27a">web/images/brand-original-backup/</code>）</li>
+        <li>改 CSS 變數（紫 → 金、白 → 黑）</li>
+        <li>commit、push、Studio pull、視覺驗證</li>
+      </ol>
+      <p style="color:#a89368; font-size:13px; margin-top:12px">如果不滿意：reset 一下就回去，<strong style="color:#f3d27a">完全沒影響原站</strong>。</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
