@@ -312,123 +312,219 @@ export function registerPhaseDGenerated() {
 
   // ── Generated: member effectB/C draw-N ────────────────────────────────
   reg('hBP01-016', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real effectC: 自己的中心成員標示#Promise時，從自己的牌組抽1張牌
+    const center = own.zones[ZONE.CENTER];
+    const tag = center ? (getCard(center.cardId)?.tag || '') : '';
+    if (!String(tag).includes('#Promise')) return { state, resolved: true, log: '中心非 #Promise — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '中心 #Promise → 抽 1 張' };
   });
 
   reg('hBP01-022', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
     const own = state.players[ctx.player];
     drawCards(own, 1);
     return { state, resolved: true, log: '抽 1 張' };
   });
 
   reg('hBP02-057', HOOK.ON_BLOOM, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 2);
-    return { state, resolved: true, log: '抽 2 張' };
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    // Real effectB: 可以將自己手牌2張標示相同標籤的成員放到存檔區：從自己的牌組抽2張牌
+    // Cost-bearing optional effect — skip auto, fall through to MANUAL_EFFECT.
+    return { state }; // empty state → engine emits MANUAL_EFFECT prompt
   });
 
   reg('hBP03-010', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 自己的中心成員為「姫森ルーナ」時，從自己的牌組抽1張牌
+    const center = own.zones[ZONE.CENTER];
+    if (getCard(center?.cardId)?.name !== '姫森ルーナ') return { state, resolved: true, log: '中心非 姫森ルーナ' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '中心 姫森ルーナ → 抽 1 張' };
   });
 
   reg('hBP03-026', HOOK.ON_COLLAB, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
+    // Real: 可以擲1次骰子。如果為2、4、6時，給予對手中心10特殊傷害；
+    //       如果為3、5時，從自己的牌組抽1張牌+對手中心10特殊傷害
+    // Optional dice + branch — fall through to MANUAL_EFFECT for now.
+    return { state };
   });
 
   reg('hBP04-059', HOOK.ON_BLOOM, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    // Real: 將1張手牌存檔，可擲3次骰子：每出現1次奇數抽1張。每回合一次。
+    // Cost-bearing dice loop — fall through to MANUAL_EFFECT.
+    return { state };
   });
 
   reg('hBP05-053', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 在自己後攻的第一個回合，如果自己的主推為「癒月ちょこ」，從牌組抽2張
+    const isBackAttackFirst = state.firstTurn?.[ctx.player] && ctx.player !== state.firstPlayer;
+    if (!isBackAttackFirst) return { state, resolved: true, log: '非後攻第1回合 — 跳過' };
+    if (getCard(own.oshi?.cardId)?.name !== '癒月ちょこ') return { state, resolved: true, log: '主推非 癒月ちょこ — 跳過' };
     drawCards(own, 2);
-    return { state, resolved: true, log: '抽 2 張' };
+    return { state, resolved: true, log: '後攻第1回合+主推癒月ちょこ → 抽 2 張' };
   });
 
   reg('hBP06-019', HOOK.ON_BLOOM, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    // Real: 如果主推為「響咲リオナ」，可將牌組頂1張存檔：抽1張
+    // Optional cost — disable auto, fall through to MANUAL_EFFECT.
+    return { state };
   });
 
   reg('hBP06-047', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 主推為「一条莉々華」且存檔有2張以上「限界飯」 → 抽2張
+    if (getCard(own.oshi?.cardId)?.name !== '一条莉々華') return { state, resolved: true, log: '主推非 一条莉々華 — 跳過' };
+    const limitMeals = (own.zones[ZONE.ARCHIVE] || []).filter(c => getCard(c.cardId)?.name === '限界飯').length;
+    if (limitMeals < 2) return { state, resolved: true, log: `存檔限界飯=${limitMeals}<2 — 跳過` };
     drawCards(own, 2);
-    return { state, resolved: true, log: '抽 2 張' };
+    return { state, resolved: true, log: '主推一条莉々華+存檔限界飯≥2 → 抽 2 張' };
   });
 
   reg('hBP07-089', HOOK.ON_BLOOM, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 2);
-    return { state, resolved: true, log: '抽 2 張' };
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    // Real: 如果自己 #FLOW GLOW 成員上個對手回合被擊倒 → 抽2張. 每回合一次.
+    // Past-event tracking too complex without dedicated state field — disable auto.
+    return { state };
   });
 
   reg('hSD01-015', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
-    drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    // Real: ■與「ときのそら」聯動時 → 抽1
+    //       ■與「AZKi」聯動時 → 吶喊牌組頂1張發送給中心成員
+    // "Collab partner" = the OTHER member among center+collab (this card is one of them)
+    const center = own.zones[ZONE.CENTER];
+    const collab = own.zones[ZONE.COLLAB];
+    const me = ctx.memberInst;
+    const partner = (center && center.instanceId !== me?.instanceId) ? center
+                  : (collab && collab.instanceId !== me?.instanceId) ? collab : null;
+    const partnerName = getCard(partner?.cardId)?.name;
+    if (partnerName === 'ときのそら') {
+      drawCards(own, 1);
+      return { state, resolved: true, log: '與 ときのそら 聯動 → 抽 1' };
+    }
+    if (partnerName === 'AZKi') {
+      // Send top of cheer deck to center
+      const cheerDeck = own.zones[ZONE.CHEER_DECK];
+      if (cheerDeck.length && center) {
+        const cheer = cheerDeck.shift();
+        cheer.faceDown = false;
+        center.attachedCheer = center.attachedCheer || [];
+        center.attachedCheer.push(cheer);
+        return { state, resolved: true, log: '與 AZKi 聯動 → 送吶喊到中心' };
+      }
+    }
+    return { state, resolved: true, log: `搭檔=${partnerName||'?'} — 無效果` };
   });
 
   reg('hSD04-003', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 主推顏色為紫色時 → 抽1
+    if (getCard(own.oshi?.cardId)?.color !== '紫') return { state, resolved: true, log: '主推非紫色 — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '主推紫色 → 抽 1 張' };
   });
 
   reg('hSD05-007', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
     const own = state.players[ctx.player];
     drawCards(own, 1);
     return { state, resolved: true, log: '抽 1 張' };
   });
 
   reg('hSD05-011', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 中心成員標示#ReGLOSS時，如果手牌≤5 → 抽1
+    const center = own.zones[ZONE.CENTER];
+    const tag = String(getCard(center?.cardId)?.tag || '');
+    if (!tag.includes('#ReGLOSS')) return { state, resolved: true, log: '中心非 #ReGLOSS — 跳過' };
+    if (own.zones[ZONE.HAND].length > 5) return { state, resolved: true, log: '手牌>5 — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '中心 #ReGLOSS+手牌≤5 → 抽 1 張' };
   });
 
   reg('hSD06-008', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 中心成員標示#秘密結社holoX，如果手牌≤5 → 抽1
+    const center = own.zones[ZONE.CENTER];
+    const tag = String(getCard(center?.cardId)?.tag || '');
+    if (!tag.includes('#秘密結社holoX')) return { state, resolved: true, log: '中心非 #秘密結社holoX — 跳過' };
+    if (own.zones[ZONE.HAND].length > 5) return { state, resolved: true, log: '手牌>5 — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '中心 holoX+手牌≤5 → 抽 1 張' };
   });
 
   reg('hSD07-012', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+    // Real: 中心為「不知火フレア」，如果自己手牌數比對手少 → 抽1
+    const center = own.zones[ZONE.CENTER];
+    if (getCard(center?.cardId)?.name !== '不知火フレア') return { state, resolved: true, log: '中心非 不知火フレア — 跳過' };
+    if (own.zones[ZONE.HAND].length >= opp.zones[ZONE.HAND].length) return { state, resolved: true, log: '手牌不少於對手 — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '中心 不知火フレア+手牌少於對手 → 抽 1 張' };
   });
 
   reg('hSD10-008', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+    // Real: 查看對手所有手牌。如果其中有支援卡 → 抽1
+    // (Hand-reveal UI not implemented; check programmatically and just apply)
+    const oppHasSupport = opp.zones[ZONE.HAND].some(c => isSupport(getCard(c.cardId)?.type));
+    if (!oppHasSupport) return { state, resolved: true, log: '對手手牌無支援卡 — 跳過' };
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '對手手牌有支援卡 → 抽 1 張' };
   });
 
   reg('hSD12-008', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
-    drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    const opp = state.players[1 - ctx.player];
+    // Real: 後攻第1回合 → 雙方舞台上每有1張吶喊卡，抽1張
+    const isBackAttackFirst = state.firstTurn?.[ctx.player] && ctx.player !== state.firstPlayer;
+    if (!isBackAttackFirst) return { state, resolved: true, log: '非後攻第1回合 — 跳過' };
+    let cheerCount = 0;
+    const allMembers = [own, opp].flatMap(p => [p.zones[ZONE.CENTER], p.zones[ZONE.COLLAB], ...(p.zones[ZONE.BACKSTAGE]||[])].filter(Boolean));
+    for (const m of allMembers) cheerCount += (m.attachedCheer || []).length;
+    if (cheerCount > 0) drawCards(own, cheerCount);
+    return { state, resolved: true, log: `後攻第1回合，雙方場上吶喊=${cheerCount} → 抽 ${cheerCount} 張` };
   });
 
   reg('hSD12-013', HOOK.ON_COLLAB, (state, ctx) => {
-    const own = state.players[ctx.player];
-    drawCards(own, 2);
-    return { state, resolved: true, log: '抽 2 張' };
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
+    // Real: 舞台全員 #Advent，可將後台 1 名 Debut 放回牌組底 → 抽 2
+    // Has cost — fall through to MANUAL_EFFECT.
+    return { state };
   });
 
   reg('hSD18-004', HOOK.ON_COLLAB, (state, ctx) => {
+    if (ctx.triggerEvent === 'member_collabed') return { state, resolved: true };
     const own = state.players[ctx.player];
+    // Real: 後攻第1回合 → 將牌組頂1張存檔，之後抽1張
+    const isBackAttackFirst = state.firstTurn?.[ctx.player] && ctx.player !== state.firstPlayer;
+    if (!isBackAttackFirst) return { state, resolved: true, log: '非後攻第1回合 — 跳過' };
+    if (own.zones[ZONE.DECK].length > 0) {
+      const top = own.zones[ZONE.DECK].shift();
+      top.faceDown = false;
+      own.zones[ZONE.ARCHIVE].push(top);
+    }
     drawCards(own, 1);
-    return { state, resolved: true, log: '抽 1 張' };
+    return { state, resolved: true, log: '後攻第1回合 → 牌組頂存檔+抽 1 張' };
   });
 
   // ── Generated: cheer yellEffect stubs (handler exists; effect manual) ──

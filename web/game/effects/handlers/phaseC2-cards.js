@@ -36,9 +36,11 @@ export function registerPhaseC2(){
 
   // hBP04-066 古石ビジュー effectB+art1
   reg('hBP04-066',HOOK.ON_BLOOM,(s,c)=>{
-    const p=s.players[c.player];const n=p.zones[ZONE.HAND].length;
-    while(p.zones[ZONE.HAND].length)p.zones[ZONE.ARCHIVE].push(p.zones[ZONE.HAND].shift());
-    drawCards(p,n);return PL(s,`棄${n}張→重抽${n}張`);
+    if(c.triggerEvent && c.triggerEvent !== 'self') return {state:s,resolved:true};
+    // Real effectB: 可以(optional, 1/turn) 將所有手牌存檔，每張抽 1 張回來。
+    // Auto-firing this on every bloom would silently empty the hand —
+    // CRITICAL bug. Disable auto; let player invoke via MANUAL_EFFECT.
+    return {state:s};
   });
   reg('hBP04-066',HOOK.ON_ART_DECLARE,(s,c)=>{
     const n=s.players[1-c.player].zones[ZONE.ARCHIVE].filter(x=>getCard(x.cardId)?.type==='吶喊').length;
@@ -48,11 +50,14 @@ export function registerPhaseC2(){
   // hBP04-074 アーニャ effectG: center→self+collab dmg-10
   reg('hBP04-074',HOOK.ON_PASSIVE_GLOBAL,(s,c)=>PL(s,'中心:自身+聯動受傷-10'));
 
-  // hBP04-076 アーニャ effectC: return 古代武器 from archive
+  // hBP04-076 アーニャ effectC: 「可以」 (optional) attach archive 古代武器 to アーニャ
   reg('hBP04-076',HOOK.ON_COLLAB,(s,c)=>{
+    if(c.triggerEvent === 'member_collabed') return {state:s,resolved:true};
+    // Optional ("可以"); auto-firing was OK here since the only side-effect
+    // is a beneficial attach, but we now properly broadcast-guard.
     const p=s.players[c.player];const i=p.zones[ZONE.ARCHIVE].findIndex(x=>getCard(x.cardId)?.name==='古代武器');
     if(i>=0){const anya=getStageMembers(p).find(m=>getCard(m.inst.cardId)?.name==='アーニャ・メルフィッサ');
-      if(anya)anya.inst.attachedSupport.push(p.zones[ZONE.ARCHIVE].splice(i,1)[0])}
+      if(anya){anya.inst.attachedSupport=anya.inst.attachedSupport||[];anya.inst.attachedSupport.push(p.zones[ZONE.ARCHIVE].splice(i,1)[0])}}
     return PL(s,'存檔古代武器→アーニャ');
   });
 
