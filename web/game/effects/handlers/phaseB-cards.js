@@ -719,11 +719,24 @@ export function registerPhaseB() {
     return { state, resolved: true, log: '抽 2 張，條件性送吶喊' };
   });
 
-  // 91. hBP06-090 ブルームステージ: draw 2 + bloom retry
+  // 91. hBP06-090 ブルームステージ
+  // Real: 從牌組抽 2。之後，如果自己生命值≤4，這個回合自己從 Debut 綻放為 1st
+  //       的 1 位成員可以使用手牌的成員再次進行綻放。LIMITED：每回合一次。
+  // The "draw 2" is unconditional — implement. The bloom-retry permission
+  // is engine-level (modifying bloom validation) — flag via state and
+  // require manual application. We do the draw and surface the bloom
+  // permission via MANUAL_EFFECT toast.
   reg('hBP06-090', HOOK.ON_PLAY, (state, ctx) => {
     const player = state.players[ctx.player];
     drawCards(player, 2);
-    return { state, resolved: true, log: '抽 2 張；若生命≤4 可重新綻放' };
+    const lifeCount = (player.zones[ZONE.LIFE] || []).length;
+    if (lifeCount <= 4) {
+      // Set a flag so the player can use the bloom-retry manually if desired.
+      state._bloomRetryAvailable = state._bloomRetryAvailable || {};
+      state._bloomRetryAvailable[ctx.player] = true;
+      return { state, resolved: true, log: '抽 2 張；生命≤4，本回合可重新綻放（手動）' };
+    }
+    return { state, resolved: true, log: '抽 2 張（生命>4，無重綻放）' };
   });
 
   // 92. hBP01-050 風真いろは effectG + art1
@@ -893,12 +906,10 @@ export function registerPhaseB() {
   // 103-105. Fan card passthroughs (no immediate trigger)
   reg('hBP01-123', HOOK.ON_PLAY, (state, ctx) => ({ state, resolved: true, log: '野うさぎ同盟附加' }));
   reg('hBP01-125', HOOK.ON_PLAY, (state, ctx) => {
-    const player = state.players[ctx.player];
-    if (player.zones[ZONE.HAND].length > 0) {
-      archiveFromHand(player, 1);
-      drawCards(player, 1);
-    }
-    return { state, resolved: true, log: 'KFP 附加：棄 1 抽 1' };
+    // Real fan effect: 「可以將自己的1張手牌放到存檔區：從自己的牌組抽1張牌」
+    // The "可以" makes it OPTIONAL — handler should not auto-fire the cost.
+    // Fall through to MANUAL_EFFECT (engine surfaces card text as toast).
+    return { state };
   });
   reg('hBP01-126', HOOK.ON_PLAY, (state, ctx) => ({ state, resolved: true, log: '座員附加' }));
 
@@ -1804,11 +1815,25 @@ export function registerPhaseB() {
   });
 
   // 163. hBP06-094 ワークアウト
-  reg('hBP06-094', HOOK.ON_PLAY, (state, ctx) => ({
-    state, resolved: true,
-    effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'choose', duration: 'turn' },
-    log: '1 位成員 +20（Buzz/2nd 再 +50）',
-  }));
+  // Real: 自己有聯動成員 OR 對手沒有聯動成員時才能使用。
+  //       這個回合中，自己舞台上的1位成員藝能傷害+20。如果該成員是 Buzz/2nd
+  //       則藝能傷害再+50（總 +70）。LIMITED.
+  // Use-condition: own has collab OR opp has no collab — check before applying.
+  // Buzz/2nd bonus needs to be evaluated when art declared, not here.
+  reg('hBP06-094', HOOK.ON_PLAY, (state, ctx) => {
+    const own = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+    const ownHasCollab = !!own.zones[ZONE.COLLAB];
+    const oppHasCollab = !!opp.zones[ZONE.COLLAB];
+    if (!ownHasCollab && oppHasCollab) {
+      return { state, resolved: true, log: '使用條件未達成（自己無聯動且對手有聯動）— 跳過' };
+    }
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 20, target: 'choose', duration: 'turn', bonusForBuzz2nd: 50 },
+      log: '1 位成員 +20（若該成員為 Buzz/2nd 則總共 +70）',
+    };
+  });
 
   // 164. hBP04-006 大空スバル oshi
   reg('hBP04-006', HOOK.ON_OSHI_SKILL, (state, ctx) => {

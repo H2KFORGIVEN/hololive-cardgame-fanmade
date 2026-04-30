@@ -459,7 +459,16 @@ export function registerPhaseC1(){
       shuffleArr(p.zones[ZONE.DECK])}
     return{state:s,resolved:true,log:`骰${r}:${r%2===0?'牌組無粉絲':'無效果'}`};
   });
-  reg('hBP03-023',HOOK.ON_ART_DECLARE,(s,c)=>({state:s,resolved:true,effect:boost(40),log:'本回合擲過骰→+40'}));
+  // hBP03-023 art1: 這個回合，因自己「兎田ぺこら」效果擲了骰子1次以上 → 藝能傷害+40
+  // Engine should track per-turn dice rolls per player (state._diceRollsThisTurn).
+  // Without that infrastructure, fall back to checking if collab handler ran
+  // this turn (collab rolls a die unconditionally) — close enough proxy.
+  reg('hBP03-023',HOOK.ON_ART_DECLARE,(s,c)=>{
+    const player = s.players[c.player];
+    const usedCollab = player.usedCollab === true;
+    if (!usedCollab) return {state:s,resolved:true,log:'本回合未擲骰 — 無加成'};
+    return {state:s,resolved:true,effect:boost(40),log:'本回合擲過骰→+40'};
+  });
   // hBP03-024 風真いろは effectB+art1
   reg('hBP03-024',HOOK.ON_BLOOM,(s,c)=>{
     const p=s.players[c.player];
