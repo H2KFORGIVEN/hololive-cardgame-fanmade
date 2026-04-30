@@ -3073,52 +3073,52 @@
     "deck_id": "official-hbp03_007"
   },
   {
-    "title": "Recommended Deck “Mori Calliope”",
+    "title": "Recommended Deck “Sakamata Chloe”",
     "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_001/",
-    "oshi": "Mori Calliope",
-    "oshi_card_id": "hBP02-007",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-007_OSR.png",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_004/",
+    "oshi": "Sakamata Chloe",
+    "oshi_card_id": "hBP02-004",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-004_OSR.png",
     "main_deck": [
       {
-        "card_id": "hBP02-054",
-        "count": 11,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-054_C.png"
+        "card_id": "hBP02-035",
+        "count": 12,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
       },
       {
-        "card_id": "hBP02-055",
+        "card_id": "hBP02-036",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-055_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-036_U.png"
       },
       {
-        "card_id": "hBP02-056",
+        "card_id": "hBP02-038",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-056_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
       },
       {
-        "card_id": "hBP02-057",
+        "card_id": "hBP02-039",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-039_R.png"
       },
       {
-        "card_id": "hBP02-058",
+        "card_id": "hBP02-040",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-058_R.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png"
       },
       {
-        "card_id": "hBP02-059",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png"
+        "card_id": "hBP01-056",
+        "count": 5,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-056_C.png"
       },
       {
-        "card_id": "hBP01-104",
+        "card_id": "hBP01-060",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-060_U.png"
       },
       {
-        "card_id": "hBP02-084",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+        "card_id": "hBP01-061",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png"
       },
       {
         "card_id": "hSD01-016",
@@ -3126,26 +3126,21 @@
         "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
       },
       {
-        "card_id": "hSD01-017",
+        "card_id": "hBP02-080",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png"
+      },
+      {
+        "card_id": "hSD01-018",
         "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-077",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-077_C.png"
-      },
-      {
-        "card_id": "hBP02-088",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-088_U.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-018_C.png"
       }
     ],
     "cheer_deck": [
       {
-        "card_id": "hY05-001",
+        "card_id": "hY04-001",
         "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
       }
     ],
     "main_deck_count": 50,
@@ -3153,40 +3148,40 @@
     "strategy": [
       {
         "text": {
-          "en": "At the early stages of the game, deploy Debut holomem onto the stage and use cards like hSD01-016 Harusaki Nodoka and hSD01-017 Manager-chan to prepare your hand.Proceed to bloom your Debut holomem into 1st holomem.Prepare your hand with hBP02-057 Mori Calliope and increase the archive with hBP02-088 Mori Calliope's Scythe.Return necessary holomem to your hand using the Oshi skill of hBP02-007 Mori Calliope.Bloom into hBP02-059 Mori Calliope, then attack.If you have eight or more holomem with #Myth in your archive, you can deal enormous damage.Once you are ready, use the SP Oshi skill of hBP02-007 Mori Calliope to use the Arts twice and down multiple holomem.",
-          "ja": "ゲーム序盤は「デビューホロメム」をステージに展開し、「hSD01-016 春咲のどか」や「hSD01-017 マネージャーちゃん」などで手札を整えます。デビューホロメムを1枚目のホロメムに開花させましょう。「hBP02-057 森カリオペ」で手札を整え、「hBP02-088 森カリオペの鎌」でアーカイブを増やしてください。要リターンです。 hBP02-007 森カリオペの推しスキルでホロメムを手札に。hBP02-059 森カリオペに開花させて攻撃する。アーカイブに#神話を持つホロメムが8枚以上あれば、大ダメージを与えることができる。準備ができたら、hBP02-007 森カリオペのSP推しスキルでアーツを2回使用し、ホロメムを複数ダウンさせる。",
-          "zh-TW": "在遊戲的早期階段，將 Debut Holomem 部署到舞台上，並使用 hSD01-016 Harusaki Nodoka 和 hSD01-017 Manager-chan 等牌來準備你的牌。繼續將你的 Debut Holomem 綻放為第一個 Holomem。用 hBP02-057 Mori Calliope 準備你的牌，並用 hBP02-088 Mori Calliope's 增加存檔鐮刀。使用hBP02-007 Mori Calliope的Oshi技能將必要的holomem返回到你的手上。綻放為hBP02-059 Mori Calliope，然後攻擊。如果你的檔案中有八個或更多帶有#Myth的holomem，你可以造成巨大的傷害。一旦你準備好，使用hBP02-007 Mori Calliope的SP Oshi技能使用Arts兩次並打下多個holomem。",
-          "fr": "Aux premiers stades du jeu, déployez l'holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka et hSD01-017 Manager-chan pour préparer votre main. Procédez à la floraison de votre holomem Debut en 1er holomem. Préparez votre main avec hBP02-057 Mori Calliope et augmentez l'archive avec hBP02-088 Mori Calliope's. Faux. Renvoyez l'holomem nécessaire dans votre main en utilisant la compétence Oshi de hBP02-007 Mori Calliope. Fleurissez en hBP02-059 Mori Calliope, puis attaquez. Si vous avez huit holomem ou plus avec #Mythe dans vos archives, vous pouvez infliger d'énormes dégâts. Une fois que vous êtes prêt, utilisez la compétence SP Oshi de hBP02-007 Mori Calliope pour utiliser les Arts deux fois et plusieurs fois. holomème."
+          "en": "At the early stages of the game, start by placing Debut holomem on the stage, and use cards like hSD01-016 Harusaki Nodoka to set up your hand. This allows you to progress faster than your opponent. When using hBP02-080 holoX, be careful not to add more Debut holomem than necessary.Begin blooming your Debut holomem into 1st holomem. Since the bloom effect of hBP05-060 Takane Lui allows you to prepare your hand without using LIMITED support cards, you should proactively bloom your holomem. If you can't draw a card, utilize the Oshi skill to search for key support cards or hBP02-040 Sakamata Chloe.Once you bloom into hBP02-040 Sakamata Chloe, it's time to go on offensive mode! Since this deck has many holomem, you can deal significant damage with \"holoX-lot\" on every turn. If you successfully return multiple Debut holomem to the bottom of the deck with hBP02-080 holoX, you can continuously reduce your opponent's life with the gift ability.",
+          "ja": "ゲーム序盤は「デビューホロメム」をステージに置き、「hSD01-016 春咲のどか」などのカードで手札を整えていきます。これにより、相手よりも早く進歩することができます。 hBP02-080 ホロXを使用する場合は、必要以上にデビューホロメムを追加しないように注意してください。デビューホロメムを1番目のホロメムに開花させ始めます。 hBP05-060 貴音ルイの開花効果により、LIMITEDサポートカードを使わずに手札を揃えることができるので、積極的にホロメムを開花させましょう。カードが引けない場合は、推しスキルを活用してキーサポートカードやhBP02-040 逆俣クロエをサーチしましょう。 hBP02-040 逆俣クロエが開花したら、いよいよ攻撃モードです！このデッキはホロメムを多く搭載しているので、毎ターン「ホロXロット」で大ダメージを与えることができます。 hBP02-080 ホロXでデビューホロメムを複数枚デッキの下に戻すことに成功すると、ギフト能力で継続的に相手のライフを減らすことができます。",
+          "zh-TW": "在遊戲的早期階段，首先將 Debut Holomem 放在舞台上，並使用 hSD01-016 Harusaki Nodoka 等牌來設定你的手牌。這可以讓你比對手進步得更快。使用 hBP02-080 HoloX 時，請注意不要加入不必要的 Debut holomem。開始將 Debut holomem 綻放為第一個 holomem。由於hBP05-060 Takane Lui的綻放效果可以讓您在不使用有限支援卡的情況下準備手牌，因此您應該主動綻放您的holomem。如果抽不到牌，可以利用押技能尋找關鍵支援卡或hBP02-040坂俁克洛伊。一旦綻放成hBP02-040坂俁克洛伊，就該進入進攻模式了！由於這套牌有許多全像圖，你可以在每回合使用「holoX-lot」造成重大傷害。如果你使用hBP02-080 HoloX成功地將多個Debut Holomem回到牌組底部，你可以透過禮物能力持續減少對手的生命。",
+          "fr": "Au début du jeu, commencez par placer le holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka pour préparer votre main. Cela vous permet de progresser plus vite que votre adversaire. Lorsque vous utilisez hBP02-080 holoX, veillez à ne pas ajouter plus d'holomem Debut que nécessaire. Commencez à faire fleurir votre holomem Debut dans le 1er holomem. Puisque l'effet de floraison du hBP05-060 Takane Lui vous permet de préparer votre main sans utiliser de cartes de support LIMITÉ, vous devez fleurir votre holomem de manière proactive. Si vous ne pouvez pas piocher de carte, utilisez la compétence Oshi pour rechercher des cartes de soutien clés ou hBP02-040 Sakamata Chloe. Une fois que vous vous êtes épanoui en hBP02-040 Sakamata Chloe, il est temps de passer en mode offensif ! Comme ce deck contient de nombreux holomem, vous pouvez infliger des dégâts importants avec \"holoX-lot\" à chaque tour. Si vous réussissez à remettre plusieurs holomem Debut au bas du deck avec hBP02-080 holoX, vous pouvez réduire continuellement la vie de votre adversaire grâce à la capacité de cadeau."
         }
       }
     ],
     "key_cards": [
       {
-        "name": "Mori Calliope【2nd】",
-        "card_id": "hBP02-059",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-059_RR.png",
+        "name": "Sakamata Chloe【2nd】",
+        "card_id": "hBP02-040",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png",
         "text": {
-          "en": "This is the key card of this deck.She allows you to archive any card you like from your deck.You can archive hBP02-088 Mori Calliope's Scythe and return it to your hand with hBP02-058 Mori Calliope, or archive hBP02-059 Mori Calliope and return her to your hand with the Oshi skill of hBP02-007 Mori Calliope.",
-          "ja": "このデッキのキーカードです。デッキから好きなカードをアーカイブできます。hBP02-088 森カリオペの鎌をアーカイブしてhBP02-058 森カリオペで手札に戻すか、hBP02-059 森カリオペをアーカイブしてhBP02-007 森カリオペのオシスキルで手札に戻すことができます。",
-          "zh-TW": "這是這套牌的關鍵卡牌。她可以讓你從牌組中存檔任何你喜歡的卡牌。你可以存檔 hBP02-088 森卡利奧佩的鐮刀，然後使用 hBP02-058 森卡利奧佩將其返回你的手牌，或者存檔 hBP02-059 森卡利奧佩，然後使用 hBP02-007 森卡利奧佩的押技能將她返回你的手牌。",
-          "fr": "C'est la carte clé de ce deck. Elle vous permet d'archiver n'importe quelle carte de votre deck. Vous pouvez archiver hBP02-088 Faux de Mori Calliope et la remettre dans votre main avec hBP02-058 Mori Calliope, ou archiver hBP02-059 Mori Calliope et la remettre dans votre main avec la compétence Oshi de hBP02-007 Mori Calliope."
+          "en": "The key card of this deck.If all cards revealed by the Arts share the same bloom level, deal 160 damage and definitively reduce the opponent's life by 1. Even if you can't down the opponent's holomem, reducing their life by 1 is still possible with a matching bloom level, allowing you to win purely through luck.",
+          "ja": "このデッキのキーカード。アーツで公開したカードがすべて同じブルームレベルの場合、160ダメージを与え、相手のライフを確実に1減らす。たとえ相手のホロメムをダウンできなくても、ブルームレベルが合っていればライフを1減らすことは可能で、純粋に運だけで勝つことができる。",
+          "zh-TW": "這副牌組的關鍵卡牌。如果藝術展示的所有卡片都具有相同的綻放等級，則造成 160 點傷害，並最終減少對手 1 點生命。即使你無法打倒對手的 Holomem，但在匹配的綻放等級下仍然可以將其生命減少 1 點，讓你純粹靠運氣獲勝。",
+          "fr": "La carte clé de ce deck. Si toutes les cartes révélées par les Arts partagent le même niveau de floraison, infligez 160 dégâts et réduisez définitivement la vie de l'adversaire de 1. Même si vous ne pouvez pas vaincre l'holomem de l'adversaire, réduire sa vie de 1 est toujours possible avec un niveau de floraison correspondant, vous permettant de gagner uniquement par chance."
         }
       },
       {
-        "name": "Mori Calliope【1st】",
-        "card_id": "hBP02-057",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-057_U.png",
+        "name": "holoX",
+        "card_id": "hBP02-080",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png",
         "text": {
-          "en": "She is a necessary card to power up the Arts of hBP02-059 Mori Calliope.Bloom assertively to increase your archive.",
-          "ja": "hBP02-059 モリ・カリオペ・ブルームのアーツを積極的にパワーアップしてアーカイブを増やすために必要なカードです。",
-          "zh-TW": "她是增強 hBP02-059 Mori Calliope 藝術的必要卡片。積極綻放以增加您的檔案。",
-          "fr": "C'est une carte nécessaire pour dynamiser les Arts de hBP02-059 Mori Calliope. Bloom avec assurance pour augmenter vos archives."
+          "en": "This card increases the deck's stability.In addition, by returning cards you do not add to your hand to the bottom of the deck in any order, you can increase the success rate of holoX-lot in the late game.",
+          "ja": "このカードはデッキの安定性を高めてくれます。また、手札に加えなかったカードを好きな順番でデッキの一番下に戻すことで、ゲーム終盤のホロXロットの成功率を高めることができます。",
+          "zh-TW": "這張卡增加了牌組的穩定性。此外，透過將未添加到手牌中的卡片以任何順序返回到牌組底部，可以提高遊戲後期holoX-lot的成功率。",
+          "fr": "Cette carte augmente la stabilité du deck. De plus, en renvoyant les cartes que vous n'ajoutez pas à votre main au bas du deck dans aucun ordre, vous pouvez augmenter le taux de réussite de holoX-lot en fin de partie."
         }
       }
     ],
     "date": "2025-11-30",
     "source": "official",
-    "deck_id": "official-hbp02_001"
+    "deck_id": "official-hbp02_004"
   },
   {
     "title": "Recommended Deck “Kureiji Ollie”",
@@ -3439,117 +3434,6 @@
     "date": "2025-11-30",
     "source": "official",
     "deck_id": "official-hbp02_003"
-  },
-  {
-    "title": "Recommended Deck “Sakamata Chloe”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp02_004/",
-    "oshi": "Sakamata Chloe",
-    "oshi_card_id": "hBP02-004",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-004_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP02-035",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-035_C.png"
-      },
-      {
-        "card_id": "hBP02-036",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-036_U.png"
-      },
-      {
-        "card_id": "hBP02-038",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-038_U.png"
-      },
-      {
-        "card_id": "hBP02-039",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-039_R.png"
-      },
-      {
-        "card_id": "hBP02-040",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png"
-      },
-      {
-        "card_id": "hBP01-056",
-        "count": 5,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-056_C.png"
-      },
-      {
-        "card_id": "hBP01-060",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-060_U.png"
-      },
-      {
-        "card_id": "hBP01-061",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-061_R.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hBP02-080",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png"
-      },
-      {
-        "card_id": "hSD01-018",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-018_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY04-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY04-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "At the early stages of the game, start by placing Debut holomem on the stage, and use cards like hSD01-016 Harusaki Nodoka to set up your hand. This allows you to progress faster than your opponent. When using hBP02-080 holoX, be careful not to add more Debut holomem than necessary.Begin blooming your Debut holomem into 1st holomem. Since the bloom effect of hBP05-060 Takane Lui allows you to prepare your hand without using LIMITED support cards, you should proactively bloom your holomem. If you can't draw a card, utilize the Oshi skill to search for key support cards or hBP02-040 Sakamata Chloe.Once you bloom into hBP02-040 Sakamata Chloe, it's time to go on offensive mode! Since this deck has many holomem, you can deal significant damage with \"holoX-lot\" on every turn. If you successfully return multiple Debut holomem to the bottom of the deck with hBP02-080 holoX, you can continuously reduce your opponent's life with the gift ability.",
-          "ja": "ゲーム序盤は「デビューホロメム」をステージに置き、「hSD01-016 春咲のどか」などのカードで手札を整えていきます。これにより、相手よりも早く進歩することができます。 hBP02-080 ホロXを使用する場合は、必要以上にデビューホロメムを追加しないように注意してください。デビューホロメムを1番目のホロメムに開花させ始めます。 hBP05-060 貴音ルイの開花効果により、LIMITEDサポートカードを使わずに手札を揃えることができるので、積極的にホロメムを開花させましょう。カードが引けない場合は、推しスキルを活用してキーサポートカードやhBP02-040 逆俣クロエをサーチしましょう。 hBP02-040 逆俣クロエが開花したら、いよいよ攻撃モードです！このデッキはホロメムを多く搭載しているので、毎ターン「ホロXロット」で大ダメージを与えることができます。 hBP02-080 ホロXでデビューホロメムを複数枚デッキの下に戻すことに成功すると、ギフト能力で継続的に相手のライフを減らすことができます。",
-          "zh-TW": "在遊戲的早期階段，首先將 Debut Holomem 放在舞台上，並使用 hSD01-016 Harusaki Nodoka 等牌來設定你的手牌。這可以讓你比對手進步得更快。使用 hBP02-080 HoloX 時，請注意不要加入不必要的 Debut holomem。開始將 Debut holomem 綻放為第一個 holomem。由於hBP05-060 Takane Lui的綻放效果可以讓您在不使用有限支援卡的情況下準備手牌，因此您應該主動綻放您的holomem。如果抽不到牌，可以利用押技能尋找關鍵支援卡或hBP02-040坂俁克洛伊。一旦綻放成hBP02-040坂俁克洛伊，就該進入進攻模式了！由於這套牌有許多全像圖，你可以在每回合使用「holoX-lot」造成重大傷害。如果你使用hBP02-080 HoloX成功地將多個Debut Holomem回到牌組底部，你可以透過禮物能力持續減少對手的生命。",
-          "fr": "Au début du jeu, commencez par placer le holomem Debut sur la scène et utilisez des cartes comme hSD01-016 Harusaki Nodoka pour préparer votre main. Cela vous permet de progresser plus vite que votre adversaire. Lorsque vous utilisez hBP02-080 holoX, veillez à ne pas ajouter plus d'holomem Debut que nécessaire. Commencez à faire fleurir votre holomem Debut dans le 1er holomem. Puisque l'effet de floraison du hBP05-060 Takane Lui vous permet de préparer votre main sans utiliser de cartes de support LIMITÉ, vous devez fleurir votre holomem de manière proactive. Si vous ne pouvez pas piocher de carte, utilisez la compétence Oshi pour rechercher des cartes de soutien clés ou hBP02-040 Sakamata Chloe. Une fois que vous vous êtes épanoui en hBP02-040 Sakamata Chloe, il est temps de passer en mode offensif ! Comme ce deck contient de nombreux holomem, vous pouvez infliger des dégâts importants avec \"holoX-lot\" à chaque tour. Si vous réussissez à remettre plusieurs holomem Debut au bas du deck avec hBP02-080 holoX, vous pouvez réduire continuellement la vie de votre adversaire grâce à la capacité de cadeau."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Sakamata Chloe【2nd】",
-        "card_id": "hBP02-040",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-040_RR.png",
-        "text": {
-          "en": "The key card of this deck.If all cards revealed by the Arts share the same bloom level, deal 160 damage and definitively reduce the opponent's life by 1. Even if you can't down the opponent's holomem, reducing their life by 1 is still possible with a matching bloom level, allowing you to win purely through luck.",
-          "ja": "このデッキのキーカード。アーツで公開したカードがすべて同じブルームレベルの場合、160ダメージを与え、相手のライフを確実に1減らす。たとえ相手のホロメムをダウンできなくても、ブルームレベルが合っていればライフを1減らすことは可能で、純粋に運だけで勝つことができる。",
-          "zh-TW": "這副牌組的關鍵卡牌。如果藝術展示的所有卡片都具有相同的綻放等級，則造成 160 點傷害，並最終減少對手 1 點生命。即使你無法打倒對手的 Holomem，但在匹配的綻放等級下仍然可以將其生命減少 1 點，讓你純粹靠運氣獲勝。",
-          "fr": "La carte clé de ce deck. Si toutes les cartes révélées par les Arts partagent le même niveau de floraison, infligez 160 dégâts et réduisez définitivement la vie de l'adversaire de 1. Même si vous ne pouvez pas vaincre l'holomem de l'adversaire, réduire sa vie de 1 est toujours possible avec un niveau de floraison correspondant, vous permettant de gagner uniquement par chance."
-        }
-      },
-      {
-        "name": "holoX",
-        "card_id": "hBP02-080",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-080_U.png",
-        "text": {
-          "en": "This card increases the deck's stability.In addition, by returning cards you do not add to your hand to the bottom of the deck in any order, you can increase the success rate of holoX-lot in the late game.",
-          "ja": "このカードはデッキの安定性を高めてくれます。また、手札に加えなかったカードを好きな順番でデッキの一番下に戻すことで、ゲーム終盤のホロXロットの成功率を高めることができます。",
-          "zh-TW": "這張卡增加了牌組的穩定性。此外，透過將未添加到手牌中的卡片以任何順序返回到牌組底部，可以提高遊戲後期holoX-lot的成功率。",
-          "fr": "Cette carte augmente la stabilité du deck. De plus, en renvoyant les cartes que vous n'ajoutez pas à votre main au bas du deck dans aucun ordre, vous pouvez augmenter le taux de réussite de holoX-lot en fin de partie."
-        }
-      }
-    ],
-    "date": "2025-11-30",
-    "source": "official",
-    "deck_id": "official-hbp02_004"
   },
   {
     "title": "Recommended Deck “Houshou Marine”",
