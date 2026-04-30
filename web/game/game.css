@@ -2038,11 +2038,15 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
               z-index 0s 0.22s;  /* z-index resets after lift ends */
   transform-origin: center bottom;
 }
+/* Lift only on the outer .card-with-attachments wrapper. Previously the
+   selector also matched the inner .game-card:hover, which compounded the
+   transform: hovering the inner card triggered both rules, and CSS
+   transforms cascade through the DOM tree, so the card kept rising and
+   scaling up until the cursor lost contact (~ -180px, scale ≈ 3.6).
+   Hovering anywhere inside the wrapper still triggers the lift because
+   :hover propagates up the tree. */
 .hand-area .card-with-attachments:hover,
-.hand-area .card-with-attachments:focus-within,
-.hand-area .game-card:hover {
-  /* Lift well above the hand area: -90px raise + 1.9x scale so the
-     enlarged card is clearly visible against the battlefield. */
+.hand-area .card-with-attachments:focus-within {
   transform: translateY(-90px) scale(1.9);
   z-index: 999;
   transition: transform 0.22s cubic-bezier(.2,.8,.2,1),
