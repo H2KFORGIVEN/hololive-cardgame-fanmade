@@ -1780,46 +1780,41 @@ export class GameController {
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
   }
 
-  // Bind click handlers on every .search-select-card inside the overlay.
-  // Extracted so multi-select continuations can re-arm clicks against the
-  // updated `prompt` / `items` after in-place DOM updates.
+  // Bind click handling once via event delegation on the overlay.
+  // Subsequent multi-select continuations update overlay.__prompt / __items
+  // without re-binding (so survivor cards keep their hover state, no clone+
+  // replace re-triggers their CSS transitions — the "repeated zoom" bug).
   _bindSearchSelectClicks(overlay, prompt, items) {
-    const isMultiSelect = (prompt.maxSelect || 0) > 1;
-    // Build instanceId → item lookup so we can resolve the selected card
-    // even if DOM order/index drifts (it does after in-place updates).
-    const itemById = new Map(items.map(c => [String(c.instanceId), c]));
+    overlay.__prompt = prompt;
+    overlay.__items = items;
+    overlay.__itemById = new Map(items.map(c => [String(c.instanceId), c]));
     overlay.__resolved = false;
-    overlay.querySelectorAll('.search-select-card').forEach(el => {
-      // Replace by cloning to drop any prior listeners
-      const clone = el.cloneNode(true);
-      el.replaceWith(clone);
-    });
-    overlay.querySelectorAll('.search-select-card').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (overlay.__resolved) return;
-        overlay.__resolved = true;
-        // Visually highlight the picked card
-        overlay.querySelectorAll('.search-select-card').forEach(c => {
-          c.style.pointerEvents = 'none';
-          if (c !== el) c.style.opacity = '0.5';
-        });
-        el.style.opacity = '1';
-        el.style.outline = '3px solid #4fc3f7';
-        const id = el.dataset.instanceId;
-        const selected = itemById.get(id) || items[parseInt(el.dataset.idx) || 0];
-        // Multi-select continuation: keep overlay alive — the next prompt
-        // will update it in place via the sessionKey path.
-        // Single-select: remove overlay before resolving, otherwise the
-        // cleanup-when-no-pendingEffect branch will tear it down.
-        setTimeout(() => {
-          if (!isMultiSelect) {
-            overlay.remove();
-            this._currentPromptKey = null;
-          }
-          this._resolveSearchSelect(prompt, selected);
-        }, 150);
+    if (overlay.__delegateBound) return; // already bound, just refreshed data
+    overlay.__delegateBound = true;
+    overlay.addEventListener('click', (e) => {
+      const cardEl = e.target.closest('.search-select-card');
+      if (!cardEl || !overlay.contains(cardEl)) return;
+      e.stopPropagation();
+      if (overlay.__resolved) return;
+      overlay.__resolved = true;
+      overlay.querySelectorAll('.search-select-card').forEach(c => {
+        c.style.pointerEvents = 'none';
+        if (c !== cardEl) c.style.opacity = '0.5';
       });
+      cardEl.style.opacity = '1';
+      cardEl.style.outline = '3px solid #4fc3f7';
+      const id = cardEl.dataset.instanceId;
+      const curPrompt = overlay.__prompt;
+      const curItems = overlay.__items;
+      const selected = overlay.__itemById.get(id) || curItems[parseInt(cardEl.dataset.idx) || 0];
+      const isMultiSelect = (curPrompt.maxSelect || 0) > 1;
+      setTimeout(() => {
+        if (!isMultiSelect) {
+          overlay.remove();
+          this._currentPromptKey = null;
+        }
+        this._resolveSearchSelect(curPrompt, selected);
+      }, 150);
     });
   }
 
