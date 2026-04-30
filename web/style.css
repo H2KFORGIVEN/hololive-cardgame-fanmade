@@ -50,7 +50,7 @@ body {
   transform: translate(-50%, -50%);
   width: 200vw;
   height: 200vw;
-  background-image: linear-gradient(90deg, #d4af37 40%, #38bded 45%, #38bded 50%, #38bded 55%, #d4af37 60%);
+  background-image: linear-gradient(90deg, #d4af37 40%, #b8860b 45%, #b8860b 50%, #b8860b 55%, #d4af37 60%);
   z-index: -2;
   animation: kaiten 25s infinite linear 1s both;
   pointer-events: none;
@@ -75,40 +75,40 @@ body {
 
 /* deco1: top center bar (cyan) */
 .deco1 { top: 0; left: 50%; transform: translateX(-50%); }
-.deco1::before { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 21px; border-radius: 8px; background: #38bded; }
-.deco1::after { position: fixed; top: -3px; left: 50%; transform: translateX(-50%); width: 1000px; height: 16px; background-image: linear-gradient(90deg, rgba(56,189,237,0) 10%, #38bded 40% 60%, rgba(56,189,237,0) 90%); }
+.deco1::before { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 21px; border-radius: 8px; background: #b8860b; }
+.deco1::after { position: fixed; top: -3px; left: 50%; transform: translateX(-50%); width: 1000px; height: 16px; background-image: linear-gradient(90deg, rgba(184,134,11,0) 10%, #b8860b 40% 60%, rgba(184,134,11,0) 90%); }
 
 /* deco2: bottom center bar (cyan) */
 .deco2 { bottom: 0; left: 50%; transform: translateX(-50%); }
-.deco2::before { bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 21px; border-radius: 8px; background: #38bded; }
-.deco2::after { bottom: -3px; left: 50%; transform: translateX(-50%); width: 1000px; height: 16px; background-image: linear-gradient(90deg, rgba(56,189,237,0) 10%, #38bded 40% 60%, rgba(56,189,237,0) 90%); }
+.deco2::before { bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 21px; border-radius: 8px; background: #b8860b; }
+.deco2::after { bottom: -3px; left: 50%; transform: translateX(-50%); width: 1000px; height: 16px; background-image: linear-gradient(90deg, rgba(184,134,11,0) 10%, #b8860b 40% 60%, rgba(184,134,11,0) 90%); }
 
 /* deco3: top-right corner */
 .deco3 { top: 0; right: 0; }
 .deco3::before { top: 0; right: 0; width: 400px; height: 12px; background-image: linear-gradient(90deg, rgba(212,175,55,0) 40%, #d4af37 80%); }
 .deco3::after { top: 0; right: 0; width: 12px; height: 400px; background-image: linear-gradient(0deg, rgba(212,175,55,0) 40%, #d4af37 80%); }
-.deco3 span::before { position: fixed; top: 0; right: 0; width: 40px; height: 40px; background: #d4af37; border-radius: 20px; }
+.deco3 span::before { position: fixed; top: 0; right: 0; width: 40px; height: 40px; background: #0a0707; border-radius: 20px; }
 .deco3 span::after { top: 12px; right: 12px; width: 19px; height: 19px; background: url('images/brand/waku_deco.svg') no-repeat center/contain; }
 
 /* deco4: top-left corner */
 .deco4 { top: 0; left: 0; }
 .deco4::before { top: 0; left: 0; width: 400px; height: 12px; background-image: linear-gradient(90deg, #d4af37 20%, rgba(212,175,55,0) 60%); }
 .deco4::after { top: 0; left: 0; width: 12px; height: 400px; background-image: linear-gradient(0deg, rgba(212,175,55,0) 40%, #d4af37 80%); }
-.deco4 span::before { position: fixed; top: 0; left: 0; width: 40px; height: 40px; background: #d4af37; border-radius: 20px; }
+.deco4 span::before { position: fixed; top: 0; left: 0; width: 40px; height: 40px; background: #0a0707; border-radius: 20px; }
 .deco4 span::after { top: 12px; left: 12px; width: 19px; height: 19px; background: url('images/brand/waku_deco.svg') no-repeat center/contain; }
 
 /* deco5: bottom-right corner */
 .deco5 { bottom: 0; right: 0; }
 .deco5::before { bottom: 0; right: 0; width: 400px; height: 12px; background-image: linear-gradient(90deg, rgba(212,175,55,0) 40%, #d4af37 80%); }
 .deco5::after { bottom: 0; right: 0; width: 12px; height: 400px; background-image: linear-gradient(0deg, #d4af37 20%, rgba(212,175,55,0) 60%); }
-.deco5 span::before { position: fixed; bottom: 0; right: 0; width: 40px; height: 40px; background: #d4af37; border-radius: 20px; }
+.deco5 span::before { position: fixed; bottom: 0; right: 0; width: 40px; height: 40px; background: #0a0707; border-radius: 20px; }
 .deco5 span::after { bottom: 12px; right: 12px; width: 19px; height: 19px; background: url('images/brand/waku_deco.svg') no-repeat center/contain; }
 
 /* deco6: bottom-left corner */
 .deco6 { bottom: 0; left: 0; }
 .deco6::before { bottom: 0; left: 0; width: 400px; height: 12px; background-image: linear-gradient(90deg, #d4af37 20%, rgba(212,175,55,0) 60%); }
 .deco6::after { bottom: 0; left: 0; width: 12px; height: 400px; background-image: linear-gradient(0deg, #d4af37 20%, rgba(212,175,55,0) 60%); }
-.deco6 span::before { position: fixed; bottom: 0; left: 0; width: 40px; height: 40px; background: #d4af37; border-radius: 20px; }
+.deco6 span::before { position: fixed; bottom: 0; left: 0; width: 40px; height: 40px; background: #0a0707; border-radius: 20px; }
 .deco6 span::after { bottom: 12px; left: 12px; width: 19px; height: 19px; background: url('images/brand/waku_deco.svg') no-repeat center/contain; }
 
 /* Fixed background (official style) — inside waku frame */
