@@ -984,7 +984,18 @@ export class GameController {
 
     // Check for pending effect prompts after every render
     if (state.pendingEffect && state.pendingEffect.type === 'MANUAL_EFFECT') {
-      // Auto-clear manual effects — no popup needed, effect text is in the log
+      // Surface an effect toast so the player sees what the card SHOULD do
+      // (real card text). Many cards can't be auto-implemented yet — the
+      // toast tells the player what to apply manually via the adjustment
+      // panel. Then clear so the engine continues.
+      const pe = state.pendingEffect;
+      try {
+        const text = (pe.text || '').slice(0, 80);
+        this._showActionToast(`【${pe.cardName || pe.cardId}】${text}`);
+        if (state.log) {
+          state.log.push({ turn: state.turnNumber, player: pe.player, msg: `[需手動] ${pe.cardName || pe.cardId}: ${pe.text || ''}`, ts: Date.now() });
+        }
+      } catch (_e) { /* defensive */ }
       const s = this.adapter.getState();
       s.pendingEffect = null;
       this.adapter.init(s);
