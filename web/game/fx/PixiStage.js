@@ -73,20 +73,56 @@ export function scheduleRemove(obj, ms) {
   }, ms);
 }
 
-// Utility: ticker-driven tween (time-normalized 0..1, delta-aware)
+// Utility: time-normalized 0..1 tween. Prefers Pixi's Ticker (vsync,
+// shared with the renderer); falls back to requestAnimationFrame if the
+// Pixi app isn't ready or its ticker is missing.
+//
+// Defensive fallback added 2026-05-01: an attack-time error
+// `tween@PixiStage.js:88 attackBeam@beam.js:43` indicated _app.ticker
+// could be undefined or detached at call time, surfacing as a TypeError
+// from `_app.ticker.add(fn)`. The fallback keeps the animation running
+// (so impact / shockwave still fire) and prevents the stack-trace from
+// reaching the user.
 export function tween(durationMs, onUpdate, onComplete) {
-  if (!_app) return;
   const start = performance.now();
+  const ticker = _app && _app.ticker;
+
+  // rAF fallback path (used when Pixi ticker not ready or missing)
+  if (!ticker || typeof ticker.add !== 'function') {
+    let raf = 0;
+    let cancelled = false;
+    const step = () => {
+      if (cancelled) return;
+      const t = Math.min(1, (performance.now() - start) / durationMs);
+      try { onUpdate(t); } catch (e) { console.warn('[tween] onUpdate error', e); }
+      if (t >= 1) {
+        try { onComplete?.(); } catch (e) { console.warn('[tween] onComplete error', e); }
+        return;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => { cancelled = true; cancelAnimationFrame(raf); };
+  }
+
+  // Pixi ticker path (preferred)
   const fn = () => {
     const t = Math.min(1, (performance.now() - start) / durationMs);
-    onUpdate(t);
+    try { onUpdate(t); } catch (e) { console.warn('[tween] onUpdate error', e); }
     if (t >= 1) {
-      _app.ticker.remove(fn);
-      onComplete?.();
+      try { ticker.remove(fn); } catch (_) {}
+      try { onComplete?.(); } catch (e) { console.warn('[tween] onComplete error', e); }
     }
   };
-  _app.ticker.add(fn);
-  return () => _app.ticker.remove(fn);
+  try {
+    ticker.add(fn);
+  } catch (e) {
+    console.warn('[tween] ticker.add failed, falling back to rAF', e);
+    // Re-enter via rAF fallback (recursive but on a fresh stack via setTimeout 0)
+    setTimeout(() => tween(durationMs - (performance.now() - start), onUpdate, onComplete), 0);
+    return () => {};
+  }
+  return () => { try { ticker.remove(fn); } catch (_) {} };
 }
 
 // Easing helpers

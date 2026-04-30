@@ -11,9 +11,18 @@ export async function attackBeam(fromEl, toEl, {
   duration = 380,
   onImpact = null,
 } = {}) {
-  await initPixi();
+  try {
+    await initPixi();
+  } catch (e) {
+    console.warn('[attackBeam] initPixi failed, skipping beam fx', e);
+    return;
+  }
   const PIXI = getPixi();
   const root = getRoot();
+  if (!PIXI || !root) {
+    console.warn('[attackBeam] Pixi not ready (PIXI/root missing), skipping');
+    return;
+  }
   if (!fromEl || !toEl) return;
 
   const a = fromEl.getBoundingClientRect();
