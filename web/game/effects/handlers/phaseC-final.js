@@ -95,7 +95,8 @@ export function registerPhaseCFinal(){
     ['hBP07-033',(s,c)=>{const p=s.players[c.player];const i=searchDeck(p,x=>getCard(x.cardId)?.name==='大神ミオ',1);if(i.length){const[cd]=pullFromDeck(p,i);p.zones[ZONE.HAND].push(cd)}shuffleArr(p.zones[ZONE.DECK]);return PL(s,'搜尋大神ミオ')}],
     ['hBP07-034',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
     ['hBP07-038',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP07-055',(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')}],
+    // hBP07-055 removed 2026-05-01: real effectB is +50 art damage to a #Promise
+    // member, NOT 抽2棄1. Falls through to MANUAL_EFFECT prompt.
     ['hBP07-070',(s,c)=>{const p=s.players[c.player];const prompt=makeSearchPrompt(p,c.player,x=>getCard(x.cardId)?.name==='AZKi','搜尋 AZKi 加入手牌');if(prompt)return{state:s,resolved:false,prompt,log:'搜尋AZKi'};shuffleArr(p.zones[ZONE.DECK]);return PL(s,'牌組無AZKi')}],
     ['hBP07-074',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
     ['hBP07-079',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
@@ -110,7 +111,15 @@ export function registerPhaseCFinal(){
     ['hSD12-011',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
     ['hSD13-011',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
   ];
-  for(const[id,fn]of bloomHandlers){reg(id,HOOK.ON_BLOOM,fn)}
+  // Wrap each bulk handler so it only fires on the card's OWN bloom, not on
+  // engine broadcasts to other stage members (triggerEvent='member_bloomed').
+  // Without this guard, every bloom anywhere ran every bulk handler.
+  for(const[id,fn]of bloomHandlers){
+    reg(id,HOOK.ON_BLOOM,(s,c)=>{
+      if(c && c.triggerEvent && c.triggerEvent !== 'self') return {state:s,resolved:true};
+      return fn(s,c);
+    });
+  }
 
   // ═══ COLLAB (31 cards) — on collab triggers ═══
   const collabHandlers = [
@@ -120,12 +129,16 @@ export function registerPhaseCFinal(){
     ['hBP06-053',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
     ['hBP06-055',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
     ['hBP06-079',(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')}],
-    ['hBP07-018',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
+    // hBP07-018 removed: real effectC reveals top card; if support → hand. Not "送吶喊".
     ['hBP07-025',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
     ['hBP07-035',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
     ['hBP07-043',(s,c)=>{drawCards(s.players[c.player],1);archiveHand(s.players[c.player],1);return PL(s,'抽1棄1')}],
-    ['hBP07-050',(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')}],
-    ['hBP07-051',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
+    // hBP07-050 removed: real effectC = 1st-turn-back-attack bloom permission.
+    //   Bulk-mapped to "抽2棄1" placeholder which doesn't match the card text.
+    //   This was the source of the user-reported "聯動 → auto-discarded hBP01-094" bug.
+    // hBP07-051 removed: real effectC = move cheer between #Promise members,
+    //   not "送吶喊". When broadcast to center, was auto-firing on collab.
+    //   Both fall through to MANUAL_EFFECT prompt.
     ['hBP07-052',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
     ['hBP07-062',(s,c)=>{const p=s.players[c.player];const src=getStageMembers(p).find(m=>m.inst.attachedCheer?.length>0);if(src){const pr=makeCheerMovePrompt(p,c.player,src.inst,null,'選擇要接收吶喊的成員');if(pr)return{state:s,resolved:false,prompt:pr,log:'吶喊替換'}}return PL(s,'無可替換吶喊')}],
     ['hBP07-073',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
@@ -146,7 +159,18 @@ export function registerPhaseCFinal(){
     ['hSD13-008',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
     ['hSD13-015',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
   ];
-  for(const[id,fn]of collabHandlers){reg(id,HOOK.ON_COLLAB,fn)}
+  // Wrap each bulk collab handler so it only fires on the card's OWN collab,
+  // not on engine broadcasts to other own-stage members
+  // (triggerEvent='member_collabed'). Without this guard, every collab fired
+  // every bulk handler on every other stage member, causing wrong "送吶喊"
+  // / "抽1" effects to chain off any collab. This was the source of the
+  // user-reported "進行聯動，突然就 [效果] 送吶喊" bug.
+  for(const[id,fn]of collabHandlers){
+    reg(id,HOOK.ON_COLLAB,(s,c)=>{
+      if(c && c.triggerEvent === 'member_collabed') return {state:s,resolved:true};
+      return fn(s,c);
+    });
+  }
 
   // ═══ ART EFFECTS (21 cards) — conditional damage boosts ═══
   const artHandlers = [
