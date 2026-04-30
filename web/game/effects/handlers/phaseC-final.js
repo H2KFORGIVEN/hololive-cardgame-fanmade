@@ -76,41 +76,22 @@ export function registerPhaseCFinal(){
     reg(id,HOOK.ON_CHEER_ATTACH,(s,c)=>PL(s,'吶喊卡規則適用'));
   }
 
-  // ═══ BLOOM (31 cards) — on bloom triggers ═══
-  const bloomHandlers = [
-    ['hBP05-011',(s,c)=>{const p=s.players[c.player];const i=searchDeck(p,x=>getCard(x.cardId)?.name==='獅白ぼたん',1);if(i.length){const[cd]=pullFromDeck(p,i);p.zones[ZONE.HAND].push(cd)}shuffleArr(p.zones[ZONE.DECK]);return PL(s,'搜尋獅白ぼたん')}],
-    ['hBP05-021',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP05-034',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP05-051',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP06-013',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP06-031',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP06-033',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP06-042',(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')}],
-    ['hBP06-054',(s,c)=>{if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-30);return PL(s,'HP回30')}],
-    ['hBP06-076',(s,c)=>{const p=s.players[c.player];const prompt=makeArchivePrompt(p,c.player,x=>getCard(x.cardId)?.type==='支援・粉絲','選擇存檔區的粉絲卡回手牌');if(prompt)return{state:s,resolved:false,prompt,log:'存檔粉絲回手'};return PL(s,'存檔無粉絲')}],
-    ['hBP06-077',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-021',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP07-027',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-030',(s,c)=>{if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-30);return PL(s,'HP回30')}],
-    ['hBP07-033',(s,c)=>{const p=s.players[c.player];const i=searchDeck(p,x=>getCard(x.cardId)?.name==='大神ミオ',1);if(i.length){const[cd]=pullFromDeck(p,i);p.zones[ZONE.HAND].push(cd)}shuffleArr(p.zones[ZONE.DECK]);return PL(s,'搜尋大神ミオ')}],
-    ['hBP07-034',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-038',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    // hBP07-055 removed 2026-05-01: real effectB is +50 art damage to a #Promise
-    // member, NOT 抽2棄1. Falls through to MANUAL_EFFECT prompt.
-    ['hBP07-070',(s,c)=>{const p=s.players[c.player];const prompt=makeSearchPrompt(p,c.player,x=>getCard(x.cardId)?.name==='AZKi','搜尋 AZKi 加入手牌');if(prompt)return{state:s,resolved:false,prompt,log:'搜尋AZKi'};shuffleArr(p.zones[ZONE.DECK]);return PL(s,'牌組無AZKi')}],
-    ['hBP07-074',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP07-079',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-083',(s,c)=>{if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-40);return PL(s,'HP回40')}],
-    ['hSD03-007',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD04-007',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD05-009',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD06-007',(s,c)=>{if(c.memberInst)c.memberInst.damage=Math.max(0,c.memberInst.damage-20);return PL(s,'HP回20')}],
-    ['hSD07-006',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD07-007',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD08-003',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD12-011',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD13-011',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-  ];
+  // ═══ BLOOM (was 31 cards, now 0) — DISABLED 2026-05-01 ═══
+  //
+  // The entire bulk array below was placeholder-generated and DID NOT match
+  // the real card text. Audit verified ~30/30 entries were wrong (e.g.
+  // hBP05-021 「アイラニ・イオフィフティーン」 effectB is "send cheer to THIS
+  // member", which the bulk happened to match — but most others were random
+  // patterns like "draw 1" / "中心20特殊傷害" applied to bloom levels).
+  //
+  // Disabled wholesale so all these cards now fall through to MANUAL_EFFECT
+  // prompts, where the engine surfaces the actual zh-TW effect text and the
+  // player can apply the effect manually. This is the correct behavior for
+  // unimplemented cards; the prior state was "auto-execute wrong logic".
+  //
+  // Re-implement card-by-card (with proper conditions / costs / prompts)
+  // as time permits, prioritizing decks the user is currently testing.
+  const bloomHandlers = [];
   // Wrap each bulk handler so it only fires on the card's OWN bloom, not on
   // engine broadcasts to other stage members (triggerEvent='member_bloomed').
   // Without this guard, every bloom anywhere ran every bulk handler.
@@ -121,44 +102,17 @@ export function registerPhaseCFinal(){
     });
   }
 
-  // ═══ COLLAB (31 cards) — on collab triggers ═══
-  const collabHandlers = [
-    ['hBP05-026',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP05-040',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP05-073',(s,c)=>{const p=s.players[c.player];const src=getStageMembers(p).find(m=>m.inst.attachedCheer?.length>0);if(src){const pr=makeCheerMovePrompt(p,c.player,src.inst,null,'選擇要接收吶喊的成員');if(pr)return{state:s,resolved:false,prompt:pr,log:'吶喊替換'}}return PL(s,'無可替換吶喊')}],
-    ['hBP06-053',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP06-055',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP06-079',(s,c)=>{drawCards(s.players[c.player],2);archiveHand(s.players[c.player],1);return PL(s,'抽2棄1')}],
-    // hBP07-018 removed: real effectC reveals top card; if support → hand. Not "送吶喊".
-    ['hBP07-025',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-035',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP07-043',(s,c)=>{drawCards(s.players[c.player],1);archiveHand(s.players[c.player],1);return PL(s,'抽1棄1')}],
-    // hBP07-050 removed: real effectC = 1st-turn-back-attack bloom permission.
-    //   Bulk-mapped to "抽2棄1" placeholder which doesn't match the card text.
-    //   This was the source of the user-reported "聯動 → auto-discarded hBP01-094" bug.
-    // hBP07-051 removed: real effectC = move cheer between #Promise members,
-    //   not "送吶喊". When broadcast to center, was auto-firing on collab.
-    //   Both fall through to MANUAL_EFFECT prompt.
-    ['hBP07-052',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-062',(s,c)=>{const p=s.players[c.player];const src=getStageMembers(p).find(m=>m.inst.attachedCheer?.length>0);if(src){const pr=makeCheerMovePrompt(p,c.player,src.inst,null,'選擇要接收吶喊的成員');if(pr)return{state:s,resolved:false,prompt:pr,log:'吶喊替換'}}return PL(s,'無可替換吶喊')}],
-    ['hBP07-073',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hBP07-076',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hBP07-081',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hBP07-086',(s,c)=>{damageOpp(s,c.player,30);return PL(s,'中心30特殊傷害')}],
-    ['hBP07-090',(s,c)=>{drawCards(s.players[c.player],1);archiveHand(s.players[c.player],1);return PL(s,'抽1棄1')}],
-    ['hSD04-010',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD05-013',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD07-013',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD10-005',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hSD10-009',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD10-010',(s,c)=>{const p=s.players[c.player];const src=getStageMembers(p).find(m=>m.inst.attachedCheer?.length>0);if(src){const pr=makeCheerMovePrompt(p,c.player,src.inst,null,'選擇要接收吶喊的成員');if(pr)return{state:s,resolved:false,prompt:pr,log:'吶喊替換'}}return PL(s,'無可替換吶喊')}],
-    ['hSD11-005',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD11-008',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-    ['hSD11-009',(s,c)=>{drawCards(s.players[c.player],1);archiveHand(s.players[c.player],1);return PL(s,'抽1棄1')}],
-    ['hSD12-005',(s,c)=>{damageOpp(s,c.player,20);return PL(s,'中心20特殊傷害')}],
-    ['hSD13-008',(s,c)=>{drawCards(s.players[c.player],1);return PL(s,'抽1')}],
-    ['hSD13-015',(s,c)=>{sendCheerDeck(s.players[c.player],c.memberInst);return PL(s,'送吶喊')}],
-  ];
+  // ═══ COLLAB (was 31 cards, now 0) — DISABLED 2026-05-01 ═══
+  //
+  // Same systemic placeholder problem as bloomHandlers above: spot-checked
+  // ~10 entries, 100% mismatched the actual card text (e.g. hBP07-050 was
+  // mapped to "抽2棄1" but real effect is 1st-turn bloom permission).
+  // hBP07-051 broadcast on collab → auto-sent cheer when other クロニー
+  // collab'd, which was the user-reported bug.
+  //
+  // Disabled wholesale; cards fall through to MANUAL_EFFECT.
+  // Re-implement card-by-card per real effectC text as time permits.
+  const collabHandlers = [];
   // Wrap each bulk collab handler so it only fires on the card's OWN collab,
   // not on engine broadcasts to other own-stage members
   // (triggerEvent='member_collabed'). Without this guard, every collab fired
@@ -172,45 +126,26 @@ export function registerPhaseCFinal(){
     });
   }
 
-  // ═══ ART EFFECTS (21 cards) — conditional damage boosts ═══
-  const artHandlers = [
-    ['hBP05-012',(s,c)=>{const has=c.memberInst?.attachedSupport?.some(x=>getCard(x.cardId)?.type==='支援・道具');return has?PB(s,30,'有道具→+30'):P(s)}],
-    ['hBP05-017',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-    ['hBP05-036',(s,c)=>{const n=(c.memberInst?.attachedSupport||[]).filter(x=>getCard(x.cardId)?.type==='支援・粉絲').length;return PB(s,n*10,`${n}粉絲→+${n*10}`)}],
-    ['hBP05-037',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=4?PB(s,40,'≥4吶喊→+40'):P(s)}],
-    ['hBP05-054',(s,c)=>{const n=c.memberInst?.bloomStack?.length||0;return PB(s,n*20,`${n}重疊→+${n*20}`)}],
-    ['hBP05-070',(s,c)=>{const n=Math.min(5,c.memberInst?.attachedCheer?.length||0);return PB(s,n*20,`${n}吶喊→+${n*20}`)}],
-    ['hBP06-044',(s,c)=>{const has=c.memberInst?.attachedSupport?.some(x=>getCard(x.cardId)?.type==='支援・道具');return has?PB(s,50,'有道具→+50'):P(s)}],
-    ['hBP06-075',(s,c)=>{const n=c.memberInst?.bloomStack?.length||0;return PB(s,n*20,`${n}重疊→+${n*20}`)}],
-    ['hBP07-060',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=4?PB(s,40,'≥4吶喊→+40'):P(s)}],
-    ['hSD01-006',(s,c)=>{const r=rollDie();return r%2===0?PB(s,20,`骰${r}→+20`):PL(s,`骰${r}`)}],
-    ['hSD03-011',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-    ['hSD04-006',(s,c)=>{const r=rollDie();return r%2===1?PB(s,20,`骰${r}→+20`):PL(s,`骰${r}`)}],
-    ['hSD04-009',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-    ['hSD05-006',(s,c)=>{const has=c.memberInst?.attachedSupport?.some(x=>getCard(x.cardId)?.type==='支援・道具');return has?PB(s,30,'有道具→+30'):P(s)}],
-    ['hSD05-008',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-    ['hSD05-010',(s,c)=>{const n=Math.min(5,c.memberInst?.attachedCheer?.length||0);return PB(s,n*20,`${n}吶喊→+${n*20}`)}],
-    ['hSD06-003',(s,c)=>{const n=Math.min(4,c.memberInst?.attachedCheer?.length||0);return PB(s,n*20,`${n}吶喊→+${n*20}`)}],
-    ['hSD06-010',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-    ['hSD07-004',(s,c)=>{const r=rollDie();return r>=3?PB(s,30,`骰${r}→+30`):PL(s,`骰${r}`)}],
-    ['hSD07-008',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=4?PB(s,50,'≥4吶喊→+50'):P(s)}],
-    ['hSD11-007',(s,c)=>{const n=c.memberInst?.attachedCheer?.length||0;return n>=3?PB(s,30,'≥3吶喊→+30'):P(s)}],
-  ];
-  for(const[id,fn]of artHandlers){reg(id,HOOK.ON_ART_DECLARE,fn)}
+  // ═══ ART EFFECTS (was 21 cards, now 0) — DISABLED 2026-05-01 ═══
+  //
+  // The "art effect" boosts were also placeholder — pattern-mapped to
+  // generic "if attached cheer ≥ N → +X damage" without reading the real
+  // card text. Verified mismatch on every spot-checked entry (e.g.
+  // hBP05-017 「ぱくぱく」 real effect is "-1 colorless cheer per ルーナイト
+  // attached", but the bulk handler said "≥3吶喊→+30").
+  //
+  // Engine still surfaces art effect text via MANUAL_EFFECT prompts when
+  // arts trigger; the ON_ART_DECLARE hook just won't auto-apply boosts
+  // anymore. Re-implement card-by-card later.
+  const artHandlers = [];
 
-  // ═══ SUPPORT (9 cards) ═══
-  const supportHandlers = [
-    ['hBP05-076',(s,c)=>{drawCards(s.players[c.player],2);return PL(s,'抽2')}],
-    ['hBP05-081',(s,c)=>{const p=s.players[c.player];drawCards(p,1);return PL(s,'抽1')}],
-    ['hBP06-092',(s,c)=>{drawCards(s.players[c.player],2);return PL(s,'抽2')}],
-    ['hSD03-013',(s,c)=>PL(s,'吉祥物HP+20')],
-    ['hSD03-014',(s,c)=>PL(s,'道具+10')],
-    ['hSD04-014',(s,c)=>PL(s,'吉祥物HP+20')],
-    ['hSD06-012',(s,c)=>PL(s,'道具+10')],
-    ['hSD07-015',(s,c)=>PL(s,'吉祥物HP+20')],
-    ['hSD10-011',(s,c)=>PL(s,'道具+10')],
-  ];
-  for(const[id,fn]of supportHandlers){reg(id,HOOK.ON_PLAY,fn)}
+  // ═══ SUPPORT (was 9 cards, now 0) — DISABLED 2026-05-01 ═══
+  //
+  // hBP05-076 「ちょこのビーフストロガノフ」 real effect is "+10 art damage
+  // to a member, +10 again to a 2nd ちょこ" — bulk wrote "draw 2".
+  // Other support entries equally wrong.
+  // Disabled; falls through to MANUAL_EFFECT.
+  const supportHandlers = [];
 
   // ═══ OSHI SKILLS (5 cards) ═══
   // hBP05-006 ネリッサ oshi
