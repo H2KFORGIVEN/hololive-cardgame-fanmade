@@ -2038,15 +2038,17 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
               z-index 0s 0.22s;  /* z-index resets after lift ends */
   transform-origin: center bottom;
 }
-/* Lift only on the outer .card-with-attachments wrapper. Previously the
-   selector also matched the inner .game-card:hover, which compounded the
-   transform: hovering the inner card triggered both rules, and CSS
-   transforms cascade through the DOM tree, so the card kept rising and
-   scaling up until the cursor lost contact (~ -180px, scale ≈ 3.6).
-   Hovering anywhere inside the wrapper still triggers the lift because
-   :hover propagates up the tree. */
-.hand-area .card-with-attachments:hover,
-.hand-area .card-with-attachments:focus-within {
+/* Hover-bounce fix:
+   :hover detection on the OUTER .hand-card-wrap (which never transforms,
+   so its hit-test box stays at the original card position), with the
+   transform applied to the INNER .card-with-attachments. Previously the
+   :hover was on the same element being lifted — when it flew up -90px,
+   the cursor was no longer over its (now displaced) hit box, :hover
+   dropped, the card fell back to the original position under the cursor,
+   :hover re-fired, and the loop oscillated. Putting the hover trigger
+   on the stationary wrapper keeps :hover stable while the visual lifts. */
+.hand-card-wrap:hover > .card-with-attachments,
+.hand-card-wrap:focus-within > .card-with-attachments {
   transform: translateY(-90px) scale(1.9);
   z-index: 999;
   transition: transform 0.22s cubic-bezier(.2,.8,.2,1),
@@ -2055,12 +2057,13 @@ body { overflow: hidden; }  /* belt: still prevent page scroll on viewport */
   box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 0 0 3px rgba(255,210,90,0.7);
 }
 /* Sibling slide: when one hand-card is hovered, neighbours move slightly aside.
-   Uses :has() — supported in all modern browsers (Chrome 105+, Safari 15.4+). */
-.hand-area:has(.game-card:hover, .card-with-attachments:hover) > * {
+   Uses :has() — supported in all modern browsers (Chrome 105+, Safari 15.4+).
+   Anchored on the stationary .hand-card-wrap (not the lifted inner element). */
+.hand-cards:has(.hand-card-wrap:hover) .hand-card-wrap {
   transition: transform 0.2s ease;
 }
-.hand-area:has(> .card-with-attachments:hover) > .card-with-attachments:not(:hover) {
-  transform: scale(0.98);
+.hand-cards:has(.hand-card-wrap:hover) .hand-card-wrap:not(:hover) > .card-with-attachments {
+  transform: scale(0.95);
 }
 
 /* Effect toast (handler-result tip) — small float text near origin */
