@@ -60,7 +60,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1390
+    "favorite_count": 1391
   },
   {
     "id": "2048598005692149998",
@@ -289,6 +289,36 @@
     "external_urls": [],
     "category": "news",
     "favorite_count": 2487
+  },
+  {
+    "id": "2047649878030139515",
+    "url": "https://x.com/hololive_OCG/status/2047649878030139515",
+    "text": "【お知らせ】\nプロデューサーレターを公開しました。\n\n日頃から応援を続けてくださるみなさまに、本日公開した施策や今後の展望についていくつかお話しさせていただきます。\nこれからも『hololive OFFICIAL CARD GAME』をどうぞよろしくお願いいたします。\n\n🔽詳細\nhttps://hololive-official-cardgame.com/news/post/53/\n\n#ホロカ https://t.co/FCXhTkkwp7",
+    "created_at": "2026-04-24T12:12:29.000Z",
+    "author": {
+      "name": "hololive OFFICIAL CARD GAME【公式】",
+      "handle": "hololive_OCG",
+      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
+    },
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HGq16bma0AAOW4s.jpg",
+        "width": 1100,
+        "height": 619
+      }
+    ],
+    "hashtags": [
+      "ホロカ"
+    ],
+    "external_urls": [
+      {
+        "url": "https://hololive-official-cardgame.com/news/post/53/",
+        "display": "hololive-official-cardgame.com/news/post/53/"
+      }
+    ],
+    "category": "news",
+    "favorite_count": 915
   },
   {
     "id": "2047647350580277319",
@@ -869,7 +899,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4485
+    "favorite_count": 4488
   },
   {
     "id": "2047601447316181384",
@@ -1254,7 +1284,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 812
+    "favorite_count": 813
   },
   {
     "id": "2046423679114854876",
@@ -1318,7 +1348,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2328
+    "favorite_count": 2327
   },
   {
     "id": "2045880105063641370",
@@ -2831,7 +2861,7 @@
       }
     ],
     "category": "usage_rate",
-    "favorite_count": 942
+    "favorite_count": 943
   },
   {
     "id": "2040391682198266278",
@@ -3489,7 +3519,7 @@
     "hashtags": [],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 518
+    "favorite_count": 519
   },
   {
     "id": "2039272825530564980",
@@ -4223,7 +4253,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 2987
+    "favorite_count": 2988
   },
   {
     "id": "2037001601525965211",
@@ -4288,7 +4318,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1812
+    "favorite_count": 1811
   },
   {
     "id": "2036639210350756054",
@@ -4539,7 +4569,7 @@
     ],
     "external_urls": [],
     "category": "usage_rate",
-    "favorite_count": 761
+    "favorite_count": 762
   },
   {
     "id": "1919186530209570969",
