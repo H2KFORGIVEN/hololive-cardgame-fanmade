@@ -163,9 +163,14 @@ export function registerPhaseCFinal(){
     return PL(s,'聯動位置Debut/1st/Spot↔後台フレア');
   });
   // hBP07-002 ベスティア・ゼータ oshi
+  // oshi: 「[1/turn] 選擇舞台 1 成員 → 該成員藝能傷害 +50; 若該成員為 #ID3期生 Buzz → +80」
+  // SP:   「[1/game] 將存檔任意吉祥物/粉絲附加給 #ID3期生 1 位; 若 ≥3 → +100」
+  // Both paths require target-picker prompts. Fall through to MANUAL_EFFECT.
+  // (Player still pays cost via the explicit "use oshi" action; manual
+  // application then via the Manual Adjust panel.)
   reg('hBP07-002',HOOK.ON_OSHI_SKILL,(s,c)=>{
-    if(c.skillType==='sp')return PL(s,'SP:存檔吉祥物/粉絲附加給#ID3期生(3+→+100)');
-    return{state:s,resolved:true,effect:boostTurn(50),log:'1位成員+50(#ID3期生Buzz→+80)'};
+    if(c.skillType==='reactive') return {state:s,resolved:true};
+    return {state:s};
   });
   // hSD01-001 ときのそら oshi
   reg('hSD01-001',HOOK.ON_OSHI_SKILL,(s,c)=>{

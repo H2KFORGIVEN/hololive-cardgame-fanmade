@@ -20,6 +20,7 @@ import { registerPhaseDGenerated } from './handlers/phaseD-generated.js';
 import { registerCleanup } from './handlers/cleanup.js';
 import { registerLookTopBottom } from './handlers/look-top-bottom.js';
 import { registerPassthrough } from './handlers/passthrough.js';
+import { registerKuroniiDeck } from './handlers/kuronii-deck.js';
 
 let _initialized = false;
 
@@ -87,6 +88,12 @@ export async function initEffects() {
 
   // P4.99: Cleanup — fill secondary hook gaps (ON_ART_RESOLVE for cards with ON_ART_DECLARE, etc.)
   counts.cleanup = registerCleanup(effectsData);
+
+  // P4.96: Deck-specific implementations (registered AFTER bulk handlers
+  // so they override any earlier wrong stubs). Each card here has its
+  // real zh-TW effect text in a comment, implemented per text only —
+  // no guessing per ~/.claude/projects/.../feedback_no_guessing_card_effects.md.
+  counts.kuroniiDeck = registerKuroniiDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);

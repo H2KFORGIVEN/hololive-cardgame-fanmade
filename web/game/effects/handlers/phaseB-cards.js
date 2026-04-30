@@ -998,14 +998,14 @@ export function registerPhaseB() {
     if (prompt) return { state, resolved: false, prompt, log: '存檔 holoX 成員回手牌' };
     return { state, resolved: true, log: '存檔無 holoX 成員' };
   });
+  // hBP01-061 art1: 「可以(opt)將自己 1~5 手牌存檔: 每張存檔給對手中心或聯動 20 點特殊傷害」
+  // Real effect = OPTIONAL cost-bearing damage to OPPONENT (not boost to self).
+  // Bulk handler did `boost(maxHand * 20, 'self')` which is doubly wrong:
+  //   1) target should be opponent, not self
+  //   2) cost should be optional and player-chosen, not auto-spend all hand
+  // Fall through to MANUAL_EFFECT — player applies via Manual Adjust panel.
   reg('hBP01-061', HOOK.ON_ART_DECLARE, (state, ctx) => {
-    const player = state.players[ctx.player];
-    const max = Math.min(5, player.zones[ZONE.HAND].length);
-    return {
-      state, resolved: true,
-      effect: { type: 'DAMAGE_BOOST', amount: max * 20, target: 'self', duration: 'instant' },
-      log: `棄 ${max} 張 → +${max * 20}`,
-    };
+    return { state };
   });
 
   // 113. hBP01-051 風真いろは art1: +20 per cheer (max 5)
