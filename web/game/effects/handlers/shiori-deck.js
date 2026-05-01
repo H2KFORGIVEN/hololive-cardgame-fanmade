@@ -175,7 +175,21 @@ export function registerShioriDeck() {
       oppTargets[0].damage = (oppTargets[0].damage || 0) + 10;
       return { state, resolved: true, log: `A Cozy Night: ${getCard(oppTargets[0].cardId)?.name||''} 10 特殊傷害` };
     }
-    return { state }; // MANUAL_EFFECT — opp target picker missing
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET', player: ctx.player,
+        message: 'A Cozy, Spooky Night: 選擇對手 1 位成員（10 特殊傷害）',
+        cards: oppTargets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 10,
+      },
+      log: 'A Cozy, Spooky Night: 選擇對手成員',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────
@@ -203,7 +217,21 @@ export function registerShioriDeck() {
         oppBackstage[0].damage = (oppBackstage[0].damage || 0) + dmg;
         return { state, resolved: true, log: `SP「リベリオン」: 支援 ${supportCount} → ${getCard(oppBackstage[0].cardId)?.name||''} ${dmg} 特殊傷害` };
       }
-      return { state }; // MANUAL_EFFECT — opp backstage picker missing
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SELECT_TARGET', player: ctx.player,
+          message: `SP「リベリオン」: 選擇對手 1 位 Debut 以外後台成員（${dmg} 特殊傷害）`,
+          cards: oppBackstage.map(m => ({
+            instanceId: m.instanceId, cardId: m.cardId,
+            name: getCard(m.cardId)?.name || '',
+            image: getCardImage(m.cardId),
+          })),
+          maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+          damageAmount: dmg,
+        },
+        log: `SP「リベリオン」: 支援 ${supportCount} → 選擇後台`,
+      };
     }
     return { state }; // oshi: MANUAL_EFFECT — look-3 + reveal-1 + reorder chain
   });
@@ -225,7 +253,21 @@ export function registerShioriDeck() {
       back[0].damage = (back[0].damage || 0) + 10;
       return { state, resolved: true, log: `パレ・モンローズ: ${getCard(back[0].cardId)?.name||''} 10 特殊傷害` };
     }
-    return { state }; // MANUAL_EFFECT — opp backstage picker missing
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET', player: ctx.player,
+        message: 'パレ・モンローズ: 選擇對手 1 位後台成員（10 特殊傷害）',
+        cards: back.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 10,
+      },
+      log: 'パレ・モンローズ: 選擇對手後台',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

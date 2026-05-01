@@ -132,8 +132,22 @@ export function registerAyameDeck() {
     if (!center && !collab) {
       return { state, resolved: true, log: 'オーガニックショット: 對手前場無成員' };
     }
-    // Both → MANUAL_EFFECT (target picker)
-    return { state }; // MANUAL_EFFECT — opp center/collab target picker missing
+    // Both: SELECT_TARGET picker → OPP_MEMBER_DAMAGE (Phase 2.4 follow-up)
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET', player: ctx.player,
+        message: 'オーガニックショット: 選擇對手中心或聯動（30 特殊傷害）',
+        cards: [center, collab].map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 30,
+      },
+      log: 'オーガニックショット: 選擇對手中心/聯動',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

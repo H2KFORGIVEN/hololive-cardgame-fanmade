@@ -128,7 +128,21 @@ export function registerOkayuDeck() {
       oppTargets[0].damage = (oppTargets[0].damage || 0) + 10;
       return { state, resolved: true, log: `いっくよー: ${getCard(oppTargets[0].cardId)?.name||''} 10 特殊傷害` };
     }
-    return { state }; // MANUAL_EFFECT — opp target picker missing for special damage
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET', player: ctx.player,
+        message: 'いっくよー: 選擇對手 1 位成員（10 特殊傷害）',
+        cards: oppTargets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 10,
+      },
+      log: 'いっくよー: 選擇對手成員',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────
@@ -202,7 +216,21 @@ export function registerOkayuDeck() {
       oppTargets[0].damage = (oppTargets[0].damage || 0) + 30;
       return { state, resolved: true, log: `君と遊ぶと: ${getCard(oppTargets[0].cardId)?.name||''} 30 特殊傷害` };
     }
-    return { state }; // MANUAL_EFFECT — opp target picker missing
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_TARGET', player: ctx.player,
+        message: '君と遊ぶとドキドキ: 選擇對手 1 位成員（30 特殊傷害）',
+        cards: oppTargets.map(m => ({
+          instanceId: m.instanceId, cardId: m.cardId,
+          name: getCard(m.cardId)?.name || '',
+          image: getCardImage(m.cardId),
+        })),
+        maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+        damageAmount: 30,
+      },
+      log: '君と遊ぶとドキドキ: 選擇對手成員',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────
