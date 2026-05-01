@@ -31,21 +31,48 @@
 | Phase 3 | #13 いろは（風真いろは）6 cards (gap-fill) | ✅ DONE | `15a2344` |
 | Phase 3 | #14 らでん（儒烏風亭らでん）13 cards | ✅ DONE | `2ea7336` |
 | Phase 3 | #15 AZKi 5 cards (gap-fill) | ✅ DONE | `66c7769` |
-| Phase 3 | #16-22 (7 more decks) | ⏳ PENDING |
+| Phase 3 | #16 あやめ（百鬼あやめ）4 cards (gap-fill) | ✅ DONE | `af641ea` |
+| Phase 3 | #17 おかゆ（猫又おかゆ）5 cards (gap-fill) | ✅ DONE | `a136fa2` |
+| Phase 3 | #18 わため（角巻わため）5 cards (gap-fill) | ✅ DONE | `17f15e0` |
+| Phase 3 | #19 ルーナ（姫森ルーナ）5 cards (gap-fill) | ✅ DONE | `468b286` |
+| Phase 3 | #20 シオリ（シオリ・ノヴェラ）7 cards | ✅ DONE | `fa3052a` |
+| Phase 3 | #21 ラプラス（ラプラス・ダークネス）5 cards (gap-fill) | ✅ DONE | `b28a294` |
+| Phase 3 | #22 ミオ（大神ミオ）8 cards | ✅ DONE | `09eaf9b` |
 | **Phase 4** | CI gate / integration tests | ⏳ PENDING |
 
-**Phase 3 progress: 15 / 22 decks** — coverage ≈ 211 unique cards
-beyond the placeholder fall-throughs. All implemented decks use the
+**Phase 3 progress: 22 / 22 decks ✅ COMPLETE** — coverage ≈ 250 unique cards
+beyond the placeholder fall-throughs. All 22 implemented decks use the
 "no guessing" rule, real card text in 5-line spec blocks, proper picker
 prompts (no auto-pick on ambiguous targets), and the audit precommit
-gate has held steady at 10 HIGH (no new bugs introduced). CORRECT-VERIFIED
-+86 from baseline; engine gaps explicitly documented per card.
+gate has held steady at **10 HIGH** throughout (no new bugs introduced).
+CORRECT-VERIFIED +105 from baseline; engine gaps explicitly documented
+per card.
 
 Audit improvement (commit `4135e4a`): COST-IGNORED detection now skips
 MANUAL_EFFECT fall-throughs (handlers whose only `actions` token is
 `hasTriggerCheck` and that return `{ state }` for engine to prompt user).
 Three prior false positives — including two pre-existing entries in
 phaseB / phaseC2 — are now correctly excluded. Net COST-IGNORED: 6 → 4.
+
+### Engine gaps queued for Phase 2.4 (compiled from per-deck notes)
+
+| Need | Affected cards | Priority |
+|---|---|---|
+| `preventDamage` hook (passive damage reduction) | hBP05-008 (ノエル), hBP05-069 (フブキ), hSD19-005 (スバル) | MED |
+| Targeting redirection hook (force opp to target X) | hBP05-010 (ノエル) | MED |
+| Activity-by-tag tracking `_activityTagsPlayedThisTurn` | hBP05-010 (ノエル "牛丼"), hBP06-033 (らでん "#きのこ"), hSD15-008 (らでん "#きのこ") | LOW |
+| Scry-1 with top/bottom choice afterAction | hBP05-068 (フブキ) | MED |
+| Multi-step distribution from archive | hBP05-070 art1 (フブキ), hBP02-012 effectB (フブキ), hBP03-021 effectB (ノエル), hSD19-001 SP (スバル), hSD15-005 effectG (らでん) | LOW |
+| Cost-bearing optional effect afterAction (cheer→archive + dmg/heal) | hBP03-017/019/021/hBP05-028 (ぼたん), hBP06-078 (スバル), hBP07-067 (AZKi), hBP07-030 art1 (いろは), hSD02-006 (あやめ), hSD03-006/009 (おかゆ), hBP02-058 effectB (カリオペ), hBP02-055 effectC (カリオペ), hBP03-007 SP (わため) | HIGH |
+| Colorless cost reduction afterAction with picker | hBP07-022 art1 multi-pick (ノエル) | LOW |
+| Opp target picker for special damage | hBP05-004 (おかゆ), hBP07-057 (おかゆ), hBP07-059 art1 (シオリ), hSD12-003 (シオリ), hSD12-001 SP (シオリ), hBP02-034 art2 (あやめ) | MED |
+| Place-on-stage from archive afterAction | hSD19-004 (スバル), hSD15-007 (らでん) | LOW |
+| Look-N-pick-1-reorder-bottom afterAction | hSD12-001 (シオリ), hBP07-028 effectC (ミオ) | LOW |
+| Pre-damage REACTIVE trigger (damaged-opp-backstage) | hSD03-001 SP (おかゆ) | LOW |
+| Attachment-attach trigger (when ミオファ attached) | hBP07-024 effectG (ミオ) | LOW |
+| Interactive RPS between two players | hBP03-071 art1 (わため) | LOW |
+| Opp center↔backstage swap | hBP05-004 SP (おかゆ) | LOW |
+| Cheer to cheer-deck afterAction | hBP01-100 (カリオペ) | LOW |
 
 ### Engine gaps surfaced by Phase 3 #7-10 (queue for Phase 2.4)
 
