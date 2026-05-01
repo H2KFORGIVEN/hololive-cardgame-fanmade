@@ -41,7 +41,9 @@
 | **Phase 2.4** | #1 cost-bearing cheer→archive afterAction | ✅ DONE | `f22c5ca` |
 | Phase 2.4 | #2 multi-target damage variant (center + backstage) | ✅ DONE | `4554d7e` |
 | Phase 2.4 | #3 maxSelect>1 cheer cost re-emit | ✅ DONE | `7f4d0c7` |
-| **Phase 4** | CI gate / integration tests | ⏳ PENDING |
+| **Phase 4** | 4.1 integration tests (Phase 2.4 afterAction) | ✅ DONE | `3ac5dd0` |
+| Phase 4 | 4.2 GitHub Action audit gate (master + PR) | ✅ DONE | `2ee96ec` |
+| Phase 4 | 4.3 cards.json sync detector | ✅ DONE | `06e44c1` |
 
 **Phase 3 progress: 22 / 22 decks ✅ COMPLETE** — coverage ≈ 250 unique cards
 beyond the placeholder fall-throughs. All 22 implemented decks use the
