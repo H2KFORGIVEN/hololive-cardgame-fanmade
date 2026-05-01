@@ -319,8 +319,14 @@ function categorize(entry) {
     return { category: 'STUB-LOG', reason: 'log only — engine upgrades to MANUAL_EFFECT', realText: realText.slice(0, 110) };
   }
 
-  // Build action / wanted fingerprints
-  const actions = extractActions(body);
+  // Build action / wanted fingerprints.
+  // Strip JS comments first so words inside `//` or `/* ... */` don't trigger
+  // the action-fingerprint regexes (e.g. "// adds turn boost via picker"
+  // would otherwise produce a false 'boost' token).
+  const stripped = body
+    .replace(/\/\/[^\n]*/g, '')      // line comments
+    .replace(/\/\*[\s\S]*?\*\//g, ''); // block comments
+  const actions = extractActions(stripped);
   const wanted = extractWanted(realText);
   const hasGuard = actions.includes('hasTriggerCheck');
   const hasPicker = actions.includes('hasPicker');

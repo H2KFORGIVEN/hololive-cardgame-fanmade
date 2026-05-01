@@ -188,7 +188,7 @@ export function registerCalliopeDeck() {
 
   reg('hBP02-055', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    // Phase 2.4 #7: hand-cost + tag-filtered boost picker.
+    // Phase 2.4 #7: hand-cost + tag-filtered turn buff via picker afterAction.
     const own = state.players[ctx.player];
     const handMembers = own.zones[ZONE.HAND].filter(c => isMember(getCard(c.cardId)?.type));
     if (handMembers.length === 0) return { state, resolved: true, log: 'ショータイム: 手牌無成員 — 跳過' };
