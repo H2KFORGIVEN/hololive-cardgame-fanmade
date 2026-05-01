@@ -1541,6 +1541,83 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #9 — Activity-by-tag/name tracking
+// ══════════════════════════════════════════════════════════════════
+section('Activity-by-tag/name tracking (Phase 2.4 #9)');
+
+{
+  // Verify _activityTagsPlayedThisTurn / _activityNamesPlayedThisTurn populated on activity play
+  const state = makeMinState(null, null, [], null);
+  // Simulate "playing" an activity by directly invoking the GameEngine path is heavier;
+  // instead, test the gating logic in the deck handler using a hand-rolled state where
+  // the tracking arrays are pre-populated.
+  state.players[0]._activityTagsPlayedThisTurn = ['#きのこ'];
+  state.players[0]._activityNamesPlayedThisTurn = ['牛丼'];
+
+  const radenHandler = getHandler('hBP06-033', HOOK.ON_BLOOM);
+  if (!radenHandler) {
+    fail('hBP06-033 handler', 'no handler registered');
+  } else {
+    state.players[0].zones.deck = [
+      { instanceId: 9001, cardId: 'hBP01-038', faceDown: true },
+      { instanceId: 9002, cardId: 'hBP01-040', faceDown: true },
+      { instanceId: 9003, cardId: 'hBP01-042', faceDown: true },
+    ];
+    const memberInst = makeMember('hBP06-033', 9000);
+    state.players[0].zones.center = memberInst;
+    const r = radenHandler(state, { cardId: 'hBP06-033', player: 0, memberInst });
+    const handAfter = state.players[0].zones.hand.length;
+    const onceFlag = state.players[0]._oncePerTurn?.['hBP06-033_effectB'];
+    if (handAfter === 2 && onceFlag) pass('hBP06-033 with #きのこ tag → draws 2 + once-per-turn flag set');
+    else fail('hBP06-033 #きのこ', `hand=${handAfter} once=${onceFlag}`);
+  }
+}
+
+{
+  // hBP06-033 should NOT trigger when no #きのこ tag played
+  const state = makeMinState(null, null, [], null);
+  state.players[0]._activityTagsPlayedThisTurn = ['#其他'];  // not #きのこ
+  state.players[0].zones.deck = [
+    { instanceId: 9101, cardId: 'hBP01-038', faceDown: true },
+  ];
+  const memberInst = makeMember('hBP06-033', 9100);
+  state.players[0].zones.center = memberInst;
+  const radenHandler = getHandler('hBP06-033', HOOK.ON_BLOOM);
+  if (radenHandler) {
+    const r = radenHandler(state, { cardId: 'hBP06-033', player: 0, memberInst });
+    const handAfter = state.players[0].zones.hand.length;
+    if (handAfter === 0) pass('hBP06-033 without #きのこ tag → no draw (gate works)');
+    else fail('hBP06-033 negative', `expected 0 draw, got ${handAfter}`);
+  }
+}
+
+{
+  // hBP05-010 art1 with 「牛丼」 played → +30 boost
+  const state = makeMinState(null, null, [], null);
+  state.players[0]._activityNamesPlayedThisTurn = ['牛丼'];
+  const noelHandler = getHandler('hBP05-010', HOOK.ON_ART_DECLARE);
+  if (noelHandler) {
+    const r = noelHandler(state, { cardId: 'hBP05-010', player: 0, artKey: 'art1' });
+    const boosted = r.effect && r.effect.amount === 30;
+    if (boosted) pass('hBP05-010 art1 with 「牛丼」 played → +30 boost');
+    else fail('hBP05-010 牛丼', `effect=${JSON.stringify(r.effect)}`);
+  }
+}
+
+{
+  // hBP05-010 art1 without 「牛丼」 → no boost
+  const state = makeMinState(null, null, [], null);
+  state.players[0]._activityNamesPlayedThisTurn = ['カレー'];
+  const noelHandler = getHandler('hBP05-010', HOOK.ON_ART_DECLARE);
+  if (noelHandler) {
+    const r = noelHandler(state, { cardId: 'hBP05-010', player: 0, artKey: 'art1' });
+    const noBoost = !r.effect || r.effect.amount !== 30;
+    if (noBoost) pass('hBP05-010 art1 without 「牛丼」 → no boost (gate works)');
+    else fail('hBP05-010 negative', `unexpected effect=${JSON.stringify(r.effect)}`);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #8 — ARCHIVE_HAND_TAGSHARE_DRAW afterAction
 // ══════════════════════════════════════════════════════════════════
 section('ARCHIVE_HAND_TAGSHARE_DRAW (Phase 2.4 #8)');

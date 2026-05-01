@@ -267,7 +267,17 @@ export function registerNoelDeck() {
   }));
   reg('hBP05-010', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — needs activity-by-name tracking (Phase 2.4 follow-up)
+    // Phase 2.4 #9: precise activity-by-name check via _activityNamesPlayedThisTurn
+    const own = state.players[ctx.player];
+    const names = own._activityNamesPlayedThisTurn || [];
+    if (!names.includes('牛丼')) {
+      return { state, resolved: true, log: '生きる力: 本回合未使用「牛丼」' };
+    }
+    return {
+      state, resolved: true,
+      effect: { type: 'DAMAGE_BOOST', amount: 30, target: 'self', duration: 'instant' },
+      log: '生きる力: 本回合使用過「牛丼」 → +30',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

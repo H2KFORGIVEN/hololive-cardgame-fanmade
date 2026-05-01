@@ -163,6 +163,8 @@ function resetTurnFlags(player, state = null) {
   // Per-turn counters consumed by art-side conditional boosts
   player._limitedSupportsThisTurn = 0;
   player._activitiesPlayedThisTurn = 0;
+  player._activityTagsPlayedThisTurn = [];
+  player._activityNamesPlayedThisTurn = [];
   player._namesUsedArtThisTurn = [];
   // Phase 2.2 — per-turn / per-game state tracking (added 2026-05-01)
   // Reset on the player's own turn-reset phase only.
@@ -319,8 +321,23 @@ function processPlaySupport(state, action) {
   }
   // Track activity-card plays this turn for "if used activity → boost" art
   // conditions (e.g. hBP07-018, hBP06-076). Reset at end-of-turn.
+  // Phase 2.4 #9: also track per-tag plays so cards like hBP05-010 art1
+  // (ノエル "牛丼") and hBP06-033 (らでん "#きのこ") can do precise checks.
   if (card?.type === '支援・活動') {
     player._activitiesPlayedThisTurn = (player._activitiesPlayedThisTurn || 0) + 1;
+    player._activityTagsPlayedThisTurn = player._activityTagsPlayedThisTurn || [];
+    player._activityNamesPlayedThisTurn = player._activityNamesPlayedThisTurn || [];
+    const tagRaw = card.tag || '';
+    const tagStr = typeof tagRaw === 'string' ? tagRaw : JSON.stringify(tagRaw);
+    for (const t of tagStr.split('/').map(s => s.trim()).filter(Boolean)) {
+      if (!player._activityTagsPlayedThisTurn.includes(t)) {
+        player._activityTagsPlayedThisTurn.push(t);
+      }
+    }
+    const actName = card.name || '';
+    if (actName && !player._activityNamesPlayedThisTurn.includes(actName)) {
+      player._activityNamesPlayedThisTurn.push(actName);
+    }
   }
 
   const cardName = card?.name || '';

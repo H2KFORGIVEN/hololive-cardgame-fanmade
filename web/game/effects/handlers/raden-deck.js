@@ -208,15 +208,14 @@ export function registerRadenDeck() {
     if (own._oncePerTurn['hBP06-033_effectB']) {
       return { state, resolved: true, log: '濡羽色のほころび: 本回合已使用' };
     }
-    const activities = own._activitiesPlayedThisTurn || 0;
-    if (activities < 1) return { state, resolved: true, log: '濡羽色のほころび: 本回合未使用活動' };
-    // Engine doesn't track activity tags — conservative gate by oshi name
-    if (getCard(own.oshi?.cardId)?.name !== '儒烏風亭らでん') {
-      return { state, resolved: true, log: '濡羽色のほころび: 主推非らでん（無法精確檢查 #きのこ 標籤）' };
+    // Phase 2.4 #9: precise #きのこ tag check via _activityTagsPlayedThisTurn
+    const tags = own._activityTagsPlayedThisTurn || [];
+    if (!tags.includes('#きのこ')) {
+      return { state, resolved: true, log: '濡羽色のほころび: 本回合未使用 #きのこ 活動' };
     }
     own._oncePerTurn['hBP06-033_effectB'] = true;
     drawCards(own, 2);
-    return { state, resolved: true, log: `濡羽色のほころび: 活動 ${activities} 次 + 主推らでん → 抽 2` };
+    return { state, resolved: true, log: '濡羽色のほころび: 本回合使用過 #きのこ 活動 → 抽 2' };
   });
 
   // ─────────────────────────────────────────────────────────────────────
@@ -382,15 +381,15 @@ export function registerRadenDeck() {
   reg('hSD15-008', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
     const own = state.players[ctx.player];
-    const activities = own._activitiesPlayedThisTurn || 0;
-    if (activities < 1) return { state, resolved: true, log: 'きのこ狩り: 本回合未使用活動' };
-    if (getCard(own.oshi?.cardId)?.name !== '儒烏風亭らでん') {
-      return { state, resolved: true, log: 'きのこ狩り: 主推非らでん（#きのこ 標籤無法精確檢查）' };
+    // Phase 2.4 #9: precise #きのこ tag check
+    const tags = own._activityTagsPlayedThisTurn || [];
+    if (!tags.includes('#きのこ')) {
+      return { state, resolved: true, log: 'きのこ狩り: 本回合未使用 #きのこ 活動' };
     }
     return {
       state, resolved: true,
       effect: { type: 'DAMAGE_BOOST', amount: 10, target: 'self', duration: 'instant' },
-      log: 'きのこ狩り: 主推らでん + 活動 → +10',
+      log: 'きのこ狩り: 本回合使用過 #きのこ 活動 → +10',
     };
   });
 
