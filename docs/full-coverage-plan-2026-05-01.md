@@ -26,15 +26,26 @@
 | Phase 3 | #8 ペコラ（兎田ぺこら）15 cards | ✅ DONE | `27ccb8b` |
 | Phase 3 | #9 ノエル（白銀ノエル）15 cards | ✅ DONE | `ae196e5` |
 | Phase 3 | #10 ぼたん（獅白ぼたん）9 cards | ✅ DONE | `8d54362` |
-| Phase 3 | #11-22 (12 more decks) | ⏳ PENDING |
+| Phase 3 | #11 カリオペ（森カリオペ）13 cards | ✅ DONE | `4135e4a` |
+| Phase 3 | #12 スバル（大空スバル）11 cards | ✅ DONE | `3927b1a` |
+| Phase 3 | #13 いろは（風真いろは）6 cards (gap-fill) | ✅ DONE | `15a2344` |
+| Phase 3 | #14 らでん（儒烏風亭らでん）13 cards | ✅ DONE | `2ea7336` |
+| Phase 3 | #15 AZKi 5 cards (gap-fill) | ✅ DONE | `66c7769` |
+| Phase 3 | #16-22 (7 more decks) | ⏳ PENDING |
 | **Phase 4** | CI gate / integration tests | ⏳ PENDING |
 
-**Phase 3 progress: 10 / 22 decks** — coverage ≈ 163 unique cards
+**Phase 3 progress: 15 / 22 decks** — coverage ≈ 211 unique cards
 beyond the placeholder fall-throughs. All implemented decks use the
 "no guessing" rule, real card text in 5-line spec blocks, proper picker
 prompts (no auto-pick on ambiguous targets), and the audit precommit
 gate has held steady at 10 HIGH (no new bugs introduced). CORRECT-VERIFIED
-+61 from baseline; engine gaps explicitly documented per card.
++86 from baseline; engine gaps explicitly documented per card.
+
+Audit improvement (commit `4135e4a`): COST-IGNORED detection now skips
+MANUAL_EFFECT fall-throughs (handlers whose only `actions` token is
+`hasTriggerCheck` and that return `{ state }` for engine to prompt user).
+Three prior false positives — including two pre-existing entries in
+phaseB / phaseC2 — are now correctly excluded. Net COST-IGNORED: 6 → 4.
 
 ### Engine gaps surfaced by Phase 3 #7-10 (queue for Phase 2.4)
 
