@@ -38,6 +38,7 @@ import { registerAzkiDeck } from './handlers/azki-deck.js';
 import { registerAyameDeck } from './handlers/ayame-deck.js';
 import { registerOkayuDeck } from './handlers/okayu-deck.js';
 import { registerWatameDeck } from './handlers/watame-deck.js';
+import { registerLunaDeck } from './handlers/luna-deck.js';
 
 let _initialized = false;
 
@@ -128,6 +129,7 @@ export async function initEffects() {
   counts.ayameDeck = registerAyameDeck();
   counts.okayuDeck = registerOkayuDeck();
   counts.watameDeck = registerWatameDeck();
+  counts.lunaDeck = registerLunaDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
