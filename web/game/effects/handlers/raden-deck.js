@@ -331,8 +331,25 @@ export function registerRadenDeck() {
   // Multi-step picker (which cheer + which target) → MANUAL_EFFECT.
   // ─────────────────────────────────────────────────────────────────────
   reg('hSD15-005', HOOK.ON_KNOCKDOWN, (state, ctx) => {
-    if (ctx.activePlayer === ctx.player) return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — cheer-from-knocked picker
+    // Phase 2.4 follow-up: auto-move 1 cheer from dying member to first
+    // non-self own member. Identical pattern to hBP04-023 (らでん 1st):
+    // since the member is being knocked anyway, moving 1 cheer is strictly
+    // beneficial — auto-pick is the right default.
+    if (ctx.cardId !== 'hSD15-005') return { state, resolved: true };
+    if (state.activePlayer !== ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me?.attachedCheer?.length) return { state, resolved: true, log: 'hSD15-005: 自身無吶喊' };
+    const stage = [
+      own.zones[ZONE.CENTER], own.zones[ZONE.COLLAB],
+      ...(own.zones[ZONE.BACKSTAGE] || []),
+    ].filter(Boolean);
+    const target = stage.find(m => m.instanceId !== me.instanceId);
+    if (!target) return { state, resolved: true, log: 'hSD15-005: 無其他成員' };
+    const cheer = me.attachedCheer.shift();
+    target.attachedCheer = target.attachedCheer || [];
+    target.attachedCheer.push(cheer);
+    return { state, resolved: true, log: '体力作り頑張るぞー！: 1 張吶喊→其他成員' };
   });
 
   // ─────────────────────────────────────────────────────────────────────
