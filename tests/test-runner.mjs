@@ -1552,6 +1552,73 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #17 — ON_SUPPORT_ATTACH hook (hBP07-024 ミオ ミオファ trigger)
+// ══════════════════════════════════════════════════════════════════
+section('ON_SUPPORT_ATTACH hook (Phase 2.4 #17)');
+
+{
+  // Verify hBP07-024 ON_SUPPORT_ATTACH handler fires when ミオファ attached
+  // and triggers a 1/turn draw.
+  const handler = getHandler('hBP07-024', HOOK.ON_SUPPORT_ATTACH);
+  if (!handler) {
+    fail('hBP07-024 ON_SUPPORT_ATTACH', 'no handler registered');
+  } else {
+    const member = makeMember('hBP07-024', 7501);
+    const state = makeMinState(member, null, [], null);
+    state.players[0].zones.deck = [
+      { instanceId: 7601, cardId: 'hBP01-038', faceDown: true },
+      { instanceId: 7602, cardId: 'hBP01-040', faceDown: true },
+    ];
+
+    // Find a real ミオファ cardId from the database
+    const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+    const miofa = allCards.find(c => c.name === 'ミオファ');
+    if (!miofa) {
+      warn('ON_SUPPORT_ATTACH setup', 'ミオファ card not found');
+    } else {
+      const r = handler(state, {
+        cardId: 'hBP07-024',
+        player: 0,
+        memberInst: member,
+        supportCardId: miofa.id,
+      });
+      const drewOne = state.players[0].zones.hand.length === 1;
+      const onceFlag = state.players[0]._oncePerTurn?.['hBP07-024_effectG'];
+      if (drewOne && onceFlag) {
+        pass('hBP07-024 ON_SUPPORT_ATTACH: 「ミオファ」 attached → draw 1 + once-per-turn flag set');
+      } else {
+        fail('hBP07-024 trigger', `drew=${drewOne} flag=${onceFlag}`);
+      }
+
+      // Second attach in same turn → no draw (once-per-turn)
+      state.players[0].zones.hand = []; // reset hand
+      handler(state, {
+        cardId: 'hBP07-024',
+        player: 0,
+        memberInst: member,
+        supportCardId: miofa.id,
+      });
+      const noSecondDraw = state.players[0].zones.hand.length === 0;
+      if (noSecondDraw) pass('hBP07-024: 1/turn limit blocks second attachment trigger');
+      else fail('hBP07-024 1/turn', 'drew on second attach');
+
+      // Different support attached → no draw
+      const state2 = makeMinState(makeMember('hBP07-024', 7701), null, [], null);
+      state2.players[0].zones.deck = [{ instanceId: 7801, cardId: 'hBP01-038', faceDown: true }];
+      handler(state2, {
+        cardId: 'hBP07-024',
+        player: 0,
+        memberInst: state2.players[0].zones.center,
+        supportCardId: 'hY01-001',  // a cheer, not ミオファ
+      });
+      const noDrawDifferentSupport = state2.players[0].zones.hand.length === 0;
+      if (noDrawDifferentSupport) pass('hBP07-024: non-ミオファ attach → no draw');
+      else fail('hBP07-024 wrong support', 'drew on non-ミオファ');
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #16 — REDUCE_COLORLESS_PICKED_MEMBER afterAction
 // ══════════════════════════════════════════════════════════════════
 section('REDUCE_COLORLESS_PICKED_MEMBER (Phase 2.4 #16)');

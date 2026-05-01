@@ -145,8 +145,22 @@ export function registerMioDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP07-024', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
     state, resolved: true,
-    log: 'ウチの大切な家族: 附加「ミオファ」時抽 1（引擎尚未支援 attachment-trigger hook，需手動）',
+    log: 'ウチの大切な家族: 附加「ミオファ」時抽 1（引擎已支援 ON_SUPPORT_ATTACH hook）',
   }));
+  // Phase 2.4 #17: ON_SUPPORT_ATTACH listener
+  reg('hBP07-024', HOOK.ON_SUPPORT_ATTACH, (state, ctx) => {
+    if (ctx.cardId !== 'hBP07-024') return { state, resolved: true };
+    // Only fires when "ミオファ" is the attached support
+    if (getCard(ctx.supportCardId)?.name !== 'ミオファ') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    own._oncePerTurn = own._oncePerTurn || {};
+    if (own._oncePerTurn['hBP07-024_effectG']) {
+      return { state, resolved: true, log: 'ウチの大切な家族: 本回合已觸發' };
+    }
+    own._oncePerTurn['hBP07-024_effectG'] = true;
+    drawCards(own, 1);
+    return { state, resolved: true, log: 'ウチの大切な家族: 附加「ミオファ」 → 抽 1' };
+  });
   reg('hBP07-024', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
     const own = state.players[ctx.player];

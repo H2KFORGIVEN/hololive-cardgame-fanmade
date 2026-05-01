@@ -385,6 +385,15 @@ function processPlaySupport(state, action) {
       }
       target.card.attachedSupport.push(supportInstance);
       addLog(state, `P${p + 1} 將 ${cardName} 附加給 ${getCard(target.card.cardId)?.name || ''}`);
+      // Phase 2.4 #17: fire ON_SUPPORT_ATTACH for the wearer so handlers
+      // like hBP07-024 effectG (ミオ ミオファ → draw 1) can react.
+      fireEffect(state, HOOK.ON_SUPPORT_ATTACH, {
+        cardId: target.card.cardId,
+        player: p,
+        memberInst: target.card,
+        supportCardId: supportInstance.cardId,
+        supportInst: supportInstance,
+      });
     }
   } else {
     player.zones[ZONE.ARCHIVE].push(supportInstance);

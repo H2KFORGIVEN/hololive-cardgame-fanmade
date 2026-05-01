@@ -65,6 +65,10 @@ export const HOOK = {
   ON_PASSIVE_GLOBAL: 'ON_PASSIVE_GLOBAL', // effectG: while on stage
   ON_STAGE_SKILL: 'ON_STAGE_SKILL',       // stageSkill (oshi alt skill)
   ON_CHEER_ATTACH: 'ON_CHEER_ATTACH',     // yellEffect on cheer cards
+  ON_SUPPORT_ATTACH: 'ON_SUPPORT_ATTACH', // Phase 2.4 #17: when a support card
+                                          // is attached to a stage member (mascot/
+                                          // tool/fan). Fired with cardId = wearer's
+                                          // cardId; ctx.supportCardId = attached card.
   ON_PLACE: 'ON_PLACE',                   // when placed from hand to stage
   ON_RETURN_TO_DECK: 'ON_RETURN_TO_DECK', // when stage member returns to deck
   ON_PHASE_START: 'ON_PHASE_START',       // K-5: any phase begin (own/opp)
