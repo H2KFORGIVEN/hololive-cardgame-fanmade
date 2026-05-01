@@ -4,7 +4,7 @@
 
 > Source: `/tmp/effect-coverage.json` (regenerate via `node tools/audit/effect-coverage.mjs`).
 
-> Updated: `2026-05-01T13:30:37.333Z`
+> Updated: `2026-05-01T14:10:32.718Z`
 
 
 ## Summary
@@ -13,8 +13,8 @@
 - **Total handler registrations**: 1102
 - **HIGH severity issues**: 0
 - **MED severity issues**: 0
-- **LOW severity (unclassified)**: 114
-- **INFO (correct / stub / disabled / no-text)**: 988
+- **LOW severity (unclassified)**: 57
+- **INFO (correct / stub / disabled / no-text)**: 1045
 
 ## By Category
 
@@ -22,41 +22,43 @@
 |---|---|---|---|
 | STUB-LOG | ⚪ INFO | 538 | 48.8% |
 | CORRECT-VERIFIED | ⚪ INFO | 307 | 27.9% |
-| UNCLASSIFIED | 🟢 LOW | 114 | 10.3% |
 | NO-TEXT | ⚪ INFO | 66 | 6.0% |
+| UNCLASSIFIED | 🟢 LOW | 57 | 5.2% |
 | PASSIVE-INTENT | ⚪ INFO | 42 | 3.8% |
+| PICKER-EMITTED | ⚪ ? | 41 | 3.7% |
 | RULE-MOD | ⚪ INFO | 34 | 3.1% |
+| MANUAL-FALLTHROUGH | ⚪ ? | 16 | 1.5% |
 | DISABLED-FALLTHROUGH | ⚪ INFO | 1 | 0.1% |
 
 ## By File
 
 | File | Total | HIGH | MED | LOW | INFO |
 |---|---|---|---|---|---|
-| phaseD-generated.js | 351 | 0 | 0 | 4 | 347 |
-| phaseB-cards.js | 215 | 0 | 0 | 23 | 192 |
-| phaseC1-cards.js | 111 | 0 | 0 | 8 | 103 |
+| phaseD-generated.js | 351 | 0 | 0 | 0 | 351 |
+| phaseB-cards.js | 215 | 0 | 0 | 22 | 193 |
+| phaseC1-cards.js | 111 | 0 | 0 | 7 | 104 |
 | top50-cards.js | 56 | 0 | 0 | 6 | 50 |
-| phaseC2-cards.js | 50 | 0 | 0 | 2 | 48 |
+| phaseC2-cards.js | 50 | 0 | 0 | 1 | 49 |
 | phaseC-final.js | 45 | 0 | 0 | 0 | 45 |
-| miko-deck.js | 23 | 0 | 0 | 4 | 19 |
-| suisei-deck.js | 22 | 0 | 0 | 6 | 16 |
-| flare-deck.js | 21 | 0 | 0 | 2 | 19 |
-| fubuki-deck.js | 21 | 0 | 0 | 6 | 15 |
-| chocoyu-deck.js | 20 | 0 | 0 | 4 | 16 |
-| nene-deck.js | 15 | 0 | 0 | 5 | 10 |
+| miko-deck.js | 23 | 0 | 0 | 3 | 20 |
+| suisei-deck.js | 22 | 0 | 0 | 1 | 21 |
+| flare-deck.js | 21 | 0 | 0 | 1 | 20 |
+| fubuki-deck.js | 21 | 0 | 0 | 1 | 20 |
+| chocoyu-deck.js | 20 | 0 | 0 | 2 | 18 |
+| nene-deck.js | 15 | 0 | 0 | 3 | 12 |
 | noel-deck.js | 13 | 0 | 0 | 0 | 13 |
-| calliope-deck.js | 13 | 0 | 0 | 5 | 8 |
-| subaru-deck.js | 12 | 0 | 0 | 2 | 10 |
+| calliope-deck.js | 13 | 0 | 0 | 3 | 10 |
+| subaru-deck.js | 12 | 0 | 0 | 1 | 11 |
 | raden-deck.js | 12 | 0 | 0 | 0 | 12 |
 | mio-deck.js | 12 | 0 | 0 | 1 | 11 |
-| botan-deck.js | 11 | 0 | 0 | 7 | 4 |
-| okayu-deck.js | 11 | 0 | 0 | 6 | 5 |
-| engine-overrides.js | 9 | 0 | 0 | 3 | 6 |
-| kuronii-deck.js | 8 | 0 | 0 | 5 | 3 |
-| ayame-deck.js | 8 | 0 | 0 | 6 | 2 |
-| pekora-deck.js | 7 | 0 | 0 | 1 | 6 |
-| azki-deck.js | 7 | 0 | 0 | 1 | 6 |
-| shiori-deck.js | 7 | 0 | 0 | 4 | 3 |
+| botan-deck.js | 11 | 0 | 0 | 0 | 11 |
+| okayu-deck.js | 11 | 0 | 0 | 1 | 10 |
+| engine-overrides.js | 9 | 0 | 0 | 1 | 8 |
+| kuronii-deck.js | 8 | 0 | 0 | 0 | 8 |
+| ayame-deck.js | 8 | 0 | 0 | 0 | 8 |
+| pekora-deck.js | 7 | 0 | 0 | 0 | 7 |
+| azki-deck.js | 7 | 0 | 0 | 0 | 7 |
+| shiori-deck.js | 7 | 0 | 0 | 0 | 7 |
 | iroha-deck.js | 6 | 0 | 0 | 0 | 6 |
 | watame-deck.js | 5 | 0 | 0 | 0 | 5 |
 | laplus-deck.js | 5 | 0 | 0 | 1 | 4 |
@@ -217,30 +219,17 @@
 |---|---|---|---|
 | `hBP01-004` 兎田ぺこら | ON_OSHI_SKILL | phaseB-cards.js:3310 | [每個回合一次]對手回合中，自己的成員被擊倒時可以使用：將被擊倒的1位成員所有的綠色吶喊卡，分配給自己其他的成員。 \|\|\| SP:[每場比賽一次]這個回合 |
 | `hBP01-035` アキ・ローゼンタール | ON_ART_RESOLVE | phaseC1-cards.js:94 | [アキロゼ幻想曲] 這個成員帶有道具時，將自己吶喊牌組上方的1張牌發送給自己的成員。 |
-| `hBP01-039` 兎田ぺこら | ON_COLLAB | pekora-deck.js:130 | 自己的主推為「兎田ぺこら」時，可以擲1次骰子：偶數時，將自己吶喊牌組上方的1張牌發送給自己的成員。 |
 | `hBP01-041` 兎田ぺこら | ON_BLOOM | phaseB-cards.js:346 | 將自己吶喊牌組上方的1張牌，發送給自己的中心成員或聯動成員。 |
-| `hBP01-062` 小鳥遊キアラ | ON_ART_DECLARE | engine-overrides.js:213 | [キッケリキー！] 可以將自己的1張手牌放到存檔區：這個藝能傷害+20。 |
 | `hBP01-071` 尾丸ポルカ | ON_BLOOM | phaseB-cards.js:878 | 可以將自己存檔區的1張「座員」返回手牌。 |
-| `hBP01-076` 星街すいせい | ON_ART_RESOLVE | suisei-deck.js:104 | [スターの原石] 給予對手的1位後台成員10點特殊傷害(即使擊倒對手的成員，也不會減少對手的生命值)。 |
-| `hBP01-079` 星街すいせい | ON_BLOOM | suisei-deck.js:137 | 給予對手的1位後台成員20點特殊傷害(即使擊倒對手的成員，也不會減少對手的生命值)。 |
-| `hBP01-080` 星街すいせい | ON_COLLAB | suisei-deck.js:163 | 可以擲1次骰子：奇數時，擊倒對手1位HP減少40以上的後台成員(即使擊倒對手的成員，也不會減少對手的生命值)。 |
-| `hBP01-081` 星街すいせい | ON_COLLAB | suisei-deck.js:199 | 將自己吶喊牌組上方的1張牌發送給自己的藍色成員。 |
-| `hBP01-095` オーロ・クロニー | ON_COLLAB | phaseC1-cards.js:142 | 對手的1位後台成員返回Debut成員(移除傷害，除了Debut成員與吶喊卡，其餘所有牌返回手牌)。 |
-| `hBP01-100` 森カリオペ | ON_COLLAB | calliope-deck.js:127 | 可以將自己存檔區的1~3張吶喊卡返回吶喊牌組。將吶喊牌組重新洗牌。 |
 | `hBP01-106` あとは任せた！ | ON_PLAY | phaseB-cards.js:1244 | 將自己的中心成員與1位活動狀態的後台成員進行替換。 |
 | `hBP01-108` じゃあ敵だね | ON_PLAY | top50-cards.js:228 | 將對手的中心成員與1位後台成員進行替換。
 
 LIMITED：每個回合只能使用一張。 |
 | `hBP02-004` 沙花叉クロヱ | ON_OSHI_SKILL | phaseB-cards.js:3505 | [每個回合一次]自己的中心成員為「沙花叉クロヱ」時可以使用：查看自己牌組上方的3張牌。將這3張牌放到存檔區，或依照喜歡的順序放回牌組上方。 \|\|\| SP: |
-| `hBP02-012` 白上フブキ | ON_BLOOM | fubuki-deck.js:201 | 可以將自己舞台上的1張吉祥物，替換給自己的成員。 |
 | `hBP02-021` パヴォリア・レイネ | ON_ART_RESOLVE | top50-cards.js:957 | [だから見ててね！大好き！] 可以將自己存檔區的1張吶喊卡發送給自己的成員。 |
 | `hBP02-023` パヴォリア・レイネ | ON_BLOOM | top50-cards.js:376 | 從自己的吶喊牌組展示1張吶喊卡，發送給自己的成員。將吶喊牌組重新洗牌。 |
-| `hBP02-034` 百鬼あやめ | ON_ART_DECLARE | ayame-deck.js:112 | [余は草]  \|\|\| [オーガニックショット] 這個成員帶有道具或吉祥物時，給予對手的中心成員或聯動成員30點特殊傷害。 |
 | `hBP02-038` 沙花叉クロヱ | ON_BLOOM | top50-cards.js:216 | 查看自己吶喊牌組上方的3張牌。展示其中的1張吶喊卡，發送給自己的成員。其餘依照喜歡的順序放回吶喊牌組下方。 |
-| `hBP02-041` 猫又おかゆ | ON_ART_DECLARE | okayu-deck.js:304 | [ぽいずん猫] 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員20點特殊傷害。 |
-| `hBP02-055` 森カリオペ | ON_COLLAB | calliope-deck.js:189 | 可以將自己手牌的1張成員放到存檔區：這個回合中，自己舞台上1位標示#Myth的成員藝能傷害+20。 |
 | `hBP02-059` 森カリオペ | ON_BLOOM | phaseC1-cards.js:326 | 從自己的牌組展示1張牌，放到存檔區。將牌組重新洗牌。 |
-| `hBP02-060` 癒月ちょこ | ON_BLOOM | chocoyu-deck.js:121 | 可以將自己的1位後台成員HP回復50點：每回復10點，給予對手的中心成員10點特殊傷害。 |
 | `hBP02-077` レトロパソコン | ON_PLAY | phaseB-cards.js:453 | 自己的生命值在3以下才能使用。
 
 將自己存檔區的1張成員返回手牌。
@@ -254,13 +243,7 @@ LIMITED：每個回合只能使用一張。 |
 查看自己牌組上方的4張牌。展示任意標示#3期生的成員並加入手牌。其餘依照喜歡的順序放回牌組下方。
 
 LIMITE |
-| `hBP03-002` 獅白ぼたん | ON_OSHI_SKILL | botan-deck.js:122 | [每個回合一次]將自己存檔區的1張吶喊卡，發送給自己的後台成員「獅白ぼたん」。 \|\|\| SP:[每場比賽一次]自己中心成員的顏色為綠色時可以使用：給予對手 |
 | `hBP03-003` さくらみこ | ON_OSHI_SKILL | miko-deck.js:113 | [每個回合一次]可以擲1次骰子：如果為1、2、4、6時，將自己存檔區的1張「35P」返回手牌。如果為3、5時，將自己存檔區的2張「35P」返回手牌。 \|\|\ |
-| `hBP03-017` 獅白ぼたん | ON_COLLAB | botan-deck.js:172 | 自己的主推為「獅白ぼたん」時，可以將自己吶喊牌組上方的1張牌放到存檔區：自己的1位成員HP回復10點。 |
-| `hBP03-019` 獅白ぼたん | ON_BLOOM | botan-deck.js:188 | 可以將自己後台成員的1張吶喊卡放到存檔區：給予對手的中心成員或聯動成員30點特殊傷害。「歌う事は楽しい事」每個回合只能使用一次。 |
-| `hBP03-020` 獅白ぼたん | ON_BLOOM | botan-deck.js:233 | 將自己吶喊牌組上方的1張牌，發送給自己的後台成員「獅白ぼたん」。 |
-| `hBP03-021` 獅白ぼたん | ON_BLOOM | botan-deck.js:276 | 可以將自己存檔區的綠色吶喊卡發送給自己1~2位標示#シューター的後台成員，每人各1張。 |
-| `hBP03-021` 獅白ぼたん | ON_ART_DECLARE | botan-deck.js:308 | [神エイム] 自己的主推為「獅白ぼたん」時，可以將自己後台成員的1張吶喊卡放到存檔區：給予對手的中心成員或聯動成員40點特殊傷害。 |
 | `hBP03-028` さくらみこ | ON_ART_RESOLVE | miko-deck.js:177 | [応援頼んだぞ]  \|\|\| [みこぴー！(｀・ω・´)🌸] 可以擲1次骰子：如果為2、4、6時，給予對手的中心成員20點特殊傷害。如果為3、5時，給予對 |
 | `hBP03-034` 赤井はあと | ON_BLOOM | phaseB-cards.js:1401 | 可以將自己存檔區1張Buzz以外標示#1期生的1st成員或2nd成員返回手牌。 |
 | `hBP03-044` 星街すいせい | ON_ART_RESOLVE | phaseB-cards.js:835 | [バーチャルゴースト] 自己的主推為「星街すいせい」時，可以將這個成員的1張藍色吶喊卡，替換給自己的後台成員「星街すいせい」。 |
@@ -275,79 +258,41 @@ LIMITE |
 
 LIMITED：每個回合只能使用一張。 |
 | `hBP03-090` ホロライブ言えるかな？ | ON_PLAY | phaseB-cards.js:1151 | 查看自己牌組上方的4張牌。展示任意數量的Debut成員並加入手牌。其餘依照喜歡的順序放回牌組下方。 |
-| `hBP04-014` 白上フブキ | ON_BLOOM | fubuki-deck.js:304 | 可以將自己存檔區1~2張標示#白上'sキャラクター的牌返回手牌。 |
 | `hBP04-026` 大神ミオ | ON_BLOOM | phaseC1-cards.js:743 | 自己的主推為「白上フブキ」時，從自己的吶喊牌組展示1張白色吶喊卡，發送給自己的「白上フブキ」。將吶喊牌組重新洗牌。 |
-| `hBP04-053` シオリ・ノヴェラ | ON_BLOOM | shiori-deck.js:110 | 將自己吶喊牌組上方的1張牌，發送給自己標示#EN的成員。 |
 | `hBP04-058` ラプラス・ダークネス | ON_COLLAB | laplus-deck.js:103 | 可以擲3次骰子：每出現1次奇數，給予對手的中心成員10點特殊傷害。 |
-| `hBP04-059` ラプラス・ダークネス | ON_BLOOM | phaseD-generated.js:357 | 將自己的1張手牌放到存檔區，可以擲3次骰子：每出現1次奇數，從自己的牌組抽1張牌。「Yes My Dark!」每個回合只能使用一次。 |
 | `hBP04-060` 紫咲シオン | ON_BLOOM | phaseC1-cards.js:796 | 可以將對手存檔區的1張吶喊卡發送給對手的中心成員。 |
-| `hBP04-066` 古石ビジュー | ON_BLOOM | phaseC2-cards.js:38 | 計算自己手牌的數量，可以將自己的所有手牌放到存檔區：每將1張牌放到存檔區，從自己的牌組抽1張牌。「『感情結晶体』」每個回合只能使用一次。 |
 | `hBP04-071` 大空スバル | ON_ART_DECLARE | subaru-deck.js:117 | [しゅばっ！] 將自己吶喊牌組上方的1張牌，發送給這個成員。 \|\|\| [最強で楽しい毎日]  |
 | `hBP04-090` 作業用パソコン | ON_PLAY | look-top-bottom.js:122 | 不包含這張牌，自己的手牌在6張以下才能使用。
 
 查看自己牌組上方的4張牌。展示1張成員與1張道具、吉祥物或粉絲並加入手牌。其餘依照喜歡的順序放回牌組下方。
 
 L |
-| `hBP05-004` 猫又おかゆ | ON_OSHI_SKILL | okayu-deck.js:110 | [每個回合一次]如果自己的中心成員為「猫又おかゆ」才可以使用：給予對手的1位成員10點特殊傷害。 \|\|\| SP:[每場比賽一次]可以將對手的中心成員與1位 |
-| `hBP05-016` 兎田ぺこら | ON_ART_RESOLVE | phaseB-cards.js:2383 | [ウーサペコラを崇めるぺこ] 每有1張與這個成員重疊的成員，可以擲1次骰子：擲出的點數總和每有1點，這個藝能傷害+10。 |
-| `hBP05-028` 獅白ぼたん | ON_ART_DECLARE | botan-deck.js:377 | [ここからが俺たちのスタートだ] 可以將自己「獅白ぼたん」的1張吶喊卡放到存檔區：給予對手的中心成員30點特殊傷害。 |
 | `hBP05-041` 猫又おかゆ | ON_ART_DECLARE | okayu-deck.js:177 | [ぐるぐる～] 給予對手的中心成員10點特殊傷害。 |
-| `hBP05-043` 猫又おかゆ | ON_ART_DECLARE | okayu-deck.js:324 | [まだまだ遊べるよね～？] 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員10點特殊傷害。 |
 | `hBP05-052` 癒月ちょこ | ON_COLLAB | chocoyu-deck.js:196 | 如果自己的存檔區有活動，給予對手的中心成員10點特殊傷害。 |
 | `hBP05-066` 不知火フレア | ON_ART_RESOLVE | phaseB-cards.js:2427 | [氷姿雪魄] 自己的舞台上每有1位標示#3期生且不同卡名的成員，這個藝能傷害+10。 |
-| `hBP05-068` 白上フブキ | ON_COLLAB | fubuki-deck.js:345 | 如果這個成員帶有吉祥物，查看自己牌組上方的1張牌。將該牌放回牌組上方或下方。 |
 | `hBP05-069` 白上フブキ | ON_ART_DECLARE | fubuki-deck.js:389 | [満点じゃい！] 可以將自己吶喊牌組上方的1張牌發送給這個成員。 |
-| `hBP05-076` ちょこのビーフストロガノフ | ON_PLAY | chocoyu-deck.js:313 | 這個回合中，自己舞台上的1位成員藝能傷害+10。之後，這個回合中，自己舞台上的1位2nd成員「癒月ちょこ」藝能傷害+10。 |
 | `hBP06-004` 百鬼あやめ | ON_OSHI_SKILL | phaseB-cards.js:1496 | [每個回合一次]將自己吶喊牌組上方的1~2張牌放到存檔區：每將1張吶喊卡放到存檔區，從自己的牌組抽1張牌。 \|\|\| SP:[每場比賽一次]自己的存檔區每有 |
 | `hBP06-006` ムーナ・ホシノヴァ | ON_OSHI_SKILL | phaseB-cards.js:3939 | [每個回合一次]給予了對手的1位成員特殊傷害時可以使用：給予對手的中心成員與聯動成員20點特殊傷害。 \|\|\| SP:[每場比賽一次]如果雙方舞台上的吶喊卡 |
-| `hBP06-019` 響咲リオナ | ON_BLOOM | phaseD-generated.js:375 | 如果自己的主推為「響咲リオナ」，可以將自己牌組上方的1張牌放到存檔區：從自己的牌組抽1張牌。 |
-| `hBP06-034` 百鬼あやめ | ON_ART_DECLARE | ayame-deck.js:247 | [夏の海でドキドキデート] 可以將自己的1張手牌放到存檔區：這個回合中，自己的中心成員「百鬼あやめ」藝能傷害+30。 |
 | `hBP06-038` 百鬼あやめ | ON_COLLAB | phaseB-cards.js:262 | 可以將自己吶喊牌組上方的1張牌放到存檔區：將自己存檔區的1張「百鬼あやめ」返回手牌。 |
 | `hBP06-059` 森カリオペ | ON_BLOOM | phaseB-cards.js:1092 | 如果自己的舞台上有3位以上標示#EN的成員，從自己的吶喊牌組展示1張藍色吶喊卡或紫色吶喊卡，發送給自己的成員。將吶喊牌組重新洗牌。 |
-| `hBP06-067` 戌神ころね | ON_COLLAB | engine-overrides.js:309 | 可以將自己手牌1張標示#ゲーマーズ的成員放到存檔區：從自己的牌組抽1張牌。 |
 | `hBP06-083` ラムダック | ON_COLLAB | phaseB-cards.js:789 | 可以展示自己手牌的1張「大空スバル」並放回牌組下方：將自己存檔區的1張「角巻わため」或「大空スバル」返回手牌。 |
 | `hBP07-007` 桃鈴ねね | ON_OSHI_SKILL | nene-deck.js:168 | [每個回合一次]將自己存檔區的吶喊卡發送給自己標示#5期生的所有2nd成員，每人各1張。 \|\|\| SP:[每場比賽一次]從自己的牌組展示1~4張Debut |
 | `hBP07-028` 大神ミオ | ON_COLLAB | mio-deck.js:264 | 查看自己牌組上方的2張牌。將其中的1張牌加入手牌。其餘放回牌組上方。 |
 | `hBP07-031` アイラニ・イオフィフティーン | ON_BLOOM | phaseC2-cards.js:219 | 可以將自己holo能量區上方的2張牌放到存檔區：從自己的牌組抽2張牌。 |
-| `hBP07-043` さくらみこ | ON_COLLAB | miko-deck.js:302 | 選擇3或5。這個回合中，因自己的主推「さくらみこ」與自己舞台上的「さくらみこ」的效果擲骰子時，那些骰子的點數視為剛才選擇的數字。 |
-| `hBP07-051` オーロ・クロニー | ON_COLLAB | kuronii-deck.js:126 | 可以將自己舞台上的1張吶喊卡替換給自己這個成員以外標示#Promise的成員。 |
-| `hBP07-053` オーロ・クロニー | ON_BLOOM | kuronii-deck.js:180 | 選擇自己舞台上1位標示#Promise的成員。這個回合中，該成員的藝能傷害+20。 |
-| `hBP07-053` オーロ・クロニー | ON_ART_RESOLVE | kuronii-deck.js:188 | [Everlasting Flower] 將自己吶喊牌組上方的1張牌發送給自己標示#Promise的成員。 |
-| `hBP07-054` オーロ・クロニー | ON_ART_RESOLVE | kuronii-deck.js:221 | [I'm pretty shy…uwu] 將自己吶喊牌組上方的1張牌發送給自己標示#Promise的Buzz成員。 |
-| `hBP07-055` オーロ・クロニー | ON_BLOOM | kuronii-deck.js:258 | 選擇自己舞台上1位標示#Promise的成員。這個回合中，該成員的藝能傷害+50。 |
-| `hBP07-057` 猫又おかゆ | ON_COLLAB | okayu-deck.js:228 | 給予對手的1位成員30點特殊傷害。 |
-| `hBP07-059` シオリ・ノヴェラ | ON_ART_DECLARE | shiori-deck.js:166 | [A Cozy, Spooky Night Together] 給予對手的1位成員10點特殊傷害。 |
-| `hBP07-067` AZKi | ON_ART_DECLARE | azki-deck.js:230 | [君と二人きりの夜] 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員20點特殊傷害。 |
 | `hBP07-070` 癒月ちょこ | ON_BLOOM | chocoyu-deck.js:344 | 查看自己牌組上方的3張牌。展示1張標示#料理的成員並加入手牌。其餘依照喜歡的順序放回牌組下方。 |
 | `hBP07-078` 桃鈴ねね | ON_COLLAB | nene-deck.js:240 | 查看自己牌組上方的5張牌。展示1張「ねっ子」並加入手牌。其餘依照喜歡的順序放回牌組下方。 |
 | `hBP07-079` 桃鈴ねね | ON_BLOOM | nene-deck.js:272 | 可以將自己存檔區的1張吶喊卡發送給這個成員。 |
-| `hBP07-080` 桃鈴ねね | ON_PASSIVE_GLOBAL | nene-deck.js:321 | [每個回合一次]如果自己的主推為「桃鈴ねね」，自己的主要階段可以使用：將自己存檔區的1張「ねっ子」附加給這個成員。 |
-| `hBP07-083` 桃鈴ねね | ON_BLOOM | nene-deck.js:381 | [限定中心位置]直到下個對手回合結束，雙方舞台上的所有成員藝能傷害+40。自己舞台上的所有2nd成員「桃鈴ねね」藝能傷害再+60。 |
-| `hBP07-089` 虎金妃笑虎 | ON_BLOOM | phaseD-generated.js:393 | 如果自己標示#FLOW GLOW的成員在上個對手回合中被擊倒，從自己的牌組抽2張牌。「っしゃ反撃抜刀」每個回合只能使用一次。 |
 | `hBP07-100` フロンティアスピリット | ON_PLAY | top50-cards.js:917 | 將自己存檔區的1張「AZKi」返回手牌。之後，自己的存檔區每有1張「フロンティアスピリット」，將自己存檔區的1張吶喊卡發送給自己的1位「AZKi」。
 「フロンテ |
 | `hSD01-002` AZKi | ON_OSHI_SKILL | phaseB-cards.js:1715 | [每個回合一次]因自己成員的效果擲骰子時可以使用：宣言1個骰子的點數，下次擲出的點數視為宣言的點數。 \|\|\| SP:[每場比賽一次]將自己存檔區任意數量的 |
 | `hSD01-018` サブパソコン | ON_PLAY | top50-cards.js:469 | 查看自己牌組上方的5張牌。展示1張標示LIMITED的支援卡並加入手牌。其餘依照喜歡的順序放回牌組下方。 |
-| `hSD02-003` 百鬼あやめ | ON_COLLAB | ayame-deck.js:297 | 給予對手的聯動成員10點特殊傷害。 |
-| `hSD02-006` 百鬼あやめ | ON_BLOOM | ayame-deck.js:208 | 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員20點特殊傷害。 |
 | `hSD02-007` 百鬼あやめ | ON_BLOOM | phaseB-cards.js:543 | 從Debut綻放時，查看自己牌組上方的2張牌。展示其中的1張牌並加入手牌。其餘放到存檔區。 |
-| `hSD02-008` 百鬼あやめ | ON_ART_DECLARE | ayame-deck.js:227 | [ファンシーバースデー]  \|\|\| [プレゼント何かな？] 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員50點特殊傷害。 |
-| `hSD02-009` 百鬼あやめ | ON_ART_DECLARE | ayame-deck.js:271 | [あやふぶみの「あや」担当]  \|\|\| [余ーだ余] 可以將自己的1~3張手牌放到存檔區：每將1張牌放到存檔區，給予對手的中心成員40點特殊傷害。 |
-| `hSD02-010` 白上フブキ | ON_COLLAB | fubuki-deck.js:444 | 可以將自己存檔區的1張吉祥物返回手牌。 |
-| `hSD03-006` 猫又おかゆ | ON_ART_DECLARE | okayu-deck.js:343 | [猫かぶり]  \|\|\| [しゃー] 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員10點特殊傷害。 |
-| `hSD07-007` 不知火フレア | ON_BLOOM | flare-deck.js:421 | [限定舞台後方]可以將這個成員與自己HP剩餘70以下的聯動成員進行替換。 |
-| `hSD12-001` シオリ・ノヴェラ | ON_OSHI_SKILL | shiori-deck.js:206 | [每個回合一次]查看自己牌組上方的3張牌。展示1張支援卡並加入手牌。其餘依照喜歡的順序放回牌組下方。 \|\|\| SP:[每場比賽一次]自己的存檔區每有1張支 |
-| `hSD12-003` シオリ・ノヴェラ | ON_COLLAB | shiori-deck.js:286 | 給予對手的1位後台成員10點特殊傷害。 |
-| `hSD12-013` モココ・アビスガード | ON_COLLAB | phaseD-generated.js:508 | 如果自己舞台上的所有成員都標示#Advent，可以將自己舞台後方的1位Debut成員放回牌組下方：從自己的牌組抽2張牌。 |
 | `hSD13-001` エリザベス・ローズ・ブラッドフレイム | ON_OSHI_SKILL | engine-overrides.js:433 | [每個回合一次]自己的1位成員受到對手的藝能傷害時，可以選擇自己舞台上1位紅色的Buzz成員或2nd成員：該成員承受該次傷害。 \|\|\| SP:[每場比賽一 |
 | `hSD13-007` エリザベス・ローズ・ブラッドフレイム | ON_ART_RESOLVE | phaseB-cards.js:1976 | [悪斬りのカデンツァ] 這個成員每有1張吶喊卡，這個藝能傷害+20。使用這個藝能擊倒對手的成員時，將自己吶喊牌組上方的1張牌發送給這個成員。 |
-| `hSD14-008` 白上フブキ | ON_COLLAB | fubuki-deck.js:602 | 將自己存檔區的1張吉祥物附加給這個成員。 |
 | `hSD16-008` さくらみこ | ON_COLLAB | miko-deck.js:471 | 擲1次骰子。如果為3或5，將自己存檔區的1張「35P」返回手牌。 |
-| `hSD17-001` 星街すいせい | ON_OSHI_SKILL | suisei-deck.js:324 | [每個回合一次]將自己吶喊牌組上方的1張牌發送給自己的成員。 \|\|\| SP:[每場比賽一次]如果自己的中心成員為「星街すいせい」，給予對手的1位後台成員5 |
 | `hSD18-005` 森カリオペ | ON_COLLAB | calliope-deck.js:324 | 如果自己的成員帶有道具，給予對手的中心成員10點特殊傷害。 |
 | `hSD18-008` 森カリオペ | ON_BLOOM | calliope-deck.js:378 | 將自己牌組上方的1張牌放到存檔區。 |
 | `hSD18-009` 森カリオペ | ON_COLLAB | calliope-deck.js:417 | 如果自己的存檔區有6張以上的成員，給予對手的中心成員20點特殊傷害。 |
-| `hSD19-007` 大空スバル | ON_BLOOM | subaru-deck.js:366 | 將自己存檔區的1張吶喊卡發送給這個成員。 |
 
 ---
 *Run `node tools/audit/effect-coverage.mjs && node tools/audit/dashboard.mjs` to refresh.*

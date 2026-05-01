@@ -514,6 +514,31 @@ function categorize(entry) {
     };
   }
 
+  // PICKER-EMITTED: handler emits a player picker prompt — correct behavior,
+  // resolved via afterAction chain. The audit can't statically verify the
+  // prompt's afterAction does the right thing, but the prompt emission itself
+  // means the handler isn't a stub or auto-pick. Promote to INFO category.
+  if (hasPicker) {
+    return {
+      category: 'PICKER-EMITTED',
+      reason: 'handler emits picker prompt (afterAction resolves the rest)',
+      realText: realText.slice(0, 110),
+      handlerActions: actions,
+    };
+  }
+
+  // MANUAL-FALLTHROUGH: handler returns {state} (no resolved field) — engine
+  // displays MANUAL_EFFECT toast for the player. Correct for cards with
+  // genuinely complex / interactive logic. Promote to INFO.
+  if (actions.length === 1 && actions[0] === 'hasTriggerCheck') {
+    return {
+      category: 'MANUAL-FALLTHROUGH',
+      reason: 'handler returns {state} after trigger guard (engine emits MANUAL_EFFECT prompt)',
+      realText: realText.slice(0, 110),
+      handlerActions: actions,
+    };
+  }
+
   return {
     category: 'UNCLASSIFIED',
     reason: `actions:[${actions.join(',')}] wanted:[${wanted.join(',')}]`,
@@ -676,7 +701,7 @@ const SEVERITY_BUCKETS = {
   HIGH:  ['AUTO-PICK-BUG', 'NUMBER-MISMATCH', 'TARGET-WRONG-SIDE', 'COST-IGNORED'],
   MED:   ['CONDITION-MISSING', 'MULTI-STEP-MISSING'],
   LOW:   ['UNCLASSIFIED', 'NO_CARD'],
-  INFO:  ['CORRECT-VERIFIED', 'STUB-LOG', 'DISABLED-FALLTHROUGH', 'NO-TEXT', 'PASSIVE-INTENT', 'RULE-MOD'],
+  INFO:  ['CORRECT-VERIFIED', 'STUB-LOG', 'DISABLED-FALLTHROUGH', 'NO-TEXT', 'PASSIVE-INTENT', 'RULE-MOD', 'PICKER-EMITTED', 'MANUAL-FALLTHROUGH'],
 };
 out.severity = {
   HIGH: 0, MED: 0, LOW: 0, INFO: 0,
