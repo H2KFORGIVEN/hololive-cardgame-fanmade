@@ -1634,10 +1634,10 @@ export function registerPhaseB() {
   // 【Center limited】At your performance phase start, ONE other "オーロ・クロニー"
   // member can use the card overlapping with this member to bloom.
   //
-  // The cross-bloom action (transferring this 2nd's bloom-stack 1st card to
-  // bloom a different クロニー Debut) is too engine-specific to fully
-  // automate without a custom action type. We surface it as a player-visible
-  // hint at the right moment so the user can perform it via Manual Adjust.
+  // Phase 2.3.2 (DONE 2026-05-01): cross-bloom is now a real action variant
+  // (action.useStackFromInstanceId in BLOOM). This handler sets the
+  // permission flag at performance phase start; ActionValidator.validateBloom
+  // accepts the cross-bloom path; processBloom pulls the source's stack entry.
   reg('hBP07-056', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => {
     if (ctx.triggerEvent !== 'performance_start') return { state, resolved: true };
     const player = state.players[ctx.player];
@@ -1645,25 +1645,47 @@ export function registerPhaseB() {
     if (player.zones[ZONE.CENTER]?.instanceId !== ctx.memberInst?.instanceId) {
       return { state, resolved: true };
     }
-    // Find another クロニー on stage at lower bloom (Debut)
-    const KURONII_DEBUT = ['hBP07-050', 'hBP07-051', 'hBP01-092'];
+    // Source must have a bloom stack to share
+    const stack = ctx.memberInst?.bloomStack || [];
+    if (stack.length === 0) return { state, resolved: true };
+    // Find another クロニー on stage at a lower bloom level (eligible target)
+    const KURONII_NAMES = new Set(['オーロ・クロニー']);
     const otherKuronii = [];
     const checkMember = (m, label) => {
-      if (m && m.instanceId !== ctx.memberInst.instanceId && KURONII_DEBUT.includes(m.cardId)) {
-        otherKuronii.push({ inst: m, label });
+      if (m && m.instanceId !== ctx.memberInst.instanceId) {
+        const n = getCard(m.cardId)?.name;
+        if (n && KURONII_NAMES.has(n)) otherKuronii.push({ inst: m, label });
       }
     };
     checkMember(player.zones[ZONE.CENTER], 'center');
     checkMember(player.zones[ZONE.COLLAB], 'collab');
     (player.zones[ZONE.BACKSTAGE] || []).forEach((m, i) => checkMember(m, `back#${i}`));
 
-    if (otherKuronii.length === 0) {
-      return { state, resolved: true }; // silent — no eligible target
-    }
+    if (otherKuronii.length === 0) return { state, resolved: true };
+
+    // Set cross-bloom permission for this player, valid until performance ends
+    state._crossBloomAvailable = state._crossBloomAvailable || {};
+    state._crossBloomAvailable[ctx.player] = {
+      sourceInstanceId: ctx.memberInst.instanceId,
+      allowedNames: ['オーロ・クロニー'],
+      oncePerStart: true,
+    };
+    // Reset the used flag for this performance start
+    state._crossBloomUsed = state._crossBloomUsed || {};
+    state._crossBloomUsed[ctx.player] = false;
+
     return {
       state, resolved: true,
-      log: `時界を統べし者: 表演開始 — 可手動將此 2nd 的 bloom 堆移轉給其他 ${otherKuronii.length} 隻 クロニー`,
+      log: `時界を統べし者: 已開放跨成員綻放（來源 2nd クロニー → ${otherKuronii.length} 個其他クロニー之一）`,
     };
+  });
+
+  // Clear cross-bloom permission at performance end (so it doesn't leak across rounds)
+  reg('hBP07-056', HOOK.ON_PHASE_END, (state, ctx) => {
+    if (ctx.phase !== 'performance') return { state, resolved: true };
+    if (state._crossBloomAvailable) delete state._crossBloomAvailable[ctx.player];
+    if (state._crossBloomUsed) delete state._crossBloomUsed[ctx.player];
+    return { state, resolved: true };
   });
 
   // 154. hBP01-074 ハコス・ベールズ effectB

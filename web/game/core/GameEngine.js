@@ -256,7 +256,33 @@ function processPlaceMember(state, action) {
 function processBloom(state, action) {
   const p = state.activePlayer;
   const player = state.players[p];
-  const bloomCard = player.zones[ZONE.HAND].splice(action.handIndex, 1)[0];
+
+  // Phase 2.3.2 — cross-bloom: when action.useStackFromInstanceId is set,
+  // the bloom CARD comes from another own-stage member's bloom-stack
+  // (not from hand). Used by hBP07-056 effectG「時界を統べし者」.
+  let bloomCard;
+  let bloomSourceLog = '';
+  if (action.useStackFromInstanceId) {
+    const sourceInfo = findInstance(player, action.useStackFromInstanceId);
+    if (!sourceInfo) return state;
+    const stackEntry = sourceInfo.card.bloomStack?.find(e =>
+      action.useStackEntryInstanceId
+        ? e.instanceId === action.useStackEntryInstanceId
+        : true
+    );
+    if (!stackEntry) return state;
+    // Pop that entry from source's stack
+    const idx = sourceInfo.card.bloomStack.findIndex(e => e === stackEntry);
+    if (idx < 0) return state;
+    sourceInfo.card.bloomStack.splice(idx, 1);
+    bloomCard = { cardId: stackEntry.cardId, instanceId: stackEntry.instanceId };
+    bloomSourceLog = `（取自「${getCard(sourceInfo.card.cardId)?.name||'?'}」重疊堆）`;
+    // Mark cross-bloom as consumed (once-per-performance-start gate)
+    state._crossBloomUsed = state._crossBloomUsed || {};
+    state._crossBloomUsed[p] = true;
+  } else {
+    bloomCard = player.zones[ZONE.HAND].splice(action.handIndex, 1)[0];
+  }
   if (!bloomCard) return state;
 
   const target = findInstance(player, action.targetInstanceId);
@@ -270,7 +296,7 @@ function processBloom(state, action) {
   target.card.bloomedThisTurn = true;
   // Carries over: damage, cheer, supports, state (active/rest)
 
-  addLog(state, `P${p + 1} ${getCard(oldCardId)?.name || ''} 綻放為 ${getCard(bloomCard.cardId)?.name || ''} (${getCard(bloomCard.cardId)?.bloom || ''})`);
+  addLog(state, `P${p + 1} ${getCard(oldCardId)?.name || ''} 綻放為 ${getCard(bloomCard.cardId)?.name || ''} (${getCard(bloomCard.cardId)?.bloom || ''})${bloomSourceLog}`);
 
   fireEffect(state, HOOK.ON_BLOOM, { cardId: bloomCard.cardId, player: p, memberInst: target.card });
   return state;

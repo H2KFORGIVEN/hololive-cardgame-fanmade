@@ -89,14 +89,14 @@ function validatePlaceMember(state, action, player) {
   return ok();
 }
 
-// Phase 2.3.2 — Cross-bloom permission (DEFERRED).
+// Phase 2.3.2 — Cross-bloom permission (DONE 2026-05-01)
 // hBP07-056 effectG「時界を統べし者」 lets a 2nd オーロ・クロニー member's
-// bloom-stack be reused by ANOTHER オーロ・クロニー member to bloom. This
-// requires either:
-//   (a) a new action type CROSS_BLOOM with sourceMemberInstanceId param, or
-//   (b) extending BLOOM action with an `useStackFrom` field
-// Both touch processBloom + validation + UI. Marked as TODO — handler at
-// phaseB-cards.js:1635 currently logs a hint via Manual Adjust panel.
+// bloom-stack be reused by ANOTHER member to bloom. Implemented by
+// extending BLOOM action with optional fields:
+//   action.useStackFromInstanceId      — source member whose stack provides the bloom card
+//   action.useStackEntryInstanceId     — which stack entry to pull (optional; default = first)
+// Plus state._crossBloomAvailable[player] = { sourceInstanceId, allowedNames, oncePerStart }
+// set by hBP07-056 ON_PASSIVE_GLOBAL on performance start.
 
 function validateBloom(state, action, player) {
   if (state.phase !== PHASE.MAIN) return fail('不在主要階段');
@@ -114,11 +114,52 @@ function validateBloom(state, action, player) {
     // already verified that when it set the flag. Allow this bloom but check
     // that the bloom card is a 1st (not 2nd / Buzz) since the permission text
     // says 「使用自己手牌的1st成員進行綻放」.
-    const handCardCheck = player.zones[ZONE.HAND][action.handIndex];
+    const handCardCheck = action.handIndex != null ? player.zones[ZONE.HAND][action.handIndex] : null;
     const bloomCardCheck = handCardCheck && getCard(handCardCheck.cardId);
     if (bloomCardCheck && bloomCardCheck.bloom !== '1st' && bloomCardCheck.bloom !== '1st Buzz') {
       return fail('第一回合特殊綻放只能使用 1st 成員');
     }
+  }
+
+  // Phase 2.3.2 — cross-bloom validation: if action.useStackFromInstanceId
+  // is set, source member must be authorized AND the picked stack entry
+  // must satisfy the bloom rules.
+  if (action.useStackFromInstanceId) {
+    const perm = state._crossBloomAvailable && state._crossBloomAvailable[state.activePlayer];
+    if (!perm) return fail('沒有跨成員綻放權限');
+    if (perm.oncePerStart && state._crossBloomUsed?.[state.activePlayer]) {
+      return fail('本演出階段已用過跨成員綻放');
+    }
+    if (perm.sourceInstanceId && perm.sourceInstanceId !== action.useStackFromInstanceId) {
+      return fail('來源不符（必須是授權的成員）');
+    }
+    const sourceInfo = findInstance(player, action.useStackFromInstanceId);
+    if (!sourceInfo) return fail('找不到來源成員');
+    const stack = sourceInfo.card.bloomStack || [];
+    const stackEntry = action.useStackEntryInstanceId
+      ? stack.find(e => e.instanceId === action.useStackEntryInstanceId)
+      : stack[stack.length - 1];
+    if (!stackEntry) return fail('來源成員無重疊卡可用');
+    const stackCard = getCard(stackEntry.cardId);
+    if (!stackCard || !isMember(stackCard.type)) return fail('堆疊資料錯誤');
+    // Allow only certain names (per perm.allowedNames if set)
+    if (Array.isArray(perm.allowedNames) && perm.allowedNames.length > 0) {
+      if (!perm.allowedNames.includes(stackCard.name)) return fail('不在授權名單');
+    }
+    // Skip "must be in hand" check; the rest of the validation continues
+    // but uses stackCard instead of handCard.
+    const target = findInstance(player, action.targetInstanceId);
+    if (!target) return fail('找不到目標成員');
+    const targetCard = getCard(target.card.cardId);
+    if (!targetCard) return fail('目標卡片資料錯誤');
+    if (stackCard.name !== targetCard.name) return fail('綻放必須是同名角色');
+    const bloomLevelOf = (b) => (b === 'Debut' ? 0 : (b === '1st' || b === '1st Buzz') ? 1 : b === '2nd' ? 2 : -1);
+    if (bloomLevelOf(stackCard.bloom) === -1 || bloomLevelOf(targetCard.bloom) === -1) return fail('無效的綻放等級');
+    if (bloomLevelOf(stackCard.bloom) < bloomLevelOf(targetCard.bloom)) return fail('綻放等級不能下降');
+    if (target.card.placedThisTurn && !target.card.canBloomThisTurn) return fail('本回合放置的成員不能綻放');
+    if (target.card.bloomedThisTurn) return fail('本回合已綻放過的成員不能再綻放');
+    if (stackCard.hp && target.card.damage > stackCard.hp) return fail('傷害超過綻放後的 HP');
+    return ok();
   }
 
   const handCard = player.zones[ZONE.HAND][action.handIndex];
