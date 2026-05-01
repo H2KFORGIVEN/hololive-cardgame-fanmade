@@ -138,6 +138,38 @@ export function registerCalliopeDeck() {
   // CONDITIONS: hand has ≥1 member; ≥1 #Myth on stage
   // Cost-bearing two-step pick → MANUAL_EFFECT
   // ─────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────
+  // hBP02-057 森カリオペ (1st) effectB「みんなで作る最高のfes」
+  // REAL: 可以將自己手牌2張標示相同標籤的成員放到存檔區：從自己的牌組抽2張牌。
+  // ACTION: 2 hand members sharing ≥1 tag → archive both + draw 2
+  // AMBIGUITY: 1st pick free; 2nd pick filtered to tag-share via afterAction
+  // LIMITS: ON_BLOOM self-only; optional ("可以")
+  // CONDITIONS: ≥2 hand members exist (need to share a tag)
+  // ─────────────────────────────────────────────────────────────────────
+  reg('hBP02-057', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const handMembers = own.zones[ZONE.HAND].filter(c => isMember(getCard(c.cardId)?.type));
+    if (handMembers.length < 2) return { state, resolved: true, log: 'みんなで作る最高のfes: 手牌成員 <2 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: 'みんなで作る最高のfes: 選擇 2 張共享標籤的手牌成員 → 存檔（→ 抽 2）',
+        baseMessage: 'みんなで作る最高のfes: 選擇 2 張共享標籤的手牌成員',
+        cards: handMembers.map(c => ({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 2,
+        afterAction: 'ARCHIVE_HAND_TAGSHARE_DRAW',
+        drawCount: 2,
+      },
+      log: 'みんなで作る最高のfes: 選 1 張手牌成員',
+    };
+  });
+
   reg('hBP02-055', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
     // Phase 2.4 #7: hand-cost + tag-filtered boost picker.

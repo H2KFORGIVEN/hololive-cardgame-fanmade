@@ -1541,6 +1541,62 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #8 — ARCHIVE_HAND_TAGSHARE_DRAW afterAction
+// ══════════════════════════════════════════════════════════════════
+section('ARCHIVE_HAND_TAGSHARE_DRAW (Phase 2.4 #8)');
+
+{
+  // Pick 2 hand cards sharing #JP tag → draw 2
+  // Use real card IDs that exist in cards.json with #JP tag
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const jpCard1 = allCards.find(c => (c.tag || '').includes('#JP') && c.type === '成員');
+  const jpCard2 = allCards.find(c => c.id !== jpCard1?.id && (c.tag || '').includes('#JP') && c.type === '成員');
+  if (!jpCard1 || !jpCard2) {
+    warn('ARCHIVE_HAND_TAGSHARE_DRAW setup', '#JP cards not found in db');
+  } else {
+    const h1 = { instanceId: 4001, cardId: jpCard1.id, faceDown: false };
+    const h2 = { instanceId: 4002, cardId: jpCard2.id, faceDown: false };
+    const deckCard = { instanceId: 4003, cardId: jpCard1.id, faceDown: true };
+    const deckCard2 = { instanceId: 4004, cardId: jpCard1.id, faceDown: true };
+    const state = makeMinState(null, null, [], null);
+    state.players[0].zones.hand = [h1, h2];
+    state.players[0].zones.deck = [deckCard, deckCard2];
+
+    const cards = [h1, h2].map(c => ({ instanceId: c.instanceId, cardId: c.cardId, name: 'h', image: '' }));
+
+    // First pick: should re-emit
+    resolveEffectChoice(state, {
+      type: 'SELECT_FROM_HAND',
+      player: 0,
+      cards, maxSelect: 2,
+      afterAction: 'ARCHIVE_HAND_TAGSHARE_DRAW',
+      drawCount: 2,
+    }, { instanceId: 4001, name: 'h' });
+
+    const reemitted = state.pendingEffect?.afterAction === 'ARCHIVE_HAND_TAGSHARE_DRAW' &&
+                      state.pendingEffect?._firstPickInstanceId === 4001;
+    const handAfter1 = state.players[0].zones.hand.length;
+    if (!reemitted || handAfter1 !== 1) {
+      fail('ARCHIVE_HAND_TAGSHARE_DRAW first pick',
+        `reemitted=${reemitted} handAfter1=${handAfter1}`);
+    } else {
+      // Second pick: should draw 2
+      resolveEffectChoice(state, state.pendingEffect, { instanceId: 4002, name: 'h' });
+      const handAfter2 = state.players[0].zones.hand.length;
+      const archived = state.players[0].zones.archive.length;
+      const noPending = state.pendingEffect === null;
+      // Hand: 0 left from start; +2 drawn = 2 hand cards now
+      if (handAfter2 === 2 && archived === 2 && noPending) {
+        pass('ARCHIVE_HAND_TAGSHARE_DRAW: 2 #JP archive + draw 2');
+      } else {
+        fail('ARCHIVE_HAND_TAGSHARE_DRAW second pick',
+          `hand=${handAfter2} archive=${archived} noPending=${noPending}`);
+      }
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #7 — ARCHIVE_HAND_THEN_BOOST afterAction
 // ══════════════════════════════════════════════════════════════════
 section('ARCHIVE_HAND_THEN_BOOST (Phase 2.4 #7)');

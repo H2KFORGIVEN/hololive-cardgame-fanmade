@@ -696,6 +696,64 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'ARCHIVE_HAND_TAGSHARE_DRAW') {
+    // Phase 2.4 #8: pair-cost where 2 archived hand cards must share a tag.
+    //   cost: archive 2 hand cards that share ≥1 tag
+    //   effect: draw N cards
+    //
+    // Prompt fields:
+    //   cards: hand member cards
+    //   maxSelect: 2 (always pair)
+    //   drawCount: number to draw after both archived
+    //   _firstPickInstanceId, _firstPickTags: set on re-emit for tag filter
+    const hand = player.zones['hand'];
+    const idx = hand.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, '找不到手牌 — 跳過');
+    } else {
+      const card = hand.splice(idx, 1)[0];
+      player.zones['archive'].push(card);
+      addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 從手牌存檔（成本）`);
+
+      // First pick: capture tags + re-emit with filter
+      if (!prompt._firstPickInstanceId) {
+        const cardData = getCard(card.cardId);
+        const tagRaw = cardData?.tag || '';
+        const tagStr = typeof tagRaw === 'string' ? tagRaw : JSON.stringify(tagRaw);
+        const tags = tagStr.split('/').map(t => t.trim()).filter(Boolean);
+        // Filter remaining hand members to those sharing ≥1 tag
+        const newCards = (prompt.cards || [])
+          .filter(c => c.instanceId !== selected.instanceId)
+          .filter(c => {
+            const candidateTag = getCard(c.cardId)?.tag || '';
+            const candidateStr = typeof candidateTag === 'string' ? candidateTag : JSON.stringify(candidateTag);
+            return tags.some(t => candidateStr.includes(t));
+          });
+        if (newCards.length === 0) {
+          addLog(state, prompt.player, '無共享標籤的手牌成員 — 抽牌跳過');
+        } else {
+          state.pendingEffect = {
+            ...prompt,
+            cards: newCards,
+            maxSelect: 1,
+            _firstPickInstanceId: selected.instanceId,
+            _firstPickTags: tags,
+            message: `${prompt.baseMessage || prompt.message || ''}（選擇與第 1 張共享標籤的手牌）`,
+          };
+          return state;
+        }
+      } else {
+        // Second pick — apply draw
+        const drawN = prompt.drawCount || 0;
+        for (let i = 0; i < drawN && player.zones['deck'].length > 0; i++) {
+          const c = player.zones['deck'].shift();
+          c.faceDown = false;
+          hand.push(c);
+        }
+        addLog(state, prompt.player, `共享標籤的手牌 2 張存檔 → 抽 ${drawN} 張`);
+      }
+    }
+
   } else if (action === 'ARCHIVE_HAND_THEN_BOOST') {
     // Phase 2.4 #7: hand-cost variant for turn-boost effects.
     //   cost: archive selected hand card (1 only — most boost cards single-cost)
