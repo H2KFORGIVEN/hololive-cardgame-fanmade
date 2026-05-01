@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-05-01T04:37:57.823Z",
+  "generatedAt": "2026-05-01T11:20:55.354Z",
   "totals": {
-    "CORRECT-VERIFIED": 189,
-    "STUB-LOG": 640,
-    "UNCLASSIFIED": 49,
-    "COST-IGNORED": 6,
-    "RULE-MOD": 41,
+    "CORRECT-VERIFIED": 295,
+    "UNCLASSIFIED": 99,
+    "STUB-LOG": 718,
+    "NO-TEXT": 67,
+    "RULE-MOD": 47,
+    "MULTI-STEP-MISSING": 12,
+    "COST-IGNORED": 4,
     "AUTO-PICK-BUG": 4,
-    "MULTI-STEP-MISSING": 10,
     "DISABLED-FALLTHROUGH": 1,
     "CONDITION-MISSING": 18,
-    "NO-TEXT": 51,
     "PASSIVE-INTENT": 47
   },
   "severity": {
-    "HIGH": 10,
-    "MED": 28,
-    "LOW": 49,
-    "INFO": 969
+    "HIGH": 8,
+    "MED": 30,
+    "LOW": 99,
+    "INFO": 1175
   }
 }
