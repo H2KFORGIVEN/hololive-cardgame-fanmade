@@ -22,6 +22,7 @@ import { registerLookTopBottom } from './handlers/look-top-bottom.js';
 import { registerPassthrough } from './handlers/passthrough.js';
 import { registerKuroniiDeck } from './handlers/kuronii-deck.js';
 import { registerChocoyuDeck } from './handlers/chocoyu-deck.js';
+import { registerMikoDeck } from './handlers/miko-deck.js';
 
 let _initialized = false;
 
@@ -96,6 +97,7 @@ export async function initEffects() {
   // no guessing per ~/.claude/projects/.../feedback_no_guessing_card_effects.md.
   counts.kuroniiDeck = registerKuroniiDeck();
   counts.chocoyuDeck = registerChocoyuDeck();
+  counts.mikoDeck = registerMikoDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
