@@ -4,7 +4,7 @@
 **動機**：使用者指出「修一塊查一塊」會永遠修不完。這份規劃涵蓋
 **所有 1682 張卡片**，每個 hook、每個 handler、每個檔案，沒有 out-of-scope。
 
-## ✅ 進度更新（2026-05-01 中午）
+## ✅ 進度更新（2026-05-01 持續更新中）
 
 | Phase | 子項 | 狀態 | Commit |
 |---|---|---|---|
@@ -14,10 +14,22 @@
 | **Phase 2** | 2.1 7 picker afterActions | ✅ DONE | `f89dff1` |
 | Phase 2 | 2.2 5 state fields | ✅ DONE | `f89dff1` |
 | Phase 2 | 2.3.1 first-turn bloom permission | ✅ DONE | `f89dff1` |
-| Phase 2 | 2.3.2 cross-bloom | ⏸️ DEFERRED (documented in code) | — |
+| Phase 2 | 2.3.2 cross-bloom | ✅ DONE | `dcb8b02` |
 | Phase 2 | 2.3.3 colorless cost reduction | ✅ DONE | `f89dff1` |
-| **Phase 3** | per-deck implementations | 🟡 IN-PROGRESS（クロニー done, others pending）|
+| **Phase 3** | #1 クロニー（オーロ・クロニー）8 cards | ✅ DONE | (earlier) |
+| Phase 3 | #2 ちょこ（癒月ちょこ）19 cards | ✅ DONE | `0c70740` |
+| Phase 3 | #3 みこ（さくらみこ）22 cards | ✅ DONE | `f092614` |
+| Phase 3 | #4 すいせい（星街すいせい）20 cards | ✅ DONE | `bb5ab9a` |
+| Phase 3 | #5 フレア（不知火フレア）20 cards | ✅ DONE | `4577ca8` |
+| Phase 3 | #6 ねね（桃鈴ねね）13 cards | ✅ DONE | `c21b3ea` |
+| Phase 3 | #7-22 (16 more decks) | ⏳ PENDING |
 | **Phase 4** | CI gate / integration tests | ⏳ PENDING |
+
+**Phase 3 progress: 6 / 22 decks** — coverage roughly 102 unique cards
+beyond the placeholder fall-throughs. All 6 implemented decks use the
+"no guessing" rule, real card text in spec blocks, proper picker
+prompts (no auto-pick on ambiguous targets), and the audit precommit
+gate has held steady at 10 HIGH (no new bugs introduced).
 
 ---
 
