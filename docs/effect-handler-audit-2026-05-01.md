@@ -165,6 +165,72 @@ Logged in user memory: `~/.claude/projects/-Users-showmaker/memory/feedback_no_g
 Applied retroactively to all existing handlers in this audit. Will be
 applied prospectively to all future handler additions.
 
+## Auto-Pick Audit (added late 2026-05-01)
+
+User flagged a different class of bug: handlers that auto-pick "first
+match" when card text says 「選擇 1 位」 — equivalent to guessing.
+
+### Fixed クロニー deck (4 picker conversions)
+
+The クロニー deck handlers in `kuronii-deck.js` were rewritten to use
+SELECT_OWN_MEMBER / SELECT_FROM_ARCHIVE prompts:
+
+- hBP01-094 → pick #Promise member (engine matches color)
+- hBP07-052 → pick mascot from archive (target = self)
+- hBP07-053 art1 → pick #Promise member (top cheer to picked)
+- hBP07-054 art1 → pick #Promise Buzz member (top cheer to picked)
+
+Auto-resolve only when there's exactly 1 candidate (unambiguous).
+
+### Three new afterActions in `EffectResolver.js`
+
+- `CHEER_FROM_DECK_TOP_TO_MEMBER` — picks own member, sends top cheer-deck
+- `CHEER_DECK_REVEAL_MATCH_TO_MEMBER` — picks own member, scans cheer-deck for that member's color
+- `ATTACH_FROM_ARCHIVE_TO_MEMBER` — picks support card from archive, attaches to `prompt.targetInstanceId`
+
+### Suspected auto-pick bugs in other files (not fixed this session)
+
+A grep over all handler files found ~41 lines with potential auto-pick
+patterns:
+
+```
+phaseB-cards.js: 12 lines
+phaseC1-cards.js: 24 lines
+phaseC2-cards.js: 2 lines
+top50-cards.js: 2 lines
+```
+
+Spot-check sample (phaseC1):
+- hBP03-045 (こぼ Buzz effectB): auto-picks "first #ID member with cheer"
+  but card says 「將自己 #ID 的成員的 1 張吶喊卡存檔」 — should pick
+- hBP03-078 (アユンダ effectB): auto-picks "first #ID1期生 with cheer"
+  but card says 「可以將自己 #ID1期生 的 1 張吶喊卡」 — should pick
+- hBP04-021 (らでん Debut effectC): auto-picks "first #ReGLOSS member"
+  but card says 「自己 1 位 #ReGLOSS 的成員」 — should pick
+
+**Many `getStageMembers(p).find(m => name === '<specific>')` patterns are
+LEGITIMATE auto-resolve** — they target a specifically named member that
+typically only has one instance (e.g. 「附加給「フブキ」」). These are not
+"guessing" since the card text names exact one.
+
+The bad pattern is `.find(member with #tag)` or `.find(member with cheer)`
+where multiple candidates can match — that's auto-pick.
+
+### Future work (out of scope this overnight pass)
+
+- Per-card audit of the ~41 suspect lines, classifying each as:
+  - LEGITIMATE-auto (named target, unambiguous)
+  - NEEDS-PICKER (multi-candidate, currently auto-picks first)
+- For NEEDS-PICKER cases: convert to SELECT_OWN_MEMBER + appropriate
+  afterAction, OR fall through to MANUAL_EFFECT.
+- Add a generic `BOOST_PICKED_MEMBER` afterAction so cards like
+  hBP07-053/055 effectB can do "pick #Promise → +X dmg this turn"
+  without falling through to MANUAL_EFFECT.
+
+The "no guessing" memory rule was extended (2026-05-01) to explicitly
+include "no auto-pick on ambiguous targets/sources" — future handler
+work must follow this corollary.
+
 ## Remaining Work (Not Done This Audit)
 
 The 648 LOG_ONLY entries (mostly phaseD-generated stubs) DO get upgraded
