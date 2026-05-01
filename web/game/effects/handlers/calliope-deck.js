@@ -140,7 +140,28 @@ export function registerCalliopeDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP02-055', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — multi-step (hand→archive cost, then #Myth +20)
+    // Phase 2.4 #7: hand-cost + tag-filtered boost picker.
+    const own = state.players[ctx.player];
+    const handMembers = own.zones[ZONE.HAND].filter(c => isMember(getCard(c.cardId)?.type));
+    if (handMembers.length === 0) return { state, resolved: true, log: 'ショータイム: 手牌無成員 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: 'ショータイム: 選擇 1 張手牌成員 → 存檔（→ 1 位 #Myth 成員 +20）',
+        cards: handMembers.map(c => ({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 1,
+        afterAction: 'ARCHIVE_HAND_THEN_BOOST',
+        boostAmount: 20,
+        boostTarget: 'pick_member',
+        tagFilter: '#Myth',
+      },
+      log: 'ショータイム: 選手牌成員',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

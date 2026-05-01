@@ -696,6 +696,81 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'ARCHIVE_HAND_THEN_BOOST') {
+    // Phase 2.4 #7: hand-cost variant for turn-boost effects.
+    //   cost: archive selected hand card (1 only — most boost cards single-cost)
+    //   effect: turn boost based on prompt.boostTarget:
+    //     'self_center': auto +N to own center
+    //     'self_collab': auto +N to own collab
+    //     'pick_member': queue SELECT_OWN_MEMBER picker, optional tagFilter
+    //
+    // Prompt fields:
+    //   cards: hand cards
+    //   boostAmount: number
+    //   boostTarget: 'self_center' | 'self_collab' | 'pick_member'
+    //   tagFilter: optional string (only for pick_member)
+    const hand = player.zones['hand'];
+    const idx = hand.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, '找不到手牌 — 跳過');
+    } else {
+      const card = hand.splice(idx, 1)[0];
+      player.zones['archive'].push(card);
+      addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 從手牌存檔（成本）`);
+
+      const amount = prompt.boostAmount || 0;
+      const tgt = prompt.boostTarget;
+
+      if (tgt === 'self_center' || tgt === 'self_collab') {
+        const zone = tgt === 'self_center' ? 'center' : 'collab';
+        const member = player.zones[zone];
+        if (!member) {
+          addLog(state, prompt.player, `${zone === 'center' ? '中心' : '聯動'}無成員 — 加成跳過`);
+        } else {
+          state._turnBoosts = state._turnBoosts || [];
+          state._turnBoosts.push({
+            type: 'DAMAGE_BOOST', amount,
+            target: 'instance', instanceId: member.instanceId,
+            duration: 'turn',
+          });
+          addLog(state, prompt.player, `${getCard(member.cardId)?.name || ''} 本回合 +${amount}`);
+        }
+      } else if (tgt === 'pick_member') {
+        const stage = getAllMembers(player);
+        let candidates = stage;
+        if (prompt.tagFilter) {
+          candidates = stage.filter(m => {
+            const tag = getCard(m.cardId)?.tag || '';
+            const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+            return tagStr.includes(prompt.tagFilter);
+          });
+        }
+        if (candidates.length === 0) {
+          addLog(state, prompt.player, `舞台無${prompt.tagFilter ? ` ${prompt.tagFilter}` : ''}成員 — 加成跳過`);
+        } else if (candidates.length === 1) {
+          const t = candidates[0];
+          state._turnBoosts = state._turnBoosts || [];
+          state._turnBoosts.push({
+            type: 'DAMAGE_BOOST', amount,
+            target: 'instance', instanceId: t.instanceId, duration: 'turn',
+          });
+          addLog(state, prompt.player, `${getCard(t.cardId)?.name || ''} 本回合 +${amount}`);
+        } else {
+          state.pendingEffectQueue = state.pendingEffectQueue || [];
+          state.pendingEffectQueue.push({
+            type: 'SELECT_OWN_MEMBER', player: prompt.player,
+            message: `選擇 1 位${prompt.tagFilter || ''}成員 +${amount}`,
+            cards: candidates.map(m => ({
+              instanceId: m.instanceId, cardId: m.cardId,
+              name: getCard(m.cardId)?.name || '',
+            })),
+            maxSelect: 1, afterAction: 'BOOST_PICKED_MEMBER',
+            amount,
+          });
+        }
+      }
+    }
+
   } else if (action === 'ARCHIVE_HAND_THEN_OPP_DMG') {
     // Phase 2.4 #6: hand-cost variant for special damage effects.
     //   cost: archive selected hand card(s) (supports maxSelect>1 re-emit)

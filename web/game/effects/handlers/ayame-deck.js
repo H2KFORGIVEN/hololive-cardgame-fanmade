@@ -241,6 +241,30 @@ export function registerAyameDeck() {
     };
   });
 
+  // hBP06-034 art1「夏の海でドキドキデート」
+  // REAL: DMG:10+ / 可以將自己的1張手牌放到存檔區：這個回合中，自己的中心成員「百鬼あやめ」藝能傷害+30。
+  // OVERRIDE top50 auto-spend.
+  reg('hBP06-034', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art1') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const center = own.zones[ZONE.CENTER];
+    if (!center || getCard(center.cardId)?.name !== '百鬼あやめ') {
+      return { state, resolved: true, log: '夏の海でドキドキ: 中心非「百鬼あやめ」 — 跳過' };
+    }
+    if (own.zones[ZONE.HAND].length === 0) return { state, resolved: true, log: '夏の海でドキドキ: 手牌空 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: '夏の海でドキドキデート: 選擇 1 張手牌 → 存檔（→ 中心「百鬼あやめ」+30）',
+        cards: handPicker(own), maxSelect: 1,
+        afterAction: 'ARCHIVE_HAND_THEN_BOOST',
+        boostAmount: 30, boostTarget: 'self_center',
+      },
+      log: '夏の海でドキドキ: 選手牌',
+    };
+  });
+
   // hSD02-009 art2「余ーだ余」
   // REAL: DMG:40 / 可以將自己的1~3張手牌放到存檔區：每將1張牌放到存檔區，給予對手的中心成員40點特殊傷害。
   // perCardScaling: each archived hand card adds another 40 special to opp center.

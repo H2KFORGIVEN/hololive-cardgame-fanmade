@@ -1541,6 +1541,40 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #7 — ARCHIVE_HAND_THEN_BOOST afterAction
+// ══════════════════════════════════════════════════════════════════
+section('ARCHIVE_HAND_THEN_BOOST (Phase 2.4 #7)');
+
+{
+  // self_center: hand archive → +30 to own center
+  const handCard = { instanceId: 5001, cardId: 'hY01-001', faceDown: false };
+  const center = makeMember('hBP06-034', 5002);
+  const state = makeMinState(center, null, [], null);
+  state.players[0].zones.hand = [handCard];
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_HAND',
+    player: 0,
+    cards: [{ instanceId: 5001, cardId: 'hY01-001', name: 'h', image: '' }],
+    maxSelect: 1,
+    afterAction: 'ARCHIVE_HAND_THEN_BOOST',
+    boostAmount: 30,
+    boostTarget: 'self_center',
+  }, { instanceId: 5001, name: 'h' });
+
+  const archived = state.players[0].zones.archive.length === 1;
+  const handEmpty = state.players[0].zones.hand.length === 0;
+  const boostPushed = state._turnBoosts?.some(b =>
+    b.type === 'DAMAGE_BOOST' && b.amount === 30 && b.instanceId === 5002);
+  if (archived && handEmpty && boostPushed) {
+    pass('ARCHIVE_HAND_THEN_BOOST self_center: hand archived + +30 turn boost on center');
+  } else {
+    fail('ARCHIVE_HAND_THEN_BOOST self_center',
+      `archived=${archived} handEmpty=${handEmpty} boost=${boostPushed}`);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #6 — ARCHIVE_HAND_THEN_OPP_DMG afterAction
 // ══════════════════════════════════════════════════════════════════
 section('ARCHIVE_HAND_THEN_OPP_DMG (Phase 2.4 #6)');
