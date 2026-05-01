@@ -300,7 +300,31 @@ export function registerFubukiDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP05-068', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — scry top↑/↓ choice not in afterAction set
+    // Phase 2.4 #5: scry-1 with top/bottom choice via SCRY_PLACE_DECK.
+    const me = ctx.memberInst;
+    if (!me) return { state, resolved: true };
+    const hasMascot = (me.attachedSupport || []).some(s => getCard(s.cardId)?.type === '支援・吉祥物');
+    if (!hasMascot) return { state, resolved: true, log: 'ゆるゆる休養日: 此成員未帶吉祥物 — 跳過' };
+    const own = state.players[ctx.player];
+    const deck = own.zones[ZONE.DECK];
+    if (deck.length === 0) return { state, resolved: true, log: 'ゆるゆる休養日: 牌組空' };
+    const top = deck[0];
+    const topName = getCard(top.cardId)?.name || '?';
+    const topImage = getCardImage(top.cardId);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'CHOOSE_DECK_POSITION', player: ctx.player,
+        message: `ゆるゆる休養日: 牌頂為「${topName}」 — 選擇放回位置`,
+        cards: [
+          { instanceId: -1, cardId: top.cardId, name: '放回牌組頂部', image: topImage },
+          { instanceId: -2, cardId: top.cardId, name: '放到牌組底部', image: topImage },
+        ],
+        afterAction: 'SCRY_PLACE_DECK',
+        scryCardInstanceId: top.instanceId,
+      },
+      log: `ゆるゆる休養日: 牌頂 ${topName}`,
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

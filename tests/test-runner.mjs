@@ -1541,6 +1541,52 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #5 — SCRY_PLACE_DECK afterAction (top↑/↓ choice)
+// ══════════════════════════════════════════════════════════════════
+section('SCRY_PLACE_DECK afterAction (Phase 2.4 #5)');
+
+{
+  // Setup: top of deck card with instanceId 7000; choose top
+  const top = { instanceId: 7000, cardId: 'hBP01-038', faceDown: false };
+  const middle = { instanceId: 7001, cardId: 'hBP01-040', faceDown: false };
+  const bottom = { instanceId: 7002, cardId: 'hBP01-042', faceDown: false };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.deck = [top, middle, bottom];
+
+  resolveEffectChoice(state, {
+    type: 'CHOOSE_DECK_POSITION',
+    player: 0,
+    afterAction: 'SCRY_PLACE_DECK',
+    scryCardInstanceId: 7000,
+  }, { instanceId: -1 });  // -1 = top
+
+  const onTop = state.players[0].zones.deck[0]?.instanceId === 7000;
+  if (onTop) pass('SCRY_PLACE_DECK: instanceId=-1 keeps card on top');
+  else fail('SCRY_PLACE_DECK top', `expected 7000 on top, got ${state.players[0].zones.deck[0]?.instanceId}`);
+}
+
+{
+  // Same setup, choose bottom
+  const top = { instanceId: 7100, cardId: 'hBP01-038', faceDown: false };
+  const middle = { instanceId: 7101, cardId: 'hBP01-040', faceDown: false };
+  const bottom = { instanceId: 7102, cardId: 'hBP01-042', faceDown: false };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.deck = [top, middle, bottom];
+
+  resolveEffectChoice(state, {
+    type: 'CHOOSE_DECK_POSITION',
+    player: 0,
+    afterAction: 'SCRY_PLACE_DECK',
+    scryCardInstanceId: 7100,
+  }, { instanceId: -2 });  // -2 = bottom
+
+  const movedToBottom = state.players[0].zones.deck.at(-1)?.instanceId === 7100;
+  const newTop = state.players[0].zones.deck[0]?.instanceId === 7101;
+  if (movedToBottom && newTop) pass('SCRY_PLACE_DECK: instanceId=-2 moves card to bottom');
+  else fail('SCRY_PLACE_DECK bottom', `bottom=${state.players[0].zones.deck.at(-1)?.instanceId} top=${state.players[0].zones.deck[0]?.instanceId}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #4 — preventDamage hook (DamageCalculator observer chain)
 // ══════════════════════════════════════════════════════════════════
 section('preventDamage observer chain (Phase 2.4 #4)');

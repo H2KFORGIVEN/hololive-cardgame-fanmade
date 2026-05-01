@@ -696,6 +696,28 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'SCRY_PLACE_DECK') {
+    // Phase 2.4 #5: scry-1 with top/bottom choice.
+    // Prompt fields:
+    //   scryCardInstanceId: instanceId of the card already revealed at top of deck
+    //   selected.instanceId === -1 → keep on top
+    //   selected.instanceId === -2 → move to bottom
+    const deck = player.zones['deck'];
+    const idx = deck.findIndex(c => c.instanceId === prompt.scryCardInstanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, 'SCRY: 找不到展示的卡 — 跳過');
+    } else {
+      const card = deck.splice(idx, 1)[0];
+      const choice = selected?.instanceId === -2 ? 'bottom' : 'top';
+      if (choice === 'bottom') {
+        deck.push(card);
+        addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 放回牌組底部`);
+      } else {
+        deck.unshift(card);
+        addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 放回牌組頂部`);
+      }
+    }
+
   } else if (action === 'OPP_MEMBER_DAMAGE') {
     // Player picked one of opponent's stage members to receive special damage.
     // amount carried on prompt.damageAmount. Triggers post-damage sweep so
