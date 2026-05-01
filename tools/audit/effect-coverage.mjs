@@ -375,8 +375,16 @@ function categorize(entry) {
     //    only handling one of the arts, the other one's cost text doesn't apply.
     const hasArtKeyGate = /ctx\.artKey\s*!==\s*['"`]art[12]['"`]/.test(body) ||
                          /ctx\.artKey\s*===\s*['"`]art[12]['"`]/.test(body);
+    //  - MANUAL_EFFECT fall-through: body returns `{ state }` (no `resolved`)
+    //    after the optional trigger guard. Engine then prompts the user — the
+    //    cost is not auto-skipped; player consents.
+    const isManualFallthrough = /return\s*\{\s*state\s*\}\s*;?\s*(\/\/.*)?\s*$/.test(body.trim()) ||
+                                /^\s*(if[^{]+\{[^}]*\}\s*)?return\s*\{\s*state\s*\}\s*;?\s*$/m.test(body.trim()) ||
+                                actions.every(a => a === 'hasTriggerCheck'); // only trigger guard, no real action
     if (hasArtKeyGate && (entry.hook === 'ON_ART_DECLARE' || entry.hook === 'ON_ART_RESOLVE')) {
       // skip — handler is gated on a specific art
+    } else if (isManualFallthrough) {
+      // skip — MANUAL_EFFECT fall-through, engine handles
     } else if (/(可以將自己\d?張?手牌|可以將.*存檔|可以擲)/.test(realText) && !actions.includes('archiveHand') && !actions.includes('rollDie') && !hasPicker) {
       // It IS firing the after-cost effect without paying. But many "可以" effects auto-fire the beneficial part — only flag if TEXT explicitly says "存檔" as cost
       if (/可以將.*手牌.*存檔|可以將.*手牌.*放到存檔/.test(realText)) {
