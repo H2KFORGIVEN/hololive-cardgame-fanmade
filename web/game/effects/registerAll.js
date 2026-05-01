@@ -23,6 +23,7 @@ import { registerPassthrough } from './handlers/passthrough.js';
 import { registerKuroniiDeck } from './handlers/kuronii-deck.js';
 import { registerChocoyuDeck } from './handlers/chocoyu-deck.js';
 import { registerMikoDeck } from './handlers/miko-deck.js';
+import { registerSuiseiDeck } from './handlers/suisei-deck.js';
 
 let _initialized = false;
 
@@ -98,6 +99,7 @@ export async function initEffects() {
   counts.kuroniiDeck = registerKuroniiDeck();
   counts.chocoyuDeck = registerChocoyuDeck();
   counts.mikoDeck = registerMikoDeck();
+  counts.suiseiDeck = registerSuiseiDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
