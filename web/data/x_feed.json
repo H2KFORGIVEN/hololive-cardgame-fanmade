@@ -32,7 +32,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1518
+    "favorite_count": 1524
   },
   {
     "id": "2049685176905511426",
@@ -64,7 +64,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 821
+    "favorite_count": 822
   },
   {
     "id": "2049322781410812193",
@@ -966,7 +966,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4529
+    "favorite_count": 4530
   },
   {
     "id": "2047601447316181384",
@@ -4663,7 +4663,7 @@
       }
     ],
     "category": "tournament",
-    "favorite_count": 268
+    "favorite_count": 0
   },
   {
     "id": "1919186481547264314",
@@ -4927,6 +4927,6 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 687
+    "favorite_count": 0
   }
 ]
