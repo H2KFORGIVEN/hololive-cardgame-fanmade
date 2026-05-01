@@ -634,6 +634,37 @@ export function resolveEffectChoice(state, prompt, selected) {
             damageAmount: amount,
           });
         }
+      } else if (tgt === 'opp_center_AND_pick_backstage' && amount > 0) {
+        // Multi-target: apply amount to opp center AND queue picker for 1 backstage.
+        // Used by hSD03-006 art2, hBP02-041 art1, hBP05-043 art1, etc.
+        const center = opp.zones['center'];
+        if (center) {
+          center.damage = (center.damage || 0) + amount;
+          addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+          sweepEffectKnockouts(state);
+        } else {
+          addLog(state, prompt.player, '對手無中心 — 中心傷害跳過');
+        }
+        const back = (opp.zones['backstage'] || []);
+        if (back.length === 0) {
+          addLog(state, prompt.player, '對手後台無成員 — 後台傷害跳過');
+        } else if (back.length === 1) {
+          back[0].damage = (back[0].damage || 0) + amount;
+          addLog(state, prompt.player, `${getCard(back[0].cardId)?.name || ''} ${amount} 特殊傷害`);
+          sweepEffectKnockouts(state);
+        } else {
+          const targets = back.map(m => ({
+            instanceId: m.instanceId, cardId: m.cardId,
+            name: getCard(m.cardId)?.name || '',
+          }));
+          state.pendingEffectQueue = state.pendingEffectQueue || [];
+          state.pendingEffectQueue.push({
+            type: 'SELECT_TARGET', player: prompt.player,
+            message: `選擇對手後台（${amount} 特殊傷害）`,
+            cards: targets, maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+            damageAmount: amount,
+          });
+        }
       }
 
       // Optional follow-up search prompt (used by cards where the benefit is

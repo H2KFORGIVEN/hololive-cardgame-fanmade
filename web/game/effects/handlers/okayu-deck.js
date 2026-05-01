@@ -231,5 +231,82 @@ export function registerOkayuDeck() {
     return { state, resolved: true, log: `oshi: 中心 ${getCard(center.cardId)?.name||''} 本回合 +20` };
   });
 
+  // ─────────────────────────────────────────────────────────────────────
+  // Phase 2.4 #1+2: cost-bearing afterAction conversions for おかゆ multi-target
+  // damage cards. Each replaces the phaseC1 auto-spend with a proper picker.
+  // Pattern: 「將這個成員的1張藍色吶喊卡放到存檔區」+ 「中心 N + 後台 1 位 N」.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // helper: build cheer picker from a specific member's attachedCheer, filtered by color
+  function buildBluePickerFromMember(member) {
+    if (!member) return [];
+    return (member.attachedCheer || [])
+      .filter(c => getCard(c.cardId)?.color === '藍')
+      .map(c => ({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: getCard(c.cardId)?.name || '吶喊',
+        image: getCardImage(c.cardId),
+      }));
+  }
+
+  // hBP02-041 おかゆ (1st Buzz) art1「ぽいずん猫」
+  // REAL: DMG:50 / 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員20點特殊傷害。
+  // Override at ON_ART_DECLARE; suppress phaseC1 ON_ART_RESOLVE auto-spend.
+  reg('hBP02-041', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art1') return { state, resolved: true };
+    const cheers = buildBluePickerFromMember(ctx.memberInst);
+    if (cheers.length === 0) return { state, resolved: true, log: 'ぽいずん猫: 此成員無藍色吶喊 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: 'ぽいずん猫: 選擇 1 張藍色吶喊卡 → 存檔（→ 對手中心 + 後台各 20）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 20, damageTarget: 'opp_center_AND_pick_backstage',
+      },
+      log: 'ぽいずん猫: 選吶喊',
+    };
+  });
+  reg('hBP02-041', HOOK.ON_ART_RESOLVE, (state, ctx) => ({ state, resolved: true })); // suppress C1 auto-spend
+
+  // hBP05-043 おかゆ (1st) art1「まだまだ遊べるよね～？」
+  // REAL: DMG:30 / 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員10點特殊傷害。
+  reg('hBP05-043', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art1') return { state, resolved: true };
+    const cheers = buildBluePickerFromMember(ctx.memberInst);
+    if (cheers.length === 0) return { state, resolved: true, log: 'まだまだ遊べる: 此成員無藍色吶喊 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: 'まだまだ遊べるよね～？: 選擇 1 張藍色吶喊卡 → 存檔（→ 對手中心 + 後台各 10）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 10, damageTarget: 'opp_center_AND_pick_backstage',
+      },
+      log: 'まだまだ遊べる: 選吶喊',
+    };
+  });
+
+  // hSD03-006 おかゆ (1st) art2「しゃー」
+  // REAL: DMG:40 / 可以將這個成員的1張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員10點特殊傷害。
+  reg('hSD03-006', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art2') return { state, resolved: true };
+    const cheers = buildBluePickerFromMember(ctx.memberInst);
+    if (cheers.length === 0) return { state, resolved: true, log: 'しゃー: 此成員無藍色吶喊 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: 'しゃー: 選擇 1 張藍色吶喊卡 → 存檔（→ 對手中心 + 後台各 10）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 10, damageTarget: 'opp_center_AND_pick_backstage',
+      },
+      log: 'しゃー: 選吶喊',
+    };
+  });
+
   return count;
 }
