@@ -385,9 +385,25 @@ export function registerNoelDeck() {
       const r = apply(target);
       return { state, resolved: true, log: `元気もりもり: ${getCard(target.cardId)?.name||''} 本回合無色吶喊 -${r}` };
     }
-    // Multi-pick — needs new afterAction to set _artColorlessReductionByInstance.
-    // For now, fall through to MANUAL_EFFECT (player applies via panel).
-    return { state }; // MANUAL_EFFECT — afterAction missing for colorless reduction
+    // Phase 2.4 #16: multi-pick → REDUCE_COLORLESS_PICKED_MEMBER picker.
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER', player: ctx.player,
+        message: '元気もりもりさんでーまっする: 選擇 1 位 #3期生 成員（本回合無色吶喊 -1，2nd「白銀ノエル」-2）',
+        cards: candidates.map(m => ({
+          instanceId: m.inst.instanceId, cardId: m.inst.cardId,
+          name: getCard(m.inst.cardId)?.name || '',
+          image: getCardImage(m.inst.cardId),
+        })),
+        maxSelect: 1, afterAction: 'REDUCE_COLORLESS_PICKED_MEMBER',
+        amount: 1,
+        bonusName: '白銀ノエル',
+        bonusBloom: '2nd',
+        bonusReduction: 2,
+      },
+      log: '元気もりもり: 選 #3期生',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

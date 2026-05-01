@@ -696,6 +696,37 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'REDUCE_COLORLESS_PICKED_MEMBER') {
+    // Phase 2.4 #16: pick a member to receive turn-scoped colorless cost
+    // reduction on their arts. Used by hBP07-022 art1 「元気もりもりさんでーまっする」
+    // multi-pick path: pick #3期生; default reduction=1, bonus to 2 if matched
+    // member is name='白銀ノエル' AND bloom='2nd'.
+    //
+    // Prompt fields:
+    //   amount: base reduction (typically 1)
+    //   bonusName: name to match for bonus
+    //   bonusBloom: bloom to match for bonus
+    //   bonusReduction: total reduction when bonus matches (typically 2)
+    const allMembers = getAllMembers(player);
+    const target = allMembers.find(m => m.instanceId === selected.instanceId);
+    if (!target) {
+      addLog(state, prompt.player, '找不到目標成員 — 跳過');
+    } else {
+      const card = getCard(target.cardId);
+      const baseAmount = prompt.amount || 1;
+      let actualReduction = baseAmount;
+      if (prompt.bonusName && prompt.bonusReduction &&
+          card?.name === prompt.bonusName &&
+          (!prompt.bonusBloom || card?.bloom === prompt.bonusBloom)) {
+        actualReduction = prompt.bonusReduction;
+      }
+      state._artColorlessReductionByInstance = state._artColorlessReductionByInstance || {};
+      state._artColorlessReductionByInstance[prompt.player] = state._artColorlessReductionByInstance[prompt.player] || {};
+      const prior = state._artColorlessReductionByInstance[prompt.player][target.instanceId] || 0;
+      state._artColorlessReductionByInstance[prompt.player][target.instanceId] = Math.max(prior, actualReduction);
+      addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 本回合無色費 -${actualReduction}`);
+    }
+
   } else if (action === 'OPP_CENTER_BACKSTAGE_SWAP') {
     // Phase 2.4 #15: swap opp center with a picked opp backstage member.
     // selected.instanceId = the chosen opp backstage to promote to center.

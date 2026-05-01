@@ -1552,6 +1552,61 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #16 — REDUCE_COLORLESS_PICKED_MEMBER afterAction
+// ══════════════════════════════════════════════════════════════════
+section('REDUCE_COLORLESS_PICKED_MEMBER (Phase 2.4 #16)');
+
+{
+  // Pick a non-bonus member (1st 白銀ノエル) → reduction=1
+  const target1 = makeMember('hBP02-016', 4501); // 1st 白銀ノエル
+  const target2 = makeMember('hBP05-012', 4502); // 2nd 白銀ノエル (bonus match)
+  const state = makeMinState(target1, null, [target2], null);
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_MEMBER', player: 0,
+    cards: [
+      { instanceId: 4501, cardId: target1.cardId, name: '1st', image: '' },
+      { instanceId: 4502, cardId: target2.cardId, name: '2nd', image: '' },
+    ],
+    maxSelect: 1,
+    afterAction: 'REDUCE_COLORLESS_PICKED_MEMBER',
+    amount: 1,
+    bonusName: '白銀ノエル',
+    bonusBloom: '2nd',
+    bonusReduction: 2,
+  }, { instanceId: 4501, name: '1st' });
+
+  const reduction = state._artColorlessReductionByInstance?.[0]?.[4501];
+  if (reduction === 1) pass('REDUCE_COLORLESS_PICKED_MEMBER: 1st gets base reduction=1');
+  else fail('REDUCE_COLORLESS base', `expected 1, got ${reduction}`);
+}
+
+{
+  // Pick 2nd 白銀ノエル (hBP05-012) → bonus reduction=2
+  const target1 = makeMember('hBP02-016', 4601); // 1st 白銀ノエル
+  const target2 = makeMember('hBP05-012', 4602); // 2nd 白銀ノエル
+  const state = makeMinState(target1, null, [target2], null);
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_MEMBER', player: 0,
+    cards: [
+      { instanceId: 4601, cardId: target1.cardId, name: '1st', image: '' },
+      { instanceId: 4602, cardId: target2.cardId, name: '2nd', image: '' },
+    ],
+    maxSelect: 1,
+    afterAction: 'REDUCE_COLORLESS_PICKED_MEMBER',
+    amount: 1,
+    bonusName: '白銀ノエル',
+    bonusBloom: '2nd',
+    bonusReduction: 2,
+  }, { instanceId: 4602, name: '2nd' });
+
+  const reduction = state._artColorlessReductionByInstance?.[0]?.[4602];
+  if (reduction === 2) pass('REDUCE_COLORLESS_PICKED_MEMBER: 2nd 白銀ノエル gets bonus reduction=2');
+  else fail('REDUCE_COLORLESS bonus', `expected 2, got ${reduction}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #15 — OPP_CENTER_BACKSTAGE_SWAP afterAction
 // ══════════════════════════════════════════════════════════════════
 section('OPP_CENTER_BACKSTAGE_SWAP (Phase 2.4 #15)');
