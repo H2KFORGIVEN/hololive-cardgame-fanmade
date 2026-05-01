@@ -51,6 +51,9 @@
 | Phase 2.4 | #11 PLACE_ON_STAGE archive/deck (2 cards) | ✅ DONE | `ccce164` |
 | Phase 2.4 | #12 Look-N-pick-1-reorder wiring (2 cards) | ✅ DONE | `2cf3557` |
 | Phase 2.4 | Convert MANUAL→SELECT_TARGET pickers (6 cards) | ✅ DONE | `126ecf0` |
+| Phase 2.4 | Test stability (Double collab / Art reuse warnings) | ✅ DONE | `c45a0cc` |
+| Phase 2.4 | hSD15-005 effectG knockdown auto-move (1 card) | ✅ DONE | `92c4221` |
+| Phase 2.4 | Audit comment-stripping in action fingerprint | ✅ DONE | `4f8de67` |
 | **Phase 4** | 4.1 integration tests (Phase 2.4 afterAction) | ✅ DONE | `3ac5dd0` |
 | Phase 4 | 4.2 GitHub Action audit gate (master + PR) | ✅ DONE | `2ee96ec` |
 | Phase 4 | 4.3 cards.json sync detector | ✅ DONE | `06e44c1` |
