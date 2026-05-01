@@ -696,6 +696,69 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'MULTI_DISTRIBUTE_CHEER') {
+    // Phase 2.4 #13: distribute 1 cheer to each picked member.
+    //   prompt.cards = eligible recipient members (filtered by handler)
+    //   prompt.maxSelect = max number of recipients (re-emits until done)
+    //   prompt.sourcePool = 'archive' | 'cheerDeck' — where the cheer comes from
+    //   prompt.sourceFilter = optional { color: '綠' | '藍' | ... } — color filter
+    //   For each member pick: attach 1 matching source cheer (or skip if pool empty)
+    const allMembers = getAllMembers(player);
+    const target = allMembers.find(m => m.instanceId === selected.instanceId);
+    if (!target) {
+      addLog(state, prompt.player, '找不到目標成員 — 跳過');
+    } else {
+      const sourcePool = prompt.sourcePool === 'cheerDeck' ? 'cheerDeck' : 'archive';
+      const filter = prompt.sourceFilter || {};
+      const pool = player.zones[sourcePool];
+      // Find a matching cheer (filter by color if specified)
+      let cheerIdx = -1;
+      for (let i = 0; i < pool.length; i++) {
+        const c = pool[i];
+        const card = getCard(c.cardId);
+        if (card?.type !== '吶喊') continue;
+        if (filter.color && card.color !== filter.color) continue;
+        cheerIdx = i;
+        break;
+      }
+      if (cheerIdx < 0) {
+        addLog(state, prompt.player, `${sourcePool === 'cheerDeck' ? '吶喊牌組' : '存檔'}無符合的吶喊 — 跳過`);
+      } else {
+        const cheer = pool.splice(cheerIdx, 1)[0];
+        cheer.faceDown = false;
+        target.attachedCheer = target.attachedCheer || [];
+        target.attachedCheer.push(cheer);
+        const cheerName = getCard(cheer.cardId)?.name || '吶喊';
+        addLog(state, prompt.player, `${cheerName} → ${getCard(target.cardId)?.name || ''}`);
+      }
+
+      // Re-emit if more recipients allowed and any cheer left
+      if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+        const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+        if (newCards.length > 0) {
+          // Check if pool still has eligible cheers — if not, stop early
+          const stillHasCheer = pool.some(c => {
+            const card = getCard(c.cardId);
+            if (card?.type !== '吶喊') return false;
+            if (filter.color && card.color !== filter.color) return false;
+            return true;
+          });
+          if (stillHasCheer) {
+            const remaining = prompt.maxSelect - 1;
+            const baseMsg = prompt.baseMessage || prompt.message || '';
+            state.pendingEffect = {
+              ...prompt,
+              cards: newCards,
+              maxSelect: remaining,
+              message: `${baseMsg}（還可選 ${remaining} 位，可跳過）`,
+              baseMessage: baseMsg,
+            };
+            return state;
+          }
+        }
+      }
+    }
+
   } else if (action === 'PLACE_ON_STAGE') {
     // Phase 2.4 #11: place a Debut/spot member on the player's backstage
     // from a specified source (archive or deck). Used by:

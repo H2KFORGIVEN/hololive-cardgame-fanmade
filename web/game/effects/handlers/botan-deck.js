@@ -270,6 +270,41 @@ export function registerBotanDeck() {
   // for review since cost-bearing effects shouldn't auto-spend without consent.
   // Override with MANUAL_EFFECT here at ON_ART_DECLARE.)
   // ─────────────────────────────────────────────────────────────────────
+  // hBP03-021 effectB「なんとかしてくれる獅白ぼたん」 — multi-distribute green cheer
+  // REAL: 可以將自己存檔區的綠色吶喊卡發送給自己1~2位標示#シューター的後台成員，每人各1張。
+  // Phase 2.4 #13: MULTI_DISTRIBUTE_CHEER picker; overrides phaseC1 auto-pick.
+  reg('hBP03-021', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const greenInArchive = own.zones[ZONE.ARCHIVE].some(c => {
+      const card = getCard(c.cardId);
+      return card?.type === '吶喊' && card?.color === '綠';
+    });
+    if (!greenInArchive) return { state, resolved: true, log: 'なんとかしてくれる: 存檔無綠色吶喊' };
+    const shooters = own.zones[ZONE.BACKSTAGE]
+      .filter(m => {
+        const tag = getCard(m.cardId)?.tag || '';
+        return (typeof tag === 'string' ? tag : JSON.stringify(tag)).includes('#シューター');
+      })
+      .map(m => ({ inst: m }));
+    if (shooters.length === 0) return { state, resolved: true, log: 'なんとかしてくれる: 後台無 #シューター' };
+    const max = Math.min(2, shooters.length);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER', player: ctx.player,
+        message: `なんとかしてくれる: 選擇 1-${max} 位 #シューター 後台接收綠吶喊（每位各 1 張，可跳過）`,
+        baseMessage: 'なんとかしてくれる: 選擇 #シューター 後台',
+        cards: memberPicks(shooters),
+        maxSelect: max,
+        afterAction: 'MULTI_DISTRIBUTE_CHEER',
+        sourcePool: 'archive',
+        sourceFilter: { color: '綠' },
+      },
+      log: 'なんとかしてくれる: 選 #シューター',
+    };
+  });
+
   reg('hBP03-021', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
     // Phase 2.4 #1: cost-bearing afterAction. Oshi-name gate.

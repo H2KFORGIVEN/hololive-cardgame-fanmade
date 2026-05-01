@@ -241,7 +241,26 @@ export function registerSubaruDeck() {
   reg('hSD19-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
     if (ctx.skillType === 'reactive') return { state, resolved: true };
     if (ctx.skillType === 'sp') {
-      return { state }; // MANUAL_EFFECT — multi-distribution archive cheer to 1-2 スバル
+      // Phase 2.4 #13: multi-distribute archive cheer to 1-2 スバル members.
+      const own = state.players[ctx.player];
+      const subarus = getStageMembers(own).filter(m => getCard(m.inst.cardId)?.name === '大空スバル');
+      if (subarus.length === 0) return { state, resolved: true, log: 'SP「おさんぽスバル」: 舞台無「大空スバル」' };
+      const archiveCheers = own.zones[ZONE.ARCHIVE].some(c => getCard(c.cardId)?.type === '吶喊');
+      if (!archiveCheers) return { state, resolved: true, log: 'SP「おさんぽスバル」: 存檔無吶喊' };
+      const max = Math.min(2, subarus.length);
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SELECT_OWN_MEMBER', player: ctx.player,
+          message: `SP「おさんぽスバル」: 選擇 1-${max} 位「大空スバル」接收存檔吶喊（每位各 1 張，可跳過）`,
+          baseMessage: 'SP「おさんぽスバル」: 選擇「大空スバル」',
+          cards: memberPicks(subarus),
+          maxSelect: max,
+          afterAction: 'MULTI_DISTRIBUTE_CHEER',
+          sourcePool: 'archive',
+        },
+        log: 'SP「おさんぽスバル」: 選擇 スバル',
+      };
     }
     const own = state.players[ctx.player];
     const members = own.zones[ZONE.ARCHIVE].filter(c => isMember(getCard(c.cardId)?.type));

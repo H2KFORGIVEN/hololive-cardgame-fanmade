@@ -1552,6 +1552,86 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #13 — MULTI_DISTRIBUTE_CHEER afterAction
+// ══════════════════════════════════════════════════════════════════
+section('MULTI_DISTRIBUTE_CHEER (Phase 2.4 #13)');
+
+{
+  // 2 archive cheers, pick 2 members, each gets 1
+  const cheer1 = { instanceId: 4001, cardId: 'hY01-001', faceDown: false };
+  const cheer2 = { instanceId: 4002, cardId: 'hY02-001', faceDown: false };
+  const m1 = makeMember('hSD19-002', 4101);
+  const m2 = makeMember('hSD19-003', 4102);
+  const state = makeMinState(m1, null, [m2], null);
+  state.players[0].zones.archive = [cheer1, cheer2];
+
+  const cards = [
+    { instanceId: 4101, cardId: m1.cardId, name: 'm1', image: '' },
+    { instanceId: 4102, cardId: m2.cardId, name: 'm2', image: '' },
+  ];
+
+  // First pick m1
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_MEMBER', player: 0,
+    cards, maxSelect: 2,
+    afterAction: 'MULTI_DISTRIBUTE_CHEER',
+    sourcePool: 'archive',
+  }, { instanceId: 4101, name: 'm1' });
+
+  const m1HasCheer = state.players[0].zones.center.attachedCheer.length === 1;
+  const reemit = state.pendingEffect?.maxSelect === 1;
+  if (!m1HasCheer || !reemit) {
+    fail('MULTI_DISTRIBUTE first pick', `m1Cheer=${m1HasCheer} reemit=${reemit}`);
+  } else {
+    // Second pick m2
+    resolveEffectChoice(state, state.pendingEffect, { instanceId: 4102, name: 'm2' });
+    const m2HasCheer = state.players[0].zones.backstage[0].attachedCheer.length === 1;
+    const archiveEmpty = state.players[0].zones.archive.length === 0;
+    const noPending = state.pendingEffect === null;
+    if (m2HasCheer && archiveEmpty && noPending) {
+      pass('MULTI_DISTRIBUTE_CHEER: 2 cheers → 2 members each gets 1');
+    } else {
+      fail('MULTI_DISTRIBUTE second pick',
+        `m2Cheer=${m2HasCheer} archiveEmpty=${archiveEmpty} noPending=${noPending}`);
+    }
+  }
+}
+
+{
+  // Color filter: only green cheer goes; non-green stays
+  const greenCheer = { instanceId: 4201, cardId: 'hY02-001', faceDown: false };  // hY02 = green
+  const blueCheer = { instanceId: 4202, cardId: 'hY04-001', faceDown: false };   // hY04 = blue
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const green = allCards.find(c => c.id === 'hY02-001');
+  const blue = allCards.find(c => c.id === 'hY04-001');
+  if (green?.color !== '綠' || blue?.color !== '藍') {
+    warn('color filter setup', `colors: green=${green?.color} blue=${blue?.color}`);
+  } else {
+    const member = makeMember('hBP03-009', 4301);
+    const state = makeMinState(null, null, [member], null);
+    state.players[0].zones.archive = [greenCheer, blueCheer];
+
+    resolveEffectChoice(state, {
+      type: 'SELECT_OWN_MEMBER', player: 0,
+      cards: [{ instanceId: 4301, cardId: 'hBP03-009', name: 'm', image: '' }],
+      maxSelect: 1,
+      afterAction: 'MULTI_DISTRIBUTE_CHEER',
+      sourcePool: 'archive',
+      sourceFilter: { color: '綠' },
+    }, { instanceId: 4301, name: 'm' });
+
+    const member1Cheer = state.players[0].zones.backstage[0].attachedCheer[0];
+    const tookGreen = member1Cheer?.instanceId === 4201;
+    const blueStillInArchive = state.players[0].zones.archive.some(c => c.instanceId === 4202);
+    if (tookGreen && blueStillInArchive) {
+      pass('MULTI_DISTRIBUTE_CHEER color filter: only 綠 attached, 藍 stays in archive');
+    } else {
+      fail('color filter', `tookGreen=${tookGreen} blueLeft=${blueStillInArchive}`);
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #11 — PLACE_ON_STAGE afterAction
 // ══════════════════════════════════════════════════════════════════
 section('PLACE_ON_STAGE (Phase 2.4 #11)');
