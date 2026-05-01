@@ -559,8 +559,15 @@ function advanceToSecondPlayerTurn1(state) {
       state = r1.state;
       if (state.players[state.activePlayer].zones[ZONE.BACKSTAGE].length > 0) {
         const r2 = processAction(state, { type: ACTION.COLLAB, backstageIndex: 0 });
-        if (r2.error && (r2.error.includes('進行過聯動') || r2.error.includes('已聯動') || r2.error.includes('已用') || r2.error.includes('聯動位置已'))) pass('Double collab rejected');
-        else if (r2.error) warn('Double collab', `rejected with: "${r2.error}"`);
+        // Acceptable rejections include the explicit "already collabed" path AND
+        // the "unresolved MANUAL_EFFECT from first collab" path — both correctly
+        // prevent a second collab. Previously the latter showed as a warning,
+        // creating intermittent flakes when a random card had MANUAL effectC.
+        if (r2.error && (r2.error.includes('進行過聯動') || r2.error.includes('已聯動') ||
+                        r2.error.includes('已用') || r2.error.includes('聯動位置已') ||
+                        r2.error.includes('未解決效果') || r2.error.includes('MANUAL_EFFECT'))) {
+          pass('Double collab rejected');
+        } else if (r2.error) warn('Double collab', `rejected with: "${r2.error}"`);
         else fail('Double collab', 'two collabs in one turn allowed');
       }
     }
@@ -668,8 +675,12 @@ function advanceToSecondPlayerTurn1(state) {
       if (!r1.error) {
         state = r1.state;
         const r2 = processAction(state, { type: ACTION.USE_ART, position: 'center', artIndex: 0, targetPosition: 'center' });
-        if (r2.error && (r2.error.includes('已使用過') || r2.error.includes('已用'))) pass('Cannot reuse art at same position');
-        else if (r2.error) warn('Art reuse', `rejected: "${r2.error}"`);
+        // Acceptable: explicit "already used" OR pendingEffect from first art's
+        // resolve hook (some cards trigger MANUAL_EFFECT post-art).
+        if (r2.error && (r2.error.includes('已使用過') || r2.error.includes('已用') ||
+                        r2.error.includes('未解決效果') || r2.error.includes('MANUAL_EFFECT'))) {
+          pass('Cannot reuse art at same position');
+        } else if (r2.error) warn('Art reuse', `rejected: "${r2.error}"`);
         else fail('Art reuse', 'same art used twice');
       } else {
         warn('Art reuse', `first art failed: ${r1.error}`);
