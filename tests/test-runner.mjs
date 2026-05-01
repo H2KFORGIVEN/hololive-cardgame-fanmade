@@ -1552,6 +1552,58 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #18 — Targeting redirection (hBP05-010 闘う団長)
+// ══════════════════════════════════════════════════════════════════
+section('Targeting redirection (Phase 2.4 #18)');
+
+{
+  // Setup: opp has hBP05-010 in collab + #3期生 center.
+  // My USE_ART targeting opp center should be rejected.
+  // Find a real #3期生 card with hp
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const sanki = allCards.find(c => (c.tag || '').includes('#3期生') && c.hp && c.bloom);
+  if (!sanki) {
+    warn('targeting redirect setup', 'no #3期生 card found');
+  } else {
+    const ownAttacker = makeMember('hBP01-038', 8801);
+    ownAttacker.state = 'active';  // ACTIVE state required by USE_ART
+    // hBP01-038 art1 cost = 1 green; supply green cheer (hY02 = green)
+    for (let i = 0; i < 5; i++) {
+      ownAttacker.attachedCheer.push({ instanceId: 8900 + i, cardId: 'hY02-001', faceDown: false });
+    }
+    const oppCenter = makeMember(sanki.id, 8810);
+    const oppCollab = makeMember('hBP05-010', 8811);
+    const state = makeMinState(ownAttacker, null, [], oppCenter);
+    state.players[1].zones.collab = oppCollab;
+    state.players[0].zones.deck = [
+      { instanceId: 8901, cardId: 'hBP01-038', faceDown: true },
+    ];
+    state.firstPlayer = 0;
+    state.firstTurn = [false, false];
+
+    // Try to target opp center — should be rejected
+    const r = validateAction(state, { type: 'USE_ART', position: 'center', artIndex: 0, targetPosition: 'center' });
+    const rErr = r.reason || r.error;
+    if (!r.valid && rErr && rErr.includes('闘う団長')) {
+      pass('hBP05-010 redirect: USE_ART targeting opp center → rejected with 闘う団長 message');
+    } else if (r.valid) {
+      fail('hBP05-010 redirect', 'expected rejection but action was valid');
+    } else {
+      warn('hBP05-010 redirect', `rejected for other reason: ${rErr}`);
+    }
+
+    // Targeting opp collab should still work (assuming other validation passes)
+    const r2 = validateAction(state, { type: 'USE_ART', position: 'center', artIndex: 0, targetPosition: 'collab' });
+    const r2Err = r2.reason || r2.error;
+    if (r2.valid || (r2Err && !r2Err.includes('闘う団長'))) {
+      pass('hBP05-010 redirect: USE_ART targeting opp collab → not blocked by redirect');
+    } else {
+      fail('hBP05-010 collab path', `unexpectedly blocked by 闘う団長: ${r2Err}`);
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #17 — ON_SUPPORT_ATTACH hook (hBP07-024 ミオ ミオファ trigger)
 // ══════════════════════════════════════════════════════════════════
 section('ON_SUPPORT_ATTACH hook (Phase 2.4 #17)');

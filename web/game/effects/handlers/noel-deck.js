@@ -263,7 +263,7 @@ export function registerNoelDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP05-010', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
     state, resolved: true,
-    log: '闘う団長: 對手藝能必須選聯動為目標（引擎尚未支援目標重導 hook，需手動）',
+    log: '闘う団長: 對手藝能必須選聯動為目標（已透過 ActionValidator 強制執行）',
   }));
   reg('hBP05-010', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };

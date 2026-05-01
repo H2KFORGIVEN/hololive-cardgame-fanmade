@@ -350,6 +350,21 @@ function validateUseArt(state, action, player, playerIdx) {
   const target = opponent.zones[targetZone];
   if (!target) return fail('目標位置沒有成員');
 
+  // Phase 2.4 #18 — targeting redirection: hBP05-010「闘う団長」 effectG.
+  // If the OPPONENT (defender, the one our art is targeting) has hBP05-010
+  // in collab AND their center is #3期生, our art may ONLY target their collab
+  // (special damage excluded; USE_ART is regular art damage so applies).
+  if (opponent.zones[ZONE.COLLAB]?.cardId === 'hBP05-010') {
+    const oppCenter = opponent.zones[ZONE.CENTER];
+    if (oppCenter) {
+      const tag = getCard(oppCenter.cardId)?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      if (tagStr.includes('#3期生') && action.targetPosition !== 'collab') {
+        return fail('對手「闘う団長」效果：藝能只能選擇對手聯動成員為對象');
+      }
+    }
+  }
+
   return ok();
 }
 
