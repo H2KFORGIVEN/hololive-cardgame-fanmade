@@ -752,8 +752,10 @@ section('Bug hunt');
 
 {
   // Test 26: BATON_PASS does consume cheer
+  // Regex was previously capped at 2500 chars — too short for the current
+  // function (~7000 chars). Bumped to 10000 to cover the full body.
   const engineSrc = fs.readFileSync(path.join(ROOT, 'web/game/core/GameEngine.js'), 'utf8');
-  const batonBlock = engineSrc.match(/function processBatonPass[\s\S]{0,2500}?(?=function |$)/);
+  const batonBlock = engineSrc.match(/function processBatonPass[\s\S]{0,10000}?(?=\nfunction |$)/);
   if (batonBlock && batonBlock[0].includes('ARCHIVE') && batonBlock[0].includes('attachedCheer'))
     pass('BATON_PASS consumes cheer to archive (correct)');
   else fail('Baton cheer consumption', 'BATON_PASS does not archive cheer');
@@ -786,8 +788,11 @@ section('Bug hunt');
 
 {
   // Test 30: MANUAL_EFFECT auto-dismiss no longer shows popup (user request)
+  // Look for the actual code that clears pendingEffect when type is MANUAL_EFFECT,
+  // not a specific comment phrase that may have evolved.
   const ctrlSrc = fs.readFileSync(path.join(ROOT, 'web/game/GameController.js'), 'utf8');
-  if (ctrlSrc.includes('Auto-clear manual effects')) pass('MANUAL_EFFECT popup auto-dismissed (user fix in place)');
+  const manualBlock = ctrlSrc.match(/state\.pendingEffect\.type === 'MANUAL_EFFECT'[\s\S]{0,800}?s\.pendingEffect = null/);
+  if (manualBlock) pass('MANUAL_EFFECT popup auto-dismissed (clears pendingEffect after toast)');
   else fail('MANUAL_EFFECT autoclear', 'popup may still appear');
 }
 
