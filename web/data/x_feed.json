@@ -32,7 +32,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1427
+    "favorite_count": 1435
   },
   {
     "id": "2049685176905511426",
@@ -64,7 +64,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 804
+    "favorite_count": 806
   },
   {
     "id": "2049322781410812193",
@@ -467,7 +467,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2548
+    "favorite_count": 2549
   },
   {
     "id": "2047647132111478964",
@@ -490,7 +490,7 @@
     "hashtags": [],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1267
+    "favorite_count": 1268
   },
   {
     "id": "2047643953428824407",
@@ -720,7 +720,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 502
+    "favorite_count": 503
   },
   {
     "id": "2047635085315416119",
@@ -966,7 +966,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4512
+    "favorite_count": 4513
   },
   {
     "id": "2047601447316181384",
@@ -1237,38 +1237,6 @@
     "favorite_count": 1859
   },
   {
-    "id": "2046786079986962799",
-    "url": "https://x.com/hololive_OCG/status/2046786079986962799",
-    "text": "【 #ホロカ カード紹介】\n6月19日(金)発売の『ブースターパック バウンサーバウンド』に収録するカードをご紹介！\n\n今回はホロメンの1st〈セシリア・イマーグリーン〉です！🍵\n\n🔽商品ページ\nhttp://hololive-official-cardgame.com/products/post/bouncer-bound/\n\n#ホロライブ #セシリア・イマーグリーン https://t.co/W01TRxlr3E",
-    "created_at": "2026-04-22T03:00:03.000Z",
-    "author": {
-      "name": "hololive OFFICIAL CARD GAME【公式】",
-      "handle": "hololive_OCG",
-      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
-    },
-    "media": [
-      {
-        "type": "photo",
-        "url": "https://pbs.twimg.com/media/HGF0AwraAAAD9MT.jpg",
-        "width": 1920,
-        "height": 1080
-      }
-    ],
-    "hashtags": [
-      "ホロカ",
-      "ホロライブ",
-      "セシリア・イマーグリーン"
-    ],
-    "external_urls": [
-      {
-        "url": "http://hololive-official-cardgame.com/products/post/bouncer-bound/",
-        "display": "hololive-official-cardgame.com/products/post/…"
-      }
-    ],
-    "category": "news",
-    "favorite_count": 1280
-  },
-  {
     "id": "2046529375445872841",
     "url": "https://x.com/hololive_OCG/status/2046529375445872841",
     "text": "【📢#ホロカフェス2026 info】 \n5/4(月・祝)開催「マッチングライブ トリオバトル」 2次募集に当選された皆様へ、チームメンバー登録の締め切りが迫っています！\n\n⚠️登録締切：【4/22(水) 23:59まで】\n\n■チーム結成に関するご注意\n・同一プレイヤーが複数のチームに所属することはできません。 https://t.co/bgO22igQJr",
@@ -1442,7 +1410,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5647
+    "favorite_count": 5648
   },
   {
     "id": "2045825989675192744",
@@ -1881,7 +1849,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2272
+    "favorite_count": 2273
   },
   {
     "id": "2044974126440513561",
@@ -3047,7 +3015,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1144
+    "favorite_count": 1145
   },
   {
     "id": "2040308383799275736",
@@ -3295,7 +3263,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 802
+    "favorite_count": 801
   },
   {
     "id": "2040000788983152848",
@@ -4294,7 +4262,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1632
+    "favorite_count": 1631
   },
   {
     "id": "2037122399142105392",
@@ -4609,7 +4577,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2677
+    "favorite_count": 2676
   },
   {
     "id": "2020392154669924817",
@@ -4663,7 +4631,7 @@
       }
     ],
     "category": "tournament",
-    "favorite_count": 0
+    "favorite_count": 268
   },
   {
     "id": "1919186481547264314",
