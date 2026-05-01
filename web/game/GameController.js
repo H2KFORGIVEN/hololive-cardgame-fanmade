@@ -1012,6 +1012,7 @@ export class GameController {
       state.pendingEffect.type === 'CHEER_FROM_ARCHIVE' ||
       state.pendingEffect.type === 'SELECT_FROM_ARCHIVE' ||
       state.pendingEffect.type === 'CHEER_MOVE' ||
+      state.pendingEffect.type === 'SELECT_OWN_CHEER' ||
       state.pendingEffect.type === 'ORDER_TO_BOTTOM'
     )) {
       if (state.pendingEffect.type === 'ORDER_TO_BOTTOM') {

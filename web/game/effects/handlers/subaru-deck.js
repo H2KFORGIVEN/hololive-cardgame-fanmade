@@ -138,7 +138,59 @@ export function registerSubaruDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP06-078', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — cost (own cheer→archive) + search picker
+    // Phase 2.4 #1: cost-bearing afterAction with followupSearch.
+    const own = state.players[ctx.player];
+    const me = ctx.memberInst;
+    if (!me) return { state, resolved: true };
+    const cheers = (me.attachedCheer || []).map(c => ({
+      instanceId: c.instanceId, cardId: c.cardId,
+      name: getCard(c.cardId)?.name || '吶喊',
+      image: getCardImage(c.cardId),
+    }));
+    if (cheers.length === 0) return { state, resolved: true, log: '地球&テラ: 此成員無吶喊 — 跳過' };
+    const oshiName = getCard(own.oshi?.cardId)?.name;
+    if (!oshiName) return { state, resolved: true, log: '地球&テラ: 主推資訊缺失' };
+    // Build followup search prompt (same-name Debut from deck → hand)
+    const matches = own.zones[ZONE.DECK].filter(c => {
+      const card = getCard(c.cardId);
+      return card?.name === oshiName && card?.bloom === 'Debut';
+    });
+    if (matches.length === 0) {
+      // Cost still gets paid; followup just no-ops (deck shuffle)
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SELECT_OWN_CHEER', player: ctx.player,
+          message: `地球&テラ: 選擇 1 張吶喊卡 → 存檔（牌組無「${oshiName}」Debut，洗牌跳過）`,
+          cards: cheers, maxSelect: 1,
+          afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+          damageAmount: 0, damageTarget: 'none',
+        },
+        log: '地球&テラ: 選吶喊（無對應 Debut）',
+      };
+    }
+    const followupSearch = {
+      type: 'SEARCH_SELECT', player: ctx.player,
+      message: `地球&テラ: 選擇 1 張「${oshiName}」Debut 加入手牌`,
+      cards: matches.map(c => ({
+        instanceId: c.instanceId, cardId: c.cardId,
+        name: getCard(c.cardId)?.name || '',
+        image: getCardImage(c.cardId),
+      })),
+      maxSelect: 1, afterAction: 'ADD_TO_HAND',
+    };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: `地球&テラ: 選擇 1 張吶喊卡 → 存檔（→ 搜尋「${oshiName}」Debut）`,
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 0, damageTarget: 'none',
+        followupSearch,
+      },
+      log: '地球&テラ: 選吶喊',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

@@ -187,11 +187,39 @@ export function registerBotanDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP03-019', HOOK.ON_BLOOM, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — cost-bearing once-per-turn special damage
+    // Phase 2.4 #1: cost-bearing afterAction. 1/turn limit.
+    const own = state.players[ctx.player];
+    own._oncePerTurn = own._oncePerTurn || {};
+    if (own._oncePerTurn['hBP03-019_effectB']) {
+      return { state, resolved: true, log: '歌う事は楽しい事: 本回合已使用' };
+    }
+    const cheers = [];
+    for (const m of own.zones[ZONE.BACKSTAGE]) {
+      for (const c of (m.attachedCheer || [])) {
+        cheers.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '吶喊',
+          image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (cheers.length === 0) return { state, resolved: true, log: '歌う事は楽しい事: 後台無吶喊 — 跳過' };
+    own._oncePerTurn['hBP03-019_effectB'] = true;
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: '歌う事は楽しい事: 選擇 1 張後台吶喊卡 → 存檔（→ 對手中心或聯動 30 特殊傷害）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 30, damageTarget: 'opp_center_or_collab',
+      },
+      log: '歌う事は楽しい事: 選吶喊',
+    };
   });
   reg('hBP03-019', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — hand-reveal cost + self heal
+    return { state }; // MANUAL_EFFECT — hand-reveal cost + self heal (different cost shape)
   });
 
   // ─────────────────────────────────────────────────────────────────────
@@ -244,8 +272,37 @@ export function registerBotanDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP03-021', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — cost+special damage chain
+    // Phase 2.4 #1: cost-bearing afterAction. Oshi-name gate.
+    const own = state.players[ctx.player];
+    if (getCard(own.oshi?.cardId)?.name !== '獅白ぼたん') {
+      return { state, resolved: true, log: '神エイム: 主推非「獅白ぼたん」 — 跳過' };
+    }
+    const cheers = [];
+    for (const m of own.zones[ZONE.BACKSTAGE]) {
+      for (const c of (m.attachedCheer || [])) {
+        cheers.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '吶喊',
+          image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (cheers.length === 0) return { state, resolved: true, log: '神エイム: 後台無吶喊 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: '神エイム: 選擇 1 張後台吶喊卡 → 存檔（→ 對手中心或聯動 40 特殊傷害）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 40, damageTarget: 'opp_center_or_collab',
+      },
+      log: '神エイム: 選吶喊',
+    };
   });
+  // hBP03-021 ON_ART_RESOLVE override: phaseC1 has an auto-spend version that
+  // would double-fire after our cost-bearing prompt. Suppress it here.
+  reg('hBP03-021', HOOK.ON_ART_RESOLVE, (state, ctx) => ({ state, resolved: true }));
 
   // ─────────────────────────────────────────────────────────────────────
   // hBP05-028 獅白ぼたん (1st Buzz) effectG「ちょっと頑張りました」/ art1「ここからが俺たちのスタートだ」
@@ -284,7 +341,35 @@ export function registerBotanDeck() {
   });
   reg('hBP05-028', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — cost (ぼたん cheer → archive) + special damage
+    // Phase 2.4 #1: cost-bearing afterAction now wired up.
+    // Cost source: any own ぼたん stage member's cheer (text says "自己「獅白ぼたん」的1張吶喊卡")
+    // Effect: 30 special damage to opp center (single target → no chain picker needed)
+    const own = state.players[ctx.player];
+    const cheers = [];
+    for (const m of getStageMembers(own)) {
+      if (getCard(m.inst.cardId)?.name !== '獅白ぼたん') continue;
+      for (const c of (m.inst.attachedCheer || [])) {
+        cheers.push({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '吶喊',
+          image: getCardImage(c.cardId),
+        });
+      }
+    }
+    if (cheers.length === 0) {
+      return { state, resolved: true, log: 'ここからが俺たちのスタートだ: 「ぼたん」無吶喊 — 跳過' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: 'ここからが俺たちのスタートだ: 選擇 1 張「獅白ぼたん」吶喊卡放到存檔區（→ 對手中心 30 特殊傷害）',
+        cards: cheers, maxSelect: 1,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 30, damageTarget: 'opp_center',
+      },
+      log: 'ここからが俺たちのスタートだ: 選吶喊',
+    };
   });
 
   return count;

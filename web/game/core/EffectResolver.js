@@ -547,6 +547,104 @@ export function resolveEffectChoice(state, prompt, selected) {
       addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 重疊 ${popped} 張回手`);
     }
 
+  } else if (action === 'ARCHIVE_OWN_CHEER_THEN_DMG') {
+    // Cost-bearing optional effect (Phase 2.4 #1):
+    //   cost: archive 1 cheer attached to one of own stage members
+    //   effect: special damage to opp per prompt.damageTarget
+    //
+    // Prompt fields:
+    //   cards: [{instanceId: cheerInstanceId, cardId, name, image}, ...]
+    //   damageAmount: number
+    //   damageTarget: 'opp_center' | 'opp_collab' | 'opp_center_or_collab' | 'opp_pick' | 'none'
+    //   followupSearch: optional { ... } prompt to chain after archive (for cards
+    //     where the post-cost effect is a search rather than damage; queued)
+    const allMembers = getAllMembers(player);
+    let foundMember = null;
+    let cheerIdx = -1;
+    for (const m of allMembers) {
+      const idx = (m.attachedCheer || []).findIndex(c => c.instanceId === selected.instanceId);
+      if (idx >= 0) { foundMember = m; cheerIdx = idx; break; }
+    }
+    if (!foundMember) {
+      addLog(state, prompt.player, '找不到吶喊卡 — 跳過');
+    } else {
+      const cheer = foundMember.attachedCheer.splice(cheerIdx, 1)[0];
+      cheer.faceDown = false;
+      player.zones['archive'].push(cheer);
+      const cheerName = getCard(cheer.cardId)?.name || '吶喊';
+      addLog(state, prompt.player, `${getCard(foundMember.cardId)?.name || ''} 的 ${cheerName} → 存檔（成本）`);
+
+      const opp = state.players[1 - prompt.player];
+      const amount = prompt.damageAmount || 0;
+      const tgt = prompt.damageTarget;
+
+      if (tgt === 'opp_center' && opp.zones['center'] && amount > 0) {
+        opp.zones['center'].damage = (opp.zones['center'].damage || 0) + amount;
+        addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+        sweepEffectKnockouts(state);
+      } else if (tgt === 'opp_collab' && opp.zones['collab'] && amount > 0) {
+        opp.zones['collab'].damage = (opp.zones['collab'].damage || 0) + amount;
+        addLog(state, prompt.player, `對手聯動 ${amount} 特殊傷害`);
+        sweepEffectKnockouts(state);
+      } else if (tgt === 'opp_center_or_collab' && amount > 0) {
+        const center = opp.zones['center'];
+        const collab = opp.zones['collab'];
+        if (center && !collab) {
+          center.damage = (center.damage || 0) + amount;
+          addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+          sweepEffectKnockouts(state);
+        } else if (!center && collab) {
+          collab.damage = (collab.damage || 0) + amount;
+          addLog(state, prompt.player, `對手聯動 ${amount} 特殊傷害`);
+          sweepEffectKnockouts(state);
+        } else if (center && collab) {
+          // Queue picker
+          const targets = [center, collab].map(m => ({
+            instanceId: m.instanceId, cardId: m.cardId,
+            name: getCard(m.cardId)?.name || '',
+          }));
+          state.pendingEffectQueue = state.pendingEffectQueue || [];
+          state.pendingEffectQueue.push({
+            type: 'SELECT_TARGET', player: prompt.player,
+            message: `選擇對手中心或聯動（${amount} 特殊傷害）`,
+            cards: targets, maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+            damageAmount: amount,
+          });
+        } else {
+          addLog(state, prompt.player, '對手前場無成員 — 無傷害');
+        }
+      } else if (tgt === 'opp_pick' && amount > 0) {
+        const allOpp = getAllMembers(opp);
+        if (allOpp.length === 0) {
+          addLog(state, prompt.player, '對手無成員 — 無傷害');
+        } else if (allOpp.length === 1) {
+          allOpp[0].damage = (allOpp[0].damage || 0) + amount;
+          addLog(state, prompt.player, `${getCard(allOpp[0].cardId)?.name || ''} ${amount} 特殊傷害`);
+          sweepEffectKnockouts(state);
+        } else {
+          const targets = allOpp.map(m => ({
+            instanceId: m.instanceId, cardId: m.cardId,
+            name: getCard(m.cardId)?.name || '',
+          }));
+          state.pendingEffectQueue = state.pendingEffectQueue || [];
+          state.pendingEffectQueue.push({
+            type: 'SELECT_TARGET', player: prompt.player,
+            message: `選擇對手成員（${amount} 特殊傷害）`,
+            cards: targets, maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+            damageAmount: amount,
+          });
+        }
+      }
+
+      // Optional follow-up search prompt (used by cards where the benefit is
+      // a deck search rather than damage — e.g. hBP06-078 "search same-name
+      // Debut"). Caller pre-builds the followup prompt object.
+      if (prompt.followupSearch) {
+        state.pendingEffectQueue = state.pendingEffectQueue || [];
+        state.pendingEffectQueue.push(prompt.followupSearch);
+      }
+    }
+
   } else if (action === 'OPP_MEMBER_DAMAGE') {
     // Player picked one of opponent's stage members to receive special damage.
     // amount carried on prompt.damageAmount. Triggers post-damage sweep so
