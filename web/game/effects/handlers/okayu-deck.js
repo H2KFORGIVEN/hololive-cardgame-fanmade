@@ -308,5 +308,26 @@ export function registerOkayuDeck() {
     };
   });
 
+  // hSD03-009 おかゆ (2nd) art2「おかゆ～」
+  // REAL: DMG:100 / 可以將這個成員的2張藍色吶喊卡放到存檔區：給予對手的中心成員與1位後台成員30點特殊傷害。
+  // Phase 2.4 #3: maxSelect=2 multi-cost — afterAction re-emits until both cheers archived,
+  // then applies the multi-target damage on the final pick.
+  reg('hSD03-009', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art2') return { state, resolved: true };
+    const cheers = buildBluePickerFromMember(ctx.memberInst);
+    if (cheers.length < 2) return { state, resolved: true, log: `おかゆ～: 此成員藍色吶喊 ${cheers.length}<2 — 跳過` };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_CHEER', player: ctx.player,
+        message: 'おかゆ～: 選擇 2 張藍色吶喊卡 → 存檔（→ 對手中心 + 後台各 30）',
+        cards: cheers, maxSelect: 2,
+        afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+        damageAmount: 30, damageTarget: 'opp_center_AND_pick_backstage',
+      },
+      log: 'おかゆ～: 選 2 張吶喊',
+    };
+  });
+
   return count;
 }

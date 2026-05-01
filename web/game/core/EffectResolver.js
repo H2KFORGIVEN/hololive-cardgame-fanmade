@@ -574,6 +574,26 @@ export function resolveEffectChoice(state, prompt, selected) {
       const cheerName = getCard(cheer.cardId)?.name || '吶喊';
       addLog(state, prompt.player, `${getCard(foundMember.cardId)?.name || ''} 的 ${cheerName} → 存檔（成本）`);
 
+      // Multi-cost re-emit: if the prompt declared maxSelect > 1, the player
+      // still owes more cheer cards. Re-emit the same prompt with the picked
+      // card removed, maxSelect decremented. Damage/followup deferred until
+      // the FINAL pick (maxSelect === 1, no re-emit branch).
+      if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+        const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+        if (newCards.length > 0) {
+          const remaining = prompt.maxSelect - 1;
+          const baseMsg = prompt.baseMessage || prompt.message || '';
+          state.pendingEffect = {
+            ...prompt,
+            cards: newCards,
+            maxSelect: remaining,
+            message: `${baseMsg}（還需選 ${remaining} 張）`,
+            baseMessage: baseMsg,
+          };
+          return state;
+        }
+      }
+
       const opp = state.players[1 - prompt.player];
       const amount = prompt.damageAmount || 0;
       const tgt = prompt.damageTarget;
