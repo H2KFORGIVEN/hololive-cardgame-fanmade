@@ -42,6 +42,7 @@ import { registerLunaDeck } from './handlers/luna-deck.js';
 import { registerShioriDeck } from './handlers/shiori-deck.js';
 import { registerLaplusDeck } from './handlers/laplus-deck.js';
 import { registerMioDeck } from './handlers/mio-deck.js';
+import { registerEngineOverrides } from './handlers/engine-overrides.js';
 
 let _initialized = false;
 
@@ -136,6 +137,12 @@ export async function initEffects() {
   counts.shioriDeck = registerShioriDeck();
   counts.laplusDeck = registerLaplusDeck();
   counts.mioDeck = registerMioDeck();
+
+  // P4.97: Engine-level overrides for AUTO-PICK-BUG fixes in older bulk
+  // handlers (phaseB / phaseC1 / etc.) where the effect text says 「選擇」
+  // but the bulk impl auto-picks. Registered AFTER all decks so they
+  // win at runtime even if the original handler was in phaseB/C1.
+  counts.engineOverrides = registerEngineOverrides();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);

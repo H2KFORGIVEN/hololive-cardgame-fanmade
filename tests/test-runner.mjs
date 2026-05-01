@@ -1552,6 +1552,75 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// engine-overrides — AUTO-PICK-BUG fixes (Phase 2.4 follow-up)
+// ══════════════════════════════════════════════════════════════════
+section('AUTO-PICK-BUG overrides (engine-overrides.js)');
+
+{
+  // hBP04-031 セシリア art1: 0 candidates → skip
+  const handler = getHandler('hBP04-031', HOOK.ON_ART_RESOLVE);
+  if (!handler) {
+    fail('hBP04-031 override', 'no handler registered');
+  } else {
+    const state = makeMinState(null, null, [], null);
+    const r = handler(state, { cardId: 'hBP04-031', player: 0, triggerEvent: undefined });
+    if (r.resolved && r.log?.includes('無 #語学')) {
+      pass('hBP04-031: 0 #語学 backstage → skip');
+    } else fail('hBP04-031 zero', JSON.stringify(r).slice(0, 100));
+  }
+}
+
+{
+  // hBP04-031 with 2 #語学 backstage → emits picker prompt
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const gogaku = allCards.filter(c => (c.tag || '').includes('#語学') && c.hp);
+  if (gogaku.length < 2) {
+    warn('hBP04-031 multi setup', 'not enough #語学 cards');
+  } else {
+    const handler = getHandler('hBP04-031', HOOK.ON_ART_RESOLVE);
+    const m1 = makeMember(gogaku[0].id, 9001);
+    const m2 = makeMember(gogaku[1].id, 9002);
+    const state = makeMinState(null, null, [m1, m2], null);
+    const r = handler(state, { cardId: 'hBP04-031', player: 0 });
+    if (!r.resolved && r.prompt?.type === 'SELECT_OWN_MEMBER' &&
+        r.prompt.afterAction === 'CHEER_DECK_REVEAL_MATCH_TO_MEMBER' &&
+        r.prompt.cards?.length === 2) {
+      pass('hBP04-031: 2 #語学 → SELECT_OWN_MEMBER picker (no auto-pick)');
+    } else fail('hBP04-031 multi', `r.resolved=${r.resolved} prompt=${r.prompt?.type}`);
+  }
+}
+
+{
+  // hBP07-066: 0 damaged → emits boost picker only
+  const handler = getHandler('hBP07-066', HOOK.ON_COLLAB);
+  if (!handler) {
+    fail('hBP07-066 override', 'no handler registered');
+  } else {
+    const m1 = makeMember('hBP07-066', 9101);
+    const state = makeMinState(m1, null, [], null);
+    const r = handler(state, { cardId: 'hBP07-066', player: 0, triggerEvent: 'self' });
+    if (!r.resolved && r.prompt?.type === 'SELECT_OWN_MEMBER' &&
+        r.prompt.afterAction === 'BOOST_PICKED_MEMBER' && r.prompt.amount === 10) {
+      pass('hBP07-066: 0 damaged → boost picker (no heal phase)');
+    } else fail('hBP07-066 zero', `prompt=${JSON.stringify(r.prompt).slice(0, 100)}`);
+  }
+}
+
+{
+  // hBP07-066: 2+ damaged → heal picker with followupPrompt
+  const handler = getHandler('hBP07-066', HOOK.ON_COLLAB);
+  const m1 = makeMember('hBP07-066', 9201, { damage: 30 });
+  const m2 = makeMember('hBP07-066', 9202, { damage: 50 });
+  const state = makeMinState(m1, null, [m2], null);
+  const r = handler(state, { cardId: 'hBP07-066', player: 0, triggerEvent: 'self' });
+  if (!r.resolved && r.prompt?.type === 'SELECT_OWN_MEMBER' &&
+      r.prompt.afterAction === 'HEAL_PICKED_MEMBER' && r.prompt.amount === 30 &&
+      r.prompt.followupPrompt?.afterAction === 'BOOST_PICKED_MEMBER') {
+    pass('hBP07-066: 2 damaged → heal picker with followupPrompt for boost');
+  } else fail('hBP07-066 multi', `prompt=${JSON.stringify(r.prompt).slice(0, 200)}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #18 — Targeting redirection (hBP05-010 闘う団長)
 // ══════════════════════════════════════════════════════════════════
 section('Targeting redirection (Phase 2.4 #18)');

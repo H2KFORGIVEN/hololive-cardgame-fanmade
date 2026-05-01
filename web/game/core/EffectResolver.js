@@ -388,11 +388,17 @@ export function resolveEffectChoice(state, prompt, selected) {
   } else if (action === 'HEAL_PICKED_MEMBER') {
     // Player picked own member; heal them by prompt.amount HP. Used by
     // cards like 「自己1位成員HP回復N點」 — hSD06-007 (#秘密結社holoX) etc.
+    // Supports prompt.followupPrompt to chain a 2-step pick (e.g. hBP07-066
+    // AZKi effectC: heal then pick member to boost).
     const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
     const amount = prompt.amount || 0;
     if (target && amount > 0) {
       target.damage = Math.max(0, (target.damage || 0) - amount);
       addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} HP 回復 ${amount}`);
+    }
+    if (prompt.followupPrompt) {
+      state.pendingEffectQueue = state.pendingEffectQueue || [];
+      state.pendingEffectQueue.push(prompt.followupPrompt);
     }
 
   } else if (action === 'CHEER_MOVE_TWO_STEP_PICK_SOURCE') {
