@@ -485,15 +485,78 @@ const isBaseline = args.includes('--baseline');
 const isDiff = args.includes('--diff');
 const isJson = args.includes('--json');
 
-const handlerFiles = fs.readdirSync(handlerDir)
-  .filter(f => f.endsWith('.js'))
-  .sort()
+// File priority order — must match registerAll.js. Earlier in this list
+// means earlier registration; LATER files override the same (cardId, hook).
+// The audit collects all entries but only categorizes by the LAST one
+// (the runtime-winning override).
+const FILE_PRIORITY_ORDER = [
+  // P1-P3: template handlers (registered first, lowest priority)
+  'damage-boost.js',
+  'special-damage.js',
+  'search-draw.js',
+  'cheer-manage.js',
+  'hp-restore.js',
+  'rest-manipulate.js',
+  'position-change.js',
+  'prevent-damage.js',
+  'dice-roll.js',
+  'deck-manipulate.js',
+  'conditional-boost.js',
+  // P4.5+: bulk handler files (mid priority)
+  'top50-cards.js',
+  'phaseB-cards.js',
+  'phaseC1-cards.js',
+  'phaseC2-cards.js',
+  'phaseC-final.js',
+  'phaseD-generated.js',
+  'look-top-bottom.js',
+  'cleanup.js',
+  // P4.96: deck-specific overrides (high priority)
+  'kuronii-deck.js',
+  'chocoyu-deck.js',
+  'miko-deck.js',
+  'suisei-deck.js',
+  'flare-deck.js',
+  'nene-deck.js',
+  'fubuki-deck.js',
+  'pekora-deck.js',
+  'noel-deck.js',
+  'botan-deck.js',
+  'calliope-deck.js',
+  'subaru-deck.js',
+  'iroha-deck.js',
+  'raden-deck.js',
+  'azki-deck.js',
+  'ayame-deck.js',
+  'okayu-deck.js',
+  'watame-deck.js',
+  'luna-deck.js',
+  'shiori-deck.js',
+  'laplus-deck.js',
+  'mio-deck.js',
+  // P4.97: AUTO-PICK fixes (highest priority before passthrough)
+  'engine-overrides.js',
+  // P5: passthrough (last; only fires if nothing else registered for the slot)
+  'passthrough.js',
+];
+
+const allHandlerFiles = fs.readdirSync(handlerDir)
+  .filter(f => f.endsWith('.js'));
+
+// Sort by FILE_PRIORITY_ORDER index; unknown files go between (idx = -1 → high)
+const handlerFiles = allHandlerFiles
+  .slice()
+  .sort((a, b) => {
+    const ai = FILE_PRIORITY_ORDER.indexOf(a);
+    const bi = FILE_PRIORITY_ORDER.indexOf(b);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  })
   .map(f => path.join(handlerDir, f));
 
 const allEntries = [];
 for (const file of handlerFiles) {
   const subEntries = extractFromFile(file);
-  // De-dupe within same file (some patterns can match the same reg twice)
+  // De-dupe within same file
   const seen = new Set();
   for (const e of subEntries) {
     const key = `${e.file}|${e.line}|${e.id}|${e.hook}`;
@@ -502,6 +565,28 @@ for (const file of handlerFiles) {
     allEntries.push(e);
   }
 }
+
+// Phase 2.4 audit improvement: dedupe (cardId, hook) across files keeping
+// only the LAST (runtime-winning) registration. The audit can now correctly
+// reflect that an engine-overrides.js fix supersedes a phaseB AUTO-PICK-BUG.
+const seenKeyOrder = new Map(); // key → last entry index
+for (let i = 0; i < allEntries.length; i++) {
+  const e = allEntries[i];
+  // Only dedupe direct registrations — bulk patterns (bulk-loop, bulk-hook)
+  // share lines for many cards and shouldn't be deduped.
+  if (e.kind !== 'direct') continue;
+  const key = `${e.id}|${e.hook}`;
+  if (seenKeyOrder.has(key)) {
+    // Mark the earlier entry as overridden so we skip it during categorization
+    const earlier = allEntries[seenKeyOrder.get(key)];
+    earlier._overridden = true;
+  }
+  seenKeyOrder.set(key, i);
+}
+// Filter out overridden entries
+const _liveEntries = allEntries.filter(e => !e._overridden);
+allEntries.length = 0;
+for (const e of _liveEntries) allEntries.push(e);
 
 const out = {
   generatedAt: new Date().toISOString(),
