@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-01T11:20:55.354Z",
+  "generatedAt": "2026-05-01T12:22:35.096Z",
   "totals": {
-    "CORRECT-VERIFIED": 295,
-    "UNCLASSIFIED": 99,
-    "STUB-LOG": 718,
+    "CORRECT-VERIFIED": 299,
+    "UNCLASSIFIED": 110,
+    "STUB-LOG": 709,
     "NO-TEXT": 67,
     "RULE-MOD": 47,
     "MULTI-STEP-MISSING": 12,
@@ -16,7 +16,7 @@
   "severity": {
     "HIGH": 8,
     "MED": 30,
-    "LOW": 99,
-    "INFO": 1175
+    "LOW": 110,
+    "INFO": 1170
   }
 }
