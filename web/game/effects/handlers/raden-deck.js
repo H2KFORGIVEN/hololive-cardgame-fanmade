@@ -353,8 +353,27 @@ export function registerRadenDeck() {
       top.faceDown = false;
       own.zones[ZONE.ARCHIVE].push(top);
     }
-    // Optional place-Debut step is MANUAL_EFFECT (afterAction missing)
-    return { state, resolved: true, log: '旅の前日: 牌頂存檔；可選擇將存檔 Debut 上場（手動）' };
+    // Phase 2.4 #11: optional place-Debut from archive
+    const debuts = own.zones[ZONE.ARCHIVE].filter(c => getCard(c.cardId)?.bloom === 'Debut');
+    if (debuts.length === 0) return { state, resolved: true, log: '旅の前日: 牌頂存檔；存檔無 Debut' };
+    if ((own.zones[ZONE.BACKSTAGE] || []).length >= 5) {
+      return { state, resolved: true, log: '旅の前日: 後台已滿' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_ARCHIVE', player: ctx.player,
+        message: '旅の前日: 選擇 1 張 Debut 成員上場（後台，可跳過）',
+        cards: debuts.map(c => ({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 1, afterAction: 'PLACE_ON_STAGE',
+        source: 'archive',
+      },
+      log: '旅の前日: 選擇 Debut 上場',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

@@ -293,7 +293,32 @@ export function registerSubaruDeck() {
     const goingSecond = state.firstPlayer != null && state.firstPlayer !== ctx.player;
     const isFirstTurnForMe = state.turnNumber === 2 && goingSecond;
     if (!isFirstTurnForMe) return { state, resolved: true, log: '大空スマイル: 非後攻第一回合' };
-    return { state }; // MANUAL_EFFECT — search Debut + place-on-stage chain afterAction missing
+    // Phase 2.4 #11: search Debut from deck + place on stage
+    const own = state.players[ctx.player];
+    if ((own.zones[ZONE.BACKSTAGE] || []).length >= 5) {
+      return { state, resolved: true, log: '大空スマイル: 後台已滿' };
+    }
+    const debuts = own.zones[ZONE.DECK].filter(c => getCard(c.cardId)?.bloom === 'Debut');
+    if (debuts.length === 0) {
+      shuffleArr(own.zones[ZONE.DECK]);
+      return { state, resolved: true, log: '大空スマイル: 牌組無 Debut — 重新洗牌' };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT', player: ctx.player,
+        message: '大空スマイル: 選擇 1 張 Debut 成員上場（後台）',
+        cards: debuts.map(c => ({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 1, afterAction: 'PLACE_ON_STAGE',
+        source: 'deck',
+        shuffleAfter: true,
+      },
+      log: '大空スマイル: 搜尋 Debut',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

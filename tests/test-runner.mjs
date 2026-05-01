@@ -1541,6 +1541,85 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #11 — PLACE_ON_STAGE afterAction
+// ══════════════════════════════════════════════════════════════════
+section('PLACE_ON_STAGE (Phase 2.4 #11)');
+
+{
+  // Source archive: pick a Debut from archive → backstage
+  // Use a real Debut card (need .hp, .bloom='Debut')
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const debutCard = allCards.find(c => c.bloom === 'Debut' && c.hp);
+  if (!debutCard) {
+    warn('PLACE_ON_STAGE setup', 'no Debut card');
+  } else {
+    const archiveCard = { instanceId: 7001, cardId: debutCard.id, faceDown: false };
+    const state = makeMinState(null, null, [], null);
+    state.players[0].zones.archive = [archiveCard];
+
+    resolveEffectChoice(state, {
+      type: 'SELECT_FROM_ARCHIVE', player: 0,
+      cards: [{ instanceId: 7001, cardId: debutCard.id, name: 'd', image: '' }],
+      maxSelect: 1,
+      afterAction: 'PLACE_ON_STAGE',
+      source: 'archive',
+    }, { instanceId: 7001, name: 'd' });
+
+    const placed = state.players[0].zones.backstage.length === 1 &&
+                   state.players[0].zones.backstage[0].instanceId === 7001 &&
+                   state.players[0].zones.archive.length === 0 &&
+                   state.players[0].zones.backstage[0].placedThisTurn === true;
+    if (placed) pass('PLACE_ON_STAGE source=archive: Debut → backstage with placedThisTurn flag');
+    else fail('PLACE_ON_STAGE archive', `bs=${state.players[0].zones.backstage.length} arc=${state.players[0].zones.archive.length}`);
+  }
+}
+
+{
+  // Source deck: pick a Debut from deck → backstage + shuffleAfter
+  const deckCard = { instanceId: 7101, cardId: 'hBP01-038', faceDown: true };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.deck = [deckCard, { instanceId: 7102, cardId: 'hBP01-040', faceDown: true }];
+
+  resolveEffectChoice(state, {
+    type: 'SEARCH_SELECT', player: 0,
+    cards: [{ instanceId: 7101, cardId: 'hBP01-038', name: 'd', image: '' }],
+    maxSelect: 1,
+    afterAction: 'PLACE_ON_STAGE',
+    source: 'deck',
+    shuffleAfter: true,
+  }, { instanceId: 7101, name: 'd' });
+
+  const placed = state.players[0].zones.backstage.length === 1 &&
+                 state.players[0].zones.backstage[0].instanceId === 7101 &&
+                 state.players[0].zones.deck.length === 1;
+  if (placed) pass('PLACE_ON_STAGE source=deck: Debut → backstage');
+  else fail('PLACE_ON_STAGE deck', `bs=${state.players[0].zones.backstage.length} deck=${state.players[0].zones.deck.length}`);
+}
+
+{
+  // Backstage full → no placement
+  const archiveCard = { instanceId: 7201, cardId: 'hBP01-038', faceDown: false };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.archive = [archiveCard];
+  // 5 in backstage
+  for (let i = 0; i < 5; i++) {
+    state.players[0].zones.backstage.push({ instanceId: 7300 + i, cardId: 'hBP01-040', faceDown: false });
+  }
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_ARCHIVE', player: 0,
+    cards: [{ instanceId: 7201, cardId: 'hBP01-038', name: 'd', image: '' }],
+    maxSelect: 1,
+    afterAction: 'PLACE_ON_STAGE',
+    source: 'archive',
+  }, { instanceId: 7201, name: 'd' });
+
+  const stayedInArchive = state.players[0].zones.archive.length === 1 &&
+                          state.players[0].zones.backstage.length === 5;
+  if (stayedInArchive) pass('PLACE_ON_STAGE backstage full → no-op (card stays in archive)');
+  else fail('PLACE_ON_STAGE full', 'unexpected placement');
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #10 — CHEER_FROM_ARCHIVE_TO_CHEERDECK afterAction
 // ══════════════════════════════════════════════════════════════════
 section('CHEER_FROM_ARCHIVE_TO_CHEERDECK (Phase 2.4 #10)');

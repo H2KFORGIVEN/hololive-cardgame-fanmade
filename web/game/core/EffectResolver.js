@@ -696,6 +696,38 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'PLACE_ON_STAGE') {
+    // Phase 2.4 #11: place a Debut/spot member on the player's backstage
+    // from a specified source (archive or deck). Used by:
+    //   - hSD15-007 effectC: mill 1 + place a Debut from archive
+    //   - hSD19-004 effectC: post-attack first turn + place a Debut from deck
+    //
+    // Prompt fields:
+    //   source: 'archive' | 'deck'
+    //   cards: array of source cards available to pick (filtered)
+    //   shuffleAfter: bool — if true and source='deck', shuffle deck after move
+    const sourceZone = prompt.source === 'deck' ? 'deck' : 'archive';
+    const src = player.zones[sourceZone];
+    const idx = src.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, '找不到成員 — 跳過');
+    } else if ((player.zones['backstage'] || []).length >= 5) {
+      addLog(state, prompt.player, '後台已滿 — 無法上場');
+    } else {
+      const card = src.splice(idx, 1)[0];
+      card.faceDown = false;
+      card.placedThisTurn = true;
+      card.attachedCheer = card.attachedCheer || [];
+      card.attachedSupport = card.attachedSupport || [];
+      card.bloomStack = card.bloomStack || [];
+      card.damage = 0;
+      player.zones['backstage'].push(card);
+      addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 從${sourceZone === 'archive' ? '存檔區' : '牌組'}上場（後台）`);
+      if (prompt.shuffleAfter && sourceZone === 'deck') {
+        shuffleArr(player.zones['deck']);
+      }
+    }
+
   } else if (action === 'CHEER_FROM_ARCHIVE_TO_CHEERDECK') {
     // Phase 2.4 #10: return archive cheer card(s) to the cheer deck.
     // Supports maxSelect>1 via re-emit. After all picks, shuffle cheer deck.
