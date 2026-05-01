@@ -126,7 +126,23 @@ export function registerCalliopeDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP01-100', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — afterAction "to cheer deck" missing
+    // Phase 2.4 #10: cheer→cheer-deck afterAction.
+    const own = state.players[ctx.player];
+    const cheers = own.zones[ZONE.ARCHIVE].filter(c => getCard(c.cardId)?.type === '吶喊');
+    if (cheers.length === 0) return { state, resolved: true, log: 'ソウル収穫: 存檔無吶喊 — 跳過' };
+    const max = Math.min(3, cheers.length);
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_ARCHIVE', player: ctx.player,
+        message: `ソウル収穫: 選擇 1-${max} 張吶喊卡返回吶喊牌組（可跳過）`,
+        baseMessage: 'ソウル収穫: 選擇吶喊卡',
+        cards: archivePicks(cheers),
+        maxSelect: max,
+        afterAction: 'CHEER_FROM_ARCHIVE_TO_CHEERDECK',
+      },
+      log: 'ソウル収穫: 選吶喊卡',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────

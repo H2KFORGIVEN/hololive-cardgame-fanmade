@@ -1541,6 +1541,66 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #10 — CHEER_FROM_ARCHIVE_TO_CHEERDECK afterAction
+// ══════════════════════════════════════════════════════════════════
+section('CHEER_FROM_ARCHIVE_TO_CHEERDECK (Phase 2.4 #10)');
+
+{
+  // Single pick: archive cheer → cheer deck
+  const cheer1 = { instanceId: 8001, cardId: 'hY01-001', faceDown: false };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.archive = [cheer1];
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_ARCHIVE',
+    player: 0,
+    cards: [{ instanceId: 8001, cardId: 'hY01-001', name: 'cheer', image: '' }],
+    maxSelect: 1,
+    afterAction: 'CHEER_FROM_ARCHIVE_TO_CHEERDECK',
+  }, { instanceId: 8001, name: 'cheer' });
+
+  const moved = state.players[0].zones.cheerDeck.length === 1 &&
+                state.players[0].zones.archive.length === 0 &&
+                state.players[0].zones.cheerDeck[0].faceDown === true;
+  if (moved) pass('CHEER_FROM_ARCHIVE_TO_CHEERDECK: archive cheer → cheer deck face-down');
+  else fail('CHEER_FROM_ARCHIVE_TO_CHEERDECK single', 'unexpected state');
+}
+
+{
+  // Multi-pick re-emit: 3 cheers, pick all 3 → all in cheer deck
+  const c1 = { instanceId: 8101, cardId: 'hY01-001', faceDown: false };
+  const c2 = { instanceId: 8102, cardId: 'hY02-001', faceDown: false };
+  const c3 = { instanceId: 8103, cardId: 'hY03-001', faceDown: false };
+  const state = makeMinState(null, null, [], null);
+  state.players[0].zones.archive = [c1, c2, c3];
+
+  const cards = [c1, c2, c3].map(c => ({ instanceId: c.instanceId, cardId: c.cardId, name: 'c', image: '' }));
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_ARCHIVE', player: 0, cards, maxSelect: 3,
+    afterAction: 'CHEER_FROM_ARCHIVE_TO_CHEERDECK',
+  }, { instanceId: 8101, name: 'c' });
+  // First pick should re-emit
+  const firstReemit = state.pendingEffect?.maxSelect === 2 && state.pendingEffect?.cards?.length === 2;
+
+  resolveEffectChoice(state, state.pendingEffect, { instanceId: 8102, name: 'c' });
+  const secondReemit = state.pendingEffect?.maxSelect === 1 && state.pendingEffect?.cards?.length === 1;
+
+  resolveEffectChoice(state, state.pendingEffect, { instanceId: 8103, name: 'c' });
+  // After third pick: all 3 in cheer deck, no more pending
+  const allMoved = state.players[0].zones.cheerDeck.length === 3 &&
+                   state.players[0].zones.archive.length === 0 &&
+                   state.pendingEffect === null;
+
+  if (firstReemit && secondReemit && allMoved) {
+    pass('CHEER_FROM_ARCHIVE_TO_CHEERDECK multi-pick: 3 cheers re-emit twice + final shuffle');
+  } else {
+    fail('multi re-emit',
+      `r1=${firstReemit} r2=${secondReemit} all=${allMoved}`);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #9 — Activity-by-tag/name tracking
 // ══════════════════════════════════════════════════════════════════
 section('Activity-by-tag/name tracking (Phase 2.4 #9)');

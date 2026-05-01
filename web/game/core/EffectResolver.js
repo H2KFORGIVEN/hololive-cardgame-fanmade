@@ -696,6 +696,40 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'CHEER_FROM_ARCHIVE_TO_CHEERDECK') {
+    // Phase 2.4 #10: return archive cheer card(s) to the cheer deck.
+    // Supports maxSelect>1 via re-emit. After all picks, shuffle cheer deck.
+    const archive = player.zones['archive'];
+    const idx = archive.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, '找不到吶喊卡 — 跳過');
+    } else {
+      const cheer = archive.splice(idx, 1)[0];
+      cheer.faceDown = true;
+      player.zones['cheerDeck'].push(cheer);
+      addLog(state, prompt.player, `${getCard(cheer.cardId)?.name || '吶喊'} 從存檔返回吶喊牌組`);
+
+      // Multi-select continuation
+      if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+        const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+        if (newCards.length > 0) {
+          const remaining = prompt.maxSelect - 1;
+          const baseMsg = prompt.baseMessage || prompt.message || '';
+          state.pendingEffect = {
+            ...prompt,
+            cards: newCards,
+            maxSelect: remaining,
+            message: `${baseMsg}（還可選 ${remaining} 張，可跳過）`,
+            baseMessage: baseMsg,
+          };
+          return state;
+        }
+      }
+      // Final pick — shuffle cheer deck
+      shuffleArr(player.zones['cheerDeck']);
+      addLog(state, prompt.player, '吶喊牌組重新洗牌');
+    }
+
   } else if (action === 'ARCHIVE_HAND_TAGSHARE_DRAW') {
     // Phase 2.4 #8: pair-cost where 2 archived hand cards must share a tag.
     //   cost: archive 2 hand cards that share ≥1 tag
