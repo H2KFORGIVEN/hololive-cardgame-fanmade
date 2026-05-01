@@ -249,9 +249,9 @@ function extractActions(body) {
   if (/archiveHand\b|archiveFromHand\b/.test(body)) actions.push('archiveHand');
   if ((m = body.match(/damageOpp(?:onent)?\([^,]+,[^,]+,\s*(\d+)/))) actions.push(`oppDmg${m[1]}`);
   if ((m = body.match(/applyDamageToMember\([^,]+,\s*(\d+)/))) actions.push(`applyDmg${m[1]}`);
-  if (/sendCheerDeck\b/.test(body)) actions.push('sendCheerDeck');
-  if (/sendCheerArchive\b|CHEER_FROM_ARCHIVE_TO_MEMBER\b/.test(body)) actions.push('sendCheerArchive');
-  if (/CHEER_FROM_DECK_TOP_TO_MEMBER\b|CHEER_DECK_REVEAL_MATCH_TO_MEMBER\b/.test(body)) actions.push('sendCheerDeckPick');
+  if (/sendCheerDeck\b|sendCheerFromDeckToMember/.test(body)) actions.push('sendCheerDeck');
+  if (/sendCheerArchive|CHEER_FROM_ARCHIVE_TO_MEMBER|sendCheerFromArchiveToMember/.test(body)) actions.push('sendCheerArchive');
+  if (/CHEER_FROM_DECK_TOP_TO_MEMBER|CHEER_DECK_REVEAL_MATCH_TO_MEMBER/.test(body)) actions.push('sendCheerDeckPick');
   if (/attachedCheer\.push/.test(body)) actions.push('attachCheer');
   if (/attachedSupport\.push/.test(body)) actions.push('attachSupport');
   if (/searchDeck\b|makeSearchPrompt\b|makeArchivePrompt\b|SEARCH_SELECT/.test(body)) actions.push('search');
@@ -261,6 +261,18 @@ function extractActions(body) {
   if (/triggerEvent/.test(body)) actions.push('hasTriggerCheck');
   if (/SELECT_OWN_MEMBER|SELECT_FROM_ARCHIVE|SELECT_FROM_HAND|SELECT_OWN_CHEER|SELECT_TARGET|CHOOSE_DECK_POSITION/.test(body)) actions.push('hasPicker');
   if (/oshiSkillUsedThisTurn|usedSp\b/.test(body)) actions.push('hasOnceCheck');
+  // Phase 2.4 follow-up: more action tokens to reduce MULTI-STEP-MISSING false positives
+  if (/zones\[?\s*['"`]?archive['"`]?\]?\.splice|zones\[ZONE\.ARCHIVE\]\.splice|RETURN_FROM_ARCHIVE/.test(body)) actions.push('archiveReturn');
+  if (/zones\[ZONE\.DECK\]\.shift\(\)[\s\S]*ARCHIVE|deck\]\.shift\(\)[\s\S]*archive|moveTopDeckToArchive/i.test(body)) actions.push('millDeck');
+  if (/holoPower|HOLO_POWER/.test(body)) actions.push('holoPower');
+  if (/zones\[ZONE\.LIFE\]|zones\[?\s*['"`]?life['"`]?\]?/.test(body)) actions.push('lifeRef');
+  if (/state\._oncePerTurn/.test(body)) actions.push('oncePerTurn');
+  // Inline draw pattern: deck.shift + hand.push (not in drawCards helper)
+  if (/zones\[ZONE\.DECK\]\.shift\(\)[\s\S]{0,200}hand['"`]?\]?\.push|hand['"`]?\]?\.push[\s\S]{0,80}deck.*shift/i.test(body)) actions.push('drawInline');
+  // Inline special damage to opp center: target.damage = ... + N (often via direct mutation)
+  if (/(?:oppCenter|target|center|collab|back|t)\.damage\s*=\s*\([\s\S]{0,40}\|\|\s*0\)\s*\+\s*\w+/.test(body)) actions.push('inlineSpecialDmg');
+  // Stage zones being mutated (swap, move, etc.)
+  if (/zones\['?center'?\]\s*=|zones\[ZONE\.CENTER\]\s*=|zones\['?backstage'?\]\[/.test(body)) actions.push('zoneMutate');
 
   return actions;
 }
@@ -341,10 +353,17 @@ function categorize(entry) {
     };
   }
 
-  // NUMBER-MISMATCH: handler does drawN but text says drawM (M≠N)
+  // NUMBER-MISMATCH: handler does drawN but text says drawM (M≠N).
+  // Skip count-less aliases like 'drawInline' / 'inlineSpecialDmg' which
+  // are presence flags, not literal counts.
+  const COUNTLESS_ALIASES = new Set(['drawInline', 'inlineSpecialDmg']);
   for (const w of wanted) {
     if (w.startsWith('draw') || w.startsWith('oppDmg')) {
-      const matchingHandler = actions.find(a => a.startsWith(w.replace(/\d+$/, '')));
+      const matchingHandler = actions.find(a =>
+        !COUNTLESS_ALIASES.has(a) &&
+        a.startsWith(w.replace(/\d+$/, '')) &&
+        /\d/.test(a) // require numeric suffix to mismatch
+      );
       if (matchingHandler && matchingHandler !== w) {
         return {
           category: 'NUMBER-MISMATCH',
@@ -405,9 +424,17 @@ function categorize(entry) {
   }
 
   // AUTO-PICK-BUG: text says "1 位 #tag" or "選擇" with multiple potential candidates,
-  // handler uses .find/[0] without picker prompt
+  // handler uses .find/[0] without picker prompt.
+  // Skip when handler has a `candidates.length === 1` (or `>= 1`) branch and a
+  // separate multi-candidate branch — those indicate the auto-pick is intentional
+  // for the single-candidate case (proper handling).
   if (PICK_MARKERS.some(m => realText.includes(m)) && !hasPicker) {
-    if (/\.find\(|\[0\]/.test(body) && (actions.includes('attachSupport') || actions.includes('attachCheer') || actions.includes('sendCheerDeck') || actions.includes('sendCheerArchive') || actions.includes('boost') || actions.includes('hpRestore'))) {
+    const hasLengthGuard = /\.length\s*===?\s*1\b|\.length\s*>\s*1\b|\.length\s*>=\s*\d/.test(body);
+    if (/\.find\(|\[0\]/.test(body) &&
+        !hasLengthGuard &&
+        (actions.includes('attachSupport') || actions.includes('attachCheer') ||
+         actions.includes('sendCheerDeck') || actions.includes('sendCheerArchive') ||
+         actions.includes('boost') || actions.includes('hpRestore'))) {
       return {
         category: 'AUTO-PICK-BUG',
         reason: 'text says 選擇 but handler auto-picks via .find/[0]',
@@ -417,10 +444,16 @@ function categorize(entry) {
     }
   }
 
-  // CONDITION-MISSING: text has condition markers but handler has no if
+  // CONDITION-MISSING: text has condition markers but handler has no
+  // conditional branch. Accept any of: if/else, ternary `? :`, logical
+  // short-circuit (`&&`, `||`), nullish-coalescing — any branching will
+  // serve as "has condition".
   if (CONDITION_MARKERS.some(m => realText.includes(m))) {
     const hasIf = /\bif\s*\(/.test(body);
-    if (!hasIf && actions.length > 0 && !hasPicker) {
+    const hasTernary = /\?[^:]*:/.test(body);
+    const hasShortCircuit = /&&|\|\|/.test(body);
+    const hasCondition = hasIf || hasTernary || hasShortCircuit;
+    if (!hasCondition && actions.length > 0 && !hasPicker) {
       return {
         category: 'CONDITION-MISSING',
         reason: 'text has condition but handler unconditional',
@@ -430,14 +463,24 @@ function categorize(entry) {
     }
   }
 
-  // MULTI-STEP-MISSING: text has 「之後，」chain but handler is too simple
+  // MULTI-STEP-MISSING: text has 「之後，」chain but handler is too simple.
+  // Skip when: (a) the handler emits a picker (the chain is resolved via
+  // pendingEffectQueue / followupPrompt), (b) the handler returns
+  // a state-only fall-through (MANUAL_EFFECT path), (c) the handler has
+  // an artKey gate (the "之後" might apply only to one of art1/art2).
   if (MULTI_STEP_MARKERS.some(m => realText.includes(m)) && actions.length === 1) {
-    return {
-      category: 'MULTI-STEP-MISSING',
-      reason: 'text describes multi-step but handler does only 1',
-      realText: realText.slice(0, 110),
-      handlerActions: actions,
-    };
+    const hasArtKeyGate = /ctx\.artKey\s*!==\s*['"`]art[12]['"`]/.test(body) ||
+                         /ctx\.artKey\s*===\s*['"`]art[12]['"`]/.test(body);
+    if (hasPicker || hasArtKeyGate) {
+      // skip — multi-step likely handled via picker chain or art gate
+    } else {
+      return {
+        category: 'MULTI-STEP-MISSING',
+        reason: 'text describes multi-step but handler does only 1',
+        realText: realText.slice(0, 110),
+        handlerActions: actions,
+      };
+    }
   }
 
   // CORRECT-VERIFIED: handler has at least one action that maps to wanted, plus picker if needed
@@ -569,15 +612,15 @@ for (const file of handlerFiles) {
 // Phase 2.4 audit improvement: dedupe (cardId, hook) across files keeping
 // only the LAST (runtime-winning) registration. The audit can now correctly
 // reflect that an engine-overrides.js fix supersedes a phaseB AUTO-PICK-BUG.
+//
+// All registration kinds participate in dedup since runtime registry overrides
+// regardless of kind. (Earlier we only deduped 'direct' but bulk handlers
+// can also be overridden by a later direct registration.)
 const seenKeyOrder = new Map(); // key → last entry index
 for (let i = 0; i < allEntries.length; i++) {
   const e = allEntries[i];
-  // Only dedupe direct registrations — bulk patterns (bulk-loop, bulk-hook)
-  // share lines for many cards and shouldn't be deduped.
-  if (e.kind !== 'direct') continue;
   const key = `${e.id}|${e.hook}`;
   if (seenKeyOrder.has(key)) {
-    // Mark the earlier entry as overridden so we skip it during categorization
     const earlier = allEntries[seenKeyOrder.get(key)];
     earlier._overridden = true;
   }

@@ -378,5 +378,109 @@ export function registerEngineOverrides() {
     };
   });
 
+  // ─────────────────────────────────────────────────────────────────────
+  // hBP06-054 雪花ラミィ (2nd) effectB
+  // REAL: 如果這個成員帶有「雪民」，給予對手的中心成員20點特殊傷害。
+  //       之後，從自己的牌組抽1張牌。
+  //       如果這個成員帶有3張以上的「雪民」，則從自己的牌組抽2張牌。
+  // ACTION: ≥1 雪民 attached → 20 special opp center + draw 1; ≥3 雪民 → +draw 2 (total 3)
+  // AMBIGUITY: target = opp center (auto)
+  // LIMITS: ON_BLOOM self-only
+  // CONDITIONS: see REAL
+  // (Overrides phaseC2 stub that just healed 30HP — completely wrong.)
+  // ─────────────────────────────────────────────────────────────────────
+  reg('hBP06-054', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    const me = ctx.memberInst;
+    if (!me) return { state, resolved: true };
+    const yukimin = (me.attachedSupport || []).filter(s => getCard(s.cardId)?.name === '雪民');
+    if (yukimin.length === 0) return { state, resolved: true, log: '雪民: 無雪民 — 跳過' };
+    // Apply 20 special damage to opp center
+    const own = state.players[ctx.player];
+    const opp = state.players[1 - ctx.player];
+    const oppCenter = opp.zones[ZONE.CENTER];
+    if (oppCenter) oppCenter.damage = (oppCenter.damage || 0) + 20;
+    // Draw 1 base, +2 more if 3+ 雪民
+    let drawN = 1;
+    if (yukimin.length >= 3) drawN += 2;
+    for (let i = 0; i < drawN && own.zones[ZONE.DECK].length > 0; i++) {
+      const c = own.zones[ZONE.DECK].shift();
+      c.faceDown = false;
+      own.zones[ZONE.HAND].push(c);
+    }
+    return {
+      state, resolved: true,
+      log: `雪花ラミィ effectB: ${yukimin.length} 雪民 → 對手中心 20 特殊傷害 + 抽 ${drawN}`,
+    };
+  });
+
+  // ─────────────────────────────────────────────────────────────────────
+  // hSD13-001 エリザベス・ローズ・ブラッドフレイム (主推 SD13)
+  // OSHI: [每個回合一次]自己的1位成員受到對手的藝能傷害時，可以選擇自己舞台上1位紅色的Buzz成員或2nd成員：該成員承受該次傷害。
+  // SP: [每場比賽一次]將自己存檔區1張標示#Justice的成員放到舞台上。之後，將自己存檔區任意數量的吶喊卡發送給該成員。
+  // ACTION:
+  //   oshi (reactive): when own member takes opp art damage, can redirect to
+  //     a picked own red Buzz/2nd. Undo damage on original, apply to picked.
+  //     0 candidates → skip; 1 → auto; multi → MANUAL_EFFECT (mid-flow picker
+  //     not viable — emit a flag for the player to resolve via UI panel).
+  //   sp: search archive for Justice member → place on stage; multi-distribute
+  //     archive cheers to that placed member (currently auto-attaches up to 5).
+  //     This is multi-step and complex — keep MANUAL for now.
+  // LIMITS: oshi 1/turn, SP 1/game (engine handles via oshiSkillUsedThisTurn / usedSp)
+  // CONDITIONS: see REAL
+  // (Overrides phaseC-final auto-pick of first red Buzz/2nd.)
+  // ─────────────────────────────────────────────────────────────────────
+  reg('hSD13-001', HOOK.ON_OSHI_SKILL, (state, ctx) => {
+    if (ctx.skillType === 'sp') {
+      // SP: keep existing MANUAL_EFFECT path — multi-step distribution is genuinely
+      // complex (Justice member from archive → place on stage → distribute cheers).
+      // TODO: full afterAction chain for "place on stage + multi-distribute cheers".
+      return { state, resolved: true, log: 'SP「Justice」: 多步驟手動執行（從存檔放置 + 任意吶喊分配）' };
+    }
+    if (ctx.triggerEvent !== 'reactive_damage_taken') {
+      return { state, resolved: true, log: '友方受傷→可指定Buzz/2nd承受（觀望）' };
+    }
+    // Reactive: try to redirect damage. Only fires when:
+    //  - opp dealt the art damage (ctx.attackerPlayer is opp)
+    //  - own member was the target
+    //  - amount > 0
+    //  - we have ≥1 red Buzz/2nd own member to redirect to
+    if (ctx.player === ctx.attackerPlayer) return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own.oshiSkillUsedThisTurn) return { state, resolved: true };
+    const candidates = getStageMembers(own).filter(m => {
+      const card = getCard(m.inst.cardId);
+      if (!card || card.color !== '紅') return false;
+      return card.bloom === '1st Buzz' || card.bloom === '2nd';
+    }).filter(m => m.inst.instanceId !== ctx.target?.instanceId);
+    if (candidates.length === 0) return { state, resolved: true, log: '反應式重導: 無紅色 Buzz/2nd 候選' };
+    const target = ctx.target;
+    const amount = ctx.amount || 0;
+    if (!target || amount <= 0) return { state, resolved: true };
+    // Pay holopower cost (oshi cost from card data; default 2)
+    const oshiCard = getCard(own.oshi?.cardId);
+    const cost = Math.abs(oshiCard?.oshiSkill?.holoPower || 2);
+    if ((own.zones[ZONE.HOLO_POWER] || []).length < cost) {
+      return { state, resolved: true, log: '反應式重導: holo 能量不足' };
+    }
+    // Single candidate → auto-redirect; multi → MANUAL_EFFECT (mid-flow picker
+    // can't safely emit pendingEffect because reactive runs inside processUseArt
+    // and would block the rest of the art resolution flow).
+    if (candidates.length > 1) {
+      return { state, resolved: true, log: '反應式重導: 多候選需手動指定（玩家選擇用調整面板）' };
+    }
+    // Pay cost
+    for (let i = 0; i < cost; i++) {
+      const c = own.zones[ZONE.HOLO_POWER].shift();
+      if (c) { c.faceDown = false; own.zones[ZONE.ARCHIVE].push(c); }
+    }
+    own.oshiSkillUsedThisTurn = true;
+    // Undo damage on original target, apply to redirect target
+    target.damage = Math.max(0, (target.damage || 0) - amount);
+    const redir = candidates[0].inst;
+    redir.damage = (redir.damage || 0) + amount;
+    return { state, resolved: true, log: `反應式重導: 傷害從 ${getCard(target.cardId)?.name||''} 轉到 ${getCard(redir.cardId)?.name||''}（${amount}）` };
+  });
+
   return count;
 }
