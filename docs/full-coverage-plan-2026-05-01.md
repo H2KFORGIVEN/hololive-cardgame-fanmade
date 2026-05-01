@@ -60,6 +60,7 @@
 | Phase 2.4 | #16 REDUCE_COLORLESS_PICKED_MEMBER (1 card) | ✅ DONE | `f72b701` |
 | Phase 2.4 | #17 ON_SUPPORT_ATTACH hook (1 card) | ✅ DONE | `6167439` |
 | Phase 2.4 | #18 Targeting redirection (1 card) | ✅ DONE | `6a488f2` |
+| Phase 2.4 | afterAction reference doc + audit baseline refresh | ✅ DONE | `1a4bea4` |
 | **Phase 4** | 4.1 integration tests (Phase 2.4 afterAction) | ✅ DONE | `3ac5dd0` |
 | Phase 4 | 4.2 GitHub Action audit gate (master + PR) | ✅ DONE | `2ee96ec` |
 | Phase 4 | 4.3 cards.json sync detector | ✅ DONE | `06e44c1` |
@@ -95,13 +96,14 @@ phaseB / phaseC2 — are now correctly excluded. Net COST-IGNORED: 6 → 4.
 | ✅ Place-on-stage from archive/deck | hSD15-007 / hSD19-004 — DONE in Phase 2.4 #11 | DONE |
 | ✅ Look-N-pick-1-reorder | hSD12-001 oshi / hBP07-028 effectC — DONE in Phase 2.4 #12 (re-uses existing remainingCards chain) | DONE |
 | ✅ Opp center↔backstage swap | hBP05-004 SP (おかゆ) — DONE in Phase 2.4 #15 | DONE |
-| Place-on-stage from archive afterAction | hSD19-004 (スバル), hSD15-007 (らでん) | LOW |
-| Look-N-pick-1-reorder-bottom afterAction | hSD12-001 (シオリ), hBP07-028 effectC (ミオ) | LOW |
-| Pre-damage REACTIVE trigger (damaged-opp-backstage) | hSD03-001 SP (おかゆ) | LOW |
+| ✅ Place-on-stage from archive afterAction (DUP) | covered above | DONE |
+| ✅ Look-N-pick-1-reorder-bottom afterAction (DUP) | covered above | DONE |
+| Pre-damage REACTIVE trigger (damaged-opp-backstage) | hSD03-001 SP (おかゆ) — needs special damage instrumentation refactor across ~30 sites | DEFERRED |
 | ✅ Attachment-attach trigger (when ミオファ attached) | hBP07-024 effectG — DONE in Phase 2.4 #17 (ON_SUPPORT_ATTACH hook) | DONE |
-| Interactive RPS between two players | hBP03-071 art1 (わため) | LOW |
-| Opp center↔backstage swap | hBP05-004 SP (おかゆ) | LOW |
-| Cheer to cheer-deck afterAction | hBP01-100 (カリオペ) | LOW |
+| Interactive RPS between two players | hBP03-071 art1 (わため) — engine has no player-vs-player primitive | DEFERRED |
+| ✅ Opp center↔backstage swap (DUP) | covered above | DONE |
+| ✅ Cheer to cheer-deck afterAction (DUP) | covered above | DONE |
+| Multi-pair iteration distribution | hBP05-070 art1 (フブキ) — heterogeneous pool, complex chain | DEFERRED |
 
 ### Engine gaps surfaced by Phase 3 #7-10 (queue for Phase 2.4)
 
