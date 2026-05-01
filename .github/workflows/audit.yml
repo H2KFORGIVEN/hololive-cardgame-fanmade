@@ -1,0 +1,33 @@
+name: Effect Coverage Audit
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: Run effect-coverage audit + integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run effect-coverage audit (informational summary)
+        run: node tools/audit/effect-coverage.mjs
+
+      - name: Run audit precommit gate (block on HIGH-severity regression)
+        run: node tools/audit/precommit.mjs
+
+      - name: Run integration tests
+        run: node tests/test-runner.mjs
