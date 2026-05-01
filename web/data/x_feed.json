@@ -32,7 +32,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1497
+    "favorite_count": 1507
   },
   {
     "id": "2049685176905511426",
@@ -217,7 +217,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2104
+    "favorite_count": 2105
   },
   {
     "id": "2047978931228426381",
@@ -244,7 +244,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4449
+    "favorite_count": 4450
   },
   {
     "id": "2047880780064624980",
@@ -941,7 +941,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1270
+    "favorite_count": 1269
   },
   {
     "id": "2047602697713713606",
@@ -966,7 +966,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4522
+    "favorite_count": 4524
   },
   {
     "id": "2047601447316181384",
@@ -1153,7 +1153,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1571
+    "favorite_count": 1572
   },
   {
     "id": "2047284353642996142",
@@ -2088,7 +2088,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5164
+    "favorite_count": 5163
   },
   {
     "id": "2043524579503858149",
@@ -3047,7 +3047,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1144
+    "favorite_count": 1145
   },
   {
     "id": "2040308383799275736",
@@ -3295,7 +3295,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 803
+    "favorite_count": 804
   },
   {
     "id": "2040000788983152848",
@@ -4690,7 +4690,7 @@
       }
     ],
     "category": "tournament",
-    "favorite_count": 259
+    "favorite_count": 0
   },
   {
     "id": "1919186189237838054",
@@ -4849,7 +4849,7 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 598
+    "favorite_count": 0
   },
   {
     "id": "1919184337972371738",
@@ -4927,6 +4927,6 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 687
+    "favorite_count": 0
   }
 ]
