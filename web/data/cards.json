@@ -41543,6 +41543,47 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hBP06/hBP06-039_P.png",
+    "name": "百鬼あやめ",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #シューター",
+    "product": "PR卡",
+    "color": "紅",
+    "hp": 160,
+    "bloom": "2nd",
+    "batonImage": [],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "余、なんも聞いとらんかった。",
+      "effect": {
+        "zh-TW": "[限定中心位置]如果自己有聯動成員且對手沒有聯動成員，自己所有的成員不會受到對手的藝能傷害。",
+        "ja": "【センターポジション限定】自分に連携メンバーがいて、相手に連携メンバーがいない場合、自分のメンバー全員は相手のスキルによるダメージを受けない。",
+        "en": "[Limited to center position] If you have linkage members and your opponent has no linkage members, all your members will not be harmed by the opponent's skills.",
+        "fr": "[Limité à la position centrale] Si vous avez des membres de liaison et que votre adversaire n'en a pas, tous vos membres ne seront pas blessés par les compétences de l'adversaire."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_red.png"
+      ],
+      "name": "百鬼乱舞 -朧月-",
+      "damage": "80+",
+      "specialAttackImage": "icons/tokkou_50_green.png",
+      "effect": {
+        "zh-TW": "如果自己的主推為「百鬼あやめ」，可以將自己吶喊牌組上方的1~3張牌放到存檔區：每將1張吶喊卡放到存檔區，這個藝能傷害+40。自己的生命值在2以下才能在聯動位置使用這個藝能。",
+        "ja": "メイン推しが「百鬼彩」の場合、自分のスクリームデッキの上から1～3枚をセーブエリアに置くと、セーブエリアに置いたスクリームカード1枚につき、このスキルのダメージが+40される。ライフ値が 2 未満の場合、リンクされたポジションでのみこのスキルを使用できます。",
+        "en": "If your main recommendation is \"Hyakki Aya\", you can put the 1~3 cards at the top of your Scream deck into the save area: for each Scream card you put into the save area, the damage of this skill will be +40. You can only use this skill in the linked position if your life value is below 2.",
+        "fr": "Si votre recommandation principale est \"Hyakki Aya\", vous pouvez placer les 1 à 3 cartes en haut de votre deck Scream dans la zone de sauvegarde : pour chaque carte Scream que vous mettez dans la zone de sauvegarde, les dégâts de cette compétence seront de +40. Vous ne pouvez utiliser cette compétence dans la position liée que si votre valeur de vie est inférieure à 2."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP06-039",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-039_P.png"
+  },
+  {
     "image": "cardListImages/hBP06/hBP06-040_C.png",
     "name": "ハコス・ベールズ",
     "type": "成員",
@@ -45602,6 +45643,31 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hBP07/hBP07-001_P.png",
+    "name": "角巻わため",
+    "type": "主推",
+    "product": "PR卡",
+    "color": "白",
+    "life": 5,
+    "stageSkill": {
+      "name": "ドドドライブ",
+      "effect": "自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。"
+    },
+    "oshiSkill": {
+      "holoPower": -6,
+      "name": "角ドリルしたろか？",
+      "effect": {
+        "zh-TW": "[每個回合一次]這個回合中，自己舞台上所有的「角巻わため」藝能傷害+100。",
+        "ja": "【ターンに1回】このターン中、君のステージの『角咲かすみ』全てのアーツに与えるダメージは+100される。",
+        "en": "[Once per turn] During this turn, all \"Kakusaki Kasumi\" arts on your stage will receive +100 damage.",
+        "fr": "[Une fois par tour] Durant ce tour, tous les arts \"Kakusaki Kasumi\" sur votre scène recevront +100 dégâts."
+      }
+    },
+    "spSkill": null,
+    "id": "hBP07-001",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-001_P.png"
+  },
+  {
     "image": "cardListImages/hBP07/hBP07-002_OSR.png",
     "name": "ベスティア・ゼータ",
     "type": "主推",
@@ -47458,6 +47524,50 @@
     "expansion": "hBP07",
     "productName": "ブースターパック「ディーヴァフィーバー」",
     "year": "2026年発売商品"
+  },
+  {
+    "image": "cardListImages/hBP07/hBP07-028_P.png",
+    "name": "大神ミオ",
+    "type": "成員",
+    "tag": "#JP / #ゲーマーズ / #ケモミミ / #料理",
+    "product": "PR卡",
+    "color": "綠",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "金瞳の綺羅星",
+      "effect": {
+        "zh-TW": "查看自己牌組上方的2張牌。將其中的1張牌加入手牌。其餘放回牌組上方。",
+        "ja": "自分の山札の上から2枚のカードを見てください。これらのカードのうち１枚を手札に加える。残りをデッキの上に戻します。",
+        "en": "Look at the 2 cards at the top of your deck. Add 1 of these cards to your hand. Place the rest back on top of the deck.",
+        "fr": "Regardez les 2 cartes en haut de votre deck. Ajoutez 1 de ces cartes à votre main. Remettez le reste sur le dessus du pont."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "天まで届け、みんなの願い",
+      "damage": "90+",
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": {
+        "zh-TW": "可以將自己牌組上方的1張牌放到存檔區。如果該牌為支援卡，這個藝能傷害+50。",
+        "ja": "自分の山札の上から１枚をセーブエリアに置くことができる。そのカードがサポートカードの場合、このスキルのダメージは+50される。",
+        "en": "You can put the top card of your deck into the save area. If the card is a support card, the damage of this skill is +50.",
+        "fr": "Vous pouvez mettre la carte du dessus de votre deck dans la zone de sauvegarde. Si la carte est une carte de support, les dégâts de cette compétence sont de +50."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP07-028",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-028_P.png"
   },
   {
     "image": "cardListImages/hBP07/hBP07-029_RR.png",
@@ -58787,6 +58897,57 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hSD10/hSD10-006_P.png",
+    "name": "輪堂千速",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "綠",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "鼓動の操縦者",
+      "damage": "80+",
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": {
+        "zh-TW": "如果自己的成員在這個回合有進行綻放，這個藝能傷害+50。",
+        "ja": "このラウンドでメンバーの誰かが開花すると、このスキルのダメージが+50されます。",
+        "en": "If one of your members blooms this round, the damage of this skill will be +50.",
+        "fr": "Si l'un de vos membres fleurit ce tour, les dégâts de cette compétence seront de +50."
+      }
+    },
+    "art2": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "アクセラビートブレイズ",
+      "damage": 140,
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": {
+        "zh-TW": "使用這個藝能擊倒對手的中心成員時，如果傷害超過該成員剩餘的HP，每超過30點傷害，將自己吶喊牌組上方的1張牌發送給自己的1位後台成員。",
+        "ja": "このスキルで相手のセンターメンバーをダウンさせた時、そのダメージがメンバーの残りHPを超えた場合、30ポイントを超えたごとに、自分のスクリームデッキの一番上のカードを自分のバックステージメンバーに送る。",
+        "en": "When using this skill to knock down the opponent's center member, if the damage exceeds the member's remaining HP, for every 30 points of damage exceeded, send the top card of your Scream deck to one of your backstage members.",
+        "fr": "Lorsque vous utilisez cette compétence pour renverser le membre central de l'adversaire, si les dégâts dépassent les PV restants du membre, pour tous les 30 points de dégâts dépassés, envoyez la carte du dessus de votre deck Scream à l'un de vos membres des coulisses."
+      }
+    },
+    "extra": null,
+    "id": "hSD10-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD10/hSD10-006_P.png"
+  },
+  {
     "image": "cardListImages/hSD10/hSD10-007_C.png",
     "name": "綺々羅々ヴィヴィ",
     "type": "成員",
@@ -58911,6 +59072,50 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hSD10/hSD10-009_P.png",
+    "name": "綺々羅々ヴィヴィ",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "紫",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "美の求道者",
+      "effect": {
+        "zh-TW": "依照對手的手牌張數，查看自己牌組上方的牌。將其中的1張牌加入手牌。其餘放回牌組重新洗牌。",
+        "ja": "相手の手札の枚数に応じて、自分の山札の上のカードを確認する。これらのカードのうち１枚を手札に加える。残りを山札に戻してシャッフルします。",
+        "en": "According to the number of cards in your opponent's hand, look at the cards above your deck. Add 1 of these cards to your hand. Put the rest back into the deck and reshuffle.",
+        "fr": "En fonction du nombre de cartes dans la main de votre adversaire, regardez les cartes au-dessus de votre deck. Ajoutez 1 de ces cartes à votre main. Remettez le reste dans le jeu et mélangez à nouveau."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ヴィジランスヴィーナス",
+      "damage": "80+",
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": {
+        "zh-TW": "對手每有1張手牌，這個藝能傷害+10。",
+        "ja": "相手の手札1枚につき、このスキルのダメージは+10される。",
+        "en": "For every card in the opponent's hand, this skill's damage is +10.",
+        "fr": "Pour chaque carte dans la main de l'adversaire, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD10-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD10/hSD10-009_P.png"
+  },
+  {
     "image": "cardListImages/hSD10/hSD10-010_RR.png",
     "name": "響咲リオナ",
     "type": "成員",
@@ -58961,6 +59166,52 @@
     "expansion": "hSD11",
     "productName": "スタートデッキ FLOW GLOW 推し 虎金妃笑虎",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hSD10/hSD10-010_P.png",
+    "name": "響咲リオナ",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "無",
+    "hp": 170,
+    "bloom": "Spot",
+    "batonImage": [],
+    "effectC": {
+      "name": "私の元においで～っ",
+      "effect": {
+        "zh-TW": "可以將自己的1張手牌放到存檔區：從自己的牌組展示1張標示#FLOW GLOW且有聯動效果的成員並加入手牌。將牌組重新洗牌。",
+        "ja": "手札を1枚セーブエリアに置くことができます。連動効果を持つ#FLOW GLOWとマークされたメンバー1名をデッキから公開し、手札に加えます。デッキを再シャッフルします。",
+        "en": "You can put 1 card from your hand into the save area: reveal 1 member marked #FLOW GLOW with a linkage effect from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "Vous pouvez mettre 1 carte de votre main dans la zone de sauvegarde : révélez 1 membre marqué #FLOW GLOW avec un effet de liaison depuis votre deck et ajoutez-le à votre main. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "RIONA IN DA HOUSE～!",
+      "damage": "50+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果標示#FLOW GLOW且2nd以上的成員在自己的舞台上，這個藝能傷害+30。",
+        "ja": "#FLOW GLOW がマークされていて、ステージに 2 人目以上のメンバーがいる場合、このスキルのダメージは +30 になります。",
+        "en": "If #FLOW GLOW is marked and a 2nd or above member is on his stage, this skill will do +30 damage.",
+        "fr": "Si #FLOW GLOW est marqué et qu'un 2ème membre ou plus est sur sa scène, cette compétence fera +30 dégâts."
+      }
+    },
+    "art2": null,
+    "extra": {
+      "zh-TW": "這個成員無法綻放",
+      "ja": "このメンバーでは開花できない",
+      "en": "This member cannot bloom",
+      "fr": "Ce membre ne peut pas fleurir"
+    },
+    "id": "hSD10-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD10/hSD10-010_P.png"
   },
   {
     "image": "cardListImages/hSD10/hSD10-011_U.png",
@@ -59330,6 +59581,49 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hSD11/hSD11-006_P.png",
+    "name": "虎金妃笑虎",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "黃",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "戯笑の使者",
+      "effect": {
+        "zh-TW": "自己的表演階段開始時，可以將自己手牌1張標示#FLOW GLOW的成員放到存檔區：將自己存檔區的1張黃色吶喊卡發送給自己的「虎金妃笑虎」。",
+        "ja": "自分のパフォーマンスフェイズの開始時に、#FLOW GLOW とマークされた手札のメンバー 1 枚をセーブエリアに置くことができます。セーブエリアにある黄色のシャウティング カード 1 枚を自分の「タイガー ゴールデン コンキュバイン スマイリング タイガー」に送ります。",
+        "en": "At the beginning of your own performance phase, you can put 1 member of your hand marked #FLOW GLOW into the save area: send 1 yellow shouting card in your save area to your \"Tiger Golden Concubine Smiling Tiger\".",
+        "fr": "Au début de votre propre phase de performance, vous pouvez mettre 1 membre de votre main marqué #FLOW GLOW dans la zone de sauvegarde : envoyez 1 carte jaune criant dans votre zone de sauvegarde à votre \"Tiger Golden Concubine Smiling Tiger\"."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "虎嘯風生",
+      "damage": "40+",
+      "specialAttackImage": "icons/tokkou_50_red.png",
+      "effect": {
+        "zh-TW": "可以將這個成員任意數量的吶喊卡放到存檔區：每將1張吶喊卡放到存檔區，這個藝能傷害+40。",
+        "ja": "このメンバーのシャウト カードを任意の数だけセーブ エリアに置くことができます。セーブ エリアに置かれたシャウト カード 1 枚につき、このスキルのダメージは +40 されます。",
+        "en": "You can put any number of shout cards of this member into the save area: for every shout card placed in the save area, the damage of this skill is +40.",
+        "fr": "Vous pouvez placer n'importe quel nombre de cartes cri de ce membre dans la zone de sauvegarde : pour chaque carte cri placée dans la zone de sauvegarde, les dégâts de cette compétence sont de +40."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD11-006",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD11/hSD11-006_P.png"
+  },
+  {
     "image": "cardListImages/hSD11/hSD11-007_C.png",
     "name": "水宮枢",
     "type": "成員",
@@ -59462,6 +59756,50 @@
     "expansion": "hSD11",
     "productName": "スタートデッキ FLOW GLOW 推し 虎金妃笑虎",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hSD11/hSD11-009_P.png",
+    "name": "水宮枢",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "藍",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "感情の伝令者",
+      "effect": {
+        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的吶喊卡數量+3。",
+        "ja": "次の相手のターン終了まで、相手の中心メンバーがバトンを渡すのに必要なシャウトカードの枚数+3枚。",
+        "en": "Until the end of the opponent's next turn, the number of shout cards required for the opponent's central member to hand over the baton is +3.",
+        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes de cri nécessaires au membre central de l'adversaire pour passer le relais est de +3."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "スゥイートオブセッション",
+      "damage": 100,
+      "specialAttackImage": "icons/tokkou_50_purple.png",
+      "effect": {
+        "zh-TW": "對成員使用這個藝能，該成員交棒需要的吶喊卡數量每有1個，給予10點特殊傷害。",
+        "ja": "このスキルをメンバーに使用すると、メンバーがバトンを渡すのに必要なシャウトカードの枚数ごとに10ポイントの特殊ダメージを与えます。",
+        "en": "Using this skill on a member will inflict 10 points of special damage for each number of shout cards needed for the member to hand over the baton.",
+        "fr": "Utiliser cette compétence sur un membre infligera 10 points de dégâts spéciaux pour chaque nombre de cartes de cri nécessaires au membre pour passer le relais."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD11-009",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD11/hSD11-009_P.png"
   },
   {
     "image": "cardListImages/hSD12/hSD12-001_OSR.png",
@@ -59760,6 +60098,51 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hSD12/hSD12-007_P.png",
+    "name": "シオリ・ノヴェラ",
+    "type": "成員",
+    "tag": "#EN / #Advent",
+    "product": "PR卡",
+    "color": "藍",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "どんな知識が得られるかしら",
+      "effect": {
+        "zh-TW": "[每個回合一次]這個成員擊倒對手的成員時，將自己存檔區1張標示LIMITED以外的支援卡返回手牌。",
+        "ja": "【ラウンドに1回】このメンバーが相手メンバーをダウンさせた時、自分のセーブエリアにあるLIMITEDの書かれていないサポートカード1枚を手札に戻す。",
+        "en": "[Once per round] When this member knocks down an opponent's member, return 1 support card in his save area that is not marked LIMITED to his hand.",
+        "fr": "[Une fois par tour] Lorsque ce membre renverse un membre adverse, renvoyez 1 carte de soutien dans sa zone de sauvegarde qui n'est pas marquée LIMITÉE dans sa main."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "私達を見くびらないで貰える？",
+      "damage": 110,
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": {
+        "zh-TW": "自己的舞台上每有1位標示#Advent的成員，給予對手Debut以外的1位成員10點特殊傷害。",
+        "ja": "自分のステージの#降臨のマークがあるメンバー1人につき、デビュー以外の相手メンバーに10ポイントの特殊ダメージを与える。",
+        "en": "For each member marked #Advent on your own stage, inflict 10 points of special damage to the opponent's member except Debut.",
+        "fr": "Pour chaque membre marqué #Advent sur votre propre stage, infligez 10 points de dégâts spéciaux au membre adverse sauf Debut."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD12-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hSD12-007_P.png"
+  },
+  {
     "image": "cardListImages/hSD12/hSD12-008_C.png",
     "name": "古石ビジュー",
     "type": "成員",
@@ -59933,6 +60316,52 @@
     "expansion": "hSD12",
     "productName": "スタートデッキ 推し Advent",
     "year": "2026年発売商品"
+  },
+  {
+    "image": "cardListImages/hSD12/hSD12-011_P.png",
+    "name": "古石ビジュー",
+    "type": "成員",
+    "tag": "#EN / #Advent / #ベイビー",
+    "product": "PR卡",
+    "color": "紫",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ビブーと遊んでいかない？",
+      "effect": {
+        "zh-TW": "從自己的牌組抽1張牌。之後，可以將自己舞台上的1張吶喊卡放到存檔區。如果將牌放到存檔區，選擇自己舞台上的1位成員。這個回合中，該成員的藝能傷害+40。",
+        "ja": "自分のデッキからカードを1枚引く。その後、自分のステージにあるシャウトカードを1枚セーブエリアに置くことができます。カードをセーブエリアに置いた場合、自分のステージのメンバーを1人選ぶ。このラウンド中、メンバーのスキルダメージが+40されます。",
+        "en": "Draw 1 card from your deck. After that, you can put 1 shout card on your stage into the save area. If you put the card into the save area, choose 1 member on your stage. During this round, the member's skill damage is +40.",
+        "fr": "Piochez 1 carte de votre deck. Après cela, vous pouvez mettre 1 carte de cri de votre scène dans la zone de sauvegarde. Si vous placez la carte dans la zone de sauvegarde, choisissez 1 membre sur votre scène. Durant ce tour, les dégâts de compétence du membre sont de +40."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "キラキラぜーんぶ受け止めて！",
+      "damage": 110,
+      "specialAttackImage": "icons/tokkou_50_yellow.png",
+      "effect": {
+        "zh-TW": "雙方的存檔區每有1種顏色的吶喊卡，這個藝能需要的無色吶喊卡數量-1。",
+        "ja": "双方のセーブエリアにある1色のシャウトカード1枚につき、本公演に必要な無色のシャウトカードの枚数が-1枚となります。",
+        "en": "For every shout card of one color in the save area of ​​both parties, the number of colorless shout cards required for this performance is -1.",
+        "fr": "Pour chaque carte de cri d'une couleur dans la zone de sauvegarde des deux parties, le nombre de cartes de cri incolores requis pour cette performance est de -1."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD12-011",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hSD12-011_P.png"
   },
   {
     "image": "cardListImages/hSD12/hSD12-012_C.png",
@@ -60367,6 +60796,52 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hSD13/hSD13-007_P.png",
+    "name": "エリザベス・ローズ・ブラッドフレイム",
+    "type": "成員",
+    "tag": "#EN / #Justice / #歌",
+    "product": "PR卡",
+    "color": "紅",
+    "hp": 180,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "猛炎のウォークライ",
+      "effect": {
+        "zh-TW": "這個成員每有1張吶喊卡，這個成員的HP+10。",
+        "ja": "このメンバーが持っているシャウトカード1枚につき、このメンバーのHP+10。",
+        "en": "For each shout card this member has, this member's HP +10.",
+        "fr": "Pour chaque carte de cri que ce membre possède, les HP de ce membre +10."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "悪斬りのカデンツァ",
+      "damage": "100+",
+      "specialAttackImage": "icons/tokkou_50_purple.png",
+      "effect": {
+        "zh-TW": "這個成員每有1張吶喊卡，這個藝能傷害+20。使用這個藝能擊倒對手的成員時，將自己吶喊牌組上方的1張牌發送給這個成員。",
+        "ja": "このメンバーが持つシャウトカード1枚につき、このスキルのダメージは+20される。このスキルで相手メンバーをダウンさせた時、自分のシャウトデッキの上からカードを１枚そのメンバーに送る。",
+        "en": "For each shout card this member has, the damage of this skill is +20. When you use this skill to knock down an opponent's member, send 1 card from the top of your shout deck to that member.",
+        "fr": "Pour chaque carte de cri que possède ce membre, les dégâts de cette compétence sont de +20. Lorsque vous utilisez cette compétence pour renverser le membre d'un adversaire, envoyez 1 carte du haut de votre deck de cris à ce membre."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD13-007",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD13/hSD13-007_P.png"
+  },
+  {
     "image": "cardListImages/hSD13/hSD13-008_C.png",
     "name": "ジジ・ムリン",
     "type": "成員",
@@ -60627,6 +61102,52 @@
     "expansion": "hSD13",
     "productName": "スタートデッキ 推し Justice",
     "year": "2026年発売商品"
+  },
+  {
+    "image": "cardListImages/hSD13/hSD13-013_P.png",
+    "name": "ジジ・ムリン",
+    "type": "成員",
+    "tag": "#EN / #Justice",
+    "product": "PR卡",
+    "color": "黃",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "再起のストレングス",
+      "effect": {
+        "zh-TW": "[每個回合一次]自己的主要階段，可以將1張與自己的「ジジ・ムリン」重疊的成員放到存檔區：將自己吶喊牌組上方的1張牌發送給這個成員。",
+        "ja": "【１ターンに１回】君のメインフェイズ中、君の「ジジ・ムリン」と重なっているメンバーをセーブエリアに置く：君のシャウトデッキの上から１枚をこのメンバーに送る。",
+        "en": "[Once per turn] During your main phase, you can put a member that overlaps your \"ジジ・ムリン\" into the save area: send the top card of your shout deck to this member.",
+        "fr": "[Une fois par tour] Durant votre phase principale, vous pouvez placer un membre qui chevauche votre « ジジ・ムリン » dans la zone de sauvegarde : envoyez la carte du dessus de votre deck de cris à ce membre."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "殻破りのライオット",
+      "damage": "90+",
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": {
+        "zh-TW": "如果與這個成員重疊的成員為0張，這個藝能傷害+90。",
+        "ja": "このメンバーと重なっているメンバーが0人の場合、このスキルのダメージは+90される。",
+        "en": "If there are 0 members overlapping this member, the damage of this skill is +90.",
+        "fr": "S'il y a 0 membre chevauchant ce membre, les dégâts de cette compétence sont de +90."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD13-013",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD13/hSD13-013_P.png"
   },
   {
     "image": "cardListImages/hSD13/hSD13-014_C.png",
