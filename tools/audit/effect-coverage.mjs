@@ -369,8 +369,15 @@ function categorize(entry) {
 
   // COST-IGNORED: text has 「可以將 X 存檔: ...」optional cost but handler skips check
   if (COST_OPTIONAL_MARKERS.some(m => realText.includes(m)) && actions.length > 0) {
-    // If the handler didn't archive but text says "存檔" as cost
-    if (/(可以將自己\d?張?手牌|可以將.*存檔|可以擲)/.test(realText) && !actions.includes('archiveHand') && !actions.includes('rollDie') && !hasPicker) {
+    // Skip false positives:
+    //  - For ON_ART_DECLARE / ON_ART_RESOLVE: real text combines art1 + art2.
+    //    If body has artKey gating (`ctx.artKey !== 'art1'` early-return), it's
+    //    only handling one of the arts, the other one's cost text doesn't apply.
+    const hasArtKeyGate = /ctx\.artKey\s*!==\s*['"`]art[12]['"`]/.test(body) ||
+                         /ctx\.artKey\s*===\s*['"`]art[12]['"`]/.test(body);
+    if (hasArtKeyGate && (entry.hook === 'ON_ART_DECLARE' || entry.hook === 'ON_ART_RESOLVE')) {
+      // skip — handler is gated on a specific art
+    } else if (/(可以將自己\d?張?手牌|可以將.*存檔|可以擲)/.test(realText) && !actions.includes('archiveHand') && !actions.includes('rollDie') && !hasPicker) {
       // It IS firing the after-cost effect without paying. But many "可以" effects auto-fire the beneficial part — only flag if TEXT explicitly says "存檔" as cost
       if (/可以將.*手牌.*存檔|可以將.*手牌.*放到存檔/.test(realText)) {
         return {

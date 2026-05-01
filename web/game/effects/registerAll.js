@@ -21,6 +21,7 @@ import { registerCleanup } from './handlers/cleanup.js';
 import { registerLookTopBottom } from './handlers/look-top-bottom.js';
 import { registerPassthrough } from './handlers/passthrough.js';
 import { registerKuroniiDeck } from './handlers/kuronii-deck.js';
+import { registerChocoyuDeck } from './handlers/chocoyu-deck.js';
 
 let _initialized = false;
 
@@ -94,6 +95,7 @@ export async function initEffects() {
   // real zh-TW effect text in a comment, implemented per text only —
   // no guessing per ~/.claude/projects/.../feedback_no_guessing_card_effects.md.
   counts.kuroniiDeck = registerKuroniiDeck();
+  counts.chocoyuDeck = registerChocoyuDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
