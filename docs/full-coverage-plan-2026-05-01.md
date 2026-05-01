@@ -38,6 +38,9 @@
 | Phase 3 | #20 シオリ（シオリ・ノヴェラ）7 cards | ✅ DONE | `fa3052a` |
 | Phase 3 | #21 ラプラス（ラプラス・ダークネス）5 cards (gap-fill) | ✅ DONE | `b28a294` |
 | Phase 3 | #22 ミオ（大神ミオ）8 cards | ✅ DONE | `09eaf9b` |
+| **Phase 2.4** | #1 cost-bearing cheer→archive afterAction | ✅ DONE | `f22c5ca` |
+| Phase 2.4 | #2 multi-target damage variant (center + backstage) | ✅ DONE | `4554d7e` |
+| Phase 2.4 | #3 maxSelect>1 cheer cost re-emit | ✅ DONE | `7f4d0c7` |
 | **Phase 4** | CI gate / integration tests | ⏳ PENDING |
 
 **Phase 3 progress: 22 / 22 decks ✅ COMPLETE** — coverage ≈ 250 unique cards
@@ -63,7 +66,7 @@ phaseB / phaseC2 — are now correctly excluded. Net COST-IGNORED: 6 → 4.
 | Activity-by-tag tracking `_activityTagsPlayedThisTurn` | hBP05-010 (ノエル "牛丼"), hBP06-033 (らでん "#きのこ"), hSD15-008 (らでん "#きのこ") | LOW |
 | Scry-1 with top/bottom choice afterAction | hBP05-068 (フブキ) | MED |
 | Multi-step distribution from archive | hBP05-070 art1 (フブキ), hBP02-012 effectB (フブキ), hBP03-021 effectB (ノエル), hSD19-001 SP (スバル), hSD15-005 effectG (らでん) | LOW |
-| Cost-bearing optional effect afterAction (cheer→archive + dmg/heal) | hBP03-017/019/021/hBP05-028 (ぼたん), hBP06-078 (スバル), hBP07-067 (AZKi), hBP07-030 art1 (いろは), hSD02-006 (あやめ), hSD03-006/009 (おかゆ), hBP02-058 effectB (カリオペ), hBP02-055 effectC (カリオペ), hBP03-007 SP (わため) | HIGH |
+| Cost-bearing optional effect afterAction (cheer→archive + dmg/heal) | ✅ Phase 2.4 #1-3 done — wired: hBP05-028 / hBP03-019 / hBP03-021 / hBP06-078 / hBP02-041 / hBP05-043 / hSD03-006 / hSD03-009. Remaining (different cost shapes): hBP03-017 (cheer-top→archive), hBP03-019 art1 (hand-reveal cost), hBP02-055 (hand→archive), hBP02-058 (hand→archive cost), hSD02-006 (hand→archive), hBP07-067 (hand→archive), hBP07-030 art1 (cheer→archive + draw), hBP03-007 SP (cheer-top→specific member, distribution) | partly HIGH |
 | Colorless cost reduction afterAction with picker | hBP07-022 art1 multi-pick (ノエル) | LOW |
 | Opp target picker for special damage | hBP05-004 (おかゆ), hBP07-057 (おかゆ), hBP07-059 art1 (シオリ), hSD12-003 (シオリ), hSD12-001 SP (シオリ), hBP02-034 art2 (あやめ) | MED |
 | Place-on-stage from archive afterAction | hSD19-004 (スバル), hSD15-007 (らでん) | LOW |
