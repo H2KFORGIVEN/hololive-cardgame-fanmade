@@ -46,6 +46,10 @@
 | Phase 2.4 | #6 ARCHIVE_HAND_THEN_OPP_DMG (4 cards) | ✅ DONE | `c828ac9` |
 | Phase 2.4 | #7 ARCHIVE_HAND_THEN_BOOST (2 cards) | ✅ DONE | `99bde70` |
 | Phase 2.4 | #8 ARCHIVE_HAND_TAGSHARE_DRAW (1 card) | ✅ DONE | `39e3b77` |
+| Phase 2.4 | #9 Activity-by-tag/name tracking (3 cards) | ✅ DONE | `e861a7f` |
+| Phase 2.4 | #10 CHEER_FROM_ARCHIVE_TO_CHEERDECK (1 card) | ✅ DONE | `b8c8948` |
+| Phase 2.4 | #11 PLACE_ON_STAGE archive/deck (2 cards) | ✅ DONE | `ccce164` |
+| Phase 2.4 | #12 Look-N-pick-1-reorder wiring (2 cards) | ✅ DONE | `2cf3557` |
 | Phase 2.4 | Convert MANUAL→SELECT_TARGET pickers (6 cards) | ✅ DONE | `126ecf0` |
 | **Phase 4** | 4.1 integration tests (Phase 2.4 afterAction) | ✅ DONE | `3ac5dd0` |
 | Phase 4 | 4.2 GitHub Action audit gate (master + PR) | ✅ DONE | `2ee96ec` |
@@ -70,14 +74,17 @@ phaseB / phaseC2 — are now correctly excluded. Net COST-IGNORED: 6 → 4.
 | Need | Affected cards | Priority |
 |---|---|---|
 | ✅ `preventDamage` hook (passive damage reduction) | hBP05-008 / hBP05-069 / hSD19-005 — DONE in Phase 2.4 #4 | DONE |
-| Targeting redirection hook (force opp to target X) | hBP05-010 (ノエル) | MED |
-| Activity-by-tag tracking `_activityTagsPlayedThisTurn` | hBP05-010 (ノエル "牛丼"), hBP06-033 (らでん "#きのこ"), hSD15-008 (らでん "#きのこ") | LOW |
+| Targeting redirection hook (force opp to target X) | hBP05-010 (ノエル) | LOW |
+| ✅ Activity-by-tag/name tracking | hBP05-010 / hBP06-033 / hSD15-008 — DONE in Phase 2.4 #9 | DONE |
 | ✅ Scry-1 with top/bottom choice afterAction | hBP05-068 — DONE in Phase 2.4 #5 | DONE |
 | Multi-step distribution from archive | hBP05-070 art1 (フブキ), hBP02-012 effectB (フブキ), hBP03-021 effectB (ノエル), hSD19-001 SP (スバル), hSD15-005 effectG (らでん) | LOW |
 | ✅ Cost-bearing afterAction (cheer→archive + dmg/heal) | Phase 2.4 #1-3 done — wired hBP05-028 / hBP03-019 / hBP03-021 / hBP06-078 / hBP02-041 / hBP05-043 / hSD03-006 / hSD03-009 | DONE |
 | ✅ Hand-cost afterAction (hand→archive + dmg/boost/draw) | Phase 2.4 #6-8 done — wired hSD02-006 / hSD02-008 / hSD02-009 / hBP07-067 / hBP06-034 / hBP02-055 / hBP02-057 | DONE |
 | Colorless cost reduction afterAction with picker | hBP07-022 art1 multi-pick (ノエル) | LOW |
 | ✅ Opp target picker for special damage | hBP05-004 / hBP07-057 / hBP07-059 / hSD12-001 / hSD12-003 / hBP02-034 — DONE in Phase 2.4 follow-up | DONE |
+| ✅ Cheer-to-cheerdeck afterAction | hBP01-100 — DONE in Phase 2.4 #10 | DONE |
+| ✅ Place-on-stage from archive/deck | hSD15-007 / hSD19-004 — DONE in Phase 2.4 #11 | DONE |
+| ✅ Look-N-pick-1-reorder | hSD12-001 oshi / hBP07-028 effectC — DONE in Phase 2.4 #12 (re-uses existing remainingCards chain) | DONE |
 | Place-on-stage from archive afterAction | hSD19-004 (スバル), hSD15-007 (らでん) | LOW |
 | Look-N-pick-1-reorder-bottom afterAction | hSD12-001 (シオリ), hBP07-028 effectC (ミオ) | LOW |
 | Pre-damage REACTIVE trigger (damaged-opp-backstage) | hSD03-001 SP (おかゆ) | LOW |
