@@ -696,6 +696,37 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'OPP_CENTER_BACKSTAGE_SWAP') {
+    // Phase 2.4 #15: swap opp center with a picked opp backstage member.
+    // selected.instanceId = the chosen opp backstage to promote to center.
+    // Used by hBP05-004 SP「ウマウマ！」 (おかゆ): swap, then if own center
+    // is おかゆ, draw 3.
+    const opp = state.players[1 - prompt.player];
+    const oppCenter = opp.zones['center'];
+    const idx = (opp.zones['backstage'] || []).findIndex(m => m.instanceId === selected.instanceId);
+    if (!oppCenter || idx < 0) {
+      addLog(state, prompt.player, '對手中心或後台不存在 — 跳過');
+    } else {
+      const oppBack = opp.zones['backstage'][idx];
+      // Swap
+      opp.zones['backstage'][idx] = oppCenter;
+      opp.zones['center'] = oppBack;
+      addLog(state, prompt.player, `對手中心 ${getCard(oppCenter.cardId)?.name || ''} ↔ 後台 ${getCard(oppBack.cardId)?.name || ''}`);
+      // Optional follow-up draw if own center matches prompt.drawIfOwnCenterName
+      if (prompt.drawIfOwnCenterName) {
+        const ownCenter = player.zones['center'];
+        if (ownCenter && getCard(ownCenter.cardId)?.name === prompt.drawIfOwnCenterName) {
+          const drawN = prompt.drawN || 0;
+          for (let i = 0; i < drawN && player.zones['deck'].length > 0; i++) {
+            const c = player.zones['deck'].shift();
+            c.faceDown = false;
+            player.zones['hand'].push(c);
+          }
+          addLog(state, prompt.player, `中心為「${prompt.drawIfOwnCenterName}」 → 抽 ${drawN} 張`);
+        }
+      }
+    }
+
   } else if (action === 'PICK_MASCOT_SOURCE') {
     // Phase 2.4 #14: 2-step mascot move picker.
     //   Step 1 (this): pick source member with a mascot

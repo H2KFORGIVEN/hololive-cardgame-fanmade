@@ -1552,6 +1552,81 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #15 — OPP_CENTER_BACKSTAGE_SWAP afterAction
+// ══════════════════════════════════════════════════════════════════
+section('OPP_CENTER_BACKSTAGE_SWAP (Phase 2.4 #15)');
+
+{
+  // Setup: opp center + 2 opp backstage; pick one backstage to swap
+  const oppCenter = makeMember('hBP01-038', 5001);
+  const oppBack1 = makeMember('hBP01-040', 5002, { damage: 30 });
+  const oppBack2 = makeMember('hBP01-042', 5003, { damage: 50 });
+  const ownCenter = makeMember('hBP05-041', 5004);  // 猫又おかゆ Debut
+  const state = makeMinState(ownCenter, null, [], oppCenter);
+  state.players[1].zones.backstage = [oppBack1, oppBack2];
+  state.players[0].zones.deck = [
+    { instanceId: 5101, cardId: 'hBP01-038', faceDown: true },
+    { instanceId: 5102, cardId: 'hBP01-040', faceDown: true },
+    { instanceId: 5103, cardId: 'hBP01-042', faceDown: true },
+  ];
+  // Override: own center is NOT 猫又おかゆ here (hBP05-041 is)
+  // Actually hBP05-041 has name='猫又おかゆ' — let me check
+  // For simplicity, pick a non-おかゆ for own center test
+  state.players[0].zones.center = makeMember('hBP01-038', 5004);  // not おかゆ
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_TARGET', player: 0,
+    cards: [
+      { instanceId: 5002, cardId: oppBack1.cardId, name: 'b1', image: '' },
+      { instanceId: 5003, cardId: oppBack2.cardId, name: 'b2', image: '' },
+    ],
+    maxSelect: 1,
+    afterAction: 'OPP_CENTER_BACKSTAGE_SWAP',
+    drawIfOwnCenterName: '猫又おかゆ',
+    drawN: 3,
+  }, { instanceId: 5002, name: 'b1' });
+
+  const swapped = state.players[1].zones.center.instanceId === 5002 &&
+                  state.players[1].zones.backstage[0].instanceId === 5001;
+  const noDraw = state.players[0].zones.hand.length === 0; // own center not おかゆ
+  if (swapped && noDraw) {
+    pass('OPP_CENTER_BACKSTAGE_SWAP: opp center ↔ backstage; no draw (center not 猫又おかゆ)');
+  } else {
+    fail('OPP swap',
+      `swapped=${swapped} noDraw=${noDraw} oppCenter=${state.players[1].zones.center?.instanceId}`);
+  }
+}
+
+{
+  // Same swap but own center IS 猫又おかゆ → draw 3
+  const oppCenter = makeMember('hBP01-038', 6001);
+  const oppBack = makeMember('hBP01-040', 6002, { damage: 30 });
+  // Use hBP05-041 which has name='猫又おかゆ'
+  const ownCenter = makeMember('hBP05-041', 6003);
+  const state = makeMinState(ownCenter, null, [], oppCenter);
+  state.players[1].zones.backstage = [oppBack];
+  state.players[0].zones.deck = [
+    { instanceId: 6101, cardId: 'hBP01-038', faceDown: true },
+    { instanceId: 6102, cardId: 'hBP01-040', faceDown: true },
+    { instanceId: 6103, cardId: 'hBP01-042', faceDown: true },
+    { instanceId: 6104, cardId: 'hBP01-038', faceDown: true },
+  ];
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_TARGET', player: 0,
+    cards: [{ instanceId: 6002, cardId: oppBack.cardId, name: 'b', image: '' }],
+    maxSelect: 1,
+    afterAction: 'OPP_CENTER_BACKSTAGE_SWAP',
+    drawIfOwnCenterName: '猫又おかゆ',
+    drawN: 3,
+  }, { instanceId: 6002, name: 'b' });
+
+  const drew = state.players[0].zones.hand.length === 3;
+  if (drew) pass('OPP_CENTER_BACKSTAGE_SWAP + draw 3 when own center is 猫又おかゆ');
+  else fail('OPP swap + draw', `hand=${state.players[0].zones.hand.length}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #13 — MULTI_DISTRIBUTE_CHEER afterAction
 // ══════════════════════════════════════════════════════════════════
 section('MULTI_DISTRIBUTE_CHEER (Phase 2.4 #13)');

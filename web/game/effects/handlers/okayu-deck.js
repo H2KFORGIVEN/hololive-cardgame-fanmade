@@ -110,7 +110,28 @@ export function registerOkayuDeck() {
   reg('hBP05-004', HOOK.ON_OSHI_SKILL, (state, ctx) => {
     if (ctx.skillType === 'reactive') return { state, resolved: true };
     if (ctx.skillType === 'sp') {
-      return { state }; // MANUAL_EFFECT — opp center↔backstage swap chain
+      // Phase 2.4 #15: opp center ↔ backstage swap.
+      const opp = state.players[1 - ctx.player];
+      const oppCenter = opp.zones[ZONE.CENTER];
+      if (!oppCenter) return { state, resolved: true, log: 'SP「ウマウマ！」: 對手無中心 — 跳過' };
+      const damagedBackstage = (opp.zones[ZONE.BACKSTAGE] || []).filter(m => (m.damage || 0) > 0);
+      if (damagedBackstage.length === 0) return { state, resolved: true, log: 'SP「ウマウマ！」: 對手後台無 HP 減少成員 — 跳過' };
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SELECT_TARGET', player: ctx.player,
+          message: 'SP「ウマウマ！」: 選擇 1 位對手 HP 減少的後台成員 ↔ 中心',
+          cards: damagedBackstage.map(m => ({
+            instanceId: m.instanceId, cardId: m.cardId,
+            name: getCard(m.cardId)?.name || '',
+            image: getCardImage(m.cardId),
+          })),
+          maxSelect: 1, afterAction: 'OPP_CENTER_BACKSTAGE_SWAP',
+          drawIfOwnCenterName: '猫又おかゆ',
+          drawN: 3,
+        },
+        log: 'SP「ウマウマ！」: 選對手後台',
+      };
     }
     // oshi
     const own = state.players[ctx.player];
