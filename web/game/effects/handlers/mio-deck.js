@@ -249,7 +249,25 @@ export function registerMioDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP07-028', HOOK.ON_COLLAB, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — look-2-pick-1 chain
+    // Phase 2.4 #12: look top 2 → pick 1 to hand → rest stays on top
+    const own = state.players[ctx.player];
+    const top2 = own.zones[ZONE.DECK].slice(0, 2);
+    if (top2.length === 0) return { state, resolved: true, log: '金瞳の綺羅星: 牌組空' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT', player: ctx.player,
+        message: '金瞳の綺羅星: 牌組頂 2 張中選擇 1 張加入手牌（其餘放回牌組上方）',
+        cards: top2.map(c => ({
+          instanceId: c.instanceId, cardId: c.cardId,
+          name: getCard(c.cardId)?.name || '',
+          image: getCardImage(c.cardId),
+        })),
+        maxSelect: 1, afterAction: 'ADD_TO_HAND',
+        noShuffle: true,
+      },
+      log: '金瞳の綺羅星: 選擇牌組頂 2 張之一',
+    };
   });
   reg('hBP07-028', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };

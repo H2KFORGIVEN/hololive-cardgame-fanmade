@@ -233,7 +233,46 @@ export function registerShioriDeck() {
         log: `SP「リベリオン」: 支援 ${supportCount} → 選擇後台`,
       };
     }
-    return { state }; // oshi: MANUAL_EFFECT — look-3 + reveal-1 + reorder chain
+    // oshi: look top 3 → reveal 1 support → hand → rest to bottom in chosen order
+    // Phase 2.4 #12: uses SEARCH_SELECT + remainingCards chain into ORDER_TO_BOTTOM.
+    const own = state.players[ctx.player];
+    const top3 = own.zones[ZONE.DECK].slice(0, 3);
+    if (top3.length === 0) return { state, resolved: true, log: 'oshi「収集家」: 牌組空 — 跳過' };
+    const supports = top3.filter(c => isSupportCard(getCard(c.cardId)));
+    const top3Picks = top3.map(c => ({
+      instanceId: c.instanceId, cardId: c.cardId,
+      name: getCard(c.cardId)?.name || '',
+      image: getCardImage(c.cardId),
+    }));
+    const supportPicks = supports.map(c => ({
+      instanceId: c.instanceId, cardId: c.cardId,
+      name: getCard(c.cardId)?.name || '',
+      image: getCardImage(c.cardId),
+    }));
+    if (supports.length === 0) {
+      // No support — all 3 go to bottom (player orders)
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'ORDER_TO_BOTTOM', player: ctx.player,
+          message: 'oshi「収集家」: 牌組頂 3 張無支援卡 — 選擇放回牌組下方的順序（先點=最底）',
+          cards: top3Picks,
+        },
+        log: 'oshi「収集家」: 頂 3 張無支援卡',
+      };
+    }
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SEARCH_SELECT', player: ctx.player,
+        message: 'oshi「収集家」: 牌組頂 3 張中選擇 1 張支援卡加入手牌（其餘放回牌組下方）',
+        cards: supportPicks,
+        remainingCards: top3Picks,  // chain: post-pick all top-3 minus picked → ORDER_TO_BOTTOM
+        maxSelect: 1, afterAction: 'ADD_TO_HAND',
+        noShuffle: true,
+      },
+      log: 'oshi「収集家」: 選擇支援卡',
+    };
   });
 
   // ─────────────────────────────────────────────────────────────────────
