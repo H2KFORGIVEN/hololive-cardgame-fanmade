@@ -131,6 +131,11 @@ export function parseColor(text) {
 //   4. Returns the final die value.
 export function rollDieFor(state, ctx = null) {
   if (state && typeof state._diceOverride === 'number') {
+    // Phase 2.2 — even override-based rolls count toward _diceRollsThisTurn
+    if (ctx?.player != null && state.players?.[ctx.player]) {
+      const p = state.players[ctx.player];
+      p._diceRollsThisTurn = (p._diceRollsThisTurn || 0) + 1;
+    }
     return state._diceOverride;
   }
   let result = Math.floor(Math.random() * 6) + 1;
@@ -150,6 +155,11 @@ export function rollDieFor(state, ctx = null) {
       result = Math.floor(Math.random() * 6) + 1;
       state._diceRerollUsedThisRoll = false;  // reset for next call
     }
+  }
+  // Phase 2.2 — track per-turn dice count for cards like hBP03-023
+  // 「本回合擲過骰子 → +40」 (and similar conditions).
+  if (player) {
+    player._diceRollsThisTurn = (player._diceRollsThisTurn || 0) + 1;
   }
   return result;
 }

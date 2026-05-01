@@ -37,6 +37,12 @@ export function createPlayerState() {
     usedLimited: false,
     performedArts: { center: false, collab: false },
     oshiSkillUsedThisTurn: false,
+    // Phase 2.2 — per-turn / per-game state tracking (added 2026-05-01)
+    _oncePerTurn: {},      // { '<cardId>': true } — reset on this player's reset phase
+    _oncePerGame: {},      // { '<cardId>': true } — never reset (game-scoped)
+    _diceRollsThisTurn: 0, // count of dice rolled BY this player this turn
+    _knockedThisTurn: [],  // opp cardIds knocked down BY this player this turn
+    _artsUsedThisTurn: [], // art names used this turn (e.g. ['art1', 'art2'])
   };
 }
 

@@ -354,6 +354,199 @@ export function resolveEffectChoice(state, prompt, selected) {
       addLog(state, prompt.player, `存檔 ${selected.name || getCard(card.cardId)?.name || ''} → 附加給 ${getCard(target.cardId)?.name || '成員'}`);
     }
 
+  } else if (action === 'BOOST_PICKED_MEMBER') {
+    // Player picked an own member to receive a turn-scoped damage boost.
+    // prompt.amount = boost size. prompt.bonusFor = optional { tag: ..., bonus: N }
+    // for cards like 「+50; if #ID3期生 Buzz → +80」. Used by hBP07-002 oshi
+    // (Phase 2.1.1), hBP07-053/055 effectB (pick #Promise +20/+50), etc.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    const amount = prompt.amount || 0;
+    if (!target || amount <= 0) {
+      addLog(state, prompt.player, '無有效目標 — 跳過 boost');
+    } else {
+      const bonusFor = prompt.bonusFor;
+      let total = amount;
+      if (bonusFor && bonusFor.tag) {
+        const tagStr = String(getCard(target.cardId)?.tag || '');
+        const bloom = getCard(target.cardId)?.bloom || '';
+        const tagMatch = tagStr.includes(bonusFor.tag);
+        const bloomMatch = !bonusFor.requireBloom || bloom.includes(bonusFor.requireBloom);
+        if (tagMatch && bloomMatch) total += bonusFor.bonus || 0;
+      }
+      // Push a turn-scoped boost keyed to this specific instance
+      state._turnBoosts = state._turnBoosts || [];
+      state._turnBoosts.push({
+        type: 'DAMAGE_BOOST',
+        amount: total,
+        target: 'instance',
+        instanceId: target.instanceId,
+        duration: 'turn',
+      });
+      addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 本回合藝能 +${total}`);
+    }
+
+  } else if (action === 'HEAL_PICKED_MEMBER') {
+    // Player picked own member; heal them by prompt.amount HP. Used by
+    // cards like 「自己1位成員HP回復N點」 — hSD06-007 (#秘密結社holoX) etc.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    const amount = prompt.amount || 0;
+    if (target && amount > 0) {
+      target.damage = Math.max(0, (target.damage || 0) - amount);
+      addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} HP 回復 ${amount}`);
+    }
+
+  } else if (action === 'CHEER_MOVE_TWO_STEP_PICK_SOURCE') {
+    // First step of a two-step cheer-move: player picked which member to take
+    // a cheer FROM. Engine queues the second prompt to pick the destination.
+    // prompt.targetCandidates = list of candidate target member info objects.
+    // prompt.cheerFilter = { color?: '...', anyExceptThis?: bool }
+    const sourceMember = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    if (!sourceMember || !sourceMember.attachedCheer || sourceMember.attachedCheer.length === 0) {
+      addLog(state, prompt.player, '所選來源成員無吶喊 — 取消');
+    } else {
+      // Filter target candidates: exclude source if requested
+      const allTargets = (prompt.targetCandidates || []).filter(t => t.instanceId !== sourceMember.instanceId);
+      if (allTargets.length === 0) {
+        addLog(state, prompt.player, '無可用接收成員');
+      } else {
+        // Queue step 2 prompt: pick destination
+        state.pendingEffect = {
+          type: 'SELECT_OWN_MEMBER',
+          player: prompt.player,
+          message: prompt.message2 || '選擇接收吶喊的成員',
+          cards: allTargets,
+          maxSelect: 1,
+          afterAction: 'CHEER_MOVE_TWO_STEP_PICK_TARGET',
+          sourceInstanceId: sourceMember.instanceId,
+          cheerFilter: prompt.cheerFilter || {},
+        };
+        return state; // don't clear pendingEffect — chain to step 2
+      }
+    }
+
+  } else if (action === 'CHEER_MOVE_TWO_STEP_PICK_TARGET') {
+    // Second step: player picked destination. Engine moves 1 cheer
+    // from the prompt.sourceInstanceId member to selected.
+    const allMembers = getAllMembers(player);
+    const source = allMembers.find(m => m.instanceId === prompt.sourceInstanceId);
+    const target = allMembers.find(m => m.instanceId === selected.instanceId);
+    if (!source || !target || !source.attachedCheer?.length) {
+      addLog(state, prompt.player, '吶喊移動失敗（來源/目標/吶喊缺失）');
+    } else {
+      // Pick a cheer matching filter
+      const filter = prompt.cheerFilter || {};
+      let cheerIdx = 0;
+      if (filter.color) {
+        cheerIdx = source.attachedCheer.findIndex(c => getCard(c.cardId)?.color === filter.color);
+        if (cheerIdx < 0) cheerIdx = 0;
+      }
+      const cheer = source.attachedCheer.splice(cheerIdx, 1)[0];
+      if (cheer) {
+        if (!target.attachedCheer) target.attachedCheer = [];
+        target.attachedCheer.push(cheer);
+        addLog(state, prompt.player,
+          `吶喊：${getCard(source.cardId)?.name || ''} → ${getCard(target.cardId)?.name || ''}`);
+      }
+    }
+
+  } else if (action === 'ARCHIVE_HAND_THEN_DRAW_N') {
+    // Player picked which hand cards to archive (multi-pick); engine then
+    // draws N cards where N = number archived. Used by hBP04-066
+    // 「『感情結晶体』」 (archive any → draw same count) and similar.
+    // selected.instanceIds = array of hand-card instance IDs to archive.
+    const ids = Array.isArray(selected.instanceIds) ? selected.instanceIds : [selected.instanceId];
+    const hand = player.zones['hand'];
+    let archived = 0;
+    for (const id of ids) {
+      const idx = hand.findIndex(c => c.instanceId === id);
+      if (idx >= 0) {
+        const card = hand.splice(idx, 1)[0];
+        player.zones['archive'].push(card);
+        archived++;
+      }
+    }
+    if (archived > 0) {
+      // Use draw-from-deck (top)
+      for (let i = 0; i < archived && player.zones['deck'].length > 0; i++) {
+        const c = player.zones['deck'].shift();
+        c.faceDown = false;
+        hand.push(c);
+      }
+      addLog(state, prompt.player, `存檔 ${archived} 張 → 抽 ${archived} 張`);
+    }
+
+  } else if (action === 'DICE_BRANCH_PROMPT') {
+    // Player chose whether to roll a die (selected.roll === true/false).
+    // If roll, engine rolls and applies prompt.branches[result].
+    // For now, simple version: handler chooses based on roll outcome.
+    // prompt.branches = { '1-2': { ... }, '3-4': { ... }, ... }
+    if (selected.roll === false || selected.skip === true) {
+      addLog(state, prompt.player, '玩家選擇不擲骰');
+    } else {
+      const r = Math.floor(Math.random() * 6) + 1;
+      addLog(state, prompt.player, `擲骰：${r}`);
+      // Branch resolution is deferred to handler — set state._lastDiceResult
+      state._lastDiceResult = { player: prompt.player, value: r, ts: Date.now() };
+      state._diceRollsThisTurn = state._diceRollsThisTurn || [0, 0];
+      state._diceRollsThisTurn[prompt.player] = (state._diceRollsThisTurn[prompt.player] || 0) + 1;
+    }
+
+  } else if (action === 'RETURN_DEBUT_TO_DECK_BOTTOM') {
+    // Player picked one of own backstage Debut members to return to deck bottom.
+    // Used as a cost by cards like hSD12-013 (return Debut: draw 2).
+    const idx = player.zones['backstage'].findIndex(m => m.instanceId === selected.instanceId);
+    if (idx >= 0) {
+      const card = player.zones['backstage'].splice(idx, 1)[0];
+      card.faceDown = false;
+      // Remove any attached cheer/support back to archive (per general rule)
+      if (card.attachedCheer) {
+        for (const c of card.attachedCheer) player.zones['archive'].push(c);
+        card.attachedCheer = [];
+      }
+      if (card.attachedSupport) {
+        for (const c of card.attachedSupport) player.zones['archive'].push(c);
+        card.attachedSupport = [];
+      }
+      // Bloom stack back to archive
+      if (card.bloomStack) {
+        for (const entry of card.bloomStack) {
+          const inst = bloomStackEntryToInstance(entry);
+          if (inst) player.zones['archive'].push(inst);
+        }
+        card.bloomStack = [];
+      }
+      card.damage = 0;
+      player.zones['deck'].push(card); // bottom
+      addLog(state, prompt.player, `${selected.name || ''} 返回牌組底`);
+      // Optional follow-up effect via prompt.thenDraw / prompt.thenLog
+      if (prompt.thenDrawN && prompt.thenDrawN > 0) {
+        for (let i = 0; i < prompt.thenDrawN && player.zones['deck'].length > 0; i++) {
+          const c = player.zones['deck'].shift();
+          c.faceDown = false;
+          player.zones['hand'].push(c);
+        }
+        addLog(state, prompt.player, `抽 ${prompt.thenDrawN} 張`);
+      }
+    }
+
+  } else if (action === 'RETURN_TO_HAND_FROM_BLOOM_STACK') {
+    // Player picked a stage member with a bloom stack; pop the top stack entry
+    // (or all per prompt.takeAll) back to hand. Used by 「將重疊的1張回手」 effects.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    if (!target || !target.bloomStack || target.bloomStack.length === 0) {
+      addLog(state, prompt.player, '所選成員無重疊 — 跳過');
+    } else {
+      const takeAll = prompt.takeAll === true;
+      let popped = 0;
+      while (target.bloomStack.length > 0 && (takeAll || popped < (prompt.takeN || 1))) {
+        const entry = target.bloomStack.pop();
+        const inst = bloomStackEntryToInstance(entry);
+        if (inst) player.zones['hand'].push(inst);
+        popped++;
+      }
+      addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 重疊 ${popped} 張回手`);
+    }
+
   } else if (action === 'OPP_MEMBER_DAMAGE') {
     // Player picked one of opponent's stage members to receive special damage.
     // amount carried on prompt.damageAmount. Triggers post-damage sweep so

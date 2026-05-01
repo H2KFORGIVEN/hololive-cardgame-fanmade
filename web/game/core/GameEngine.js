@@ -164,6 +164,12 @@ function resetTurnFlags(player, state = null) {
   player._limitedSupportsThisTurn = 0;
   player._activitiesPlayedThisTurn = 0;
   player._namesUsedArtThisTurn = [];
+  // Phase 2.2 — per-turn / per-game state tracking (added 2026-05-01)
+  // Reset on the player's own turn-reset phase only.
+  player._oncePerTurn = {};         // { '<cardId>': true } — for cards with 「每回合一次」
+  player._diceRollsThisTurn = 0;    // count of dice rolled BY this player this turn
+  player._knockedThisTurn = [];     // list of opp cardIds knocked down BY this player this turn
+  player._artsUsedThisTurn = [];    // list of art names used this turn (multiple arts allowed)
   // K-2 / K-3 per-turn state-level flags cleared on the player's reset phase.
   // Only when state is passed (full processResetPhase path); the bare
   // `resetTurnFlags(player)` call from advancePhase's first-turn skip just
@@ -172,6 +178,8 @@ function resetTurnFlags(player, state = null) {
     state._diceOverride = null;
     state._diceRerollUsedThisRoll = false;
     if (state._hBP07_039_used_this_turn) state._hBP07_039_used_this_turn = {};
+    // Phase 2.2 state-level flags
+    state._lastDiceResult = null;     // populated by DICE_BRANCH_PROMPT
   }
 
   // Clear per-turn flags on all stage members
@@ -555,6 +563,14 @@ function processUseArt(state, action) {
 
   // Trigger ON_ART_DECLARE (before damage calc — dice rolls, boost effects)
   const artKey = action.artIndex === 0 ? 'art1' : 'art2';
+
+  // Phase 2.2 — track which arts were used this turn for cards that gate on
+  // 「使用過 art1」 / 「使用過 N 次藝能」 etc.
+  player._artsUsedThisTurn = player._artsUsedThisTurn || [];
+  const _atkCard = getCard(attacker.cardId);
+  const artName = (artKey === 'art1' ? _atkCard?.art1?.name : _atkCard?.art2?.name) || artKey;
+  player._artsUsedThisTurn.push(artName);
+
   fireEffect(state, HOOK.ON_ART_DECLARE, { cardId: attacker.cardId, player: p, memberInst: attacker, artKey });
 
   // Fire passive global effects — "while on stage" modifiers from every member on both sides.
@@ -808,6 +824,16 @@ function processKnockdown(state, attackerPlayer, target, opponent, attackerInst 
     // archiving and life loss. Reset damage on the instance if still on stage.
     addLog(state, `  擊倒被效果取消 (${targetCard?.name || ''})`);
     return;
+  }
+
+  // Phase 2.2 — track per-turn knockouts so reactive cards can react.
+  // The attacker's _knockedThisTurn list gets the opp cardId.
+  if (attackerPlayer != null) {
+    const att = state.players[attackerPlayer];
+    if (att) {
+      att._knockedThisTurn = att._knockedThisTurn || [];
+      att._knockedThisTurn.push(target.cardId);
+    }
   }
 
   // Archive the knocked-down member and all attached cards (+ bloom stack)

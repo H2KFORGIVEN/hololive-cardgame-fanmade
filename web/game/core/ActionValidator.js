@@ -89,9 +89,37 @@ function validatePlaceMember(state, action, player) {
   return ok();
 }
 
+// Phase 2.3.2 — Cross-bloom permission (DEFERRED).
+// hBP07-056 effectG「時界を統べし者」 lets a 2nd オーロ・クロニー member's
+// bloom-stack be reused by ANOTHER オーロ・クロニー member to bloom. This
+// requires either:
+//   (a) a new action type CROSS_BLOOM with sourceMemberInstanceId param, or
+//   (b) extending BLOOM action with an `useStackFrom` field
+// Both touch processBloom + validation + UI. Marked as TODO — handler at
+// phaseB-cards.js:1635 currently logs a hint via Manual Adjust panel.
+
 function validateBloom(state, action, player) {
   if (state.phase !== PHASE.MAIN) return fail('不在主要階段');
-  if (state.firstTurn[state.activePlayer]) return fail('第一回合不能綻放');
+
+  // Phase 2.3.1 — first-turn bloom permission rule mod
+  // Default: first-turn bloom forbidden. Cards like hBP07-050 「この日が来た！」
+  // grant first-turn-back-attack bloom permission for specific center
+  // characters. The handler sets state._firstTurnBloomAvailable[player]
+  // when the condition is met.
+  if (state.firstTurn[state.activePlayer]) {
+    const permission = state._firstTurnBloomAvailable && state._firstTurnBloomAvailable[state.activePlayer];
+    const isBackAttacker = state.activePlayer !== state.firstPlayer;
+    if (!permission || !isBackAttacker) return fail('第一回合不能綻放');
+    // Permission is conditional on center being a specific character — handler
+    // already verified that when it set the flag. Allow this bloom but check
+    // that the bloom card is a 1st (not 2nd / Buzz) since the permission text
+    // says 「使用自己手牌的1st成員進行綻放」.
+    const handCardCheck = player.zones[ZONE.HAND][action.handIndex];
+    const bloomCardCheck = handCardCheck && getCard(handCardCheck.cardId);
+    if (bloomCardCheck && bloomCardCheck.bloom !== '1st' && bloomCardCheck.bloom !== '1st Buzz') {
+      return fail('第一回合特殊綻放只能使用 1st 成員');
+    }
+  }
 
   const handCard = player.zones[ZONE.HAND][action.handIndex];
   if (!handCard) return fail('手牌位置無效');
@@ -271,7 +299,7 @@ function validateUseArt(state, action, player, playerIdx) {
 
   // Check art cost (cheer requirement)
   const cost = parseCost(art.image);
-  if (!canPayArtCost(member, cost)) {
+  if (!canPayArtCost(member, cost, state, playerIdx)) {
     return fail('吶喊卡不足以使用此藝能');
   }
 
@@ -284,11 +312,42 @@ function validateUseArt(state, action, player, playerIdx) {
   return ok();
 }
 
+// Phase 2.3.3 — get total colorless reduction for an art cost on a given
+// member, summing equipment-based + state-level reductions.
+//
+// State-level reduction sources (added 2026-05-01):
+//   state._artColorlessReductionGlobal[playerIdx] — applies to ALL own arts
+//     (e.g. hBP05-006 SP「-1 colorless for all 「ネリッサ」 this game」 — but
+//     the name filter is handled by *ByName below; this slot is for true
+//     all-member reductions if needed).
+//   state._artColorlessReductionByName[playerIdx][cardName] — applies to
+//     all arts on members matching a specific character name.
+//   state._artColorlessReductionByInstance[playerIdx][instanceId] — applies
+//     this turn to a specific member instance (e.g. hBP07-073 ラプラス
+//     「這個回合中，這個成員的藝能需要的無色吶喊卡數量-2」).
+function getStateColorlessReduction(memberInstance, state, playerIdx) {
+  if (!state || playerIdx == null) return 0;
+  let reduction = 0;
+  const memberCard = getCard(memberInstance.cardId);
+  const memberName = memberCard?.name;
+  const r1 = state._artColorlessReductionGlobal?.[playerIdx];
+  if (typeof r1 === 'number') reduction += r1;
+  if (memberName) {
+    const r2 = state._artColorlessReductionByName?.[playerIdx]?.[memberName];
+    if (typeof r2 === 'number') reduction += r2;
+  }
+  const r3 = state._artColorlessReductionByInstance?.[playerIdx]?.[memberInstance.instanceId];
+  if (typeof r3 === 'number') reduction += r3;
+  return reduction;
+}
+
 // Check if attached cheer can satisfy art cost
-function canPayArtCost(memberInstance, cost) {
+function canPayArtCost(memberInstance, cost, state = null, playerIdx = null) {
   // Equipment items (e.g. ASMRマイク) can reduce required colorless cheer.
+  // Plus Phase 2.3.3 state-level reductions for oshi-SP / per-member effects.
   // Apply reduction up-front so the rest of the function works on adjusted cost.
-  const colorlessReduction = getColorlessReduction(memberInstance);
+  const colorlessReduction = getColorlessReduction(memberInstance)
+    + getStateColorlessReduction(memberInstance, state, playerIdx);
   const adjustedColorless = Math.max(0, (cost.colorless || 0) - colorlessReduction);
   const adjustedTotal = Math.max(0, cost.total - colorlessReduction);
 
