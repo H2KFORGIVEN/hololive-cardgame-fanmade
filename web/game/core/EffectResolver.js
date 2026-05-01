@@ -293,6 +293,67 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'CHEER_FROM_DECK_TOP_TO_MEMBER') {
+    // Player picked an own member to receive 1 cheer card from the TOP of
+    // their cheer deck. Used by cards like hBP07-053 / hBP07-054 art1
+    // (「將自己吶喊牌組上方的1張牌發送給...成員」). Distinct from
+    // CHEER_FROM_ARCHIVE_TO_MEMBER which pulls from archive.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    const cheerDeck = player.zones['cheerDeck'];
+    if (target && cheerDeck && cheerDeck.length > 0) {
+      const cheer = cheerDeck.shift();
+      cheer.faceDown = false;
+      if (!target.attachedCheer) target.attachedCheer = [];
+      target.attachedCheer.push(cheer);
+      addLog(state, prompt.player, `吶喊牌組頂 → ${selected.name || getCard(target.cardId)?.name || ''}`);
+    } else if (!cheerDeck || cheerDeck.length === 0) {
+      addLog(state, prompt.player, `吶喊牌組空 — 無法送吶喊`);
+    }
+
+  } else if (action === 'CHEER_DECK_REVEAL_MATCH_TO_MEMBER') {
+    // Reveal cheer cards from cheer-deck top until one matches a target's
+    // color (or filter); send that cheer to the picked member; reshuffle
+    // the rest. Used by hBP01-094 「クロにちは！」 — match cheer color
+    // to the picked member's color.
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    const targetColor = getCard(target?.cardId)?.color;
+    const cheerDeck = player.zones['cheerDeck'];
+    if (target && targetColor && cheerDeck && cheerDeck.length > 0) {
+      let pickIdx = -1;
+      for (let i = 0; i < cheerDeck.length; i++) {
+        const cd = getCard(cheerDeck[i].cardId);
+        if (cd?.color === targetColor) { pickIdx = i; break; }
+      }
+      if (pickIdx >= 0) {
+        const cheer = cheerDeck.splice(pickIdx, 1)[0];
+        cheer.faceDown = false;
+        if (!target.attachedCheer) target.attachedCheer = [];
+        target.attachedCheer.push(cheer);
+        addLog(state, prompt.player, `${targetColor} 吶喊 → ${selected.name || getCard(target.cardId)?.name || ''}`);
+      } else {
+        addLog(state, prompt.player, `吶喊牌組無 ${targetColor} 色卡`);
+      }
+      // Reshuffle (real text says reshuffle after)
+      shuffleArr(cheerDeck);
+    }
+
+  } else if (action === 'ATTACH_FROM_ARCHIVE_TO_MEMBER') {
+    // Player picked which support card from archive to attach to the
+    // member that triggered the effect (prompt.targetInstanceId).
+    // Used by hBP07-052 「お時間ですわ！」 (pick mascot) and similar.
+    const archive = player.zones['archive'];
+    const archiveIdx = archive.findIndex(c => c.instanceId === selected.instanceId);
+    const target = prompt.targetInstanceId
+      ? getAllMembers(player).find(m => m.instanceId === prompt.targetInstanceId)
+      : null;
+    if (archiveIdx >= 0 && target) {
+      const card = archive.splice(archiveIdx, 1)[0];
+      card.faceDown = false;
+      if (!target.attachedSupport) target.attachedSupport = [];
+      target.attachedSupport.push(card);
+      addLog(state, prompt.player, `存檔 ${selected.name || getCard(card.cardId)?.name || ''} → 附加給 ${getCard(target.cardId)?.name || '成員'}`);
+    }
+
   } else if (action === 'OPP_MEMBER_DAMAGE') {
     // Player picked one of opponent's stage members to receive special damage.
     // amount carried on prompt.damageAmount. Triggers post-damage sweep so
