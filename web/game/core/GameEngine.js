@@ -660,7 +660,7 @@ function processUseArt(state, action) {
   // K-3 passive observer chain query both sides' stages for incoming-damage
   // modifiers (hBP04-074 アーニャ self+collab −10, hBP04-087 エリザベス
   // collab → own Debut center −20, etc.).
-  const result = applyDamage(target, totalDmg, state, 1 - p);
+  const result = applyDamage(target, totalDmg, state, 1 - p, attacker);
   const { currentDamage = 0, maxHp = 0 } = result;
   addLog(state, `  對 ${getCard(target.cardId)?.name || ''} 造成 ${totalDmg} 傷害 (${currentDamage}/${maxHp})`);
 

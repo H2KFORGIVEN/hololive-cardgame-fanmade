@@ -212,7 +212,7 @@ export function registerNoelDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP05-008', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
     state, resolved: true,
-    log: 'まっするまっする: 中心 #3期生 Debut 減傷 20（引擎尚未支援傷害減免 hook，需手動）',
+    log: 'まっするまっする: 中心 #3期生 Debut 減傷 20（已透過 DamageCalculator 觀察者鏈支援）',
   }));
 
   // ─────────────────────────────────────────────────────────────────────

@@ -50,7 +50,7 @@ export function calculateDamage(attackerInstance, artIndex, targetInstance) {
 // Pass `state` (game state) and `targetPlayerIdx` (target's player index) so
 // the passive observer can find the target's stage. Legacy 2-arg call still
 // works with no passive observer.
-export function applyDamage(memberInstance, amount, state = null, targetPlayerIdx = null) {
+export function applyDamage(memberInstance, amount, state = null, targetPlayerIdx = null, attacker = null) {
   const card = getCard(memberInstance.cardId);
   if (!card || !card.hp) return { knockedDown: false };
 
@@ -60,8 +60,10 @@ export function applyDamage(memberInstance, amount, state = null, targetPlayerId
   // K-3: passive observer chain — walk own stage for passives that modify
   // incoming damage to this target. Done inline (small number of known
   // passives; expanded as needed). Negative modifier = damage reduction.
+  // Phase 2.4 #4: attacker passed through so position-aware modifiers
+  // (e.g. "from opp center -10") can check the attacker's zone.
   if (state && targetPlayerIdx != null) {
-    received = Math.max(0, received + _getStagePassiveDamageReceivedModifier(state, memberInstance, targetPlayerIdx));
+    received = Math.max(0, received + _getStagePassiveDamageReceivedModifier(state, memberInstance, targetPlayerIdx, attacker));
   }
 
   memberInstance.damage += received;
@@ -99,6 +101,45 @@ const _STAGE_PASSIVE_DAMAGE_RECEIVED = {
     if (getCard(target.cardId)?.bloom !== 'Debut') return 0;
     return -20;
   },
+  // Phase 2.4 #4 — preventDamage hook expansions:
+  // hBP05-008 まっするまっする: observer in collab + target is own #3期生 Debut center → −20
+  'hBP05-008': (state, observer, target, ownIdx) => {
+    const own = state.players[ownIdx];
+    if (!own || own.zones.collab?.instanceId !== observer.instanceId) return 0;
+    if (own.zones.center?.instanceId !== target.instanceId) return 0;
+    const card = getCard(target.cardId);
+    if (!card || card.bloom !== 'Debut') return 0;
+    const tag = card.tag || '';
+    const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+    if (!tagStr.includes('#3期生')) return 0;
+    return -20;
+  },
+  // hBP05-069 とびきりの笑顔: target IS observer + observer in backstage → full immunity from OPP
+  // Real text: "[限定舞台後方]這個成員不會受到對手傷害" — only zeroes incoming OPP damage.
+  // We zero it by returning a large negative; applyDamage clamps received to ≥0.
+  'hBP05-069': (state, observer, target, ownIdx, attacker) => {
+    if (target.instanceId !== observer.instanceId) return 0;
+    const own = state.players[ownIdx];
+    if (!own) return 0;
+    const inBackstage = (own.zones.backstage || []).some(m => m.instanceId === observer.instanceId);
+    if (!inBackstage) return 0;
+    // Only neutralize damage from OPP; allow self-inflicted (attacker null = unknown,
+    // be conservative and apply only when attacker is known + not own).
+    if (!attacker) return 0;
+    const ownStage = [own.zones.center, own.zones.collab, ...(own.zones.backstage || [])].filter(Boolean);
+    const isOwnAttacker = ownStage.some(m => m.instanceId === attacker.instanceId);
+    if (isOwnAttacker) return 0;
+    return -9999; // clamped to 0 by applyDamage
+  },
+  // hSD19-005 ダンスレッスンなんですｹｰﾄﾞ: target IS observer + attacker is OPP CENTER → −10
+  'hSD19-005': (state, observer, target, ownIdx, attacker) => {
+    if (target.instanceId !== observer.instanceId) return 0;
+    if (!attacker) return 0;
+    const opp = state.players[1 - ownIdx];
+    if (!opp) return 0;
+    if (opp.zones.center?.instanceId !== attacker.instanceId) return 0;
+    return -10;
+  },
 };
 
 // Position-aware passive observers driven by ATTACHED SUPPORT cards. Keyed
@@ -115,7 +156,7 @@ const _SUPPORT_PASSIVE_DAMAGE_RECEIVED = {
   },
 };
 
-function _getStagePassiveDamageReceivedModifier(state, target, ownIdx) {
+function _getStagePassiveDamageReceivedModifier(state, target, ownIdx, attacker = null) {
   const own = state.players[ownIdx];
   if (!own) return 0;
   let total = 0;
@@ -127,13 +168,13 @@ function _getStagePassiveDamageReceivedModifier(state, target, ownIdx) {
     // Member-driven passives (e.g. hBP04-074 アーニャ effectG)
     const fn = _STAGE_PASSIVE_DAMAGE_RECEIVED[observer.cardId];
     if (typeof fn === 'function') {
-      total += fn(state, observer, target, ownIdx) || 0;
+      total += fn(state, observer, target, ownIdx, attacker) || 0;
     }
     // Support-driven passives needing position context (e.g. hBP01-121 Kotori)
     for (const sup of (observer.attachedSupport || [])) {
       const supFn = _SUPPORT_PASSIVE_DAMAGE_RECEIVED[sup.cardId];
       if (typeof supFn === 'function') {
-        total += supFn(state, observer, target, ownIdx) || 0;
+        total += supFn(state, observer, target, ownIdx, attacker) || 0;
       }
     }
   }

@@ -316,7 +316,7 @@ export function registerFubukiDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP05-069', HOOK.ON_PASSIVE_GLOBAL, (state, ctx) => ({
     state, resolved: true,
-    log: 'とびきりの笑顔: [限定後台] 此成員不會受傷（引擎尚未支援 preventDamage hook，需手動）',
+    log: 'とびきりの笑顔: [限定後台] 此成員不會受對手傷害（已透過 DamageCalculator 觀察者鏈支援）',
   }));
   reg('hBP05-069', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };

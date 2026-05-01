@@ -1541,6 +1541,83 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #4 — preventDamage hook (DamageCalculator observer chain)
+// ══════════════════════════════════════════════════════════════════
+section('preventDamage observer chain (Phase 2.4 #4)');
+
+const { applyDamage: applyDamageFn } = await import(new URL('../web/game/core/DamageCalculator.js', import.meta.url));
+
+{
+  // hBP05-008 (ノエル) effectG: collab observer + own #3期生 Debut center → −20 incoming
+  // Pick a real #3期生 Debut card from the database.
+  const allCards = JSON.parse(fs.readFileSync(path.join(ROOT, 'web/data/cards.json'), 'utf8'));
+  const debut3rd = allCards.find(c => c.bloom === 'Debut' && (c.tag || '').includes('#3期生') && c.hp);
+  if (!debut3rd) {
+    warn('hBP05-008 reduction setup', 'no #3期生 Debut card with hp in database');
+  } else {
+    const observer = makeMember('hBP05-008', 8001);
+    const target = makeMember(debut3rd.id, 8002);
+    const attacker = makeMember('hBP01-038', 8003);
+    const state = makeMinState(target, observer, [], null);
+    state.players[1].zones.center = attacker;
+    const before = target.damage;
+    applyDamageFn(target, 30, state, 0, attacker);
+    const reduced = target.damage === before + 10;  // 30 - 20 = 10
+    if (reduced) pass(`hBP05-008 reduces #3期生 Debut center damage by 20 (30 → ${target.damage - before})`);
+    else fail('hBP05-008 reduction', `expected +10 dmg, got +${target.damage - before}`);
+  }
+}
+
+{
+  // hBP05-069 (フブキ) effectG: target=this + in backstage + opp attacker → full immunity
+  const observer = makeMember('hBP05-069', 8101);
+  const attacker = makeMember('hBP01-038', 8102);
+  const state = makeMinState(null, null, [observer], null);
+  state.players[1].zones.center = attacker;
+  const before = observer.damage;
+  applyDamageFn(observer, 50, state, 0, attacker);
+  if (observer.damage === before) pass('hBP05-069 in backstage: opp damage neutralized to 0');
+  else fail('hBP05-069 immunity', `expected 0 dmg, got ${observer.damage - before}`);
+}
+
+{
+  // hBP05-069 — should NOT immune if observer is in CENTER (limited to backstage)
+  const observer = makeMember('hBP05-069', 8201);
+  const attacker = makeMember('hBP01-038', 8202);
+  const state = makeMinState(observer, null, [], null);
+  state.players[1].zones.center = attacker;
+  const before = observer.damage;
+  applyDamageFn(observer, 50, state, 0, attacker);
+  if (observer.damage === before + 50) pass('hBP05-069 in center: NOT immune (50 dmg applied)');
+  else fail('hBP05-069 center sanity', `expected +50 dmg, got +${observer.damage - before}`);
+}
+
+{
+  // hSD19-005 (スバル) effectG: target=this + attacker is opp CENTER → −10
+  const observer = makeMember('hSD19-005', 8301);
+  const attacker = makeMember('hBP01-038', 8302);
+  const state = makeMinState(observer, null, [], null);
+  state.players[1].zones.center = attacker;
+  const before = observer.damage;
+  applyDamageFn(observer, 30, state, 0, attacker);
+  const reduced = observer.damage === before + 20;  // 30 - 10 = 20
+  if (reduced) pass(`hSD19-005: opp center attacker → −10 (30 → ${observer.damage - before})`);
+  else fail('hSD19-005 reduction', `expected +20 dmg, got +${observer.damage - before}`);
+}
+
+{
+  // hSD19-005 should NOT reduce if attacker is opp COLLAB (only opp center triggers it)
+  const observer = makeMember('hSD19-005', 8401);
+  const attacker = makeMember('hBP01-040', 8402);
+  const state = makeMinState(observer, null, [], null);
+  state.players[1].zones.collab = attacker;  // collab, not center
+  const before = observer.damage;
+  applyDamageFn(observer, 30, state, 0, attacker);
+  if (observer.damage === before + 30) pass('hSD19-005: opp collab attacker → no reduction (30 dmg applied)');
+  else fail('hSD19-005 collab sanity', `expected +30 dmg, got +${observer.damage - before}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Summary
 // ══════════════════════════════════════════════════════════════════
 console.log('\n' + '═'.repeat(60));
