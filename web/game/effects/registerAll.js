@@ -25,6 +25,7 @@ import { registerChocoyuDeck } from './handlers/chocoyu-deck.js';
 import { registerMikoDeck } from './handlers/miko-deck.js';
 import { registerSuiseiDeck } from './handlers/suisei-deck.js';
 import { registerFlareDeck } from './handlers/flare-deck.js';
+import { registerNeneDeck } from './handlers/nene-deck.js';
 
 let _initialized = false;
 
@@ -102,6 +103,7 @@ export async function initEffects() {
   counts.mikoDeck = registerMikoDeck();
   counts.suiseiDeck = registerSuiseiDeck();
   counts.flareDeck = registerFlareDeck();
+  counts.neneDeck = registerNeneDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
