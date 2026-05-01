@@ -1297,6 +1297,245 @@ function makeInstance(cardId, overrides = {}) {
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 — cost-bearing cheer→archive afterAction tests
+// ══════════════════════════════════════════════════════════════════
+section('Cost-bearing cheer→archive (Phase 2.4)');
+
+// Helpers — build a synthetic state inline; no need to play through.
+function makeMember(cardId, instanceId, opts = {}) {
+  return {
+    cardId,
+    instanceId,
+    faceDown: false,
+    damage: opts.damage || 0,
+    attachedCheer: (opts.cheer || []).map((c, i) => ({
+      cardId: c.cardId, instanceId: c.instanceId || (instanceId * 100 + i + 1), faceDown: false,
+    })),
+    attachedSupport: opts.support || [],
+    bloomStack: [],
+  };
+}
+
+function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = []) {
+  return {
+    turnNumber: 1,
+    activePlayer: 0,
+    phase: PHASE.PERFORMANCE,
+    log: [],
+    pendingEffect: null,
+    pendingEffectQueue: [],
+    players: [
+      {
+        oshi: { cardId: 'hBP01-001', usedSp: false },
+        zones: {
+          center: p0Center, collab: p0Collab, backstage: p0Backstage,
+          hand: [], deck: [], cheerDeck: [], holoPower: [], life: [], archive: [],
+        },
+        usedCollab: false, usedBaton: false, usedLimited: false,
+        performedArts: { center: false, collab: false },
+        _oncePerTurn: {}, _oncePerGame: {},
+      },
+      {
+        oshi: { cardId: 'hBP01-002', usedSp: false },
+        zones: {
+          center: p1Center, collab: null, backstage: p1Backstage,
+          hand: [], deck: [], cheerDeck: [], holoPower: [], life: [], archive: [],
+        },
+        usedCollab: false, usedBaton: false, usedLimited: false,
+        performedArts: { center: false, collab: false },
+        _oncePerTurn: {}, _oncePerGame: {},
+      },
+    ],
+  };
+}
+
+{
+  // Test: ARCHIVE_OWN_CHEER_THEN_DMG with damageTarget='opp_center' single target
+  const cheer = { cardId: 'hY01-001', instanceId: 9001 };  // assume y card in db
+  const member = makeMember('hBP05-028', 1, { cheer: [cheer] });
+  const oppCenter = makeMember('hBP01-038', 100);
+  const state = makeMinState(member, null, [], oppCenter, []);
+  // Sanity: cheer attached
+  if (state.players[0].zones.center.attachedCheer.length !== 1) {
+    fail('ARCHIVE_OWN_CHEER_THEN_DMG setup', 'cheer not attached');
+  } else {
+    const archiveBefore = state.players[0].zones.archive.length;
+    const dmgBefore = state.players[1].zones.center.damage;
+    resolveEffectChoice(state, {
+      type: 'SELECT_OWN_CHEER',
+      player: 0,
+      cards: [{ instanceId: 9001, cardId: 'hY01-001', name: 'cheer', image: '' }],
+      maxSelect: 1,
+      afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+      damageAmount: 30,
+      damageTarget: 'opp_center',
+    }, { instanceId: 9001, name: 'cheer' });
+
+    const cheerArchived = state.players[0].zones.archive.length === archiveBefore + 1;
+    const dmgApplied = state.players[1].zones.center.damage === dmgBefore + 30;
+    const memberCheerCleared = state.players[0].zones.center.attachedCheer.length === 0;
+    const noPending = state.pendingEffect === null;
+    if (cheerArchived && dmgApplied && memberCheerCleared && noPending) {
+      pass('ARCHIVE_OWN_CHEER_THEN_DMG opp_center: cheer→archive + 30 dmg + clean state');
+    } else {
+      fail('ARCHIVE_OWN_CHEER_THEN_DMG opp_center',
+        `archived=${cheerArchived} dmg=${dmgApplied} cleared=${memberCheerCleared} noPending=${noPending}`);
+    }
+  }
+}
+
+{
+  // Test: damageTarget='opp_center_or_collab' with both opp center+collab present → queues SELECT_TARGET
+  const cheer = { cardId: 'hY01-001', instanceId: 9002 };
+  const member = makeMember('hBP03-021', 2, { cheer: [cheer] });
+  const oppCenter = makeMember('hBP01-038', 200);
+  const oppCollab = makeMember('hBP01-040', 201);
+  const state = makeMinState(null, member, [], oppCenter, []);
+  state.players[1].zones.collab = oppCollab;
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_CHEER',
+    player: 0,
+    cards: [{ instanceId: 9002, cardId: 'hY01-001', name: 'cheer', image: '' }],
+    maxSelect: 1,
+    afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+    damageAmount: 40,
+    damageTarget: 'opp_center_or_collab',
+  }, { instanceId: 9002, name: 'cheer' });
+
+  const queuedPicker = state.pendingEffect &&
+    state.pendingEffect.type === 'SELECT_TARGET' &&
+    state.pendingEffect.afterAction === 'OPP_MEMBER_DAMAGE' &&
+    state.pendingEffect.damageAmount === 40 &&
+    Array.isArray(state.pendingEffect.cards) &&
+    state.pendingEffect.cards.length === 2;
+  if (queuedPicker) {
+    pass('ARCHIVE_OWN_CHEER_THEN_DMG opp_center_or_collab: queues SELECT_TARGET picker with both targets');
+  } else {
+    fail('ARCHIVE_OWN_CHEER_THEN_DMG opp_center_or_collab queue',
+      `pendingEffect=${JSON.stringify(state.pendingEffect)?.slice(0, 200)}`);
+  }
+}
+
+{
+  // Test: damageTarget='opp_center_AND_pick_backstage' applies to center, queues backstage picker
+  const cheer = { cardId: 'hY02-001', instanceId: 9003 };  // blue cheer
+  const member = makeMember('hSD03-006', 3, { cheer: [cheer] });
+  const oppCenter = makeMember('hBP01-038', 300);
+  const oppBackA = makeMember('hBP01-040', 301);
+  const oppBackB = makeMember('hBP01-042', 302);
+  const state = makeMinState(member, null, [], oppCenter, [oppBackA, oppBackB]);
+
+  const centerDmgBefore = oppCenter.damage;
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_CHEER',
+    player: 0,
+    cards: [{ instanceId: 9003, cardId: 'hY02-001', name: 'cheer', image: '' }],
+    maxSelect: 1,
+    afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+    damageAmount: 10,
+    damageTarget: 'opp_center_AND_pick_backstage',
+  }, { instanceId: 9003, name: 'cheer' });
+
+  const centerDmgApplied = state.players[1].zones.center.damage === centerDmgBefore + 10;
+  const backstagePickerQueued = state.pendingEffect &&
+    state.pendingEffect.type === 'SELECT_TARGET' &&
+    Array.isArray(state.pendingEffect.cards) &&
+    state.pendingEffect.cards.length === 2;
+  if (centerDmgApplied && backstagePickerQueued) {
+    pass('ARCHIVE_OWN_CHEER_THEN_DMG opp_center_AND_pick_backstage: center hit + backstage picker queued');
+  } else {
+    fail('ARCHIVE_OWN_CHEER_THEN_DMG center+backstage',
+      `centerDmg=${centerDmgApplied} pickerQueued=${backstagePickerQueued}`);
+  }
+}
+
+{
+  // Test: maxSelect=2 re-emit pattern — first pick re-emits, second pick applies damage
+  const c1 = { cardId: 'hY02-001', instanceId: 9101 };  // blue
+  const c2 = { cardId: 'hY02-001', instanceId: 9102 };  // blue
+  const member = makeMember('hSD03-009', 4, { cheer: [c1, c2] });
+  const oppCenter = makeMember('hBP01-038', 400);
+  const state = makeMinState(member, null, [], oppCenter, []);
+
+  // First pick — should re-emit, no damage yet
+  const cards = [
+    { instanceId: c1.instanceId, cardId: 'hY02-001', name: 'cheer1', image: '' },
+    { instanceId: c2.instanceId, cardId: 'hY02-001', name: 'cheer2', image: '' },
+  ];
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_CHEER',
+    player: 0,
+    cards,
+    maxSelect: 2,
+    afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+    damageAmount: 30,
+    damageTarget: 'opp_center',
+  }, { instanceId: c1.instanceId, name: 'cheer1' });
+
+  const firstReemitted = state.pendingEffect &&
+    state.pendingEffect.maxSelect === 1 &&
+    state.pendingEffect.cards?.length === 1;
+  const cheerStillOnMember = state.players[0].zones.center.attachedCheer.length === 1;
+  const noDmgYet = state.players[1].zones.center.damage === 0;
+  if (!firstReemitted || !cheerStillOnMember || !noDmgYet) {
+    fail('maxSelect=2 first pick re-emit',
+      `reemit=${firstReemitted} cheerLeft=${cheerStillOnMember} noDmg=${noDmgYet}`);
+  } else {
+    // Second pick — should apply damage now
+    resolveEffectChoice(state, state.pendingEffect, { instanceId: c2.instanceId, name: 'cheer2' });
+    const finalDmg = state.players[1].zones.center.damage === 30;
+    const cheerAllArchived = state.players[0].zones.center.attachedCheer.length === 0;
+    const archiveHasBoth = state.players[0].zones.archive.length === 2;
+    const noPending = state.pendingEffect === null;
+    if (finalDmg && cheerAllArchived && archiveHasBoth && noPending) {
+      pass('maxSelect=2 cheer cost: re-emit then apply 30 dmg on final pick');
+    } else {
+      fail('maxSelect=2 cheer cost final pick',
+        `dmg=${finalDmg} cleared=${cheerAllArchived} archive2=${archiveHasBoth} noPending=${noPending}`);
+    }
+  }
+}
+
+{
+  // Test: followupSearch field queues a SEARCH_SELECT after archive
+  const cheer = { cardId: 'hY01-001', instanceId: 9201 };
+  const member = makeMember('hBP06-078', 5, { cheer: [cheer] });
+  const oppCenter = makeMember('hBP01-038', 500);
+  const state = makeMinState(member, null, [], oppCenter, []);
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_CHEER',
+    player: 0,
+    cards: [{ instanceId: 9201, cardId: 'hY01-001', name: 'cheer', image: '' }],
+    maxSelect: 1,
+    afterAction: 'ARCHIVE_OWN_CHEER_THEN_DMG',
+    damageAmount: 0,
+    damageTarget: 'none',
+    followupSearch: {
+      type: 'SEARCH_SELECT',
+      player: 0,
+      message: 'pick',
+      cards: [{ instanceId: 999, cardId: 'hX', name: 'x', image: '' }],
+      maxSelect: 1,
+      afterAction: 'ADD_TO_HAND',
+    },
+  }, { instanceId: 9201, name: 'cheer' });
+
+  const followupQueued = state.pendingEffect &&
+    state.pendingEffect.type === 'SEARCH_SELECT' &&
+    state.pendingEffect.afterAction === 'ADD_TO_HAND';
+  const cheerArchived = state.players[0].zones.archive.length === 1;
+  const noDmg = state.players[1].zones.center.damage === 0;
+  if (followupQueued && cheerArchived && noDmg) {
+    pass('followupSearch: cheer archived + SEARCH_SELECT queued + no damage');
+  } else {
+    fail('followupSearch chain',
+      `queued=${followupQueued} archived=${cheerArchived} noDmg=${noDmg}`);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Summary
 // ══════════════════════════════════════════════════════════════════
 console.log('\n' + '═'.repeat(60));
