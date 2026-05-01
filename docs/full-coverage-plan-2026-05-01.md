@@ -22,14 +22,31 @@
 | Phase 3 | #4 すいせい（星街すいせい）20 cards | ✅ DONE | `bb5ab9a` |
 | Phase 3 | #5 フレア（不知火フレア）20 cards | ✅ DONE | `4577ca8` |
 | Phase 3 | #6 ねね（桃鈴ねね）13 cards | ✅ DONE | `c21b3ea` |
-| Phase 3 | #7-22 (16 more decks) | ⏳ PENDING |
+| Phase 3 | #7 フブキ（白上フブキ）22 cards | ✅ DONE | `8b6f9d1` |
+| Phase 3 | #8 ペコラ（兎田ぺこら）15 cards | ✅ DONE | `27ccb8b` |
+| Phase 3 | #9 ノエル（白銀ノエル）15 cards | ✅ DONE | `ae196e5` |
+| Phase 3 | #10 ぼたん（獅白ぼたん）9 cards | ✅ DONE | `8d54362` |
+| Phase 3 | #11-22 (12 more decks) | ⏳ PENDING |
 | **Phase 4** | CI gate / integration tests | ⏳ PENDING |
 
-**Phase 3 progress: 6 / 22 decks** — coverage roughly 102 unique cards
-beyond the placeholder fall-throughs. All 6 implemented decks use the
-"no guessing" rule, real card text in spec blocks, proper picker
+**Phase 3 progress: 10 / 22 decks** — coverage ≈ 163 unique cards
+beyond the placeholder fall-throughs. All implemented decks use the
+"no guessing" rule, real card text in 5-line spec blocks, proper picker
 prompts (no auto-pick on ambiguous targets), and the audit precommit
-gate has held steady at 10 HIGH (no new bugs introduced).
+gate has held steady at 10 HIGH (no new bugs introduced). CORRECT-VERIFIED
++61 from baseline; engine gaps explicitly documented per card.
+
+### Engine gaps surfaced by Phase 3 #7-10 (queue for Phase 2.4)
+
+| Need | Affected cards | Priority |
+|---|---|---|
+| `preventDamage` hook (passive damage reduction) | hBP05-008 (ノエル), hBP05-069 (フブキ) | MED |
+| Targeting redirection hook (force opp to target X) | hBP05-010 (ノエル) | MED |
+| Activity-by-name tracking `_activityNamesPlayedThisTurn` | hBP05-010 art1 (ノエル "牛丼") | LOW |
+| Scry-1 with top/bottom choice afterAction | hBP05-068 (フブキ) | MED |
+| Multi-step distribution from archive | hBP05-070 art1 (フブキ), hBP02-012 effectB (フブキ), hBP03-021 effectB (ノエル) | LOW |
+| Cost-bearing optional effect afterAction (cheer→archive + dmg/heal) | hBP03-017/019/021/hBP05-028 (ぼたん) | HIGH |
+| Colorless cost reduction afterAction with picker | hBP07-022 art1 (ノエル) multi-pick path | LOW |
 
 ---
 
