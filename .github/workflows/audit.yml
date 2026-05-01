@@ -31,3 +31,6 @@ jobs:
 
       - name: Run integration tests
         run: node tests/test-runner.mjs
+
+      - name: Run cards.json sync detector
+        run: node tools/audit/cards-sync.mjs
