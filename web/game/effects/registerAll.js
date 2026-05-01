@@ -36,6 +36,7 @@ import { registerIrohaDeck } from './handlers/iroha-deck.js';
 import { registerRadenDeck } from './handlers/raden-deck.js';
 import { registerAzkiDeck } from './handlers/azki-deck.js';
 import { registerAyameDeck } from './handlers/ayame-deck.js';
+import { registerOkayuDeck } from './handlers/okayu-deck.js';
 
 let _initialized = false;
 
@@ -124,6 +125,7 @@ export async function initEffects() {
   counts.radenDeck = registerRadenDeck();
   counts.azkiDeck = registerAzkiDeck();
   counts.ayameDeck = registerAyameDeck();
+  counts.okayuDeck = registerOkayuDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
