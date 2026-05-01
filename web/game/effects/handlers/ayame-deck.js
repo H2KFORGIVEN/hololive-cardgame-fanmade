@@ -189,6 +189,80 @@ export function registerAyameDeck() {
   });
 
   // ─────────────────────────────────────────────────────────────────────
+  // Phase 2.4 #6 — hand-cost overrides for あやめ cards. Each replaces a
+  // pre-existing auto-spend with a proper SELECT_FROM_HAND picker.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // helper: hand cards as picker entries
+  function handPicker(player) {
+    return player.zones[ZONE.HAND].map(c => ({
+      instanceId: c.instanceId, cardId: c.cardId,
+      name: getCard(c.cardId)?.name || '',
+      image: getCardImage(c.cardId),
+    }));
+  }
+
+  // hSD02-006 effectB「お誕生日会」
+  // REAL: 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員20點特殊傷害。
+  // OVERRIDE phaseB-cards.js auto-spend version.
+  reg('hSD02-006', HOOK.ON_BLOOM, (state, ctx) => {
+    if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own.zones[ZONE.HAND].length === 0) return { state, resolved: true, log: 'お誕生日会: 手牌空 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: 'お誕生日会: 選擇 1 張手牌 → 存檔（→ 對手中心或聯動 20 特殊傷害）',
+        cards: handPicker(own), maxSelect: 1,
+        afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+        damageAmount: 20, damageTarget: 'opp_center_or_collab',
+      },
+      log: 'お誕生日会: 選手牌',
+    };
+  });
+
+  // hSD02-008 art2「プレゼント何かな？」
+  // REAL: DMG:50 / 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員50點特殊傷害。
+  reg('hSD02-008', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art2') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own.zones[ZONE.HAND].length === 0) return { state, resolved: true, log: 'プレゼント何かな？: 手牌空 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: 'プレゼント何かな？: 選擇 1 張手牌 → 存檔（→ 對手中心或聯動 50 特殊傷害）',
+        cards: handPicker(own), maxSelect: 1,
+        afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+        damageAmount: 50, damageTarget: 'opp_center_or_collab',
+      },
+      log: 'プレゼント何かな？: 選手牌',
+    };
+  });
+
+  // hSD02-009 art2「余ーだ余」
+  // REAL: DMG:40 / 可以將自己的1~3張手牌放到存檔區：每將1張牌放到存檔區，給予對手的中心成員40點特殊傷害。
+  // perCardScaling: each archived hand card adds another 40 special to opp center.
+  reg('hSD02-009', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art2') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    const handCount = own.zones[ZONE.HAND].length;
+    if (handCount === 0) return { state, resolved: true, log: '余ーだ余: 手牌空 — 跳過' };
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: `余ーだ余: 選擇 1-${Math.min(3, handCount)} 張手牌 → 存檔（每張 40 特殊傷害到對手中心）`,
+        cards: handPicker(own), maxSelect: Math.min(3, handCount),
+        afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+        damageAmount: 40, damageTarget: 'opp_center', perCardScaling: true,
+      },
+      log: '余ーだ余: 選手牌',
+    };
+  });
+
+  // ─────────────────────────────────────────────────────────────────────
   // hSD02-003 百鬼あやめ (Debut SD02) effectC「業」
   // REAL: 給予對手的聯動成員10點特殊傷害。
   // ACTION: 10 special to opp collab

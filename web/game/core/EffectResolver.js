@@ -696,6 +696,126 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'ARCHIVE_HAND_THEN_OPP_DMG') {
+    // Phase 2.4 #6: hand-cost variant for special damage effects.
+    //   cost: archive selected hand card(s) (supports maxSelect>1 re-emit)
+    //   effect: special damage to opp per prompt.damageTarget
+    //
+    // Prompt fields:
+    //   cards: [{instanceId, cardId, name, image}, ...] hand cards
+    //   maxSelect: 1 | 2 | 3 (re-emit with damage scaling on each pick)
+    //   damageAmount: number — damage PER hand archived (multiplied implicitly
+    //                 by re-emit count; the final pick applies the latest amount
+    //                 N times if perCardScaling=true OR just once otherwise)
+    //   perCardScaling: bool — if true, applies damageAmount once per archived
+    //                 card (用途: 「每將1張...存檔，給予 X 點傷害」)
+    //   damageTarget: 'opp_center' | 'opp_center_or_collab' | 'opp_pick'
+    const hand = player.zones['hand'];
+    const idx = hand.findIndex(c => c.instanceId === selected.instanceId);
+    if (idx < 0) {
+      addLog(state, prompt.player, '找不到手牌 — 跳過');
+    } else {
+      const card = hand.splice(idx, 1)[0];
+      player.zones['archive'].push(card);
+      addLog(state, prompt.player, `${getCard(card.cardId)?.name || ''} 從手牌存檔（成本）`);
+
+      // Track running archived count via prompt._costPaid (mutated on re-emit)
+      const costPaid = (prompt._costPaid || 0) + 1;
+
+      // Per-card scaling: apply damage immediately for each archived card
+      if (prompt.perCardScaling) {
+        const opp = state.players[1 - prompt.player];
+        const amount = prompt.damageAmount || 0;
+        const target = prompt.damageTarget;
+        if (amount > 0) {
+          if (target === 'opp_center' && opp.zones['center']) {
+            opp.zones['center'].damage = (opp.zones['center'].damage || 0) + amount;
+            addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+            sweepEffectKnockouts(state);
+          }
+        }
+      }
+
+      // Multi-cost re-emit: if maxSelect > 1, re-emit with picked card removed.
+      if (prompt.maxSelect && prompt.maxSelect > 1 && Array.isArray(prompt.cards)) {
+        const newCards = prompt.cards.filter(c => c.instanceId !== selected.instanceId);
+        if (newCards.length > 0) {
+          const remaining = prompt.maxSelect - 1;
+          const baseMsg = prompt.baseMessage || prompt.message || '';
+          state.pendingEffect = {
+            ...prompt,
+            cards: newCards,
+            maxSelect: remaining,
+            _costPaid: costPaid,
+            message: `${baseMsg}（還可選 ${remaining} 張，可跳過）`,
+            baseMessage: baseMsg,
+          };
+          return state;
+        }
+      }
+
+      // Final pick — apply damage if not per-card-scaling
+      if (!prompt.perCardScaling) {
+        const opp = state.players[1 - prompt.player];
+        const amount = prompt.damageAmount || 0;
+        const tgt = prompt.damageTarget;
+        if (amount > 0) {
+          if (tgt === 'opp_center' && opp.zones['center']) {
+            opp.zones['center'].damage = (opp.zones['center'].damage || 0) + amount;
+            addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+            sweepEffectKnockouts(state);
+          } else if (tgt === 'opp_center_or_collab') {
+            const center = opp.zones['center'];
+            const collab = opp.zones['collab'];
+            if (center && !collab) {
+              center.damage = (center.damage || 0) + amount;
+              addLog(state, prompt.player, `對手中心 ${amount} 特殊傷害`);
+              sweepEffectKnockouts(state);
+            } else if (!center && collab) {
+              collab.damage = (collab.damage || 0) + amount;
+              addLog(state, prompt.player, `對手聯動 ${amount} 特殊傷害`);
+              sweepEffectKnockouts(state);
+            } else if (center && collab) {
+              const targets = [center, collab].map(m => ({
+                instanceId: m.instanceId, cardId: m.cardId,
+                name: getCard(m.cardId)?.name || '',
+              }));
+              state.pendingEffectQueue = state.pendingEffectQueue || [];
+              state.pendingEffectQueue.push({
+                type: 'SELECT_TARGET', player: prompt.player,
+                message: `選擇對手中心或聯動（${amount} 特殊傷害）`,
+                cards: targets, maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+                damageAmount: amount,
+              });
+            } else {
+              addLog(state, prompt.player, '對手前場無成員 — 無傷害');
+            }
+          } else if (tgt === 'opp_pick') {
+            const allOpp = getAllMembers(opp);
+            if (allOpp.length === 0) {
+              addLog(state, prompt.player, '對手無成員 — 無傷害');
+            } else if (allOpp.length === 1) {
+              allOpp[0].damage = (allOpp[0].damage || 0) + amount;
+              addLog(state, prompt.player, `${getCard(allOpp[0].cardId)?.name || ''} ${amount} 特殊傷害`);
+              sweepEffectKnockouts(state);
+            } else {
+              const targets = allOpp.map(m => ({
+                instanceId: m.instanceId, cardId: m.cardId,
+                name: getCard(m.cardId)?.name || '',
+              }));
+              state.pendingEffectQueue = state.pendingEffectQueue || [];
+              state.pendingEffectQueue.push({
+                type: 'SELECT_TARGET', player: prompt.player,
+                message: `選擇對手成員（${amount} 特殊傷害）`,
+                cards: targets, maxSelect: 1, afterAction: 'OPP_MEMBER_DAMAGE',
+                damageAmount: amount,
+              });
+            }
+          }
+        }
+      }
+    }
+
   } else if (action === 'SCRY_PLACE_DECK') {
     // Phase 2.4 #5: scry-1 with top/bottom choice.
     // Prompt fields:

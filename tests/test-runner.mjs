@@ -1541,6 +1541,76 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #6 — ARCHIVE_HAND_THEN_OPP_DMG afterAction
+// ══════════════════════════════════════════════════════════════════
+section('ARCHIVE_HAND_THEN_OPP_DMG (Phase 2.4 #6)');
+
+{
+  // Single hand → opp center direct
+  const handCard = { instanceId: 6001, cardId: 'hY01-001', faceDown: false };
+  const oppCenter = makeMember('hBP01-038', 6002);
+  const state = makeMinState(null, null, [], oppCenter);
+  state.players[0].zones.hand = [handCard];
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_HAND',
+    player: 0,
+    cards: [{ instanceId: 6001, cardId: 'hY01-001', name: 'h1', image: '' }],
+    maxSelect: 1,
+    afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+    damageAmount: 30,
+    damageTarget: 'opp_center',
+  }, { instanceId: 6001, name: 'h1' });
+
+  const archived = state.players[0].zones.archive.length === 1;
+  const handEmpty = state.players[0].zones.hand.length === 0;
+  const dmgApplied = state.players[1].zones.center.damage === 30;
+  if (archived && handEmpty && dmgApplied) {
+    pass('ARCHIVE_HAND_THEN_OPP_DMG opp_center: hand→archive + 30 dmg');
+  } else {
+    fail('ARCHIVE_HAND_THEN_OPP_DMG opp_center',
+      `archived=${archived} handEmpty=${handEmpty} dmg=${dmgApplied}`);
+  }
+}
+
+{
+  // perCardScaling: 2 hand archived → 2× damage applied
+  const h1 = { instanceId: 6101, cardId: 'hY01-001', faceDown: false };
+  const h2 = { instanceId: 6102, cardId: 'hY01-001', faceDown: false };
+  const h3 = { instanceId: 6103, cardId: 'hY01-001', faceDown: false };
+  const oppCenter = makeMember('hBP01-038', 6104);
+  const state = makeMinState(null, null, [], oppCenter);
+  state.players[0].zones.hand = [h1, h2, h3];
+
+  const cards = [h1, h2, h3].map(c => ({ instanceId: c.instanceId, cardId: c.cardId, name: 'h', image: '' }));
+
+  // Pick h1 — should re-emit
+  resolveEffectChoice(state, {
+    type: 'SELECT_FROM_HAND',
+    player: 0,
+    cards,
+    maxSelect: 3,
+    afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+    damageAmount: 40,
+    damageTarget: 'opp_center',
+    perCardScaling: true,
+  }, { instanceId: 6101, name: 'h1' });
+
+  const dmgAfter1 = state.players[1].zones.center.damage;
+  // Pick h2 — should apply more damage
+  resolveEffectChoice(state, state.pendingEffect, { instanceId: 6102, name: 'h2' });
+  const dmgAfter2 = state.players[1].zones.center.damage;
+
+  // 2 picks should = 80 damage; pendingEffect still active (max=1 remaining)
+  if (dmgAfter1 === 40 && dmgAfter2 === 80 && state.pendingEffect?.maxSelect === 1) {
+    pass('ARCHIVE_HAND_THEN_OPP_DMG perCardScaling: 2 picks → 2×40=80 dmg, prompt continues');
+  } else {
+    fail('ARCHIVE_HAND_THEN_OPP_DMG perCardScaling',
+      `dmg1=${dmgAfter1} dmg2=${dmgAfter2} maxSelect=${state.pendingEffect?.maxSelect}`);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 // Phase 2.4 #5 — SCRY_PLACE_DECK afterAction (top↑/↓ choice)
 // ══════════════════════════════════════════════════════════════════
 section('SCRY_PLACE_DECK afterAction (Phase 2.4 #5)');

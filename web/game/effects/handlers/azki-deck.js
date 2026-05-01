@@ -222,6 +222,35 @@ export function registerAzkiDeck() {
   // LIMITS: art-time
   // CONDITIONS: art1: ときのそら on stage + cheer deck non-empty
   // ─────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────
+  // Phase 2.4 #6 — hBP07-067 art1 hand-cost override (top50 had auto-spend)
+  // hBP07-067 art1「君と二人きりの夜」
+  // REAL: DMG:40 / 可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員20點特殊傷害。
+  // ─────────────────────────────────────────────────────────────────────
+  reg('hBP07-067', HOOK.ON_ART_DECLARE, (state, ctx) => {
+    if (ctx.artKey !== 'art1') return { state, resolved: true };
+    const own = state.players[ctx.player];
+    if (own.zones[ZONE.HAND].length === 0) return { state, resolved: true, log: '君と二人きりの夜: 手牌空 — 跳過' };
+    const handPicker = own.zones[ZONE.HAND].map(c => ({
+      instanceId: c.instanceId, cardId: c.cardId,
+      name: getCard(c.cardId)?.name || '',
+      image: getCardImage(c.cardId),
+    }));
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_FROM_HAND', player: ctx.player,
+        message: '君と二人きりの夜: 選擇 1 張手牌 → 存檔（→ 對手中心或聯動 20 特殊傷害）',
+        cards: handPicker, maxSelect: 1,
+        afterAction: 'ARCHIVE_HAND_THEN_OPP_DMG',
+        damageAmount: 20, damageTarget: 'opp_center_or_collab',
+      },
+      log: '君と二人きりの夜: 選手牌',
+    };
+  });
+  // Suppress top50's auto-spend ON_ART_RESOLVE
+  reg('hBP07-067', HOOK.ON_ART_RESOLVE, (state, ctx) => ({ state, resolved: true }));
+
   reg('hSD01-011', HOOK.ON_ART_DECLARE, (state, ctx) => {
     const own = state.players[ctx.player];
     if (ctx.artKey === 'art1') {
