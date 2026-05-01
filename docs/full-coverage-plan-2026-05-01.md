@@ -4,6 +4,21 @@
 **動機**：使用者指出「修一塊查一塊」會永遠修不完。這份規劃涵蓋
 **所有 1682 張卡片**，每個 hook、每個 handler、每個檔案，沒有 out-of-scope。
 
+## ✅ 進度更新（2026-05-01 中午）
+
+| Phase | 子項 | 狀態 | Commit |
+|---|---|---|---|
+| **Phase 1** | 1.1 audit script v3 | ✅ DONE | `41ccebb` |
+| Phase 1 | 1.2 precommit gate | ✅ DONE | `41ccebb` |
+| Phase 1 | 1.3 dashboard generator | ✅ DONE | `41ccebb` |
+| **Phase 2** | 2.1 7 picker afterActions | ✅ DONE | `f89dff1` |
+| Phase 2 | 2.2 5 state fields | ✅ DONE | `f89dff1` |
+| Phase 2 | 2.3.1 first-turn bloom permission | ✅ DONE | `f89dff1` |
+| Phase 2 | 2.3.2 cross-bloom | ⏸️ DEFERRED (documented in code) | — |
+| Phase 2 | 2.3.3 colorless cost reduction | ✅ DONE | `f89dff1` |
+| **Phase 3** | per-deck implementations | 🟡 IN-PROGRESS（クロニー done, others pending）|
+| **Phase 4** | CI gate / integration tests | ⏳ PENDING |
+
 ---
 
 ## 立場（永久）
