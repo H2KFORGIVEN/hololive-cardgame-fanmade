@@ -32,6 +32,7 @@ import { registerNoelDeck } from './handlers/noel-deck.js';
 import { registerBotanDeck } from './handlers/botan-deck.js';
 import { registerCalliopeDeck } from './handlers/calliope-deck.js';
 import { registerSubaruDeck } from './handlers/subaru-deck.js';
+import { registerIrohaDeck } from './handlers/iroha-deck.js';
 
 let _initialized = false;
 
@@ -116,6 +117,7 @@ export async function initEffects() {
   counts.botanDeck = registerBotanDeck();
   counts.calliopeDeck = registerCalliopeDeck();
   counts.subaruDeck = registerSubaruDeck();
+  counts.irohaDeck = registerIrohaDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
