@@ -200,7 +200,51 @@ export function registerFubukiDeck() {
   // ─────────────────────────────────────────────────────────────────────
   reg('hBP02-012', HOOK.ON_BLOOM, (state, ctx) => {
     if (ctx.triggerEvent && ctx.triggerEvent !== 'self') return { state, resolved: true };
-    return { state }; // MANUAL_EFFECT — multi-step source+target picker
+    // Phase 2.4 #14: 2-step picker via PICK_MASCOT_SOURCE → SUPPORT_MOVE chain.
+    const own = state.players[ctx.player];
+    const mascotBearers = getStageMembers(own).filter(m =>
+      (m.inst.attachedSupport || []).some(s => getCard(s.cardId)?.type === '支援・吉祥物')
+    );
+    if (mascotBearers.length === 0) return { state, resolved: true, log: 'ちょっと動かしますね: 舞台無帶吉祥物成員' };
+    const stageCount = getStageMembers(own).length;
+    if (stageCount < 2) return { state, resolved: true, log: 'ちょっと動かしますね: 無可接收成員' };
+    if (mascotBearers.length === 1) {
+      // Auto-pick the only source — fall through to SUPPORT_MOVE prompt directly
+      const source = mascotBearers[0].inst;
+      const mascotIdx = (source.attachedSupport || []).findIndex(s =>
+        getCard(s.cardId)?.type === '支援・吉祥物'
+      );
+      const targets = getStageMembers(own).filter(m => m.inst.instanceId !== source.instanceId);
+      return {
+        state, resolved: false,
+        prompt: {
+          type: 'SELECT_OWN_MEMBER', player: ctx.player,
+          message: 'ちょっと動かしますね: 選擇接收吉祥物的成員',
+          cards: targets.map(m => ({
+            instanceId: m.inst.instanceId, cardId: m.inst.cardId,
+            name: getCard(m.inst.cardId)?.name || '',
+          })),
+          maxSelect: 1, afterAction: 'SUPPORT_MOVE',
+          sourceInstanceId: source.instanceId,
+          supportIndex: mascotIdx,
+        },
+        log: 'ちょっと動かしますね: 選接收成員（自動選源）',
+      };
+    }
+    // Multi sources — 2-step picker chain
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER', player: ctx.player,
+        message: 'ちょっと動かしますね: 選擇要移動的吉祥物所在成員（步驟 1/2）',
+        cards: mascotBearers.map(m => ({
+          instanceId: m.inst.instanceId, cardId: m.inst.cardId,
+          name: getCard(m.inst.cardId)?.name || '',
+        })),
+        maxSelect: 1, afterAction: 'PICK_MASCOT_SOURCE',
+      },
+      log: 'ちょっと動かしますね: 選源成員',
+    };
   });
   reg('hBP02-012', HOOK.ON_ART_DECLARE, (state, ctx) => {
     if (ctx.artKey !== 'art1') return { state, resolved: true };

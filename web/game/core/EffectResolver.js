@@ -696,6 +696,53 @@ export function resolveEffectChoice(state, prompt, selected) {
       }
     }
 
+  } else if (action === 'PICK_MASCOT_SOURCE') {
+    // Phase 2.4 #14: 2-step mascot move picker.
+    //   Step 1 (this): pick source member with a mascot
+    //   Step 2 (queued): SUPPORT_MOVE prompt to pick destination
+    //
+    // Prompt fields:
+    //   targetFilter: optional fn-source string ('mascot_excluded') to filter
+    //                 destination members (e.g. exclude members already with mascot)
+    const allMembers = getAllMembers(player);
+    const source = allMembers.find(m => m.instanceId === selected.instanceId);
+    if (!source) {
+      addLog(state, prompt.player, '找不到源成員 — 跳過');
+    } else {
+      // Find the first mascot on source
+      const mascotIdx = (source.attachedSupport || []).findIndex(s =>
+        getCard(s.cardId)?.type === '支援・吉祥物'
+      );
+      if (mascotIdx < 0) {
+        addLog(state, prompt.player, '源成員無吉祥物 — 跳過');
+      } else {
+        const targets = allMembers.filter(m => {
+          if (m.instanceId === source.instanceId) return false;
+          if (prompt.targetFilter === 'mascot_excluded') {
+            const has = (m.attachedSupport || []).some(s => getCard(s.cardId)?.type === '支援・吉祥物');
+            if (has) return false;
+          }
+          return true;
+        });
+        if (targets.length === 0) {
+          addLog(state, prompt.player, '無可接收吉祥物的成員 — 跳過');
+        } else {
+          state.pendingEffectQueue = state.pendingEffectQueue || [];
+          state.pendingEffectQueue.push({
+            type: 'SELECT_OWN_MEMBER', player: prompt.player,
+            message: `${prompt.message ? prompt.message + ' → ' : ''}選擇接收吉祥物的成員`,
+            cards: targets.map(m => ({
+              instanceId: m.instanceId, cardId: m.cardId,
+              name: getCard(m.cardId)?.name || '',
+            })),
+            maxSelect: 1, afterAction: 'SUPPORT_MOVE',
+            sourceInstanceId: source.instanceId,
+            supportIndex: mascotIdx,
+          });
+        }
+      }
+    }
+
   } else if (action === 'MULTI_DISTRIBUTE_CHEER') {
     // Phase 2.4 #13: distribute 1 cheer to each picked member.
     //   prompt.cards = eligible recipient members (filtered by handler)
