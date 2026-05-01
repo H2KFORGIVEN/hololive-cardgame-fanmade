@@ -259,7 +259,7 @@ function extractActions(body) {
   if (/boost\b|boostTurn\b|DAMAGE_BOOST/.test(body)) actions.push('boost');
   if (/\.damage\s*=\s*Math\.max\(0,/.test(body)) actions.push('hpRestore');
   if (/triggerEvent/.test(body)) actions.push('hasTriggerCheck');
-  if (/SELECT_OWN_MEMBER|SELECT_FROM_ARCHIVE|SELECT_TARGET/.test(body)) actions.push('hasPicker');
+  if (/SELECT_OWN_MEMBER|SELECT_FROM_ARCHIVE|SELECT_FROM_HAND|SELECT_OWN_CHEER|SELECT_TARGET|CHOOSE_DECK_POSITION/.test(body)) actions.push('hasPicker');
   if (/oshiSkillUsedThisTurn|usedSp\b/.test(body)) actions.push('hasOnceCheck');
 
   return actions;
