@@ -41,6 +41,7 @@ import { registerWatameDeck } from './handlers/watame-deck.js';
 import { registerLunaDeck } from './handlers/luna-deck.js';
 import { registerShioriDeck } from './handlers/shiori-deck.js';
 import { registerLaplusDeck } from './handlers/laplus-deck.js';
+import { registerMioDeck } from './handlers/mio-deck.js';
 
 let _initialized = false;
 
@@ -134,6 +135,7 @@ export async function initEffects() {
   counts.lunaDeck = registerLunaDeck();
   counts.shioriDeck = registerShioriDeck();
   counts.laplusDeck = registerLaplusDeck();
+  counts.mioDeck = registerMioDeck();
 
   // P5: Universal fallback — covers ALL remaining cards with effect text
   counts.passthrough = registerPassthrough(effectsData);
