@@ -331,5 +331,52 @@ export function registerEngineOverrides() {
     };
   });
 
+  // ─────────────────────────────────────────────────────────────────────
+  // hBP05-075 牛丼 (支援・活動)
+  // REAL: 選擇自己的1位成員。這個回合中，該成員交棒需要的吶喊卡數量-2。之後，該成員HP回復20點。
+  // ACTION: pick own member; turn-baton-reduction -2 + heal 20 to same target
+  // AMBIGUITY: stage 0 → skip; 1 → auto-apply both effects; multi → SELECT_OWN_MEMBER picker
+  //   (note: heal-only path picks the same target as baton reduction; we use a
+  //   custom afterAction to apply both atomically)
+  // LIMITS: ON_PLAY (activity card)
+  // CONDITIONS: ≥1 own stage member
+  // (Overrides phaseB legacy that auto-targets center, skips baton reduction
+  //  entirely. hBP05-010 art1 references this card name via _activityNamesPlayedThisTurn.)
+  // ─────────────────────────────────────────────────────────────────────
+  reg('hBP05-075', HOOK.ON_PLAY, (state, ctx) => {
+    const own = state.players[ctx.player];
+    const stage = getStageMembers(own);
+    if (stage.length === 0) return { state, resolved: true, log: '牛丼: 舞台無成員' };
+
+    const applyBoth = (member) => {
+      // Apply -2 baton reduction (turn-scoped, instance-specific)
+      state._turnBatonReductionByInstance = state._turnBatonReductionByInstance || {};
+      state._turnBatonReductionByInstance[ctx.player] = state._turnBatonReductionByInstance[ctx.player] || {};
+      const prior = state._turnBatonReductionByInstance[ctx.player][member.instanceId] || 0;
+      state._turnBatonReductionByInstance[ctx.player][member.instanceId] = Math.max(prior, 2);
+      // Heal 20HP
+      member.damage = Math.max(0, (member.damage || 0) - 20);
+    };
+
+    if (stage.length === 1) {
+      const target = stage[0].inst;
+      applyBoth(target);
+      return { state, resolved: true, log: `牛丼: ${getCard(target.cardId)?.name||''} 交棒費 -2 + 回 20HP` };
+    }
+
+    return {
+      state, resolved: false,
+      prompt: {
+        type: 'SELECT_OWN_MEMBER', player: ctx.player,
+        message: '牛丼: 選擇 1 位成員（本回合交棒費 -2 + 回 20HP）',
+        cards: memberPicks(stage.map(m => m.inst)),
+        maxSelect: 1, afterAction: 'BATON_REDUCE_AND_HEAL',
+        batonReduction: 2,
+        healAmount: 20,
+      },
+      log: '牛丼: 選擇成員',
+    };
+  });
+
   return count;
 }

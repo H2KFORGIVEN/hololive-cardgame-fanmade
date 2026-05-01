@@ -733,6 +733,27 @@ export function resolveEffectChoice(state, prompt, selected) {
       addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 本回合無色費 -${actualReduction}`);
     }
 
+  } else if (action === 'BATON_REDUCE_AND_HEAL') {
+    // Phase 2.4 #19: applied to a picked member — turn-scoped baton cost
+    // reduction + heal. Used by hBP05-075 牛丼 (and similar cards).
+    const target = getAllMembers(player).find(m => m.instanceId === selected.instanceId);
+    if (!target) {
+      addLog(state, prompt.player, '找不到目標成員 — 跳過');
+    } else {
+      const reduction = prompt.batonReduction || 0;
+      const healAmount = prompt.healAmount || 0;
+      if (reduction > 0) {
+        state._turnBatonReductionByInstance = state._turnBatonReductionByInstance || {};
+        state._turnBatonReductionByInstance[prompt.player] = state._turnBatonReductionByInstance[prompt.player] || {};
+        const prior = state._turnBatonReductionByInstance[prompt.player][target.instanceId] || 0;
+        state._turnBatonReductionByInstance[prompt.player][target.instanceId] = Math.max(prior, reduction);
+      }
+      if (healAmount > 0) {
+        target.damage = Math.max(0, (target.damage || 0) - healAmount);
+      }
+      addLog(state, prompt.player, `${getCard(target.cardId)?.name || ''} 本回合交棒費 -${reduction} + 回 ${healAmount}HP`);
+    }
+
   } else if (action === 'OPP_CENTER_BACKSTAGE_SWAP') {
     // Phase 2.4 #15: swap opp center with a picked opp backstage member.
     // selected.instanceId = the chosen opp backstage to promote to center.

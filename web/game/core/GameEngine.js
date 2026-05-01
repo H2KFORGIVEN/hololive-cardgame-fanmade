@@ -503,9 +503,12 @@ function processBatonPass(state, action) {
   const centerCard = getCard(center.cardId);
 
   // Pay baton cost — smart auto-select matching colors. Reduce colorless
-  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1).
+  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1)
+  // PLUS state-level turn-scoped reductions (hBP05-075 牛丼 etc).
   const batonCost = parseCost(centerCard?.batonImage);
-  const batonReduction = getBatonColorlessReduction(center);
+  let batonReduction = getBatonColorlessReduction(center);
+  const stateBatonRed = state._turnBatonReductionByInstance?.[p]?.[center.instanceId];
+  if (typeof stateBatonRed === 'number') batonReduction += stateBatonRed;
   if (batonReduction > 0) {
     const before = batonCost.colorless || 0;
     const after = Math.max(0, before - batonReduction);
@@ -1100,6 +1103,9 @@ function processEndPhase(state) {
   // 1. "Until end of turn" effects expire — clear any queued turn boosts/modifiers
   state._turnBoosts = [];
   state._turnModifiers = [];
+  // Phase 2.4 follow-up: state-level baton/art reductions clear at turn end.
+  state._turnBatonReductionByInstance = {};
+  state._artColorlessReductionByInstance = {};
   // K-2: dice override (hBP01-004 SP "本回合擲骰=6") expires at end of turn
   state._diceOverride = null;
   state._diceRerollUsedThisRoll = false;

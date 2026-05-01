@@ -298,10 +298,14 @@ function validateBatonPass(state, action, player) {
   if (backstage[idx].state !== MEMBER_STATE.ACTIVE) return fail('後台成員為休息狀態');
 
   // Check baton cost (same color matching as art cost). Reduce colorless
-  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1).
+  // requirement by attached-support modifiers (e.g. hBP03-111 ころねすきー: -1)
+  // PLUS state-level turn-scoped reductions (e.g. hBP05-075 牛丼 -2 to picked
+  // member; written by ARCHIVE_HAND_THEN_BOOST or activity handler).
   const centerCard = getCard(center.cardId);
   const batonCost = parseCost(centerCard?.batonImage);
-  const batonReduction = getBatonColorlessReduction(center);
+  let batonReduction = getBatonColorlessReduction(center);
+  const stateBatonRed = state._turnBatonReductionByInstance?.[playerIdx]?.[center.instanceId];
+  if (typeof stateBatonRed === 'number') batonReduction += stateBatonRed;
   if (batonReduction > 0) {
     const before = batonCost.colorless || 0;
     const after = Math.max(0, before - batonReduction);

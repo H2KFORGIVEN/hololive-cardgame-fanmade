@@ -1552,6 +1552,73 @@ function makeMinState(p0Center, p0Collab, p0Backstage, p1Center, p1Backstage = [
 }
 
 // ══════════════════════════════════════════════════════════════════
+// Phase 2.4 #19 — BATON_REDUCE_AND_HEAL afterAction (hBP05-075 牛丼)
+// ══════════════════════════════════════════════════════════════════
+section('BATON_REDUCE_AND_HEAL (Phase 2.4 #19)');
+
+{
+  // Direct resolver test: picker resolves, both effects apply
+  const target = makeMember('hBP05-041', 7501, { damage: 30 });
+  const state = makeMinState(target, null, [], null);
+
+  resolveEffectChoice(state, {
+    type: 'SELECT_OWN_MEMBER', player: 0,
+    cards: [{ instanceId: 7501, cardId: target.cardId, name: 't', image: '' }],
+    maxSelect: 1,
+    afterAction: 'BATON_REDUCE_AND_HEAL',
+    batonReduction: 2,
+    healAmount: 20,
+  }, { instanceId: 7501, name: 't' });
+
+  const reduction = state._turnBatonReductionByInstance?.[0]?.[7501];
+  const healed = state.players[0].zones.center.damage === 10; // 30-20=10
+  if (reduction === 2 && healed) {
+    pass('BATON_REDUCE_AND_HEAL: -2 baton reduction + 20 heal applied to picked member');
+  } else {
+    fail('BATON_REDUCE_AND_HEAL', `reduction=${reduction} healed=${healed}`);
+  }
+}
+
+{
+  // hBP05-075 handler: 0 stage members → skip
+  const handler = getHandler('hBP05-075', HOOK.ON_PLAY);
+  if (!handler) {
+    fail('hBP05-075 handler', 'no handler registered');
+  } else {
+    const state = makeMinState(null, null, [], null);
+    const r = handler(state, { player: 0, cardId: 'hBP05-075' });
+    if (r.resolved && r.log?.includes('無成員')) {
+      pass('hBP05-075: 0 stage members → skip');
+    } else fail('hBP05-075 zero', JSON.stringify(r).slice(0, 100));
+  }
+}
+
+{
+  // hBP05-075: 1 stage member → auto-apply both
+  const handler = getHandler('hBP05-075', HOOK.ON_PLAY);
+  const target = makeMember('hBP05-041', 7601, { damage: 50 });
+  const state = makeMinState(target, null, [], null);
+  const r = handler(state, { player: 0, cardId: 'hBP05-075' });
+  const reduction = state._turnBatonReductionByInstance?.[0]?.[7601];
+  const healed = state.players[0].zones.center.damage === 30;
+  if (r.resolved && reduction === 2 && healed) {
+    pass('hBP05-075: 1 stage → auto-apply -2 baton + heal 20');
+  } else fail('hBP05-075 single', `r=${r.resolved} red=${reduction} dmg=${state.players[0].zones.center.damage}`);
+}
+
+{
+  // hBP05-075: 2 stage members → emits picker
+  const handler = getHandler('hBP05-075', HOOK.ON_PLAY);
+  const m1 = makeMember('hBP05-041', 7701);
+  const m2 = makeMember('hBP05-041', 7702);
+  const state = makeMinState(m1, null, [m2], null);
+  const r = handler(state, { player: 0, cardId: 'hBP05-075' });
+  if (!r.resolved && r.prompt?.afterAction === 'BATON_REDUCE_AND_HEAL') {
+    pass('hBP05-075: 2 stage → BATON_REDUCE_AND_HEAL picker');
+  } else fail('hBP05-075 multi', `prompt=${JSON.stringify(r.prompt).slice(0, 100)}`);
+}
+
+// ══════════════════════════════════════════════════════════════════
 // engine-overrides — AUTO-PICK-BUG fixes (Phase 2.4 follow-up)
 // ══════════════════════════════════════════════════════════════════
 section('AUTO-PICK-BUG overrides (engine-overrides.js)');
