@@ -2171,6 +2171,379 @@
     "deck_id": "official-hbp04_001"
   },
   {
+    "title": "Recommended Deck: “Tokoyami Towa”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_005/",
+    "oshi": "Tokoyami Towa",
+    "oshi_card_id": "hBP03-005",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-005_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP03-051",
+        "count": 12,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-051_C.png"
+      },
+      {
+        "card_id": "hBP03-052",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-052_U.png"
+      },
+      {
+        "card_id": "hBP03-053",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-053_C.png"
+      },
+      {
+        "card_id": "hBP03-054",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-054_U.png"
+      },
+      {
+        "card_id": "hBP03-055",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-055_R.png"
+      },
+      {
+        "card_id": "hBP03-056",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-056_RR.png"
+      },
+      {
+        "card_id": "hBP03-096",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-096_U.png"
+      },
+      {
+        "card_id": "hBP03-101",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-101_C.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP03-094",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-094_U.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP03-088",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY05-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hY05-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, set up your Debut holomem on the stage while organizing your hand with support cards such as hSD01-016 Harusaki Nodoka. Once you have 2 holo Power and can use the SP Oshi skill “Diabolical Deeds,” your opponent will find it difficult to activate their Arts. Use this ability to apply pressure on your opponent while preparing the holomem on your own stage.In the mid game, bloom your Debut holomem into a 1st holomem. hBP03-054 Tokoyami Towa and hBP03-055 Tokoyami Towa have abilities and Arts that deal special damage to your opponent. The mascot hBP03-101 Bibi and the tool hBP03-096 Rifle can be attached to the same holomem simultaneously -- each one will activate its effect. When combined, they can deal a significant amount of damage.In the late game, aim to bloom into your 2nd holomem hBP03-056 Tokoyami Towa. The Arts “Break your ×××” increases or decreases in effect depending on the number of back holomem with #Singing, so use this Arts when you have 4 back holomem with #Singing. If damage is still lacking, use the Oshi skill “Devil’s Voice” to down your opponent’s holomem.",
+          "ja": "序盤は「hSD01-016 春咲のどか」などのサポートカードで手札を整えながら、デビューホロメムをステージに設置しましょう。ホロパワーが2つあり、SP推しスキル「悪魔の行為」が使えるようになると、相手はアーツを発動しにくくなります。この能力を利用して、自分のステージでホロメムを準備しながら相手にプレッシャーを与えましょう。ゲーム中盤では、デビュー ホロメムを 1 番目のホロメムに開花させます。 hBP03-054 常闇トワとhBP03-055 常闇トワは、相手に特殊なダメージを与えるアビリティとアーツを持っています。マスコット hBP03-101 ビビとツール hBP03-096 ライフルは、同じホロメムに同時に取り付けることができ、それぞれの効果が有効になります。組み合わせるとかなりのダメージを与えることができるので、ゲーム後半では2本目のホロメムhBP03-056 常闇トワの開花を目指しましょう。アーツ「ブレイク・ユア×××」は、#歌唱による裏ホロメムの数に応じて効果が増減するので、#歌唱による裏ホロメムが4枚のときにアーツを使用しよう。それでもダメージが足りない場合は、推しスキル「デビルズボイス」で相手のホロメムをダウンさせましょう。",
+          "zh-TW": "在遊戲早期，在舞台上設定你的出道全像圖，同時使用 hSD01-016 Harusaki Nodoka 等輔助卡組織你的手牌。一旦你擁有2點全息力量並且可以使用SP Oshi技能“惡魔行為”，你的對手將發現很難激活他們的藝術。使用此能力向對手施加壓力，同時在自己的舞台上準備全息圖。在遊戲中期，將您的首次全息圖綻放為第一個全息圖。 hBP03-054 常暗東和和 hBP03-055 常暗東和擁有對對手造成特殊傷害的能力和藝術。吉祥物 hBP03-101 Bibi 和工具 hBP03-096 步槍可以同時連接到同一個 holomem——每一個都會激活其效果。當組合起來時，它們可以造成大量傷害。 在遊戲後期，目標是綻放出你的第二個全息姆 hBP03-056 Tokoyami Towa。 「打破你的×××」藝術的效果會根據#Singing的後holomem數量而增加或減少，因此當您有4個帶有#Singing的後holomem時，請使用此藝術。如果傷害仍然不足，請使用押技能「惡魔之聲」來打倒對手的全像。",
+          "fr": "En début de partie, placez votre holomem Debut sur scène tout en organisant votre main avec des cartes de support telles que hSD01-016 Harusaki Nodoka. Une fois que vous disposez de 2 holo Power et que vous pouvez utiliser la compétence SP Oshi « Diabolical Deeds », votre adversaire aura du mal à activer ses Arts. Utilisez cette capacité pour exercer une pression sur votre adversaire tout en préparant l'holomem sur votre propre scène. En milieu de partie, faites fleurir votre holomem Debut en un premier holomem. hBP03-054 Tokoyami Towa et hBP03-055 Tokoyami Towa ont des capacités et des arts qui infligent des dégâts spéciaux à votre adversaire. La mascotte hBP03-101 Bibi et l'outil hBP03-096 Rifle peuvent être attachés simultanément au même holomem -- chacun activera son effet. Lorsqu'ils sont combinés, ils peuvent infliger une quantité importante de dégâts. En fin de partie, essayez de fleurir dans votre 2ème holomem hBP03-056 Tokoyami Towa. L'effet des Arts « Brisez vos ××× » augmente ou diminue en fonction du nombre d'holomem arrière avec #Chant, utilisez donc cet Arts lorsque vous avez 4 holomem arrière avec #Chant. Si les dégâts manquent toujours, utilisez la compétence Oshi « Voix du diable » pour abattre l’holomem de votre adversaire."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Tokoyami Towa【1st】",
+        "card_id": "hBP03-054",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-054_U.png",
+        "text": {
+          "en": "She has a very powerful ability that deals special damage through her collab effect. In addition, her strong synergy with the mascot hBP03-101 Bibi and the tool hBP03-096 Rifle allows her to deal significant damage from the early game with just 1 cheer.",
+          "ja": "連携効果で特殊ダメージを与える非常に強力な能力を持っています。さらに、マスコットの hBP03-101 ビビとツール hBP03-096 ライフルとの強力な相乗効果により、わずか 1 回の応援でゲーム序盤から大きなダメージを与えることができます。",
+          "zh-TW": "她擁有非常強大的能力，可以透過協同效果造成特殊傷害。此外，她與吉祥物hBP03-101 Bibi和工具hBP03-096步槍的強大協同作用使她能夠在遊戲初期僅用1個歡呼就造成巨大傷害。",
+          "fr": "Elle possède une capacité très puissante qui inflige des dégâts spéciaux grâce à son effet de collaboration. De plus, sa forte synergie avec la mascotte hBP03-101 Bibi et l'outil hBP03-096 Rifle lui permet d'infliger des dégâts importants dès le début de partie avec seulement 1 acclamation."
+        }
+      },
+      {
+        "name": "Bibi",
+        "card_id": "hBP03-101",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-101_C.png",
+        "text": {
+          "en": "The Tokoyami Towa Deck includes many holomem with relatively low HP, but the +20 HP effect from hBP03-101 Bibi comes in handy here. The boost to special damage can be effective throughout the game, so make sure to attach it when the time is right.",
+          "ja": "常闇トワデッキには比較的HPの低いホロメムが多く採用されていますが、hBP03-101ビビのHP+20効果が役に立ちます。特殊ダメージ増加効果はゲーム全体を通して効果を発揮するので、タイミングを見計らって付けておきましょう。",
+          "zh-TW": "常暗東和甲板上有許多HP相對較低的全像圖，但hBP03-101 Bibi的+20 HP效果在這裡派上用場。特殊傷害的提昇在整個遊戲過程中都有效，所以一定要在適當的時候附加它。",
+          "fr": "Le Tokoyami Towa Deck comprend de nombreux holomem avec des HP relativement faibles, mais l'effet +20 HP du hBP03-101 Bibi est ici utile. L’augmentation des dégâts spéciaux peut être efficace tout au long du jeu, alors assurez-vous de l’attacher au moment opportun."
+        }
+      }
+    ],
+    "date": "2025-12-29",
+    "source": "official",
+    "deck_id": "official-hbp03_005"
+  },
+  {
+    "title": "Recommended Deck: “Inugami Korone”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_006/",
+    "oshi": "Inugami Korone",
+    "oshi_card_id": "hBP03-006",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-006_OSR_02.png",
+    "main_deck": [
+      {
+        "card_id": "hBP03-061",
+        "count": 10,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-061_C.png"
+      },
+      {
+        "card_id": "hBP03-062",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-062_U.png"
+      },
+      {
+        "card_id": "hBP03-063",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-063_C.png"
+      },
+      {
+        "card_id": "hBP03-064",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-064_U.png"
+      },
+      {
+        "card_id": "hBP03-065",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-065_R.png"
+      },
+      {
+        "card_id": "hBP03-066",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-066_RR.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hBP01-104_C.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hBP03-088",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
+      },
+      {
+        "card_id": "hBP03-102",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-102_U_02.png"
+      },
+      {
+        "card_id": "hBP01-114",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-114_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY06-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, set up your Debut holomem on the stage and prepare so that you can bloom into your 1st holomem on the following turn. By collabing hBP03-062 Inugami Korone with cheer attached and activating the collab effect “Korone Diner”, you can add a Debut holomem from your deck, so make active use of this combo as early as possible.When you collab “Inugami Korone” with hBP03-102 Futoinu attached, you can send cheer from your archive back onto “Inugami Korone”. Reuse the archived cheer with “Korone Diner” and use it to activate Arts.In the mid game, strengthen your hand and stage using support cards such as hSD01-016 Harusaki Nodoka and hSD01-017 Maager-chan.hBP03-063 Inugami Korone has impressive durability with 200 HP and can use her Arts with just 1 yellow cheer. Until your setup is complete, deal damage with hBP03-063 Inugami Korone while enduring your opponent’s Arts. hBP01-114 Stone Axe increases the damage you can deal, so attach it whenever available. Try to bring your opponent’s 2nd holomem down to approximately 170–200 HP.In the late game, bloom into your 2nd holomem hBP03-066 Inugami Korone. If your opponent’s holomem is a 2nd holomem, hBP03-066 Inugami Korone can deal 170 damage by archiving 1 of the 1st holomem cards stacked under her. If you have hBP03-102 Futoinu and hBP01-114 Stone Axe attached, the damage increases to 200, so actively aim for a knockout when you want to take down your opponent’s 2nd holomem.When hBP03-066 Inugami Korone is knocked down, she can send 1 cheer from your cheer deck to Inugami Korone. Therefore, try to prepare a 1st holomem Inugami Korone in your back position ahead of time to be able to launch a smooth counterattack on your next turn.",
+          "ja": "ゲーム序盤は、デビューホロメムをステージ上に設置し、次のターンに最初のホロメムが開花できるように準備しましょう。 hBP03-062 チア付きの「戌神ころね」をコラボし、コラボ効果「ころねダイナー」を発動することで、デッキからデビューホロメムを追加できるので、早めに積極的に活用しましょう。 hBP03-102 太犬付きの「犬神ころね」をコラボすると、アーカイブから「戌神ころね」にチアを送ることができます。 「ころねダイナー」でアーカイブしたチアを再利用してアーツ発動に活用しましょう。中盤ではhSD01-016 春咲のどか、hSD01-017 マーガーちゃんなどのサポートカードで手札やステージを強化しましょう。 hBP03-063 犬神ころねはHP200と驚異的な耐久力を持ち、黄色のチア1つでアーツを発動できます。セットアップが完了するまでは、hBP03-063 戌神ころねで相手のアーツを耐えながらダメージを与えていきましょう。 hBP01-114 ストーンアックスは与えるダメージが増加するので、可能な限り付けておきましょう。相手の 2 番目のホロメムの HP を約 170 ～ 200 まで下げるようにしてください。ゲーム後半には、2 番目のホロメムを開花させましょう。 hBP03-066 犬神ころね。相手のホロメムが2枚目のホロメムの場合、hBP03-066 戌神ころねは下に積まれている1枚目のホロメムカードを1枚アーカイブすることで170ダメージを与えることができます。 hBP03-102 太犬とhBP01-114 石斧を付けるとダメージが200にアップするので、相手の2枚目のホロメムを倒したい時は積極的にノックアウトを狙いましょう。 hBP03-066 犬神ころねがダウンすると、応援デッキから応援を1つ犬神ころねに送ることができます。そのため、次のターンにスムーズな反撃ができるよう、前もって1枚目のホロメム・戌神ころねを後ろの位置に準備しておきましょう。",
+          "zh-TW": "在遊戲早期，在舞台上設定你的首次全息圖並做好準備，以便你可以在下一個回合中綻放出你的第一個全息圖。透過與附有應援的hBP03-062犬神科隆聯動並啟動連動效果“Korone Diner”，您可以從您的卡組中添加出道全息樂，因此請儘早積極利用此組合。當您與附有hBP03-102 Futoinu的“犬神科隆”聯動時，您可以將存檔中的歡呼聲發送回“犬神科隆”上。重複使用“Korone Diner”存檔的歡呼，並用它來激活藝術。在遊戲中期，使用 hSD01-016 Harusaki Nodoka 和 hSD01-017 Maager-chan 等支援卡來增強你的手牌和舞台。 hBP03-063 犬神 Korone 具有 200 HP 的令人印象深刻的耐用性，只需 1 個黃色歡呼即可使用她的藝術。在你的設定完成之前，先用hBP03-063犬神科隆造成傷害，同時承受對手的藝術。 hBP01-114 石斧會增加你能造成的傷害，所以只要有空就附上它。試著將對手的第二個全像降低到大約 170-200 HP。 在遊戲後期，綻放出你的第二個全像 hBP03-066 犬神科隆。如果對手的全像圖是第二張全像圖，hBP03-066 犬神科羅恩可以透過歸檔她下面堆疊的第一張全像圖卡中的一張來造成 170 點傷害。如果你有hBP03-102 Futoinu和hBP01-114石斧，傷害會增加到200，所以當你想打倒對手的第二個holomem時，積極瞄準擊倒目標。當hBP03-066 Inugami Korone被擊倒時，她可以從你的應援牌組向Inugami Korone發送1個歡呼。因此，盡量提前在後排準備好一號全像犬神科隆，以便下回合能順利反擊。",
+          "fr": "En début de partie, installez votre holomem Debut sur la scène et préparez-vous à pouvoir fleurir dans votre 1er holomem au tour suivant. En associant le hBP03-062 Inugami Korone avec l'acclamation attachée et en activant l'effet de collaboration « Korone Diner », vous pouvez ajouter un holomem Debut depuis votre deck, alors utilisez activement ce combo le plus tôt possible. Lorsque vous collaborez « Inugami Korone » avec l'hBP03-102 Futoinu attaché, vous pouvez renvoyer l'acclamation de vos archives sur « Inugami Korone ». Réutilisez la joie archivée avec « Korone Diner » et utilisez-la pour activer les Arts. En milieu de partie, renforcez votre main et votre scène en utilisant des cartes de support telles que hSD01-016 Harusaki Nodoka et hSD01-017 Maager-chan. hBP03-063 Inugami Korone a une durabilité impressionnante avec 200 HP et peut utiliser ses Arts avec seulement 1 joie jaune. Jusqu'à ce que votre configuration soit terminée, infligez des dégâts avec hBP03-063 Inugami Korone tout en endurant les Arts de votre adversaire. hBP01-114 Stone Axe augmente les dégâts que vous pouvez infliger, alors attachez-la dès qu'elle est disponible. Essayez de ramener le 2ème holomem de votre adversaire à environ 170-200 HP. En fin de partie, fleurissez dans votre 2ème holomem hBP03-066 Inugami Korone. Si l'holomem de votre adversaire est un 2ème holomem, hBP03-066 Inugami Korone peut infliger 170 dégâts en archivant 1 des 1ères cartes holomem empilées sous elle. Si vous avez hBP03-102 Futoinu et hBP01-114 Stone Axe attachés, les dégâts augmentent à 200, alors visez activement un KO lorsque vous voulez éliminer le 2ème holomem de votre adversaire. Lorsque hBP03-066 Inugami Korone est renversé, elle peut envoyer 1 acclamation de votre deck d'acclamation à Inugami Korone. Essayez donc de préparer à l'avance un 1er holomem Inugami Korone dans votre position arrière pour pouvoir lancer une contre-attaque en douceur lors de votre prochain tour."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Inugami Korone",
+        "card_id": "hBP03-006",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-006_OSR_02.png",
+        "text": {
+          "en": "When your 2nd holomem hBP03-066 Inugami Korone is downed, you can use the SP Oshi skill “Wow Wow Wow Wow Wow” to move the cheer attached to the downed Inugami Korone onto another Inugami Korone while also returning hBP03-066 Inugami Korone to your hand. Once hBP03-066 Inugami Korone is back in your hand, she can be brought back onto the stage on your next turn for another round of action.",
+          "ja": "2枚目のホロメム hBP03-066 犬神ころねがダウンした際、SP推しスキル「Wow Wow Wow Wow Wow」を使うと、ダウンした犬神ころねについているチアを別の犬神ころねに移しつつ、hBP03-066 犬神ころねを手札に戻すことができます。 hBP03-066 戌神ころねが手札に戻ったら、次のターンにステージに戻して次のラウンドを行うことができます。",
+          "zh-TW": "當你的第二個holomem hBP03-066犬神科隆被擊倒時，你可以使用SP Oshi技能“Wow Wow Wow Wow Wow”將被擊倒的犬神科隆身上附帶的歡呼移動到另一個犬神科隆上，同時將hBP03-066犬神科隆返回你的手上。一旦 hBP03-066 犬神科隆回到你的手中，你就可以在你的下一個回合將她帶回舞台進行另一輪行動。",
+          "fr": "Lorsque votre 2ème holomem hBP03-066 Inugami Korone est abattu, vous pouvez utiliser la compétence SP Oshi « Wow Wow Wow Wow Wow » pour déplacer l'acclamation attachée à l'Inugami Korone abattu sur une autre Inugami Korone tout en renvoyant également le hBP03-066 Inugami Korone dans votre main. Une fois que hBP03-066 Inugami Korone est de retour dans votre main, elle peut être ramenée sur scène lors de votre prochain tour pour un autre round d'action."
+        }
+      },
+      {
+        "name": "Inugami Korone【1st】",
+        "card_id": "hBP03-065",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-065_R.png",
+        "text": {
+          "en": "“Boxing Style” can be used when this card is in your collab position.With “Boxing Style”, the “Inugami Korone” in your center position is protected from special damage and changes to HP during your opponent’s main step. When you have a 2nd holomem “Inugami Korone” in your center position and want to avoid her being downed, aiming for a collab is an effective strategy.",
+          "ja": "「ボクシングスタイル」は、このカードがコラボポジションに存在する場合に使用できる。「ボクシングスタイル」を使用すると、センターポジションの「犬神ころね」が特殊ダメージから守られ、相手のメインステップ時にHPが変化する。センターポジションに2枚目のホロメム「戌神ころね」がいて、ダウンを避けたい場合は連携を狙うのが有効な戦略です。",
+          "zh-TW": "當這張卡處於你的連動位置時，可以使用「拳擊流」。透過“拳擊流”，你中心位置的“犬神科隆”在對手的主要步驟中免受特殊傷害和生命值變化。當你的中心位置有第二個全息姆“犬神可隆”並且想要避免她被擊倒時，瞄準合作是一個有效的策略。",
+          "fr": "« Style de boxe » peut être utilisé lorsque cette carte est dans votre position de collaboration. Avec « Style de boxe », l'« Inugami Korone » dans votre position centrale est protégé des dégâts spéciaux et des changements de HP pendant l'étape principale de votre adversaire. Lorsque vous avez un 2ème holomem « Inugami Korone » dans votre position centrale et que vous voulez éviter qu'elle ne soit abattue, viser une collaboration est une stratégie efficace."
+        }
+      }
+    ],
+    "date": "2025-12-29",
+    "source": "official",
+    "deck_id": "official-hbp03_006"
+  },
+  {
+    "title": "Recommended Deck “Tsunomaki Watame”",
+    "description": "",
+    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_007/",
+    "oshi": "Tsunomaki Watame",
+    "oshi_card_id": "hBP03-007",
+    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-007_OSR.png",
+    "main_deck": [
+      {
+        "card_id": "hBP03-067",
+        "count": 12,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-067_C.png"
+      },
+      {
+        "card_id": "hBP03-068",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-068_U.png"
+      },
+      {
+        "card_id": "hBP03-069",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png"
+      },
+      {
+        "card_id": "hBP03-070",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-070_U.png"
+      },
+      {
+        "card_id": "hBP03-071",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-071_R.png"
+      },
+      {
+        "card_id": "hBP03-072",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-072_RR.png"
+      },
+      {
+        "card_id": "hBP03-112",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 4,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
+      },
+      {
+        "card_id": "hBP02-084",
+        "count": 3,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
+      },
+      {
+        "card_id": "hBP01-108",
+        "count": 2,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
+      },
+      {
+        "card_id": "hBP03-088",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
+      },
+      {
+        "card_id": "hSD01-019",
+        "count": 1,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-019_C.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY06-001",
+        "count": 20,
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20,
+    "strategy": [
+      {
+        "text": {
+          "en": "In the early game, prepare Debut holomem on your stage while using support cards like hSD01-016 Harusaki Nodoka to organize your hand. Once you have 2 holo Power accumulated, use the SP Oshi skill “Watame isn’t at fault, right?” to send 2 cheer to hBP03-069 Tsunomaki Watame or hBP03-070 Tsunomaki Watame, then start activating Arts that require multiple cheer right from the early game.hBP03-072 Tsunomaki Watame truly shines when she has 6 or more cheer -- there is no need to rush until you’re ready to go on the offensive.In the mid-to-late game, take your time accumulating cheer and focus on using Arts from 1st holomem to target your opponent’s holomem for downs. Attaching hBP03-112 Watamates to “Tsunomaki Watame” with multiple cheer is a safe strategy, as it allows you to transfer the attached cheer to another “Tsunomaki Watame” when she is downed. Each hBP03-112 Watamates works independently, so consider attaching 2 or more “Watamates” for maximum effect.When hBP03-072 Tsunomaki Watame has 6 cheer attached and can use Arts, even from the collab position, the deck truly comes into its own.In the late game, activate hBP03-072 Tsunomaki Watame’s Arts “Watame Night Fever!!” and combine with collab holomem to deal massive damage -- aim for a series of downs, if possible. By using hBP01-108 So, That Makes You My Enemy and hBP03-088 Totsumachi, you can overwhelm your opponent by downing holomem in both the center and collab positions.",
+          "ja": "序盤は「デビューホロメム」をステージに用意しつつ、「hSD01-016 春咲のどか」などのサポートカードを使って手札を整えましょう。ホロパワーが2つ溜まったらSP推しスキル「ワタメさんは悪くないですよね？」を使用しましょう。 hBP03-069 角巻わためまたはhBP03-070 角巻わためにチアを2つ送り、序盤から複数のチアが必要なアーツを発動しましょう。hBP03-072 角巻わためはチアが6つ以上あると真価を発揮します。攻撃の準備が整うまで焦る必要はありません。中盤から後半はじっくりとチアを貯めて、1からアーツを集中的に使っていきましょう。ホロメムは相手のホロメムをターゲットにしてダウンを狙います。 hBP03-112 ワタメイトを「角巻わため」に複数のチアを付けておくと、ダウン時に付けた応援を別の「角巻わため」に移すことができるので安全な戦略です。 hBP03-112のわためいとはそれぞれ独立して動作するので、最大の効果を得るには2枚以上の「わためいと」を付けることを検討してください。hBP03-072角巻わためのチアが6個付いていてアーツを使えるようになるとコラボポジションからでもデッキが本領を発揮します。ゲーム終盤ではhBP03-072角巻わためのアーツ「わためナイトフィーバー!!」を発動しましょう。コラボホロメムと組み合わせて大ダメージを与えましょう。可能であれば連続ダウンを狙ってください。 hBP01-108 So, That Makes You My EnemyとhBP03-088 トツマチを使えば、ホロメムをセンターとコラボの両方でダウンさせて相手を圧倒できます。",
+          "zh-TW": "在遊戲早期，在舞台上準備 Debut Holomem，同時使用 hSD01-016 Harusaki Nodoka 等支持卡來組織你的手牌。一旦你累積了 2 個全息能量，就可以使用 SP Oshi 技能「渡目沒有錯，對吧？」向 hBP03-069 渡目津卷或 hBP03-070 渡目角卷發送 2 點歡呼，然後從遊戲初期開始激活需要多次歡呼的藝術。當 hBP03-072 渡目角卷有 6 點或更多歡呼時，她才真正閃耀——在你準備好進攻之前，無需著急。在遊戲中後期，慢慢累積歡呼，並專注於使用從 1 開始的藝術holomem 瞄準對手的 holomem 進行攻擊。將 hBP03-112 Watamates 附加到帶有多個歡呼的“Tsunomaki Watame”是一個安全的策略，因為它允許您在另一個“Tsunomaki Watame”被擊倒時將附加的歡呼轉移到她身上。每個 hBP03-112 Watamates 獨立工作，因此請考慮附加 2 個或更多“Watamates”以獲得最大效果。當 hBP03-072 Tsunomaki Watame 附加 6 個歡呼並且可以使用藝術時，即使在協作位置，該套牌也真正發揮了自己的作用。在遊戲後期，啟動 hBP03-072 Tsunomaki Watame 的藝術“Watame Night Fever!!”並與協作 Holomem 結合起來造成巨大傷害——如果可能的話，瞄準一系列的失敗。透過使用hBP01-108所以，你就是我的敵人和hBP03-088十津町，你可以透過擊倒中心位置和連動位置的holomem來壓倒對手。",
+          "fr": "En début de partie, préparez l'holomem Debut sur votre scène tout en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka pour organiser votre main. Une fois que vous avez accumulé 2 holo Power, utilisez la compétence SP Oshi \"Watame n'est pas en faute, n'est-ce pas ?\" pour envoyer 2 acclamations à hBP03-069 Tsunomaki Watame ou hBP03-070 Tsunomaki Watame, puis commencez à activer les arts qui nécessitent plusieurs acclamations dès le début de la partie. hBP03-072 Tsunomaki Watame brille vraiment lorsqu'elle a 6 acclamations ou plus -- il n'est pas nécessaire de vous précipiter jusqu'à ce que vous soyez prêt à passer à l'offensive. 1er holomem pour cibler le holomem de votre adversaire pour les downs. Attacher hBP03-112 Watamates à « Tsunomaki Watame » avec plusieurs acclamations est une stratégie sûre, car elle vous permet de transférer l'acclamation attachée à un autre « Tsunomaki Watame » lorsqu'elle est abattue. Chaque hBP03-112 Watamates fonctionne indépendamment, alors pensez à attacher 2 « Watamates » ou plus pour un effet maximum. Lorsque le hBP03-072 Tsunomaki Watame a 6 acclamations attachées et peut utiliser les arts, même depuis la position de collaboration, le deck prend vraiment tout son sens. En fin de partie, activez le hBP03-072 Tsunomaki Watame's Arts « Watame Night Fever ! et combinez-le avec un holomem collaboratif pour infliger des dégâts massifs – visez une série de downs, si possible. En utilisant hBP01-108 So, That Makes You My Enemy et hBP03-088 Totsumachi, vous pouvez submerger votre adversaire en abattant un holomem en position centrale et en collaboration."
+        }
+      }
+    ],
+    "key_cards": [
+      {
+        "name": "Tsunomaki Watame【1st】",
+        "card_id": "hBP03-069",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png",
+        "text": {
+          "en": "Even as a 1st holomem, she has HP comparable to a 2nd holomem. By combining the Arts “You'll cheer me on, right?” with the SP Oshi skill “Watame isn’t at fault, right?”, you can activate it as early as turn 2 to deal 90 damage, making it an exceptionally powerful play.",
+          "ja": "1stホロメムながら2ndホロメムに匹敵するHPを持っている。アーツを組み合わせることで「応援してくれるよね？」 SP推しスキル「ワタメは悪くないですよね？」は2ターン目から発動でき、90ダメージを与えることができるので非常に強力です。",
+          "zh-TW": "即使作為第一全像體，她也擁有與第二全像體相當的HP。透過結合藝術“你會為我加油，對吧？”配合SP押技能“渡目沒有錯吧？”，早在第二回合就可以發動，造成90點傷害，威力異常強大。",
+          "fr": "Même en tant que 1er holomem, elle a des PV comparables à ceux d'un 2ème holomem. En combinant les Arts « Tu vas m'encourager, non ? avec la compétence SP Oshi « Watame n'est pas en faute, n'est-ce pas ? », vous pouvez l'activer dès le tour 2 pour infliger 90 dégâts, ce qui en fait un jeu exceptionnellement puissant."
+        }
+      },
+      {
+        "name": "Watamates",
+        "card_id": "hBP03-112",
+        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png",
+        "text": {
+          "en": "Transferring the cheer from a downed “Tsunomaki Watame” to another “Tsunomaki Watame” and ultimately connecting 6 or more cheer onto the 2nd holomem hBP03-072 Tsunomaki Watame is the core strategy of this deck. Make active use of hBP03-112 Watamates to ensure that the cheer on your stage doesn’t decrease.",
+          "ja": "ダウンした「角巻わため」から別の「角巻わため」に応援を移し、最終的に2枚目のホロメムhBP03-072角巻わために6個以上の応援をつなげるのがこのデッキの核となる戦略です。ステージ上の歓声を下げないよう、hBP03-112ワタメイトを積極的に活用してください。",
+          "zh-TW": "將被擊倒的「角捲渡目」的歡呼聲轉移到另一張「角捲綿目」上，並最終將 6 個或更多的歡呼聲連接到第二個全息體 hBP03-072 角卷渡目上，是這套牌的核心策略。積極使用hBP03-112 Watamates，確保舞台上的歡呼聲不會減少。",
+          "fr": "Transférer les acclamations d'un « Tsunomaki Watame » abattu à un autre « Tsunomaki Watame » et finalement connecter 6 acclamations ou plus sur le 2ème holomem hBP03-072 Tsunomaki Watame est la stratégie de base de ce deck. Utilisez activement les hBP03-112 Watamates pour vous assurer que la joie sur votre scène ne diminue pas."
+        }
+      }
+    ],
+    "date": "2025-12-29",
+    "source": "official",
+    "deck_id": "official-hbp03_007"
+  },
+  {
     "title": "Recommended Deck: “Himemori Luna”",
     "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp03_001/",
@@ -2426,127 +2799,6 @@
     "date": "2025-12-29",
     "source": "official",
     "deck_id": "official-hbp03_002"
-  },
-  {
-    "title": "Recommended Deck “Tsunomaki Watame”",
-    "description": "",
-    "url": "https://en.hololive-official-cardgame.com/deck/hbp03_007/",
-    "oshi": "Tsunomaki Watame",
-    "oshi_card_id": "hBP03-007",
-    "oshi_image": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-007_OSR.png",
-    "main_deck": [
-      {
-        "card_id": "hBP03-067",
-        "count": 12,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-067_C.png"
-      },
-      {
-        "card_id": "hBP03-068",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-068_U.png"
-      },
-      {
-        "card_id": "hBP03-069",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png"
-      },
-      {
-        "card_id": "hBP03-070",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-070_U.png"
-      },
-      {
-        "card_id": "hBP03-071",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-071_R.png"
-      },
-      {
-        "card_id": "hBP03-072",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-072_RR.png"
-      },
-      {
-        "card_id": "hBP03-112",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png"
-      },
-      {
-        "card_id": "hSD01-016",
-        "count": 4,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-016_C.png"
-      },
-      {
-        "card_id": "hSD01-017",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-017_C.png"
-      },
-      {
-        "card_id": "hBP02-084",
-        "count": 3,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP02/EN_hBP02-084_U.png"
-      },
-      {
-        "card_id": "hBP01-108",
-        "count": 2,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP01/EN_hBP01-108_U.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-088_U.png"
-      },
-      {
-        "card_id": "hSD01-019",
-        "count": 1,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hSD01/EN_hSD01-019_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY06-001",
-        "count": 20,
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/COMMON/EN_hY06-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20,
-    "strategy": [
-      {
-        "text": {
-          "en": "In the early game, prepare Debut holomem on your stage while using support cards like hSD01-016 Harusaki Nodoka to organize your hand. Once you have 2 holo Power accumulated, use the SP Oshi skill “Watame isn’t at fault, right?” to send 2 cheer to hBP03-069 Tsunomaki Watame or hBP03-070 Tsunomaki Watame, then start activating Arts that require multiple cheer right from the early game.hBP03-072 Tsunomaki Watame truly shines when she has 6 or more cheer -- there is no need to rush until you’re ready to go on the offensive.In the mid-to-late game, take your time accumulating cheer and focus on using Arts from 1st holomem to target your opponent’s holomem for downs. Attaching hBP03-112 Watamates to “Tsunomaki Watame” with multiple cheer is a safe strategy, as it allows you to transfer the attached cheer to another “Tsunomaki Watame” when she is downed. Each hBP03-112 Watamates works independently, so consider attaching 2 or more “Watamates” for maximum effect.When hBP03-072 Tsunomaki Watame has 6 cheer attached and can use Arts, even from the collab position, the deck truly comes into its own.In the late game, activate hBP03-072 Tsunomaki Watame’s Arts “Watame Night Fever!!” and combine with collab holomem to deal massive damage -- aim for a series of downs, if possible. By using hBP01-108 So, That Makes You My Enemy and hBP03-088 Totsumachi, you can overwhelm your opponent by downing holomem in both the center and collab positions.",
-          "ja": "序盤は「デビューホロメム」をステージに用意しつつ、「hSD01-016 春咲のどか」などのサポートカードを使って手札を整えましょう。ホロパワーが2つ溜まったらSP推しスキル「ワタメさんは悪くないですよね？」を使用しましょう。 hBP03-069 角巻わためまたはhBP03-070 角巻わためにチアを2つ送り、序盤から複数のチアが必要なアーツを発動しましょう。hBP03-072 角巻わためはチアが6つ以上あると真価を発揮します。攻撃の準備が整うまで焦る必要はありません。中盤から後半はじっくりとチアを貯めて、1からアーツを集中的に使っていきましょう。ホロメムは相手のホロメムをターゲットにしてダウンを狙います。 hBP03-112 ワタメイトを「角巻わため」に複数のチアを付けておくと、ダウン時に付けた応援を別の「角巻わため」に移すことができるので安全な戦略です。 hBP03-112のわためいとはそれぞれ独立して動作するので、最大の効果を得るには2枚以上の「わためいと」を付けることを検討してください。hBP03-072角巻わためのチアが6個付いていてアーツを使えるようになるとコラボポジションからでもデッキが本領を発揮します。ゲーム終盤ではhBP03-072角巻わためのアーツ「わためナイトフィーバー!!」を発動しましょう。コラボホロメムと組み合わせて大ダメージを与えましょう。可能であれば連続ダウンを狙ってください。 hBP01-108 So, That Makes You My EnemyとhBP03-088 トツマチを使えば、ホロメムをセンターとコラボの両方でダウンさせて相手を圧倒できます。",
-          "zh-TW": "在遊戲早期，在舞台上準備 Debut Holomem，同時使用 hSD01-016 Harusaki Nodoka 等支持卡來組織你的手牌。一旦你累積了 2 個全息能量，就可以使用 SP Oshi 技能「渡目沒有錯，對吧？」向 hBP03-069 渡目津卷或 hBP03-070 渡目角卷發送 2 點歡呼，然後從遊戲初期開始激活需要多次歡呼的藝術。當 hBP03-072 渡目角卷有 6 點或更多歡呼時，她才真正閃耀——在你準備好進攻之前，無需著急。在遊戲中後期，慢慢累積歡呼，並專注於使用從 1 開始的藝術holomem 瞄準對手的 holomem 進行攻擊。將 hBP03-112 Watamates 附加到帶有多個歡呼的“Tsunomaki Watame”是一個安全的策略，因為它允許您在另一個“Tsunomaki Watame”被擊倒時將附加的歡呼轉移到她身上。每個 hBP03-112 Watamates 獨立工作，因此請考慮附加 2 個或更多“Watamates”以獲得最大效果。當 hBP03-072 Tsunomaki Watame 附加 6 個歡呼並且可以使用藝術時，即使在協作位置，該套牌也真正發揮了自己的作用。在遊戲後期，啟動 hBP03-072 Tsunomaki Watame 的藝術“Watame Night Fever!!”並與協作 Holomem 結合起來造成巨大傷害——如果可能的話，瞄準一系列的失敗。透過使用hBP01-108所以，你就是我的敵人和hBP03-088十津町，你可以透過擊倒中心位置和連動位置的holomem來壓倒對手。",
-          "fr": "En début de partie, préparez l'holomem Debut sur votre scène tout en utilisant des cartes de support comme hSD01-016 Harusaki Nodoka pour organiser votre main. Une fois que vous avez accumulé 2 holo Power, utilisez la compétence SP Oshi \"Watame n'est pas en faute, n'est-ce pas ?\" pour envoyer 2 acclamations à hBP03-069 Tsunomaki Watame ou hBP03-070 Tsunomaki Watame, puis commencez à activer les arts qui nécessitent plusieurs acclamations dès le début de la partie. hBP03-072 Tsunomaki Watame brille vraiment lorsqu'elle a 6 acclamations ou plus -- il n'est pas nécessaire de vous précipiter jusqu'à ce que vous soyez prêt à passer à l'offensive. 1er holomem pour cibler le holomem de votre adversaire pour les downs. Attacher hBP03-112 Watamates à « Tsunomaki Watame » avec plusieurs acclamations est une stratégie sûre, car elle vous permet de transférer l'acclamation attachée à un autre « Tsunomaki Watame » lorsqu'elle est abattue. Chaque hBP03-112 Watamates fonctionne indépendamment, alors pensez à attacher 2 « Watamates » ou plus pour un effet maximum. Lorsque le hBP03-072 Tsunomaki Watame a 6 acclamations attachées et peut utiliser les arts, même depuis la position de collaboration, le deck prend vraiment tout son sens. En fin de partie, activez le hBP03-072 Tsunomaki Watame's Arts « Watame Night Fever ! et combinez-le avec un holomem collaboratif pour infliger des dégâts massifs – visez une série de downs, si possible. En utilisant hBP01-108 So, That Makes You My Enemy et hBP03-088 Totsumachi, vous pouvez submerger votre adversaire en abattant un holomem en position centrale et en collaboration."
-        }
-      }
-    ],
-    "key_cards": [
-      {
-        "name": "Tsunomaki Watame【1st】",
-        "card_id": "hBP03-069",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-069_C.png",
-        "text": {
-          "en": "Even as a 1st holomem, she has HP comparable to a 2nd holomem. By combining the Arts “You'll cheer me on, right?” with the SP Oshi skill “Watame isn’t at fault, right?”, you can activate it as early as turn 2 to deal 90 damage, making it an exceptionally powerful play.",
-          "ja": "1stホロメムながら2ndホロメムに匹敵するHPを持っている。アーツを組み合わせることで「応援してくれるよね？」 SP推しスキル「ワタメは悪くないですよね？」は2ターン目から発動でき、90ダメージを与えることができるので非常に強力です。",
-          "zh-TW": "即使作為第一全像體，她也擁有與第二全像體相當的HP。透過結合藝術“你會為我加油，對吧？”配合SP押技能“渡目沒有錯吧？”，早在第二回合就可以發動，造成90點傷害，威力異常強大。",
-          "fr": "Même en tant que 1er holomem, elle a des PV comparables à ceux d'un 2ème holomem. En combinant les Arts « Tu vas m'encourager, non ? avec la compétence SP Oshi « Watame n'est pas en faute, n'est-ce pas ? », vous pouvez l'activer dès le tour 2 pour infliger 90 dégâts, ce qui en fait un jeu exceptionnellement puissant."
-        }
-      },
-      {
-        "name": "Watamates",
-        "card_id": "hBP03-112",
-        "imageUrl": "https://en.hololive-official-cardgame.com/wp-content/images/cardlist/hBP03/EN_hBP03-112_U.png",
-        "text": {
-          "en": "Transferring the cheer from a downed “Tsunomaki Watame” to another “Tsunomaki Watame” and ultimately connecting 6 or more cheer onto the 2nd holomem hBP03-072 Tsunomaki Watame is the core strategy of this deck. Make active use of hBP03-112 Watamates to ensure that the cheer on your stage doesn’t decrease.",
-          "ja": "ダウンした「角巻わため」から別の「角巻わため」に応援を移し、最終的に2枚目のホロメムhBP03-072角巻わために6個以上の応援をつなげるのがこのデッキの核となる戦略です。ステージ上の歓声を下げないよう、hBP03-112ワタメイトを積極的に活用してください。",
-          "zh-TW": "將被擊倒的「角捲渡目」的歡呼聲轉移到另一張「角捲綿目」上，並最終將 6 個或更多的歡呼聲連接到第二個全息體 hBP03-072 角卷渡目上，是這套牌的核心策略。積極使用hBP03-112 Watamates，確保舞台上的歡呼聲不會減少。",
-          "fr": "Transférer les acclamations d'un « Tsunomaki Watame » abattu à un autre « Tsunomaki Watame » et finalement connecter 6 acclamations ou plus sur le 2ème holomem hBP03-072 Tsunomaki Watame est la stratégie de base de ce deck. Utilisez activement les hBP03-112 Watamates pour vous assurer que la joie sur votre scène ne diminue pas."
-        }
-      }
-    ],
-    "date": "2025-12-29",
-    "source": "official",
-    "deck_id": "official-hbp03_007"
   },
   {
     "title": "Recommended Deck: “Sakura Miko”",
