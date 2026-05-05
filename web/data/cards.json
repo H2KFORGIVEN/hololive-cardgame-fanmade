@@ -24078,10 +24078,10 @@
     "tag": null,
     "product": "補充包「エリートスパーク (hBP03)」",
     "supportEffect": {
-      "zh-TW": "帶有這個粉絲的成員交棒需要的吶喊卡數量-1。\n\n這個粉絲只能附加給「戌神ころね」，每位成員可以帶有任意數量的粉絲。",
-      "ja": "このファンを持つメンバーがバトンを渡すために必要なシャウトカードの枚数は-1枚です。\n\nこのファンは「戌神ころね」のみに付けることができ、各メンバーは何個でも持つことができます。",
-      "en": "The number of shout cards required for a member with this fan to hand over the baton is -1.\n\nThis fan can only be attached to \"戌神ころね\", and each member can have any number of fans.",
-      "fr": "Le nombre de cartes de cri requis pour qu'un membre avec cet éventail puisse passer le relais est de -1.\n\nCe fan ne peut être attaché qu'à \"戌神ころね\", et chaque membre peut avoir n'importe quel nombre de fans."
+      "zh-TW": "帶有這個粉絲的成員交棒需要的無色吶喊卡數量-1。\n\n這個粉絲只能附加給「戌神ころね」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "このファンを持つメンバーがバトンを渡すために必要な無色のシャウトカードの枚数は-1枚です。\n\nこのファンは「戌神ころね」のみに付けることができ、各メンバーは何個でも持つことができます。",
+      "en": "The number of colorless shouting cards required for a member with this fan to hand over the baton is -1.\n\nThis fan can only be attached to \"戌神ころね\", and each member can have any number of fans.",
+      "fr": "Le nombre de cartes criantes incolores nécessaires pour qu'un membre possédant cet éventail puisse passer le relais est de -1.\n\nCe fan ne peut être attaché qu'à \"戌神ころね\", et chaque membre peut avoir n'importe quel nombre de fans."
     },
     "id": "hBP03-111",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-111_C.png",
@@ -38232,10 +38232,10 @@
     "tag": "#食べ物",
     "product": "補充包「エンチャントレガリア (hBP05)」",
     "supportEffect": {
-      "zh-TW": "選擇自己的1位成員。這個回合中，該成員交棒需要的吶喊卡數量-2。之後，該成員HP回復20點。",
-      "ja": "あなた自身のメンバーを1人選択してください。このラウンド中、このメンバーがバトンを渡すために必要なシャウトカードの枚数は-2枚です。その後、メンバーのHPが20ポイント回復する。",
-      "en": "Choose 1 member of your own. During this round, the number of shout cards required for this member to hand over the baton is -2. Afterwards, the member's HP is restored to 20 points.",
-      "fr": "Choisissez 1 membre parmi vous. Lors de ce tour, le nombre de cartes de cri nécessaires pour que ce membre passe le relais est de -2. Ensuite, les PV du membre sont restaurés à 20 points."
+      "zh-TW": "選擇自己的1位成員。這個回合中，該成員交棒需要的無色吶喊卡數量-2。之後，該成員HP回復20點。",
+      "ja": "あなた自身のメンバーを1人選択してください。このラウンド中、このメンバーがバトンを渡すために必要な無色のシャウトカードの枚数は-2枚です。その後、メンバーのHPが20ポイント回復する。",
+      "en": "Choose 1 member of your own. During this round, the number of colorless shouting cards required by this member to hand over the baton is -2. Afterwards, the member's HP is restored to 20 points.",
+      "fr": "Choisissez 1 membre parmi vous. Lors de ce tour, le nombre de cartes criantes incolores nécessaires à ce membre pour passer le relais est de -2. Ensuite, les PV du membre sont restaurés à 20 points."
     },
     "id": "hBP05-075",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP05/hBP05-075_C.png",
@@ -38250,10 +38250,10 @@
     "tag": "#食べ物",
     "product": "PR卡",
     "supportEffect": {
-      "zh-TW": "選擇自己的1位成員。這個回合中，該成員交棒需要的吶喊卡數量-2。之後，該成員HP回復20點。",
-      "ja": "あなた自身のメンバーを1人選択してください。このラウンド中、このメンバーがバトンを渡すために必要なシャウトカードの枚数は-2枚です。その後、メンバーのHPが20ポイント回復する。",
-      "en": "Choose 1 member of your own. During this round, the number of shout cards required for this member to hand over the baton is -2. Afterwards, the member's HP is restored to 20 points.",
-      "fr": "Choisissez 1 membre parmi vous. Lors de ce tour, le nombre de cartes de cri nécessaires pour que ce membre passe le relais est de -2. Ensuite, les PV du membre sont restaurés à 20 points."
+      "zh-TW": "選擇自己的1位成員。這個回合中，該成員交棒需要的無色吶喊卡數量-2。之後，該成員HP回復20點。",
+      "ja": "あなた自身のメンバーを1人選択してください。このラウンド中、このメンバーがバトンを渡すために必要な無色のシャウトカードの枚数は-2枚です。その後、メンバーのHPが20ポイント回復する。",
+      "en": "Choose 1 member of your own. During this round, the number of colorless shouting cards required by this member to hand over the baton is -2. Afterwards, the member's HP is restored to 20 points.",
+      "fr": "Choisissez 1 membre parmi vous. Lors de ce tour, le nombre de cartes criantes incolores nécessaires à ce membre pour passer le relais est de -2. Ensuite, les PV du membre sont restaurés à 20 points."
     },
     "id": "hBP05-075",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP05/hBP05-075_P.png",
@@ -59646,10 +59646,10 @@
       "damage": 20,
       "specialAttackImage": null,
       "effect": {
-        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的吶喊卡數量+1。",
-        "ja": "次の相手のターン終了まで、相手のセンターメンバーの引き継ぎに必要なシャウトカードの枚数+1。",
-        "en": "Until the end of the opponent's next turn, the number of shout cards required for the handover of the opponent's center member +1.",
-        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes de cri nécessaires à la remise du membre central de l'adversaire +1."
+        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的無色吶喊卡數量+1。",
+        "ja": "次の相手のターン終了まで、相手のセンターメンバーにバトンを渡すのに必要な無色のシャウトカードの枚数+1枚。",
+        "en": "Until the end of the opponent's next turn, the number of colorless shouting cards required to hand over the baton to the opponent's center member is +1.",
+        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes criantes incolores nécessaires pour passer le relais au membre central de l'adversaire est de +1."
       }
     },
     "art2": null,
@@ -59680,10 +59680,10 @@
     "effectC": {
       "name": "FLOW GLOWのえらい宣伝担当",
       "effect": {
-        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的吶喊卡數量+1。",
-        "ja": "次の相手のターン終了まで、相手のセンターメンバーの引き継ぎに必要なシャウトカードの枚数+1。",
-        "en": "Until the end of the opponent's next turn, the number of shout cards required for the handover of the opponent's center member +1.",
-        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes de cri nécessaires à la remise du membre central de l'adversaire +1."
+        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的無色吶喊卡數量+1。",
+        "ja": "次の相手のターン終了まで、相手のセンターメンバーにバトンを渡すのに必要な無色のシャウトカードの枚数+1枚。",
+        "en": "Until the end of the opponent's next turn, the number of colorless shouting cards required to hand over the baton to the opponent's center member is +1.",
+        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes criantes incolores nécessaires pour passer le relais au membre central de l'adversaire est de +1."
       }
     },
     "effectB": null,
@@ -59696,10 +59696,10 @@
       "damage": 30,
       "specialAttackImage": null,
       "effect": {
-        "zh-TW": "如果對交棒需要的吶喊卡數量為2以上的成員使用這個藝能，將自己吶喊牌組上方的1張牌發送給自己的後台成員。",
-        "ja": "引き継ぎに2枚以上のシャウトカードが必要なメンバーにこのスキルを使用した場合、シャウトデッキの一番上のカードをバックステージメンバーに送ります。",
-        "en": "If you use this skill on a member who needs more than 2 shout cards for handover, send the top card of your shout deck to your backstage member.",
-        "fr": "Si vous utilisez cette compétence sur un membre qui a besoin de plus de 2 cartes de cri pour le remettre, envoyez la carte du dessus de votre deck de cri à votre membre des coulisses."
+        "zh-TW": "如果對交棒需要的無色吶喊卡數量為2以上的成員使用這個藝能，將自己吶喊牌組上方的1張牌發送給自己的後台成員。",
+        "ja": "バトンを渡すために無色のシャウトカードが2枚以上必要なメンバーにこのスキルを使用した場合、自分のシャウトデッキの一番上のカードをバックステージメンバーに送ります。",
+        "en": "If you use this skill on a member who needs 2 or more colorless shouting cards to hand over the baton, send the top card of your own shouting deck to your backstage member.",
+        "fr": "Si vous utilisez cette compétence sur un membre qui a besoin de 2 cartes criantes incolores ou plus pour passer le relais, envoyez la carte du dessus de votre propre jeu de cris à votre membre des coulisses."
       }
     },
     "art2": null,
@@ -59726,10 +59726,10 @@
     "effectC": {
       "name": "感情の伝令者",
       "effect": {
-        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的吶喊卡數量+3。",
-        "ja": "次の相手のターン終了まで、相手の中心メンバーがバトンを渡すのに必要なシャウトカードの枚数+3枚。",
-        "en": "Until the end of the opponent's next turn, the number of shout cards required for the opponent's central member to hand over the baton is +3.",
-        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes de cri nécessaires au membre central de l'adversaire pour passer le relais est de +3."
+        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的無色吶喊卡數量+3。",
+        "ja": "次の相手のターン終了まで、相手のセンターメンバーにバトンを渡すのに必要な無色のシャウトカードの枚数+3枚。",
+        "en": "Until the end of the opponent's next turn, the number of colorless shouting cards required to hand over the baton to the opponent's center member is +3.",
+        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes criantes incolores nécessaires pour passer le relais au membre central de l'adversaire est de +3."
       }
     },
     "effectB": null,
@@ -59743,10 +59743,10 @@
       "damage": 100,
       "specialAttackImage": "icons/tokkou_50_purple.png",
       "effect": {
-        "zh-TW": "對成員使用這個藝能，該成員交棒需要的吶喊卡數量每有1個，給予10點特殊傷害。",
-        "ja": "このスキルをメンバーに使用すると、メンバーがバトンを渡すのに必要なシャウトカードの枚数ごとに10ポイントの特殊ダメージを与えます。",
-        "en": "Using this skill on a member will inflict 10 points of special damage for each number of shout cards needed for the member to hand over the baton.",
-        "fr": "Utiliser cette compétence sur un membre infligera 10 points de dégâts spéciaux pour chaque nombre de cartes de cri nécessaires au membre pour passer le relais."
+        "zh-TW": "對成員使用這個藝能，該成員交棒需要的無色吶喊卡數量每有1個，給予10點特殊傷害。",
+        "ja": "メンバーにこのスキルを使用すると、メンバーが渡す必要がある無色のシャウト カードごとに 10 ポイントの特別ダメージを与えます。",
+        "en": "Using this skill on a member will inflict 10 points of special damage for each colorless shout card the member needs to hand over.",
+        "fr": "Utiliser cette compétence sur un membre infligera 10 points de dégâts spéciaux pour chaque carte de cri incolore que le membre doit remettre."
       }
     },
     "art2": null,
@@ -59773,10 +59773,10 @@
     "effectC": {
       "name": "感情の伝令者",
       "effect": {
-        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的吶喊卡數量+3。",
-        "ja": "次の相手のターン終了まで、相手の中心メンバーがバトンを渡すのに必要なシャウトカードの枚数+3枚。",
-        "en": "Until the end of the opponent's next turn, the number of shout cards required for the opponent's central member to hand over the baton is +3.",
-        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes de cri nécessaires au membre central de l'adversaire pour passer le relais est de +3."
+        "zh-TW": "直到下個對手回合結束，對手中心位置的1位成員交棒需要的無色吶喊卡數量+3。",
+        "ja": "次の相手のターン終了まで、相手のセンターメンバーにバトンを渡すのに必要な無色のシャウトカードの枚数+3枚。",
+        "en": "Until the end of the opponent's next turn, the number of colorless shouting cards required to hand over the baton to the opponent's center member is +3.",
+        "fr": "Jusqu'à la fin du prochain tour de l'adversaire, le nombre de cartes criantes incolores nécessaires pour passer le relais au membre central de l'adversaire est de +3."
       }
     },
     "effectB": null,
@@ -59790,10 +59790,10 @@
       "damage": 100,
       "specialAttackImage": "icons/tokkou_50_purple.png",
       "effect": {
-        "zh-TW": "對成員使用這個藝能，該成員交棒需要的吶喊卡數量每有1個，給予10點特殊傷害。",
-        "ja": "このスキルをメンバーに使用すると、メンバーがバトンを渡すのに必要なシャウトカードの枚数ごとに10ポイントの特殊ダメージを与えます。",
-        "en": "Using this skill on a member will inflict 10 points of special damage for each number of shout cards needed for the member to hand over the baton.",
-        "fr": "Utiliser cette compétence sur un membre infligera 10 points de dégâts spéciaux pour chaque nombre de cartes de cri nécessaires au membre pour passer le relais."
+        "zh-TW": "對成員使用這個藝能，該成員交棒需要的無色吶喊卡數量每有1個，給予10點特殊傷害。",
+        "ja": "メンバーにこのスキルを使用すると、メンバーが渡す必要がある無色のシャウト カードごとに 10 ポイントの特別ダメージを与えます。",
+        "en": "Using this skill on a member will inflict 10 points of special damage for each colorless shout card the member needs to hand over.",
+        "fr": "Utiliser cette compétence sur un membre infligera 10 points de dégâts spéciaux pour chaque carte de cri incolore que le membre doit remettre."
       }
     },
     "art2": null,
