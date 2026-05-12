@@ -17339,7 +17339,7 @@
       "holoPower": -2,
       "name": "がんばり～リス！",
       "effect": {
-        "zh-TW": "[每場比賽一次]這個回合中，自己舞台上的所有「アユンダ・リス」藝能傷害+50。",
+        "zh-TW": "[每場比賽一次]這個回合中，自己舞台上所有的「アユンダ・リス」藝能傷害+50。",
         "ja": "【1ゲームに1回】このラウンド中、君のステージの「アユンダ・リス」の全てのアーツにダメージ+50。",
         "en": "[Once per game] During this round, all \"アユンダ・リス\" arts on your stage will receive +50 damage.",
         "fr": "[Une fois par partie] Durant ce tour, tous les arts « アユンダ・リス » sur votre scène recevront +50 dégâts."
@@ -17372,7 +17372,7 @@
       "holoPower": -2,
       "name": "がんばり～リス！",
       "effect": {
-        "zh-TW": "[每場比賽一次]這個回合中，自己舞台上的所有「アユンダ・リス」藝能傷害+50。",
+        "zh-TW": "[每場比賽一次]這個回合中，自己舞台上所有的「アユンダ・リス」藝能傷害+50。",
         "ja": "【1ゲームに1回】このラウンド中、君のステージの「アユンダ・リス」の全てのアーツにダメージ+50。",
         "en": "[Once per game] During this round, all \"アユンダ・リス\" arts on your stage will receive +50 damage.",
         "fr": "[Une fois par partie] Durant ce tour, tous les arts « アユンダ・リス » sur votre scène recevront +50 dégâts."
@@ -23472,10 +23472,10 @@
     "tag": null,
     "product": "補充包「エリートスパーク (hBP03)」",
     "supportEffect": {
-      "zh-TW": "查看自己牌組上方的4張牌。展示1張Debut成員與1st成員並加入手牌。其餘依照喜歡的順序放回牌組下方。\n\nLIMITED：每個回合只能使用一張。",
-      "ja": "自分の山札の上の4枚のカードを見てください。デビューメンバーと1stメンバーを1枚公開して手札に加える。残りは好きな順番でデッキの下に戻します。\n\n制限: 1 ターンに 1 つだけ使用できます。",
-      "en": "Look at the 4 cards above your deck. Reveal 1 Debut member and 1st member and add them to your hand. Put the rest back under the deck in the order you like.\n\nLIMITED: Only one can be used per turn.",
-      "fr": "Regardez les 4 cartes au dessus de votre deck. Révélez 1 membre débutant et 1er membre et ajoutez-les à votre main. Remettez le reste sous le pont dans l'ordre que vous souhaitez.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+      "zh-TW": "查看自己牌組上方的4張牌。展示1張Debut成員與1張1st成員並加入手牌。其餘依照喜歡的順序放回牌組下方。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "自分の山札の上の4枚のカードを見てください。デビューメンバーと1stメンバーを1枚ずつ公開し、手札に加える。残りは好きな順番でデッキの下に戻します。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "Look at the 4 cards above your deck. Reveal 1 Debut member and 1 1st member and add them to your hand. Put the rest back under the deck in the order you like.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Regardez les 4 cartes au dessus de votre deck. Révélez 1 membre Début et 1 1er membre et ajoutez-les à votre main. Remettez le reste sous le pont dans l'ordre que vous souhaitez.\n\nLIMITÉ : Un seul peut être utilisé par tour."
     },
     "id": "hBP03-085",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-085_U.png",
@@ -24365,10 +24365,10 @@
       "holoPower": -1,
       "name": "かわいい！ ポジティブ！ ジーニアス！",
       "effect": {
-        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與「限界飯」並加入手牌。將牌組重新洗牌。",
-        "ja": "【１ゲームに１回】相手のターン中、自分の「一条梨花」がダウンした時、自分のデッキから「一条梨花」と「限定ライス」１枚を公開して手札に加える。デッキを再シャッフルします。",
-        "en": "[Once per game] During the opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
-        "fr": "[Une fois par partie] Pendant le tour de l'adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et \"Limited Rice\" de votre deck et ajoutez-les à votre main. Remaniez le jeu."
+        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與1張「限界飯」並加入手牌。將牌組重新洗牌。",
+        "ja": "【１ゲームに１回】相手のターン中、自分の『一条梨花』がダウンした時、自分のデッキから『一条梨花』と『限定ライス』を１枚ずつ公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per game] During your opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and 1 \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par partie] Pendant le tour de votre adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et 1 \"Limited Rice\" depuis votre deck et ajoutez-les à votre main. Remaniez le jeu."
       }
     },
     "id": "hBP04-003",
@@ -24398,10 +24398,10 @@
       "holoPower": -1,
       "name": "かわいい！ ポジティブ！ ジーニアス！",
       "effect": {
-        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與「限界飯」並加入手牌。將牌組重新洗牌。",
-        "ja": "【１ゲームに１回】相手のターン中、自分の「一条梨花」がダウンした時、自分のデッキから「一条梨花」と「限定ライス」１枚を公開して手札に加える。デッキを再シャッフルします。",
-        "en": "[Once per game] During the opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
-        "fr": "[Une fois par partie] Pendant le tour de l'adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et \"Limited Rice\" de votre deck et ajoutez-les à votre main. Remaniez le jeu."
+        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與1張「限界飯」並加入手牌。將牌組重新洗牌。",
+        "ja": "【１ゲームに１回】相手のターン中、自分の『一条梨花』がダウンした時、自分のデッキから『一条梨花』と『限定ライス』を１枚ずつ公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per game] During your opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and 1 \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par partie] Pendant le tour de votre adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et 1 \"Limited Rice\" depuis votre deck et ajoutez-les à votre main. Remaniez le jeu."
       }
     },
     "id": "hBP04-003",
@@ -24431,10 +24431,10 @@
       "holoPower": -1,
       "name": "かわいい！ ポジティブ！ ジーニアス！",
       "effect": {
-        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與「限界飯」並加入手牌。將牌組重新洗牌。",
-        "ja": "【１ゲームに１回】相手のターン中、自分の「一条梨花」がダウンした時、自分のデッキから「一条梨花」と「限定ライス」１枚を公開して手札に加える。デッキを再シャッフルします。",
-        "en": "[Once per game] During the opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
-        "fr": "[Une fois par partie] Pendant le tour de l'adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et \"Limited Rice\" de votre deck et ajoutez-les à votre main. Remaniez le jeu."
+        "zh-TW": "[每場比賽一次]對手回合中，自己的「一条莉々華」被擊倒時可以使用：從自己的牌組展示1張「一条莉々華」與1張「限界飯」並加入手牌。將牌組重新洗牌。",
+        "ja": "【１ゲームに１回】相手のターン中、自分の『一条梨花』がダウンした時、自分のデッキから『一条梨花』と『限定ライス』を１枚ずつ公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "[Once per game] During your opponent's turn, when your \"Ichijo Rika\" is knocked down, you can use: Reveal 1 \"Ichijo Rika\" and 1 \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck.",
+        "fr": "[Une fois par partie] Pendant le tour de votre adversaire, lorsque votre \"Ichijo Rika\" est renversé, vous pouvez utiliser : Révélez 1 \"Ichijo Rika\" et 1 \"Limited Rice\" depuis votre deck et ajoutez-les à votre main. Remaniez le jeu."
       }
     },
     "id": "hBP04-003",
@@ -46488,10 +46488,10 @@
     "effectC": {
       "name": "はばないすでーい！！！",
       "effect": {
-        "zh-TW": "這個回合中，自己舞台上的所有「角巻わため」藝能傷害+20。之後，如果自己的中心成員有6張以上的吶喊卡，從自己的牌組抽2張牌。",
-        "ja": "このラウンド中、自分のステージの「角咲和也」の全てのアーツに与えるダメージは+20される。その後、自分のセンターメンバーがシャウトカードを6枚以上持っている場合、山札からカードを2枚引く。",
-        "en": "During this round, all \"Kakusaki Kazuya\" arts on your stage will receive +20 damage. Afterwards, if your center member has more than 6 shout cards, draw 2 cards from your deck.",
-        "fr": "Durant ce tour, tous les arts « Kakusaki Kazuya » sur votre scène recevront +20 dégâts. Ensuite, si votre membre du centre possède plus de 6 cartes cri, piochez 2 cartes de votre deck."
+        "zh-TW": "這個回合中，自己舞台上所有的「角巻わため」藝能傷害+20。之後，如果自己的中心成員有6張以上的吶喊卡，從自己的牌組抽2張牌。",
+        "ja": "このラウンド中、自分のステージの「角咲和也」全てのアーツのダメージを+20する。その後、自分のセンターメンバーがシャウトカードを6枚以上持っている場合、山札からカードを2枚引く。",
+        "en": "During this round, the damage of all \"Kakusaki Kazuya\" arts on your stage will be +20. Afterwards, if your center member has more than 6 shout cards, draw 2 cards from your deck.",
+        "fr": "Durant ce tour, les dégâts de tous les arts « Kakusaki Kazuya » sur votre scène seront de +20. Ensuite, si votre membre du centre possède plus de 6 cartes cri, piochez 2 cartes de votre deck."
       }
     },
     "effectB": null,
