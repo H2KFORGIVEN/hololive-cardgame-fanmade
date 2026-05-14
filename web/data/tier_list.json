@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04",
+  "updated": "2026-05",
   "source": "https://www.holocardstrategy.jp/saikyou-deck/",
   "tiers": [
     {
@@ -7,7 +7,7 @@
       "decks": [
         {
           "name": "クロニー単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/565347cfef083be9075c52436c58c682-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/45db5534fc01eb2c278f9603ff63980f-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
@@ -43,7 +43,7 @@
         },
         {
           "name": "AZKi単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/15299a805e4886b30bb7fe06b8a4a1d4-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/b9ed6229b4a3c0c9e1150f7f49aa4b58-1080x608.png",
           "ratings": {
             "firepower": "○",
             "ease": "◎",
@@ -79,7 +79,7 @@
         },
         {
           "name": "ミオ推しハコリズ（エリザベールズ）",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/dd963b989112663676ce7a8e0c4ccccb-1080x608.png",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9b1a74d79730cc8227b6d1352c066817-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
@@ -119,6 +119,42 @@
       "tier": 2,
       "decks": [
         {
+          "name": "いろは単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/145c689bc69945f4e6fc847b7d60bf64.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "◎",
+            "stability": "○",
+            "endurance": "○",
+            "pressure": "○"
+          },
+          "features": {
+            "ja": [
+              "2ndだけでなく、Buzzでエール加速や火力を出して戦うこともできる",
+              "SPによるドローとバフ効果で2ターン目に2面取りを狙える",
+              "デッキからholoXサーチのLimitedで状況に合わせて対応可能"
+            ],
+            "zh-TW": [
+              "除了2nd之外，你還可以用Buzz的吶喊加速和火力進行戰鬥。",
+              "你可以在第二回合以 SP 抽取和 buff 效果為目標瞄準第二回合。",
+              "您可以根據情況做出反應，從甲板上進行有限的holoX搜索"
+            ],
+            "en": [
+              "In addition to 2nd, you can also fight with yell acceleration and firepower with Buzz.",
+              "You can aim for a second turn on the second turn with SP draws and buff effects.",
+              "You can respond according to the situation with limited holoX search from the deck"
+            ],
+            "fr": [
+              "En plus du 2ème, vous pouvez également vous battre avec une accélération criante et une puissance de feu avec Buzz.",
+              "Vous pouvez viser un deuxième tour au deuxième tour avec des tirages SP et des effets buff.",
+              "Vous pouvez répondre en fonction de la situation avec une recherche holoX limitée depuis le deck"
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
+          "vtuber": "風真いろは",
+          "id": "風真いろは-いろは単"
+        },
+        {
           "name": "わため単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/3be1c0243b7f9604196ae8d0c6244836-1080x608.png",
           "ratings": {
@@ -155,76 +191,40 @@
           "id": "角巻わため-わため単"
         },
         {
-          "name": "いろは単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cda595fe216e63e3ececabf6b353004c.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "◎",
-            "stability": "○",
-            "endurance": "○",
-            "pressure": "○"
-          },
-          "features": {
-            "ja": [
-              "2ndだけでなく、Buzzでエール加速や火力を出して戦うこともできる",
-              "SPによるドローとバフ効果で2ターン目に2面取りを狙える",
-              "デッキからholoXサーチのLimitedで状況に合わせて対応可能"
-            ],
-            "zh-TW": [
-              "除了2nd之外，你還可以用Buzz的吶喊加速和火力進行戰鬥。",
-              "你可以在第二回合以 SP 抽取和 buff 效果為目標瞄準第二回合。",
-              "您可以根據情況做出反應，從甲板上進行有限的holoX搜索"
-            ],
-            "en": [
-              "In addition to 2nd, you can also fight with yell acceleration and firepower with Buzz.",
-              "You can aim for a second turn on the second turn with SP draws and buff effects.",
-              "You can respond according to the situation with limited holoX search from the deck"
-            ],
-            "fr": [
-              "En plus du 2ème, vous pouvez également vous battre avec une accélération criante et une puissance de feu avec Buzz.",
-              "Vous pouvez viser un deuxième tour au deuxième tour avec des tirages SP et des effets buff.",
-              "Vous pouvez répondre en fonction de la situation avec une recherche holoX limitée depuis le deck"
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/irohatandeck-kaisetu/",
-          "vtuber": "風真いろは",
-          "id": "風真いろは-いろは単"
-        },
-        {
-          "name": "はあちゃま単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9c8aeab3167ae0ca8efb374eb941e32b-1080x608.png",
+          "name": "ねね単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/ad7049df8f443808ed2491da180c0f67-1080x608.png",
           "ratings": {
             "firepower": "◎",
             "ease": "○",
-            "stability": "◎",
+            "stability": "○",
             "endurance": "◎",
             "pressure": "○"
           },
           "features": {
             "ja": [
-              "大量のDebutとステージスキルのドローで高い安定感",
-              "AZKi環境に刺さる紫特攻が優秀！",
-              "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
+              "占いを使うことで、最大で合計120も火力UP！",
+              "後攻1ターン目でライフを取ったり、先行2ターン目の2面取りも可能",
+              "なるべく早期での決着を狙おう！"
             ],
             "zh-TW": [
-              "出道及舞台技能抽取量大，穩定感高",
-              "AZKi環境に刺さる紫特攻が優秀！",
-              "將首秀返回卡組底部以獲得強大的附加效果和高火力"
+              "透過算命，你的火力總共最多可以增加120點！",
+              "可以在第二回合的第一回合奪取生命，也可以在第一回合的第二回合奪取兩側。",
+              "讓我們以儘早達成和解為目標！"
             ],
             "en": [
-              "High sense of stability with a large amount of Debut and stage skill draws",
-              "The purple special attack that sticks in the AZKi environment is excellent!",
-              "Return Debut to the bottom of the deck to gain powerful additional effects and high firepower"
+              "By using fortune telling, you can increase your firepower by up to 120 points in total!",
+              "It is possible to take life on the first turn of the second turn, or take two sides on the second turn of the first turn.",
+              "Let's aim for a settlement as early as possible!"
             ],
             "fr": [
-              "Sensation élevée de stabilité avec une grande quantité de compétences de début et de scène",
-              "L'attaque spéciale violette qui colle à l'environnement AZKi est excellente !",
-              "Remettez Debut au bas du deck pour obtenir de puissants effets supplémentaires et une puissance de feu élevée."
+              "En utilisant la divination, vous pouvez augmenter votre puissance de feu jusqu'à 120 points au total !",
+              "Il est possible de prendre des points de vie au premier tour du deuxième tour, ou de prendre deux côtés au deuxième tour du premier tour.",
+              "Visons un règlement le plus tôt possible !"
             ]
           },
-          "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
-          "vtuber": "赤井はあと",
-          "id": "赤井はあと-はあちゃま単"
+          "recipe_url": "https://www.holocardstrategy.jp/nenechi_deck/",
+          "vtuber": "桃鈴ねね",
+          "id": "桃鈴ねね-ねね単"
         }
       ]
     },
@@ -268,42 +268,6 @@
           "id": "ラプラス-ダークネス-ラプ推しラプラス単"
         },
         {
-          "name": "ねね単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/ad7049df8f443808ed2491da180c0f67-1080x608.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "○",
-            "stability": "○",
-            "endurance": "◎",
-            "pressure": "○"
-          },
-          "features": {
-            "ja": [
-              "占いを使うことで、最大で合計120も火力UP！",
-              "後攻1ターン目でライフを取ったり、先行2ターン目の2面取りも可能",
-              "なるべく早期での決着を狙おう！"
-            ],
-            "zh-TW": [
-              "透過算命，你的火力總共最多可以增加120點！",
-              "可以在第二回合的第一回合奪取生命，也可以在第一回合的第二回合奪取兩側。",
-              "讓我們以儘早達成和解為目標！"
-            ],
-            "en": [
-              "By using fortune telling, you can increase your firepower by up to 120 points in total!",
-              "It is possible to take life on the first turn of the second turn, or take two sides on the second turn of the first turn.",
-              "Let's aim for a settlement as early as possible!"
-            ],
-            "fr": [
-              "En utilisant la divination, vous pouvez augmenter votre puissance de feu jusqu'à 120 points au total !",
-              "Il est possible de prendre des points de vie au premier tour du deuxième tour, ou de prendre deux côtés au deuxième tour du premier tour.",
-              "Visons un règlement le plus tôt possible !"
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/nenechi_deck/",
-          "vtuber": "桃鈴ねね",
-          "id": "桃鈴ねね-ねね単"
-        },
-        {
           "name": "カリオペいろは",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/cbd81d2235d2ada9216d2b999eb3452e-1080x608.png",
           "ratings": {
@@ -338,6 +302,42 @@
           "recipe_url": "https://www.holocardstrategy.jp/kariopedeck-kaisetu/",
           "vtuber": "森カリオペ",
           "id": "森カリオペ-カリオペいろは"
+        },
+        {
+          "name": "はあちゃま単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/9c8aeab3167ae0ca8efb374eb941e32b-1080x608.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "○",
+            "stability": "◎",
+            "endurance": "◎",
+            "pressure": "○"
+          },
+          "features": {
+            "ja": [
+              "大量のDebutとステージスキルのドローで高い安定感",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "デッキ下にDebutを戻して強力な追加効果＆高火力を得る"
+            ],
+            "zh-TW": [
+              "出道及舞台技能抽取量大，穩定感高",
+              "AZKi環境に刺さる紫特攻が優秀！",
+              "將首秀返回卡組底部以獲得強大的附加效果和高火力"
+            ],
+            "en": [
+              "High sense of stability with a large amount of Debut and stage skill draws",
+              "The purple special attack that sticks in the AZKi environment is excellent!",
+              "Return Debut to the bottom of the deck to gain powerful additional effects and high firepower"
+            ],
+            "fr": [
+              "Sensation élevée de stabilité avec une grande quantité de compétences de début et de scène",
+              "L'attaque spéciale violette qui colle à l'environnement AZKi est excellente !",
+              "Remettez Debut au bas du deck pour obtenir de puissants effets supplémentaires et une puissance de feu élevée."
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/ha-totandeck/",
+          "vtuber": "赤井はあと",
+          "id": "赤井はあと-はあちゃま単"
         }
       ]
     }
