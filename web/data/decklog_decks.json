@@ -6034,6 +6034,257 @@
     "cheer_deck_count": 20
   },
   {
+    "deck_id": "decklog-59J29",
+    "deck_code": "59J29",
+    "title": "クロニー単",
+    "oshi": "オーロ・クロニー",
+    "source": "decklog",
+    "event": "WGP25-26 Kuala Lumpur",
+    "event_date": "2026-04-19",
+    "placement": "1st(LightningJason)",
+    "url": "https://decklog-en.bushiroad.com/ja/view/59J29",
+    "oshi_cards": [
+      {
+        "card_id": "hBP07-005",
+        "count": 1,
+        "name": "オーロ・クロニー",
+        "type": "主推",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-005_OUR.png"
+      }
+    ],
+    "main_deck": [
+      {
+        "card_id": "hBP07-054",
+        "count": 3,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-054_SR.png"
+      },
+      {
+        "card_id": "hBP01-092",
+        "count": 1,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP01-092_HR.png"
+      },
+      {
+        "card_id": "hBP01-092",
+        "count": 3,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP01-092_HR.png"
+      },
+      {
+        "card_id": "hBP01-094",
+        "count": 1,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-094_U.png"
+      },
+      {
+        "card_id": "hBP01-094",
+        "count": 3,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP01/hBP01-094_U.png"
+      },
+      {
+        "card_id": "hBP07-050",
+        "count": 4,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-050_C.png"
+      },
+      {
+        "card_id": "hBP07-051",
+        "count": 4,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-051_U.png"
+      },
+      {
+        "card_id": "hBP07-053",
+        "count": 4,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-053_C.png"
+      },
+      {
+        "card_id": "hBP07-055",
+        "count": 2,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-055_U.png"
+      },
+      {
+        "card_id": "hBP07-055",
+        "count": 1,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-055_U.png"
+      },
+      {
+        "card_id": "hBP07-056",
+        "count": 3,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-056_UR.png"
+      },
+      {
+        "card_id": "hBP07-056",
+        "count": 1,
+        "name": "オーロ・クロニー",
+        "type": "成員",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-056_UR.png"
+      },
+      {
+        "card_id": "hBP07-097",
+        "count": 4,
+        "name": "時の支配者 -Promise-",
+        "type": "支援・活動",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-097_U.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 2,
+        "name": "春先のどか",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-016_02_C.png"
+      },
+      {
+        "card_id": "hSD01-016",
+        "count": 2,
+        "name": "春先のどか",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-016_02_C.png"
+      },
+      {
+        "card_id": "hSD01-017",
+        "count": 2,
+        "name": "マネちゃん",
+        "type": "支援・工作人員",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-017_02_C.png"
+      },
+      {
+        "card_id": "hBP01-104",
+        "count": 4,
+        "name": "ふつうのパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
+      },
+      {
+        "card_id": "hBP05-074",
+        "count": 1,
+        "name": "フレンドリーパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hBP05-074_02_C.png"
+      },
+      {
+        "card_id": "hBP05-074",
+        "count": 1,
+        "name": "フレンドリーパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hBP05-074_02_C.png"
+      },
+      {
+        "card_id": "hSD01-018",
+        "count": 3,
+        "name": "サブパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-018_SR.png"
+      },
+      {
+        "card_id": "hSD01-018",
+        "count": 1,
+        "name": "サブパソコン",
+        "type": "支援・物品",
+        "color": "",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD01/hSD01-018_SR.png"
+      }
+    ],
+    "cheer_deck": [
+      {
+        "card_id": "hY04-001",
+        "count": 6,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-001_C.png"
+      },
+      {
+        "card_id": "hY04-002",
+        "count": 3,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-002_SY.png"
+      },
+      {
+        "card_id": "hY04-003",
+        "count": 2,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-003_SY.png"
+      },
+      {
+        "card_id": "hY04-005",
+        "count": 3,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-005_SY.png"
+      },
+      {
+        "card_id": "hY04-006",
+        "count": 3,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-006_SY.png"
+      },
+      {
+        "card_id": "hY04-007",
+        "count": 1,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-007_S.png"
+      },
+      {
+        "card_id": "hY04-010",
+        "count": 2,
+        "name": "青エール",
+        "type": "吶喊",
+        "color": "藍",
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hY04-010_SY.png"
+      }
+    ],
+    "main_deck_count": 50,
+    "cheer_deck_count": 20
+  },
+  {
     "deck_id": "decklog-3K9T7",
     "deck_code": "3K9T7",
     "title": "ミオ推しハコリズ",
