@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="donut">
+      <path d="M50,0 A50,50 0 1,1 49.99,0 Z M50,25 A25,25 0 1,0 50.01,25 Z" fill-rule="evenodd"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#donut)">
+    <path d="M50,50 L50,0 A50,50 0 0,1 93.3,25 Z" fill="#e8e8e8"/>
+    <path d="M50,50 L93.3,25 A50,50 0 0,1 93.3,75 Z" fill="#4caf50"/>
+    <path d="M50,50 L93.3,75 A50,50 0 0,1 50,100 Z" fill="#f44336"/>
+    <path d="M50,50 L50,100 A50,50 0 0,1 6.7,75 Z" fill="#2196f3"/>
+    <path d="M50,50 L6.7,75 A50,50 0 0,1 6.7,25 Z" fill="#9c27b0"/>
+    <path d="M50,50 L6.7,25 A50,50 0 0,1 50,0 Z" fill="#ffeb3b"/>
+  </g>
+</svg>

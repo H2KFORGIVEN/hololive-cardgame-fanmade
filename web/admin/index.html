@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>管理後台 · hololive Card Practice</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>管理後台</h1>
+    <p class="admin-note">維護需要人工更新的資料。寫入僅限 localhost，從 LAN 開啟只能讀取。</p>
+  </header>
+
+  <main class="admin-grid">
+    <a class="admin-card" href="deck-codes.html">
+      <h2>大賽牌組代碼</h2>
+      <p>維護 <code>deck_codes.json</code> — 新增大賽名次、event、date、oshi、deck code。下次 scrape 會自動抓牌譜詳細內容。</p>
+    </a>
+
+    <a class="admin-card" href="x-posts.html">
+      <h2>X 貼文清單</h2>
+      <p>維護 <code>x_posts.json</code> — 官方帳號大賽/使用率新 post URL。</p>
+    </a>
+
+    <a class="admin-card" href="tournaments.html">
+      <h2>大賽資訊</h2>
+      <p>維護 <code>web/data/tournaments.json</code> — 大賽基本資料（event / date / location）+ 官方使用率統計。前台的大賽頁長條圖吃這份。</p>
+    </a>
+
+    <a class="admin-card admin-card-link" href="/" target="_blank">
+      <h2>← 返回主站</h2>
+      <p>打開 <code>/</code>（首頁）新分頁。</p>
+    </a>
+  </main>
+
+  <footer class="admin-footer">
+    <p>存檔後記得在終端機跑 <code>./scripts/push-deploy.sh</code> 把變更推上 GitHub + 部署。</p>
+    <p class="admin-host" id="adminHost"></p>
+  </footer>
+
+  <script>
+    document.getElementById('adminHost').textContent =
+      '目前頁面位置：' + location.href + '（寫入需從 localhost 開啟）';
+  </script>
+</body>
+</html>

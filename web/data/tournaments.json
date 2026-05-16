@@ -1,0 +1,300 @@
+[
+  {
+    "event": "WGP2025 Tokyo",
+    "date": "2025-05-05",
+    "location": "Tokyo Big Sight",
+    "usage_rate": null
+  },
+  {
+    "event": "WGP2025 Nagoya",
+    "date": "2025-08-17",
+    "location": "Portmesse Nagoya",
+    "usage_rate": null
+  },
+  {
+    "event": "WGP2025 Chiba",
+    "date": "2025-09-15",
+    "location": "Makuhari Messe",
+    "usage_rate": {
+      "scope": {
+        "zh-TW": "預選ラウンド 約2000人",
+        "en": "Qualifier ~2000 players",
+        "ja": "予選ラウンド 約2000人",
+        "fr": "Qualifications ~2000 joueurs"
+      },
+      "source": "hololive OFFICIAL CARD GAME X (@hololive_OCG)",
+      "rates": [
+        {
+          "oshi": "クレイジー・オリー",
+          "pct": 25
+        },
+        {
+          "oshi": "天音かなた",
+          "pct": 23
+        },
+        {
+          "oshi": "紫咲シオン",
+          "pct": 9
+        },
+        {
+          "oshi": "小鳥遊キアラ",
+          "pct": 8
+        },
+        {
+          "oshi": "沙花叉クロヱ",
+          "pct": 8
+        },
+        {
+          "oshi": "星街すいせい",
+          "pct": 6
+        },
+        {
+          "oshi": "宝鐘マリン",
+          "pct": 6
+        },
+        {
+          "oshi": "その他",
+          "pct": 15
+        }
+      ]
+    }
+  },
+  {
+    "event": "WGP25-26 Aichi",
+    "date": "2026-02-08",
+    "location": "Aichi Sky Expo",
+    "usage_rate": {
+      "scope": {
+        "zh-TW": "個人戰 預選ラウンド",
+        "en": "Individual Qualifier Round",
+        "ja": "個人戦 予選ラウンド",
+        "fr": "Qualifications individuelles"
+      },
+      "source": "hololive OFFICIAL CARD GAME (@hololive_OCG)",
+      "rates": [
+        {
+          "oshi": "戌神ころね",
+          "pct": 25
+        },
+        {
+          "oshi": "百鬼あやめ",
+          "pct": 17
+        },
+        {
+          "oshi": "風真いろは",
+          "pct": 10
+        },
+        {
+          "oshi": "森カリオペ",
+          "pct": 8
+        },
+        {
+          "oshi": "ラオーラ・パンデーラ",
+          "pct": 5
+        },
+        {
+          "oshi": "大空スバル",
+          "pct": 4
+        },
+        {
+          "oshi": "ロボ子さん",
+          "pct": 4
+        },
+        {
+          "oshi": "儒烏風亭らでん",
+          "pct": 4
+        },
+        {
+          "oshi": "兎田ぺこら",
+          "pct": 3
+        },
+        {
+          "oshi": "星咲リオナ",
+          "pct": 3
+        },
+        {
+          "oshi": "その他",
+          "pct": 17
+        }
+      ]
+    }
+  },
+  {
+    "event": "WGP25-26 Taipei",
+    "date": "2026-03-14",
+    "location": "Taipei International Convention Center",
+    "usage_rate": {
+      "scope": {
+        "zh-TW": "預選ラウンド",
+        "en": "Qualifier Round",
+        "ja": "予選ラウンド",
+        "fr": "Qualifications"
+      },
+      "source": "hololive OFFICIAL CARD GAME",
+      "rates": [
+        {
+          "oshi": "AZKi",
+          "pct": 22
+        },
+        {
+          "oshi": "角巻わため",
+          "pct": 9
+        },
+        {
+          "oshi": "風真いろは",
+          "pct": 8
+        },
+        {
+          "oshi": "百鬼あやめ",
+          "pct": 8
+        },
+        {
+          "oshi": "赤井はあと",
+          "pct": 7
+        },
+        {
+          "oshi": "戌神ころね",
+          "pct": 5
+        },
+        {
+          "oshi": "森カリオペ",
+          "pct": 4
+        },
+        {
+          "oshi": "桃鈴ねね",
+          "pct": 3
+        },
+        {
+          "oshi": "古石ビジュー",
+          "pct": 3
+        },
+        {
+          "oshi": "その他",
+          "pct": 31
+        }
+      ]
+    }
+  },
+  {
+    "event": "ぐるっとツアー2026 Miyagi",
+    "date": "2026-04-04",
+    "location": "仙台市中小企業活性化センター",
+    "usage_rate": {
+      "scope": {
+        "zh-TW": "Trio 預選ラウンド",
+        "en": "Trio Qualifier Round",
+        "ja": "トリオバトル 予選ラウンド",
+        "fr": "Trio Qualifications"
+      },
+      "source": "hololive OFFICIAL CARD GAME (@hololive_OCG)",
+      "rates": [
+        {
+          "oshi": "AZKi",
+          "pct": 21
+        },
+        {
+          "oshi": "大神ミオ",
+          "pct": 19
+        },
+        {
+          "oshi": "オーロ・クロニー",
+          "pct": 14
+        },
+        {
+          "oshi": "赤井はあと",
+          "pct": 11
+        },
+        {
+          "oshi": "角巻わため",
+          "pct": 9
+        },
+        {
+          "oshi": "響咲リオナ",
+          "pct": 4
+        },
+        {
+          "oshi": "風真いろは",
+          "pct": 4
+        },
+        {
+          "oshi": "桃鈴ねね",
+          "pct": 2
+        },
+        {
+          "oshi": "百鬼あやめ",
+          "pct": 2
+        },
+        {
+          "oshi": "兎田ぺこら",
+          "pct": 2
+        },
+        {
+          "oshi": "その他",
+          "pct": 12
+        }
+      ]
+    }
+  },
+  {
+    "event": "WGP25-26 Kuala Lumpur",
+    "date": "2026-04-19",
+    "location": "World Trade Centre KL",
+    "usage_rate": {
+      "scope": {
+        "zh-TW": "主賽事",
+        "en": "Main tournament",
+        "ja": "大会本戦",
+        "fr": "Tournoi principal"
+      },
+      "source": "",
+      "rates": [
+        {
+          "oshi": "AZKi",
+          "pct": 23
+        },
+        {
+          "oshi": "大神ミオ",
+          "pct": 21
+        },
+        {
+          "oshi": "クロニー",
+          "pct": 11
+        },
+        {
+          "oshi": "角巻わため",
+          "pct": 6
+        },
+        {
+          "oshi": "赤井はあと",
+          "pct": 6
+        },
+        {
+          "oshi": "森カリオペ",
+          "pct": 4
+        },
+        {
+          "oshi": "星街すいせい",
+          "pct": 4
+        },
+        {
+          "oshi": "桃鈴ねね",
+          "pct": 3
+        },
+        {
+          "oshi": "百鬼あやめ",
+          "pct": 3
+        },
+        {
+          "oshi": "その他",
+          "pct": 19
+        }
+      ]
+    }
+  },
+  {
+    "event": "WGP25-26 Fukuoka",
+    "date": "2026-05-10",
+    "location": "Kitakyushu Messe",
+    "usage_rate": null
+  }
+]

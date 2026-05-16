@@ -1,62 +1,278 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+  <!-- Analytics removed for local deployment -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hololive Card Game - Meta Deck Database</title>
+  <title>hololive CARD GAME Fan-made Practice Site｜hololive カードゲーム ファンメイド 練習サイト</title>
+  <meta name="description" content="Fan-made ホロカ (hOCG) meta database. Browse tier lists, deck guides, tournament results, and card data for hololive card game. Not affiliated with COVER Corp.">
+  <meta name="keywords" content="hololive, card game, hOCG, ホロカ, tier list, deck guide, tournament, meta, ホロライブ, カードゲーム, 環境, デッキ, 最強デッキ, 構築, hololive TCG, ホロカード, 大会結果, WGP, deck recipe, おすすめデッキ">
+  <link rel="canonical" href="https://holocardgame-meta.github.io/">
+
+  <link rel="alternate" hreflang="zh-TW" href="https://holocardgame-meta.github.io/?lang=zh-TW">
+  <link rel="alternate" hreflang="ja" href="https://holocardgame-meta.github.io/?lang=ja">
+  <link rel="alternate" hreflang="en" href="https://holocardgame-meta.github.io/?lang=en">
+  <link rel="alternate" hreflang="fr" href="https://holocardgame-meta.github.io/?lang=fr">
+  <link rel="alternate" hreflang="x-default" href="https://holocardgame-meta.github.io/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.holocardstrategy.jp">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HOLOCARD META - Fan-made ホロカ Tier List & Deck Guides">
+  <meta property="og:description" content="Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card search. Not affiliated with COVER Corp.">
+  <meta property="og:url" content="https://holocardgame-meta.github.io/">
+  <meta property="og:image" content="https://holocardgame-meta.github.io/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="HOLOCARD META">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HOLOCARD META - Fan-made ホロカ Tier List & Deck Guides">
+  <meta name="twitter:description" content="Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card search. Not affiliated with COVER Corp.">
+  <meta name="twitter:image" content="https://holocardgame-meta.github.io/og-image.svg">
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "HOLOCARD META",
+      "alternateName": ["ホロカメタ", "ホロカ環境", "hOCG Meta"],
+      "url": "https://holocardgame-meta.github.io/",
+      "description": "Fan-made ホロカ (hOCG) meta database. Tier lists, deck guides, tournament results & card data.",
+      "inLanguage": ["zh-TW", "ja", "en", "fr"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://holocardgame-meta.github.io/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the current hololive card game tier list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD META provides an up-to-date tier list ranking decks into Tier 1, Tier 2, and Tier 3 based on tournament performance and win rates. Data is sourced from holocardstrategy.jp and updated monthly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ホロカの環境デッキランキングはどこで見れますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD METAでは、大会結果に基づいたTier 1/2/3のデッキランキング、100以上のデッキ攻略ガイド、カード検索が利用できます。毎月更新されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I find hololive card game deck guides?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HOLOCARD META features 100+ deck guides from holocardstrategy.jp with card breakdowns and strategies, 30 official Bushiroad recommended decks with key card analysis, and tournament-winning deck lists from WGP events."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "hOCG Meta Deck Tier List",
+      "description": "Current meta deck tier rankings for hololive OFFICIAL CARD GAME",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Tier 1 Decks", "description": "Top-tier competitive decks with highest win rates"},
+        {"@type": "ListItem", "position": 2, "name": "Tier 2 Decks", "description": "Strong competitive decks, viable in tournaments"},
+        {"@type": "ListItem", "position": 3, "name": "Tier 3 Decks", "description": "Playable decks with niche strategies"}
+      ]
+    }
+  ]
+  </script>
 </head>
 <body>
+  <!-- Waku: rotating gradient ring (official style) -->
+  <div class="waku"></div>
+  <div class="waku-cover"></div>
+  <div class="waku-deco">
+    <div class="deco deco1"></div>
+    <div class="deco deco2"></div>
+    <div class="deco deco3"><span></span></div>
+    <div class="deco deco4"><span></span></div>
+    <div class="deco deco5"><span></span></div>
+    <div class="deco deco6"><span></span></div>
+  </div>
+
+  <!-- Fixed background layer (official style) -->
+  <div class="bg"></div>
+
+  <!-- Intro splash -->
+  <div class="intro" id="introSplash">
+    <div class="intro-bg"></div>
+    <div class="intro-content">
+      <img class="intro-emblem" src="images/brand/intro_emblem.svg" alt="">
+      <img class="intro-txt1" src="images/brand/intro_logotxt01.svg" alt="hololive">
+      <img class="intro-txt2" src="images/brand/intro_logotxt02.svg" alt="OFFICIAL CARD GAME">
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="header-inner">
-      <h1 class="site-title">
-        <span class="title-holo">HOLO</span><span class="title-card">CARD</span>
-        <span class="title-meta">META</span>
-      </h1>
-      <p class="site-subtitle">hololive OFFICIAL CARD GAME - 環境デッキデータベース</p>
+      <a class="header-logo-link" href="./">
+        <img class="site-logo" src="images/brand/logo.svg" alt="hololive OFFICIAL CARD GAME">
+      </a>
+      <span class="fan-made-label">Fan-made Practice Site</span>
+      <nav class="main-nav">
+        <button class="nav-btn" data-view="guides" data-i18n="nav_guides">牌組攻略</button>
+        <button class="nav-btn" data-view="tournament" data-i18n="nav_tournament">大賽牌組</button>
+        <button class="nav-btn" data-view="news" data-i18n="nav_news">官方X消息</button>
+        <button class="nav-btn" data-view="cards" data-i18n="nav_cards">卡片搜尋</button>
+        <button class="nav-btn" data-view="tutorial" data-i18n="nav_tutorial">規則教學</button>
+        <a class="nav-btn nav-link" href="game/" data-i18n="nav_battle">對戰</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-dropdown-btn" id="langDropdownBtn">中文 ▾</button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu" hidden>
+            <div class="lang-switcher" id="langSwitcher"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <nav class="main-nav">
-    <button class="nav-btn active" data-view="tiers">Tier 一覽</button>
-    <button class="nav-btn" data-view="cards">卡片搜尋</button>
-  </nav>
+  <!-- Carousel (loaded from homepage.json) -->
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
 
-  <div class="filter-bar" id="filterBar">
+  <!-- Homepage sections (loaded from homepage.json) -->
+  <div id="homeSections">
+    <section class="home-section products-section">
+      <div class="section-inner">
+        <div class="products-slider" id="productsSlider">
+          <div class="products-viewport">
+            <div class="products-track" id="productsTrack"></div>
+          </div>
+          <button class="products-arrow products-prev" id="productsPrev">Previous</button>
+          <button class="products-arrow products-next" id="productsNext">Next</button>
+          <div class="products-dots" id="productsDots"></div>
+        </div>
+      </div>
+    </section>
+    <section class="home-section news-section">
+      <div class="section-inner">
+        <h2 class="news-title">NEWS</h2>
+        <p class="news-subtitle">ーニュースー</p>
+        <div class="news-grid" id="newsGrid"></div>
+        <div class="news-more">
+          <a class="news-more-btn" href="https://hololive-official-cardgame.com/news/" target="_blank" rel="noopener">MORE ▶</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="filter-bar" id="filterBar" style="display:none">
     <div class="filter-group">
-      <label>篩選顏色</label>
+      <label data-i18n="filter_color">篩選顏色</label>
       <div class="color-filters">
         <button class="color-btn active" data-color="all">ALL</button>
-        <button class="color-btn" data-color="白" style="--c:#e8e8e8;--ct:#333">白</button>
-        <button class="color-btn" data-color="綠" style="--c:#4caf50;--ct:#fff">綠</button>
-        <button class="color-btn" data-color="紅" style="--c:#f44336;--ct:#fff">紅</button>
-        <button class="color-btn" data-color="藍" style="--c:#2196f3;--ct:#fff">藍</button>
-        <button class="color-btn" data-color="紫" style="--c:#9c27b0;--ct:#fff">紫</button>
-        <button class="color-btn" data-color="黃" style="--c:#ffeb3b;--ct:#333">黃</button>
+        <button class="color-btn" data-color="白" data-i18n="color_white" style="--c:#e8e8e8;--ct:#333">白</button>
+        <button class="color-btn" data-color="綠" data-i18n="color_green" style="--c:#4caf50;--ct:#fff">綠</button>
+        <button class="color-btn" data-color="紅" data-i18n="color_red" style="--c:#f44336;--ct:#fff">紅</button>
+        <button class="color-btn" data-color="藍" data-i18n="color_blue" style="--c:#2196f3;--ct:#fff">藍</button>
+        <button class="color-btn" data-color="紫" data-i18n="color_purple" style="--c:#9c27b0;--ct:#fff">紫</button>
+        <button class="color-btn" data-color="黃" data-i18n="color_yellow" style="--c:#ffeb3b;--ct:#333">黃</button>
+      </div>
+    </div>
+    <div class="filter-group" id="tierFilterGroup">
+      <label data-i18n="filter_tier">篩選 Tier</label>
+      <div class="tier-filters">
+        <button class="tier-btn active" data-tier="all">ALL</button>
+        <button class="tier-btn" data-tier="1">Tier 1</button>
+        <button class="tier-btn" data-tier="2">Tier 2</button>
+        <button class="tier-btn" data-tier="3">Tier 3</button>
+        <button class="tier-btn" data-tier="official">Official</button>
+        <button class="tier-btn" data-tier="guide" data-i18n="guides_filter_guide">其他攻略</button>
       </div>
     </div>
     <div class="filter-group" id="cardSearchGroup" style="display:none">
-      <label>搜尋卡片</label>
-      <input type="text" id="cardSearch" placeholder="輸入卡片名稱、標籤、效果..." class="search-input">
+      <label data-i18n="filter_search">搜尋卡片</label>
+      <input type="text" id="cardSearch" data-i18n-placeholder="filter_search_placeholder" placeholder="輸入卡片名稱、標籤、效果..." class="search-input">
     </div>
     <div class="filter-group" id="cardTypeGroup" style="display:none">
-      <label>卡片類型</label>
+      <label data-i18n="filter_type">卡片類型</label>
       <div class="type-filters">
         <button class="type-btn active" data-type="all">ALL</button>
-        <button class="type-btn" data-type="主推">主推</button>
-        <button class="type-btn" data-type="成員">成員</button>
-        <button class="type-btn" data-type="support">支援</button>
-        <button class="type-btn" data-type="吶喊">吶喊</button>
+        <button class="type-btn" data-type="主推" data-i18n="type_oshi">主推</button>
+        <button class="type-btn" data-type="成員" data-i18n="type_member">成員</button>
+        <button class="type-btn" data-type="support" data-i18n="type_support">支援</button>
+        <button class="type-btn" data-type="吶喊" data-i18n="type_cheer">吶喊</button>
+      </div>
+    </div>
+    <div class="filter-group" id="cardSupportSubGroup" style="display:none">
+      <label>支援類型</label>
+      <div class="type-filters">
+        <button class="type-btn active" data-type="support">全部</button>
+        <button class="type-btn" data-type="support_工作人員">工作人員</button>
+        <button class="type-btn" data-type="support_活動">活動</button>
+        <button class="type-btn" data-type="support_道具">道具</button>
+        <button class="type-btn" data-type="support_粉絲">粉絲</button>
+        <button class="type-btn" data-type="support_吉祥物">吉祥物</button>
+        <button class="type-btn" data-type="support_物品">物品</button>
       </div>
     </div>
   </div>
 
+  <noscript>
+    <div style="max-width:700px;margin:2rem auto;padding:1rem;color:#ccc">
+      <h2>HOLOCARD META - Fan-made ホロカ Tier List & Deck Guide Database</h2>
+      <p>This fan-made site provides a comprehensive meta deck database for ホロカ / hOCG (hololive card game). Not affiliated with COVER Corp.</p>
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Tier List</strong> - Current meta deck rankings (Tier 1, Tier 2, Tier 3) based on tournament win rates and competitive performance</li>
+        <li><strong>Deck Guides (100+)</strong> - Detailed deck breakdowns from holocardstrategy.jp with card analysis, mulligan tips, and turn-by-turn strategy</li>
+        <li><strong>Official Recommended Decks (30)</strong> - Bushiroad's official deck recipes from en.hololive-official-cardgame.com with key card spotlights</li>
+        <li><strong>Tournament Results</strong> - Winning deck lists from WGP2025-26 (Tokyo, Chiba, Aichi) with placement and deck codes</li>
+        <li><strong>Card Database (1600+)</strong> - Full card search by color (white, green, red, blue, purple, yellow), type, name, and effects with all art variants</li>
+      </ul>
+      <h3>ホロカ環境デッキデータベース</h3>
+      <p>ホロライブカードゲーム(hOCG)のファンメイド環境データベースです。最強デッキランキング、デッキ構築ガイド、大会結果、カード検索を提供しています。holocardstrategy.jpとDeck Logのデータを毎月更新。</p>
+      <h3>ホロカ 牌組攻略資料庫</h3>
+      <p>hololive卡牌遊戲(hOCG)粉絲製環境資料庫。提供Tier排行榜、牌組攻略、大賽結果、卡片搜尋。支援中文、英文、日文、法文。每月自動更新資料。</p>
+      <h3>Popular Deck Archetypes</h3>
+      <p>Hoshimachi Suisei, Tokoyami Towa, Usada Pekora, Sakura Miko, Shirakami Fubuki, Amane Kanata, Houshou Marine, Oozora Subaru, La+ Darknesss, Hakui Koyori, FUWAMOCO, Shishiro Botan, and more.</p>
+      <p>Available in Chinese (繁體中文), English, Japanese (日本語), and French (Français). Data sourced from holocardstrategy.jp, Bushiroad Deck Log, and en.hololive-official-cardgame.com. Updated monthly.</p>
+      <p>Please enable JavaScript to use this application.</p>
+    </div>
+  </noscript>
+
   <main id="mainContent">
-    <div id="tiersView" class="view active">
-      <div class="loading">載入中...</div>
+    <div id="guidesView" class="view active">
+      <div class="loading" data-i18n="loading">載入中...</div>
+    </div>
+    <div id="tournamentView" class="view">
+      <div class="loading" data-i18n="loading">載入中...</div>
+    </div>
+    <div id="newsView" class="view">
+      <div class="loading" data-i18n="loading">載入中...</div>
     </div>
     <div id="cardsView" class="view">
-      <div class="loading">載入中...</div>
+      <div class="loading" data-i18n="loading">載入中...</div>
+    </div>
+    <div id="tutorialView" class="view">
+      <div class="loading" data-i18n="loading">載入中...</div>
     </div>
   </main>
 
@@ -77,10 +293,179 @@
   </div>
 
   <footer class="site-footer">
-    <p>Fan-made meta database. All card data &copy; 2016 COVER Corp. / hololive OFFICIAL CARD GAME</p>
-    <p>Data sources: <a href="https://hololive-cardgame.github.io/cards/" target="_blank">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank">ホロカ攻略ギルド</a></p>
+    <img class="footer-logo" src="images/brand/logo.svg" alt="hololive OFFICIAL CARD GAME">
+    <p data-i18n="footer_disclaimer">Fan-made 環境資料庫。卡片資料 © 2016 COVER Corp. / hololive OFFICIAL CARD GAME</p>
+    <p><span data-i18n="footer_sources">資料來源</span>: <a href="https://hololive-official-cardgame.com" target="_blank">hololive OFFICIAL CARD GAME</a> | <a href="https://github.com/hololive-cardgame/cards" target="_blank" data-i18n="footer_card_db">hololive卡牌資料庫</a> | <a href="https://www.holocardstrategy.jp/" target="_blank" data-i18n="footer_strategy">ホロカ攻略ギルド</a> | <a href="https://decklog-en.bushiroad.com/" target="_blank">Deck Log</a></p>
   </footer>
 
+  <button class="scroll-top-btn" id="scrollTopBtn" title="Back to top" hidden>&uarr;</button>
+
   <script type="module" src="app.js"></script>
+  <script>
+    // Intro splash
+    (function() {
+      var intro = document.getElementById('introSplash');
+      if (!intro) return;
+      setTimeout(function() {
+        intro.classList.add('intro-hide');
+        setTimeout(function() { intro.remove(); }, 600);
+      }, 3200);
+      intro.addEventListener('click', function() {
+        intro.classList.add('intro-hide');
+        setTimeout(function() { intro.remove(); }, 600);
+      });
+    })();
+
+    // Load homepage data from JSON and render
+    (function() {
+      fetch('data/homepage.json').then(function(r){return r.json()}).then(function(data) {
+        // Render banners
+        var carouselTrack = document.getElementById('carouselTrack');
+        if (carouselTrack && data.banners) {
+          carouselTrack.innerHTML = data.banners.map(function(b) {
+            return '<a class="carousel-slide" href="' + (b.url||'#') + '" target="_blank" rel="noopener">' +
+              '<img src="' + (b.localImage||b.image||'') + '" alt="' + (b.alt||'') + '" loading="lazy">' +
+            '</a>';
+          }).join('');
+        }
+        // Render products
+        var productsTrack = document.getElementById('productsTrack');
+        if (productsTrack && data.products) {
+          productsTrack.innerHTML = data.products.map(function(p) {
+            return '<a class="product-card" href="' + (p.url||'#') + '" target="_blank" rel="noopener">' +
+              '<img src="' + (p.localImage||p.image||'') + '" alt="" loading="lazy">' +
+              '<span>' + (p.name||'') + '</span>' +
+            '</a>';
+          }).join('');
+        }
+        // Render news
+        var newsGrid = document.getElementById('newsGrid');
+        if (newsGrid && data.news) {
+          newsGrid.innerHTML = data.news.map(function(n) {
+            var tagClass = '';
+            if (n.tag === 'Products') tagClass = ' tag-products';
+            else if (n.tag === 'Campaign') tagClass = ' tag-campaign';
+            return '<a class="news-card" href="' + (n.url||'#') + '" target="_blank" rel="noopener">' +
+              (n.isNew ? '<span class="news-new-badge">NEW</span>' : '') +
+              '<div class="news-card-img">' +
+                '<img src="' + (n.localImage||n.image||'') + '" alt="" loading="lazy"></div>' +
+              '<div class="news-card-body">' +
+                '<div class="news-card-info"><span class="news-date">' + (n.date||'') + '</span>' +
+                  (n.tag ? '<span class="news-tag' + tagClass + '">' + n.tag + '</span>' : '') + '</div>' +
+                '<p class="news-card-title">' + (n.title||'') + '</p>' +
+              '</div>' +
+            '</a>';
+          }).join('');
+        }
+        // Init carousel after content loaded
+        initCarousel();
+        initProductsSlider();
+      }).catch(function(e) { console.warn('Failed to load homepage data:', e); initCarousel(); initProductsSlider(); });
+    })();
+
+    // Carousel
+    function initCarousel() {
+      var track = document.getElementById('carouselTrack');
+      var slides = track.querySelectorAll('.carousel-slide');
+      var dotsWrap = document.getElementById('carouselDots');
+      var current = 0;
+      var total = slides.length;
+      if (total === 0) return;
+      var autoTimer;
+
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dotsWrap.appendChild(dot);
+      }
+
+      // Set first slide active
+      if (slides.length > 0) slides[0].classList.add('active');
+
+      function goTo(idx) {
+        current = ((idx % total) + total) % total;
+        slides.forEach(function(s, j) { s.classList.toggle('active', j === current); });
+        dotsWrap.querySelectorAll('.carousel-dot').forEach(function(d, j) {
+          d.classList.toggle('active', j === current);
+        });
+      }
+
+      dotsWrap.addEventListener('click', function(e) {
+        if (e.target.dataset.index !== undefined) {
+          goTo(parseInt(e.target.dataset.index)); resetAuto();
+        }
+      });
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(function() { goTo(current + 1); }, 5000);
+      }
+      resetAuto();
+    }
+
+    // Products slider
+    function initProductsSlider() {
+      var track = document.getElementById('productsTrack');
+      var dotsWrap = document.getElementById('productsDots');
+      if (!track) return;
+      var items = track.querySelectorAll('.product-card');
+      var total = items.length;
+      if (total === 0) return;
+      var visible = 3;
+      var current = 0;
+      var maxIdx = Math.max(0, total - visible);
+      var itemW = 353 + 14; // 353px + 7px margin each side
+
+      // Create dots
+      if (dotsWrap) {
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i <= maxIdx; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'products-dot' + (i === 0 ? ' active' : '');
+          dot.dataset.index = i;
+          dotsWrap.appendChild(dot);
+        }
+        dotsWrap.addEventListener('click', function(e) {
+          if (e.target.dataset.index !== undefined) { goTo(parseInt(e.target.dataset.index)); }
+        });
+      }
+
+      function goTo(idx) {
+        current = Math.max(0, Math.min(idx, maxIdx));
+        track.style.transform = 'translate3d(-' + (current * itemW) + 'px, 0, 0)';
+        if (dotsWrap) {
+          dotsWrap.querySelectorAll('.products-dot').forEach(function(d, j) {
+            d.classList.toggle('active', j === current);
+          });
+        }
+      }
+
+      document.getElementById('productsPrev')?.addEventListener('click', function() { goTo(current - 1); });
+      document.getElementById('productsNext')?.addEventListener('click', function() { goTo(current + 1); });
+
+      // Auto slide
+      var autoTimer = setInterval(function() { goTo(current >= maxIdx ? 0 : current + 1); }, 4000);
+      track.parentElement.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+      track.parentElement.addEventListener('mouseleave', function() {
+        autoTimer = setInterval(function() { goTo(current >= maxIdx ? 0 : current + 1); }, 4000);
+      });
+    }
+
+    // Language dropdown
+    (function() {
+      var btn = document.getElementById('langDropdownBtn');
+      var menu = document.getElementById('langDropdownMenu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menu.hidden = !menu.hidden;
+      });
+      document.addEventListener('click', function() {
+        menu.hidden = true;
+      });
+    })();
+  </script>
 </body>
 </html>

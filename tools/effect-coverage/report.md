@@ -1,0 +1,179 @@
+# Card Library Effect Coverage Audit
+Generated: 2026-04-27T16:54:50.706Z
+
+## Headline
+
+- **Total unique (cardId, hook) entries**: 1304
+- **REAL (mutates state / queues prompt or boost)**: 1037 (80%)
+- **PASSIVE (registry-driven: equipment HP/cost, cheer leave-stage)**: 75 (6%)
+- **LOG_ONLY (placeholder logs only)**: 192 (15%)
+- **PASSTHROUGH fallback**: 0 (0%)
+- **BROKEN (handler threw on synthetic context)**: 0 (0%)
+- **MISSING (no handler at all)**: 0 (0%)
+- **Effective coverage (REAL + PASSIVE)**: 1112 (85%)
+
+## By hook type
+
+| Hook | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
+|---|---|---|---|---|---|---|---|---|
+| oshiSkill | 138 | 135 | 0 | 3 | 0 | 0 | 0 | 98% |
+| spSkill | 135 | 132 | 0 | 3 | 0 | 0 | 0 | 98% |
+| art1 | 297 | 275 | 0 | 22 | 0 | 0 | 0 | 93% |
+| art2 | 55 | 53 | 0 | 2 | 0 | 0 | 0 | 96% |
+| effectB | 158 | 126 | 0 | 32 | 0 | 0 | 0 | 80% |
+| effectC | 182 | 148 | 0 | 34 | 0 | 0 | 0 | 81% |
+| effectG | 94 | 62 | 0 | 32 | 0 | 0 | 0 | 66% |
+| support | 184 | 106 | 17 | 61 | 0 | 0 | 0 | 67% |
+| stageSkill | 3 | 0 | 0 | 3 | 0 | 0 | 0 | 0% |
+| cheer | 58 | 0 | 58 | 0 | 0 | 0 | 0 | 100% |
+
+## By expansion
+
+| Set | Total | REAL | PASSIVE | LOG_ONLY | PASSTHROUGH | MISS | BROKEN | Effective % |
+|---|---|---|---|---|---|---|---|---|
+| hBD24 | 132 | 132 | 0 | 0 | 0 | 0 | 0 | 100% |
+| hBP01 | 126 | 95 | 3 | 28 | 0 | 0 | 0 | 78% |
+| hBP02 | 105 | 83 | 7 | 15 | 0 | 0 | 0 | 86% |
+| hBP03 | 123 | 99 | 1 | 23 | 0 | 0 | 0 | 81% |
+| hBP04 | 114 | 94 | 0 | 20 | 0 | 0 | 0 | 82% |
+| hBP05 | 132 | 113 | 1 | 18 | 0 | 0 | 0 | 86% |
+| hBP06 | 145 | 114 | 1 | 30 | 0 | 0 | 0 | 79% |
+| hBP07 | 166 | 126 | 2 | 38 | 0 | 0 | 0 | 77% |
+| hPR | 2 | 1 | 0 | 1 | 0 | 0 | 0 | 50% |
+| hSD01 | 19 | 19 | 0 | 0 | 0 | 0 | 0 | 100% |
+| hSD02 | 13 | 11 | 2 | 0 | 0 | 0 | 0 | 100% |
+| hSD03 | 13 | 9 | 0 | 4 | 0 | 0 | 0 | 69% |
+| hSD04 | 14 | 12 | 0 | 2 | 0 | 0 | 0 | 86% |
+| hSD05 | 13 | 13 | 0 | 0 | 0 | 0 | 0 | 100% |
+| hSD06 | 13 | 12 | 0 | 1 | 0 | 0 | 0 | 92% |
+| hSD07 | 16 | 13 | 0 | 3 | 0 | 0 | 0 | 81% |
+| hSD08 | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 100% |
+| hSD09 | 9 | 9 | 0 | 0 | 0 | 0 | 0 | 100% |
+| hSD10 | 16 | 14 | 0 | 2 | 0 | 0 | 0 | 88% |
+| hSD11 | 13 | 12 | 0 | 1 | 0 | 0 | 0 | 92% |
+| hSD12 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
+| hSD13 | 22 | 19 | 0 | 3 | 0 | 0 | 0 | 86% |
+| hY01 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 100% |
+| hY02 | 9 | 0 | 9 | 0 | 0 | 0 | 0 | 100% |
+| hY03 | 13 | 0 | 13 | 0 | 0 | 0 | 0 | 100% |
+| hY04 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 100% |
+| hY05 | 8 | 0 | 8 | 0 | 0 | 0 | 0 | 100% |
+| hY06 | 8 | 0 | 8 | 0 | 0 | 0 | 0 | 100% |
+| hYS01 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 100% |
+
+## Tournament backlog: top 60 most-played cards still on LOG_ONLY/PASSTHROUGH/MISSING
+
+Usage = total copies across 52 tournament decks.
+
+| # | ID | Name | Hook | Status | Usage | Effect (truncated) |
+|---|---|---|---|---|---|---|
+| 1 | hBP01-009 | 天音かなた | art1 | LOG_ONLY | 57 | This skill can only target the opponent's central member. |
+| 2 | hBP01-014 | 天音かなた | art1 | LOG_ONLY | 20 | When using this skill to knock down an opponent's member, if the damage exceeds the member |
+| 3 | hBP06-070 | 戌神ころね | effectG | LOG_ONLY | 20 | [Limited to the center position] [Once per round] You can put 1 "Yuび" on your stage back t |
+| 4 | hBP06-099 | ゆび | support | LOG_ONLY | 19 | Members with this prop have +10 skill damage.  When this item is attached to "戌神ころね" from  |
+| 5 | hBP01-094 | オーロ・クロニー | effectB | LOG_ONLY | 16 | Display a shout card of the same color as one of your members marked #Promise from your Sc |
+| 6 | hBP07-056 | オーロ・クロニー | effectG | LOG_ONLY | 16 | [Limited to the center position] When your own performance phase starts, one other member, |
+| 7 | hBP01-092 | オーロ・クロニー | art1 | LOG_ONLY | 13 | You can replace 1 shout card of this member with another member marked #Promise. |
+| 8 | hBP01-124 | 開拓者 | support | LOG_ONLY | 9 | During the opponent's turn, when the member with this fan is knocked down, replace 1 of th |
+| 9 | hBP06-026 | 風真いろは | effectG | LOG_ONLY | 8 | [Limited to center position] When your own members link up, if you have more than 5 cards  |
+| 10 | hBP06-027 | 風真いろは | effectG | LOG_ONLY | 8 | When this member knocks down the opponent's center member, one of the "Fengzhen Yuki" that |
+| 11 | hBP07-006 | AZKi | stageSkill | LOG_ONLY | 8 | 自己的holo能量區每有1張牌，自己的中心成員「AZKi」藝能傷害+20。 |
+| 12 | hBP07-014 | 角巻わため | effectG | LOG_ONLY | 8 | For each member that overlaps this member, this member's HP+10. |
+| 13 | hBP07-014 | 角巻わため | art1 | LOG_ONLY | 8 | [Limited to center position] When using this skill to knock down an opponent's member, if  |
+| 14 | hBP07-011 | 角巻わため | art1 | LOG_ONLY | 7 | If this member has more than 2 white shout cards, the number of colorless shout cards requ |
+| 15 | hBP02-077 | レトロパソコン | support | LOG_ONLY | 6 | You can only use it if your HP is below 3.  Return 1 member from your save area to your ha |
+| 16 | hBP07-008 | 角巻わため | effectC | LOG_ONLY | 6 | If on the first turn of your back attack, choose your 1st "Kakusaki Kasumi". During this r |
+| 17 | hBP06-083 | ラムダック | art1 | LOG_ONLY | 5 | [Limited linkage position] If your main recommendation is "Kakusaki Kazuya" or "Osora Sutr |
+| 18 | hBP01-027 | ベスティア・ゼータ | effectG | LOG_ONLY | 4 | [Once per round] [Limited linkage position] When one of your own members is damaged by the |
+| 19 | hBP01-045 | AZKi | effectG | LOG_ONLY | 4 | When your health is below 3, this member can bloom from hand to become a 2nd member regard |
+| 20 | hBP01-061 | 鷹嶺ルイ | effectB | LOG_ONLY | 4 | You can return 1~2 members marked #secret societyholoX in your save area to your hand. |
+| 21 | hBP01-070 | 尾丸ポルカ | art1 | LOG_ONLY | 4 | If this member does not have a "seat member", he cannot use this performance. |
+| 22 | hBP01-071 | 尾丸ポルカ | effectB | LOG_ONLY | 4 | You can return 1 "seat member" from your save area to your hand. |
+| 23 | hBP01-080 | 星街すいせい | effectC | LOG_ONLY | 4 | You can roll the dice once: when the number is odd, knock down an opponent's backstage mem |
+| 24 | hBP01-123 | 野うさぎ同盟 | support | LOG_ONLY | 4 | When a member with this fan rolls the dice, he can put the fan in the save area: the dice  |
+| 25 | hBP04-085 | 桃鈴ねね | effectB | LOG_ONLY | 4 | Display a shout card from your own shouting deck with the same color as a member marked #5 |
+| 26 | hBP06-080 | 大空スバル | effectB | LOG_ONLY | 4 | Reveal 1 "スバルドダック" or "スバFriend" from your deck and add it to your hand. Reshuffle the dec |
+| 27 | hBP07-077 | 桃鈴ねね | effectC | LOG_ONLY | 4 | If on the first turn of your back attack, reveal a 2nd member marked #5 from your deck and |
+| 28 | hBP07-110 | ねっ子 | support | LOG_ONLY | 4 | [Once per turn] When the bloom level of a member with this fan increases, draw 1 card from |
+| 29 | hBP01-095 | オーロ・クロニー | art1 | LOG_ONLY | 3 | The 1 Debut background member you placed this round can bloom from your hand into a 1st me |
+| 30 | hBP07-081 | 桃鈴ねね | art1 | LOG_ONLY | 3 | If this member has "ギラファノコギリクワガタ", this skill will inflict skill damage to the opponent's  |
+| 31 | hBP07-082 | 桃鈴ねね | effectC | LOG_ONLY | 3 | Reveal 1 2nd member labeled #5 from your deck and add it to your hand. Reshuffle the deck. |
+| 32 | hBP07-099 | ブヒー！ | support | LOG_ONLY | 3 | Draw 2 cards from your deck. After that, if one of your own members was knocked down in th |
+| 33 | hBP01-007 | 星街すいせい | oshiSkill | LOG_ONLY | 2 | [Once per round] You can use it when this leader or your own blue member inflicts damage t |
+| 34 | hBP01-007 | 星街すいせい | spSkill | LOG_ONLY | 2 | [Once per game] You can use it when your blue member inflicts damage to the opponent's cen |
+| 35 | hBP03-034 | 赤井はあと | effectB | LOG_ONLY | 2 | You can return 1 1st member or 2nd member marked #1st member other than Buzz in your save  |
+| 36 | hBP06-089 | ドローイングストリーム | support | LOG_ONLY | 2 | Reveal 1 Scream card from your Scream deck and send it to the member you marked #絵. Reshuf |
+| 37 | hBP06-104 | スバ友 | support | LOG_ONLY | 2 | During your opponent's turn, when the member with this fan is knocked down, you can send t |
+| 38 | hBP07-001 | 角巻わため | stageSkill | LOG_ONLY | 1 | 自己的「角巻わため」使用了藝能時，將自己牌組上方的1張牌放到holo能量區。 |
+| 39 | hBP07-004 | 赤井はあと | stageSkill | LOG_ONLY | 1 | [每個回合一次]自己回合中，自己的「赤井はあと」因自己的效果從舞台上放回牌組時，從自己的牌組抽2張牌。 |
+| 40 | hBP07-080 | 桃鈴ねね | effectG | LOG_ONLY | 1 | [Once per turn] If your main push is "Momo Suzu Koko", you can use it in your main phase:  |
+| 41 | hBP07-092 | アーカイブパソコン | support | LOG_ONLY | 1 | Put 1~3 members in your save area back into the deck and reshuffle them. After that, draw  |
+| 42 | hBP01-004 | 兎田ぺこら | oshiSkill | LOG_ONLY | 0 | [Once per round] During the opponent's turn, when one of your own members is knocked down, |
+| 43 | hBP01-004 | 兎田ぺこら | spSkill | LOG_ONLY | 0 | [Once per game] During this round, the number of your own dice is treated as 6. |
+| 44 | hBP01-005 | 鷹嶺ルイ | oshiSkill | LOG_ONLY | 0 | [Once per turn] You can use it when you put cards in your hand into the save area due to t |
+| 45 | hBP01-005 | 鷹嶺ルイ | spSkill | LOG_ONLY | 0 | [Once per game] During the opponent's next turn, the opponent's center member and linkage  |
+| 46 | hBP01-019 | 七詩ムメイ | effectB | LOG_ONLY | 0 | When blooming from Debut, reveal 1 Debut member or 1st member marked #Promise other than B |
+| 47 | hBP01-023 | ときのそら | art1 | LOG_ONLY | 0 | You can roll the dice once: if the number is odd, use this skill again on the same member  |
+| 48 | hBP01-026 | ベスティア・ゼータ | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member or 1st member marked #ID3 except Buzz from your d |
+| 49 | hBP01-052 | アイラニ・イオフィフティーン | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked with #ID. |
+| 50 | hBP01-059 | 鷹嶺ルイ | art2 | LOG_ONLY | 0 | You can put 1 card from your hand into the save area: Reveal 1 1st member other than Buzz  |
+| 51 | hBP01-090 | ムーナ・ホシノヴァ | effectB | LOG_ONLY | 0 | Reveal 1 green shout card or blue shout card from your shout deck and send it to your memb |
+| 52 | hBP01-100 | 森カリオペ | effectC | LOG_ONLY | 0 | You can return 1 to 3 Scream cards in your save area to the Scream deck. Reshuffle the Scr |
+| 53 | hBP01-103 | ゲーミングパソコン | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 Debut member |
+| 54 | hBP01-105 | ペンライト | support | LOG_ONLY | 0 | Put 1 card in the holo energy zone into the archive area to use it.  Reveal 1 shout card o |
+| 55 | hBP02-011 | 白上フブキ | effectB | LOG_ONLY | 0 | Reveal 1 card marked #白上'sキャラクター from your deck and add it to your hand. Reshuffle the dec |
+| 56 | hBP02-013 | 白上フブキ | effectG | LOG_ONLY | 0 | This member can have 2 mascots with different card names. |
+| 57 | hBP02-016 | 白銀ノエル | effectB | LOG_ONLY | 0 | When Debut blooms, reveal 1 Debut member, 1st member, or Spot member marked #3 from your d |
+| 58 | hBP02-024 | 大神ミオ | art1 | LOG_ONLY | 0 | You can replace a shout card on your stage with a member marked #JP. |
+| 59 | hBP02-026 | 大神ミオ | effectB | LOG_ONLY | 0 | Reveal a shout card from your own shouting deck with the same color as a member marked #ゲー |
+| 60 | hBP02-043 | 紫咲シオン | effectC | LOG_ONLY | 0 | You can roll the dice once: when it is 4 or above, reveal a card marked #Magic from your d |
+
+## Tournament-deck coverage (52 community decks)
+
+Sorted ascending by REAL %. Each card counted once.
+
+| Deck | Placement | REAL | LOG | PASS | MISS | Total | REAL % |
+|---|---|---|---|---|---|---|---|
+| 未公開 | Trio 1st A Block (グランメゾン大阪) | 0 | 0 | 0 | 0 | 0 | 0% |
+| ねね単 | 6th(Bombaxus) | 12 | 8 | 0 | 0 | 20 | 60% |
+| すいせいクロヱ | 1st D Block (めるか) | 9 | 3 | 0 | 0 | 12 | 75% |
+| ルーナ単 | Trio 1st A Block (LGW) | 16 | 5 | 0 | 0 | 21 | 76% |
+| クロニー単 | 3rd(Natskii) | 16 | 5 | 0 | 0 | 21 | 76% |
+| すいせい単 | Trio 1st (おりがみ) | 10 | 3 | 0 | 0 | 13 | 77% |
+| ポルカ単 | 1st C Block (ころね) | 10 | 3 | 0 | 0 | 13 | 77% |
+| AZKi単 | 2nd (oKIWIo) | 7 | 2 | 0 | 0 | 9 | 78% |
+| クロニー単 | 13th(Jo) | 14 | 4 | 0 | 0 | 18 | 78% |
+| かなた単 | 1st B Block (タナカ) | 11 | 3 | 0 | 0 | 14 | 79% |
+| クロニー単 | 1st(LightningJason) | 12 | 3 | 0 | 0 | 15 | 80% |
+| かなた単 | Trio 1st B Block (仙台女神トリオ頑張ろうの会) | 13 | 3 | 0 | 0 | 16 | 81% |
+| かなた単 | 2nd E Block (クーデレスキー) | 9 | 2 | 0 | 0 | 11 | 82% |
+| いろは単 | 1st A Block (藍色) | 14 | 3 | 0 | 0 | 17 | 82% |
+| クロニー単 | 15th(PY) | 14 | 3 | 0 | 0 | 17 | 82% |
+| かなクロ | 1st E Block (ロール) | 11 | 2 | 0 | 0 | 13 | 85% |
+| かなた単 | 2nd C Block (スズカ) | 11 | 2 | 0 | 0 | 13 | 85% |
+| スバ単 | Trio 1st A Block (グランメゾン大阪) | 17 | 3 | 0 | 0 | 20 | 85% |
+| AZKi単 | Trio 1st B Block (仙台女神トリオ頑張ろうの会) | 17 | 3 | 0 | 0 | 20 | 85% |
+| かなた単 | 2nd D Block (アカシキフ) | 12 | 2 | 0 | 0 | 14 | 86% |
+| AZKi単 | 7th(bisa) | 18 | 3 | 0 | 0 | 21 | 86% |
+| AZKi単 | 8th(Mojito) | 19 | 3 | 0 | 0 | 22 | 86% |
+| AZKi単(1フレア) | 10th(ephyra) | 18 | 3 | 0 | 0 | 21 | 86% |
+| AZKi単 | 11th(Xile) | 19 | 3 | 0 | 0 | 22 | 86% |
+| AZKi単 | Individual B 1st (ギリャー) | 13 | 2 | 0 | 0 | 15 | 87% |
+| ゲーマーズ | 1st D Block (大赦の店主) | 13 | 2 | 0 | 0 | 15 | 87% |
+| ころね単 | 1st F Block (おばけ) | 13 | 2 | 0 | 0 | 15 | 87% |
+| ころね単 | 1st C Block (スマデキン) | 14 | 2 | 0 | 0 | 16 | 88% |
+| ころね単 | 1st E Block (たき@Mush pros) | 14 | 2 | 0 | 0 | 16 | 88% |
+| 名古屋 | Trio 1st A Block (グランメゾン大阪) | 15 | 2 | 0 | 0 | 17 | 88% |
+
+## Definitions
+
+- **REAL** — handler mutates state, returns a prompt, or returns a damage-boost effect when invoked with a synthetic-but-realistic context. Includes `GATED` (handlers whose source contains state-mutating code that doesn't fire on the default sample due to condition gates).
+- **PASSIVE** — effect is handled via a separate registry (e.g. `web/game/core/AttachedSupportEffects.js` for equipment HP/cost; cheer leave-stage cleanup in GameEngine knockdown path). Counts as covered.
+- **LOG_ONLY** — handler is registered (often in `phaseC-final.js` dictionaries) but only emits a log line. Indistinguishable from PASSTHROUGH from the engine's perspective.
+- **PASSTHROUGH** — universal fallback handler tagged `_passthrough`. Logs the effect text only.
+- **BROKEN** — handler threw on synthetic context. May be a false positive; check manually.
+- **MISSING** — no handler at all.
+
+## Caveats
+
+Behavioral classification uses synthetic states. The static fallback ("GATED" handlers) catches code that wouldn't fire on the sample, but cannot distinguish "handler is a real implementation pending the right trigger" from "handler is dead code". Treat the LOG_ONLY count as an approximate upper bound — some real handlers gated on rare conditions may be undercounted, and some handlers that intentionally only log (e.g. validator-enforced restrictions like hBP01-009 art1's "target center only") are overcounted.
