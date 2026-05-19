@@ -237,7 +237,7 @@
           "ratings": {
             "firepower": "◎",
             "ease": "◎",
-            "stability": "○",
+            "stability": "△",
             "endurance": "○",
             "pressure": "○"
           },
@@ -309,8 +309,8 @@
           "ratings": {
             "firepower": "◎",
             "ease": "○",
-            "stability": "◎",
-            "endurance": "◎",
+            "stability": "○",
+            "endurance": "○",
             "pressure": "○"
           },
           "features": {
