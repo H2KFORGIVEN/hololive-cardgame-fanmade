@@ -1,12 +1,7 @@
 [
   {
     "title": "Recommended Deck: “Nerissa Ravencroft”",
-    "description": {
-      "en": "A late-game focused deck that leverages the powerful SP Oshi skill “Shoot for the Moon”, which reduces the number of cheer required for Arts, allowing you to use strong Arts consecutively.In the early game, play defensively while setting up for your SP Oshi skill, then aim for a decisive comeback all at once.",
-      "ja": "強力なSP推しスキル「シュート・フォー・ザ・ムーン」を活用し、アーツに必要なチア数を減らし、強力なアーツを連続で使用できる終盤重視のデッキ。序盤はSP推しスキルを整えながら守りを固め、一気に逆転を狙う。",
-      "zh-TW": "遊戲後期重點卡組，利用強大的SP押技能“射月”，減少Arts所需的歡呼次數，讓您可以連續使用強大的Art。在遊戲早期，在準備SP押技能的同時進行防守，然後瞄準一次決定性的翻盤。",
-      "fr": "Un deck axé sur la fin de partie qui exploite la puissante compétence SP Oshi « Shoot for the Moon », qui réduit le nombre d'encouragements requis pour les Arts, vous permettant d'utiliser des Arts forts de manière consécutive. En début de partie, jouez défensivement tout en préparant votre compétence SP Oshi, puis visez un retour décisif d'un seul coup."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_006/",
     "oshi": "Nerissa Ravencroft",
     "oshi_card_id": "hBP05-006",
@@ -132,12 +127,7 @@
   },
   {
     "title": "Recommended Deck: “Airani Iofifteen”",
-    "description": {
-      "en": "This deck features a dynamic playstyle that freely sends cheer cards from the cheer deck and archive to your holomem, allowing you to continuously use powerful Arts.",
-      "ja": "このデッキは、チアデッキやアーカイブからチアカードをホロメムに自由に送り込み、強力なアーツを使い続けるダイナミックなプレイスタイルが特徴です。",
-      "zh-TW": "這張牌組具有動態的遊戲風格，可將歡呼卡從歡呼牌組和檔案中自由發送到您的holomem，讓您不斷使用強大的藝術。",
-      "fr": "Ce deck présente un style de jeu dynamique qui envoie librement des cartes d'acclamation du deck d'acclamation et des archives à votre holomem, vous permettant d'utiliser en permanence des arts puissants."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_002/",
     "oshi": "Airani Iofifteen",
     "oshi_card_id": "hBP05-002",
@@ -288,12 +278,7 @@
   },
   {
     "title": "Recommended Deck: “Shirogane Noel”",
-    "description": {
-      "en": "This deck offers high durability and the flexibility to search for the cards you need when necessary.It also features a high degree of deck-building freedom, allowing it to be paired with various #Gen 3 holomem.",
-      "ja": "高い耐久性と、必要な時に必要なカードを探し出せる柔軟性を備え、様々な#第3世代ホロメムと組み合わせることができるデッキ構築の自由度の高さも特徴です。",
-      "zh-TW": "該套牌具有很高的耐用性，並且可以在必要時靈活地搜尋您需要的牌。它還具有高度的套牌構建自由度，使其可以與各種 #Gen 3 holomem 搭配。",
-      "fr": "Ce deck offre une grande durabilité et la flexibilité nécessaire pour rechercher les cartes dont vous avez besoin lorsque cela est nécessaire. Il offre également un haut degré de liberté de construction de deck, lui permettant d'être associé à divers holomem #Gen 3."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_001/",
     "oshi": "Shirogane Noel",
     "oshi_card_id": "hBP05-001",
@@ -434,12 +419,7 @@
   },
   {
     "title": "Recommended Deck: “Houshou Marine”",
-    "description": {
-      "en": "This deck combines high flexibility, allowing you to add the [Houshou Marine] you need to your hand with hBP02-032 [Houshou Marine], with strong resilience provided by hBP02-033 [Houshou Marine].",
-      "ja": "hBP02-032『鳳翔マリン』の強力な回復力と、hBP02-032『鳳翔マリン』で必要な『鳳翔マリン』を手札に加えられる高い柔軟性を兼ね備えたデッキです。",
-      "zh-TW": "這套牌結合了很高的靈活性，可以讓你用hBP02-032【後手海洋】將你需要的【後手海洋】添加到你的手上，並由hBP02-033【後手海洋】提供強大的彈性。",
-      "fr": "Ce deck combine une grande flexibilité, vous permettant d'ajouter le [Houshou Marine] dont vous avez besoin à votre main avec le hBP02-032 [Houshou Marine], avec une forte résilience fournie par le hBP02-033 [Houshou Marine]."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_008/",
     "oshi": "Houshou Marine",
     "oshi_card_id": "hBP02-003",
@@ -590,12 +570,7 @@
   },
   {
     "title": "Recommended Deck: “Yuzuki Choco”",
-    "description": {
-      "en": "This deck battles by making full use of #Food support cards. Mesmerize your opponent with Choco-sensei’s cooking!",
-      "ja": "# 食糧サポートカード を駆使して戦うデッキです。チョコ先生の料理で相手を魅了しよう！",
-      "zh-TW": "該套牌通過充分利用#Food 支持卡進行戰鬥。用 Choco 老師的烹飪讓你的對手著迷！",
-      "fr": "Ce deck combat en utilisant pleinement les cartes de support #Food. Hypnotisez votre adversaire avec la cuisine de Choco-sensei !"
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_005/",
     "oshi": "Yuzuki Choco",
     "oshi_card_id": "hBP05-005",
@@ -726,12 +701,7 @@
   },
   {
     "title": "Recommended Deck: “Nekomata Okayu”",
-    "description": {
-      "en": "This deck focuses on dealing special damage to the opponent’s center holomem. Stack up your love to take down your opponent!",
-      "ja": "このデッキは相手のセンターホロメムに特殊なダメージを与えることに重点を置いています。愛を積み重ねて相手を倒しましょう！",
-      "zh-TW": "這套牌的重點是對對手的中心全像造成特殊傷害。累積你的愛來打倒你的對手！",
-      "fr": "Ce deck se concentre sur l’inflige de dégâts spéciaux à l’holomem central de l’adversaire. Accumulez votre amour pour vaincre votre adversaire !"
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_004/",
     "oshi": "Nekomata Okayu",
     "oshi_card_id": "hBP05-004",
@@ -852,12 +822,7 @@
   },
   {
     "title": "Recommended Deck: “Omaru Polka”",
-    "description": {
-      "en": "This is a lively deck where [Troupe Member] cards busily move between the stage and the archive from the early to late game. Bring more excitement to the stage with the newly added 2nd holomem, [Omaru Polka].",
-      "ja": "序盤から終盤まで【団員】のカードがステージとアーカイブを忙しく行き来する賑やかなデッキです。新たに追加されたホロメム第2弾「オマルポルカ」でステージをさらに盛り上げます。",
-      "zh-TW": "這是一張充滿活力的牌組，從遊戲早期到後期，[劇團成員]卡牌在舞台和檔案之間忙碌地移動。新增第二彈全像圖【Omaru Polka】，為舞台帶來更多精彩。",
-      "fr": "Il s'agit d'un jeu animé dans lequel les cartes [Membre de la troupe] se déplacent activement entre la scène et les archives du début à la fin de la partie. Apportez plus d'excitation sur scène avec le deuxième holomem nouvellement ajouté, [Omaru Polka]."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_003/",
     "oshi": "Omaru Polka",
     "oshi_card_id": "hBP05-003",
@@ -983,12 +948,7 @@
   },
   {
     "title": "Recommended Deck: “Shiranui Flare”",
-    "description": {
-      "en": "This deck allows you to continuously deal massive Arts damage while increasing the cheer on your stage. You can gain an advantage by mastering technical abilities that move cheer and the positions of your holomem.",
-      "ja": "ステージ上の歓声を高めながら、アーツで大ダメージを与え続けられるデッキです。チアを動かす技術力やホロメムの位置をマスターすることでアドバンテージを得ることができます。",
-      "zh-TW": "這套牌可以讓你持續造成巨大的藝術傷害，同時增加舞台上的歡呼聲。您可以透過掌握令人歡呼的技術能力和全像圖的位置來獲得優勢。",
-      "fr": "Ce deck vous permet d'infliger continuellement d'énormes dégâts artistiques tout en augmentant la joie sur votre scène. Vous pouvez obtenir un avantage en maîtrisant les capacités techniques qui déplacent la joie et les positions de votre holomem."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp05_007/",
     "oshi": "Shiranui Flare",
     "oshi_card_id": "hBP05-007",
@@ -1114,12 +1074,7 @@
   },
   {
     "title": "Recommended Deck: “Amane Kanata”",
-    "description": {
-      "en": "This is an aggressive deck that excels at downing your opponent’s holomem.Use Arts with additional life damage effects to down your opponent’s holomem and push for a decisive finish in one go.",
-      "ja": "相手のホロメムをダウンさせることに長けたアグレッシブなデッキです。ライフダメージ追加効果のあるアーツを駆使して相手のホロメムをダウンさせ、一気にフィニッシュを狙いましょう。",
-      "zh-TW": "這是一套攻擊性套牌，擅長擊倒對手的全息體。使用具有額外生命傷害效果的藝術來擊倒對手的全息體，一舉取得決定性的勝利。",
-      "fr": "Il s'agit d'un deck agressif qui excelle dans l'élimination de l'holomem de votre adversaire. Utilisez les arts avec des effets de dégâts de vie supplémentaires pour abattre l'holomem de votre adversaire et pousser pour une fin décisive d'un seul coup."
-    },
+    "description": "",
     "url": "https://en.hololive-official-cardgame.com/deck/hbp01_001/",
     "oshi": "Amane Kanata",
     "oshi_card_id": "hBP01-001",
