@@ -64,7 +64,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 843
+    "favorite_count": 844
   },
   {
     "id": "2049322781410812193",
@@ -217,7 +217,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2122
+    "favorite_count": 2124
   },
   {
     "id": "2047978931228426381",
@@ -244,7 +244,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4456
+    "favorite_count": 4457
   },
   {
     "id": "2047880780064624980",
@@ -467,7 +467,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2565
+    "favorite_count": 2564
   },
   {
     "id": "2047647132111478964",
@@ -490,7 +490,7 @@
     "hashtags": [],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1279
+    "favorite_count": 1280
   },
   {
     "id": "2047643953428824407",
@@ -657,37 +657,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1891
-  },
-  {
-    "id": "2047640505455133003",
-    "url": "https://x.com/hololive_OCG/status/2047640505455133003",
-    "text": "🎊#ホロカにゅーすLIVE📢\n\n京都 IP書店様のオープンを記念した\n「さくらみこ」POP UP SHOP が 2026年4月28日（火）から開催！🌸\n\n📅開催期間\n2026年4月28日（火）〜7月28日（火）\n\n期間中は対象商品の購入、税込3,300円毎にPRカードをプレゼント！✨\n\n🔽詳細はこちら！\nhttps://tsutaya.tsite.jp/articles/store-5166 https://t.co/RIMe3VzS6Y",
-    "created_at": "2026-04-24T11:35:14.000Z",
-    "author": {
-      "name": "hololive OFFICIAL CARD GAME【公式】",
-      "handle": "hololive_OCG",
-      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
-    },
-    "media": [
-      {
-        "type": "photo",
-        "url": "https://pbs.twimg.com/media/HGquL6kbAAAPJr3.jpg",
-        "width": 1200,
-        "height": 675
-      }
-    ],
-    "hashtags": [
-      "ホロカにゅーすLIVE"
-    ],
-    "external_urls": [
-      {
-        "url": "https://tsutaya.tsite.jp/articles/store-5166",
-        "display": "tsutaya.tsite.jp/articles/store…"
-      }
-    ],
-    "category": "news",
-    "favorite_count": 646
+    "favorite_count": 1892
   },
   {
     "id": "2047639935281492448",
@@ -745,7 +715,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 684
+    "favorite_count": 683
   },
   {
     "id": "2047634827193782589",
@@ -813,7 +783,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 584
+    "favorite_count": 585
   },
   {
     "id": "2047634011930218637",
@@ -966,7 +936,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5092
+    "favorite_count": 5090
   },
   {
     "id": "2047601447316181384",
@@ -1116,7 +1086,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1184
+    "favorite_count": 1183
   },
   {
     "id": "2047465548586369163",
@@ -1602,7 +1572,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1733
+    "favorite_count": 1735
   },
   {
     "id": "2045676778644226247",
@@ -1881,7 +1851,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2265
+    "favorite_count": 2264
   },
   {
     "id": "2044974126440513561",
@@ -2088,7 +2058,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5147
+    "favorite_count": 5149
   },
   {
     "id": "2043524579503858149",
@@ -2240,7 +2210,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2308
+    "favorite_count": 2307
   },
   {
     "id": "2043162195022795205",
@@ -2272,7 +2242,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2521
+    "favorite_count": 2522
   },
   {
     "id": "2042935706188734802",
@@ -2303,7 +2273,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1298
+    "favorite_count": 1297
   },
   {
     "id": "2042920595625775439",
@@ -2520,7 +2490,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 731
+    "favorite_count": 732
   },
   {
     "id": "2042181120603885731",
@@ -2570,7 +2540,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1683
+    "favorite_count": 1682
   },
   {
     "id": "2041833432943059214",
@@ -2697,7 +2667,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2098
+    "favorite_count": 2099
   },
   {
     "id": "2040761368136307089",
@@ -2851,7 +2821,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 3904
+    "favorite_count": 3905
   },
   {
     "id": "2040398984074940494",
@@ -2882,7 +2852,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2949
+    "favorite_count": 2951
   },
   {
     "id": "2040391933877465144",
@@ -3122,7 +3092,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 998
+    "favorite_count": 999
   },
   {
     "id": "2040263094442885556",
@@ -3295,7 +3265,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 817
+    "favorite_count": 818
   },
   {
     "id": "2040000788983152848",
@@ -3384,7 +3354,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1225
+    "favorite_count": 1224
   },
   {
     "id": "2039930896116220203",
@@ -3479,7 +3449,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1911
+    "favorite_count": 1914
   },
   {
     "id": "2039538317843411159",
@@ -3538,7 +3508,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 2293
+    "favorite_count": 2292
   },
   {
     "id": "2039274069477011702",
@@ -3611,7 +3581,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 2195
+    "favorite_count": 2194
   },
   {
     "id": "2039183473508786282",
@@ -3643,7 +3613,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 4309
+    "favorite_count": 4313
   },
   {
     "id": "2039176179106869733",
@@ -3669,7 +3639,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5567
+    "favorite_count": 5565
   },
   {
     "id": "2039130629359436255",
@@ -3708,7 +3678,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 7391
+    "favorite_count": 7390
   },
   {
     "id": "2038949436102001120",
@@ -3750,7 +3720,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1064
+    "favorite_count": 1065
   },
   {
     "id": "2038813547090870454",
@@ -3962,7 +3932,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1041
+    "favorite_count": 1042
   },
   {
     "id": "2038088757195509983",
@@ -4059,7 +4029,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1805
+    "favorite_count": 1806
   },
   {
     "id": "2037832077588979713",
@@ -4086,7 +4056,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1908
+    "favorite_count": 1909
   },
   {
     "id": "2037733918875521241",
@@ -4135,7 +4105,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1387
+    "favorite_count": 1388
   },
   {
     "id": "2037726378532261968",
@@ -4169,7 +4139,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 701
+    "favorite_count": 700
   },
   {
     "id": "2037469849837015526",
@@ -4294,7 +4264,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1625
+    "favorite_count": 1627
   },
   {
     "id": "2037122399142105392",
@@ -4320,7 +4290,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 2973
+    "favorite_count": 2974
   },
   {
     "id": "2037001601525965211",
@@ -4385,7 +4355,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1802
+    "favorite_count": 1801
   },
   {
     "id": "2036639210350756054",
@@ -4511,7 +4481,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1856
+    "favorite_count": 1855
   },
   {
     "id": "2035914436750491737",
@@ -4545,7 +4515,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1528
+    "favorite_count": 1527
   },
   {
     "id": "2035899357158138067",
@@ -4636,7 +4606,7 @@
     ],
     "external_urls": [],
     "category": "usage_rate",
-    "favorite_count": 760
+    "favorite_count": 759
   },
   {
     "id": "1919186530209570969",
@@ -4783,7 +4753,7 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 412
+    "favorite_count": 411
   },
   {
     "id": "1919184578788385062",
