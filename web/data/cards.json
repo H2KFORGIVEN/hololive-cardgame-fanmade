@@ -4549,6 +4549,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP01-034_P.png",
+    "name": "アキ・ローゼンタール",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ハーフエルフ / #お酒",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png"
+      ],
+      "name": "あらあら",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "むぎゅむぎゅ雑談",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP01-034",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP01-034_P.png"
+  },
+  {
     "image": "cardListImages/hBP01/hBP01-035_C.png",
     "name": "アキ・ローゼンタール",
     "type": "成員",
@@ -4887,6 +4925,36 @@
     "expansion": "hBP01",
     "productName": "ブースターパック「ブルーミングレディアンス」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP01-040_P.png",
+    "name": "兎田ぺこら",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ケモミミ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おつぺこでした",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP01-040",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP01-040_P.png"
   },
   {
     "image": "cardListImages/hBP01/hBP01-041_U.png",
@@ -6281,6 +6349,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP01-058_P.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紅",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png"
+      ],
+      "name": "こんルイルイ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おつルイルイ",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP01-058",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP01-058_P.png"
+  },
+  {
     "image": "cardListImages/hBP01/hBP01-059_C.png",
     "name": "鷹嶺ルイ",
     "type": "成員",
@@ -6947,6 +7053,42 @@
     "expansion": "hBP01",
     "productName": "ブースターパック「ブルーミングレディアンス」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP01-069_P.png",
+    "name": "尾丸ポルカ",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #ケモミミ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紅",
+    "hp": 180,
+    "bloom": "1st",
+    "batonImage": [],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png"
+      ],
+      "name": "おはぽる",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おそぽる",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP01-069",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP01-069_P.png"
   },
   {
     "image": "cardListImages/hBP01/hBP01-070_U.png",
@@ -7671,6 +7813,44 @@
     "expansion": "hBP01",
     "productName": "ブースターパック「ブルーミングレディアンス」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP01-078_P.png",
+    "name": "星街すいせい",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "藍",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png"
+      ],
+      "name": "ストリートスナップ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "木漏れ日のひと時",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP01-078",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP01-078_P.png"
   },
   {
     "image": "cardListImages/hBP01/hBP01-079_U.png",
@@ -10575,6 +10755,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP02-010_P.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_white.png"
+      ],
+      "name": "キンモクセイの花フブキ",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "Thank You Friends♥",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP02-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP02-010_P.png"
+  },
+  {
     "image": "cardListImages/hBP02/hBP02-011_U.png",
     "name": "白上フブキ",
     "type": "成員",
@@ -10653,6 +10871,43 @@
     "expansion": "hPR",
     "productName": "PRカード",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP02-011_P.png",
+    "name": "白上フブキ",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #ゲーマーズ / #ケモミミ / #絵",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 120,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "白上から目をそらしちゃ",
+      "effect": {
+        "zh-TW": "從自己的牌組展示1張標示#白上'sキャラクター的牌並加入手牌。將牌組重新洗牌。",
+        "ja": "あなたのデッキから「#白上のキャラクター」と書かれたカードを1枚公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "Reveal 1 card marked #白上'sキャラクター from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "Révélez 1 carte marquée #白上'sキャラクター depuis votre deck et ajoutez-la à votre main. Remaniez le jeu."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ダメですよっ！",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP02-011",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP02-011_P.png"
   },
   {
     "image": "cardListImages/hBP02/hBP02-012_R.png",
@@ -11090,6 +11345,45 @@
     "expansion": "hBP02",
     "productName": "ブースターパック「クインテットスペクトラム」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP02-015_P.png",
+    "name": "白銀ノエル",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #お酒",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 180,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "おはまっする～！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おつまっする～",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP02-015",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP02-015_P.png"
   },
   {
     "image": "cardListImages/hBP02/hBP02-016_U.png",
@@ -11940,6 +12234,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP02-025_P.png",
+    "name": "大神ミオ",
+    "type": "成員",
+    "tag": "#JP / #ゲーマーズ / #ケモミミ / #料理",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "おはみぉーん",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おつみぉーん",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP02-025",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP02-025_P.png"
+  },
+  {
     "image": "cardListImages/hBP02/hBP02-026_U.png",
     "name": "大神ミオ",
     "type": "成員",
@@ -12350,6 +12682,44 @@
     "expansion": "hBP02",
     "productName": "ブースターパック「クインテットスペクトラム」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP02-030_P.png",
+    "name": "宝鐘マリン",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #絵 / #海",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紅",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_red.png"
+      ],
+      "name": "船長、何されちゃうのかな？",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "もう、どスケベ♥",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP02-030",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP02-030_P.png"
   },
   {
     "image": "cardListImages/hBP02/hBP02-031_U.png",
@@ -17509,6 +17879,43 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP03-010_P.png",
+    "name": "姫森ルーナ",
+    "type": "成員",
+    "tag": "#JP / #4期生 / #ベイビー",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 80,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "お菓子の国のお姫様",
+      "effect": {
+        "zh-TW": "自己的中心成員為「姫森ルーナ」時，從自己的牌組抽1張牌。",
+        "ja": "自分のセンターメンバーが「姫森蘭奈」の場合、デッキからカードを１枚引く。",
+        "en": "When your center member is \"Himemori Rana\", draw 1 card from your deck.",
+        "fr": "Lorsque votre membre central est « Himemori Rana », piochez 1 carte de votre deck."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_white.png"
+      ],
+      "name": "お菓子たべるのら？",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP03-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-010_P.png"
+  },
+  {
     "image": "cardListImages/hBP03/hBP03-011_C.png",
     "name": "姫森ルーナ",
     "type": "成員",
@@ -17548,6 +17955,44 @@
     "expansion": "hBP03",
     "productName": "ブースターパック「エリートスパーク」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP03-011_P.png",
+    "name": "姫森ルーナ",
+    "type": "成員",
+    "tag": "#JP / #4期生 / #ベイビー",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_white.png"
+      ],
+      "name": "おつルーナ",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ぐっどないと～",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-011",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-011_P.png"
   },
   {
     "image": "cardListImages/hBP03/hBP03-012_U.png",
@@ -18133,6 +18578,44 @@
     "expansion": "hBP03",
     "productName": "ブースターパック「エリートスパーク」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP03-018_P.png",
+    "name": "獅白ぼたん",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #ケモミミ / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png"
+      ],
+      "name": "ぼたんがアイドルになったら…",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "絶対、ドキドキさせるから",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-018",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-018_P.png"
   },
   {
     "image": "cardListImages/hBP03/hBP03-019_U.png",
@@ -18994,6 +19477,42 @@
     "extra": null,
     "id": "hBP03-027",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-027_C.png"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP03-027_P.png",
+    "name": "さくらみこ",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紅",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "エリートな水着",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ぷにち",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-027",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-027_P.png"
   },
   {
     "image": "cardListImages/hBP03/hBP03-028_U.png",
@@ -21047,6 +21566,44 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP03-053_P.png",
+    "name": "常闇トワ",
+    "type": "成員",
+    "tag": "#JP / #4期生 / #歌 / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紫",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "おつやっぴー",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "きゅりん",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-053",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-053_P.png"
+  },
+  {
     "image": "cardListImages/hBP03/hBP03-054_U.png",
     "name": "常闇トワ",
     "type": "成員",
@@ -21549,6 +22106,44 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP03-058_P.png",
+    "name": "ロボ子さん",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紫",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "おつろぼー",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "いちゃあま彼女",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-058",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-058_P.png"
+  },
+  {
     "image": "cardListImages/hBP03/hBP03-059_U.png",
     "name": "ロボ子さん",
     "type": "成員",
@@ -21867,6 +22462,36 @@
     "expansion": "hBP03",
     "productName": "ブースターパック「エリートスパーク」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP03-063_P.png",
+    "name": "戌神ころね",
+    "type": "成員",
+    "tag": "#JP / #ゲーマーズ / #ケモミミ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 200,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "おつころ～ん",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP03-063",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-063_P.png"
   },
   {
     "image": "cardListImages/hBP03/hBP03-064_U.png",
@@ -22345,6 +22970,46 @@
     "expansion": "hBP03",
     "productName": "ブースターパック「エリートスパーク」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP03-069_P.png",
+    "name": "角巻わため",
+    "type": "成員",
+    "tag": "#JP / #4期生 / #ケモミミ / #歌",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "癒しのひととき",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "応援してくれるよねぇ？",
+      "damage": 90,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP03-069",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP03-069_P.png"
   },
   {
     "image": "cardListImages/hBP03/hBP03-070_U.png",
@@ -24957,6 +25622,44 @@
     "expansion": "hBP04",
     "productName": "ブースターパック「キュリアスユニバース」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP04-010_P.png",
+    "name": "博衣こより",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #ケモミミ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "助手く～ん、なんかお疲れっぽい？",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "こよに添い寝される？",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-010_P.png"
   },
   {
     "image": "cardListImages/hBP04/hBP04-011_U.png",
@@ -27585,6 +28288,44 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP04-045_P.png",
+    "name": "雪花ラミィ",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #ハーフエルフ / #お酒",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "藍",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png"
+      ],
+      "name": "おつらみ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ボスが攻略できな～い",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-045",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-045_P.png"
+  },
+  {
     "image": "cardListImages/hBP04/hBP04-046_U.png",
     "name": "雪花ラミィ",
     "type": "成員",
@@ -27620,6 +28361,40 @@
     "expansion": "hBP04",
     "productName": "ブースターパック「キュリアスユニバース」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP04-046_P.png",
+    "name": "雪花ラミィ",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #ハーフエルフ / #お酒",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "藍",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いっぱい頑張るよ！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "自己的成員帶有粉絲時，給予對手的1位成員10點特殊傷害。",
+        "ja": "自分のメンバーにファンがいる場合、相手のメンバー1人に10ポイントの特殊ダメージを与える。",
+        "en": "When one of your own members has fans, inflict 10 points of special damage to one of your opponent's members.",
+        "fr": "Lorsqu'un de vos propres membres possède des fans, infligez 10 points de dégâts spéciaux à l'un des membres de votre adversaire."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP04-046",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-046_P.png"
   },
   {
     "image": "cardListImages/hBP04/hBP04-047_R.png",
@@ -28526,6 +29301,46 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP04-055_P.png",
+    "name": "ラプラス・ダークネス",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紫",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [],
+    "effectC": {
+      "name": "そこに跪け！",
+      "effect": {
+        "zh-TW": "可以擲1次骰子：3以上時，將對手的1位後台成員改為休息狀態。",
+        "ja": "サイコロは1回振れ、3以上の場合、相手の裏方メンバー1人をレスト状態にする。",
+        "en": "You can roll the dice once: when it is 3 or above, one of your opponent's backstage members will be put into a rest state.",
+        "fr": "Vous pouvez lancer le dé une fois : lorsqu'il est de 3 ou plus, l'un des membres des coulisses de votre adversaire sera mis en état de repos."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "我ら、エデンの星を統べる者！",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "對手每有1位休息狀態的成員，這個藝能傷害+10。",
+        "ja": "レスト状態の相手メンバー1人につき、このスキルのダメージは+10される。",
+        "en": "For every member of the opponent who is in resting state, the damage of this skill is +10.",
+        "fr": "Pour chaque membre de l’adversaire en état de repos, les dégâts de cette compétence sont de +10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP04-055",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-055_P.png"
+  },
+  {
     "image": "cardListImages/hBP04/hBP04-056_C_02.png",
     "name": "ラプラス・ダークネス",
     "type": "成員",
@@ -28565,6 +29380,44 @@
     "expansion": "hBP04",
     "productName": "ブースターパック「キュリアスユニバース」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP04-056_P.png",
+    "name": "ラプラス・ダークネス",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紫",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "いちごだいすき！",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_purple.png"
+      ],
+      "name": "ぷらすめいと諸君いつもありがとう",
+      "damage": 70,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-056",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-056_P.png"
   },
   {
     "image": "cardListImages/hBP04/hBP04-057_U.png",
@@ -29837,6 +30690,45 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP04-069_P.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "おはようスバル",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "眠いんデスケド",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-069",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-069_P.png"
+  },
+  {
     "image": "cardListImages/hBP04/hBP04-070_U.png",
     "name": "大空スバル",
     "type": "成員",
@@ -29875,6 +30767,43 @@
     "expansion": "hBP04",
     "productName": "ブースターパック「キュリアスユニバース」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP04-070_P.png",
+    "name": "大空スバル",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #トリ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 130,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "全力で頑張るから",
+      "effect": {
+        "zh-TW": "選擇自己的1位成員。這個回合中，該成員每有1張吶喊卡，該成員的藝能傷害+10。最多支持3張。",
+        "ja": "あなた自身のメンバーを1人選択してください。このラウンド中、メンバーが持つシャウトカード1枚につき、メンバーのスキルダメージ+10。最大 3 枚の写真をサポートします。",
+        "en": "Choose 1 member of your own. During this round, for each shout card the member has, the member's skill damage +10. Supports up to 3 photos.",
+        "fr": "Choisissez 1 membre parmi vous. Au cours de ce tour, pour chaque carte de cri que possède le membre, les dégâts de compétence du membre +10. Prend en charge jusqu'à 3 photos."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "いっぱい応援して、楽しんでね！",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP04-070",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-070_P.png"
   },
   {
     "image": "cardListImages/hBP04/hBP04-071_R.png",
@@ -30710,6 +31639,45 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hBP04-080_P.png",
+    "name": "夏色まつり",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 180,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "夏色応援団",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "戦え！ 血を血で洗え！",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-080",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-080_P.png"
+  },
+  {
     "image": "cardListImages/hBP04/hBP04-081_U.png",
     "name": "夏色まつり",
     "type": "成員",
@@ -31052,6 +32020,45 @@
     "expansion": "hBP04",
     "productName": "ブースターパック「キュリアスユニバース」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP04-084_P.png",
+    "name": "桃鈴ねね",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #歌 / #絵",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "はぁ～ん",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "またねね",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hBP04-084",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-084_P.png"
   },
   {
     "image": "cardListImages/hBP04/hBP04-085_U.png",
@@ -39845,6 +40852,48 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hBP06/hBP06-018_P.png",
+    "name": "響咲リオナ",
+    "type": "成員",
+    "tag": "#DEV_IS / #FLOW GLOW",
+    "product": "PR卡",
+    "color": "白",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "FLOW GLOWのリーダー",
+      "effect": {
+        "zh-TW": "這個回合中，自己舞台上1位標示#FLOW GLOW的成員藝能傷害+20。",
+        "ja": "このラウンド中、ステージ上で #FLOW GLOW とマークされたメンバー 1 人は +20 のパフォーマンス ダメージを獲得します。",
+        "en": "During this round, one member marked #FLOW GLOW on your stage will gain +20 performance damage.",
+        "fr": "Au cours de ce tour, un membre marqué #FLOW GLOW sur votre scène gagnera +20 dégâts de performance."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "Brr! Brr!",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "將自己牌組上方的1張牌放到存檔區。",
+        "ja": "自分の山札の一番上のカードをセーブエリアに置きます。",
+        "en": "Put the top card of your deck into the save area.",
+        "fr": "Placez la carte du dessus de votre deck dans la zone de sauvegarde."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP06-018",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-018_P.png"
+  },
+  {
     "image": "cardListImages/hBP06/hBP06-019_R.png",
     "name": "響咲リオナ",
     "type": "成員",
@@ -40310,6 +41359,38 @@
     "expansion": "hBP06",
     "productName": "ブースターパック「アヤカシヴァーミリオン」",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hBP06-024_P.png",
+    "name": "風真いろは",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 200,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "まじかる☆ござるの元気の出る魔法",
+      "damage": 80,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP06-024",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP06-024_P.png"
   },
   {
     "image": "cardListImages/hBP06/hBP06-025_U.png",
@@ -49709,6 +50790,45 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hBP07/hBP07-055_P.png",
+    "name": "オーロ・クロニー",
+    "type": "成員",
+    "tag": "#EN / #Promise",
+    "product": "PR卡",
+    "color": "藍",
+    "hp": 190,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "約束の未来へ",
+      "effect": {
+        "zh-TW": "選擇自己舞台上1位標示#Promise的成員。這個回合中，該成員的藝能傷害+50。",
+        "ja": "#Promise タグを付けたステージ上のメンバーを選択してください。このラウンド中、メンバーのスキルダメージが+50されます。",
+        "en": "Choose a member on your stage who tags #Promise. During this round, the member's skill damage is +50.",
+        "fr": "Choisissez un membre sur votre scène qui tag #Promise. Pendant ce tour, les dégâts de compétence du membre sont de +50."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "Life Goes On",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP07-055",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-055_P.png"
+  },
+  {
     "image": "cardListImages/hBP07/hBP07-056_RR.png",
     "name": "オーロ・クロニー",
     "type": "成員",
@@ -53240,6 +54360,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hSD01-005_P.png",
+    "name": "ときのそら",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "白",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_white.png"
+      ],
+      "name": "ぬんぬんしよう",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_white.png",
+        "icons/arts_null.png"
+      ],
+      "name": "あなたの心は…くもりのち晴れ！",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD01-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD01-005_P.png"
+  },
+  {
     "image": "cardListImages/hSD01/hSD01-006_RR.png",
     "name": "ときのそら",
     "type": "成員",
@@ -53531,6 +54689,36 @@
     "expansion": "hSD01",
     "productName": "スタートデッキ「ときのそら＆AZKi」",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hSD01-010_P.png",
+    "name": "AZKi",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #歌",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "綠",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_green.png",
+        "icons/arts_null.png"
+      ],
+      "name": "きみとあてのない旅",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD01-010",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD01-010_P.png"
   },
   {
     "image": "cardListImages/hSD01/hSD01-011_RR.png",
@@ -54349,6 +55537,42 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hSD02-005_P.png",
+    "name": "百鬼あやめ",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #シューター",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紅",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "寝る余～",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_red.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おつなきりー",
+      "damage": 60,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD02-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD02-005_P.png"
+  },
+  {
     "image": "cardListImages/hSD02/hSD02-006_C.png",
     "name": "百鬼あやめ",
     "type": "成員",
@@ -55068,6 +56292,44 @@
     "year": "2024年発売商品"
   },
   {
+    "image": "cardListImages/hWF01/hSD03-005_P.png",
+    "name": "猫又おかゆ",
+    "type": "成員",
+    "tag": "#JP / #ゲーマーズ / #ケモミミ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "藍",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ぎゅ～ってしてよね♡",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_blue.png",
+        "icons/arts_null.png"
+      ],
+      "name": "えへへないたずら",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD03-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD03-005_P.png"
+  },
+  {
     "image": "cardListImages/hSD03/hSD03-006_C.png",
     "name": "猫又おかゆ",
     "type": "成員",
@@ -55676,6 +56938,42 @@
     "expansion": "hSD04",
     "productName": "スタートデッキ 紫 癒月ちょこ",
     "year": "2024年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hSD04-005_P.png",
+    "name": "癒月ちょこ",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #料理",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "紫",
+    "hp": 140,
+    "bloom": "1st",
+    "batonImage": [],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "おつかれいと……",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png"
+      ],
+      "name": "あ～む（ﾁｭｯ）",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD04-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD04-005_P.png"
   },
   {
     "image": "cardListImages/hSD04/hSD04-006_C.png",
@@ -57453,6 +58751,45 @@
     "expansion": "hSD07",
     "productName": "スタートデッキ 黄 不知火フレア",
     "year": "2025年発売商品"
+  },
+  {
+    "image": "cardListImages/hWF01/hSD07-005_P.png",
+    "name": "不知火フレア",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ハーフエルフ",
+    "product": "hololive OFFICIAL CARD GAME ツインウエハース",
+    "color": "黃",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "私からキミへ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "キミとティータイム",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "extra": null,
+    "id": "hSD07-005",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hSD07-005_P.png"
   },
   {
     "image": "cardListImages/hSD07/hSD07-006_C.png",
@@ -60444,6 +61781,43 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hSD12/hSD12-013_P.png",
+    "name": "モココ・アビスガード",
+    "type": "成員",
+    "tag": "#EN / #Advent / #ケモミミ",
+    "product": "PR卡",
+    "color": "紅",
+    "hp": 130,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ハッピー☆パピー -MOCOCO-",
+      "effect": {
+        "zh-TW": "如果自己舞台上的所有成員都標示#Advent，可以將自己舞台後方的1位Debut成員放回牌組下方：從自己的牌組抽2張牌。",
+        "ja": "あなたのステージ上のすべてのメンバーが #Advent のマークを付けられている場合、あなたのステージの後ろにあるデビュー メンバー 1 人をあなたのデッキの下に置くことができます。あなたのデッキからカードを 2 枚引きます。",
+        "en": "If all members on your stage are marked #Advent, you can put 1 Debut member at the back of your stage under your deck: draw 2 cards from your deck.",
+        "fr": "Si tous les membres de votre scène sont marqués #Advent, vous pouvez mettre 1 membre Debut au fond de votre scène sous votre deck : piochez 2 cartes de votre deck."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ほんまにほんま～！！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD12-013",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hSD12-013_P.png"
+  },
+  {
     "image": "cardListImages/hSD12/hSD12-014_C.png",
     "name": "フワワ・アビスガード",
     "type": "成員",
@@ -60480,6 +61854,41 @@
     "expansion": "hSD12",
     "productName": "スタートデッキ 推し Advent",
     "year": "2026年発売商品"
+  },
+  {
+    "image": "cardListImages/hSD12/hSD12-014_P.png",
+    "name": "フワワ・アビスガード",
+    "type": "成員",
+    "tag": "#EN / #Advent / #ケモミミ",
+    "product": "PR卡",
+    "color": "藍",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [],
+    "effectC": {
+      "name": "ハッピー☆パピー -FUWAWA-",
+      "effect": {
+        "zh-TW": "如果自己舞台上的所有成員都標示#Advent，可以將自己舞台後方的1位Debut成員放回牌組下方：將自己吶喊牌組上方的1張牌發送給自己的成員。",
+        "ja": "ステージ上のメンバー全員に #Advent のマークが付いている場合、デビュー メンバー 1 人をステージ後方のデッキの下に置くことができます。シャウト デッキの一番上から 1 枚のカードを自分のメンバーに送ります。",
+        "en": "If all members on your stage are marked #Advent, you can put 1 Debut member at the back of your stage under the deck: send 1 card from the top of your shout deck to your own member.",
+        "fr": "Si tous les membres de votre scène sont marqués #Advent, vous pouvez placer 1 membre Debut au fond de votre scène sous le deck : envoyez 1 carte du haut de votre deck de cris à votre propre membre."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ほんまにほんまだよ！",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hSD12-014",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD12/hSD12-014_P.png"
   },
   {
     "image": "cardListImages/hSD12/hSD12-015_U.png",
