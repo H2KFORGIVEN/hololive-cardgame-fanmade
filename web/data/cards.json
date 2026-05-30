@@ -36349,6 +36349,55 @@
     "year": "2025年発売商品"
   },
   {
+    "image": "cardListImages/hBP05/hBP05-040_P.png",
+    "name": "miComet",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #ベイビー / #歌",
+    "product": "PR卡",
+    "color": "紅 / 藍",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ビジネスフレンド",
+      "effect": {
+        "zh-TW": "如果自己的生命值在3以下，自己這個回合綻放過的中心成員「さくらみこ」或「星街すいせい」，可以使用自己手牌的成員再次進行綻放。",
+        "ja": "HPが3以下の場合、今回咲かせたセンターメンバー「さくらみこ」または「星街すいせい」を、手持ちのメンバーを使って再度開花させることができます。",
+        "en": "If your HP is below 3, the center member \"さくらみこ\" or \"星街すいせい\" that you bloomed this round can bloom again using the members in your hand.",
+        "fr": "Si vos PV sont inférieurs à 3, le membre central \"さくらみこ\" ou \"星街すいせい\" que vous avez fait fleurir ce tour peut fleurir à nouveau en utilisant les membres dans votre main."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ビジネスパートナー",
+      "damage": 90,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "可以將這個成員的1張吶喊卡替換給自己的後台成員。",
+        "ja": "このメンバーのシャウト カードを 1 枚、自分のバックステージ メンバーと置き換えることができます。",
+        "en": "You can replace one of this member's shouting cards with your own backstage member.",
+        "fr": "Vous pouvez remplacer l'une des cartes de cri de ce membre par votre propre membre des coulisses."
+      }
+    },
+    "art2": null,
+    "extra": {
+      "zh-TW": "這個成員也視為「さくらみこ」「星街すいせい」",
+      "ja": "このメンバーは「さくらみこ」「星街すいせい」としても知られています。",
+      "en": "This member is also known as \"さくらみこ\" and \"星街すいせい\"",
+      "fr": "Ce membre est également connu sous le nom de « さくらみこ » et « 星街すいせい »."
+    },
+    "id": "hBP05-040",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP05/hBP05-040_P.png"
+  },
+  {
     "image": "cardListImages/hBP05/hBP05-041_U.png",
     "name": "猫又おかゆ",
     "type": "成員",
