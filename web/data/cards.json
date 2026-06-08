@@ -45642,10 +45642,10 @@
     "effectB": {
       "name": "Re:START",
       "effect": {
-        "zh-TW": "如果自己的生命值比對手少，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
-        "ja": "自分のライフが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「夏樹夏郎」に送ることができる。",
-        "en": "If your life points are less than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
-        "fr": "Si vos points de vie sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
+        "zh-TW": "如果自己的生命值在對手以下，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
+        "ja": "自分のHPが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「なつきなつろ」に送ることができる。",
+        "en": "If your HP is lower than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
+        "fr": "Si vos PV sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
       }
     },
     "effectG": null,
@@ -45690,10 +45690,10 @@
     "effectB": {
       "name": "Re:START",
       "effect": {
-        "zh-TW": "如果自己的生命值比對手少，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
-        "ja": "自分のライフが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「夏樹夏郎」に送ることができる。",
-        "en": "If your life points are less than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
-        "fr": "Si vos points de vie sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
+        "zh-TW": "如果自己的生命值在對手以下，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
+        "ja": "自分のHPが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「なつきなつろ」に送ることができる。",
+        "en": "If your HP is lower than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
+        "fr": "Si vos PV sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
       }
     },
     "effectG": null,
@@ -45738,10 +45738,10 @@
     "effectB": {
       "name": "Re:START",
       "effect": {
-        "zh-TW": "如果自己的生命值比對手少，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
-        "ja": "自分のライフが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「夏樹夏郎」に送ることができる。",
-        "en": "If your life points are less than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
-        "fr": "Si vos points de vie sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
+        "zh-TW": "如果自己的生命值在對手以下，可以將自己吶喊牌組上方的1張牌發送給自己的「夏色まつり」。",
+        "ja": "自分のHPが相手より少ない場合、自分のシャウトデッキの一番上のカードを自分の「なつきなつろ」に送ることができる。",
+        "en": "If your HP is lower than your opponent's, you can send the top card of your Shout deck to your \"Natsuro Natsuki\".",
+        "fr": "Si vos PV sont inférieurs à ceux de votre adversaire, vous pouvez envoyer la carte du dessus de votre deck Shout à votre « Natsuro Natsuki »."
       }
     },
     "effectG": null,
@@ -59537,10 +59537,10 @@
     "effectG": {
       "name": "なんでも入る巾着",
       "effect": {
-        "zh-TW": "[限定聯動位置]對手回合中，自己的成員被擊倒時，如果自己的生命值比對手少，可以將自己存檔區1張卡名包含「パソコン」的物品返回手牌。",
-        "ja": "【限定連動位置】相手ターン中、自分のメンバーがダウンした時、自分のHPが相手のHPより少ない場合、自分のセーブエリアにあるカード名に「パソコン」を含むアイテム1枚を手札に戻すことができる。",
-        "en": "[Limited linkage position] During the opponent's turn, when one of your own members is knocked down, if your HP is less than your opponent's, you can return 1 item in your save area with \"パソコン\" in its card name to your hand.",
-        "fr": "[Position de liaison limitée] Pendant le tour de l'adversaire, lorsqu'un de vos propres membres est renversé, si vos PV sont inférieurs à ceux de votre adversaire, vous pouvez renvoyer dans votre main 1 objet dans votre zone de sauvegarde avec \"パソコン\" dans son nom de carte."
+        "zh-TW": "[限定聯動位置]對手回合中，自己的成員被擊倒時，如果自己的生命值在對手以下，可以將自己存檔區1張卡名包含「パソコン」的物品返回手牌。",
+        "ja": "【限定連動位置】相手ターン中、自分のメンバーがダウンした時、自分のHPが相手より少ない場合、自分のセーブエリアにあるカード名に「パソコン」を含むアイテム1枚を手札に戻すことができる。",
+        "en": "[Limited linkage position] During the opponent's turn, when one of your own members is knocked down, if your HP is lower than your opponent's, you can return an item in your save area with \"パソコン\" in its card name to your hand.",
+        "fr": "[Position de liaison limitée] Pendant le tour de l'adversaire, lorsqu'un de vos propres membres est renversé, si vos PV sont inférieurs à ceux de votre adversaire, vous pouvez renvoyer dans votre main un objet dans votre zone de sauvegarde avec \"パソコン\" dans son nom de carte."
       }
     },
     "art1": {
