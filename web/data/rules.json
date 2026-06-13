@@ -1,9 +1,6 @@
 {
-  "scraped_at": "2026-06-12",
-  "restricted_cards": [
-    "hBP01-030",
-    "hBP02-094"
-  ],
+  "scraped_at": "2026-06-13",
+  "restricted_cards": [],
   "errata": {
     "hSD01-004": {
       "date": "2026-03-05",
@@ -37,6 +34,25 @@
     }
   },
   "articles": [
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/20/",
+      "date": "2026-06-12",
+      "slug": "20",
+      "title": {
+        "ja": "制限カード追加・解除のお知らせ[2026/6/19(金)施行]",
+        "zh-TW": "關於限制卡新增/取消的通知[2026年6月19日星期五執行]",
+        "en": "Notice of addition/cancellation of restricted cards [enforced on Friday, June 19, 2026]",
+        "fr": "Avis d'ajout/annulation de cartes restreintes [en vigueur le vendredi 19 juin 2026]"
+      },
+      "type": "restricted",
+      "card_ids": [
+        "hBP07-045",
+        "hBP07-101",
+        "hBP07-003",
+        "hBP06-085",
+        "hBP02-094"
+      ]
+    },
     {
       "url": "https://hololive-official-cardgame.com/news/post/44/",
       "date": "2026-03-05",
@@ -81,46 +97,6 @@
       "card_ids": [
         "hBP01-010",
         "hBP01-014"
-      ]
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/news/post/rule01/",
-      "date": "2025-12-04",
-      "slug": "rule01",
-      "title": {
-        "ja": "デッキ構築ルール",
-        "zh-TW": "甲板建造規則",
-        "en": "Deck construction rules",
-        "fr": "Règles de construction du pont"
-      },
-      "type": "deck_rules",
-      "card_ids": [
-        "hBP01-030",
-        "hBP02-094",
-        "hBP01-010",
-        "hBP01-014"
-      ]
-    },
-    {
-      "url": "https://hololive-official-cardgame.com/news/post/20/",
-      "date": "2025-04-09",
-      "slug": "20",
-      "title": {
-        "ja": "制限カード追加のお知らせ[2025/4/21(月)施行]",
-        "zh-TW": "關於新增限制卡的通知[2025年4月21日（星期一）實施]",
-        "en": "Notice of addition of restricted cards [enforced on April 21, 2025 (Monday)]",
-        "fr": "Avis d'ajout de cartes restreintes [en vigueur le 21 avril 2025 (lundi)]"
-      },
-      "type": "restricted",
-      "card_ids": [
-        "hBP01-010",
-        "hBP01-014",
-        "hBP01-001",
-        "hBP02-023",
-        "hBP02-094",
-        "hBP02-022",
-        "hBP01-019",
-        "hBP01-030"
       ]
     },
     {
