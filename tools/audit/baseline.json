@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-05-01T14:10:32.718Z",
+  "totals": {
+    "STUB-LOG": 538,
+    "CORRECT-VERIFIED": 307,
+    "UNCLASSIFIED": 57,
+    "RULE-MOD": 34,
+    "DISABLED-FALLTHROUGH": 1,
+    "NO-TEXT": 66,
+    "MANUAL-FALLTHROUGH": 16,
+    "PICKER-EMITTED": 41,
+    "PASSIVE-INTENT": 42
+  },
+  "severity": {
+    "HIGH": 0,
+    "MED": 0,
+    "LOW": 57,
+    "INFO": 1045
+  }
+}
