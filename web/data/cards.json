@@ -56875,6 +56875,666 @@
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-060_P.png"
   },
   {
+    "image": "cardListImages/hBP08/hBP08-061_C.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 120,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "秘密結社のおもてなし",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，且自己的主推為「鷹嶺ルイ」，對手將holo能量區上方的1張牌加入手牌。",
+        "ja": "バックアタック1ラウンド目、メインプッシュが「高嶺龍」の場合、相手はホロエネルギーゾーンの上に1枚手札に加える。",
+        "en": "If in the first round of your back attack, and your main push is \"Takamine Ryu\", your opponent will add 1 card above the holo energy zone to his hand.",
+        "fr": "Si au premier tour de votre attaque arrière, et que votre push principal est \"Takamine Ryu\", votre adversaire ajoutera 1 carte au dessus de la zone d'énergie holo à sa main."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "holoX Coffeeをどうぞ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-061",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-061_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-062_U.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 130,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ダウンさせられる覚悟",
+      "effect": {
+        "zh-TW": "可以將自己的1張手牌放到存檔區：從自己的牌組將1張特殊規則為「這個成員沒有張數限制」的Debut成員放到舞台上。將牌組重新洗牌。",
+        "ja": "手札を1枚セーブエリアに置くことができる。「このメンバーは枚数制限なし」という特別ルールを持つデビューメンバー1名をデッキからステージに出す。デッキを再シャッフルします。",
+        "en": "You can put 1 card from your hand into the save area: put 1 Debut member with the special rule \"This member has no limit on the number of cards\" from your deck onto the stage. Reshuffle the deck.",
+        "fr": "Vous pouvez mettre 1 carte de votre main dans la zone de sauvegarde : placez 1 membre Debut avec la règle spéciale \"Ce membre n'a pas de limite sur le nombre de cartes\" de votre deck sur la scène. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "ダウンさせる意志",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-062",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-062_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-063_C.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ホロックス・ディール",
+      "effect": {
+        "zh-TW": "查看自己牌組上方的3張牌。展示1張標示#秘密結社holoX的成員並加入手牌。其餘依照喜歡的順序放回牌組下方。",
+        "ja": "自分の山札の上の3枚のカードを見てください。 #secretsocietyholoX というラベルが付いたメンバーを公開し、手札に加えます。残りは好きな順番でデッキの下に戻します。",
+        "en": "Look at the 3 cards above your deck. Reveal a member labeled #secretsocietyholoX and add it to your hand. Put the rest back under the deck in the order you like.",
+        "fr": "Regardez les 3 cartes au-dessus de votre deck. Révélez un membre intitulé #secretsocietyholoX et ajoutez-le à votre main. Remettez le reste sous le pont dans l'ordre que vous souhaitez."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "どう似合ってる？？？",
+      "damage": 40,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-063",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-063_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-064_C.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "荒事上等",
+      "effect": {
+        "zh-TW": "可以將自己的1張手牌放到存檔區：給予對手的中心成員或聯動成員30點特殊傷害。",
+        "ja": "自分の手札を1枚セーブエリアに置くと、相手のセンターメンバーまたはリンケージメンバーに30ポイントの特殊ダメージを与える。",
+        "en": "You can put 1 card in your hand into the save area: give 30 points of special damage to the opponent's center member or linkage member.",
+        "fr": "Vous pouvez mettre 1 carte de votre main dans la zone de sauvegarde : donnez 30 points de dégâts spéciaux au membre central ou au membre de liaison de l'adversaire."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "眠らない街の仕事屋",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "從自己的牌組將1張「ルイ友」附加給自己的成員。將牌組重新洗牌。",
+        "ja": "自分のデッキから「龍洋」１枚を自分のメンバー１枚に加える。デッキを再シャッフルします。",
+        "en": "Attach 1 \"Ryuyo\" from your deck to one of your members. Reshuffle the deck.",
+        "fr": "Attachez 1 \"Ryuyo\" de votre deck à l'un de vos membres. Remaniez le jeu."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-064",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-064_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-065_R.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 180,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "大穴きちゃーーー！",
+      "effect": {
+        "zh-TW": "[限定中心位置]可以將自己的1張手牌放到存檔區：擲1次骰子。如果為1，從自己的牌組抽3張牌。如果不為1，從自己的牌組抽1張牌。",
+        "ja": "【中央位置限定】手札を1枚アーカイブエリアに置ける：サイコロを1回振る。 1の場合、自分のデッキからカードを3枚引く。 １でない場合、自分のデッキからカードを１枚引く。",
+        "en": "[Limited to the center position] You can put 1 card from your hand into the archive area: roll the dice once. If it is 1, draw 3 cards from your deck. If it is not 1, draw 1 card from your deck.",
+        "fr": "[Limité à la position centrale] Vous pouvez mettre 1 carte de votre main dans la zone d'archives : lancez les dés une fois. Si c'est 1, piochez 3 cartes de votre deck. Si ce n’est pas 1, piochez 1 carte de votre deck."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_purple.png"
+      ],
+      "name": "差していくよ！",
+      "damage": "50+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果自己的手牌在2張以下，這個藝能傷害+30。",
+        "ja": "自分の手札が2枚以下の場合、このスキルのダメージは+30される。",
+        "en": "If you have less than 2 cards in your hand, the damage of this skill is +30.",
+        "fr": "Si vous avez moins de 2 cartes en main, les dégâts de cette compétence sont de +30."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-065",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-065_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-066_U.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "そんなに顔赤い？",
+      "effect": {
+        "zh-TW": "可以將自己存檔區的1張支援卡放回牌組上方。",
+        "ja": "自分のセーブエリアにあるサポートカード1枚をデッキの一番上に戻すことができる。",
+        "en": "You can put 1 support card from your save area back to the top of your deck.",
+        "fr": "Vous pouvez remettre 1 carte de soutien de votre zone de sauvegarde en haut de votre deck."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "酔い、覚ましていこ？",
+      "damage": "60+",
+      "specialAttackImage": "icons/tokkou_50_yellow.png",
+      "effect": {
+        "zh-TW": "可以將自己的1~2張手牌放到存檔區：每將1張牌放到存檔區，這個藝能傷害+20。",
+        "ja": "自分の手札を1～2枚セーブエリアに置くことができ、セーブエリアに置いたカード1枚につき、このスキルのダメージは+20される。",
+        "en": "You can put 1~2 cards in your hand into the save area: for each card you put into the save area, the damage of this skill is +20.",
+        "fr": "Vous pouvez mettre 1 à 2 cartes de votre main dans la zone de sauvegarde : pour chaque carte que vous mettez dans la zone de sauvegarde, les dégâts de cette compétence sont de +20."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-066",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-066_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-067_RR.png",
+    "name": "鷹嶺ルイ",
+    "type": "成員",
+    "tag": "#JP / #秘密結社holoX / #トリ / #お酒",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ヴァイオレットドミネーション",
+      "effect": {
+        "zh-TW": "[限定中心位置]可以將自己的2張手牌放到存檔區：將對手舞台上的1張吶喊卡，替換給對手的成員。",
+        "ja": "【センターポジション限定】手札を2枚セーブエリアに置く：相手ステージのシャウトカード1枚を相手メンバーと入れ替える。",
+        "en": "[Limited to the center position] You can put 2 cards in your hand into the save area: replace 1 shout card on the opponent's stage with an opponent's member.",
+        "fr": "[Limité à la position centrale] Vous pouvez mettre 2 cartes de votre main dans la zone de sauvegarde : remplacez 1 carte cri sur la scène adverse par un membre de l'adversaire."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_purple.png",
+        "icons/arts_purple.png"
+      ],
+      "name": "逆転の一手",
+      "damage": "130+",
+      "specialAttackImage": "icons/tokkou_50_green.png",
+      "effect": {
+        "zh-TW": "如果自己的手牌在2張以下，這個藝能傷害+50。如果自己的手牌為0張，則這個藝能傷害+70。",
+        "ja": "自分の手札が2枚以下の場合、このスキルのダメージは+50される。自分の手札が0枚の場合、このスキルのダメージは+70される。",
+        "en": "If you have less than 2 cards in your hand, the damage of this skill is +50. If you have 0 cards in your hand, the damage of this skill is +70.",
+        "fr": "Si vous avez moins de 2 cartes en main, les dégâts de cette compétence sont de +50. Si vous avez 0 carte en main, les dégâts de cette compétence sont de +70."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-067",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-067_RR.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-068_C.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 140,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "きタコれ！",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，這個回合中，對手舞台上的所有成員視為具有所有顏色。",
+        "ja": "1ターン目に攻撃した場合、このターンは相手ステージのメンバー全員が全色とみなされます。",
+        "en": "If you attack in the first turn, all members on the opponent's stage are considered to have all colors in this turn.",
+        "fr": "Si vous attaquez au premier tour, tous les membres de la scène adverse sont considérés comme ayant toutes les couleurs à ce tour."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "引きこもり娘は外出の夢を見た",
+      "damage": 10,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "給予對手與其主推不同顏色的中心成員與聯動成員20點特殊傷害。",
+        "ja": "メインプレイヤーとは異なる色のセンターメンバーとリンケージメンバーに20ポイントの特殊ダメージを相手に与える。",
+        "en": "Give the opponent 20 points of special damage to the center member and linkage member of a different color than the main player.",
+        "fr": "Donnez à l'adversaire 20 points de dégâts spéciaux au membre central et au membre de liaison d'une couleur différente de celle du joueur principal."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-068",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-068_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-069_U.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "夏の訪れ",
+      "effect": {
+        "zh-TW": "如果自己的舞台上有3位以上標示#絵的成員，從自己的牌組抽1張牌。",
+        "ja": "自分のステージに#絵の付いたメンバーが3人以上いる場合、自分の山札からカードを1枚引く。",
+        "en": "If there are more than 3 members marked #絵 on your stage, draw 1 card from your deck.",
+        "fr": "S'il y a plus de 3 membres marqués #絵 sur votre scène, piochez 1 carte de votre deck."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "うまくいったでしょ、もっといけるよ",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-069",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-069_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-070_C.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 180,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "イナ・イマジネーション",
+      "effect": {
+        "zh-TW": "從自己的牌組展示1張「Takodachi」並加入手牌。將牌組重新洗牌。",
+        "ja": "デッキから「たこだち」１枚を公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "Reveal 1 \"Takodachi\" from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "Révélez 1 \"Takodachi\" de votre deck et ajoutez-le à votre main. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "私の生涯の友人",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "對手的舞台上每有1位與其主推不同顏色的成員，自己1位標示#Myth的成員HP回復10點。",
+        "ja": "相手ステージのメインプレイヤーと違う色のメンバー1人につき、#Mythの付いた自分のメンバー1人のHPが10ポイント回復します。",
+        "en": "For every member on the opponent's stage who is of a different color than the main player, the HP of one of your own members marked #Myth will be restored by 10 points.",
+        "fr": "Pour chaque membre sur la scène adverse qui est d'une couleur différente de celle du joueur principal, les PV d'un de vos propres membres marqués #Mythe seront restaurés de 10 points."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-070",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-070_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-071_C.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "TOMORROW!?",
+      "effect": {
+        "zh-TW": "給予對手1位與其主推不同顏色的成員20點特殊傷害。",
+        "ja": "相手と異なる色のメンバーに20ポイントの特殊ダメージを与える。",
+        "en": "Give the opponent 20 points of special damage to a member of a different color than the opponent.",
+        "fr": "Donnez à l'adversaire 20 points de dégâts spéciaux à un membre d'une couleur différente de celle de l'adversaire."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "Bonk!",
+      "damage": 50,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-071",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-071_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-072_R.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海 / #サマー",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "Natsu Ina!!",
+      "effect": {
+        "zh-TW": "如果自己的存檔區有8張以上標示#Myth的成員，將自己存檔區1張標示#Myth的成員返回手牌。「Natsu Ina!!」每個回合只能使用一次。",
+        "ja": "自分のセーブエリアに #Myth とマークされたメンバーが 8 人以上いる場合、自分のセーブエリアに #Myth とマークされたメンバー 1 人を手札に戻す。 「ナツ・イナ！！」 1ターンに1回のみ使用可能。",
+        "en": "If there are more than 8 members marked #Myth in your save area, return 1 member marked #Myth in your save area to your hand. \"Natsu Ina!!\" can only be used once per turn.",
+        "fr": "S'il y a plus de 8 membres marqués #Mythe dans votre zone de sauvegarde, renvoyez dans votre main 1 membre marqué #Mythe dans votre zone de sauvegarde. \"Natsu Ina !!\" ne peut être utilisé qu’une fois par tour."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png"
+      ],
+      "name": "マルチカラー・スケッチ",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "對手的舞台上每有1位與其主推不同顏色的成員，這個藝能傷害+10。",
+        "ja": "相手ステージのメインプレイヤーと違う色のメンバー1人につき、このスキルのダメージが10アップする。",
+        "en": "For each member on the opponent's stage who is of a different color than the main player, this skill's damage will be increased by 10.",
+        "fr": "Pour chaque membre du stage adverse qui est d'une couleur différente de celle du joueur principal, les dégâts de cette compétence seront augmentés de 10."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-072",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-072_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-073_U.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "お行儀よくしてね？",
+      "effect": {
+        "zh-TW": "選擇對手舞台上的2位成員。這個回合中，剛才選擇的成員視為具有所有顏色。",
+        "ja": "相手ステージのメンバーを2人選ぶ。このラウンドでは、選択したメンバーがすべての色を持つとみなされます。",
+        "en": "Choose 2 members on your opponent's stage. During this round, the member just selected is considered to have all colors.",
+        "fr": "Choisissez 2 membres sur la scène de votre adversaire. Lors de ce tour, le membre qui vient d'être sélectionné est considéré comme ayant toutes les couleurs."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "おやつのクッキー抜きだよ！",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-073",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-073_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-074_RR.png",
+    "name": "一伊那尓栖",
+    "type": "成員",
+    "tag": "#EN / #Myth / #絵 / #海",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "目覚めよ、赤き眼の黒龍",
+      "effect": {
+        "zh-TW": "[限定中心位置]對手的舞台上每有1位與其主推不同顏色的成員，從自己的牌組抽1張牌。",
+        "ja": "【センター限定】相手ステージのメインプレイヤーと違う色のメンバー1人につき、自分は山札から1枚ドローする。",
+        "en": "[Limited to the center position] For each member on the opponent's stage who is a different color than the main player, draw 1 card from your deck.",
+        "fr": "[Limité à la position centrale] Pour chaque membre de la scène adverse qui est d'une couleur différente de celle du joueur principal, piochez 1 carte de votre deck."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ネクロ・エリミネーション!!",
+      "damage": 110,
+      "specialAttackImage": "icons/tokkou_50_yellow.png",
+      "effect": {
+        "zh-TW": "可以將自己的1~3張手牌放到存檔區：因這個效果每將1張牌放到存檔區，選擇對手的1位成員。這個回合中，剛才選擇的成員視為具有所有顏色。",
+        "ja": "自分の手札を1～3枚アーカイブエリアに置くことができる。この効果でカードを1枚アーカイブエリアに置く度に、相手のメンバーを1枚選択する。このラウンドでは、選択したメンバーがすべての色を持つとみなされます。",
+        "en": "You can put 1~3 cards in your hand into the archive area: every time you put 1 card into the archive area due to this effect, select 1 member of your opponent. During this round, the member just selected is considered to have all colors.",
+        "fr": "Vous pouvez mettre 1 à 3 cartes de votre main dans la zone d'archives : chaque fois que vous mettez 1 carte dans la zone d'archives à cause de cet effet, sélectionnez 1 membre de votre adversaire. Lors de ce tour, le membre qui vient d'être sélectionné est considéré comme ayant toutes les couleurs."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-074",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-074_RR.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-075_R.png",
+    "name": "ロボ子さん",
+    "type": "成員",
+    "tag": "#JP / #0期生 / #シューター",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 210,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ロボ子さん↔ろぼさー",
+      "effect": {
+        "zh-TW": "從自己的牌組展示1張「ろぼさー」並加入手牌。將牌組重新洗牌。",
+        "ja": "自分のデッキから「ろぼさー」を１枚公開し、手札に加える。デッキを再シャッフルします。",
+        "en": "Reveal 1 \"ろぼさー\" from your deck and add it to your hand. Reshuffle the deck.",
+        "fr": "Révélez 1 \"ろぼさー\" depuis votre deck et ajoutez-le à votre main. Remaniez le jeu."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_purple.png"
+      ],
+      "name": "一緒に外に行こうよ",
+      "damage": "110+",
+      "specialAttackImage": "icons/tokkou_50_yellow.png",
+      "effect": {
+        "zh-TW": "這個成員每帶有1張「ろぼさー」，這個藝能傷害+20。",
+        "ja": "このメンバーが持つ『ろぼさー』1枚につき、このアーツのダメージ+20。",
+        "en": "For each \"ろぼさー\" this member has, the damage of this art +20.",
+        "fr": "Pour chaque \"ろぼさー\" de ce membre, les dégâts de cet art +20."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-075",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-075_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-076_R.png",
+    "name": "癒月ちょこ",
+    "type": "成員",
+    "tag": "#JP / #2期生 / #料理",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "紫",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "おいしいごはんの夢",
+      "effect": {
+        "zh-TW": "查看自己牌組上方的3張牌。展示1張標示#料理的成員與1張標示#食べ物的活動並加入手牌。其餘依照喜歡的順序放回牌組下方。",
+        "ja": "自分の山札の上の3枚のカードを見てください。 #CUISINE というラベルが付いたメンバー 1 枚と #食べ物 というラベルが付いたアクティビティ カード 1 枚を公開し、手札に加えます。残りは好きな順番でデッキの下に戻します。",
+        "en": "Look at the 3 cards above your deck. Reveal 1 member labeled #CUISINE and 1 activity card labeled #食べ物 and add them to your hand. Put the rest back under the deck in the order you like.",
+        "fr": "Regardez les 3 cartes au-dessus de votre deck. Révélez 1 membre intitulé #CUISINE et 1 carte d'activité intitulée #食べ物 et ajoutez-les à votre main. Remettez le reste sous le pont dans l'ordre que vous souhaitez."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_purple.png",
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "ごはんをいっぱい食べたあとには……",
+      "damage": 120,
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": {
+        "zh-TW": "如果自己的存檔區有3張以上標示#食べ物的活動，這個成員HP回復100點。",
+        "ja": "#食べ物とマークされたアクティビティがセーブエリアに3つ以上ある場合、このメンバーのHPは100ポイント回復されます。",
+        "en": "If there are more than 3 activities marked #食べ物 in their save area, this member's HP will be restored by 100 points.",
+        "fr": "S'il y a plus de 3 activités marquées #食べ物 dans leur zone de sauvegarde, les PV de ce membre seront restaurés de 100 points."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-076",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-076_R.png"
+  },
+  {
     "image": "cardListImages/hPR/hPR-001_P.png",
     "name": "さくらみこ",
     "type": "成員",
