@@ -54584,10 +54584,10 @@
       "holoPower": "-X",
       "name": "Ina'nisの色彩",
       "effect": {
-        "zh-TW": "[每個回合一次]因這個效果每將1張holo能量放到存檔區，選擇對手舞台上的1位成員。這個回合中，剛才選擇的成員視為具有所有顏色的成員。",
-        "ja": "【ターンに１度】この効果でセーブエリアに置かれたホロエネルギー１枚につき、相手ステージのメンバーを１枚選択する。このラウンド中、選択したメンバーはすべての色のメンバーとみなされます。",
-        "en": "[Once per turn] For each holo energy placed in the save area due to this effect, select 1 member on the opponent's stage. During this round, the member just selected is considered a member of all colors.",
-        "fr": "[Une fois par tour] Pour chaque énergie holo placée dans la zone de sauvegarde à cause de cet effet, sélectionnez 1 membre sur la scène de l'adversaire. Lors de ce tour, le membre qui vient d'être sélectionné est considéré comme un membre de toutes les couleurs."
+        "zh-TW": "[每個回合一次]因這個效果每將1張holo能量放到存檔區，選擇對手舞台上的1位成員。這個回合中，剛才選擇的成員視為具有所有顏色。",
+        "ja": "【ターンに１度】この効果でセーブエリアに置かれたホロエネルギー１枚につき、相手ステージのメンバーを１枚選択する。このラウンドでは、選択したメンバーがすべての色を持つとみなされます。",
+        "en": "[Once per turn] For each holo energy placed in the save area due to this effect, select 1 member on the opponent's stage. During this round, the member just selected is considered to have all colors.",
+        "fr": "[Une fois par tour] Pour chaque énergie holo placée dans la zone de sauvegarde à cause de cet effet, sélectionnez 1 membre sur la scène de l'adversaire. Lors de ce tour, le membre qui vient d'être sélectionné est considéré comme ayant toutes les couleurs."
       }
     },
     "spSkill": null,
@@ -57533,6 +57533,849 @@
     "extra": null,
     "id": "hBP08-076",
     "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-076_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-077_C.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 120,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "歌ってみた、聴いてください",
+      "effect": {
+        "zh-TW": "如果在自己後攻的第一個回合，從自己的牌組展示1張1st成員「音乃瀬奏」與1張「リコーダー」並加入手牌。將牌組重新洗牌。",
+        "ja": "バックアタックの1ターン目に、デッキから1stメンバーの「音ノ瀬 奏」と「リコナ」1枚を公開して手札に加える。デッキを再シャッフルします。",
+        "en": "If on the first turn of your back attack, reveal 1 1st member \"Otonose Kanade\" and 1 \"Rikona\" from your deck and add them to your hand. Reshuffle the deck.",
+        "fr": "Si au premier tour de votre attaque arrière, révélez 1 1er membre \"Otonose Kanade\" et 1 \"Rikona\" de votre deck et ajoutez-les à votre main. Remaniez le jeu."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "奏スタンバイ",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-077",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-077_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-078_U.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 100,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "楽しい月曜日だよー！！！！！！！！",
+      "effect": {
+        "zh-TW": "選擇自己舞台上1位標示#歌的2nd成員。這個回合中，該成員的藝能傷害+20。",
+        "ja": "あなたのステージで #song を持つ 2 番目のメンバーを選択してください。このラウンド中、メンバーのスキルダメージ+20。",
+        "en": "Choose a 2nd member with the #song on your stage. During this round, the member's skill damage +20.",
+        "fr": "Choisissez un 2ème membre avec la #chanson sur votre scène. Pendant ce tour, les dégâts de compétence du membre +20."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "れろれろれろれろ",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-078",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-078_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-079_C.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "黎明の歌姫",
+      "effect": {
+        "zh-TW": "如果標示#ReGLOSS的2nd成員在自己的舞台上，這個成員的HP+50。",
+        "ja": "#ReGLOSSを付けた2人目のメンバーが自分のステージにいる場合、このメンバーのHP+50。",
+        "en": "If the 2nd member marked #ReGLOSS is on his own stage, this member's HP +50.",
+        "fr": "Si le 2ème membre marqué #ReGLOSS est sur sa propre scène, les HP de ce membre +50."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "清廉なる歌声",
+      "damage": 10,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "可以將自己存檔區的1張吶喊卡發送給自己標示#ReGLOSS的中心成員。",
+        "ja": "#ReGLOSS をマークしたセンターメンバーに、セーブエリアからシャウトカードを送信できます。",
+        "en": "You can send a shouting card from your save area to the center member you marked #ReGLOSS.",
+        "fr": "Vous pouvez envoyer une carte criante depuis votre zone de sauvegarde au membre du centre que vous avez marqué #ReGLOSS."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-079",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-079_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-080_C.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ファイティングエール",
+      "effect": {
+        "zh-TW": "如果自己舞台上的吶喊卡數量比對手多，可以從自己的牌組將1張標示#ReGLOSS的Debut成員放到舞台上。將牌組重新洗牌。",
+        "ja": "ステージ上に相手より多くのシャウトカードがある場合、#ReGLOSSとマークされたデビューメンバー1名をデッキからステージに置くことができます。デッキを再シャッフルします。",
+        "en": "If you have more shout cards on the stage than your opponent, you can put 1 Debut member marked #ReGLOSS from your deck onto the stage. Reshuffle the deck.",
+        "fr": "Si vous avez plus de cartes de cri sur scène que votre adversaire, vous pouvez mettre 1 membre Debut marqué #ReGLOSS depuis votre deck sur la scène. Remaniez le jeu."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "奏ストラクション",
+      "damage": 20,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-080",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-080_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-081_R.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 150,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "音の饗宴",
+      "effect": {
+        "zh-TW": "將自己存檔區的1張吶喊卡發送給自己的中心成員「音乃瀬奏」。",
+        "ja": "自分のセーブエリアにあるシャウトカードを1枚、センターメンバー「音ノ瀬奏」に送る。",
+        "en": "Send 1 shouting card in your save area to your center member \"Otonose Kanade\".",
+        "fr": "Envoyez 1 carte criante dans votre zone de sauvegarde à votre membre du centre \"Otonose Kanade\"."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "今年も伸び盛り",
+      "damage": "40+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "[限定中心位置]如果自己舞台上的吶喊卡數量比對手多1張，這個藝能傷害+20。如果比對手多2張以上，則這個藝能傷害+40。",
+        "ja": "【中央限定】自分のステージのシャウトカードが相手より1枚多い場合、このスキルのダメージは+20される。相手のカードが2枚以上の場合、このスキルのダメージは+40される。",
+        "en": "[Limited to center position] If the number of shout cards on your stage is 1 more than your opponent's, this skill's damage will be +20. If there are more than 2 cards than the opponent, the damage of this skill is +40.",
+        "fr": "[Limité à la position centrale] Si le nombre de cartes cri sur votre scène est supérieur de 1 à celui de votre adversaire, les dégâts de cette compétence seront de +20. S'il y a plus de 2 cartes que l'adversaire, les dégâts de cette compétence sont de +40."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-081",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-081_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-082_U.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "めでたい日なのに……",
+      "effect": {
+        "zh-TW": "如果自己舞台上的吶喊卡數量比對手多，這個回合中，這個成員的藝能傷害+40。",
+        "ja": "自分のステージのスクリームカードの枚数が相手のステージより多い場合、そのラウンド中、このメンバーのスキルダメージは+40される。",
+        "en": "If there are more Scream cards on your stage than your opponent's, this member's skill damage will be +40 during this round.",
+        "fr": "S'il y a plus de cartes Scream sur votre scène que celle de votre adversaire, les dégâts de compétence de ce membre seront de +40 pendant ce tour."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "涙が止まらないよ～",
+      "damage": 100,
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-082",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-082_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-083_RR.png",
+    "name": "音乃瀬奏",
+    "type": "成員",
+    "tag": "#DEV_IS / #ReGLOSS / #歌",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "テンション超アップ！",
+      "effect": {
+        "zh-TW": "如果自己舞台上的吶喊卡數量在對手以下，將自己存檔區的1~2張吶喊卡發送給這個成員。",
+        "ja": "自分のステージのシャウトカードが相手のシャウトカードより少ない場合、自分のセーブエリアにあるシャウトカードを1～2枚このメンバーに送る。",
+        "en": "If the number of shout cards on your stage is less than that of your opponent, send 1~2 shout cards in your save area to this member.",
+        "fr": "Si le nombre de cartes de cri sur votre scène est inférieur à celui de votre adversaire, envoyez 1 à 2 cartes de cri dans votre zone de sauvegarde à ce membre."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "奏オンステージ",
+      "damage": "120+",
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": {
+        "zh-TW": "如果自己舞台上的吶喊卡數量比對手多，每多1張，這個藝能傷害+20。",
+        "ja": "自分のステージにスクリームカードが相手カードより多い場合、追加カード1枚につきこのスキルのダメージは+20される。",
+        "en": "If there are more Scream cards on your stage than your opponent's, this skill's damage will be +20 for each additional card.",
+        "fr": "S'il y a plus de cartes Scream sur votre scène que celle de votre adversaire, les dégâts de cette compétence seront de +20 pour chaque carte supplémentaire."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-083",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-083_RR.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-084_R.png",
+    "name": "夏色まつり",
+    "type": "成員",
+    "tag": "#JP / #1期生 / #シューター",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 190,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "優雅なてぃーたいむ！",
+      "effect": {
+        "zh-TW": "如果自己的生命值在3以下，這個回合中，自己舞台上標示#1期生的所有成員藝能傷害+20。",
+        "ja": "自分のHPが3以下の場合、このラウンド中、自分のステージの1番のメンバー全員が+20のスキルダメージを受ける。",
+        "en": "If your HP is below 3, during this round, all members marked #1 on your stage will receive +20 skill damage.",
+        "fr": "Si vos HP sont inférieurs à 3, pendant ce tour, tous les membres marqués n°1 sur votre scène recevront +20 dégâts de compétence."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "まちゅだってお姫さま♡",
+      "damage": "30+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果標示#1期生的2nd成員在自己的舞台上，這個藝能傷害+30。",
+        "ja": "2番目の初代メンバーがステージにいる場合、このパフォーマンスのダメージ+30。",
+        "en": "If the 2nd member marked #1st generation is on his stage, the damage of this performance +30.",
+        "fr": "Si le 2ème membre marqué #1ère génération est sur sa scène, les dégâts de cette performance +30."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-084",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-084_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-085_C.png",
+    "name": "不知火フレア",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ハーフエルフ",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 120,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "手、繋いでいると温かいね",
+      "effect": {
+        "zh-TW": "可以將自己的1張手牌放到存檔區：將自己存檔區的1張Debut成員、1st成員或Spot成員返回手牌。",
+        "ja": "手札からカードを1枚セーブエリアに置くことができます。セーブエリアにあるデビューメンバー、ファーストメンバー、またはスポットメンバー1名を手札に戻します。",
+        "en": "You can put 1 card from your hand into the save area: return 1 Debut member, 1st member or Spot member from your save area to your hand.",
+        "fr": "Vous pouvez mettre 1 carte de votre main dans la zone de sauvegarde : remettez 1 membre Debut, 1er membre ou membre Spot de votre zone de sauvegarde dans votre main."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "テレ隠しが下手ですな～",
+      "damage": 10,
+      "specialAttackImage": null,
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-085",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-085_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-086_U.png",
+    "name": "不知火フレア",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ハーフエルフ",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 160,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "俺のイナー！",
+      "effect": {
+        "zh-TW": "可以將自己吶喊牌組上方的1張牌發送給自己的「不知火フレア」或標示#EN的成員。",
+        "ja": "自分のシャウトデッキの一番上のカードを自分の「降谷不知火」または#ENの付いたメンバーに送ることができます。",
+        "en": "You can send the top card of your shout deck to your \"Shiranui Furuya\" or the member marked #EN.",
+        "fr": "Vous pouvez envoyer la carte du dessus de votre deck de cris à votre « Shiranui Furuya » ou au membre marqué #EN."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "最高のともだち",
+      "damage": "20+",
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "如果自己的中心成員為2nd成員，這個藝能傷害+30。",
+        "ja": "自分のセンターメンバーが2人目の場合、このスキルのダメージは+30される。",
+        "en": "If your center member is the 2nd member, the damage of this skill is +30.",
+        "fr": "Si votre membre central est le 2ème membre, les dégâts de cette compétence sont de +30."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-086",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-086_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-087_R.png",
+    "name": "不知火フレア",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ハーフエルフ",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": {
+      "name": "ドリーミングエール",
+      "effect": {
+        "zh-TW": "可以將自己存檔區的1~2張吶喊卡發送給自己中心成員的「不知火フレア」或標示#EN的成員。",
+        "ja": "自分のセーブエリアにあるシャウトカードを1～2枚、センターメンバー「降谷不知火」または#ENマークの付いたメンバーに送ることができます。",
+        "en": "You can send 1~2 shouting cards in your save area to your center member \"Shiranui Furuya\" or the member marked #EN.",
+        "fr": "Vous pouvez envoyer 1 à 2 cartes criantes dans votre zone de sauvegarde au membre de votre centre « Shiranui Furuya » ou au membre marqué #EN."
+      }
+    },
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png",
+        "icons/arts_null.png"
+      ],
+      "name": "夢から醒めたら",
+      "damage": 90,
+      "specialAttackImage": "icons/tokkou_50_blue.png",
+      "effect": null
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-087",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-087_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-088_RR.png",
+    "name": "不知火フレア",
+    "type": "成員",
+    "tag": "#JP / #3期生 / #ハーフエルフ",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 200,
+    "bloom": "2nd",
+    "batonImage": [
+      "icons/arts_null.png",
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": {
+      "name": "メロゥ・フラワリー",
+      "effect": {
+        "zh-TW": "[每個回合一次]自己回合中，這個成員移動到聯動位置時，給予對手的中心成員與聯動成員20點特殊傷害。",
+        "ja": "【ターンに1回】自分のターン中、このメンバーが連携位置に移動した時、相手のセンターメンバーと連携メンバーに20ポイントの特殊ダメージを与える。",
+        "en": "[Once per turn] During your own turn, when this member moves to the linkage position, inflict 20 points of special damage to the opponent's center member and linkage member.",
+        "fr": "[Une fois par tour] Pendant votre propre tour, lorsque ce membre se déplace vers la position de liaison, infligez 20 points de dégâts spéciaux au membre central et au membre de liaison de l'adversaire."
+      }
+    },
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png",
+        "icons/arts_yellow.png",
+        "icons/arts_null.png"
+      ],
+      "name": "リレーションファンタジー",
+      "damage": "140+",
+      "specialAttackImage": "icons/tokkou_50_white.png",
+      "effect": {
+        "zh-TW": "[限定聯動位置]如果自己的中心成員標示#3期生，這個藝能傷害+30。",
+        "ja": "【限定連動位置】自分のセンターメンバーが#3の場合、このスキルのダメージが+30されます。",
+        "en": "[Limited linkage position] If your center member is marked #3, the damage of this skill will be +30.",
+        "fr": "[Position de liaison limitée] Si votre membre central est marqué n°3, les dégâts de cette compétence seront de +30."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-088",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-088_RR.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-089_R.png",
+    "name": "ジジ・ムリン",
+    "type": "成員",
+    "tag": "#EN / #Justice",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "color": "黃",
+    "hp": 170,
+    "bloom": "1st",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": {
+      "name": "ラピッドファイア・ウィット",
+      "effect": {
+        "zh-TW": "可以將1張與這個成員重疊的成員放到存檔區：從自己的牌組將1張「Popo」附加給自己的成員。將牌組重新洗牌。",
+        "ja": "このメンバーと重複するメンバーをセーブエリアに置くことができる：自分のデッキから「ポポ」1枚を自分のメンバーに加える。デッキを再シャッフルします。",
+        "en": "You can put a member that overlaps with this member into the save area: add 1 \"Popo\" from your deck to your member. Reshuffle the deck.",
+        "fr": "Vous pouvez mettre un membre qui chevauche ce membre dans la zone de sauvegarde : ajoutez 1 \"Popo\" de votre deck à votre membre. Remaniez le jeu."
+      }
+    },
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_yellow.png"
+      ],
+      "name": "アイアムアゲーマー",
+      "damage": 30,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "將自己存檔區的1張吶喊卡發送給自己標示#Justice的成員。",
+        "ja": "#Justice をマークしたメンバーに、セーブエリアからシャウト カードを送信します。",
+        "en": "Send a shouting card from your save area to the member you marked #Justice.",
+        "fr": "Envoyez une carte criante depuis votre zone de sauvegarde au membre que vous avez marqué #Justice."
+      }
+    },
+    "art2": null,
+    "extra": null,
+    "id": "hBP08-089",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-089_R.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-090_C.png",
+    "name": "エレガントパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "將自己存檔區的1~3張吉祥物與粉絲放回牌組重新洗牌。之後，從自己的牌組抽2張牌。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "自分のセーブエリアにあるマスコットとファンを1～3枚デッキに戻してシャッフルします。その後、自分はデッキからカードを２枚ドローする。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "Put 1~3 mascots and fans in your save area back into the deck and reshuffle them. After that, draw 2 cards from your deck.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Remettez 1 à 3 mascottes et fans de votre zone de sauvegarde dans le deck et remélangez-les. Après cela, piochez 2 cartes de votre deck.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-090",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-090_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-091_U.png",
+    "name": "クリエイターパソコン",
+    "type": "支援・物品",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組將1張特殊規則為「這個成員沒有張數限制」的Debut成員放到舞台上。將牌組重新洗牌。之後，將自己存檔區的1張Debut成員放到舞台上。",
+      "ja": "「このメンバーの枚数制限なし」という特別ルールで、自分のデッキからデビューメンバー1名をステージに出す。デッキを再シャッフルします。その後、自分のセーブエリアからデビューメンバー1名をステージに配置する。",
+      "en": "Put 1 Debut member from your deck with the special rule \"There is no limit on the number of this member\" on the stage. Reshuffle the deck. After that, place 1 Debut member from your save area on the stage.",
+      "fr": "Mettez 1 membre Debut de votre deck avec la règle spéciale \"Il n'y a pas de limite sur le nombre de ce membre\" sur la scène. Remaniez le jeu. Après cela, placez 1 membre Debut de votre zone de sauvegarde sur la scène."
+    },
+    "id": "hBP08-091",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-091_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-092_U.png",
+    "name": "思い出のドーナツショップ",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "從自己的牌組展示1張「フワワ・アビスガード」與1張「モココ・アビスガード」並加入手牌。將牌組重新洗牌。之後，如果自己的生命值比對手少，給予對手的1位成員20點特殊傷害。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "デッキから「フワワ・アビスガード」と「モココ・アビスガード」を１枚ずつ公開し、手札に加える。デッキを再シャッフルします。その後、自分のHPが相手より少ない場合、相手のメンバー1人に20ポイントの特殊ダメージを与える。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "Reveal 1 \"フワワ・アビスガード\" and 1 \"モココ・アビスガード\" from your deck and add them to your hand. Reshuffle the deck. Afterwards, if your HP is less than your opponent's, inflict 20 points of special damage to one of your opponent's members.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Révélez 1 \"フワワ・アビスガード\" et 1 \"モココ・アビスガード\" depuis votre deck et ajoutez-les à votre main. Remaniez le jeu. Ensuite, si vos PV sont inférieurs à ceux de votre adversaire, infligez 20 points de dégâts spéciaux à l'un des membres de votre adversaire.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-092",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-092_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-093_U.png",
+    "name": "ちょこのなすユッケ",
+    "type": "支援・活動",
+    "tag": "#食べ物",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己舞台上的所有成員都為「癒月ちょこ」，且自己的生命值在3以下才能使用。\n\n這個回合中，自己舞台上所有的Debut成員與1st成員藝能傷害+20。之後，自己舞台上所有的2nd成員藝能傷害+60。\n\n「ちょこのなすユッケ」每個回合只能使用一次。",
+      "ja": "自分のステージにいるメンバーが全員「柚木美耶」で、体力が3以下の場合のみ使用可能。\n\nこのラウンド中、ステージ上のすべてのデビューメンバーと1stメンバーは+20のパフォーマンスダメージを獲得します。その後、ステージ上の2番目のメンバー全員に+60のパフォーマンスダメージを与えます。\n\n「ちょこのなすユッケ」は１ターンに１回だけ使用できる。",
+      "en": "You can only use it if all the members on your stage are \"Yuzuki Miya\", and your health points are below 3.\n\nDuring this round, all Debut members and 1st members on your stage gain +20 performance damage. Afterwards, all 2nd members on your stage gain +60 performance damage.\n\n\"ちょこのなすユッケ\" can only be used once per turn.",
+      "fr": "Vous ne pouvez l'utiliser que si tous les membres de votre scène sont \"Yuzuki Miya\" et que vos points de vie sont inférieurs à 3.\n\nAu cours de ce tour, tous les membres débutants et premiers membres de votre scène gagnent +20 dégâts de performance. Ensuite, tous les 2èmes membres de votre scène gagnent +60 dégâts de performance.\n\n\"ちょこのなすユッケ\" ne peut être utilisé qu'une seule fois par tour."
+    },
+    "id": "hBP08-093",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-093_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-094_U.png",
+    "name": "パパは仕事を辞める",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己有聯動成員時才能使用。\n\n選擇自己的中心成員。下個對手回合中，該成員在中心位置第一次受到的藝能傷害-300。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "リンクメンバーをお持ちの場合のみご利用いただけます。\n\n自分のセンターメンバーを選択してください。次の相手ターン中、センターポジションのメンバーが最初に受けるスキルダメージ-300。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "You can only use it if you have link members.\n\nChoose your own center members. During the opponent's next turn, the first skill damage the member receives at the center position is -300.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Vous ne pouvez l'utiliser que si vous avez des membres liés.\n\nChoisissez les membres de votre propre centre. Lors du prochain tour de l'adversaire, les premiers dégâts de compétence que le membre reçoit en position centrale sont de -300.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-094",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-094_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-095_C.png",
+    "name": "破滅の呪文",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己舞台上的所有成員都標示#EN，且自己的生命值在3以下才能使用。\n\n給予雙方的中心成員與聯動成員50點特殊傷害。因這個效果擊倒成員，不會減少生命值。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "ステージ上のすべてのメンバーには#ENがマークされており、使用するにはHPが3未満である必要があります。\n\n双方のセンターメンバーとリンケージメンバーに50ポイントの特殊ダメージを与える。この効果でメンバーがダウンしてもHPは減りません。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "All members on your stage are marked #EN, and your HP must be below 3 to use it.\n\nGive 50 points of special damage to the center members and linkage members of both parties. If a member is knocked down due to this effect, his HP will not be reduced.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Tous les membres de votre scène sont marqués #EN et vos HP doivent être inférieurs à 3 pour l'utiliser.\n\nDonnez 50 points de dégâts spéciaux aux membres du centre et aux membres de liaison des deux parties. Si un membre est renversé à cause de cet effet, ses PV ne seront pas réduits.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-095",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-095_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-096_U.png",
+    "name": "優しいモンスター",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己的主推為「一条莉々華」才能使用。\n\n從自己的牌組展示1張「一条莉々華」與1張「限界飯」並加入手牌。將牌組重新洗牌。之後，如果自己的存檔區有3張以上的「限界飯」，這個回合中，自己舞台上所有的「一条莉々華」藝能傷害+50。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "メイン推しが「一条麗華」の場合のみご利用頂けます。\n\nデッキから「一条梨花」１枚と「限定ライス」１枚を公開し、手札に加える。デッキを再シャッフルします。その後、自分のセーブエリアに『限定米』が3枚以上あると、そのラウンド中、自分のステージ上の『一条梨花』のアーツ全てにダメージ+50。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "You can only use it if your main recommendation is \"Ichijo Reika\".\n\nReveal 1 \"Ichijo Rika\" and 1 \"Limited Rice\" from your deck and add them to your hand. Reshuffle the deck. After that, if there are more than 3 \"Limited Rice\" in your save area, during this round, all \"Ichijo Rika\" arts on your stage will do +50 damage.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Vous ne pouvez l'utiliser que si votre recommandation principale est \"Ichijo Reika\".\n\nRévélez 1 \"Ichijo Rika\" et 1 \"Limited Rice\" depuis votre deck et ajoutez-les à votre main. Remaniez le jeu. Après cela, s'il y a plus de 3 \"Limited Rice\" dans votre zone de sauvegarde, pendant ce tour, tous les arts \"Ichijo Rika\" sur votre scène feront +50 dégâts.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-096",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-096_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-097_C.png",
+    "name": "りっちしょこらのハンバーグ",
+    "type": "支援・活動",
+    "tag": "#食べ物",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "選擇自己舞台上的1位成員。該成員HP回復20點。之後，如果自己的存檔區有2張以上標示#食べ物的活動，將自己存檔區的1張吶喊卡發送給該成員。\n\n「りっちしょこらのハンバーグ」每個回合只能使用一次。",
+      "ja": "ステージ上のメンバーを 1 人選択します。メンバーのHPが20ポイント回復する。その後、自分のセーブエリアに「#食べ物」の付いたカードが2枚以上ある場合、自分のセーブエリアにあるシャウトカードを1枚メンバーに送る。\n\n「りっちしょこらのハンバーグ」は１ターンに１回だけ使用できる。",
+      "en": "Choose 1 member on your stage. The member's HP is restored to 20 points. Afterwards, if there are more than 2 cards in your save area marked with #食べ物, send 1 shouting card in your save area to the member.\n\n\"りっちしょこらのハンバーグ\" can only be used once per turn.",
+      "fr": "Choisissez 1 membre sur votre scène. Les PV du membre sont restaurés à 20 points. Ensuite, s'il y a plus de 2 cartes dans votre zone de sauvegarde marquées d'un #食べ物, envoyez 1 carte criant dans votre zone de sauvegarde au membre.\n\n\"りっちしょこらのハンバーグ\" ne peut être utilisé qu'une fois par tour."
+    },
+    "id": "hBP08-097",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-097_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-098_U.png",
+    "name": "hololive Mythology",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己舞台上的所有成員都標示#Myth才能使用。\n\n展示自己牌組上方的4張牌。將其中的2張牌加入手牌。其餘放到存檔區。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "これを使用するには、ステージ上のすべてのメンバーが #Myth をタグ付けする必要があります。\n\n自分の山札の上から4枚のカードを公開する。このカードを２枚手札に加える。残りはアーカイブ領域に置きます。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "All members on your stage must tag #Myth to use it.\n\nReveal the 4 cards at the top of your deck. Add 2 of these cards to your hand. Put the rest in the archive area.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Tous les membres de votre scène doivent taguer #Myth pour l'utiliser.\n\nRévélez les 4 cartes en haut de votre deck. Ajoutez 2 de ces cartes à votre main. Mettez le reste dans la zone d'archives.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-098",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-098_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-099_U.png",
+    "name": "HOLOTORI",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "選擇以下一個效果使用。\n\n■將自己標示#トリ的成員的1張吶喊卡放到存檔區。如果將牌放到存檔區，從自己的牌組抽2張牌後，將1張手牌放回牌組下方。\n■將自己存檔區的1張吶喊卡發送給自己標示#トリ的成員。\n\n「HOLOTORI」每個回合只能使用一次。",
+      "ja": "使用するエフェクトを次から選択します。\n\n■#トリを付けたメンバーのシャウトカードを1枚セーブエリアに置きます。カードをセーブエリアに置いた場合、山札から2枚引いた後、手札を1枚山札の一番下に戻す。\n■#トリをマークしたメンバーに、セーブエリアからシャウトカードを送ります。\n\n「ホロトリ」は1ラウンドに1回のみ使用可能です。",
+      "en": "Choose one of the following effects to use.\n\n■Put 1 shouting card of the member you marked #トリ into the save area. If you put the card in the save area, after drawing 2 cards from your deck, put 1 card from your hand back to the bottom of the deck.\n■Send a shouting card from your save area to the member you marked #トリ.\n\n\"HOLOTORI\" can only be used once per round.",
+      "fr": "Choisissez l’un des effets suivants à utiliser.\n\n■Mettez 1 carte criante du membre que vous avez marqué #トリ dans la zone de sauvegarde. Si vous placez la carte dans la zone de sauvegarde, après avoir pioché 2 cartes de votre deck, remettez 1 carte de votre main au bas du deck.\n■Envoyez une carte criante depuis votre zone de sauvegarde au membre que vous avez marqué #トリ.\n\n\"HOLOTORI\" ne peut être utilisé qu'une seule fois par tour."
+    },
+    "id": "hBP08-099",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-099_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-100_U.png",
+    "name": "Myth",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "不包含這張牌，自己的手牌在6張以下才能使用。\n\n查看自己牌組上方的4張牌。展示任意標示#Myth的成員並加入手牌。其餘依照喜歡的順序放回牌組下方。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "このカードを除き、自分の手札が６枚未満の場合に使用できる。\n\n自分の山札の上の4枚のカードを見てください。 #Myth と書かれたメンバーを公開し、手札に加えます。残りは好きな順番でデッキの下に戻します。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "Excluding this card, you can only use it if you have less than 6 cards in your hand.\n\nLook at the 4 cards above your deck. Reveal any member labeled #Myth and add it to your hand. Put the rest back under the deck in the order you like.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "En excluant cette carte, vous ne pouvez l'utiliser que si vous avez moins de 6 cartes en main.\n\nRegardez les 4 cartes au dessus de votre deck. Révélez n'importe quel membre intitulé #Mythe et ajoutez-le à votre main. Remettez le reste sous le pont dans l'ordre que vous souhaitez.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-100",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-100_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-101_U.png",
+    "name": "We are ReGLOSS",
+    "type": "支援・活動",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "自己舞台上的所有成員都標示#ReGLOSS才能使用。\n\n從自己的牌組展示2張標示#ReGLOSS的成員並加入手牌。將牌組重新洗牌。之後，如果自己舞台上的成員比對手少，從自己的牌組抽1張牌後，將1張手牌放到存檔區。\n\nLIMITED：每個回合只能使用一張。",
+      "ja": "ステージ上のメンバー全員が #ReGLOSS をタグ付けして使用する必要があります。\n\n自分のデッキから#ReGLOSSとマークされたメンバー2人を公開し、手札に加える。デッキを再シャッフルします。その後、自分のステージのメンバーが相手より少ない場合、自分のデッキからカードを1枚引き、手札を1枚セーブエリアに置く。\n\n制限: 1 ターンに 1 つだけ使用できます。",
+      "en": "All members on your stage must tag #ReGLOSS to use it.\n\nReveal 2 members marked #ReGLOSS from your deck and add them to your hand. Reshuffle the deck. Afterwards, if there are fewer members on your stage than your opponent, draw 1 card from your deck and put 1 card in your hand into the save area.\n\nLIMITED: Only one can be used per turn.",
+      "fr": "Tous les membres de votre scène doivent taguer #ReGLOSS pour l'utiliser.\n\nRévélez 2 membres marqués #ReGLOSS depuis votre deck et ajoutez-les à votre main. Remaniez le jeu. Ensuite, s'il y a moins de membres sur votre scène que votre adversaire, piochez 1 carte de votre deck et placez 1 carte de votre main dans la zone de sauvegarde.\n\nLIMITÉ : Un seul peut être utilisé par tour."
+    },
+    "id": "hBP08-101",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-101_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-102_C.png",
+    "name": "クールなパーカー",
+    "type": "支援・道具",
+    "tag": "#Buzzグッズ",
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個道具的成員藝能傷害+10。\n\n◆附加給Buzz成員有追加效果\n[每個回合一次]這個成員擊倒對手的成員時，從自己的牌組抽2張牌。\n\n每位成員只能帶有1張道具。",
+      "ja": "この小道具を持つメンバーのスキルダメージは+10されます。\n\n◆バズメンバーへの追加効果\n【ターンに1回】このメンバーが相手メンバーをダウンさせた時、相手のデッキからカードを2枚引く。\n\n各メンバーはプロップを 1 つだけ持つことができます。",
+      "en": "Members with this prop have +10 skill damage.\n\n◆Additional effects for Buzz members\n[Once per turn] When this member knocks down an opponent's member, draw 2 cards from his or her deck.\n\nEach member can only have 1 prop.",
+      "fr": "Les membres avec cet accessoire ont +10 dégâts de compétence.\n\n◆Effets supplémentaires pour les membres Buzz\n[Une fois par tour] Lorsque ce membre renverse un membre adverse, piochez 2 cartes de son deck.\n\nChaque membre ne peut avoir qu'un seul accessoire."
+    },
+    "id": "hBP08-102",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-102_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-103_U.png",
+    "name": "ホロマント",
+    "type": "支援・道具",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "■帶有這個道具的成員HP+50。\n■帶有這個道具的成員被擊倒時，自己的生命值-1。\n\n每位成員只能帶有1張道具。",
+      "ja": "■このアイテムを装備したメンバーのHP+50。\n■このアイテムを装着したメンバーがダウンするとHPが-1される。\n\n各メンバーはプロップを 1 つだけ持つことができます。",
+      "en": "■Members with this item have HP +50.\n■When a member with this item is knocked down, his or her HP will be reduced by -1.\n\nEach member can only have 1 prop.",
+      "fr": "■Les membres possédant cet objet ont HP +50.\n■Lorsqu'un membre avec cet objet est renversé, ses PV seront réduits de -1.\n\nChaque membre ne peut avoir qu'un seul accessoire."
+    },
+    "id": "hBP08-103",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-103_U.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-104_C.png",
+    "name": "けはい",
+    "type": "支援・道具",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "附加給「水宮枢」有追加效果\n■[限定中心位置或聯動位置]對手的中心成員交棒需要的無色吶喊卡數量+1。\n■這個成員綻放等級上升時，從自己的牌組抽1張牌。\n\n每位成員只能帶有1張道具。",
+      "ja": "「水功術」に追加効果を追加\n■【センターポジションまたはリンケージポジション限定】相手センターメンバーがバトンを渡すのに必要な無色のシャウトカードの枚数+1枚。\n■このメンバーのブルームレベルが上がった時、自分はデッキからカードを１枚引く。\n\n各メンバーはプロップを 1 つだけ持つことができます。",
+      "en": "Adding additional effects to \"Shui Gong Shu\"\n■[Limited to center position or linkage position] The number of colorless shout cards required for the opponent's center member to hand over the baton +1.\n■When this member's bloom level increases, draw 1 card from your deck.\n\nEach member can only have 1 prop.",
+      "fr": "Ajout d'effets supplémentaires à \"Shui Gong Shu\"\n■[Limité à la position centrale ou à la position de liaison] Le nombre de cartes de cri incolores requises pour que le membre central de l'adversaire passe le relais +1.\n■Lorsque le niveau de floraison de ce membre augmente, piochez 1 carte de votre deck.\n\nChaque membre ne peut avoir qu'un seul accessoire."
+    },
+    "id": "hBP08-104",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-104_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-105_C.png",
+    "name": "Bloom＆Gloom",
+    "type": "支援・吉祥物",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個吉祥物的成員HP+20。\n\n◆附加給「IRyS」有追加效果\n如果這個成員有白色吶喊卡與紫色吶喊卡，這個成員的藝能傷害+20。\n\n每位成員只能帶有1張吉祥物。",
+      "ja": "このマスコットを持っているメンバーはHP +20されます。\n\n◆「IRyS」への追加効果\nこのメンバーが白のシャウトカードと紫のシャウトカードを持っている場合、このメンバーのスキルダメージ+20。\n\n各メンバーはマスコットを1つだけ持つことができます。",
+      "en": "Members with this mascot have HP +20.\n\n◆Additional effect to \"IRyS\"\nIf this member has a white shout card and a purple shout card, this member's skill damage +20.\n\nEach member can only have 1 mascot.",
+      "fr": "Les membres portant cette mascotte ont des HP +20.\n\n◆Effet supplémentaire à \"IRyS\"\nSi ce membre a une carte de cri blanche et une carte de cri violette, les dégâts de compétence de ce membre +20.\n\nChaque membre ne peut avoir qu'une seule mascotte."
+    },
+    "id": "hBP08-105",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-105_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-106_C.png",
+    "name": "GuyRyS",
+    "type": "支援・粉絲",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "對手回合中，帶有這個粉絲的成員被擊倒時，將這個成員的1張吶喊卡，替換給自己其他的成員。\n\n這個粉絲只能附加給「IRyS」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "相手ターン中、この扇を持ったメンバーがダウンした時、このメンバーのシャウトカード1枚を自分の他のメンバーと入れ替える。\n\nこのファンは「IRyS」のみに付けることができ、各メンバーは何個でも付けることができます。",
+      "en": "During the opponent's turn, when the member with this fan is knocked down, replace 1 of this member's shout cards with another of your own members.\n\nThis fan can only be attached to \"IRyS\", and each member can have any number of fans.",
+      "fr": "Pendant le tour de l'adversaire, lorsque le membre avec cet éventail est renversé, remplacez 1 des cartes cri de ce membre par un autre de vos propres membres.\n\nCe ventilateur ne peut être rattaché qu'à \"IRyS\", et chaque membre peut avoir un nombre illimité de fans."
+    },
+    "id": "hBP08-106",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-106_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-107_C.png",
+    "name": "Otomo",
+    "type": "支援・粉絲",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個粉絲的成員藝能傷害+10。\n\n這個粉絲從手牌或存檔區附加給成員時，將帶有這個粉絲的成員改為活動狀態或休息狀態。\n\n這個粉絲只能附加給「セシリア・イマーグリーン」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "このファンのパフォーマンスダメージ+10を持つメンバー。\n\nこのファンが手札またはセーブエリアからメンバーに取り付けられると、このファンを持つメンバーはアクティブまたはレスト状態に変更されます。\n\nこのファンは「セシリア・イマーグリーン」のみに付けることができ、各メンバーは何個でも持つことができます。",
+      "en": "Members with this fan's performance damage +10.\n\nWhen this fan is attached to a member from the hand or save area, the member with this fan will be changed to active or rested state.\n\nThis fan can only be attached to \"セシリア・イマーグリーン\", and each member can have any number of fans.",
+      "fr": "Membres avec les dégâts de performance de ce fan +10.\n\nLorsque ce ventilateur est attaché à un membre depuis la main ou la zone de sauvegarde, le membre avec ce ventilateur passera à l'état actif ou reposé.\n\nCe fan ne peut être attaché qu'à \"セシリア・イマーグリーン\", et chaque membre peut avoir n'importe quel nombre de fans."
+    },
+    "id": "hBP08-107",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-107_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-108_C.png",
+    "name": "いたずらなRuffians",
+    "type": "支援・粉絲",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個粉絲的成員HP+10。\n\n對手回合中，帶有這個粉絲的成員被擊倒時，如果這個成員有紅色吶喊卡，從自己的牌組抽1張牌。\n\n這個粉絲只能附加給「フワワ・アビスガード」或「モココ・アビスガード」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "この扇を持ったメンバーのHP+10。\n\n相手ターン中、この扇を持ったメンバーがダウンした時、このメンバーが赤のシャウトカードを持っているなら、山札からカードを1枚引く。\n\nこのファンは「フワワ・アビスガード」または「モココ・アビスガード」にのみ装着可能で、各メンバーは何個でも持つことができます。",
+      "en": "Members with this fan have HP +10.\n\nDuring the opponent's turn, when a member with this fan is knocked down, if this member has a red shout card, draw 1 card from his deck.\n\nThis fan can only be attached to \"フワワ・アビスガード\" or \"モココ・アビスガード\", and each member can have any number of fans.",
+      "fr": "Les membres avec ce fan ont HP +10.\n\nDurant le tour de l'adversaire, lorsqu'un membre avec cet éventail est renversé, si ce membre a une carte cri rouge, piochez 1 carte de son deck.\n\nCe fan ne peut être attaché qu'à \"フワワ・アビスガード\" ou \"モココ・アビスガード\", et chaque membre peut avoir n'importe quel nombre de fans."
+    },
+    "id": "hBP08-108",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-108_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-109_C.png",
+    "name": "ルイ友",
+    "type": "支援・粉絲",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個粉絲的成員藝能傷害+10。\n\n對手回合中，帶有這個粉絲的成員被擊倒時，將這個成員的1張紅色吶喊卡或紫色吶喊卡替換給自己其他的成員。\n\n這個粉絲只能附加給「鷹嶺ルイ」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "このファンのパフォーマンスダメージ+10を持つメンバー。\n\n相手ターン中、この扇を持ったメンバーがダウンした時、このメンバーの赤のシャウトカードまたは紫のシャウトカード1枚を自分の他のメンバーと入れ替える。\n\nこの扇子は「高嶺龍」のみに付けることができ、各メンバーは何個でも持つことができます。",
+      "en": "Members with this fan's performance damage +10.\n\nDuring the opponent's turn, when the member with this fan is knocked down, replace this member's 1 red shouting card or purple shouting card with another member of your own.\n\nThis fan can only be attached to \"Takamine Ryu\", and each member can have any number of fans.",
+      "fr": "Membres avec les dégâts de performance de ce fan +10.\n\nPendant le tour de l'adversaire, lorsque le membre avec cet éventail est renversé, remplacez la carte de cri rouge ou la carte de cri violette de ce membre par un autre de vos membres.\n\nCe fan ne peut être attaché qu'à \"Takamine Ryu\", et chaque membre peut avoir n'importe quel nombre de fans."
+    },
+    "id": "hBP08-109",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-109_C.png"
+  },
+  {
+    "image": "cardListImages/hBP08/hBP08-110_C.png",
+    "name": "Takodachi",
+    "type": "支援・粉絲",
+    "tag": null,
+    "product": "補充包「バウンサーバウンド (hBP08)」",
+    "supportEffect": {
+      "zh-TW": "帶有這個粉絲的成員藝能傷害+10。\n\n[限定中心位置]對手的中心成員與聯動成員視為具有所有顏色。\n\n這個粉絲只能附加給「一伊那尓栖」，每位成員可以帶有任意數量的粉絲。",
+      "ja": "このファンのパフォーマンスダメージ+10を持つメンバー。\n\n【限定センターポジション】 相手のセンターメンバーとリンケージメンバーは全色とみなされます。\n\nこの扇子は「いちなるす」のみに付けることができ、各メンバーは何個でも持つことができます。",
+      "en": "Members with this fan's performance damage +10.\n\n[Limited center position] The opponent's center member and linkage member are considered to have all colors.\n\nThis fan can only be attached to \"Ichinarsu\", and each member can have any number of fans.",
+      "fr": "Membres avec les dégâts de performance de ce fan +10.\n\n[Position centrale limitée] Le membre central et le membre de liaison de l'adversaire sont considérés comme ayant toutes les couleurs.\n\nCe fan ne peut être attaché qu'à \"Ichinarsu\", et chaque membre peut avoir n'importe quel nombre de fans."
+    },
+    "id": "hBP08-110",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP08-110_C.png"
   },
   {
     "image": "cardListImages/hPR/hPR-001_P.png",
