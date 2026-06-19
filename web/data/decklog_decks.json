@@ -320,7 +320,7 @@
         "name": "パヴォリア・レイネ",
         "type": "成員",
         "color": "綠",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_C_02.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_HR.png"
       },
       {
         "card_id": "hBP02-019",
@@ -670,7 +670,7 @@
         "name": "パヴォリア・レイネ",
         "type": "成員",
         "color": "綠",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_C_02.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_HR.png"
       },
       {
         "card_id": "hBP02-019",
@@ -1787,7 +1787,7 @@
         "name": "パヴォリア・レイネ",
         "type": "成員",
         "color": "綠",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_C_02.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP02-018_HR.png"
       },
       {
         "card_id": "hBP02-020",
@@ -2733,7 +2733,7 @@
         "name": "鷹嶺ルイ",
         "type": "成員",
         "color": "紅",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP01-056_C_02.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP01-056_HR.png"
       },
       {
         "card_id": "hBP01-056",
@@ -2741,7 +2741,7 @@
         "name": "鷹嶺ルイ",
         "type": "成員",
         "color": "紅",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP01-056_C_02.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP08/hBP01-056_HR.png"
       },
       {
         "card_id": "hBP01-060",
@@ -5045,7 +5045,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-069",
@@ -5459,7 +5459,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-069",
@@ -7025,209 +7025,6 @@
     "cheer_deck_count": 20
   },
   {
-    "deck_id": "decklog-77BQV",
-    "deck_code": "77BQV",
-    "title": "ねね単",
-    "oshi": "桃鈴ねね",
-    "source": "decklog",
-    "event": "WGP25-26 Kuala Lumpur",
-    "event_date": "2026-04-19",
-    "placement": "6th(Bombaxus)",
-    "url": "https://decklog-en.bushiroad.com/ja/view/77BQV",
-    "oshi_cards": [
-      {
-        "card_id": "hBP07-007",
-        "count": 1,
-        "name": "桃鈴ねね",
-        "type": "主推",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-007_SEC.png"
-      }
-    ],
-    "main_deck": [
-      {
-        "card_id": "hBP04-083",
-        "count": 2,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP04-083_02_C.png"
-      },
-      {
-        "card_id": "hBP04-084",
-        "count": 2,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hWF01/hBP04-084_P.png"
-      },
-      {
-        "card_id": "hBP04-085",
-        "count": 4,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP04/hBP04-085_U.png"
-      },
-      {
-        "card_id": "hBP04-086",
-        "count": 1,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP04/hBP04-086_UR.png"
-      },
-      {
-        "card_id": "hBP07-077",
-        "count": 4,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-077_C.png"
-      },
-      {
-        "card_id": "hBP07-078",
-        "count": 4,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-078_U.png"
-      },
-      {
-        "card_id": "hBP07-079",
-        "count": 1,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-079_C.png"
-      },
-      {
-        "card_id": "hBP07-080",
-        "count": 1,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-080_C.png"
-      },
-      {
-        "card_id": "hBP07-081",
-        "count": 3,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-081_SR.png"
-      },
-      {
-        "card_id": "hBP07-082",
-        "count": 3,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-082_U.png"
-      },
-      {
-        "card_id": "hBP07-083",
-        "count": 4,
-        "name": "桃鈴ねね",
-        "type": "成員",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-083_UR.png"
-      },
-      {
-        "card_id": "hBP03-088",
-        "count": 1,
-        "name": "凸待ち",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP03/hBP03-088_P_3.png"
-      },
-      {
-        "card_id": "hBP05-080",
-        "count": 4,
-        "name": "SorAZセレブレーション",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP05/hBP05-080_P.png"
-      },
-      {
-        "card_id": "hBP06-089",
-        "count": 2,
-        "name": "ドローイングストリーム",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-089_C.png"
-      },
-      {
-        "card_id": "hBP06-090",
-        "count": 3,
-        "name": "ブルームステージ",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hCO01/hBP06-090_SR.png"
-      },
-      {
-        "card_id": "hBP06-094",
-        "count": 1,
-        "name": "ワークアウト",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP06/hBP06-094_C.png"
-      },
-      {
-        "card_id": "hBP07-099",
-        "count": 2,
-        "name": "ブヒー！",
-        "type": "支援・活動",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-099_C.png"
-      },
-      {
-        "card_id": "hBP01-104",
-        "count": 1,
-        "name": "ふつうのパソコン",
-        "type": "支援・物品",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hSD19/hBP01-104_07_C.png"
-      },
-      {
-        "card_id": "hBP07-103",
-        "count": 3,
-        "name": "ギラファノコギリクワガタ",
-        "type": "支援・道具",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-103_U.png"
-      },
-      {
-        "card_id": "hBP07-110",
-        "count": 4,
-        "name": "ねっ子",
-        "type": "支援・粉絲",
-        "color": "",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-110_C.png"
-      }
-    ],
-    "cheer_deck": [
-      {
-        "card_id": "hY04-001",
-        "count": 4,
-        "name": "青エール",
-        "type": "吶喊",
-        "color": "藍",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY04-001_C.png"
-      },
-      {
-        "card_id": "hY06-001",
-        "count": 16,
-        "name": "黄エール",
-        "type": "吶喊",
-        "color": "黃",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hY0/hY06-001_C.png"
-      }
-    ],
-    "main_deck_count": 50,
-    "cheer_deck_count": 20
-  },
-  {
     "deck_id": "decklog-51G0Z",
     "deck_code": "51G0Z",
     "title": "AZKi単",
@@ -7310,7 +7107,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-069",
@@ -7577,7 +7374,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-067",
@@ -7585,7 +7382,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-068",
@@ -7868,7 +7665,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-068",
@@ -8095,7 +7892,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-069",
@@ -8306,7 +8103,7 @@
         "name": "AZKi",
         "type": "成員",
         "color": "紫",
-        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_SR.png"
+        "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP07/hBP07-067_P.png"
       },
       {
         "card_id": "hBP07-069",
