@@ -217,7 +217,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2118
+    "favorite_count": 2119
   },
   {
     "id": "2047978931228426381",
@@ -602,6 +602,37 @@
     ],
     "category": "news",
     "favorite_count": 1511
+  },
+  {
+    "id": "2047642289166766508",
+    "url": "https://x.com/hololive_OCG/status/2047642289166766508",
+    "text": "🎊#ホロカにゅーすLIVE📢\n\n《ホロカフェス2026情報》\n5/3(日)、4(月・祝)開催のホロカフェス2026では、\n来場特典として〈miComet〉のミニキャライラスト仕様カードが！🌸☄️\n\nそして、物販ではこのイラストを使用したホロカスリーブと、オフィシャルホロカコレクション-2025ライブセット-を販売！📣 https://t.co/HoOG9uktfo",
+    "created_at": "2026-04-24T11:42:19.000Z",
+    "author": {
+      "name": "hololive OFFICIAL CARD GAME【公式】",
+      "handle": "hololive_OCG",
+      "avatar": "https://pbs.twimg.com/profile_images/1973292820707549193/2Mf-IDh4_normal.jpg"
+    },
+    "media": [
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HGqvzveasAEwbNi.jpg",
+        "width": 1200,
+        "height": 675
+      },
+      {
+        "type": "photo",
+        "url": "https://pbs.twimg.com/media/HGqvzvcbAAEQYB2.jpg",
+        "width": 1200,
+        "height": 675
+      }
+    ],
+    "hashtags": [
+      "ホロカにゅーすLIVE"
+    ],
+    "external_urls": [],
+    "category": "news",
+    "favorite_count": 640
   },
   {
     "id": "2047641669080961372",
@@ -1122,7 +1153,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1558
+    "favorite_count": 1557
   },
   {
     "id": "2047284353642996142",
@@ -1352,7 +1383,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1538
+    "favorite_count": 1536
   },
   {
     "id": "2046061292029657595",
@@ -1601,7 +1632,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 4460
+    "favorite_count": 4461
   },
   {
     "id": "2045442219545415996",
@@ -2057,7 +2088,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 5109
+    "favorite_count": 5108
   },
   {
     "id": "2043524579503858149",
@@ -2634,7 +2665,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1411
+    "favorite_count": 1410
   },
   {
     "id": "2040987872761671980",
@@ -2820,7 +2851,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 4007
+    "favorite_count": 4006
   },
   {
     "id": "2040398984074940494",
@@ -3123,7 +3154,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1027
+    "favorite_count": 1026
   },
   {
     "id": "2040225337263472943",
@@ -3416,7 +3447,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 347
+    "favorite_count": 346
   },
   {
     "id": "2039900700495466498",
@@ -3612,7 +3643,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 4300
+    "favorite_count": 4301
   },
   {
     "id": "2039176179106869733",
@@ -3823,7 +3854,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 1645
+    "favorite_count": 1646
   },
   {
     "id": "2038224661025358298",
@@ -4055,7 +4086,7 @@
     ],
     "external_urls": [],
     "category": "news",
-    "favorite_count": 1901
+    "favorite_count": 1900
   },
   {
     "id": "2037733918875521241",
@@ -4578,7 +4609,7 @@
       }
     ],
     "category": "news",
-    "favorite_count": 2661
+    "favorite_count": 2660
   },
   {
     "id": "2020392154669924817",
@@ -4719,7 +4750,7 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 595
+    "favorite_count": 594
   },
   {
     "id": "1919184686502322512",
@@ -4785,7 +4816,7 @@
     ],
     "external_urls": [],
     "category": "tournament",
-    "favorite_count": 517
+    "favorite_count": 516
   },
   {
     "id": "1919184461381452224",

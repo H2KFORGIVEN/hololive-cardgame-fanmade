@@ -1,46 +1,10 @@
 {
-  "updated": "2026-05",
+  "updated": "2026-06",
   "source": "https://www.holocardstrategy.jp/saikyou-deck/",
   "tiers": [
     {
       "tier": 1,
       "decks": [
-        {
-          "name": "クロニー単",
-          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/45db5534fc01eb2c278f9603ff63980f-1080x608.png",
-          "ratings": {
-            "firepower": "◎",
-            "ease": "○",
-            "stability": "○",
-            "endurance": "◎",
-            "pressure": "◎"
-          },
-          "features": {
-            "ja": [
-              "先行でも後攻でも相手より先に2ndを起動が可能",
-              "1stを使いまわして大量にエール加速やバフ効果を使える",
-              "SPで追加ターンを使って2面取りをしよう！"
-            ],
-            "zh-TW": [
-              "無論先攻擊或後攻擊，都可以在對手之前發動第二個。",
-              "你可以重複使用第一個並使用大量的加速和增益效果。",
-              "讓我們利用 SP 的額外回合來佔領兩側！"
-            ],
-            "en": [
-              "You can activate 2nd before your opponent, whether you attack first or second.",
-              "You can reuse the 1st and use a large amount of yell acceleration and buff effects.",
-              "Let's take two sides using the extra turn with SP!"
-            ],
-            "fr": [
-              "Vous pouvez activer le 2ème avant votre adversaire, que vous attaquiez en premier ou en second.",
-              "Vous pouvez réutiliser le 1er et utiliser une grande quantité d’effets d’accélération et de buff des cris.",
-              "Prenons deux côtés en utilisant le tour supplémentaire avec SP !"
-            ]
-          },
-          "recipe_url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
-          "vtuber": "オーロ・クロニー",
-          "id": "オーロ-クロニー-クロニー単"
-        },
         {
           "name": "AZKi単",
           "image": "https://www.holocardstrategy.jp/wp-content/uploads/2024/09/b9ed6229b4a3c0c9e1150f7f49aa4b58-1080x608.png",
@@ -76,6 +40,42 @@
           "recipe_url": "https://www.holocardstrategy.jp/7danazkideck-kaisetu/",
           "vtuber": "AZKi",
           "id": "azki-azki単"
+        },
+        {
+          "name": "クロニー単",
+          "image": "https://www.holocardstrategy.jp/wp-content/uploads/2026/03/45db5534fc01eb2c278f9603ff63980f-1080x608.png",
+          "ratings": {
+            "firepower": "◎",
+            "ease": "○",
+            "stability": "○",
+            "endurance": "◎",
+            "pressure": "◎"
+          },
+          "features": {
+            "ja": [
+              "先行でも後攻でも相手より先に2ndを起動が可能",
+              "1stを使いまわして大量にエール加速やバフ効果を使える",
+              "SPで追加ターンを使って2面取りをしよう！"
+            ],
+            "zh-TW": [
+              "無論先攻擊或後攻擊，都可以在對手之前發動第二個。",
+              "你可以重複使用第一個並使用大量的加速和增益效果。",
+              "讓我們利用 SP 的額外回合來佔領兩側！"
+            ],
+            "en": [
+              "You can activate 2nd before your opponent, whether you attack first or second.",
+              "You can reuse the 1st and use a large amount of yell acceleration and buff effects.",
+              "Let's take two sides using the extra turn with SP!"
+            ],
+            "fr": [
+              "Vous pouvez activer le 2ème avant votre adversaire, que vous attaquiez en premier ou en second.",
+              "Vous pouvez réutiliser le 1er et utiliser une grande quantité d’effets d’accélération et de buff des cris.",
+              "Prenons deux côtés en utilisant le tour supplémentaire avec SP !"
+            ]
+          },
+          "recipe_url": "https://www.holocardstrategy.jp/ouro-kronii-deck/",
+          "vtuber": "オーロ・クロニー",
+          "id": "オーロ-クロニー-クロニー単"
         },
         {
           "name": "ミオ推しハコリズ（エリザベールズ）",
