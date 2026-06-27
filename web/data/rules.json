@@ -1,0 +1,124 @@
+{
+  "scraped_at": "2026-06-27",
+  "restricted_cards": [],
+  "errata": {
+    "hSD01-004": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": {
+        "ja": "一部カード効果の裁定変更のお知らせ",
+        "zh-TW": "關於部分卡牌效果判定變更的通知",
+        "en": "Notice of changes in ruling for some card effects",
+        "fr": "Avis de changements dans les règles pour certains effets de cartes"
+      }
+    },
+    "hBP01-030": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": {
+        "ja": "一部カード効果の裁定変更のお知らせ",
+        "zh-TW": "關於部分卡牌效果判定變更的通知",
+        "en": "Notice of changes in ruling for some card effects",
+        "fr": "Avis de changements dans les règles pour certains effets de cartes"
+      }
+    },
+    "hSD11-009": {
+      "date": "2026-03-05",
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "title": {
+        "ja": "一部カード効果の裁定変更のお知らせ",
+        "zh-TW": "關於部分卡牌效果判定變更的通知",
+        "en": "Notice of changes in ruling for some card effects",
+        "fr": "Avis de changements dans les règles pour certains effets de cartes"
+      }
+    }
+  },
+  "articles": [
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/20/",
+      "date": "2026-06-12",
+      "slug": "20",
+      "title": {
+        "ja": "制限カード追加・解除のお知らせ[2026/6/19(金)施行]",
+        "zh-TW": "關於限制卡新增/取消的通知[2026年6月19日星期五執行]",
+        "en": "Notice of addition/cancellation of restricted cards [enforced on Friday, June 19, 2026]",
+        "fr": "Avis d'ajout/annulation de cartes restreintes [en vigueur le vendredi 19 juin 2026]"
+      },
+      "type": "restricted",
+      "card_ids": [
+        "hBP07-045",
+        "hBP07-101",
+        "hBP07-003",
+        "hBP06-085",
+        "hBP02-094"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/44/",
+      "date": "2026-03-05",
+      "slug": "44",
+      "title": {
+        "ja": "一部カード効果の裁定変更のお知らせ",
+        "zh-TW": "關於部分卡牌效果判定變更的通知",
+        "en": "Notice of changes in ruling for some card effects",
+        "fr": "Avis de changements dans les règles pour certains effets de cartes"
+      },
+      "type": "errata",
+      "card_ids": [
+        "hSD01-004",
+        "hBP01-030",
+        "hSD11-009"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/39/",
+      "date": "2026-01-15",
+      "slug": "39",
+      "title": {
+        "ja": "ゲーム開始時の「手札の引き直し」に関するルール更新のお知らせ",
+        "zh-TW": "關於遊戲開始時「重新抽牌」規則更新的通知",
+        "en": "Notice of updated rules regarding “redrawing of cards” at the start of the game",
+        "fr": "Avis de règles mises à jour concernant le « retirage des cartes » en début de partie"
+      },
+      "type": "rule_update",
+      "card_ids": []
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/34/",
+      "date": "2025-12-04",
+      "slug": "34",
+      "title": {
+        "ja": "制限カード解除のお知らせ[2025/12/8(月)施行]",
+        "zh-TW": "限制卡片註銷通知【2025年12月8日（週一）施行】",
+        "en": "Notice of cancellation of restricted cards [enforced on December 8, 2025 (Monday)]",
+        "fr": "Avis d'annulation de cartes restreintes [en vigueur le 8 décembre 2025 (lundi)]"
+      },
+      "type": "unrestricted",
+      "card_ids": [
+        "hBP01-010",
+        "hBP01-014"
+      ]
+    },
+    {
+      "url": "https://hololive-official-cardgame.com/news/post/09/",
+      "date": "2024-11-29",
+      "slug": "09",
+      "title": {
+        "ja": "制限カード追加のお知らせ[2024/12/20(金)施行]",
+        "zh-TW": "關於新增限制卡的通知[2024年12月20日星期五實施]",
+        "en": "Notice of addition of restricted cards [enforced on Friday, December 20, 2024]",
+        "fr": "Avis d'ajout de cartes restreintes [en vigueur le vendredi 20 décembre 2024]"
+      },
+      "type": "restricted",
+      "card_ids": [
+        "hBP01-019",
+        "hBP01-020",
+        "hBP01-016",
+        "hBP01-030",
+        "hBP01-001",
+        "hBP01-014",
+        "hBP01-010"
+      ]
+    }
+  ]
+}

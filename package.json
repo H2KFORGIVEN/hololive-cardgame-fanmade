@@ -1,0 +1,82 @@
+{
+  "name": "hololive-card-practice",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "hololive Card Game — fan-made practice site and local battle simulator",
+  "main": "electron/main.js",
+  "scripts": {
+    "build:images": "python3 scripts/build-images.py",
+    "build:enrich": "python3 scripts/enrich-cards.py",
+    "build:localize": "python3 scripts/localize-data.py",
+    "update:homepage": "python3 scripts/update-homepage.py",
+    "build": "npm run build:images && npm run build:enrich && npm run build:localize",
+    "serve": "python3 -m http.server 8080 --directory web",
+    "server": "node web/game/server/ws-server.js",
+    "dev": "npm run build && npm run serve",
+    "scrape": "uv run python -m scraper.run",
+    "scrape:push": "./scripts/scrape-commit-push.sh",
+    "electron": "electron .",
+    "package:mac": "electron-builder --mac dmg --publish never",
+    "package:win": "electron-builder --win nsis --publish never",
+    "package:dir": "electron-builder --dir --publish never"
+  },
+  "dependencies": {
+    "ws": "8.20.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "electron": "41.2.1",
+    "electron-builder": "26.8.1"
+  },
+  "build": {
+    "appId": "com.fanmade.hololive-card-practice",
+    "productName": "hololive Card Practice (Fan-made)",
+    "copyright": "© 2026 Fan-made project. Not affiliated with COVER Corp., Bushiroad, or hololive production. All card data, images, and game rules are property of their respective owners.",
+    "asar": true,
+    "directories": {
+      "output": "dist",
+      "buildResources": "electron/build"
+    },
+    "files": [
+      "electron/**/*",
+      "!node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "web",
+        "to": "web",
+        "filter": [
+          "**/*",
+          "!**/*.map"
+        ]
+      },
+      {
+        "from": "node_modules/ws",
+        "to": "node_modules/ws"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.games",
+      "target": [
+        { "target": "dmg", "arch": ["arm64", "x64"] }
+      ],
+      "icon": "electron/build/icon.icns",
+      "artifactName": "hololive-card-practice-${version}-${arch}.${ext}",
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "hololive Card Practice (Fan-made) ${version}",
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "electron/build/icon.ico",
+      "artifactName": "hololive-card-practice-${version}-setup.${ext}"
+    }
+  }
+}

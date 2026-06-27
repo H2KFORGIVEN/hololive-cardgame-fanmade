@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hololive CARD GAME Fan-made Practice Site｜hololive カードゲーム ファンメイド 練習サイト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <a class="game-home-link" href="../" title="返回主站">
+    <img src="../images/brand/logo.svg" alt="hololive OFFICIAL CARD GAME" class="game-header-logo">
+  </a>
+  <div id="app">
+    <div class="game-loading">載入卡片資料中...</div>
+  </div>
+  <script>
+    // Force clear all caches then reload as module
+    if ('caches' in window) {
+      caches.keys().then(names => names.forEach(n => caches.delete(n)));
+    }
+  </script>
+  <script type="module">
+    // Surface any uncaught error as a visible banner (packaged-app users can't open devtools easily)
+    window.addEventListener('error', (e) => showFatal(e.error?.stack || e.message));
+    window.addEventListener('unhandledrejection', (e) => showFatal(e.reason?.stack || String(e.reason)));
+    function showFatal(msg) {
+      const app = document.getElementById('app');
+      if (!app) return;
+      app.innerHTML = '<pre style="padding:20px;color:#b00;background:#fff;white-space:pre-wrap;font-size:12px;overflow:auto;max-height:100vh">[錯誤] 遊戲載入失敗\n\n' + String(msg).replace(/[<>&]/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) + '</pre>';
+    }
+
+    // `?v=timestamp` cache-buster breaks file:// in packaged Electron (query goes into the path).
+    // Skip it when running inside the desktop app; keep it in the browser for dev.
+    const isDesktop = !!window.hocgDesktop?.isElectron;
+    const controllerUrl = isDesktop ? './GameController.js' : './GameController.js?v=' + Date.now();
+    const { GameController } = await import(controllerUrl);
+    const app = document.getElementById('app');
+    const game = new GameController(app);
+
+    // Show mode selection
+    app.innerHTML = `
+      <div class="mode-select-screen">
+        <img src="../images/brand/logo.svg" alt="hololive CARD GAME" class="mode-logo">
+        <h1 class="mode-title">Fan-made Practice Site</h1>
+        <div class="mode-buttons">
+          <button class="mode-btn mode-tutorial" id="modeTutorial">
+            <span class="mode-icon">📖</span>
+            <span class="mode-label">新手教學</span>
+            <span class="mode-desc">5 分鐘快速上手</span>
+          </button>
+          <button class="mode-btn mode-local" id="modeLocal">
+            <span class="mode-icon">🎮</span>
+            <span class="mode-label">本地對戰</span>
+            <span class="mode-desc">同螢幕雙人</span>
+          </button>
+          <button class="mode-btn mode-online" id="modeOnline">
+            <span class="mode-icon">🌐</span>
+            <span class="mode-label">線上對戰</span>
+            <span class="mode-desc">WebSocket 連線</span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('modeTutorial').addEventListener('click', () => game.startTutorial());
+    document.getElementById('modeLocal').addEventListener('click', () => game.start());
+    document.getElementById('modeOnline').addEventListener('click', () => game.startOnline());
+  </script>
+</body>
+</html>
