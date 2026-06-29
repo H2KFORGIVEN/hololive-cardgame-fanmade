@@ -32484,6 +32484,48 @@
     "year": "2026年発売商品"
   },
   {
+    "image": "cardListImages/hBP04/hBP04-083_P.png",
+    "name": "桃鈴ねね",
+    "type": "成員",
+    "tag": "#JP / #5期生 / #歌 / #絵",
+    "product": "PR卡",
+    "color": "黃",
+    "hp": 90,
+    "bloom": "Debut",
+    "batonImage": [
+      "icons/arts_null.png"
+    ],
+    "effectC": null,
+    "effectB": null,
+    "effectG": null,
+    "art1": {
+      "image": [
+        "icons/arts_null.png"
+      ],
+      "name": "こんねね～",
+      "damage": 10,
+      "specialAttackImage": null,
+      "effect": {
+        "zh-TW": "自己舞台上的成員在5位以下時，可以從自己的牌組展示1張標示#5期生的Debut成員並放到舞台上。將牌組重新洗牌。",
+        "ja": "ステージ上のメンバーが 5 人未満の場合、デッキから #5 とマークされたデビュー メンバー 1 人を公開してステージに置くことができます。デッキを再シャッフルします。",
+        "en": "When there are less than 5 members on your stage, you can reveal 1 Debut member marked #5 from your deck and put it on the stage. Reshuffle the deck.",
+        "fr": "Lorsqu'il y a moins de 5 membres sur votre scène, vous pouvez révéler 1 membre Debut marqué #5 depuis votre deck et le mettre sur scène. Remaniez le jeu."
+      }
+    },
+    "art2": null,
+    "extra": {
+      "zh-TW": "這個成員沒有張數限制",
+      "ja": "このメンバーのメンバー数に制限はありません",
+      "en": "There is no limit on the number of members for this member",
+      "fr": "Il n'y a pas de limite au nombre de membres pour ce membre"
+    },
+    "id": "hBP04-083",
+    "imageUrl": "https://hololive-cardgame.github.io/cards/cardListImages/hBP04/hBP04-083_P.png",
+    "expansion": "hPR",
+    "productName": "PRカード",
+    "year": "2024年発売商品"
+  },
+  {
     "image": "cardListImages/hBP04/hBP04-084_C.png",
     "name": "桃鈴ねね",
     "type": "成員",
