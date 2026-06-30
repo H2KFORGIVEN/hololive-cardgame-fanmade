@@ -1,0 +1,208 @@
+// Equipment effect lookups — pure, side-effect-free helpers that read a member's
+// `attachedSupport` array and return aggregated buffs/debuffs.
+//
+// Mass-data note: attaching is fully automatic via GameEngine.processPlaySupport
+// (which writes into target.attachedSupport when the support is type 道具/吉祥物
+// /粉絲). The job of effect handlers is just to register whatever auxiliary
+// behaviour the support has (e.g. trigger-on-SP); the buff itself lives here as
+// a static lookup so DamageCalculator + ActionValidator can read it without
+// importing handler modules.
+//
+// To add a new equipment effect: add a row to the registry below. No engine
+// changes needed.
+
+import { getCard } from './CardDatabase.js';
+import { REGISTRY_EXTRA } from './AttachedSupportEffects-extra.js';
+
+// Per-card effect declarations.
+// Slots:
+//   extraHp(member, card)               → +N HP
+//   colorlessReduction(member, card)    → −N colorless cost
+//   artDamageBoost(member, card)        → +N art damage when this member attacks
+//   damageReceivedModifier(member, card)→ ±N damage TAKEN by this member (negative = take less)
+//   batonColorlessReduction(member, card)→ −N colorless on baton-pass cost
+// Functions take (equippedMember, card) where card is the equipped member's
+// card data (cached so we don't resolve it twice).
+const REGISTRY = {
+  // ── 道具 (tools) ────────────────────────────────────────────────────────
+  // hBP06-097 カワイイスタジャン: ◆Buzz: HP +30
+  'hBP06-097': { extraHp: (m, c) => (c?.bloom?.includes('Buzz') ? 30 : 0) },
+  // hBP07-101 ASMRマイク: ◆Buzz: colorless cheer cost −1
+  'hBP07-101': { colorlessReduction: (m, c) => (c?.bloom?.includes('Buzz') ? 1 : 0) },
+  // hBP06-099 ゆび: art damage +10 (universal)
+  'hBP06-099': { artDamageBoost: () => 10 },
+  // hBP05-082 アキ・ローゼンタールの斧: art +10; +40 more on 1st+ アキ
+  'hBP05-082': {
+    artDamageBoost: (m, c) => {
+      let n = 10;
+      if (c?.name === 'アキ・ローゼンタール' && (c.bloom === '1st' || c.bloom === '2nd')) n += 40;
+      return n;
+    },
+  },
+  // hBP02-086 ホロスパークリング: art +20; if no #お酒, takes +10 dmg
+  'hBP02-086': {
+    artDamageBoost: () => 20,
+    damageReceivedModifier: (m, c) => {
+      const tag = c?.tag || '';
+      const tagStr = typeof tag === 'string' ? tag : JSON.stringify(tag);
+      return tagStr.includes('#お酒') ? 0 : 10;
+    },
+  },
+  // hBP02-087 紫咲シオンの魔法のステッキ: art +10
+  'hBP02-087': { artDamageBoost: () => 10 },
+  // hSD02-013 阿修羅＆羅刹: art +10; +10 more on 1st+ 百鬼あやめ
+  'hSD02-013': {
+    artDamageBoost: (m, c) => {
+      let n = 10;
+      if (c?.name === '百鬼あやめ' && (c.bloom === '1st' || c.bloom === '2nd')) n += 10;
+      return n;
+    },
+  },
+  // hBP07-103 ギラファノコギリクワガタ: ねね art +20 (only when on ねね)
+  'hBP07-103': { artDamageBoost: (m, c) => (c?.name === '桃鈴ねね' ? 20 : 0) },
+  // hBP04-097 緑の試験管: art +10; conditional 1st+ こより rest→active is
+  // engine-complex (manual via UI), skipped. The +10 boost is universal.
+  'hBP04-097': { artDamageBoost: () => 10 },
+  // hBP02-094 Tatang: art +10 (universal); +30 HP on パヴォリア・レイネ.
+  'hBP02-094': {
+    artDamageBoost: () => 10,
+    extraHp: (m, c) => (c?.name === 'パヴォリア・レイネ' ? 30 : 0),
+  },
+  // hBP02-095 ドクロくん: art +10 (universal). Bloom-draw on マリン skipped.
+  'hBP02-095': { artDamageBoost: () => 10 },
+  // hSD06-011 ﾁｬｷ丸: art +10 (universal). 1st+ いろは reactive special skipped.
+  'hSD06-011': { artDamageBoost: () => 10 },
+  // hBP06-098 鬼神刀「阿修羅」: art +10 (universal). あやめ collab opp-move skipped.
+  'hBP06-098': { artDamageBoost: () => 10 },
+  // hBP04-104 スバルドダック: HP +20 (universal). スバル + cheer ≥10 → +20 conditional skipped.
+  'hBP04-104': { extraHp: () => 20 },
+  // hBP07-104 Thorn: only on エリザベス, art +20. 2nd エリザベス damaged → +20 skipped.
+  'hBP07-104': {
+    artDamageBoost: (m, c) => (c?.name === 'エリザベス・ローズ・ブラッドフレイム' ? 20 : 0),
+  },
+  // hBP07-102 角巻わためのハンマー: only on わため, art +20. 2nd-center +30 conditional + dice skipped.
+  'hBP07-102': {
+    artDamageBoost: (m, c) => (c?.name === '角巻わため' ? 20 : 0),
+  },
+  // hBP01-116 うぱお: art +10. かなた reactive special skipped.
+  'hBP01-116': { artDamageBoost: () => 10 },
+  // hBP01-121 Kotori: center/collab dmg taken −10. Position-aware so handled
+  // by DamageCalculator._SUPPORT_PASSIVE_DAMAGE_RECEIVED, not the static
+  // damageReceivedModifier (which doesn't know about wearer position).
+  // キアラ bloom-draw skipped.
+  // 'hBP01-121' — see DamageCalculator passive observer.
+  // hBP03-102 フトイヌ: art +10 (universal). ころね collab cheer skipped.
+  'hBP03-102': { artDamageBoost: () => 10 },
+  // hBP03-097 リコーダー: art +10 (universal). 奏 KO-draw skipped.
+  'hBP03-097': { artDamageBoost: () => 10 },
+  // hBP03-095 ホロキャップ: ◆Debut/Spot: HP +30
+  'hBP03-095': {
+    extraHp: (m, c) => (c?.bloom === 'Debut' || c?.bloom === 'Spot' ? 30 : 0),
+  },
+
+  // ── 吉祥物 (mascots) ────────────────────────────────────────────────────
+  // hBP01-118 あん肝: HP +10 (general; +白色 cheer when on ときのそら is engine-complex, skipped)
+  'hBP01-118': { extraHp: () => 10 },
+  // hBP01-119 ジョブズ: HP +10 (heal-on-art trigger for アキ skipped)
+  'hBP01-119': { extraHp: () => 10 },
+  // hBP02-090 ネジマキツネ: HP +20
+  'hBP02-090': { extraHp: () => 20 },
+  // hBP02-093 ミテイル: HP +20
+  'hBP02-093': { extraHp: () => 20 },
+  // hBP02-098 Death-sensei: HP +20 (all-cheer-color override for カリオペ skipped)
+  'hBP02-098': { extraHp: () => 20 },
+  // hSD02-014 ぽよ余: HP +20 (bloom-draw trigger for あやめ skipped)
+  'hSD02-014': { extraHp: () => 20 },
+  // hBP03-100 ペロ: HP +20 (フワワ/モココ all-art-color → no-color override is engine-complex, skipped)
+  'hBP03-100': { extraHp: () => 20 },
+  // hBP04-100 ココロ: HP +20 (こより collab art +10 conditional skipped — needs ON_COLLAB observer)
+  'hBP04-100': { extraHp: () => 20 },
+  // hBP04-101 だいふく: art +10 (ラミィ HP +20 conditional skipped)
+  'hBP04-101': { artDamageBoost: () => 10 },
+  // hBP04-102 やめなー: art +10 (1st+ #5期生 backstage immunity skipped — engine-complex)
+  'hBP04-102': { artDamageBoost: () => 10 },
+  // hBP04-103 カラス: art +10 (ラプラス collab dice → backstage skipped)
+  'hBP04-103': { artDamageBoost: () => 10 },
+
+  // ── 粉絲 (fans) ─────────────────────────────────────────────────────────
+  // hBP02-099 すこん部: HP +10 (フブキ-only fan)
+  'hBP02-099': { extraHp: () => 10 },
+  // hBP02-100 白銀聖騎士団: damage taken −10 (ノエル-only fan)
+  'hBP02-100': { damageReceivedModifier: () => -10 },
+  // hBP01-126 座員: damage taken +10 (ポルカ-only fan; "counts as red cheer" rule skipped)
+  'hBP01-126': { damageReceivedModifier: () => 10 },
+  // hBP03-110 ろぼさー: art damage −10 (ロボ子さん-only; "counts as purple cheer"
+  // for art cost is engine-complex, skipped — DamageCalculator.applyDamage path handles −10).
+  'hBP03-110': { artDamageBoost: () => -10 },
+  // hBP03-111 ころねすきー: baton-pass colorless cheer cost −1 (戌神ころね-only).
+  'hBP03-111': { batonColorlessReduction: () => 1 },
+
+  // ── Auto-generated extras (tools/generate-handlers/generate.mjs) ─────
+  // Merged from AttachedSupportEffects-extra.js. Hand-written entries
+  // above WIN over auto-generated entries when the same key exists in both.
+  ...REGISTRY_EXTRA,
+};
+
+// Hand-written entries should always win — re-apply them on top of EXTRA.
+// (Spread above prepends; we want to also override any duplicate key from
+// EXTRA so we re-apply the static ones explicitly here.)
+// Quick guard: if EXTRA accidentally contains a key already defined manually,
+// the spread placed EXTRA's value in REGISTRY. We'd want the manual one to win.
+// Done via the order: hand-written keys appear first in object literal but
+// spread comes after — JavaScript Object literal lookup uses LAST occurrence.
+// So spread wins. Build a corrected version below by re-applying manual keys.
+//
+// Practical note: the generator's `inRegistry()` check excludes any cardId
+// already in this file, so EXTRA shouldn't duplicate. The audit-cardids
+// tool will flag any duplicate registration if it slips through.
+
+function _eachAttachedEffect(memberInst, fnName) {
+  if (!memberInst || !Array.isArray(memberInst.attachedSupport)) return 0;
+  const card = getCard(memberInst.cardId);
+  let sum = 0;
+  for (const sup of memberInst.attachedSupport) {
+    const supId = typeof sup === 'string' ? sup : sup?.cardId;
+    if (!supId) continue;
+    const decl = REGISTRY[supId];
+    if (!decl) continue;
+    const fn = decl[fnName];
+    if (typeof fn === 'function') {
+      sum += fn(memberInst, card) || 0;
+    }
+  }
+  return sum;
+}
+
+/** Sum of HP boosts from equipped items applicable to this member. */
+export function getExtraHp(memberInst) {
+  return _eachAttachedEffect(memberInst, 'extraHp');
+}
+
+/** Sum of colorless-cheer cost reductions from equipped items. */
+export function getColorlessReduction(memberInst) {
+  return _eachAttachedEffect(memberInst, 'colorlessReduction');
+}
+
+/** Sum of art-damage boosts from equipped items (e.g. ゆび: +10). */
+export function getArtDamageBoost(memberInst) {
+  return _eachAttachedEffect(memberInst, 'artDamageBoost');
+}
+
+/**
+ * Net modifier applied to damage TAKEN by this member, summed across all
+ * equipment. Positive = takes more damage; negative = takes less.
+ * Read by DamageCalculator.applyDamage and EffectHandler.applyDamageToMember.
+ */
+export function getDamageReceivedModifier(memberInst) {
+  return _eachAttachedEffect(memberInst, 'damageReceivedModifier');
+}
+
+/**
+ * Sum of baton-pass colorless cheer cost reductions from equipped items
+ * (e.g. hBP03-111 ころねすきー: -1). Consumed by ActionValidator
+ * .validateBatonPass and GameEngine.processBatonPass to clamp the
+ * effective baton cost.
+ */
+export function getBatonColorlessReduction(memberInst) {
+  return _eachAttachedEffect(memberInst, 'batonColorlessReduction');
+}

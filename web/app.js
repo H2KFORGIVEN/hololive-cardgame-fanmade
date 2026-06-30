@@ -1,50 +1,251 @@
-import { renderTierView } from './components/tier-view.js';
 import { renderDeckModal } from './components/deck-view.js';
 import { renderCardGallery, renderCardDetail } from './components/card-view.js';
+import { renderTournamentView, renderTournamentDeckModal } from './components/tournament-view.js';
+import { renderGuidesView } from './components/guides-view.js';
+import { renderTutorialView } from './components/tutorial-view.js';
+import { renderNewsView } from './components/x-feed-view.js';
+import { renderBushinaviView } from './components/bushinavi-view.js';
+import { initI18n, setLang, getLang, getSupportedLangs, applyStaticTranslations, t } from './i18n.js';
 
 let cardsData = [];
 let tierData = null;
 let decksData = [];
-let currentView = 'tiers';
-let filters = { color: 'all', type: 'all', search: '' };
+let decklogDecks = [];
+let tournamentsData = [];
+let xFeedData = [];
+let bushinaviEvents = [];
+let bushinaviDecks = {};
+let allGuides = [];
+let officialDecks = [];
+let rulesData = null;
+let currentView = 'home';
+let tournamentSource = 'official';  // 'official' (hololive_OCG) | 'bushinavi'
+let filters = { color: 'all', type: 'all', tier: 'all', search: '' };
 
-async function loadData() {
-  const [cardsResp, tierResp, decksResp] = await Promise.all([
-    fetch('data/cards.json').then(r => r.ok ? r.json() : []),
-    fetch('data/tier_list.json').then(r => r.ok ? r.json() : null),
-    fetch('data/decks.json').then(r => r.ok ? r.json() : []),
-  ]);
-  cardsData = cardsResp;
-  tierData = tierResp;
-  decksData = decksResp;
+const _loaded = { cards: false, decklog: false, tournaments: false, xFeed: false, bushinavi: false };
+
+// Cache-bust JSON fetches — browsers (and Python's http.server) don't set
+// cache-control, so data/*.json can serve stale copies for hours across deploys.
+// Unique per page load; within a session Electron/browser still dedupes.
+const _BUST = '?v=' + Date.now();
+function _fetchJSON(url) {
+  const sep = url.includes('?') ? '&' : '?';
+  return fetch(url + (url.endsWith('.json') ? _BUST : '')).then(r => r.ok ? r.json() : null);
 }
 
-function render() {
-  const tiersView = document.getElementById('tiersView');
+async function loadCoreData() {
+  const [tierResp, decksResp, guidesResp, officialResp, rulesResp] = await Promise.all([
+    _fetchJSON('data/tier_list.json'),
+    _fetchJSON('data/decks.json'),
+    _fetchJSON('data/all_guides.json'),
+    _fetchJSON('data/official_decks.json'),
+    _fetchJSON('data/rules.json'),
+  ]);
+  tierData = tierResp;
+  decksData = decksResp || [];
+  allGuides = guidesResp || [];
+  officialDecks = officialResp || [];
+  rulesData = rulesResp;
+}
+
+async function ensureCards() {
+  if (_loaded.cards) return;
+  _loaded.cards = true;
+  cardsData = (await _fetchJSON('data/cards.json')) || [];
+}
+
+async function ensureDecklog() {
+  if (_loaded.decklog) return;
+  _loaded.decklog = true;
+  decklogDecks = (await _fetchJSON('data/decklog_decks.json')) || [];
+}
+
+async function ensureTournaments() {
+  if (_loaded.tournaments) return;
+  _loaded.tournaments = true;
+  tournamentsData = (await _fetchJSON('data/tournaments.json')) || [];
+}
+
+async function ensureXFeed() {
+  if (_loaded.xFeed) return;
+  _loaded.xFeed = true;
+  xFeedData = (await _fetchJSON('data/x_feed.json')) || [];
+}
+
+async function ensureBushinavi() {
+  if (_loaded.bushinavi) return;
+  _loaded.bushinavi = true;
+  const [events, decks] = await Promise.all([
+    _fetchJSON('data/bushinavi_events.json'),
+    _fetchJSON('data/bushinavi_decks.json'),
+  ]);
+  bushinaviEvents = events || [];
+  bushinaviDecks = decks || {};
+}
+
+async function render() {
+  const guidesView = document.getElementById('guidesView');
+  const tournamentView = document.getElementById('tournamentView');
+  const newsView = document.getElementById('newsView');
   const cardsView = document.getElementById('cardsView');
+  const tutorialView = document.getElementById('tutorialView');
+  const tierFilterGroup = document.getElementById('tierFilterGroup');
   const cardSearchGroup = document.getElementById('cardSearchGroup');
   const cardTypeGroup = document.getElementById('cardTypeGroup');
+  const cardSupportSubGroup = document.getElementById('cardSupportSubGroup');
+  const filterBar = document.getElementById('filterBar');
+  const homeSections = document.getElementById('homeSections');
+  const carousel = document.getElementById('carousel');
+  const mainContent = document.getElementById('mainContent');
 
-  tiersView.classList.toggle('active', currentView === 'tiers');
+  const isHome = currentView === 'home';
+
+  // Toggle homepage vs content
+  if (homeSections) homeSections.style.display = isHome ? '' : 'none';
+  if (carousel) carousel.style.display = isHome ? '' : 'none';
+  if (mainContent) mainContent.style.display = isHome ? 'none' : '';
+
+  // Filter bar: show for guides/cards/tournament, hide for home/tutorial/news
+  filterBar.style.display = (isHome || currentView === 'tutorial' || currentView === 'news') ? 'none' : '';
+
+  guidesView.classList.toggle('active', currentView === 'guides');
+  tournamentView.classList.toggle('active', currentView === 'tournament');
+  if (newsView) newsView.classList.toggle('active', currentView === 'news');
   cardsView.classList.toggle('active', currentView === 'cards');
+  tutorialView.classList.toggle('active', currentView === 'tutorial');
+  tierFilterGroup.style.display = currentView === 'guides' ? 'flex' : 'none';
   cardSearchGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
   cardTypeGroup.style.display = currentView === 'cards' ? 'flex' : 'none';
+  // Show support subtype filter only when type=support* is selected
+  const isSupportFilter = currentView === 'cards' && (filters.type === 'support' || filters.type?.startsWith('support_'));
+  if (cardSupportSubGroup) cardSupportSubGroup.style.display = isSupportFilter ? 'flex' : 'none';
 
-  if (currentView === 'tiers') {
-    renderTierView(tiersView, tierData, decksData);
-  } else {
-    renderCardGallery(cardsView, cardsData, filters);
+  if (isHome) return;
+
+  if (currentView === 'guides') {
+    await ensureCards();
+    renderGuidesView(guidesView, allGuides, decksData, cardsData, filters, officialDecks);
+  } else if (currentView === 'tournament') {
+    await Promise.all([ensureDecklog(), ensureCards(), ensureTournaments(), ensureBushinavi()]);
+    _renderTournamentWithSourceTabs(tournamentView);
+  } else if (currentView === 'news') {
+    await ensureXFeed();
+    renderNewsView(newsView, xFeedData);
+  } else if (currentView === 'tutorial') {
+    renderTutorialView(tutorialView);
+  } else if (currentView === 'cards') {
+    await ensureCards();
+    renderCardGallery(cardsView, cardsData, filters, rulesData);
   }
 }
 
+function _renderTournamentWithSourceTabs(container) {
+  const officialCount = decklogDecks.length;
+  const bnCount = bushinaviEvents.length;
+  container.innerHTML = `
+    <div class="tn-source-tabs">
+      <button class="tn-source-tab${tournamentSource === 'official' ? ' active' : ''}" data-source="official">
+        hololive OFFICIAL CARD GAME (@hololive_OCG)
+        <span class="tn-source-count">${officialCount}</span>
+      </button>
+      <button class="tn-source-tab${tournamentSource === 'bushinavi' ? ' active' : ''}" data-source="bushinavi">
+        Bushi-Navi
+        <span class="tn-source-count">${bnCount}</span>
+      </button>
+    </div>
+    <div id="tournamentContent"></div>
+  `;
+  container.querySelectorAll('.tn-source-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tournamentSource = btn.dataset.source;
+      _renderTournamentWithSourceTabs(container);
+    });
+  });
+  const content = container.querySelector('#tournamentContent');
+  if (tournamentSource === 'official') {
+    renderTournamentView(content, decklogDecks, cardsData, tournamentsData);
+  } else {
+    renderBushinaviView(content, bushinaviEvents, bushinaviDecks, cardsData, _onBushinaviDeckClick);
+  }
+}
+
+function _onBushinaviDeckClick(deckCode) {
+  const deck = bushinaviDecks[deckCode];
+  if (!deck) {
+    alert(t('bn_deck_not_yet_fetched') || 'Deck not yet scraped — will appear after next cron run.');
+    return;
+  }
+  // Find the event + ranking that contains this deck_code for contextual title
+  let ev = null, rank = null;
+  for (const e of bushinaviEvents) {
+    const r = (e.rankings || []).find(r => r.deck_code === deckCode);
+    if (r) { ev = e; rank = r; break; }
+  }
+  // Construct a synthetic deck object matching renderTournamentDeckModal's expected shape
+  const synthetic = {
+    deck_id: `bn-${deckCode}`,
+    title: rank ? `${rank.player_name || '?'}` : deckCode,
+    oshi: rank?.oshi || '',
+    oshi_cards: deck.oshi_cards || [],
+    main_deck: deck.main_deck || [],
+    cheer_deck: deck.cheer_deck || [],
+    main_deck_count: deck.main_deck_count || 0,
+    cheer_deck_count: deck.cheer_deck_count || 0,
+    url: deck.deck_url || `https://decklog.bushiroad.com/view/${deckCode}`,
+    event: ev?.series_title || ev?.event_title || '',
+    placement: rank ? `#${rank.rank}` : '',
+  };
+  const deckModal = document.getElementById('deckModal');
+  const deckModalBody = document.getElementById('deckModalBody');
+  renderTournamentDeckModal(deckModalBody, synthetic.deck_id, [synthetic], cardsData);
+  deckModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function renderLangSwitcher() {
+  const container = document.getElementById('langSwitcher');
+  const current = getLang();
+  const dropdownBtn = document.getElementById('langDropdownBtn');
+
+  container.innerHTML = getSupportedLangs().map(({ code, label }) =>
+    `<button class="lang-btn${code === current ? ' active' : ''}" data-lang="${code}">${label}</button>`
+  ).join('');
+
+  // Update dropdown button text
+  const currentLabel = getSupportedLangs().find(l => l.code === current)?.label || current;
+  if (dropdownBtn) dropdownBtn.textContent = currentLabel + ' ▾';
+
+  container.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLang(btn.dataset.lang);
+      applyStaticTranslations();
+      renderLangSwitcher();
+      // Close dropdown
+      const menu = document.getElementById('langDropdownMenu');
+      if (menu) menu.hidden = true;
+      render();
+    });
+  });
+}
+
 function setupNav() {
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  document.querySelectorAll('.nav-btn[data-view]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentView = btn.dataset.view;
+      window.scrollTo(0, 0);
       render();
     });
+  });
+
+  // Click logo to go back to home
+  document.querySelector('.header-logo-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    currentView = 'home';
+    window.scrollTo(0, 0);
+    render();
   });
 }
 
@@ -54,6 +255,15 @@ function setupFilters() {
       document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       filters.color = btn.dataset.color;
+      render();
+    });
+  });
+
+  document.querySelectorAll('.tier-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filters.tier = btn.dataset.tier;
       render();
     });
   });
@@ -83,11 +293,49 @@ function setupModals() {
   const cardModal = document.getElementById('cardModal');
   const cardModalBody = document.getElementById('cardModalBody');
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async (e) => {
+    const clickableCard = e.target.closest('.clickable-card');
+    if (clickableCard && !e.target.closest('.gallery-card')) {
+      const cardId = clickableCard.dataset.cardId;
+      if (cardId) {
+        await ensureCards();
+        const card = cardsData.find(c => c.id === cardId);
+        if (card) {
+          renderCardDetail(cardModalBody, card, cardsData, rulesData);
+          cardModal.hidden = false;
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+      }
+    }
+
+    const expandDecksBtn = e.target.closest('.tournament-expand-btn');
+    if (expandDecksBtn) {
+      const grid = expandDecksBtn.previousElementSibling;
+      if (grid && grid.classList.contains('tournament-deck-grid')) {
+        const nowCollapsed = grid.classList.toggle('decks-collapsed');
+        const total = grid.children.length;
+        expandDecksBtn.textContent = nowCollapsed
+          ? t('tournament_expand_decks', { n: Math.max(total - 6, 0) })
+          : t('tournament_collapse_decks');
+      }
+      return;
+    }
+
+    const tournamentDeckCard = e.target.closest('.tournament-deck-card');
+    if (tournamentDeckCard) {
+      const decklogId = tournamentDeckCard.dataset.decklogId;
+      await ensureCards();
+      renderTournamentDeckModal(deckModalBody, decklogId, decklogDecks, cardsData);
+      deckModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+
     const deckCard = e.target.closest('.deck-card');
     if (deckCard) {
       const deckId = deckCard.dataset.deckId;
-      renderDeckModal(deckModalBody, deckId, tierData, decksData);
+      renderDeckModal(deckModalBody, deckId, tierData, decksData, allGuides, officialDecks);
       deckModal.hidden = false;
       document.body.style.overflow = 'hidden';
       return;
@@ -96,39 +344,57 @@ function setupModals() {
     const galleryCard = e.target.closest('.gallery-card');
     if (galleryCard) {
       const cardId = galleryCard.dataset.cardId;
+      await ensureCards();
       const card = cardsData.find(c => c.id === cardId);
-      renderCardDetail(cardModalBody, card);
+      renderCardDetail(cardModalBody, card, cardsData, rulesData);
       cardModal.hidden = false;
       document.body.style.overflow = 'hidden';
       return;
     }
   });
 
+  function closeModal(modal) {
+    modal.hidden = true;
+    if (modal === cardModal && !deckModal.hidden) return;
+    document.body.style.overflow = '';
+  }
+
   for (const modal of [deckModal, cardModal]) {
-    modal.querySelector('.modal-backdrop')?.addEventListener('click', () => {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-    });
-    modal.querySelector('.modal-close')?.addEventListener('click', () => {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-    });
+    modal.querySelector('.modal-backdrop')?.addEventListener('click', () => closeModal(modal));
+    modal.querySelector('.modal-close')?.addEventListener('click', () => closeModal(modal));
   }
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      deckModal.hidden = true;
-      cardModal.hidden = true;
-      document.body.style.overflow = '';
+      if (!cardModal.hidden) {
+        closeModal(cardModal);
+      } else if (!deckModal.hidden) {
+        closeModal(deckModal);
+      }
     }
   });
 }
 
+function setupScrollTop() {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.hidden = window.scrollY < 600;
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 async function init() {
-  await loadData();
+  initI18n();
+  renderLangSwitcher();
+  applyStaticTranslations();
   setupNav();
   setupFilters();
   setupModals();
+  setupScrollTop();
+  await loadCoreData();
   render();
 }
 
